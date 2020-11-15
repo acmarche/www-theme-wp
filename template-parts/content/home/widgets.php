@@ -1,0 +1,52 @@
+<div class="text-center pt-24px d-ls-flex mx-ls-n2px d-md-flex mx-md-n2px">
+
+	<!--always visible-->
+	<div class="position-relative px-0 col-ls-4 px-ls-2px col-md px-md-2px col-ls-lg bg-img overflow-hidden">
+		<i class="d-block position-absolute top-0 bottom-0 left-0 right-0 filter-grey bg-img-widgets-1 ls-left-2px ls-right-2px md-left-2px md-right-2px"></i>
+		<a href="#"
+		   class="d-flex justify-content-center align-items-center h-99px position-relative h-lg-120px flex-column bg-img-bgcolor-primary-55 bg-img-bgcolor-hover-dark-primary-75 bg-img-transition-bgcolor">
+			<h3 class="w-120px text-white shadow-text-sm fs-short-1 position-relative bg-img-top-25 bg-img-top-hover-0 pb-ls-lg-8px transition-top">
+				Avis de publication</h3>
+			<span class="text-white shadow-text-sm fs-short-2 lh-125 position-relative bg-img-bottom-n75 bg-img-bottom-hover-0 pt-ls-lg-8px transition-bottom bg-img-delay-hover-basic">Achat de biens immobiliers, <br>devenir indépendant, <br>recruter</span>
+		</a>
+	</div>
+
+	<div class="position-relative pt-4px px-0 col-ls-4 pt-ls-0 px-ls-2px col-md pt-md-0 px-md-2px col-ls-lg bg-img overflow-hidden">
+		<i class="d-block position-absolute top-4px bottom-0 left-0 right-0 filter-grey bg-img-widgets-2 ls-top-0 ls-left-2px ls-right-2px md-top-0 md-left-2px md-right-2px"></i>
+		<a href="#"
+		   class="d-flex justify-content-center align-items-center h-99px position-relative h-lg-120px flex-column bg-img-bgcolor-primary-55 bg-img-bgcolor-hover-dark-primary-75 bg-img-transition-bgcolor">
+			<h3 class="w-120px text-white shadow-text-sm fs-short-1 position-relative bg-img-top-25 bg-img-top-hover-0 pb-ls-lg-8px transition-top">
+				Économie</h3>
+			<span class="text-white shadow-text-sm fs-short-2 lh-125 position-relative bg-img-bottom-n75 bg-img-bottom-hover-0 pt-ls-lg-8px transition-bottom bg-img-delay-hover-basic">Achat de biens immobiliers, <br>devenir indépendant, <br>recruter</span>
+		</a>
+	</div>
+	<div class="position-relative pt-4px px-0 col-ls-4 pt-ls-0 px-ls-2px col-md pt-md-0 px-md-2px col-ls-lg bg-img overflow-hidden">
+		<i class="d-block position-absolute top-4px bottom-0 left-0 right-0 filter-grey bg-img-widgets-3 ls-top-0 ls-left-2px ls-right-2px md-top-0 md-left-2px md-right-2px"></i>
+		<a href="#"
+		   class="d-flex justify-content-center align-items-center h-99px position-relative h-lg-120px flex-column bg-img-bgcolor-primary-55 bg-img-bgcolor-hover-dark-primary-75 bg-img-transition-bgcolor">
+			<h3 class="w-120px text-white shadow-text-sm fs-short-1 position-relative bg-img-top-25 bg-img-top-hover-0 pb-ls-lg-8px transition-top">
+				Participation citoyenne</h3>
+			<span class="text-white shadow-text-sm fs-short-2 lh-125 position-relative bg-img-bottom-n75 bg-img-bottom-hover-0 pt-ls-lg-8px transition-bottom bg-img-delay-hover-basic">Achat de biens immobiliers, <br>devenir indépendant, <br>recruter</span>
+		</a>
+	</div>
+
+	<!--visible from medium / landscape&&large-->
+	<div class="position-relative pt-4px px-0 col-ls-4 pt-ls-0 px-ls-2px d-none d-md-block col-md pt-md-0 px-md-2px d-ls-lg-block col-ls-lg bg-img overflow-hidden">
+		<i class="d-block position-absolute top-4px bottom-0 left-0 right-0 filter-grey bg-img-widgets-4 ls-top-0 ls-left-2px ls-right-2px md-top-0 md-left-2px md-right-2px"></i>
+		<a href="#"
+		   class="d-flex justify-content-center align-items-center h-99px position-relative h-lg-120px flex-column bg-img-bgcolor-primary-55 bg-img-bgcolor-hover-dark-primary-75 bg-img-transition-bgcolor">
+			<h3 class="w-120px text-white shadow-text-sm fs-short-1 position-relative bg-img-top-25 bg-img-top-hover-0 pb-ls-lg-8px transition-top">
+				Plateforme de volontariat</h3>
+			<span class="text-white shadow-text-sm fs-short-2 lh-125 position-relative bg-img-bottom-n75 bg-img-bottom-hover-0 pt-ls-lg-8px transition-bottom bg-img-delay-hover-basic">Achat de biens immobiliers, <br>devenir indépendant, <br>recruter</span>
+		</a>
+	</div>
+	<div class="position-relative pt-4px px-0 col-ls-4 pt-ls-0 px-ls-2px d-none d-md-block col-md pt-md-0 px-md-2px d-ls-lg-block col-ls-lg bg-img overflow-hidden">
+		<i class="d-block position-absolute top-4px bottom-0 left-0 right-0 filter-grey bg-img-widgets-5 ls-top-0 ls-left-2px ls-right-2px md-top-0 md-left-2px md-right-2px"></i>
+		<a href="#"
+		   class="d-flex justify-content-center align-items-center h-99px position-relative h-lg-120px flex-column bg-img-bgcolor-primary-55 bg-img-bgcolor-hover-dark-primary-75 bg-img-transition-bgcolor">
+			<h3 class="w-120px text-white shadow-text-sm fs-short-1 position-relative bg-img-top-25 bg-img-top-hover-0 pb-ls-lg-8px transition-top">
+				Avis de décès</h3>
+			<span class="text-white shadow-text-sm fs-short-2 lh-125 position-relative bg-img-bottom-n75 bg-img-bottom-hover-0 pt-ls-lg-8px transition-bottom bg-img-delay-hover-basic">Achat de biens immobiliers, <br>devenir indépendant, <br>recruter</span>
+		</a>
+	</div>
+</div>
