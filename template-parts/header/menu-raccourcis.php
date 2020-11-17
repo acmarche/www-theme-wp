@@ -1,6 +1,6 @@
 <!--calendar-->
 <div class="calendar">
-	<a href="#">
+	<a href="/administration/contacter-la-commune/">
 		<i class="icon_nav i-clock"></i>
 		<span>Horaires-Contacts</span>
 	</a>
@@ -17,7 +17,7 @@
 		<div>
 			<a href="https://eguichet.marche.be" target="_blank">E-Guichet</a>
 			<a href="news.html">Actualités</a>
-			<a href="events.html">Agenda</a>
+			<a href="/tourisme/agenda-des-manifestations/">Agenda</a>
 		</div>
 		<i class="graphicElement"></i>
 	</div>
@@ -38,7 +38,7 @@
 </div>
 <!--agenda-->
 <div class="agenda">
-	<a href="events.html">
+	<a href="/tourisme/agenda-des-manifestations/">
 		<span>Agenda</span>
 	</a>
 </div>

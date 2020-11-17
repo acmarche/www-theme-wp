@@ -23,22 +23,22 @@
                 </a>
             </li>
             <li class="col-ls-6 col-ls-sm-4 col-xl-12 col-ls-xl-12">
-                <a href="pool.html" class="icon_custom">
+                <a href="/sport/?p=132" class="icon_custom">
                     <i class="i-swimmer"></i>Piscine
                 </a>
             </li>
             <li class="col-ls-6 col-ls-sm-4 col-xl-12 col-ls-xl-12">
-                <a href="#" class="icon_custom">
+                <a href="/environnement" class="icon_custom">
                     <i class="i-leaf"></i>Environnment-Déchet
                 </a>
             </li>
             <li class="col-ls-6 col-ls-sm-4 col-xl-12 col-ls-xl-12">
-                <a href="#" class="icon_custom">
+                <a href="/?cat=119" class="icon_custom">
                     <i class="i-traffic-cone"></i>Travaux
                 </a>
             </li>
             <li class="col-ls-6 col-ls-sm-4 col-xl-12 col-ls-xl-12">
-                <a href="#" class="icon_custom">
+                <a href="https://stages.marche.be" class="icon_custom">
                     <i class="i-beach-ball"></i>Jeunesse-Stages
                 </a>
             </li>
@@ -48,12 +48,12 @@
                 </a>
             </li>
             <li class="col-ls-6 col-ls-sm-4 col-xl-12 col-ls-xl-12">
-                <a href="#" class="icon_custom">
+                <a href="/social/centre-public-daction-sociale-cpas/" class="icon_custom">
                     <i class="i-handshake"></i>CPAS
                 </a>
             </li>
             <li class="col-ls-6 col-ls-sm-4 col-xl-12 col-ls-xl-12">
-                <a href="#" class="icon_custom">
+                <a href="https://citoyen.marche.be" class="icon_custom">
                     <i class="i-envelope"></i>Mon adresse e-mail
                 </a>
             </li>

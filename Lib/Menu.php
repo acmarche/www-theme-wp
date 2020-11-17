@@ -8,10 +8,23 @@ use AcMarche\Common\Twig;
 class Menu
 {
     const MENU_NAME = 'top-menu';
+    /**
+     * @var \Twig\Environment
+     */
+    private $twig;
+    /**
+     * @var FilesystemAdapter
+     */
+    private $cache;
 
-    function getMenu(int $id_site): string
+    public function __construct()
     {
-        $cache = new FilesystemAdapter();
+        $this->twig  = Twig::LoadTwig();
+        $this->cache = new FilesystemAdapter();
+    }
+
+    function getItems(int $id_site): array
+    {
         switch_to_blog($id_site);
 
         //   if (false === ($items_serialize = get_transient("menu__$id_site"))) {
@@ -28,14 +41,21 @@ class Menu
             'update_post_term_cache' => false,
         );
 
-        $items = wp_get_nav_menu_items($menu, $args);
+        return wp_get_nav_menu_items($menu, $args);
+    }
 
-        $twig = Twig::LoadTwig();
+    public function renderAll()
+    {
+        $data = [];
+        foreach (Setup::SITES as $idSite => $site) {
+            $data[$idSite]['name']   = $site;
+            $data[$idSite]['items'] = $this->getItems($idSite);
+        }
 
-        $content = $twig->render(
+        $content = $this->twig->render(
             'menu/menu_top.html.twig',
             [
-                'items' => $items,
+                'data' => $data,
             ]
         );
 

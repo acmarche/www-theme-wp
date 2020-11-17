@@ -26,7 +26,6 @@
 			?>
         </nav>
 
-
 		<?php get_template_part( 'template-parts/header/social' ); ?>
     </div>
 </header>

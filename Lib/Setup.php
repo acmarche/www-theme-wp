@@ -15,6 +15,17 @@ use function wp_get_theme;
 
 class Setup
 {
+    const SITES =   [
+        1  =>  'citoyen',
+        2  => 'administration',
+        3  => 'economie',
+        4  => 'tourisme',
+        5  => 'sport',
+        6  => 'sante',
+        7  => 'social',
+        11 => 'culture',
+        14 => 'enfance',
+    ];
     public static function get_instance()
     {
         static $instance = null;
