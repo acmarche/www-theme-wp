@@ -1,37 +1,37 @@
-<div class="d-lg-none pr-12px border border-dark-primary mt-48px">
-	<select name="categories" id="cat-select" class="fs-short-3 ff-semibold">
-		<option value="0" selected>Tout</option>
-		<option value="1">Agriculture-formulaire plastiques agricoles</option>
-		<option value="2">Calendrier IDELUX Environnement</option>
-		<option value="3">Chenille processionnaire</option>
-		<option value="4">Déchets</option>
-		<option value="5">Déclaration classe 3</option>
-		<option value="6">Eau</option>
-		<option value="7">Énergie</option>
-		<option value="8">Natura 2000</option>
-		<option value="9">Nature</option>
-		<option value="10">Primes communales</option>
-		<option value="11">Règlement communal de la gestion des déchets</option>
-		<option value="12">Projet Life</option>
-		<option value="13">Scolytes</option>
-	</select>
-</div>
-<!--OBJECT | TAGS-->
-<div class="d-none d-lg-block overflow-hidden w-100 pt-48px col-6 px-0">
-	<ul class="object-tags">
-		<li class="active pr-24px"><a href="#">Tout</a></li>
-		<li><a href="#">Agriculture-formulaire plastiques agricoles</a></li>
-		<li><a href="#">Calendrier IDELUX Environnement</a></li>
-		<li><a href="#">Chenille processionnaire</a></li>
-		<li><a href="#">Déchets</a></li>
-		<li><a href="#">Déclaration classe 3</a></li>
-		<li><a href="#">Eau</a></li>
-		<li><a href="#">Énergie</a></li>
-		<li><a href="#">Natura 2000</a></li>
-		<li><a href="#">Nature</a></li>
-		<li><a href="#">Primes communales</a></li>
-		<li><a href="#">Règlement communal de la gestion des déchets</a></li>
-		<li><a href="#">Projet Life</a></li>
-		<li><a href="#">Scolytes</a></li>
-	</ul>
-</div>
+<?php
+$cat_ID         = get_queried_object_id();
+if (is_category($cat_ID)) :
+    $args = ['parent' => $cat_ID, 'hide_empty' => false];
+    $categories = get_categories($args);
+    if(count($categories) ===0) {
+        return;
+    }
+    ?>
+
+    <div class="d-lg-none pr-12px border border-dark-primary mt-48px">
+        <select name="categories" id="cat-select" class="fs-short-3 ff-semibold">
+            <option value="0" selected>Tout</option>
+            <?php
+            foreach ($categories as $category) {
+                ?>
+                <option value="<?php echo $category->cat_ID ?>"><?php echo $category->name ?></option>
+                <?php
+            }
+            ?>
+        </select>
+    </div>
+    <!--OBJECT | TAGS-->
+    <div class="d-none d-lg-block overflow-hidden w-100 pt-48px col-6 px-0">
+        <ul class="object-tags">
+            <li class="active pr-24px"><a href="#">Tout</a></li>
+            <?php
+            foreach ($categories as $category) {
+                $url = get_category_link($category->term_id);
+                ?>
+                <li><a href="<?php echo $url ?>"><?php echo $category->name ?></a></li>
+                <?php
+            }
+            ?>
+        </ul>
+    </div>
+<?php endif;

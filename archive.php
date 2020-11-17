@@ -1,5 +1,4 @@
 <?php
-
 get_header();
 $description = get_the_archive_description();
 ?>

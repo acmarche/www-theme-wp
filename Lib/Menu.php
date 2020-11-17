@@ -4,12 +4,13 @@ namespace AcMarche\Theme\Lib;
 
 use Symfony\Component\Cache\Adapter\FilesystemAdapter;
 use AcMarche\Common\Twig;
+use Twig\Environment;
 
 class Menu
 {
     const MENU_NAME = 'top-menu';
     /**
-     * @var \Twig\Environment
+     * @var Environment
      */
     private $twig;
     /**
@@ -27,7 +28,7 @@ class Menu
     {
         switch_to_blog($id_site);
 
-        //   if (false === ($items_serialize = get_transient("menu__$id_site"))) {
+        //todo cache
         $menu = wp_get_nav_menu_object(self::MENU_NAME);
 
         $args = array(
@@ -48,7 +49,7 @@ class Menu
     {
         $data = [];
         foreach (Setup::SITES as $idSite => $site) {
-            $data[$idSite]['name']   = $site;
+            $data[$idSite]['name']  = $site;
             $data[$idSite]['items'] = $this->getItems($idSite);
         }
 

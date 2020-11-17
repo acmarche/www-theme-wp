@@ -15,7 +15,7 @@
     {% for row in items|batch(7, 'No item') %}
         <ul class="col-ls-6">
             {% for item in row %}
-                <li><a href="{{ item.guid }}">{{ item.title }}</a></li>
+                <li><a href="{{ item.url }}">{{ item.title }}</a></li>
             {% endfor %}
         </ul>
     {% endfor %}
