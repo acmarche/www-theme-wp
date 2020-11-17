@@ -1,0 +1,24 @@
+<!--OBJECT | HEADER-->
+<header>
+    <div>
+        <a href="#">
+            <img src="{{ template_dir }}/assets/rsc/img/img_logo.png" alt="logo">
+        </a>
+
+        <!--OBJECT | NAV-->
+        <nav>
+            <!--home-->
+            <div class="home active">
+                <a href="#">
+                    <i class="icon_nav i-home"></i>
+                </a>
+            </div>
+            <!--search | visible on mobile/tablet && !homepage-extralarge-->
+            {% include 'header/_search.html.twig' %}
+            <!--all-->
+            {{ menu|raw }}
+            {% include 'header/_menu_raccourcis.html.twig' %}
+        </nav>
+        {% include 'header/_social.html.twig' %}
+    </div>
+</header>
