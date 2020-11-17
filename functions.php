@@ -2,30 +2,32 @@
 
 /**
  * Remove word "Category"
+ *
  * @param $title
  *
  * @return string|void
  */
 function prefix_category_title( $title ) {
-    if ( is_category() ) {
-        $title = single_cat_title( '', false );
-    }
-    return $title;
+	if ( is_category() ) {
+		$title = single_cat_title( '', false );
+	}
+
+	return $title;
 }
+
 add_filter( 'get_the_archive_title', 'prefix_category_title' );
 
-add_action('wp_head', 'show_template');
+add_action( 'wp_head', 'show_template' );
 /**
  * for debug
  * @global string $template
  */
-function show_template()
-{
-	if (true === WP_DEBUG) {
-	//	if (current_user_can('administrator')) {
-			global $template;
-	//		var_dump($template);
-	//	}
+function show_template() {
+	if ( true === WP_DEBUG ) {
+		//	if (current_user_can('administrator')) {
+		global $template;
+		//		var_dump($template);
+		//	}
 	}
 }
 
@@ -55,7 +57,7 @@ if ( ! function_exists( 'marchebe_setup' ) ) :
 		 * @link https://developer.wordpress.org/themes/functionality/featured-images-post-thumbnails/
 		 */
 		add_theme_support( 'post-thumbnails' );
-		add_image_size('slideshow', 480, 210, true);
+		add_image_size( 'slideshow', 480, 210, true );
 		set_post_thumbnail_size( 1568, 9999 );
 
 		// This theme uses wp_nav_menu() in one location.
@@ -105,7 +107,9 @@ function marchebe_scripts() {
 		array(),
 		wp_get_theme()->get( 'Version' ) );
 
-	wp_enqueue_style( 'marchebe-home-style', get_template_directory_uri() . '/assets/css/home.css', array() );
+	if ( is_home() ) {
+		wp_enqueue_style( 'marchebe-home-style', get_template_directory_uri() . '/assets/css/home.css', array() );
+	}
 //	wp_style_add_data( 'marchebe-style', 'rtl', 'replace' );
 
 	// Print styles.
