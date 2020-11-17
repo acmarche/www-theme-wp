@@ -1,6 +1,7 @@
 <?php
 
 namespace AcMarche\Theme\Lib;
+
 use Symfony\Component\Cache\Adapter\FilesystemAdapter;
 use AcMarche\Common\Twig;
 
@@ -10,8 +11,7 @@ class Menu
 
     function getMenu(int $id_site): string
     {
-
-$cache = new FilesystemAdapter();
+        $cache = new FilesystemAdapter();
         switch_to_blog($id_site);
 
         //   if (false === ($items_serialize = get_transient("menu__$id_site"))) {
