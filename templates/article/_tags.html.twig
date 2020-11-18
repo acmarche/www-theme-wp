@@ -1,0 +1,6 @@
+<ul class="object-tags">
+    {% for category in categories %}
+        <li><a href="{{ category.term_id|category_link }}">{{ category.name }}</a></li>
+    {% endfor %}
+</ul>
+

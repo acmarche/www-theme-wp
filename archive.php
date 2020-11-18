@@ -1,5 +1,4 @@
 <?php
-
 get_header();
 $description          = get_the_archive_description();
 $category_description = category_description();
@@ -32,7 +31,7 @@ $category_description = category_description();
             ?>
             <!--results-->
             <?php
-            get_template_part('template-parts/content/category/articles');
+            get_template_part('template-parts/content/category/articles-line');
             ?>
         </div>
     </section>
