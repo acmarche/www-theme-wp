@@ -1,1 +1,30 @@
-vide
+<!--OBJECT | HEADER-->
+<header>
+    <div>
+        <a href="/">
+            <img src="{{ template_directory }}/assets/rsc/img/img_logo.png" alt="logo">
+        </a>
+
+        <!--OBJECT | NAV-->
+        <nav>
+
+            <!--home-->
+            <div class="home">
+                <a href="/">
+                    <i class="icon_nav i-home"></i>
+                </a>
+            </div>
+            <!--search | visible on mobile/tablet && !homepage-extralarge | TODO JF: à brancher-->
+            {% include 'header/inside/_search.html.twig' %}
+
+            <!--all | TODO JF: à brancher-->
+            {% include 'header/inside/_menu_vivre.html.twig' %}
+            {% include 'header/common/_menu_right.html.twig' %}
+
+        </nav>
+
+        <!-- social networks -->
+        {% include 'header/common/_social_networks.html.twig' %}
+
+    </div>
+</header>
