@@ -1,0 +1,42 @@
+<!--CONTENT-->
+<section id="content" class="pt-42px pl-ls-42px overflow-ls-hidden overflow-md-hidden pl-ls-lg-0 pt-xl-66px">
+
+    <!--HOME_SEARCH-->
+    <div class="bg-img-home">
+        <div class="bg-gradient-home col-12 mx-auto px-24px py-150px pt-ls-66px pb-ls-108px pt-ls-sm-88px pb-ls-sm-135px pt-ls-md-99px pb-ls-md-150px text-center pb-md-195px pt-ls-xl-175px pb-ls-xl-220px">
+            <h1 class="pb-22px">Bienvenue <br class="d-ls-md-none d-md-none">à Marche-en-Famenne</h1>
+            <div class="mw-550px position-relative m-auto searchHome">
+                <input type="search" placeholder="Que cherchez-vous ?"
+                       class="border-0 rounded-pill h-42px pl-16px pr-58px fs-short-3">
+                <button class="position-absolute top-0 bottom-0 right-0 w-42px d-flex justify-content-center align-items-center p-0 border-0 rounded-right-pill bg-transparent icon_custom">
+                    <!--<i class="fa fa-search text-dark-primary"></i>-->
+                    <i class="i-search i-dark-primary"></i>
+                </button>
+
+                {% include 'home/_search_suggestion.hmlt.twig' %}
+            </div>
+
+            <!--visible from landscape&&large / large-->
+            {% include 'home/_icones_large.html.twig' %}
+
+        </div>
+    </div>
+
+    <!--NEWS / CALENDAR-->
+    <div class="bg-white pt-24px px-24px text-center position-relative d-ls-md-flex mx-ls-md-n15px d-md-flex mx-md-n15px px-xl-48px mx-xl-n30px justify-content-md-center">
+        <i class="curve-svg-home"></i>
+
+        <!--news-->
+        {% include 'home/_news.html.twig' %}
+
+        <!--events-->
+        {% include 'home/_events.html.twig' %}
+
+    </div>
+
+    <!--WIDGETS-->
+    {% include 'home/_widgets.html.twig' %}
+
+    <!--PARTNERS-->
+    {% include 'home/_partenaires.html.twig' %}
+</section>

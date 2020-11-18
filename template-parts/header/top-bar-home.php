@@ -7,11 +7,11 @@ use AcMarche\Theme\Lib\Menu;
 
 $twig    = Twig::LoadTwig();
 $menu    = new Menu();
-$menu    = $menu->renderAll();
+$data    = $menu->getAllItems();
 $content = $twig->render(
     'header/_top_bar_home.html.twig',
     [
-        'menu' => $menu,
+        'data' => $data,
     ]
 );
 echo $content;

@@ -31,7 +31,7 @@ class Menu
         switch_to_blog($id_site);
 
         return $this->cache->get(
-            'menu_cache_'.$id_site,
+            'menu_cache_'.$id_site.time(),
             function (ItemInterface $item) {
                 $item->expiresAfter(3600);
 
@@ -53,26 +53,20 @@ class Menu
         );
     }
 
-    public function renderAll()
+    public function getAllItems(): array
     {
         return $this->cache->get(
-            'menu_all',
-            function () {
+            'menu_all'.time(),
+            function (): array {
                 $blog = get_current_blog_id();
                 $data = [];
                 foreach (Setup::SITES as $idSite => $site) {
                     $data[$idSite]['name']  = $site;
                     $data[$idSite]['items'] = $this->getItems($idSite);
                 }
-
-                $content = $this->twig->render(
-                    'menu/menu_top.html.twig',
-                    [
-                        'data' => $data,
-                    ]
-                );
-
                 switch_to_blog($blog);
+
+                return $data;
             }
         );
     }
