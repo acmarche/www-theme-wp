@@ -1,4 +1,7 @@
 <?php
+
+namespace AcMarche\Theme;
+
 /**
   Template Name: Home-Page-Principal
  */

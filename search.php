@@ -1,4 +1,6 @@
 <?php
+namespace AcMarche\Theme;
+
 get_header();
 ?>
 <!--CONTENT-->

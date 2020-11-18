@@ -1,4 +1,6 @@
 <?php
+namespace AcMarche\Theme;
+
 get_header();
 $description          = get_the_archive_description();
 $category_description = category_description();
