@@ -1,0 +1,19 @@
+{% if categories|length > 0 %}
+    <div class="d-lg-none pr-12px border border-dark-primary mt-48px">
+        <select name="categories" id="cat-select" class="fs-short-3 ff-semibold">
+            <option value="0" selected>Tout</option>
+            {% for child in categories %}
+                <option value="{{ child.cat_ID }}">{{ child.name }}</option>
+               {% endfor %}
+        </select>
+    </div>
+    <!--OBJECT | TAGS-->
+    <div class="d-none d-lg-block overflow-hidden w-100 pt-48px col-6 px-0">
+        <ul class="object-tags">
+            <li class="active pr-24px"><a href="#">Tout</a></li>
+            {% for child in categories %}
+                <li><a href="{{ child.term_id|category_link }}">{{ child.name }}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endif %}

@@ -12,7 +12,6 @@ $menu    = $menu->renderAll();
 $content = $twig->render(
     'header/_top_bar.html.twig',
     [
-        'template_dir' => Twig::getTemplateDirectoryUri(),
         'menu'         => $menu,
     ]
 );
