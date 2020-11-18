@@ -1,0 +1,49 @@
+<div class="all d-ls-flex align-items-ls-center justify-content-ls-center">
+    <a href="#" class="icon_custom position-relative">
+        <i class="icon_nav i-bars"></i>
+        <i class="i-bars i-dark-primary"></i>
+        <span>Vivre à Marche</span>
+        <!--<input type="radio" name="subnav" value="1" class="w-100 h-100">-->
+    </a>
+    <!--subnav-->
+    <div class="subnav">
+        <ul>
+            <li class="d-flex flex-row align-items-center p-24px d-xl-none col-ls-12">
+                <h3 class="flex-grow-1 text-white text-left">Vivre à Marche</h3>
+                <a href="#"
+                   class="position-relative w-24px h-24px d-flex justify-content-center align-items-center p-0 icon_custom">
+                    <i class="i-times i-white"></i>
+                    <!--<input type="radio" name="subnav" value="0" class="w-100 h-100">-->
+                </a>
+            </li>
+
+            <!--administration-->
+            {% include 'menu/_administration.html.twig' with {'items': data.2.items} %}
+
+            <!--citoyen-->
+            {% include 'menu/_citoyen.html.twig' with {'items': data.1.items} %}
+
+            <!--culture-->
+            {% include 'menu/_culture.html.twig' with {'items': data.11.items} %}
+
+            <!--economie-->
+            {% include 'menu/_economie.html.twig' with {'items': data.3.items} %}
+
+            <!--enfance/jeunesse-->
+            {% include 'menu/_enfance.html.twig' with {'items': data.14.items} %}
+
+            <!--sante-->
+            {% include 'menu/_sante.html.twig' with {'items': data.6.items} %}
+
+            <!--social-->
+            {% include 'menu/_social.html.twig' with {'items': data.7.items} %}
+
+            <!--sport-->
+            {% include 'menu/_sport.html.twig' with {'items': data.5.items} %}
+
+            <!--tourisme-->
+            {% include 'menu/_tourisme.html.twig' with {'items': data.4.items} %}
+
+        </ul>
+    </div>
+</div>
