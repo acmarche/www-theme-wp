@@ -1,0 +1,42 @@
+<!--OBJECT | HEADER-->
+<header>
+    <div>
+        <a href="/">
+            <img src="{{ template_directory }}/assets/rsc/img/img_logo.png" alt="logo">
+        </a>
+
+        <!--OBJECT | NAV-->
+        <nav>
+
+            <!--home-->
+            <div class="home active">
+                <a href="#">
+                    <i class="icon_nav i-home"></i>
+                </a>
+            </div>
+            <!--search | visible on mobile/tablet && !homepage-extralarge-->
+            <div class="search d-xl-none">
+                <a href="#">
+                    <i class="icon_nav i-search"></i>
+                    <i class="icon_nav i-search i-white position-absolute d-none d-xl-block"></i>
+                </a>
+
+                {% include 'header/home/_search_screen.html.twig' %}
+            </div>
+            <!--all-->
+            <div class="all d-ls-flex align-items-ls-center justify-content-ls-center">
+                <a href="#" class="icon_custom position-relative">
+                    <i class="icon_nav i-bars"></i>
+                    <i class="i-bars i-dark-primary"></i>
+                    <span>Vivre à Marche</span>
+                    <!--<input type="radio" name="subnav" value="1" class="w-100 h-100">-->
+                </a>
+                {% include 'header/home/_menu_vivre.html.twig' %}
+            </div>
+            {% include 'header/home/_menu_right.html.twig' %}
+        </nav>
+
+        {% include 'header/home/_icones_social.html.twig' %}
+
+    </div>
+</header>

@@ -1,3 +1,4 @@
+<!--CONTENT-->
 <section id="content"
          class="pt-42px pb-36px pl-ls-42px overflow-ls-hidden overflow-md-hidden pl-ls-lg-0 pt-xl-66px pb-lg-66px mw-1440px mx-xl-auto w-100">
 
@@ -36,7 +37,7 @@
                         <span class="less">Réduire</span>
                     </div>
                     <div for="text-dyn">
-                        {{ post.post_content|raw }}
+                        <p>{{ post.post_content|raw|nl2br }}</p>
                     </div>
                 </div>
 

@@ -15,8 +15,8 @@ use function wp_get_theme;
 
 class Setup
 {
-    const SITES =   [
-        1  =>  'citoyen',
+    const SITES = [
+        1  => 'citoyen',
         2  => 'administration',
         3  => 'economie',
         4  => 'tourisme',
@@ -26,6 +26,7 @@ class Setup
         11 => 'culture',
         14 => 'enfance',
     ];
+
     public static function get_instance()
     {
         static $instance = null;
@@ -35,6 +36,16 @@ class Setup
         }
 
         return $instance;
+    }
+
+    public function show_template()
+    {
+        if (true === WP_DEBUG) {
+            //	if (current_user_can('administrator')) {
+            global $template;
+            var_dump('template: '.$template);
+            //	}
+        }
     }
 
     /**
@@ -123,33 +134,29 @@ class Setup
     public static function marchebe_scripts()
     {
         wp_enqueue_style(
+            'marchebe-bootstrap',
+            'https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css',
+            array(),
+            wp_get_theme()->get('Version')
+        );
+
+        wp_enqueue_style(
+            'marchebe-fontawesome',
+            'https://use.fontawesome.com/releases/v5.4.2/css/all.css',
+            array(),
+            wp_get_theme()->get('Version')
+        );
+
+        wp_enqueue_style(
             'marchebe-base-style',
             get_template_directory_uri().'/assets/css/base.css',
             array(),
             wp_get_theme()->get('Version')
         );
 
-        //  if (is_home()) {
-        wp_enqueue_style('marchebe-home-style', get_template_directory_uri().'/assets/css/home.css', array());
-        //  }
-
-//	wp_style_add_data( 'marchebe-style', 'rtl', 'replace' );
-
-        // Print styles.
-        /*	wp_enqueue_style( 'marchebe-print-style',
-                get_template_directory_uri() . '/assets/css/print.css',
-                array(),
-                wp_get_theme()->get( 'Version' ),
-                'print' );
-                wp_enqueue_script( 'marchebe-navigation',
-                    get_template_directory_uri() . '/js/navigation.js',
-                    array(),
-                    _S_VERSION,
-                    true );
-
-                if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
-                    wp_enqueue_script( 'comment-reply' );
-                }*/
+        if (is_front_page()) {
+            wp_enqueue_style('marchebe-home-style', get_template_directory_uri().'/assets/css/home.css', array());
+        }
     }
 
     /**

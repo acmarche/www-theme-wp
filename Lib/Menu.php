@@ -2,11 +2,11 @@
 
 namespace AcMarche\Theme\Lib;
 
-use Symfony\Component\Cache\Adapter\FilesystemAdapter;
+use AcMarche\Common\Cache;
 use AcMarche\Common\Twig;
-use Twig\Environment;
-use Symfony\Component\Cache\Adapter\ApcuAdapter;
+use Symfony\Contracts\Cache\CacheInterface;
 use Symfony\Contracts\Cache\ItemInterface;
+use Twig\Environment;
 
 class Menu
 {
@@ -16,37 +16,21 @@ class Menu
      */
     private $twig;
     /**
-     * @var FilesystemAdapter
+     * @var CacheInterface
      */
     private $cache;
 
     public function __construct()
     {
         $this->twig  = Twig::LoadTwig();
-        $this->cache = new FilesystemAdapter();
+        $this->cache = Cache::instance();
     }
 
     function getItems(int $id_site): array
     {
         switch_to_blog($id_site);
 
-        $cache = new ApcuAdapter(
-
-        // a string prefixed to the keys of the items stored in this cache
-            $namespace = '',
-
-            // the default lifetime (in seconds) for cache items that do not define their
-            // own lifetime, with a value 0 causing items to be stored indefinitely (i.e.
-            // until the APCu memory is cleared)
-            $defaultLifetime = 0,
-
-            // when set, all keys prefixed by $namespace can be invalidated by changing
-            // this $version string
-            $version = null
-        );
-
-        // The callable will only be executed on a cache miss.
-        $value = $cache->get(
+        return $this->cache->get(
             'menu_cache_'.$id_site,
             function (ItemInterface $item) {
                 $item->expiresAfter(3600);
@@ -67,25 +51,29 @@ class Menu
                 return wp_get_nav_menu_items($menu, $args);
             }
         );
-
-        return $value;
     }
 
     public function renderAll()
     {
-        $data = [];
-        foreach (Setup::SITES as $idSite => $site) {
-            $data[$idSite]['name']  = $site;
-            $data[$idSite]['items'] = $this->getItems($idSite);
-        }
+        return $this->cache->get(
+            'menu_all',
+            function () {
+                $blog = get_current_blog_id();
+                $data = [];
+                foreach (Setup::SITES as $idSite => $site) {
+                    $data[$idSite]['name']  = $site;
+                    $data[$idSite]['items'] = $this->getItems($idSite);
+                }
 
-        $content = $this->twig->render(
-            'menu/menu_top.html.twig',
-            [
-                'data' => $data,
-            ]
+                $content = $this->twig->render(
+                    'menu/menu_top.html.twig',
+                    [
+                        'data' => $data,
+                    ]
+                );
+
+                switch_to_blog($blog);
+            }
         );
-
-        return $content;
     }
 }
