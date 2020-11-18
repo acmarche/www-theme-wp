@@ -38,14 +38,26 @@ class Setup
         return $instance;
     }
 
-    public function show_template()
+    function wporg_add_custom_post_types($query)
+    {
+        if ($query->is_main_query()) {
+            $query->set('post_type', array('post', 'page', 'bottin_fiche'));
+        }
+
+        return $query;
+    }
+
+    public static function show_template(): string
     {
         if (true === WP_DEBUG) {
             //	if (current_user_can('administrator')) {
             global $template;
-            var_dump('template: '.$template);
+
+            return 'template: '.$template;
             //	}
         }
+
+        return '';
     }
 
     /**

@@ -1,0 +1,81 @@
+<section id="content"
+         class="pt-42px pb-36px pl-ls-42px overflow-ls-hidden overflow-md-hidden pl-ls-lg-0 pt-xl-66px pb-lg-66px mw-1440px mx-xl-auto w-100">
+
+    <!--DIRECTORY-->
+    <div class="bg-white pt-24px px-24px position-relative d-md-flex px-xl-48px mx-xl-n30px justify-content-md-center flex-column">
+
+        <!--back | TODO JF: lien dynamique vers la page précédente-->
+        <a href="#"
+           class="button lvl3 align-self-ls-md-start align-self-md-start position-relative right-0 right-hover-12px fs-short-2"><i
+                    class="fas fa-angle-left pr-8px d-ls-md-inline pr-md-12px fs-short-2 d-md-inline"></i>Retour à la
+            recherche</a>
+
+        <!--title-->
+        <h2 class="text-ls-md-left pt-ls-md-8px text-md-left pt-md-8px">{{ fiche.societe }}</h2>
+
+        <!--category-->
+        <span class="color-cat-cul ff-semibold pt-12px d-block fs-short-2">Culture</span>
+
+        <!--directory-->
+        <div class="pt-48px d-lg-flex mx-n15px ml-lg-0">
+            <div class="d-flex flex-column align-items-center flex-md-wrap flex-md-row align-items-md-start flex-lg-column col-lg-8 mx-md-0 flex-lg-nowrap px-md-0">
+                <!--img/datas-->
+                <div class="bg-img w-100 h-auto position-relative h-lg-368px d-flex pr-md-15px">
+
+                    <!--img-->
+                    <i class="bg-img-directory-1 position-absolute top-0 bottom-0 left-0 right-0 md-left-15px md-right-15px lg-left-0 lg-right-0 col-7 d-none d-md-block"></i>
+
+                    <!--datas-->
+                    {% include 'fiche/_data.html.twig' %}
+                </div>
+
+                <!--OBJECT | TAGS-->
+                <div class="overflow-hidden w-100 pt-24px col-md-12 px-0 px-md-15px d-lg-none">
+                    {% include 'article/_tags.html.twig' %}
+                </div>
+
+                <!--OBJECT | TEXT-DYN | TODO JF : brancher la possibilité d'ouvrir/réduire le content avec un ellipsis + condition sur l'extend-->
+                <div class="object-text-dyn col-md-8 px-0 px-md-15px col-lg-12 px-lg-0">
+                    <input type="checkbox" id="text-dyn"/>
+                    <div for="text-dyn">
+                        <span class="more">Lire plus</span>
+                        <span class="less">Réduire</span>
+                    </div>
+                    <div for="text-dyn">
+                        <p>{{ fiche.description1|raw|nl2br }}</p>
+                    </div>
+                </div>
+
+                <!--OBJECT | SHARE-->
+                <div class="pt-24px w-100 col-md-4 px-0 px-md-15px d-lg-none">
+                    {% include 'article/_share.html.twig' %}
+                </div>
+
+                <!--previous/next-->
+                {% include 'article/_previous-next.html.twig' %}
+
+                <!--OBJECT | RECOM-->
+                <div class="pt-24px w-100 col-md-8 px-0 px-md-15px d-lg-none">
+                    {% include 'article/_recommandation.html.twig' %}
+                </div>
+            </div>
+            <div class="d-none d-lg-flex col-4 flex-column h-330px justify-content-between">
+                <!--OBJECT | SHARE-->
+                <div class="w-100">
+                    {% include 'article/_share.html.twig' %}
+                </div>
+
+                <!--OBJECT | TAGS-->
+                <div class="overflow-hidden w-100 pt-24px">
+                    {% include 'article/_tags.html.twig' %}
+                </div>
+
+                <!--OBJECT | RECOM-->
+                <div class="pt-24px w-100">
+                    {% include 'article/_recommandation.html.twig' %}
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>

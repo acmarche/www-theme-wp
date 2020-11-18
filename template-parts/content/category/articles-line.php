@@ -6,11 +6,8 @@ namespace AcMarche\Theme;
 use AcMarche\Common\Twig;
 
 global $wp_query;
-if ($wp_query->post_count === 0) {
-    return;
-}
-$posts = $wp_query->get_posts();
 $twig    = Twig::LoadTwig();
+$posts = $wp_query->get_posts();
 $content = $twig->render(
     'category/_articles_line.html.twig',
     [

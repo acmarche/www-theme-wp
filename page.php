@@ -1,6 +1,5 @@
 <?php
 
-
 namespace AcMarche\Theme;
 
 use AcMarche\Common\Twig;
@@ -15,8 +14,7 @@ $post_ID     = $post->ID;
 $titre       = $post->post_title;
 $description = strip_tags($post->post_excerpt);
 $url         = get_site_url()."/?p=$post_ID";
-//get_the_posts_pagination();
-$content = $twig->render(
+$content     = $twig->render(
     'article/show.html.twig',
     [
         'post'       => $post,
@@ -24,5 +22,6 @@ $content = $twig->render(
         'categories' => $categories,
     ]
 );
+
 echo $content;
 get_footer();

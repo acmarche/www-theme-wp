@@ -2,9 +2,9 @@
     <ul class="d-flex mx-n12px flex-wrap">
         {% for post in posts %}
 
-         {#    $post_type = $post->post_type;
+            {# $post_type = $post->post_type;
 
-            if ($post_type == 'bottin_fiche')#}
+            if ($post_type == 'bottin_fiche') #}
 
             <li class="pb-12px px-12px col-12 col-md-6">
                 <a href="{{ post.ID|permalink }}" class="border border-default p-24px shadow-sm d-block">
@@ -13,6 +13,17 @@
                     </h3>
                     <span class="d-block pt-8px fs-short-3 ellipsis text-dark-primary">
                     {{ post.post_excerpt }}
+                    </span>
+                </a>
+            </li>
+        {% else %}
+            <li class="pb-12px px-12px col-12 col-md-6">
+                <a href="#" class="border border-default p-24px shadow-sm d-block">
+                    <h3 class="fs-short-2 ff-semibold text-dark-primary text-hover-primary transition-all ellipsis">
+                        Aucun article
+                    </h3>
+                    <span class="d-block pt-8px fs-short-3 ellipsis text-dark-primary">
+
                     </span>
                 </a>
             </li>

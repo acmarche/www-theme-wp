@@ -1,0 +1,36 @@
+<div class="col-12 col-md-5 d-flex flex-column flex-ls-row flex-ls-wrap py-24px px-48px px-ls-12px align-self-stretch align-items-ls-start ml-auto bg-lighter">
+
+    <!--address-->
+    <div class="text-dark-primary col-ls-6 px-ls-12px col-ls-md-12">
+        <h4 class="ff-semibold fs-short-1">Adresse</h4>
+        <span class="fs-short-2 pt-8px d-block">{{ fiche.rue }} {{ fiche.numero }}</span>
+        <span class="fs-short-2 pt-8px d-block">{{ fiche.cp }} {{ fiche.localite }}</span>
+    </div>
+
+    <!--phone-->
+    <div class="text-dark-primary pt-20px col-ls-6 pt-ls-0 px-ls-12px col-ls-md-12 pt-ls-md-20px">
+        <h4 class="ff-semibold fs-short-1">Téléphone</h4>
+        <a href="tel:084326940" class="fs-short-2 pt-8px d-block text-dark-primary">{{ fiche.telephone }}</a>
+    </div>
+
+    <!--mail-->
+    <div class="text-dark-primary pt-20px col-ls-6 px-ls-12px col-ls-md-12 pt-ls-md-20px">
+        <h4 class="ff-semibold fs-short-1">Adresse e-mail</h4>
+        <a href="mailto:beaux.arts@marche.be" class="fs-short-2 pt-8px d-block text-dark-primary">{{ fiche.email }}</a>
+    </div>
+
+    <!--website-->
+    <div class="text-dark-primary pt-20px col-ls-6 px-ls-12px col-ls-md-12 pt-ls-md-20px">
+        <h4 class="ff-semibold fs-short-1">Site web</h4>
+        <a href="{{ fiche.website }}" target="_blank"
+           class="fs-short-2 pt-8px d-block text-dark-primary">{{ fiche.website }}</a>
+    </div>
+
+    <!--schedule-->
+    <div class="text-dark-primary pt-20px col-ls-6 px-ls-12px col-ls-md-12 pt-ls-md-20px">
+        <h4 class="ff-semibold fs-short-1">Horaires</h4>
+        <span class="fs-short-2 pt-8px d-block">Mercredi 13h à 17h30</span>
+        <span class="fs-short-2 pt-8px d-block">Vendredi 14h30 à 17h30</span>
+        <span class="fs-short-2 pt-8px d-block">Samedi 9h à 12h30</span>
+    </div>
+</div>

@@ -4,9 +4,7 @@ namespace AcMarche\Theme;
 get_header();
 ?>
 
-<?php
-get_template_part( 'template-parts/content/home/content-home' );
-?>
+Page index.php
 
 <?php
 get_footer();
