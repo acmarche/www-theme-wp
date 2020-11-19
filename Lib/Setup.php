@@ -26,9 +26,9 @@ class Setup
         return $instance;
     }
 
-    function wporg_add_custom_post_types($query)
+    function alterMainQuery($query)
     {
-        if ($query->is_main_query()) {
+        if ( ! is_admin() && $query->is_main_query()) {
             $query->set('post_type', array('post', 'page', 'bottin_fiche'));
         }
 
@@ -55,10 +55,10 @@ class Setup
      *
      * @return string|void
      */
-    public static function prefix_category_title($title)
+    public static function removeCategoryPrefixTitle($title)
     {
         if (is_category()) {
-            $title = single_cat_title('', false);
+          //  $title = single_cat_title('', false);
         }
 
         return $title;
