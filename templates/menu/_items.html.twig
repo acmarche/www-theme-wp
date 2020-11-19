@@ -1,4 +1,4 @@
-{% for row in items|batch(7, 'No item') %}
+{% for row in items|batch(7) %}
     <ul class="col-ls-6">
         {% for item in row %}
             <li><a href="{{ item.url }}">{{ item.title }}</a></li>

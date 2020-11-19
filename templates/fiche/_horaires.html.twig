@@ -1,4 +1,4 @@
-{% if fiche.horaires | length > 0 %}
+{% if post.fiche is defined and post.fiche.horaires | length > 0 %}
 
     <table class='table table-bordered table-hover'>
         <thead>
