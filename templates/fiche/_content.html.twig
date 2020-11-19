@@ -37,7 +37,7 @@
 {% endif %}
 
 <h3>Contact</h3>
-<hr />
+<hr/>
 {% if fiche.nom %}
     <br/>{{ fiche.civilite }} {{ fiche.nom }} {{ fiche.prenom }}<br/>
 {% endif %}
@@ -45,7 +45,8 @@
 {% if fiche.contact_telephone or fiche.contact_telephone_autre %}
     <div class="text-dark-primary pt-20px col-ls-6 pt-ls-0 px-ls-12px col-ls-md-12 pt-ls-md-20px">
         <h4 class="ff-semibold fs-short-1">Téléphone du contact</h4>
-        <a href="tel:{{ fiche.contact_telephone }}" class="fs-short-2 pt-8px d-block text-dark-primary">{{ fiche.contact_telephone }}</a>
+        <a href="tel:{{ fiche.contact_telephone }}"
+           class="fs-short-2 pt-8px d-block text-dark-primary">{{ fiche.contact_telephone }}</a>
     </div>
     {% if fiche.contact_telephone_autre %}
         - {{ fiche.contact_telephone_autre }}
@@ -73,10 +74,17 @@
 {% if fiche.contact_email %}
     <div class="text-dark-primary pt-20px col-ls-6 px-ls-12px col-ls-md-12 pt-ls-md-20px">
         <h4 class="ff-semibold fs-short-1">Adresse e-mail</h4>
-        <a href="mailto:{{ fiche.contact_email }}" class="fs-short-2 pt-8px d-block text-dark-primary">{{ fiche.contact_email }}</a>
+        <a href="mailto:{{ fiche.contact_email }}"
+           class="fs-short-2 pt-8px d-block text-dark-primary">{{ fiche.contact_email }}</a>
     </div>
 {% endif %}
 
-<p>{{ fiche.comment1|raw|nl2br }}</p>
-<p>{{ fiche.comment2|raw|nl2br }}</p>
-<p>{{ fiche.comment3|raw|nl2br }}</p>
+{% if fiche.comment1 is defined %}
+    <p>{{ fiche.comment1|raw|nl2br }}</p>
+{% endif %}
+{% if fiche.comment2 is defined %}
+    <p>{{ fiche.comment2|raw|nl2br }}</p>
+{% endif %}
+{% if fiche.comment3 is defined %}
+    <p>{{ fiche.comment3|raw|nl2br }}</p>
+{% endif %}

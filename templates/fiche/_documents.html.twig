@@ -1,0 +1,8 @@
+{% for document in documents %}
+    {% set doc_url = url_doc~document.file_name %}
+    <a href="{{ doc_url }}">{{ document.name }}</a>
+    {% if document.description %}
+        <p>{{ document.description | nl2br }}</p>
+    {% endif %}
+    <br />
+{% endfor %}

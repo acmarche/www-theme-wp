@@ -23,7 +23,7 @@
                 <div class="bg-img w-100 h-auto position-relative h-lg-368px d-flex pr-md-15px">
 
                     <!--img-->
-                    <i class="bg-img-directory-1 position-absolute top-0 bottom-0 left-0 right-0 md-left-15px md-right-15px lg-left-0 lg-right-0 col-7 d-none d-md-block"></i>
+                    {% include 'fiche/_logo.html.twig' %}
 
                     <!--datas-->
                     {% include 'fiche/_data.html.twig' %}
@@ -44,6 +44,8 @@
                     <div for="text-dyn">
                         {% include 'fiche/_content.html.twig' %}
                         {% include 'fiche/_horaires.html.twig' %}
+                        {% include 'fiche/_documents.html.twig' %}
+                        {% include 'fiche/_images.html.twig' %}
                         {% include 'fiche/_carte.html.twig' %}
                     </div>
                 </div>

@@ -2,6 +2,7 @@
 
 namespace AcMarche\Theme;
 
+use AcMarche\Bottin\Bottin;
 use AcMarche\Bottin\Repository\BottinRepository;
 use AcMarche\Bottin\Repository\WpRepository;
 use AcMarche\Common\Twig;
@@ -37,6 +38,10 @@ if ( ! $fiche) {
 $images        = $bottinRepository->getImagesFiche($idfiche);
 $documents     = $bottinRepository->getDocuments($idfiche);
 $isCentreVille = $bottinRepository->isCentreVille($idfiche);
+$logo          = $bottinRepository->getLogo($idfiche);
+if ($logo) {
+    unset($images[0]);
+}
 
 $categories = array_map(
     function ($idcategory) {
@@ -56,10 +61,16 @@ if ($logo) {
 $content = $twig->render(
     'fiche/show.html.twig',
     [
-        'post'       => $post,
-        'fiche'      => $fiche,
-        'url'        => $url,
-        'categories' => $categories,
+        'post'          => $post,
+        'fiche'         => $fiche,
+        'url'           => $url,
+        'categories'    => $categories,
+        'isCentreVille' => $isCentreVille,
+        'logo'          => $logo,
+        'images'        => $images,
+        'documents'     => $documents,
+        'url_base'      => Bottin::getUrlBottin().$idfiche.DIRECTORY_SEPARATOR,
+        'url_doc'       => Bottin::getUrlDocument().DIRECTORY_SEPARATOR,
     ]
 );
 echo $content;
