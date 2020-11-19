@@ -42,7 +42,9 @@
                         <span class="less">Réduire</span>
                     </div>
                     <div for="text-dyn">
-                        <p>{{ fiche.description1|raw|nl2br }}</p>
+                        {% include 'fiche/_content.html.twig' %}
+                        {% include 'fiche/_horaires.html.twig' %}
+                        {% include 'fiche/_carte.html.twig' %}
                     </div>
                 </div>
 

@@ -1,10 +1,11 @@
+<!--categories | TODO JF: branchement des filtres-->
 {% if categories|length > 0 %}
     <div class="d-lg-none pr-12px border border-dark-primary mt-48px">
         <select name="categories" id="cat-select" class="fs-short-3 ff-semibold">
             <option value="0" selected>Tout</option>
             {% for child in categories %}
                 <option value="{{ child.cat_ID }}">{{ child.name }}</option>
-               {% endfor %}
+            {% endfor %}
         </select>
     </div>
     <!--OBJECT | TAGS-->

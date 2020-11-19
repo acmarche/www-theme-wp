@@ -10,13 +10,24 @@
     <!--phone-->
     <div class="text-dark-primary pt-20px col-ls-6 pt-ls-0 px-ls-12px col-ls-md-12 pt-ls-md-20px">
         <h4 class="ff-semibold fs-short-1">Téléphone</h4>
-        <a href="tel:084326940" class="fs-short-2 pt-8px d-block text-dark-primary">{{ fiche.telephone }}</a>
+        <a href="tel:{{ fiche.telephone }}" class="fs-short-2 pt-8px d-block text-dark-primary">
+            {{ fiche.telephone }}
+            {% if fiche.telephone_autre %}
+                - {{ fiche.telephone_autre }}
+            {% endif %}
+        </a>
+    </div>
+
+    <!--phone--><!-- TODO j'ai ajoute ligne -->
+    <div class="text-dark-primary pt-20px col-ls-6 pt-ls-0 px-ls-12px col-ls-md-12 pt-ls-md-20px">
+        <h4 class="ff-semibold fs-short-1">Mobile</h4>
+        <a href="tel:{{ fiche.gsm }}" class="fs-short-2 pt-8px d-block text-dark-primary">{{ fiche.gsm }}</a>
     </div>
 
     <!--mail-->
     <div class="text-dark-primary pt-20px col-ls-6 px-ls-12px col-ls-md-12 pt-ls-md-20px">
         <h4 class="ff-semibold fs-short-1">Adresse e-mail</h4>
-        <a href="mailto:beaux.arts@marche.be" class="fs-short-2 pt-8px d-block text-dark-primary">{{ fiche.email }}</a>
+        <a href="mailto:{{ fiche.email }}" class="fs-short-2 pt-8px d-block text-dark-primary">{{ fiche.email }}</a>
     </div>
 
     <!--website-->

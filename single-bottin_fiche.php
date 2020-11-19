@@ -29,6 +29,7 @@ $fiche = $bottinRepository->getFiche($idfiche);
 
 if ( ! $fiche) {
     echo $twig->render('fiche/not_found.html.twig');
+    get_footer();
 
     return;
 }
