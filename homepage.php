@@ -14,7 +14,7 @@ get_header();
 $twig            = Twig::LoadTwig();
 $news            = WpRepository::getAllNews(6);
 $hadesRepository = new HadesWpRepository();
-$events          = $hadesRepository->getEvents(10);
+$events          = $hadesRepository->getEvents(10);dump('aaaaaaaaa'.count($events));
 $content         = $twig->render(
     'home/home_content.html.twig',
     [

@@ -11,8 +11,8 @@
 
         <!--visible from landscape&&large-->
         {% for actu in news %}
-            {% if loop.index > 3 %}
-            {% include 'home/news/_news_list_large.html.twig' %}
+            {% if loop.index > 3 and loop.index < 8 %}
+                {% include 'home/news/_news_list_large.html.twig' %}
             {% endif %}
         {% endfor %}
 

@@ -4,16 +4,32 @@
         <ul class="pt-24px pt-ls-md-32px d-ls-sm-flex mx-ls-sm-n4px flex-ls-md-column pt-md-32px flex-md-column">
 
             <!--always visible-->
-            {% include 'home/agenda/_events_list_always.html.twig' %}
+            {% for event in events %}
+                {% if loop.index == 1 %}
+                    {% include 'home/agenda/_events_list_always.html.twig' %}
+                {% endif %}
+            {% endfor %}
 
             <!--visible from landscape&&small-->
-            {% include 'home/agenda/_events_list_small.html.twig' %}
+            {% for event in events %}
+                {% if loop.index == 1 or loop.index == 2 or loop.index == 3 %}
+                    {% include 'home/agenda/_events_list_small.html.twig' %}
+                {% endif %}
+            {% endfor %}
 
             <!--visible from landscape&&medium / medium-->
-            {% include 'home/agenda/_events_list_medium.html.twig' %}
+            {% for event in events %}
+                {% if loop.index == 4 %}
+                    {% include 'home/agenda/_events_list_medium.html.twig' %}
+                {% endif %}
+            {% endfor %}
 
             <!--visible from landscape&&large / large-->
-            {% include 'home/agenda/_events_list_large.html.twig' %}
+            {% for event in events %}
+                {% if loop.index == 3 %}
+                    {% include 'home/agenda/_events_list_large.html.twig' %}
+                {% endif %}
+            {% endfor %}
 
         </ul>
     </div>
