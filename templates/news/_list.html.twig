@@ -2,7 +2,7 @@
 <ul class="pt-24px pt-md-32px d-md-flex flex-md-wrap mx-md-n4px mx-lg-n8px">
     {% for post in posts %}
     <li class="object-card oc-new pt-8px col-md-6 px-md-4px col-lg-4 pt-lg-16px px-lg-8px">
-        <a href="#" class="bg-img">
+        <a href="{{ post.permalink }}" class="bg-img">
             {% include 'news/_image.html.twig' %}
             <div class="col py-18px pl-28px pr-14px text-left lh-0 px-lg-16px">
 
