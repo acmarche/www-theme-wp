@@ -1,7 +1,9 @@
 <?php
 
-
 namespace AcMarche\Theme;
+
+require_once(ABSPATH. '/vendor/autoload.php');
+
 
 use AcMarche\Theme\Lib\Setup;
 

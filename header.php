@@ -1,32 +1,55 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="<?php bloginfo('charset'); ?>"/>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!--<meta name="keywords" content=""> | TODO -->
-    <meta name="author" content="Studio Tartine">
-    <title>
-        <?php
-        wp_title('|', true, 'right');
-        bloginfo('name');
-
-        $site_description = get_bloginfo('description', 'display');
-        if ($site_description && (is_home() || is_front_page())) {
-            echo " | $site_description";
-        }
-        ?> | Ville de Marche-en-Famenne
-    </title>
-    <!--FAVICON-->
-    <link rel="icon" type="image/png" href="<?php echo get_template_directory_uri() ?>/assets/rsc/favicon.png"/>
-    <?php wp_head(); ?>
-</head>
-<body <?php body_class('bg-white'); ?>>
 <?php
+
+namespace AcMarche\Theme;
+
+use AcMarche\Common\Twig;
+use AcMarche\Theme\Lib\Menu;
+
+?>
+    <!DOCTYPE html>
+    <html lang="fr">
+    <head>
+        <meta charset="<?php bloginfo('charset'); ?>"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!--<meta name="keywords" content=""> | TODO -->
+        <meta name="author" content="Studio Tartine">
+        <title>
+            <?php
+            wp_title('|', true, 'right');
+            bloginfo('name');
+
+            $site_description = get_bloginfo('description', 'display');
+            if ($site_description && (is_home() || is_front_page())) {
+                echo " | $site_description";
+            }
+            ?> | Ville de Marche-en-Famenne
+        </title>
+        <!--FAVICON-->
+        <link rel="icon" type="image/png" href="<?php echo get_template_directory_uri() ?>/assets/rsc/favicon.png"/>
+        <?php wp_head(); ?>
+    </head>
+<body <?php body_class('bg-white'); ?>>
+    <?php
 wp_body_open();
+
+$twig = Twig::LoadTwig();
+$menu = new Menu();
+$data = $menu->getAllItems();
+
 if (is_front_page()) {
-    get_template_part('template-parts/header/top-bar-home');
+    $content = $twig->render(
+        'header/_top_bar_home.html.twig',
+        [
+            'data' => $data,
+        ]
+    );
+} else {
+    $content = $twig->render(
+        'header/_top_bar.html.twig',
+        [
+            'data' => $data,
+        ]
+    );
 }
-else {
-    get_template_part('template-parts/header/top-bar');
-}
+
+echo $content;

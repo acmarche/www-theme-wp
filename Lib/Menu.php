@@ -12,6 +12,7 @@ use Twig\Environment;
 class Menu
 {
     const MENU_NAME = 'top-menu';
+
     /**
      * @var Environment
      */
@@ -30,34 +31,26 @@ class Menu
     function getItems(int $id_site): array
     {
         switch_to_blog($id_site);
+        $menu = wp_get_nav_menu_object(self::MENU_NAME);
 
-        return $this->cache->get(
-            'menu_cache_'.$id_site,
-            function (ItemInterface $item) {
-                $item->expiresAfter(3600);
-
-                $menu = wp_get_nav_menu_object(self::MENU_NAME);
-
-                $args = array(
-                    'order'                  => 'ASC',
-                    'orderby'                => 'menu_order',
-                    'post_type'              => 'nav_menu_item',
-                    'post_status'            => 'publish',
-                    'output'                 => ARRAY_A,
-                    'output_key'             => 'menu_order',
-                    'nopaging'               => true,
-                    'update_post_term_cache' => false,
-                );
-
-                return wp_get_nav_menu_items($menu, $args);
-            }
+        $args = array(
+            'order'                  => 'ASC',
+            'orderby'                => 'menu_order',
+            'post_type'              => 'nav_menu_item',
+            'post_status'            => 'publish',
+            'output'                 => ARRAY_A,
+            'output_key'             => 'menu_order',
+            'nopaging'               => true,
+            'update_post_term_cache' => false,
         );
+
+        return wp_get_nav_menu_items($menu, $args);
     }
 
     public function getAllItems(): array
     {
         return $this->cache->get(
-            'menu_all'.time(),
+            Cache::MENU_CACHE_NAME,
             function (): array {
                 $blog = get_current_blog_id();
                 $data = [];
