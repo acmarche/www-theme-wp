@@ -2,9 +2,6 @@
 
 namespace AcMarche\Theme;
 
-require_once(ABSPATH. '/vendor/autoload.php');
-
-
 use AcMarche\Theme\Lib\Setup;
 
 add_filter('get_the_archive_title', [Setup::get_instance(), 'removeCategoryPrefixTitle']);
