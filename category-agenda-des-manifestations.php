@@ -3,7 +3,7 @@
 namespace AcMarche\Theme;
 
 use AcMarche\Common\Twig;
-use AcMarche\Hades\HadesWpRepository;
+use AcMarche\Pivot\HadesWpRepository;
 
 get_header();
 
