@@ -4,23 +4,28 @@ namespace AcMarche\Theme;
 
 use AcMarche\Common\Twig;
 use AcMarche\Common\WpRepository;
-use AcMarche\Pivot\HadesWpRepository;
+use AcMarche\Pivot\Repository\HadesWpRepository;
+use AcMarche\Pivot\Repository\PivotRemoteRepository;
 
 /**
  * Template Name: Home-Page-Principal
  */
 get_header();
 
-$twig            = Twig::LoadTwig();
-$news            = WpRepository::getAllNews(6);
 $hadesRepository = new HadesWpRepository();
-$events          = $hadesRepository->getEvents(10);
-dump('aaaaaaaaa'.count($events));
-$content         = $twig->render(
+$pivotRepository = new PivotRemoteRepository();
+$twig            = Twig::LoadTwig();
+
+$news   = WpRepository::getAllNews(6);
+$events = $hadesRepository->getEvents(10);
+$eventsPivot = $pivotRepository->getAllEvents();
+
+$content = $twig->render(
     'home/home_content.html.twig',
     [
         'news'   => $news,
         'events' => $events,
+        'eventsPivot' => $eventsPivot,
     ]
 );
 echo $content;

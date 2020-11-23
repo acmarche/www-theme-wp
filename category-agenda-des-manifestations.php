@@ -3,18 +3,19 @@
 namespace AcMarche\Theme;
 
 use AcMarche\Common\Twig;
-use AcMarche\Pivot\HadesWpRepository;
+use AcMarche\Pivot\Repository\PivotRemoteRepository;
 
 get_header();
 
 $twig            = Twig::LoadTwig();
-$hadesRepository = new HadesWpRepository();
-$posts           = $hadesRepository->getEvents();
+$pivotRepository = new PivotRemoteRepository();
+
+$events = $pivotRepository->getAllEvents();
 
 $content = $twig->render(
     'agenda/agenda.html.twig',
     [
-        'posts' => $posts,
+        'events' => $events,
     ]
 );
 echo $content;
