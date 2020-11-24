@@ -17,7 +17,6 @@ $description = category_description($cat_ID);
 $title       = single_cat_title('', false);
 
 $posts = $wp_query->get_posts();
-var_dump($wp_query->request);
 
 $args     = ['parent' => $cat_ID, 'hide_empty' => false];
 $children = get_categories($args);

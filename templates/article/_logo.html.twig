@@ -1,6 +1,8 @@
 <!--img-->
-<div class="bg-img w-100 h-220px position-relative h-lg-330px">
-    <i {% if logo is defined %}style="background-image: url('{{ logo }}');"
-            {% endif %}
-       class="bg-img-news-1 position-absolute top-0 bottom-0 left-0 right-0 md-left-15px md-right-15px lg-left-0 lg-right-0"></i>
-</div>
+{% if logo is not empty %}
+    <div class="bg-img w-100 h-220px position-relative h-lg-330px">
+        <i {% if logo is defined %}style="background-image: url('{{ logo }}');"
+                {% endif %}
+           class="bg-img-news-1 position-absolute top-0 bottom-0 left-0 right-0 md-left-15px md-right-15px lg-left-0 lg-right-0"></i>
+    </div>
+{% endif %}
