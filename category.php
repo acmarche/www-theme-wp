@@ -11,14 +11,16 @@ use AcMarche\Common\Twig;
 get_header();
 
 global $wp_query;
-$twig             = Twig::LoadTwig();
+$twig        = Twig::LoadTwig();
 $cat_ID      = get_queried_object_id();
 $description = category_description($cat_ID);
 $title       = single_cat_title('', false);
 
+$posts = $wp_query->get_posts();
+var_dump($wp_query->request);
+
 $args     = ['parent' => $cat_ID, 'hide_empty' => false];
 $children = get_categories($args);
-$posts    = $wp_query->get_posts();
 
 $key              = WpRepository::DATA_TYPE;
 $bottinRepository = new BottinRepository();
@@ -31,8 +33,8 @@ array_map(
             $idfiche = get_metadata($key, $post->ID, 'id', $single);
             $fiche   = $bottinRepository->getFiche($idfiche);
             if ($fiche) {
-                $post->fiche         = $fiche;
-                $post->excerpt       = Bottin::getExcerpt($fiche);
+                $post->fiche   = $fiche;
+                $post->excerpt = Bottin::getExcerpt($fiche);
             }
         } else {
             $post->excerpt = $post->post_excerpt;

@@ -2,8 +2,8 @@
 
 namespace AcMarche\Theme;
 
+use AcMarche\Common\Menu;
 use AcMarche\Common\Twig;
-use AcMarche\Theme\Lib\Menu;
 
 ?>
     <!DOCTYPE html>
