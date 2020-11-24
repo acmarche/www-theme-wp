@@ -29,6 +29,7 @@ function marcheSetupTheme()
      */
     add_theme_support('post-thumbnails');
     add_image_size('slideshow', 480, 210, true);
+    add_image_size('agenda_list', 435, 136, true);
     set_post_thumbnail_size(1568, 9999);
 
     // This theme uses wp_nav_menu() in one location.

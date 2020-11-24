@@ -1,27 +1,12 @@
-<!--event-2-->
-<li class="object-card oc-event pt-8px pt-md-0 col-md-6 px-md-4px col-lg-4 px-lg-8px">
-    <a href="{{ event.url }}" class="bg-img">
-        {% include 'agenda/_image.html.twig' %}
-        <div>
+<!--list | TODO JF: à brancher-->
+<ul class="pt-24px pt-md-32px d-md-flex flex-md-wrap mx-md-n4px mx-lg-n8px">
 
-            <!--date-->
-            <div class="col-3">
-                <span>{{ event.day }}</span>
-                <span>{{ event.month }}</span>
-                <span>{{ event.year }}</span>
-            </div>
+    <!--event-1-->
+    {% include 'agenda/_first_line.html.twig' %}
 
-            <!--other datas-->
-            <div class="col-9">
+    <!--event-2-->
+    {% include 'agenda/_second_line.html.twig' %}
 
-                <!--TODO JF: placer la limite de caractère pour l'ellipsis-->
-                <h3 maxlenght="0">{{ event.nom }}</h3>
-
-                <small>{{ event.localite }}</small>
-
-                <!--TODO JF: condition si événement sur plusieurs jours/mois/années/décénnies/...-->
-                <small class="d-none">{{ event.dateRange }}</small>
-            </div>
-        </div>
-    </a>
-</li>
+    <!--event-4-->
+    {% include 'agenda/_last.html.twig' %}
+</ul>
