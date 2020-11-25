@@ -1,4 +1,5 @@
-<!--visible from landscape&&large / large-->
-<li class="d-none col-ls-lg-12 px-ls-sm-4px pt-ls-md-8px d-ls-lg-block d-lg-block pt-lg-8px">
-    {% include 'home/agenda/_events_inline.html.twig' %}
+<!--visible from landscape&&medium / medium-->
+{% set event = events[3] %}
+<li class="d-none col-ls-md-12 px-ls-sm-4px pt-ls-md-8px d-md-block col-md-12 pt-md-8px px-md-0">
+    {% include 'home/agenda/_event_line.html.twig' %}
 </li>

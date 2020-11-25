@@ -1,4 +1,9 @@
 <!--visible from landscape&&small-->
+{% set event = events[1] %}
 <li class="d-none d-ls-sm-block col-ls-sm-4 col-ls-md-12 px-ls-sm-4px pt-ls-md-8px d-md-block col-md-12 pt-md-8px px-md-0">
-    {% include 'home/agenda/_events_inline.html.twig' %}
+    {% include 'home/agenda/_event_line.html.twig' %}
+</li>
+{% set event = events[2] %}
+<li class="d-none d-ls-sm-block col-ls-sm-4 col-ls-md-12 px-ls-sm-4px pt-ls-md-8px d-md-block col-md-12 pt-md-8px px-md-0">
+    {% include 'home/agenda/_event_line.html.twig' %}
 </li>
