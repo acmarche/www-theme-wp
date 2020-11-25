@@ -2,7 +2,12 @@
 
 namespace AcMarche\Theme;
 
-require_once 'inc/_assets_load.php';
-require_once 'inc/_widgets.php';
-require_once 'inc/_query_alter.php';
-require_once 'inc/_security.php';
+use AcMarche\Theme\Inc\AssetsLoad;
+use AcMarche\Theme\Inc\QueryAlter;
+use AcMarche\Theme\Inc\SecurityConfig;
+use AcMarche\Theme\Inc\WidgetLoad;
+
+new AssetsLoad();
+new WidgetLoad();
+new QueryAlter();
+new SecurityConfig();
