@@ -1,21 +1,7 @@
 <!--list | TODO TIBY: augmenter l'espace entre les élements-->
 <ul class="pt-24px pt-md-32px d-md-flex flex-md-wrap mx-md-n4px mx-lg-n8px">
-    {% for post in posts %}
-    <li class="object-card oc-new pt-8px col-md-6 px-md-4px col-lg-4 pt-lg-16px px-lg-8px">
-        <a href="{{ post.permalink }}" class="bg-img">
-            {% include 'news/_image.html.twig' %}
-            <div class="col py-18px pl-28px pr-14px text-left lh-0 px-lg-16px">
-
-                <!--TODO JF: placer la limite de caractère pour l'ellipsis-->
-                <h3 maxlenght="0">{{ post.post_title }}</h3>
-
-                <!--TODO JF: placer la limite de caractère pour l'ellipsis-->
-                <p maxlenght="170">{{ post.post_excerpt }}</p>
-
-                <!--TODO JF: classe dynamique-->
-                <span class="{{ post.color }}">{{ post.blog }}</span>
-            </div>
-        </a>
-    </li>
-    {% endfor %}
+    {% set actu = actus[0] %}
+    {% include 'news/_first_line.html.twig' %}
+    {% include 'news/_second_line.html.twig' %}
+    {% include 'news/_last_line.html.twig' %}
 </ul>

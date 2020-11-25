@@ -1,71 +1,58 @@
-
-            <!--categories | TODO JF: branchement des filtres | TODO TIBY: Voir pour tenter un branchement simulé-->
-            <div class="d-md-none pr-12px border border-dark-primary">
-                <select name="categories" id="cat-select" class="fs-short-3 ff-semibold">
-                    <option value="all" selected>Tout</option>
-                    <option value="adm">Administration</option>
-                    <option value="cit">Citoyen</option>
-                    <option value="cul">Culture</option>
-                    <option value="eco">Économie</option>
-                    <option value="enf">Enfance-Jeunesse</option>
-                    <option value="san">Santé</option>
-                    <option value="soc">Social</option>
-                    <option value="spo">Sport</option>
-                    <option value="tou">Tourisme</option>
-                </select>
-            </div>
-            <!--categories | TODO JF: branchement des filtres | TODO TIBY: Voir pour tenter un branchement simulé-->
-            <ul class="cat-filters d-md-flex mw-550px flex-wrap justify-content-center align-items-center d-none">
-                <li class="mx-16px position-relative">
-                    <input name="cat" id="cat-all" class="position-absolute top-0 bottom-0 left-0 right-0 w-100 h-100"
-                           type="radio" value="all" checked>
-                    <label for="cat-all" class="py-4px px-8px fs-short-2 ff-semibold transition-color">Tout</label>
-                </li>
-                <li class="px-0 position-relative">
-                    <input name="cat" id="cat-adm" class="position-absolute top-0 bottom-0 left-0 right-0 w-100 h-100"
-                           type="radio" value="adm">
-                    <label for="cat-adm"
-                           class="py-4px px-8px fs-short-2 ff-semibold transition-color">Administration</label>
-                </li>
-                <li class="px-0 position-relative">
-                    <input name="cat" id="cat-cit" class="position-absolute top-0 bottom-0 left-0 right-0 w-100 h-100"
-                           type="radio" value="cit">
-                    <label for="cat-cit" class="py-4px px-8px fs-short-2 ff-semibold transition-color">Citoyen</label>
-                </li>
-                <li class="px-0 position-relative">
-                    <input name="cat" id="cat-cul" class="position-absolute top-0 bottom-0 left-0 right-0 w-100 h-100"
-                           type="radio" value="cul">
-                    <label for="cat-cul" class="py-4px px-8px fs-short-2 ff-semibold transition-color">Culture</label>
-                </li>
-                <li class="px-0 position-relative">
-                    <input name="cat" id="cat-eco" class="position-absolute top-0 bottom-0 left-0 right-0 w-100 h-100"
-                           type="radio" value="eco">
-                    <label for="cat-eco" class="py-4px px-8px fs-short-2 ff-semibold transition-color">Économie</label>
-                </li>
-                <li class="px-0 position-relative">
-                    <input name="cat" id="cat-enf" class="position-absolute top-0 bottom-0 left-0 right-0 w-100 h-100"
-                           type="radio" value="enf">
-                    <label for="cat-enf"
-                           class="py-4px px-8px fs-short-2 ff-semibold transition-color">Enfance-Jeunesse</label>
-                </li>
-                <li class="px-0 position-relative">
-                    <input name="cat" id="cat-san" class="position-absolute top-0 bottom-0 left-0 right-0 w-100 h-100"
-                           type="radio" value="san">
-                    <label for="cat-san" class="py-4px px-8px fs-short-2 ff-semibold transition-color">Santé</label>
-                </li>
-                <li class="px-0 position-relative">
-                    <input name="cat" id="cat-soc" class="position-absolute top-0 bottom-0 left-0 right-0 w-100 h-100"
-                           type="radio" value="soc">
-                    <label for="cat-soc" class="py-4px px-8px fs-short-2 ff-semibold transition-color">Social</label>
-                </li>
-                <li class="px-0 position-relative">
-                    <input name="cat" id="cat-spo" class="position-absolute top-0 bottom-0 left-0 right-0 w-100 h-100"
-                           type="radio" value="spo">
-                    <label for="cat-spo" class="py-4px px-8px fs-short-2 ff-semibold transition-color">Sport</label>
-                </li>
-                <li class="px-0 position-relative">
-                    <input name="cat" id="cat-tou" class="position-absolute top-0 bottom-0 left-0 right-0 w-100 h-100"
-                           type="radio" value="tou">
-                    <label for="cat-tou" class="py-4px px-8px fs-short-2 ff-semibold transition-color">Tourisme</label>
-                </li>
-            </ul>
+<!--categories | TODO JF: branchement des filtres | TODO TIBY: Voir pour tenter un branchement simulé-->
+<div class="d-md-none pr-12px border border-dark-primary">
+    <select name="categories" id="cat-select" class="fs-short-3 ff-semibold">
+        <option value="all" selected>Tout</option>
+        <option value="adm">Administration</option>
+        <option value="cit">Citoyen</option>
+        <option value="cul">Culture</option>
+        <option value="eco">Économie</option>
+        <option value="enf">Enfance-Jeunesse</option>
+        <option value="san">Santé</option>
+        <option value="soc">Social</option>
+        <option value="spo">Sport</option>
+        <option value="tou">Tourisme</option>
+    </select>
+</div>
+<!--categories | TODO JF: branchement des filtres | TODO TIBY: Voir pour tenter un branchement simulé-->
+<ul class="cat-filters d-md-flex mw-550px flex-wrap justify-content-center align-items-center d-none">
+    <li class="mx-16px position-relative">
+        <input name="cat" id="cat-all" class="position-absolute top-0 bottom-0 left-0 right-0 w-100 h-100" type="radio" value="all" checked>
+        <label for="cat-all" class="py-4px px-8px fs-short-2 ff-semibold transition-color">Tout</label>
+    </li>
+    <li class="px-0 position-relative">
+        <input name="cat" id="cat-adm" class="position-absolute top-0 bottom-0 left-0 right-0 w-100 h-100" type="radio" value="adm">
+        <label for="cat-adm" class="py-4px px-8px fs-short-2 ff-semibold transition-color">Administration</label>
+    </li>
+    <li class="px-0 position-relative">
+        <input name="cat" id="cat-cit" class="position-absolute top-0 bottom-0 left-0 right-0 w-100 h-100" type="radio" value="cit">
+        <label for="cat-cit" class="py-4px px-8px fs-short-2 ff-semibold transition-color">Citoyen</label>
+    </li>
+    <li class="px-0 position-relative">
+        <input name="cat" id="cat-cul" class="position-absolute top-0 bottom-0 left-0 right-0 w-100 h-100" type="radio" value="cul">
+        <label for="cat-cul" class="py-4px px-8px fs-short-2 ff-semibold transition-color">Culture</label>
+    </li>
+    <li class="px-0 position-relative">
+        <input name="cat" id="cat-eco" class="position-absolute top-0 bottom-0 left-0 right-0 w-100 h-100" type="radio" value="eco">
+        <label for="cat-eco" class="py-4px px-8px fs-short-2 ff-semibold transition-color">Économie</label>
+    </li>
+    <li class="px-0 position-relative">
+        <input name="cat" id="cat-enf" class="position-absolute top-0 bottom-0 left-0 right-0 w-100 h-100" type="radio" value="enf">
+        <label for="cat-enf" class="py-4px px-8px fs-short-2 ff-semibold transition-color">Enfance-Jeunesse</label>
+    </li>
+    <li class="px-0 position-relative">
+        <input name="cat" id="cat-san" class="position-absolute top-0 bottom-0 left-0 right-0 w-100 h-100" type="radio" value="san">
+        <label for="cat-san" class="py-4px px-8px fs-short-2 ff-semibold transition-color">Santé</label>
+    </li>
+    <li class="px-0 position-relative">
+        <input name="cat" id="cat-soc" class="position-absolute top-0 bottom-0 left-0 right-0 w-100 h-100" type="radio" value="soc">
+        <label for="cat-soc" class="py-4px px-8px fs-short-2 ff-semibold transition-color">Social</label>
+    </li>
+    <li class="px-0 position-relative">
+        <input name="cat" id="cat-spo" class="position-absolute top-0 bottom-0 left-0 right-0 w-100 h-100" type="radio" value="spo">
+        <label for="cat-spo" class="py-4px px-8px fs-short-2 ff-semibold transition-color">Sport</label>
+    </li>
+    <li class="px-0 position-relative">
+        <input name="cat" id="cat-tou" class="position-absolute top-0 bottom-0 left-0 right-0 w-100 h-100" type="radio" value="tou">
+        <label for="cat-tou" class="py-4px px-8px fs-short-2 ff-semibold transition-color">Tourisme</label>
+    </li>
+</ul>
