@@ -1,15 +1,10 @@
 <a href="{{ actu.permalink }}"
    class="d-flex shadow-sm-1 border border-width-1px border-default flex-ls-lg-column flex-lg-column bg-img overflow-hidden">
-    <i {% if actu.post_thumbnail_url %}style="background-image: url('{{ actu.post_thumbnail_url }}');"
-       {% else %}
-
-            {% endif %}
-            class="w-104px min-height-103px p-0 w-ls-lg-100 w-lg-100 position-relative bg-img-size-hover-110 transition-all">
+    <i class="w-104px min-height-103px p-0 bg-img-news-1 w-ls-lg-100 w-lg-100 position-relative bg-img-size-hover-110 transition-all">
         <b class="d-block position-absolute top-0 bottom-0 left-0 right-0 bg-img-bgcolor-primary-0 bg-img-bgcolor-hover-primary-55 bg-img-transition-bgcolor"></b>
     </i>
     <div class="col py-18px pl-28px pr-14px text-left lh-0 min-height-ls-lg-104px min-height-104px px-lg-8px">
-        <span class="lh-150 ff-semibold fs-short-3 {{ actu.color }}">{{ actu.blog }}</span>
-        <h3 class="pt-8px lh-125 fs-short-2 text-dark-primary text-hover-primary transition-all">
-            {{ actu.post_title }}</h3>
+        <span class="lh-150 ff-semibold fs-short-3 {{ actu.color }}">{{ actu.blog | title }}</span>
+        <h3 class="pt-8px lh-125 fs-short-2 text-dark-primary text-hover-primary transition-all">{{ actu.post_title }}</h3>
     </div>
 </a>

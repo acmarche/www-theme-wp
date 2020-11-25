@@ -14,14 +14,14 @@ get_header();
 $pivotRepository = new PivotRemoteRepository();
 $twig            = Twig::LoadTwig();
 
-$news   = WpRepository::getAllNews(6);
-$events = $pivotRepository->getAllEvents();
+$news  = WpRepository::getAllNews(6);
+$actus = $pivotRepository->getAllEvents();
 
 $content = $twig->render(
     'home/show.html.twig',
     [
-        'news'   => $news,
-        'events' => $events,
+        'actus'  => $news,
+        'events' => $actus,
     ]
 );
 echo $content;
