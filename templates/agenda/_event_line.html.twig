@@ -6,21 +6,21 @@
     <div>
         <!--date-->
         <div class="col-3">
-            <span>02</span>
-            <span>03</span>
-            <span>2020</span>
+            <span>{{ event.day }}</span>
+            <span>{{ event.month }}</span>
+            <span>{{ event.year }}</span>
         </div>
 
         <!--other datas-->
         <div class="col-9">
 
             <!--TODO JF: placer la limite de caractère pour l'ellipsis-->
-            <h3 maxlenght="0">Course cycliste : DH Famenne-Ardenne</h3>
+            <h3 maxlenght="0">{{ event.nom }}</h3>
 
-            <small>Marche-en-Famenne</small>
+            <small>{{ event.localite }}</small>
 
             <!--TODO JF: condition si événement sur plusieurs jours/mois/années/décénnies/...-->
-            <small>Du 02.03.2020 au 24.03.2020</small>
+            <small {% if date_affichage == false %}class="d-none"{% endif%} >{{ event.dateRange }}</small>
         </div>
     </div>
 </a>
