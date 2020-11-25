@@ -13,7 +13,7 @@ $pivotRepository = new PivotRemoteRepository();
 $events = $pivotRepository->getAllEvents();
 
 $content = $twig->render(
-    'agenda/agenda.html.twig',
+    'agenda/show.html.twig',
     [
         'events' => $events,
     ]
