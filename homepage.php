@@ -18,7 +18,7 @@ $news   = WpRepository::getAllNews(6);
 $events = $pivotRepository->getAllEvents();
 
 $content = $twig->render(
-    'home/home_content.html.twig',
+    'home/show.html.twig',
     [
         'news'   => $news,
         'events' => $events,

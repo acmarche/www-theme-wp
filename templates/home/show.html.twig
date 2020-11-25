@@ -23,16 +23,7 @@
     </div>
 
     <!--NEWS / CALENDAR-->
-    <div class="bg-white pt-24px px-24px text-center position-relative d-ls-md-flex mx-ls-md-n15px d-md-flex mx-md-n15px px-xl-48px mx-xl-n30px justify-content-md-center">
-        <i class="curve-svg-home"></i>
-
-        <!--news-->
-        {% include 'home/news/news.html.twig' %}
-
-        <!--events-->
-        {% include 'home/agenda/events.html.twig' %}
-
-    </div>
+    {% include 'home/_news_calendar.html.twig' %}
 
     <!--WIDGETS-->
     {% include 'home/_widgets.html.twig' %}
