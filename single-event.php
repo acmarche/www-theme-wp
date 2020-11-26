@@ -4,11 +4,12 @@ namespace AcMarche\Theme;
 
 use AcMarche\Common\Twig;
 use AcMarche\Pivot\Repository\PivotRemoteRepository;
+use AcMarche\Theme\Inc\Router;
 
 get_header();
 
 global $wp_query;
-$codeCgt  = $wp_query->get('codecgt');
+$codeCgt  = $wp_query->get(Router::PARAM_EVENT);
 $twig    = Twig::LoadTwig();
 
 $pivotRepository = new PivotRemoteRepository();

@@ -30,7 +30,7 @@ array_map(
     function ($post) use ($key, $single, $bottinRepository) {
         if ($post->post_type == 'bottin_fiche') {
             $idfiche = get_metadata($key, $post->ID, 'id', $single);
-            $fiche   = $bottinRepository->getFiche($idfiche);
+            $fiche   = $bottinRepository->getFicheById($idfiche);
             if ($fiche) {
                 $post->fiche   = $fiche;
                 $post->excerpt = Bottin::getExcerpt($fiche);
