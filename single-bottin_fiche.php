@@ -63,14 +63,17 @@ $content = $twig->render(
     [
         'post'          => $post,
         'fiche'         => $fiche,
+        'nom'           => $fiche->societe,
         'url'           => $url,
-        'categories'    => $categories,
+        'tags'          => $categories,
         'isCentreVille' => $isCentreVille,
         'logo'          => $logo,
         'images'        => $images,
         'documents'     => $documents,
         'url_base'      => Bottin::getUrlBottin().$idfiche.DIRECTORY_SEPARATOR,
         'url_doc'       => Bottin::getUrlDocument().DIRECTORY_SEPARATOR,
+        'latitude'      => $fiche->latitude,
+        'longitude'     => $fiche->longitude,
     ]
 );
 echo $content;

@@ -16,7 +16,7 @@ $twig = Twig::LoadTwig();
 $posts = WpRepository::getAllNews();
 
 $content = $twig->render(
-    'news/show.html.twig',
+    'news/index.html.twig',
     [
         'actus' => $posts,
     ]

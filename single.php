@@ -10,11 +10,11 @@ global $post;
 
 $twig = Twig::LoadTwig();
 
-$categories  = get_the_category($post->ID);
+$tags        = get_the_category($post->ID);
 $post_ID     = $post->ID;
 $titre       = $post->post_title;
 $description = strip_tags($post->post_excerpt);
-$url         = get_site_url()."/?p=$post_ID";
+$url         = get_permalink($post->ID);
 //get_the_posts_pagination();
 $logo = null;
 if (has_post_thumbnail()) {
@@ -27,10 +27,12 @@ if (has_post_thumbnail()) {
 $content = $twig->render(
     'article/show.html.twig',
     [
-        'post'       => $post,
-        'url'        => $url,
-        'categories' => $categories,
-        'logo'       => $logo,
+        'post' => $post,
+        'url'  => $url,
+        'tags' => $tags,
+        'logo' => $logo,
+        'nom'  => $post->post_title,
+
     ]
 );
 echo $content;

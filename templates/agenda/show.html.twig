@@ -2,29 +2,76 @@
 <section id="content"
          class="pt-42px pb-36px pl-ls-42px overflow-ls-hidden overflow-md-hidden pl-ls-lg-0 pt-xl-66px pb-lg-66px mw-1440px mx-xl-auto w-100">
 
-    <!--NEWS-->
+    <!--ARTICLE-->
     <div class="bg-white pt-24px px-24px position-relative d-md-flex px-xl-48px mx-xl-n30px justify-content-md-center flex-column">
 
         <!--back | TODO JF: lien dynamique vers la page précédente-->
-        <a href="/"
+        <a href="#"
            class="button lvl3 align-self-ls-md-start align-self-md-start position-relative right-0 right-hover-12px fs-short-2"><i
-                    class="fas fa-angle-left pr-8px d-ls-md-inline pr-md-12px fs-short-2 d-md-inline"></i>Retour à
-            l'accueil</a>
+                    class="fas fa-angle-left pr-8px d-ls-md-inline pr-md-12px fs-short-2 d-md-inline"></i>Retour a X</a>
 
         <!--title-->
-        <h2 class="text-ls-md-left pt-ls-md-8px text-md-left pt-md-8px">Agenda</h2>
+        <h2 class="text-ls-md-left pt-ls-md-8px text-md-left pt-md-8px">{{ nom }}</h2>
 
-        <!--events-->
-        <div class="px-0 d-md-flex flex-md-column d-ls-md-flex flex-ls-md-column pt-48px align-items-center">
+        <!--category-->
+        <span class="color-cat-cit ff-semibold pt-12px d-block fs-short-2">Citoyen</span>
 
-            <!--list | TODO JF: à brancher-->
-            {% include 'agenda/_list.html.twig' %}
+        <!--article-->
+        <div class="pt-48px d-lg-flex mx-n15px">
+            <div class="d-flex flex-column align-items-center mx-md-n15px flex-md-wrap flex-md-row align-items-md-start flex-lg-column col-lg-8 mx-lg-0 flex-lg-nowrap">
+                <!--img-->
+                {% include 'article/_logo.html.twig' %}
 
-            <!-- TODO JF: à brancher -->
-            <a href="#"
-               class="button lvl3 mt-12px align-self-ls-md-center align-self-md-center position-relative left-0 left-hover-12px d-flex justify-content-center">Charger
-                plus d'événements<i class="fas fa-angle-down d-ls-md-inline pl-8px pl-md-12px fs-basic d-md-inline"></i></a>
+                <!--OBJECT | TAGS-->
+                <div class="overflow-hidden w-100 pt-24px col-md-12 px-0 px-md-15px d-lg-none">
+                    {% include 'article/_tags.html.twig' %}
+                </div>
+
+                <!--OBJECT | TEXT-DYN | TODO JF : brancher la possibilité d'ouvrir/réduire le content avec un ellipsis + condition sur l'extend-->
+                <div class="object-text-dyn col-md-8 px-0 px-md-15px col-lg-12 px-lg-0">
+                    <input type="checkbox" id="text-dyn"/>
+                    <div for="text-dyn">
+                        <span class="more">Lire plus</span>
+                        <span class="less">Réduire</span>
+                    </div>
+                    <div for="text-dyn">
+                        {% include 'agenda/show/_content.html.twig' %}
+                    </div>
+                </div>
+
+                <!--OBJECT | SHARE-->
+                <div class="pt-24px w-100 col-md-4 px-0 px-md-15px d-lg-none">
+                    {% include 'article/_share.html.twig' %}
+                </div>
+
+                <!--previous/next-->
+                {% include 'article/_previous-next.html.twig' %}
+
+                <!--OBJECT | RECOM-->
+                <div class="pt-24px w-100 col-md-8 px-0 px-md-15px d-lg-none">
+                    {% include 'article/_recommandation.html.twig' %}
+                </div>
+            </div>
+
+            <div class="d-none d-lg-flex col-4 flex-column h-330px justify-content-between">
+
+                <!--OBJECT | SHARE-->
+                <div class="w-100">
+                    {% set tags = [] %}
+                    {% include 'article/_share.html.twig' %}
+                </div>
+
+                <!--OBJECT | TAGS-->
+                {% set tags = [] %}
+                <div class="overflow-hidden w-100 pt-24px">
+                    {% include 'article/_tags.html.twig' %}
+                </div>
+
+                <!--OBJECT | RECOM-->
+                <div class="pt-24px w-100">
+                    {% include 'article/_recommandation.html.twig' %}
+                </div>
+            </div>
         </div>
     </div>
 </section>
-
