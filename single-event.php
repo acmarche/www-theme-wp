@@ -8,9 +8,7 @@ use AcMarche\Pivot\Repository\PivotRemoteRepository;
 get_header();
 
 global $wp_query;
-//var_dump($wp_query);
-$vars    = $wp_query->query_vars;
-$codeCgt = $vars['codecgt'];
+$codeCgt  = $wp_query->get('codecgt');
 $codeCgt = 'EVT-01-0AVZ-0UN1';
 $twig    = Twig::LoadTwig();
 

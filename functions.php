@@ -16,7 +16,7 @@ new SecurityConfig();
 add_action(
     'init',
     function () {
-        add_rewrite_rule('myparamname/([a-z0-9-]+)[/]?$', 'index.php?codecgt=$matches[1]', 'top');
+        add_rewrite_rule('manifestation/([a-z0-9-]+)[/]?$', 'index.php?codecgt=$matches[1]', 'top');
     }
 );
 add_filter(
