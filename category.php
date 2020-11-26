@@ -47,7 +47,7 @@ $content = $twig->render(
     [
         'title'       => $title,
         'description' => $description,
-        'categories'  => $children,
+        'children'  => $children,
         'posts'       => $posts,
     ]
 );
