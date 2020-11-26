@@ -9,7 +9,6 @@ get_header();
 
 global $wp_query;
 $codeCgt  = $wp_query->get('codecgt');
-$codeCgt = 'EVT-01-0AVZ-0UN1';
 $twig    = Twig::LoadTwig();
 
 $pivotRepository = new PivotRemoteRepository();

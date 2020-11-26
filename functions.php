@@ -16,7 +16,7 @@ new SecurityConfig();
 add_action(
     'init',
     function () {
-        add_rewrite_rule('manifestation/([a-z0-9-]+)[/]?$', 'index.php?codecgt=$matches[1]', 'top');
+        add_rewrite_rule('manifestation/([a-zA-Z0-9-]+)[/]?$', 'index.php?codecgt=$matches[1]', 'top');
     }
 );
 add_filter(
@@ -30,7 +30,6 @@ add_filter(
 add_action(
     'template_include',
     function ($template) {
-        var_dump(get_query_var('codecgt'));
         if (get_query_var('codecgt') == false || get_query_var('codecgt') == '') {
             return $template;
         }
