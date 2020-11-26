@@ -10,7 +10,7 @@ get_header();
 global $wp_query;
 //var_dump($wp_query);
 $vars    = $wp_query->query_vars;
-$codeCgt = $vars['myparamname'];
+$codeCgt = $vars['codecgt'];
 $codeCgt = 'EVT-01-0AVZ-0UN1';
 $twig    = Twig::LoadTwig();
 

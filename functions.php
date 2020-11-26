@@ -16,13 +16,13 @@ new SecurityConfig();
 add_action(
     'init',
     function () {
-        add_rewrite_rule('myparamname/([a-z0-9-]+)[/]?$', 'index.php?myparamname=$matches[1]', 'top');
+        add_rewrite_rule('myparamname/([a-z0-9-]+)[/]?$', 'index.php?codecgt=$matches[1]', 'top');
     }
 );
 add_filter(
     'query_vars',
     function ($query_vars) {
-        $query_vars[] = 'myparamname';
+        $query_vars[] = 'codecgt';
 
         return $query_vars;
     }
@@ -30,7 +30,8 @@ add_filter(
 add_action(
     'template_include',
     function ($template) {
-        if (get_query_var('myparamname') == false || get_query_var('myparamname') == '') {
+        var_dump(get_query_var('codecgt'));
+        if (get_query_var('codecgt') == false || get_query_var('codecgt') == '') {
             return $template;
         }
 
