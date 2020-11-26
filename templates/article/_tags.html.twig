@@ -1,5 +1,5 @@
 <ul class="object-tags">
-    {% for category in categories %}
+    {% for category in tags %}
         <li><a href="{{ category.term_id|category_link }}">{{ category.name }}</a></li>
     {% endfor %}
 </ul>
