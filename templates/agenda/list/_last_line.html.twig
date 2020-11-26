@@ -2,7 +2,7 @@
 {% for event in events %}
     {% if loop.index > 3 %}
         <li class="object-card oc-event pt-8px col-md-6 px-md-4px col-lg-4 pt-lg-16px px-lg-8px">
-            {% include 'agenda/_event_line.html.twig' %}
+            {% include 'agenda/list/_event_line.html.twig' %}
         </li>
     {% endif %}
 {% endfor %}
