@@ -26,6 +26,7 @@
 
                 <!--OBJECT | TAGS-->
                 <div class="overflow-hidden w-100 pt-24px col-md-12 px-0 px-md-15px d-lg-none">
+                    {% set tags = [] %}
                     {% include 'article/_tags.html.twig' %}
                 </div>
 
@@ -43,6 +44,7 @@
 
                 <!--OBJECT | SHARE-->
                 <div class="pt-24px w-100 col-md-4 px-0 px-md-15px d-lg-none">
+                    {% set url = '' %}{% set nom = 'Non trouvé' %}
                     {% include 'article/_share.html.twig' %}
                 </div>
 
