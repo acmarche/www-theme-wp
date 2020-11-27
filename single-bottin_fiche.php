@@ -14,7 +14,7 @@ global $wp_query;
 $twig             = Twig::LoadTwig();
 $bottinRepository = new BottinRepository();
 
-$slugFiche = $wp_query->get(Router::PARAM_BOTTIN, null);
+$slugFiche = $wp_query->get(Router::PARAM_BOTTIN_FICHE, null);
 
 if ($slugFiche) {
     $fiche = $bottinRepository->getFicheBySlug($slugFiche);

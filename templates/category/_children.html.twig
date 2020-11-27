@@ -4,7 +4,7 @@
         <select name="categories" id="cat-select" class="fs-short-3 ff-semibold">
             <option value="0" selected>Tout</option>
             {% for child in children %}
-                <option value="{{ child.cat_ID }}">{{ child.name }}</option>
+                <option value="{{ child.id }}">{{ child.name }}</option>
             {% endfor %}
         </select>
     </div>
@@ -13,7 +13,7 @@
         <ul class="object-tags">
             <li class="active pr-24px"><a href="#">Tout</a></li>
             {% for child in children %}
-                <li><a href="{{ child.term_id|category_link }}">{{ child.name }}</a></li>
+                <li><a href="{{ child.permalink }}">{{ child.name }}</a></li>
             {% endfor %}
         </ul>
     </div>

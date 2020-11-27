@@ -11,7 +11,9 @@ use AcMarche\Common\Twig;
 get_header();
 
 global $wp_query;
-$twig        = Twig::LoadTwig();
+$twig             = Twig::LoadTwig();
+$bottinRepository = new BottinRepository();
+
 $cat_ID      = get_queried_object_id();
 $description = category_description($cat_ID);
 $title       = single_cat_title('', false);
@@ -20,8 +22,13 @@ $posts = $wp_query->get_posts();
 
 $args     = ['parent' => $cat_ID, 'hide_empty' => false];
 $children = get_categories($args);
+array_map(
+    function ($category) {
+        $category->permalink = get_category_link($category->termid);
+    },
+    $children
+);
 
-$bottinRepository = new BottinRepository();
 WpRepository::set_table_meta();
 
 array_map(
@@ -30,8 +37,8 @@ array_map(
             $idfiche = get_metadata(WpRepository::DATA_TYPE, $post->ID, 'id', true);
             $fiche   = $bottinRepository->getFicheById($idfiche);
             if ($fiche) {
-                $post->fiche      = $fiche;
-                $post->excerpt    = Bottin::getExcerpt($fiche);
+                $post->fiche     = $fiche;
+                $post->excerpt   = Bottin::getExcerpt($fiche);
                 $post->permalink = get_permalink($post->ID);
                 $post->permalink = '/bottin/fiche/'.$fiche->slug;
             }
