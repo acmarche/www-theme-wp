@@ -3,7 +3,7 @@
     <ul class="d-flex mx-n12px flex-wrap">
         {% for post in posts %}
             <li class="pb-12px px-12px col-12 col-md-6">
-                <a href="{{ post.ID|permalink }}" class="border border-default p-24px shadow-sm d-block">
+                <a href="{{ post.permalink }}" class="border border-default p-24px shadow-sm d-block">
                     <h3 class="fs-short-2 ff-semibold text-dark-primary text-hover-primary transition-all ellipsis">
                         {{ post.post_title }}
                     </h3>
