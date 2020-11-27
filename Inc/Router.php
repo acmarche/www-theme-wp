@@ -3,7 +3,12 @@
 
 namespace AcMarche\Theme\Inc;
 
-
+/**
+ * https://roots.io/routing-wp-requests/
+ * https://developer.wordpress.org/reference/functions/add_rewrite_rule/#user-contributed-notes
+ * Class Router
+ * @package AcMarche\Theme\Inc
+ */
 class Router
 {
     const PARAM_EVENT = 'codecgt';
