@@ -14,15 +14,14 @@ global $wp_query;
 $twig             = Twig::LoadTwig();
 $bottinRepository = new BottinRepository();
 
-if ($post = $wp_query->post) {
+$slugFiche = $wp_query->get(Router::PARAM_BOTTIN, null);
+
+if ($slugFiche) {
+    $fiche = $bottinRepository->getFicheBySlug($slugFiche);
+} elseif ($post = $wp_query->post) {
     WpRepository::set_table_meta();
     $idfiche = get_metadata(WpRepository::DATA_TYPE, $post->ID, 'id', true);
     $fiche   = $bottinRepository->getFicheById($idfiche);
-} else {
-    $slugFiche = $wp_query->get(Router::PARAM_BOTTIN);
-    if ($slugFiche) {
-        $fiche = $bottinRepository->getFicheBySlug($slugFiche);
-    }
 }
 
 if ( ! $fiche) {
@@ -31,8 +30,6 @@ if ( ! $fiche) {
 
     return;
 }
-
-$urlShare = get_site_url()."/?p=$fiche->slug";
 
 $categories    = $bottinRepository->getCategoriesOfFiche($fiche->id);
 $images        = $bottinRepository->getImagesFiche($fiche->id);
@@ -54,7 +51,6 @@ $content = $twig->render(
     [
         'fiche'         => $fiche,
         'nom'           => $fiche->societe,
-        'url'           => $urlShare,
         'tags'          => $categories,
         'isCentreVille' => $isCentreVille,
         'logo'          => $logo,

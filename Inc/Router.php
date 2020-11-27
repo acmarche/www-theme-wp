@@ -43,6 +43,10 @@ class Router
         add_action(
             'template_include',
             function ($template) {
+                global $wp_query;
+                if (is_admin() || ! $wp_query->is_main_query()) {
+                    return $template;
+                }
                 if (get_query_var(self::PARAM_EVENT) == false || get_query_var(self::PARAM_EVENT) == '') {
                     return $template;
                 }
@@ -75,6 +79,11 @@ class Router
         add_action(
             'template_include',
             function ($template) {
+                global $wp_query;
+                if (is_admin() || ! $wp_query->is_main_query()) {
+                    return $template;
+                }
+
                 if (get_query_var(self::PARAM_BOTTIN) == false || get_query_var(self::PARAM_BOTTIN) == '') {
                     return $template;
                 }

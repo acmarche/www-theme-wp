@@ -21,22 +21,23 @@ $posts = $wp_query->get_posts();
 $args     = ['parent' => $cat_ID, 'hide_empty' => false];
 $children = get_categories($args);
 
-$key              = WpRepository::DATA_TYPE;
 $bottinRepository = new BottinRepository();
-$single           = true;
 WpRepository::set_table_meta();
 
 array_map(
-    function ($post) use ($key, $single, $bottinRepository) {
+    function ($post) use ($bottinRepository) {
         if ($post->post_type == 'bottin_fiche') {
-            $idfiche = get_metadata($key, $post->ID, 'id', $single);
+            $idfiche = get_metadata(WpRepository::DATA_TYPE, $post->ID, 'id', true);
             $fiche   = $bottinRepository->getFicheById($idfiche);
             if ($fiche) {
-                $post->fiche   = $fiche;
-                $post->excerpt = Bottin::getExcerpt($fiche);
+                $post->fiche      = $fiche;
+                $post->excerpt    = Bottin::getExcerpt($fiche);
+                $post->permalink = get_permalink($post->ID);
+                $post->permalink = '/bottin/fiche/'.$fiche->slug;
             }
         } else {
-            $post->excerpt = $post->post_excerpt;
+            $post->excerpt   = $post->post_excerpt;
+            $post->permalink = get_permalink($post->ID);
         }
     },
     $posts
@@ -47,7 +48,7 @@ $content = $twig->render(
     [
         'title'       => $title,
         'description' => $description,
-        'children'  => $children,
+        'children'    => $children,
         'posts'       => $posts,
     ]
 );
