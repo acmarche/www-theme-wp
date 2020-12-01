@@ -24,8 +24,8 @@ $args     = ['parent' => $cat_ID, 'hide_empty' => false];
 $children = get_categories($args);
 array_map(
     function ($category) {
-        $category->permalink = get_category_link($category->termid);
-        $category->id = $category->termid;
+        $category->permalink = get_category_link($category->term_id);
+        $category->id = $category->term_id;
     },
     $children
 );
