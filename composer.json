@@ -1,0 +1,33 @@
+{
+  "name": "acmarche/themewp",
+  "require": {
+    "php": "^7.3",
+    "ext-simplexml": "*",
+    "ext-soap": "*",
+    "ext-pdo": "*",
+    "ext-json": "*",
+    "ext-curl": "*",
+    "ext-apcu": "*",
+    "elasticsearch/elasticsearch": "~7.0",
+    "symfony/console": "^5.2",
+    "symfony/finder": "^5.2",
+    "symfony/monolog-bundle": "^3.3",
+    "symfony/http-foundation": "^5.2",
+    "symfony/mime": "^5.2",
+    "symfony/http-client": "^5.2",
+    "twig/twig": "^3.0",
+    "symfony/mailer": "^5.2",
+    "symfony/dotenv": "^5.2",
+    "symfony/cache": "^5.2",
+    "symfony/property-info": "^5.2",
+    "symfony/property-access": "^5.2"
+  },
+  "autoload": {
+    "psr-4": {
+      "AcMarche\\Bottin\\": "AcMarche/Bottin",
+      "AcMarche\\Common\\": "AcMarche/Common",
+      "AcMarche\\Pivot\\": "AcMarche/Pivot",
+      "AcMarche\\Theme\\": "wp-content/themes/marchebe/"
+    }
+  }
+}
