@@ -14,12 +14,40 @@ class Router
     const PARAM_EVENT = 'codecgt';
     const PARAM_BOTTIN_FICHE = 'slugfiche';
     const PARAM_BOTTIN_CATEGORY = 'slugcategory';
+    const BOTTIN_FICHE_URL = 'bottin/fiche/';
+    const BOTTIN_CATEGORY_URL = 'bwp/categorie/';
 
     public function __construct()
     {
         $this->addRouteEvent();
         $this->addRouteBottin();
         $this->addRouteBottinCategory();
+    }
+
+    /**
+     * Retourne la base du blog (/economie/, /sante/, /culture/...
+     *
+     * @param int|null $blodId
+     *
+     * @return string
+     */
+    public static function getBaseUrlSite(?int $blodId = null): string
+    {
+        if ( ! $blodId) {
+            $blodId = get_current_blog_id();
+        }
+
+        return get_blog_details($blodId)->path;
+    }
+
+    public static function getUrlCategoryBottin(\stdClass $category): string
+    {
+        return self::getBaseUrlSite().Router::BOTTIN_CATEGORY_URL.$category->slug;
+    }
+
+    public static function getUrlFicheBottin(\stdClass $fiche): string
+    {
+        return self::getBaseUrlSite().Router::BOTTIN_FICHE_URL.$fiche->slug;
     }
 
     public function addRouteEvent()
@@ -64,7 +92,7 @@ class Router
             'init',
             function () {
                 add_rewrite_rule(
-                    'bottin/fiche/([a-zA-Z0-9-]+)[/]?$',
+                    self::BOTTIN_FICHE_URL.'([a-zA-Z0-9-]+)[/]?$',
                     'index.php?'.self::PARAM_BOTTIN_FICHE.'=$matches[1]',
                     'top'
                 );
@@ -86,7 +114,8 @@ class Router
                     return $template;
                 }
 
-                if (get_query_var(self::PARAM_BOTTIN_FICHE) == false || get_query_var(self::PARAM_BOTTIN_FICHE) == '') {
+                if (get_query_var(self::PARAM_BOTTIN_FICHE) == false ||
+                    get_query_var(self::PARAM_BOTTIN_FICHE) == '') {
                     return $template;
                 }
 
@@ -101,7 +130,7 @@ class Router
             'init',
             function () {
                 add_rewrite_rule(
-                    'bwp/categorie/([a-zA-Z0-9-]+)[/]?$',
+                    self::BOTTIN_CATEGORY_URL.'([a-zA-Z0-9-]+)[/]?$',
                     'index.php?'.self::PARAM_BOTTIN_CATEGORY.'=$matches[1]',
                     'top'
                 );
@@ -123,9 +152,8 @@ class Router
                     return $template;
                 }
 
-                if (get_query_var(self::PARAM_BOTTIN_CATEGORY) == false || get_query_var(
-                                                                               self::PARAM_BOTTIN_CATEGORY
-                                                                           ) == '') {
+                if (get_query_var(self::PARAM_BOTTIN_CATEGORY) == false ||
+                    get_query_var(self::PARAM_BOTTIN_CATEGORY) == '') {
                     return $template;
                 }
 
@@ -134,4 +162,13 @@ class Router
         );
     }
 
+    public static function flushRoutes()
+    {
+        $current = get_current_blog_id();
+        foreach (get_sites(['fields' => 'ids']) as $site) {
+            switch_to_blog($site);
+            flush_rewrite_rules();
+        }
+        switch_to_blog($current);
+    }
 }

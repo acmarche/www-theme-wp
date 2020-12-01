@@ -41,7 +41,7 @@ if ($logo) {
 }
 array_map(
     function ($category) {
-        $category->url = '/bottin/category/'.$category->slug;
+        $category->url = Router::getUrlCategoryBottin($category);
     },
     $categories
 );

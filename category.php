@@ -5,8 +5,8 @@ namespace AcMarche\Theme;
 
 use AcMarche\Bottin\Bottin;
 use AcMarche\Bottin\Repository\BottinRepository;
-use AcMarche\Bottin\Repository\WpRepository;
 use AcMarche\Common\Twig;
+use AcMarche\Theme\Inc\Router;
 
 get_header();
 
@@ -30,6 +30,7 @@ array_map(
     $children
 );
 
+$fiches           = [];
 $categoryBottinId = get_term_meta($cat_ID, \BottinCategoryMetaBox::KEY_NAME, true);
 if ($categoryBottinId) {
     $fiches = $bottinRepository->getFichesByCategory($categoryBottinId);
@@ -37,17 +38,15 @@ if ($categoryBottinId) {
 
 $all = array_merge($posts, $fiches);
 
-$path = get_blog_details(get_current_blog_id())->path;
-
 array_map(
-    function ($post) use ($path) {
+    function ($post) {
         if ($post instanceof \WP_Post) {
             $post->excerpt   = $post->post_excerpt;
             $post->permalink = get_permalink($post->ID);
         } else {
             $post->fiche      = true;
             $post->excerpt    = Bottin::getExcerpt($post);
-            $post->permalink  = $path.'bottin/fiche/'.$post->slug;
+            $post->permalink  = Router::getUrlFicheBottin($post);
             $post->post_title = $post->societe;
         }
     },

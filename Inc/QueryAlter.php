@@ -2,14 +2,13 @@
 
 namespace AcMarche\Theme\Inc;
 
-
 use WP_Query;
 
 class QueryAlter
 {
     public function __construct()
     {
-        add_action('pre_get_posts', [$this, 'alterMainQuery']);
+        //  add_action('pre_get_posts', [$this, 'alterMainQuery']);
         add_action('pre_get_posts', [$this, 'modifyWhereCategory']);
     }
 
@@ -22,6 +21,12 @@ class QueryAlter
         return $query;
     }
 
+    /**
+     * Oblige wp a afficher que les articles de la catégorie en cours
+     * et pas ceux des catégories enfants
+     *
+     * @param WP_Query $query
+     */
     function modifyWhereCategory(WP_Query $query)
     {
         if ( ! is_admin() && $query->is_category()) :
