@@ -26,18 +26,20 @@ $title       = $category->name;
 $fiches   = $bottinRepository->getFichesByCategory($category->id);
 $children = $bottinRepository->getCategories($category->id);
 
+$path = get_blog_details(get_current_blog_id())->path;
+
 array_map(
-    function ($child) {
-        $child->permalink = '/sante/bwp/categorie/'.$child->slug;
+    function ($child) use ($path) {
+        $child->permalink = $path.'bwp/categorie/'.$child->slug;
     },
     $children
 );
 
 array_map(
-    function ($fiche) use ($bottinRepository) {
+    function ($fiche) use ($bottinRepository,$path) {
         $fiche->post_title = $fiche->societe;
         $fiche->excerpt    = Bottin::getExcerpt($fiche);
-        $fiche->permalink  = '/bottin/fiche/'.$fiche->slug;
+        $fiche->permalink  = $path.'bottin/fiche/'.$fiche->slug;
     },
     $fiches
 );
