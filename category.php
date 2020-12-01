@@ -25,6 +25,7 @@ $children = get_categories($args);
 array_map(
     function ($category) {
         $category->permalink = get_category_link($category->termid);
+        $category->id = $category->termid;
     },
     $children
 );
