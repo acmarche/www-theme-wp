@@ -4,7 +4,6 @@ namespace AcMarche\Theme;
 
 use AcMarche\Common\Menu;
 use AcMarche\Common\Twig;
-
 ?>
     <!DOCTYPE html>
     <html lang="fr">
@@ -48,7 +47,7 @@ if (is_front_page()) {
     $content = $twig->render(
         'header/_top_bar.html.twig',
         [
-            'data'       => $data,
+            'data' => $data,
         ]
     );
 }
