@@ -31,3 +31,6 @@ new Router();
 
 //pivot_add_rewrite_rules();
 
+// Stop WP adding extra <p> </p> to your pages' content
+remove_filter( 'the_content', 'wpautop' );
+remove_filter( 'the_excerpt', 'wpautop' );
