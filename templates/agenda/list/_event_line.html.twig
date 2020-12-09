@@ -17,7 +17,7 @@
             <small>{{ event.localite }}</small>
 
             <!--TODO JF: condition si événement sur plusieurs jours/mois/années/décénnies/...-->
-            <small {% if date_affichage == false %}class="d-none"{% endif%} >{{ event.dateRange }}</small>
+            <small {% if date_affichage == false %}class="d-none"{% endif%} >{{ event.date_affichage }}</small>
         </div>
     </div>
 </a>
