@@ -12,9 +12,19 @@
 
         <!--title-->
         <h2 class="text-ls-md-left pt-ls-md-8px text-md-left pt-md-8px">{{ title|raw }}</h2>
-        <div id="app" data-main-category-id="{{ category_id }}" data-site-slug="{{ site_slug }}">
+        <!-- react -->
+        <div id="app" data-main-category-id="{{ category_id }}" data-site-slug="{{ site_slug }}"></div>
+
+            <!--category-->
+            <span class="{{ color}} ff-semibold pt-12px d-block fs-short-2">{{ site_slug|title }}</span>
+
+            <!--categories | TODO JF: branchement des filtres-->
+            {% include 'category/_children.html.twig' %}
+            {% if description is not empty %}
+                <p>{{ description|raw|nl2br }}</p>
+            {% endif %}
+            <!--results-->
+            {% include 'category/_articles_line.html.twig' %}
 
         </div>
-
-    </div>
 </section>
