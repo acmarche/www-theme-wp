@@ -2,7 +2,6 @@
 
 namespace AcMarche\Theme;
 
-use AcMarche\Common\Menu;
 use AcMarche\Theme\Inc\AssetsLoad;
 use AcMarche\Theme\Inc\Filter;
 use AcMarche\Theme\Inc\QueryAlter;
