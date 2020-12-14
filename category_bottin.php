@@ -16,12 +16,19 @@ global $wp_query;
 $twig             = Twig::LoadTwig();
 $bottinRepository = new BottinRepository();
 
-$slug = $wp_query->get(Router::PARAM_BOTTIN_CATEGORY, null);
+$slug     = $wp_query->get(Router::PARAM_BOTTIN_CATEGORY, null);
+$category = null;
 if ($slug) {
     $category = $bottinRepository->getCategoryBySlug($slug);
 }
 
-$cat_ID      = get_queried_object_id();
+if ( ! $category) {
+    $content = $twig->render('article/404.html.twig');
+    echo $content;
+    get_footer();
+    return;
+}
+
 $description = $category->description;
 $title       = $category->name;
 
