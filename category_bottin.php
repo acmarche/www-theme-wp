@@ -66,7 +66,7 @@ $content = $twig->render(
         'description' => $description,
         'children'    => $children,
         'posts'       => $fiches,
-        'category_id' => $cat_ID,
+        'category_id' => $category->id,
         'site_slug'   => $siteSlug,
         'color'       => $color,
     ]
