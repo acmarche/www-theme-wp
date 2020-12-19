@@ -34,6 +34,7 @@ $content = $twig->render(
         'siteSlug' => $siteSlug,
         'color'    => $color,
         'path'     => $path,
+        'subTitle' => 'Tout',
     ]
 );
 echo $content;

@@ -14,10 +14,8 @@
         <h2 class="text-ls-md-left pt-ls-md-8px text-md-left pt-md-8px">{{ title|raw }}</h2>
 
         <!--category-->
-        <span class="{{ color}} ff-semibold pt-12px d-block fs-short-2">{{ siteSlug|title }}</span>
-
         <!-- react -->
-        <div id="appjf" data-categoryid="{{ category.cat_ID }}" data-siteslug="{{ path }}"></div>
+        <div id="appjf" data-color="{{ color }}" data-categoryid="{{ category.cat_ID }}" data-siteslug="{{ path }}" data-categorytitle="{{ subTitle }}"></div>
 
         <!--categories | TODO JF: branchement des filtres-->
 
