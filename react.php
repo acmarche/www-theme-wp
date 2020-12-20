@@ -11,7 +11,7 @@ use AcMarche\Common\Twig;
 get_header();
 
 $twig = Twig::LoadTwig();
-wp_enqueue_script('react-app', get_locale_stylesheet_uri().'/assets/build/index.js', array('wp-element'), time(), true);//For production use wp_get_theme()->get('Version')
+wp_enqueue_script('react-app', get_locale_stylesheet_uri().'/assets/build/category.js', array('wp-element'), time(), true);//For production use wp_get_theme()->get('Version')
 
 $cat_ID      = get_queried_object_id();
 $cat_ID      = 8;
