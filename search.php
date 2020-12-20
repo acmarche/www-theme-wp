@@ -9,12 +9,19 @@ use Elastica\Exception\InvalidException;
 
 get_header();
 global $s;
-$twig     = Twig::LoadTwig();
-wp_enqueue_script('react-app', get_locale_stylesheet_uri().'/assets/build/search.js', array('wp-element'), time(), true);//For production use wp_get_theme()->get('Version')
+$twig = Twig::LoadTwig();
+wp_enqueue_script(
+    'react-app',
+    get_locale_stylesheet_uri().'/assets/build/search.js',
+    array('wp-element'),
+    time(),
+    true
+);//For production use wp_get_theme()->get('Version')
 
 $searcher = new Searcher();
 
 $keyword = get_search_query();
+$count = 0;
 
 try {
     $results = $searcher->search($keyword);
@@ -33,8 +40,8 @@ $content = $twig->render(
     'search/index_react.html.twig',
     [
         'keyword' => $keyword,
-        'hits'    => $results->getResults(),
-        'count'   => $results->count(),
+        'results' => $results,
+        'count'   => $count,
     ]
 );
 echo $content;
