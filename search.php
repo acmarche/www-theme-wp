@@ -19,9 +19,7 @@ wp_enqueue_script(
 );//For production use wp_get_theme()->get('Version')
 
 $searcher = new Searcher();
-
 $keyword = get_search_query();
-$count = 0;
 
 try {
     $results = $searcher->search($keyword);
@@ -40,8 +38,8 @@ $content = $twig->render(
     'search/index_react.html.twig',
     [
         'keyword' => $keyword,
-        'results' => $results,
-        'count'   => $count,
+        'hits'    => $results->getResults(),
+        'count'   => $results->count(),
     ]
 );
 echo $content;
