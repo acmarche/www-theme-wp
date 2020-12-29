@@ -9,6 +9,7 @@ $content = $twig->render(
 );
 echo $content;
 wp_footer();
-?>
-</body>
-</html>
+$content = $twig->render(
+    'footer/_closte_tags.html.twig'
+);
+echo $content;
