@@ -4,6 +4,7 @@
 namespace AcMarche\Theme\Inc;
 
 /**
+ * Ajouts des routes pour les articles virtuels du bottin et de l'agenda
  * https://roots.io/routing-wp-requests/
  * https://developer.wordpress.org/reference/functions/add_rewrite_rule/#user-contributed-notes
  * Class Router
