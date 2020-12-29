@@ -78,6 +78,8 @@
 /*56pt / 84px*/
 /*28pt / 37px*/
 /*22pt / 30px*/
+/*.75rem*/
+/*.688rem*/
 /* --------------------------- */
 /* MIXINS */
 /*@mixin highestBoxShadow() {
@@ -400,16 +402,16 @@ nav {
             padding: 24px 24px 12px;
             flex-direction: row; }
             /* line 257, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/objects/nav.scss */
-            nav > div.search .searchScreen > ul > li:first-child > div {
+            nav > div.search .searchScreen > ul > li:first-child > form {
               flex-grow: 1;
               position: relative; }
 
 @media screen and (min-width: 1200px) {
   /* line 257, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/objects/nav.scss */
-  nav > div.search .searchScreen > ul > li:first-child > div {
+  nav > div.search .searchScreen > ul > li:first-child > form {
     min-width: 200px; } }
               /* line 267, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/objects/nav.scss */
-              nav > div.search .searchScreen > ul > li:first-child > div input {
+              nav > div.search .searchScreen > ul > li:first-child > form input {
                 background-color: #ededec; }
             /* line 272, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/objects/nav.scss */
             nav > div.search .searchScreen > ul > li:first-child > a {
@@ -426,7 +428,7 @@ nav {
           /* line 293, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/objects/nav.scss */
           nav > div.search .searchScreen > ul > li > a {
             font-family: 'montserratsemibold';
-            font-size: 0.688rem;
+            font-size: 0.75rem;
             color: #487f89;
             text-align: left;
             padding: 10px 24px;
@@ -627,7 +629,7 @@ nav {
           /* line 499, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/objects/nav.scss */
           nav > div.all .subnav > ul > li > a {
             font-family: 'montserratsemibold';
-            font-size: 0.688rem;
+            font-size: 0.75rem;
             color: white;
             text-align: left;
             padding: 10px 24px;
@@ -725,7 +727,7 @@ nav {
                   width: 100%;
                   font-family: 'montserratsemibold';
                   padding: 10px 24px;
-                  font-size: 0.688rem;
+                  font-size: 0.75rem;
                   color: #487f89;
                   -webkit-transition: color 0.25s ease-in-out;
                   -moz-transition: color 0.25s ease-in-out;
@@ -753,7 +755,7 @@ nav {
                     transition: color 0.25s ease-in-out; }
                   /* line 620, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/objects/nav.scss */
                   nav > div.all .subnav > ul > li > div > ul > li > a > i {
-                    font-size: 0.688rem;
+                    font-size: 0.75rem;
                     padding-left: 8px; }
           /* line 631, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/objects/nav.scss */
           nav > div.all .subnav > ul > li.c-adm:hover > a {
@@ -1026,7 +1028,7 @@ nav {
               /* line 997, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/objects/nav.scss */
               nav > div.more > input[type="checkbox"] + a + .bubble div a {
                 font-family: 'montserratsemibold';
-                font-size: 0.688rem;
+                font-size: 0.75rem;
                 padding: 8px 24px 8px 12px;
                 color: #487f89;
                 position: relative;
@@ -1255,7 +1257,7 @@ nav {
       nav > div > a span {
         display: none;
         color: #487f89;
-        font-size: 0.75rem;
+        font-size: 0.825rem;
         font-family: 'montserratsemibold'; }
 
 @media screen and (min-width: 1200px) {

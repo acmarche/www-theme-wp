@@ -1,5 +1,21 @@
 @import "../config.scss";
 
+/* HYPERLINK */
+
+.hyperlink {
+    display: inline-block;
+    color: $CTA !important;
+    line-height: 125%;
+    cursor: pointer;
+    @include border(0 0 1px 0, $CTA);
+    @include allTransition(basicDuration);
+    
+    &:hover {
+        @include border(0 0 1px 0, rgba($CTA, 0));
+        @include allTransition(basicDuration);
+    }
+}
+
 /* BUTTONS */
 
 .button {
@@ -31,7 +47,7 @@
     &.lvl3 {
         color: $CTA;
     }
-
+}
 	/*i {
 		@include buttonInset();
 	}*/
@@ -665,7 +681,6 @@
 	&:last-child {
 		margin: 0;
 	}*/
-}
 
 /* -------------- */
 

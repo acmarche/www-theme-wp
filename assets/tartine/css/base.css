@@ -81,6 +81,8 @@
 /*56pt / 84px*/
 /*28pt / 37px*/
 /*22pt / 30px*/
+/*.75rem*/
+/*.688rem*/
 /* --------------------------- */
 /* MIXINS */
 /*@mixin highestBoxShadow() {
@@ -165,7 +167,7 @@ section {
   /* line 38, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/base.scss */
   div small,
   section small {
-    font-size: 0.75rem; }
+    font-size: 0.825rem; }
 
 /* PROPRIETES DE BASE */
 /* line 45, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/base.scss */
@@ -255,7 +257,7 @@ h3 {
 /* line 133, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/base.scss */
 h6 {
   font-family: 'montserratsemibold';
-  font-size: 0.688rem; }
+  font-size: 0.75rem; }
 
 /* line 138, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/base.scss */
 p {
@@ -271,6 +273,10 @@ ul li {
 /* line 152, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/base.scss */
 a:hover {
   text-decoration: none; }
+
+/* line 157, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/base.scss */
+strong {
+  font-family: 'montserratsemibold'; }
 
 /*
 .zebre {
@@ -363,7 +369,7 @@ strong {
 }
 
 */
-/* line 250, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/base.scss */
+/* line 254, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/base.scss */
 input,
 textarea {
   width: 100%;
@@ -378,11 +384,11 @@ textarea {
   -ms-transition: all 0.25s ease-in-out;
   -o-transition: all 0.25s ease-in-out;
   transition: all 0.25s ease-in-out; }
-  /* line 262, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/base.scss */
+  /* line 266, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/base.scss */
   input:disabled,
   textarea:disabled {
     cursor: default; }
-  /* line 265, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/base.scss */
+  /* line 269, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/base.scss */
   input:focus,
   textarea:focus {
     border: 1px solid #4ae0c7 !important;
@@ -393,7 +399,7 @@ textarea {
     -o-transition: all 0.25s ease-in-out;
     transition: all 0.25s ease-in-out; }
 
-/* line 273, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/base.scss */
+/* line 277, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/base.scss */
 select {
   width: 100%;
   text-overflow: ellipsis;
@@ -413,10 +419,10 @@ select {
             color: $CTA;
         }
     }*/ }
-  /* line 283, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/base.scss */
+  /* line 287, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/base.scss */
   select:disabled {
     cursor: default; }
-  /* line 286, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/base.scss */
+  /* line 290, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/base.scss */
   select:focus {
     outline: none;
     border: none;
@@ -426,70 +432,70 @@ select {
     -o-transition: all 0.25s ease-in-out;
     transition: all 0.25s ease-in-out; }
 
-/* line 302, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/base.scss */
+/* line 306, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/base.scss */
 input {
   color: #4ae0c7;
   width: 100%; }
-  /* line 306, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/base.scss */
+  /* line 310, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/base.scss */
   input:focus {
     color: #487f89;
     /*~ label {
             color: $darkCTA;
         }*/ }
-    /* line 313, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/base.scss */
+    /* line 317, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/base.scss */
     input:focus.outline-success {
       color: #232222;
       border-color: #16ba99;
       outline-color: #16ba99; }
-    /* line 319, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/base.scss */
+    /* line 323, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/base.scss */
     input:focus.outline-danger {
       color: #232222;
       border-color: #de2c01;
       outline-color: #de2c01; }
-  /* line 325, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/base.scss */
+  /* line 329, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/base.scss */
   input:disabled {
     cursor: default;
     opacity: .5; }
-  /* line 330, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/base.scss */
+  /* line 334, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/base.scss */
   input[type="email"] {
     padding-right: 38px; }
-    /* line 337, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/base.scss */
+    /* line 341, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/base.scss */
     input[type="email"]:empty + i + i + .emptyField {
       display: block; }
-    /* line 342, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/base.scss */
+    /* line 346, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/base.scss */
     input[type="email"]:valid {
       color: #14be78;
       border-color: #14be78; }
-      /* line 346, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/base.scss */
+      /* line 350, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/base.scss */
       input[type="email"]:valid + .fa-times + .fa-check {
         display: block;
         color: #14be78; }
-        /* line 350, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/base.scss */
+        /* line 354, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/base.scss */
         input[type="email"]:valid + .fa-times + .fa-check + .emptyField {
           display: none; }
-          /* line 353, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/base.scss */
+          /* line 357, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/base.scss */
           input[type="email"]:valid + .fa-times + .fa-check + .emptyField + .badfield {
             display: none; }
-            /* line 356, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/base.scss */
+            /* line 360, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/base.scss */
             input[type="email"]:valid + .fa-times + .fa-check + .emptyField + .badfield + .goodField {
               display: block;
               color: #14be78; }
-    /* line 364, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/base.scss */
+    /* line 368, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/base.scss */
     input[type="email"]:invalid {
       color: #dc3737;
       border-color: #dc3737; }
-      /* line 368, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/base.scss */
+      /* line 372, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/base.scss */
       input[type="email"]:invalid + .fa-times {
         display: block;
         color: #dc3737; }
-        /* line 372, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/base.scss */
+        /* line 376, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/base.scss */
         input[type="email"]:invalid + .fa-times + i + .emptyField {
           display: none; }
-          /* line 375, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/base.scss */
+          /* line 379, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/base.scss */
           input[type="email"]:invalid + .fa-times + i + .emptyField + .badField {
             display: block;
             color: #dc3737; }
-    /* line 383, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/base.scss */
+    /* line 387, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/base.scss */
     input[type="email"] + i,
     input[type="email"] + i + i {
       display: none;
@@ -502,7 +508,7 @@ input {
       bottom: auto;
       left: auto;
       right: 0; }
-      /* line 396, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/base.scss */
+      /* line 400, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/base.scss */
       input[type="email"] + i + small,
       input[type="email"] + i + small + small,
       input[type="email"] + i + small + small + small,
@@ -511,7 +517,7 @@ input {
       input[type="email"] + i + i + small + small + small {
         display: none;
         padding: 4px 0 0; }
-  /* line 406, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/base.scss */
+  /* line 410, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/base.scss */
   input[type="checkbox"], input[type="radio"] {
     display: inline-block;
     width: 22px;
@@ -522,23 +528,23 @@ input {
     opacity: 0;
     z-index: 10;
     background: none; }
-    /* line 420, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/base.scss */
+    /* line 424, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/base.scss */
     input[type="checkbox"] + .checkElement i, input[type="radio"] + .checkElement i {
       opacity: 0; }
-    /* line 425, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/base.scss */
+    /* line 429, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/base.scss */
     input[type="checkbox"] + .checkElement.alert .fal, input[type="radio"] + .checkElement.alert .fal {
       display: block; }
-    /* line 429, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/base.scss */
+    /* line 433, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/base.scss */
     input[type="checkbox"] + .checkElement.alert .fas, input[type="radio"] + .checkElement.alert .fas {
       display: none;
       color: white; }
-    /* line 435, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/base.scss */
+    /* line 439, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/base.scss */
     input[type="checkbox"] + .checkElement + input, input[type="radio"] + .checkElement + input {
       margin: 0 0 0 6px; }
-      /* line 438, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/base.scss */
+      /* line 442, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/base.scss */
       input[type="checkbox"] + .checkElement + input + .checkElement, input[type="radio"] + .checkElement + input + .checkElement {
         margin: 0 0 0 6px; }
-    /* line 444, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/base.scss */
+    /* line 448, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/base.scss */
     input[type="checkbox"]:checked + .checkElement, input[type="radio"]:checked + .checkElement {
       background-color: #487f89;
       border-style: hidden;
@@ -547,16 +553,16 @@ input {
       -ms-transition: all 0.25s ease-in-out;
       -o-transition: all 0.25s ease-in-out;
       transition: all 0.25s ease-in-out; }
-      /* line 449, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/base.scss */
+      /* line 453, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/base.scss */
       input[type="checkbox"]:checked + .checkElement i, input[type="radio"]:checked + .checkElement i {
         opacity: 1; }
-      /* line 456, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/base.scss */
+      /* line 460, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/base.scss */
       input[type="checkbox"]:checked + .checkElement.alert .fal, input[type="radio"]:checked + .checkElement.alert .fal {
         display: none; }
-      /* line 459, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/base.scss */
+      /* line 463, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/base.scss */
       input[type="checkbox"]:checked + .checkElement.alert .fas, input[type="radio"]:checked + .checkElement.alert .fas {
         display: block; }
-    /* line 468, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/base.scss */
+    /* line 472, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/base.scss */
     input[type="checkbox"]:checked ~ label, input[type="radio"]:checked ~ label {
       color: #487f89;
       font-weight: 400;
@@ -565,7 +571,7 @@ input {
       -ms-transition: color 0.25s ease-in-out;
       -o-transition: color 0.25s ease-in-out;
       transition: color 0.25s ease-in-out; }
-      /* line 474, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/base.scss */
+      /* line 478, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/base.scss */
       input[type="checkbox"]:checked ~ label img.flag, input[type="radio"]:checked ~ label img.flag {
         filter: none;
         opacity: 1;
@@ -574,7 +580,7 @@ input {
         -ms-transition: all 0.25s ease-in-out;
         -o-transition: all 0.25s ease-in-out;
         transition: all 0.25s ease-in-out; }
-      /* line 481, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/base.scss */
+      /* line 485, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/base.scss */
       input[type="checkbox"]:checked ~ label + i, input[type="radio"]:checked ~ label + i {
         color: #4ae0c7;
         -webkit-transition: color 0.25s ease-in-out;
@@ -582,17 +588,17 @@ input {
         -ms-transition: color 0.25s ease-in-out;
         -o-transition: color 0.25s ease-in-out;
         transition: color 0.25s ease-in-out; }
-    /* line 486, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/base.scss */
+    /* line 490, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/base.scss */
     input[type="checkbox"]:checked ~ .checkDynamElement, input[type="radio"]:checked ~ .checkDynamElement {
       display: block; }
-  /* line 492, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/base.scss */
+  /* line 496, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/base.scss */
   input[type="checkbox"]:disabled {
     position: relative;
     opacity: 0; }
-  /* line 499, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/base.scss */
+  /* line 503, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/base.scss */
   input[type="radio"] + .checkElement {
     border-radius: 50%; }
-    /* line 502, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/base.scss */
+    /* line 506, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/base.scss */
     input[type="radio"] + .checkElement i {
       display: block;
       width: 6px;
@@ -600,13 +606,13 @@ input {
       font-size: 0;
       background-color: white;
       border-radius: 50%; }
-  /* line 513, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/base.scss */
+  /* line 517, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/base.scss */
   input[type="submit"], input[type="button"] {
     cursor: pointer; }
-    /* line 517, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/base.scss */
+    /* line 521, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/base.scss */
     input[type="submit"]:focus, input[type="button"]:focus {
       color: white; }
-  /* line 523, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/base.scss */
+  /* line 527, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/base.scss */
   input.button.lvl1 {
     border: none; }
 
@@ -621,7 +627,7 @@ select {
 	}
 }
 */
-/* line 539, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/base.scss */
+/* line 543, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/base.scss */
 textarea {
   width: 100%;
   min-height: 110px;
@@ -629,30 +635,30 @@ textarea {
   line-height: 1.25rem;
   resize: vertical;
   overflow-y: auto; }
-  /* line 547, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/base.scss */
+  /* line 551, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/base.scss */
   textarea:focus {
     color: #487f89;
     outline-color: #487f89; }
-  /* line 553, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/base.scss */
+  /* line 557, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/base.scss */
   textarea:empty + .emptyField {
     display: block; }
-  /* line 558, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/base.scss */
+  /* line 562, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/base.scss */
   textarea + small {
     display: none;
     padding: 4px 0 0; }
 
-/* line 565, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/base.scss */
+/* line 569, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/base.scss */
 label {
   display: inline-block;
   width: 100%;
   padding: 6px 0; }
-  /* line 571, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/base.scss */
+  /* line 575, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/base.scss */
   label i {
     padding: 0 6px 0 0; }
-  /* line 574, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/base.scss */
+  /* line 578, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/base.scss */
   label img {
     vertical-align: top; }
-  /* line 578, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/base.scss */
+  /* line 582, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/base.scss */
   label .required {
     position: relative;
     top: -2px;
@@ -785,11 +791,11 @@ multi-languages-input {
 	}
 }
 */
-/* line 711, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/base.scss */
+/* line 715, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/base.scss */
 .checkContainer {
   font-size: 0;
   padding: 6px 0 0; }
-  /* line 715, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/base.scss */
+  /* line 719, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/base.scss */
   .checkContainer label {
     width: calc(100% - 22px - 11px);
     margin: 0 0 0 11px;
@@ -802,7 +808,7 @@ multi-languages-input {
     -ms-transition: color 0.25s ease-in-out;
     -o-transition: color 0.25s ease-in-out;
     transition: color 0.25s ease-in-out; }
-    /* line 725, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/base.scss */
+    /* line 729, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/base.scss */
     .checkContainer label img.flag {
       filter: grayscale(100%);
       opacity: .5;
@@ -811,14 +817,14 @@ multi-languages-input {
       -ms-transition: all 0.25s ease-in-out;
       -o-transition: all 0.25s ease-in-out;
       transition: all 0.25s ease-in-out; }
-    /* line 732, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/base.scss */
+    /* line 736, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/base.scss */
     .checkContainer label + i {
       -webkit-transition: color 0.25s ease-in-out;
       -moz-transition: color 0.25s ease-in-out;
       -ms-transition: color 0.25s ease-in-out;
       -o-transition: color 0.25s ease-in-out;
       transition: color 0.25s ease-in-out; }
-  /* line 737, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/base.scss */
+  /* line 741, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/base.scss */
   .checkContainer .checkElement {
     display: inline-block;
     width: 22px;
@@ -831,7 +837,7 @@ multi-languages-input {
     -ms-transition: all 0.25s ease-in-out;
     -o-transition: all 0.25s ease-in-out;
     transition: all 0.25s ease-in-out; }
-    /* line 748, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/base.scss */
+    /* line 752, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/base.scss */
     .checkContainer .checkElement i {
       width: 14px;
       height: 14px;
@@ -843,31 +849,31 @@ multi-languages-input {
       margin: auto;
       vertical-align: top;
       color: white; }
-  /* line 767, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/base.scss */
+  /* line 771, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/base.scss */
   .checkContainer.twoElements label {
     width: calc(100% - 22px - 22px - 6px - 11px); }
-  /* line 771, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/base.scss */
+  /* line 775, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/base.scss */
   .checkContainer.twoElements input[type="checkbox"] {
     width: 22px; }
-  /* line 777, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/base.scss */
+  /* line 781, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/base.scss */
   .checkContainer.inactive label {
     width: 100%;
     margin: 0; }
-  /* line 787, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/base.scss */
+  /* line 791, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/base.scss */
   .checkContainer.check-success input[type="checkbox"]:checked + .checkElement, .checkContainer.check-success input[type="radio"]:checked + .checkElement {
     background-color: #16ba99; }
-  /* line 791, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/base.scss */
+  /* line 795, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/base.scss */
   .checkContainer.check-success input[type="checkbox"]:checked ~ label, .checkContainer.check-success input[type="radio"]:checked ~ label {
     color: #16ba99; }
-    /* line 794, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/base.scss */
+    /* line 798, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/base.scss */
     .checkContainer.check-success input[type="checkbox"]:checked ~ label + i, .checkContainer.check-success input[type="radio"]:checked ~ label + i {
       color: #16ba99; }
-  /* line 801, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/base.scss */
+  /* line 805, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/base.scss */
   .checkContainer.check-success .checkElement {
     border-width: 1px;
     border-style: solid;
     border-color: #16ba99; }
-  /* line 805, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/base.scss */
+  /* line 809, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/base.scss */
   .checkContainer .checkDynamElement {
     display: none;
     width: calc(100% - 33px);
@@ -918,22 +924,22 @@ multi-languages-input {
 	display: none;
 }
 */
-/* line 854, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/base.scss */
+/* line 858, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/base.scss */
 ::-webkit-input-placeholder {
   /* WebKit, Blink, Edge */
   color: rgba(5, 0, 50, 0.3); }
 
-/* line 858, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/base.scss */
+/* line 862, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/base.scss */
 :-moz-placeholder {
   /* Mozilla Firefox 4 to 18 */
   color: rgba(5, 0, 50, 0.3); }
 
-/* line 862, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/base.scss */
+/* line 866, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/base.scss */
 ::-moz-placeholder {
   /* Mozilla Firefox 19+ */
   color: rgba(5, 0, 50, 0.3); }
 
-/* line 866, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/base.scss */
+/* line 870, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/base.scss */
 :-ms-input-placeholder {
   /* Internet Explorer 10-11 */
   color: rgba(5, 0, 50, 0.3); }
