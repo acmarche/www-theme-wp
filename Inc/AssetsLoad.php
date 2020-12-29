@@ -7,6 +7,7 @@ class AssetsLoad
     public function __construct()
     {
         add_action('wp_enqueue_scripts', [$this, 'marchebeScripts']);
+        //todo set condition
         add_action('wp_enqueue_scripts', [$this, 'marchebeLeaft']);
     }
 
@@ -31,13 +32,13 @@ class AssetsLoad
 
         wp_enqueue_style(
             'marchebe-base-style',
-            get_template_directory_uri().'/assets/css/base.css',
+            get_template_directory_uri().'/assets/tartine/css/base.css',
             array(),
             wp_get_theme()->get('Version')
         );
 
         if (is_front_page()) {
-            wp_enqueue_style('marchebe-home-style', get_template_directory_uri().'/assets/css/home.css', array());
+            wp_enqueue_style('marchebe-home-style', get_template_directory_uri().'/assets/tartine/css/home.css', array());
         }
     }
 
