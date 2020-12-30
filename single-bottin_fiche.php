@@ -11,7 +11,6 @@ use AcMarche\Theme\Inc\Router;
 get_header();
 global $wp_query;
 
-$twig             = Twig::LoadTwig();
 $bottinRepository = new BottinRepository();
 
 $slugFiche = $wp_query->get(Router::PARAM_BOTTIN_FICHE, null);
@@ -25,7 +24,7 @@ if ($slugFiche) {
 }
 
 if ( ! $fiche) {
-    echo $twig->render('fiche/not_found.html.twig');
+    Twig::rendPage('fiche/not_found.html.twig');
     get_footer();
 
     return;
@@ -45,8 +44,7 @@ array_map(
     },
     $categories
 );
-
-$content = $twig->render(
+Twig::rendPage(
     'fiche/show.html.twig',
     [
         'fiche'         => $fiche,
@@ -62,5 +60,4 @@ $content = $twig->render(
         'longitude'     => $fiche->longitude,
     ]
 );
-echo $content;
 get_footer();

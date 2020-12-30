@@ -11,15 +11,11 @@ use AcMarche\Common\WpRepository;
 
 get_header();
 
-$twig = Twig::LoadTwig();
-
 $posts = WpRepository::getAllNews();
-
-$content = $twig->render(
+Twig::rendPage(
     'news/index.html.twig',
     [
         'actus' => $posts,
     ]
 );
-echo $content;
 get_footer();

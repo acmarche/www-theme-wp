@@ -33,8 +33,7 @@ foreach ($results->getResults() as $result) {
     $hit = $result->getHit();
     dump($result->getDocument());
 }*/
-
-$content = $twig->render(
+Twig::rendPage(
     'search/index_react.html.twig',
     [
         'keyword' => $keyword,
@@ -42,5 +41,4 @@ $content = $twig->render(
         'count'   => $results->count(),
     ]
 );
-echo $content;
 get_footer();

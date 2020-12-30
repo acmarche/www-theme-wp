@@ -8,8 +8,6 @@ use AcMarche\Common\Twig;
 get_header();
 global $post;
 
-$twig = Twig::LoadTwig();
-
 $tags        = get_the_category($post->ID);
 $post_ID     = $post->ID;
 $titre       = $post->post_title;
@@ -24,7 +22,7 @@ if (has_post_thumbnail()) {
     }
 }
 
-$content = $twig->render(
+Twig::rendPage(
     'article/show.html.twig',
     [
         'post' => $post,
@@ -32,8 +30,6 @@ $content = $twig->render(
         'tags' => $tags,
         'logo' => $logo,
         'nom'  => $post->post_title,
-
     ]
 );
-echo $content;
 get_footer();

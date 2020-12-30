@@ -12,17 +12,16 @@ use AcMarche\Pivot\Repository\HadesRepository;
 get_header();
 
 $hadesRepository = new HadesRepository();
-$twig            = Twig::LoadTwig();
 
 $news   = WpRepository::getAllNews(6);
 $events = $hadesRepository->getEvents();
 
-$content = $twig->render(
+Twig::rendPage(
     'home/show.html.twig',
     [
         'actus'  => $news,
         'events' => $events,
     ]
 );
-echo $content;
+
 get_footer();

@@ -4,6 +4,7 @@ namespace AcMarche\Theme;
 
 use AcMarche\Common\Menu;
 use AcMarche\Common\Twig;
+
 ?>
     <!DOCTYPE html>
     <html lang="fr">
@@ -31,25 +32,22 @@ use AcMarche\Common\Twig;
     <?php
 wp_body_open();
 
-$twig = Twig::LoadTwig();
 $menu = new Menu();
 $data = $menu->getAllItems();
 //$form = get_search_form(false);
 
 if (is_front_page()) {
-    $content = $twig->render(
+    Twig::rendPage(
         'header/_top_bar_home.html.twig',
         [
             'data' => $data,
         ]
     );
 } else {
-    $content = $twig->render(
+    Twig::rendPage(
         'header/_top_bar.html.twig',
         [
             'data' => $data,
         ]
     );
 }
-
-echo $content;

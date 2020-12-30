@@ -10,8 +10,13 @@ use AcMarche\Common\Twig;
 
 get_header();
 
-$twig = Twig::LoadTwig();
-wp_enqueue_script('react-app', get_locale_stylesheet_uri().'/assets/build/category.js', array('wp-element'), time(), true);//For production use wp_get_theme()->get('Version')
+wp_enqueue_script(
+    'react-app',
+    get_locale_stylesheet_uri().'/assets/build/category.js',
+    array('wp-element'),
+    time(),
+    true
+);//For production use wp_get_theme()->get('Version')
 
 $cat_ID      = get_queried_object_id();
 $cat_ID      = 8;
@@ -25,8 +30,8 @@ if ($blodId === 1) {
 } else {
     $siteSlug = $path = get_blog_details($blodId)->path;
 }
-$color   = MarcheConst::COLORS[$blodId];
-$content = $twig->render(
+$color = MarcheConst::COLORS[$blodId];
+Twig::rendPage(
     'category/react.html.twig',
     [
         'title'    => $title,
@@ -37,6 +42,4 @@ $content = $twig->render(
         'subTitle' => 'Tout',
     ]
 );
-echo $content;
-
 get_footer();

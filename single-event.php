@@ -9,8 +9,7 @@ use AcMarche\Theme\Inc\Router;
 get_header();
 
 global $wp_query;
-$codeCgt  = $wp_query->get(Router::PARAM_EVENT);
-$twig    = Twig::LoadTwig();
+$codeCgt = $wp_query->get(Router::PARAM_EVENT);
 
 $pivotRepository = new PivotRemoteRepository();
 
@@ -30,8 +29,8 @@ if (count($event->images) > 0) {
     $logo = $images[0];
 }
 
-$url     = get_site_url();
-$content = $twig->render(
+$url = get_site_url();
+Twig::rendPage(
     'agenda/show.html.twig',
     [
         'event'     => $event,
@@ -44,5 +43,4 @@ $content = $twig->render(
         'longitude' => $event->longitude,
     ]
 );
-echo $content;
 get_footer();

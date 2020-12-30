@@ -7,7 +7,7 @@ use AcMarche\Common\TemplateRender;
 
 get_header();
 
-echo TemplateRender::renderCategory();
+TemplateRender::renderCategory();
 //echo do_shortcode('[example_react_app]');
 
 get_footer();

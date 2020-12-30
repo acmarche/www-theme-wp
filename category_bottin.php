@@ -23,9 +23,9 @@ if ($slug) {
 }
 
 if ( ! $category) {
-    $content = $twig->render('errors/404.html.twig');
-    echo $content;
+    Twig::rendPage('errors/404.html.twig');
     get_footer();
+
     return;
 }
 
@@ -59,7 +59,7 @@ array_map(
     $fiches
 );
 
-$content = $twig->render(
+Twig::rendPage(
     'category/category.html.twig',
     [
         'title'       => $title,
@@ -71,5 +71,4 @@ $content = $twig->render(
         'color'       => $color,
     ]
 );
-echo $content;
 get_footer();
