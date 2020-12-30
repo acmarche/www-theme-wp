@@ -11,7 +11,7 @@ $hadesRepository = new HadesRepository();
 $events          = $hadesRepository->getEvents();
 wp_enqueue_script(
     'react-app',
-    get_locale_stylesheet_uri().'/../assets/build/agenda.js',
+    get_template_directory_uri().'/assets/js/build/agenda.js',
     array('wp-element'),
     time(),
     true
