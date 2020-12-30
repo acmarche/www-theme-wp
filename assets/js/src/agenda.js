@@ -1,3 +1,3 @@
-import Agenda from '../components/Agenda/Index';
+import App from '../components/Agenda/Index';
 
-ReactDOM.render( <Agenda />, document.getElementById( 'app-agenda' ) );
+ReactDOM.render( <App />, document.getElementById( 'app-agenda' ) );
