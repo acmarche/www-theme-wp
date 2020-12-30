@@ -23,7 +23,7 @@ if ($slug) {
 }
 
 if ( ! $category) {
-    $content = $twig->render('article/404.html.twig');
+    $content = $twig->render('errors/404.html.twig');
     echo $content;
     get_footer();
     return;
