@@ -30,7 +30,9 @@ class Api
                     'events',
                     [
                         'methods'  => 'GET',
-                        'callback' => ['ApiData', 'ca_events'],
+                        'callback' => function () {
+                            return ApiData::ca_events();
+                        },
                     ]
                 );
             }
@@ -80,8 +82,9 @@ class Api
                     'all/(?P<catParent>.*+)',
                     [
                         'methods'  => 'GET',
-                        'callback' => ['ApiData', 'ca_categories'],
-
+                        'callback' => function ($args) {
+                            return ApiData::ca_categories($args);
+                        },
                     ]
                 );
             }
@@ -94,11 +97,13 @@ class Api
             'rest_api_init',
             function () {
                 register_rest_route(
-                    'jfs/v1',
+                    'search/v1',
                     'search/(?P<keyword>.*+)',
                     [
                         'methods'  => 'GET',
-                        'callback' => array('ApiData', 'search'),
+                        'callback' => function ($args) {
+                            return ApiData::search($args);
+                        },
                     ]
                 );
             }
