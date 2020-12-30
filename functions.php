@@ -2,6 +2,7 @@
 
 namespace AcMarche\Theme;
 
+use AcMarche\Theme\Inc\Api;
 use AcMarche\Theme\Inc\AssetsLoad;
 use AcMarche\Theme\Inc\Filter;
 use AcMarche\Theme\Inc\QueryAlter;
@@ -38,3 +39,7 @@ new Seo();
  * Actions sur les filtres de wp
  */
 new Filter();
+/**
+ * Add routes for api
+ */
+new Api();
