@@ -25,7 +25,7 @@ use AcMarche\Common\Twig;
             ?> | Ville de Marche-en-Famenne
         </title>
         <!--FAVICON-->
-        <link rel="icon" type="image/png" href="<?php echo get_template_directory_uri() ?>/assets/rsc/favicon.png"/>
+        <link rel="icon" type="image/png" href="<?php echo get_template_directory_uri() ?>/assets/tartine/rsc/favicon.png"/>
         <?php wp_head(); ?>
     </head>
 <body <?php body_class('bg-white'); ?>>
