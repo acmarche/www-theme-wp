@@ -21,6 +21,7 @@ class Router
 
     public function __construct()
     {
+        //   $this->flushRoutes();
         $this->addRouteEvent();
         $this->addRouteBottin();
         $this->addRouteBottinCategory();
@@ -52,6 +53,11 @@ class Router
         return self::getBaseUrlSite().Router::BOTTIN_FICHE_URL.$fiche->slug;
     }
 
+    public static function getUrlEvent(array $event): string
+    {
+        return self::getBaseUrlSite().Router::EVENT_URL.$event['id'];
+    }
+
     public function addRouteEvent()
     {
         add_action(
@@ -79,7 +85,9 @@ class Router
                 if (is_admin() || ! $wp_query->is_main_query()) {
                     return $template;
                 }
-                if (get_query_var(self::PARAM_EVENT) == false || get_query_var(self::PARAM_EVENT) == '') {
+
+                if (get_query_var(self::PARAM_EVENT) == false ||
+                    get_query_var(self::PARAM_EVENT) == '') {
                     return $template;
                 }
 
@@ -164,7 +172,7 @@ class Router
         );
     }
 
-    public static function flushRoutes()
+    public function flushRoutes()
     {
         $current = get_current_blog_id();
         foreach (get_sites(['fields' => 'ids']) as $site) {

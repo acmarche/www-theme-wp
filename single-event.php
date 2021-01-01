@@ -3,7 +3,7 @@
 namespace AcMarche\Theme;
 
 use AcMarche\Common\Twig;
-use AcMarche\Pivot\Repository\PivotRemoteRepository;
+use AcMarche\Pivot\Repository\HadesRepository;
 use AcMarche\Theme\Inc\Router;
 
 get_header();
@@ -11,21 +11,20 @@ get_header();
 global $wp_query;
 $codeCgt = $wp_query->get(Router::PARAM_EVENT);
 
-$pivotRepository = new PivotRemoteRepository();
-
+$hadesRepository = new HadesRepository();
+$events          = $hadesRepository->getEvents();
 ///$event = $pivotRepository->getDetailOffer($codeCgt);
-$event  = null;
-$events = $pivotRepository->getAllEvents();
+$event = null;
 foreach ($events as $element) {
-    if ($codeCgt == $element->codeCgt) {
+    if ($codeCgt == $element['id']) {
         $event = $element;
         break;
     }
 }
 
 $logo   = null;
-$images = $event->images;
-if (count($event->images) > 0) {
+$images = $event['images'];
+if (count($images) > 0) {
     $logo = $images[0];
 }
 
@@ -34,13 +33,13 @@ Twig::rendPage(
     'agenda/show.html.twig',
     [
         'event'     => $event,
-        'nom'       => $event->nom,
+        'nom'       => $event['nom'],
         'url'       => $url,
         'logo'      => $logo,
         'tags'      => [],
         'images'    => $images,
-        'latitude'  => $event->latitude,
-        'longitude' => $event->longitude,
+        'latitude'  => $event['latitude'],
+        'longitude' => $event['longitude'],
     ]
 );
 get_footer();

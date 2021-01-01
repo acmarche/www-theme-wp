@@ -3,9 +3,10 @@
     <div>
         <!--date-->
         <div class="col-3">
-            <span>{{ event.day }}</span>
-            <span>{{ event.month }}</span>
-            <span>{{ event.year }}</span>
+            {% set date = event.dates[0] %}
+            <span>{{ date.day }}</span>
+            <span>{{ date.month }}</span>
+            <span>{{ date.year }}</span>
         </div>
 
         <!--other datas-->
@@ -17,7 +18,11 @@
             <small>{{ event.localite }}</small>
 
             <!--TODO JF: condition si événement sur plusieurs jours/mois/années/décénnies/...-->
-            <small {% if date_affichage == false %}class="d-none"{% endif%} >{{ event.date_affichage }}</small>
+            <small>
+                {% for date in event.dates %}
+                    {{ date.date_affichage }}
+                {% endfor %}
+            </small>
         </div>
     </div>
 </a>
