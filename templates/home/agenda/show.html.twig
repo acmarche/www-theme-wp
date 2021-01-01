@@ -3,17 +3,19 @@
     <div class="p-ls-md-8px ls-md-shadow-sm-1 p-md-8px md-shadow-sm-1">
         <h2 class="text-ls-md-left text-md-left">Agenda</h2>
         <ul class="pt-24px pt-ls-md-32px d-ls-sm-flex mx-ls-sm-n4px flex-ls-md-column pt-md-32px flex-md-column">
-            <!--always visible-->
-            {% include 'home/agenda/_events_list_always.html.twig' %}
+            {% if events | length > 0 %}
+                <!--always visible-->
+                {% include 'home/agenda/_events_list_always.html.twig' %}
 
-            <!--visible from landscape&&small-->
-            {% include 'home/agenda/_events_list_small.html.twig' %}
+                <!--visible from landscape&&small-->
+                {% include 'home/agenda/_events_list_small.html.twig' %}
 
-            <!--visible from landscape&&medium / medium-->
-            {% include 'home/agenda/_events_list_medium.html.twig' %}
+                <!--visible from landscape&&medium / medium-->
+                {% include 'home/agenda/_events_list_medium.html.twig' %}
 
-            <!--visible from landscape&&large / large-->
-            {% include 'home/agenda/_events_list_large.html.twig' %}
+                <!--visible from landscape&&large / large-->
+                {% include 'home/agenda/_events_list_large.html.twig' %}
+            {% endif %}
         </ul>
     </div>
 
