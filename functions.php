@@ -9,6 +9,7 @@ use AcMarche\Theme\Inc\QueryAlter;
 use AcMarche\Theme\Inc\Router;
 use AcMarche\Theme\Inc\SecurityConfig;
 use AcMarche\Theme\Inc\Seo;
+use AcMarche\Theme\Inc\SettingsPage;
 use AcMarche\Theme\Inc\WidgetLoad;
 
 /**
@@ -43,3 +44,7 @@ new Filter();
  * Add routes for api
  */
 new Api();
+/**
+ * Activer ou pas react
+ */
+new SettingsPage();

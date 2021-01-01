@@ -5,11 +5,17 @@ namespace AcMarche\Theme;
 use AcMarche\Common\Mailer;
 use AcMarche\Common\Twig;
 use AcMarche\Elasticsearch\Searcher;
+use AcMarche\Theme\Inc\SettingsPage;
 use Elastica\Exception\InvalidException;
 
 get_header();
 global $s;
-$twig = Twig::LoadTwig();
+
+$react           = SettingsPage::isReactActivate();
+if ($react) {
+
+}
+
 wp_enqueue_script(
     'react-app',
     get_locale_stylesheet_uri().'/assets/build/search.js',

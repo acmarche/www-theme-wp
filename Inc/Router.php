@@ -17,6 +17,7 @@ class Router
     const PARAM_BOTTIN_CATEGORY = 'slugcategory';
     const BOTTIN_FICHE_URL = 'bottin/fiche/';
     const BOTTIN_CATEGORY_URL = 'bwp/categorie/';
+    const EVENT_URL = 'manifestation/';
 
     public function __construct()
     {
@@ -57,7 +58,7 @@ class Router
             'init',
             function () {
                 add_rewrite_rule(
-                    'manifestation/([a-zA-Z0-9-]+)[/]?$',
+                    self::EVENT_URL.'([a-zA-Z0-9-]+)[/]?$',
                     'index.php?'.self::PARAM_EVENT.'=$matches[1]',
                     'top'
                 );

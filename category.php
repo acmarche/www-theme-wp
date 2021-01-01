@@ -6,10 +6,16 @@ namespace AcMarche\Theme;
 use AcMarche\Common\MarcheConst;
 use AcMarche\Common\TemplateRender;
 use AcMarche\Common\Twig;
+use AcMarche\Theme\Inc\SettingsPage;
 
 get_header();
 
-//TemplateRender::renderCategory();
+$react = SettingsPage::isReactActivate();
+if ($react == false) {
+    TemplateRender::renderCategory();
+    get_footer();
+    return;
+}
 
 $cat_ID      = get_queried_object_id();
 $category    = get_category($cat_ID);
@@ -35,7 +41,7 @@ wp_enqueue_script(
 Twig::rendPage(
     'category/category_react.html.twig',
     [
-        'title'   => $title,
+        'title'    => $title,
         'category' => $category,
         'siteSlug' => $siteSlug,
         'color'    => $color,
