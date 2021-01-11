@@ -9,25 +9,24 @@
         <nav>
             {% include 'header/home/_brand.html.twig' with {'active': false} %}
             <!--search | visible on mobile/tablet && !homepage-extralarge | TODO JF: à brancher-->
-            {% include 'header/home/_search.html.twig' with {'class': ''} %}
-
-            <!--home-->
-            <div class="home">
-                <a href="/">
-                    <i class="icon_nav i-home"></i>
-                </a>
-            </div>
-            <!--search | visible on mobile/tablet && !homepage-extralarge | TODO JF: à brancher-->
-            {% include 'header/inside/_search_sidebar.html.twig' %}
+            {% include 'header/home/_search_screen.html.twig' with {'class': ''} %}
 
             <!--all | TODO JF: à brancher-->
-            {% include 'header/common/_menu_vivre.html.twig' %}
-            {% include 'header/common/_menu_right.html.twig' %}
-
+            <div class="all d-ls-flex align-items-ls-center justify-content-ls-center">
+                <a href="#" class="icon_custom position-relative">
+                    <i class="icon_nav i-bars"></i>
+                    <i class="i-bars i-dark-primary"></i>
+                    <span>Vivre à Marche</span>
+                    <!--<input type="radio" name="subnav" value="1" class="w-100 h-100">-->
+                </a>
+                <!--subnav | TODO JF: à brancher-->
+                {% include 'header/home/_subnav.html.twig' %}
+            </div>
+            <!--calendar-->
+           {% include 'header/inside/_menu_right.html.twig' %}
         </nav>
 
         <!-- social networks -->
-        {% include 'header/common/_social_networks.html.twig' %}
-
+        {% include 'header/home/_social.html.twig' %}
     </div>
 </header>

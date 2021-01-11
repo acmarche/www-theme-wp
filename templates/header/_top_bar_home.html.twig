@@ -8,8 +8,8 @@
         <nav>
             <!--home-->
             {% include 'header/home/_brand.html.twig' with {'active': true} %}
-            <!--search | visible on mobile/tablet && !homepage-extralarge-->
-            {% include 'header/home/_search.html.twig' with {'class': 'd-xl-none' %}
+            <!--search | visible on mobile/tablet && !homepage-extralarge -->
+            {% include 'header/home/_search_screen.html.twig' with {'class': 'd-xl-none'} %}
             <!--all-->
             <div class="all d-ls-flex align-items-ls-center justify-content-ls-center">
                 <a href="#" class="icon_custom position-relative">
@@ -26,6 +26,7 @@
             {% include 'header/home/_menu_right.html.twig' %}
         </nav>
 
-        {% include 'header/home/_social.ht.twig' %}
+        <!-- social networks -->
+        {% include 'header/home/_social.html.twig' %}
     </div>
 </header>
