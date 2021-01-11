@@ -1,0 +1,30 @@
+<div class="subnav">
+    <ul>
+        <!--administration-->
+        {% include 'menu/_administration.html.twig' with {'items': data.2.items} %}
+
+        <!--citoyen-->
+        {% include 'menu/_citoyen.html.twig' with {'items': data.1.items} %}
+
+        <!--culture-->
+        {% include 'menu/_culture.html.twig' with {'items': data.11.items} %}
+
+        <!--economie-->
+        {% include 'menu/_economie.html.twig' with {'items': data.3.items} %}
+
+        <!--enfance/jeunesse-->
+        {% include 'menu/_enfance.html.twig' with {'items': data.14.items} %}
+
+        <!--sante-->
+        {% include 'menu/_sante.html.twig' with {'items': data.6.items} %}
+
+        <!--social-->
+        {% include 'menu/_social.html.twig' with {'items': data.7.items} %}
+
+        <!--sport-->
+        {% include 'menu/_sport.html.twig' with {'items': data.5.items} %}
+
+        <!--tourisme-->
+        {% include 'menu/_tourisme.html.twig' with {'items': data.4.items} %}
+    </ul>
+</div>

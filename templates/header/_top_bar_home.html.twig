@@ -4,33 +4,28 @@
         <a href="/">
             <img src="{{ template_directory }}/assets/tartine/rsc/img/img_logo.png" alt="logo">
         </a>
-
         <!--OBJECT | NAV-->
         <nav>
-
             <!--home-->
-            <div class="home active">
-                <a href="#">
-                    <i class="icon_nav i-home"></i>
-                </a>
-            </div>
+            {% include 'header/home/_brand.html.twig' %}
             <!--search | visible on mobile/tablet && !homepage-extralarge-->
-            <div class="search d-xl-none">
-                <a href="#">
-                    <i class="icon_nav i-search"></i>
-                    <i class="icon_nav i-search i-white position-absolute d-none d-xl-block"></i>
+            {% include 'header/home/_search.html.twig' %}
+            <!--all-->
+            <div class="all d-ls-flex align-items-ls-center justify-content-ls-center">
+                <a href="#" class="icon_custom position-relative">
+                    <i class="icon_nav i-bars"></i>
+                    <i class="i-bars i-dark-primary"></i>
+                    <span>Vivre à Marche</span>
+                    <!--<input type="radio" name="subnav" value="1" class="w-100 h-100">-->
                 </a>
 
-                {% include 'header/home/_search_screen.html.twig' %}
+                <!--subnav-->
+                {% include 'header/home/_subnav.html.twig' %}
             </div>
-            <!--all-->
-            {% include 'header/common/_menu_vivre.html.twig' %}
-
-            {% include 'header/common/_menu_right.html.twig' %}
+            <!--calendar-->
+            {% include 'header/home/_menu_right.html.twig' %}
         </nav>
 
-        <!-- social networks -->
-        {% include 'header/common/_social_networks.html.twig' %}
-
+        {% include 'header/home/_social.ht.twig' %}
     </div>
 </header>
