@@ -7,6 +7,9 @@
 
         <!--OBJECT | NAV-->
         <nav>
+            {% include 'header/home/_brand.html.twig' with {'active': false} %}
+            <!--search | visible on mobile/tablet && !homepage-extralarge | TODO JF: à brancher-->
+            {% include 'header/home/_search.html.twig' with {'class': ''} %}
 
             <!--home-->
             <div class="home">
