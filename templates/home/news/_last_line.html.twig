@@ -1,8 +1,0 @@
-<!--visible from landscape&&large-->
-{% for actu in actus %}
-    {% if loop.index > 3 %}
-        <li class="pt-8px col-ls-lg-4 px-ls-lg-4px d-none d-ls-lg-block d-lg-block col-lg-4 px-lg-4px">
-         {% include 'home/news/_news_line.html.twig' %}
-        </li>
-    {% endif %}
-{% endfor %}
