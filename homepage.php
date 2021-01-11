@@ -17,7 +17,7 @@ $news   = WpRepository::getAllNews(6);
 $events = $hadesRepository->getEvents();
 
 Twig::rendPage(
-    'home/show.html.twig',
+    'homepage/index.html.twig',
     [
         'actus'  => $news,
         'events' => $events,
