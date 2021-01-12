@@ -18,7 +18,10 @@
         <div class="px-0 d-md-flex flex-md-column d-ls-md-flex flex-ls-md-column pt-48px align-items-center">
 
             <!--list | TODO JF: à brancher-->
-            {% include 'agenda/list/_list.html.twig' %}
+            <ul class="pt-24px pt-md-32px d-md-flex flex-md-wrap mx-md-n4px mx-lg-n8px object-cardsList">
+                {% include 'agenda/list/_first_lines.html.twig' %}
+                {% include 'agenda/list/_other_lines.html.twig' %}
+            </ul>
 
             <!-- TODO JF: à brancher -->
             <a href="#"
@@ -27,4 +30,3 @@
         </div>
     </div>
 </section>
-
