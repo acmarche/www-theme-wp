@@ -7,7 +7,7 @@
         var longitude = '{{ longitude }}';
         var center = [latitude, longitude];
         var map = L.map('openmap').setView(center, 15);
-        var nom = '{{ nom }}';
+        var nom = '{{ title }}';
 
         L.tileLayer('https://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png', {
             // Il est toujours bien de laisser le lien vers la source des données

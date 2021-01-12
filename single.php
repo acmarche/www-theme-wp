@@ -25,10 +25,10 @@ if (has_post_thumbnail()) {
 Twig::rendPage(
     'article/show.html.twig',
     [
-        'post' => $post,
+        'content' => $post->post_content,
         'url'  => $url,
         'tags' => $tags,
-        'logo' => $logo,
+        'image' => $logo,
         'title'  => $post->post_title,
     ]
 );

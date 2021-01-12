@@ -33,7 +33,7 @@ Twig::rendPage(
     'agenda/show.html.twig',
     [
         'event'     => $event,
-        'nom'       => $event['nom'],
+        'title'     => $event['nom'],
         'url'       => $url,
         'logo'      => $logo,
         'tags'      => [],
