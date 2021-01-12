@@ -39,7 +39,7 @@ wp_enqueue_script(
 );//For production use wp_get_theme()->get('Version')
 
 Twig::rendPage(
-    'category/category_react.html.twig',
+    'category/index_react.html.twig',
     [
         'title'    => $title,
         'category' => $category,

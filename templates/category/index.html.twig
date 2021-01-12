@@ -1,3 +1,4 @@
+<!--CONTENT-->
 <section id="content"
          class="pt-42px pb-36px pl-ls-42px overflow-ls-hidden overflow-md-hidden pl-ls-lg-0 pt-xl-66px pb-lg-66px mw-1440px mx-xl-auto w-100">
 
@@ -7,24 +8,21 @@
         <!--back | TODO JF: lien dynamique vers la page précédente-->
         <a href="/"
            class="button lvl3 align-self-ls-md-start align-self-md-start position-relative right-0 right-hover-12px fs-short-2"><i
-                    class="fas fa-angle-left pr-8px d-ls-md-inline pr-md-12px fs-short-2 d-md-inline"></i>Retour à
-            l'accueil</a>
+                    class="fas fa-angle-left pr-8px d-ls-md-inline pr-md-12px fs-short-2 d-md-inline"></i>Retour à x</a>
 
         <!--title-->
         <h2 class="text-ls-md-left pt-ls-md-8px text-md-left pt-md-8px">{{ title|raw }}</h2>
 
         <!--category-->
-        <!-- react -->
-        <noscript>
-            You need to enable JavaScript to run this app.
-        </noscript>
+        <span class="{{ color }} ff-semibold pt-12px d-block fs-short-2">{{ site_slug|title }}</span>
 
-        <div id="app-category" data-color="{{ color }}" data-main-category-id="{{ category.cat_ID }}" data-site-url="{{ path }}"
-             data-categorytitle="{{ subTitle }}"></div>
+        {% include 'category/_children.html.twig' %}
 
-        <!--categories | TODO JF: branchement des filtres-->
+        {% if description != '' %}
+            {{ description|raw|nl2br }}
+        {% endif %}
 
         <!--results-->
-
+        {% include 'category/_articles.html.twig' %}
     </div>
 </section>
