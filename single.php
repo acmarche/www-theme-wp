@@ -29,7 +29,7 @@ Twig::rendPage(
         'url'  => $url,
         'tags' => $tags,
         'logo' => $logo,
-        'nom'  => $post->post_title,
+        'title'  => $post->post_title,
     ]
 );
 get_footer();
