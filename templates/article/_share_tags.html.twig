@@ -4,19 +4,18 @@
     <div class="w-100">
         <h4 class="text-dark-primary fs-basic text-right text-lg-left">Partagez l'article via</h4>
         <div class="pt-12px pt-md-16px object-share">
-            <a href="#"><i class="fab fa-facebook-f"></i></a>
-            <a href="#"><i class="fas fa-link"></i></a>
-            <a href="#" class="d-none d-xl-flex"><i class="fas fa-print"></i></a>
+            <a href="http://www.facebook.com/sharer.php?u={{ currentUrl() }}"><i class="fab fa-facebook-f"></i></a>
+            <a href="http://twitter.com/share?url={{ currentUrl() }}&amp;text={{ nom }}"><i class="fas fa-link"></i></a>
+            <a href="javascript:window.print();" class="d-none d-xl-flex"><i class="fas fa-print"></i></a>
         </div>
     </div>
 
     <!--OBJECT | TAGS-->
     <div class="overflow-hidden w-100 pt-24px">
         <ul class="object-tags">
-            <li><a href="#">École</a></li>
-            <li><a href="#">Jeunesse</a></li>
-            <li><a href="#">Devoirs</a></li>
-            <li><a href="#">Volontariat</a></li>
+            {% for category in tags %}
+                <li><a href="{{ category.term_id|category_link }}">{{ category.name }}</a></li>
+            {% endfor %}
         </ul>
     </div>
 

@@ -1,9 +1,8 @@
 <!--OBJECT | TAGS-->
 <div class="overflow-hidden w-100 pt-24px col-md-12 px-0 px-md-15px d-lg-none">
     <ul class="object-tags">
-        <li><a href="#">École</a></li>
-        <li><a href="#">Jeunesse</a></li>
-        <li><a href="#">Devoirs</a></li>
-        <li><a href="#">Volontariat</a></li>
+        {% for category in tags %}
+            <li><a href="{{ category.term_id|category_link }}">{{ category.name }}</a></li>
+        {% endfor %}
     </ul>
 </div>
