@@ -1,3 +1,4 @@
+<!--CONTENT-->
 <section id="content"
          class="pt-42px pb-36px pl-ls-42px overflow-ls-hidden overflow-md-hidden pl-ls-lg-0 pt-xl-66px pb-lg-66px mw-1440px mx-xl-auto w-100">
 
@@ -7,11 +8,10 @@
         <!--back | TODO JF: lien dynamique vers la page précédente-->
         <a href="#"
            class="button lvl3 align-self-ls-md-start align-self-md-start position-relative right-0 right-hover-12px fs-short-2"><i
-                    class="fas fa-angle-left pr-8px d-ls-md-inline pr-md-12px fs-short-2 d-md-inline"></i>Retour à la
-            recherche</a>
+                    class="fas fa-angle-left pr-8px d-ls-md-inline pr-md-12px fs-short-2 d-md-inline"></i>Retour x</a>
 
         <!--title-->
-        <h2 class="text-ls-md-left pt-ls-md-8px text-md-left pt-md-8px">{{ nom }}</h2>
+        <h2 class="text-ls-md-left pt-ls-md-8px text-md-left pt-md-8px">{{ title }}</h2>
 
         <!--category-->
         <span class="color-cat-cul ff-semibold pt-12px d-block fs-short-2">Culture</span>
@@ -23,7 +23,7 @@
                 <div class="bg-img w-100 h-auto position-relative h-lg-368px d-flex pr-md-15px">
 
                     <!--img-->
-                    {% include 'fiche/_logo.html.twig' %}
+                    <i class="bg-img-directory-1 position-absolute top-0 bottom-0 left-0 right-0 md-left-15px md-right-15px lg-left-0 lg-right-0 col-7 d-none d-md-block"></i>
 
                     <!--datas-->
                     {% include 'fiche/_data.html.twig' %}
@@ -31,55 +31,110 @@
 
                 <!--OBJECT | TAGS-->
                 <div class="overflow-hidden w-100 pt-24px col-md-12 px-0 px-md-15px d-lg-none">
-                    {% include 'fiche/_tags.html.twig' %}
+                    <ul class="object-tags">
+                        {% for category in tags %}
+                            <li><a href="{{ category.term_id|category_link }}">{{ category.name }}</a></li>
+                        {% endfor %}
+                    </ul>
                 </div>
 
                 <!--OBJECT | TEXT-DYN | TODO JF : brancher la possibilité d'ouvrir/réduire le content avec un ellipsis + condition sur l'extend-->
-                <div class="object-text-dyn col-md-8 px-0 px-md-15px col-lg-12 px-lg-0">
-                    <input type="checkbox" id="text-dyn"/>
-                    <div for="text-dyn">
-                        <span class="more">Lire plus</span>
-                        <span class="less">Réduire</span>
-                    </div>
-                    <div for="text-dyn">
-                        {% include 'fiche/_content.html.twig' %}
-                        {% include 'fiche/_horaires.html.twig' %}
-                        {% include 'fiche/_documents.html.twig' %}
-                        {% include 'fiche/_images.html.twig' %}
-                        {% include 'fiche/_carte.html.twig' %}
-                    </div>
-                </div>
+                {% include 'fiche/_content.html.twig' %}
 
                 <!--OBJECT | SHARE-->
                 <div class="pt-24px w-100 col-md-4 px-0 px-md-15px d-lg-none">
-                    {% include 'article/_share.html.twig' %}
+                    <h4 class="text-dark-primary fs-basic text-right text-lg-left">Partagez l'article via</h4>
+                    <div class="pt-12px pt-md-16px object-share">
+                        <a href="http://www.facebook.com/sharer.php?u={{ currentUrl() }}"><i
+                                    class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="http://twitter.com/share?url={{ currentUrl() }}&amp;text={{ title }}"><i
+                                    class="fas fa-link"></i>
+                        </a>
+                        <a href="javascript:window.print();" class="d-none d-xl-flex"><i
+                                    class="fas fa-print"></i>
+                        </a>
+                    </div>
                 </div>
 
                 <!--previous/next-->
-                {% include 'article/_previous-next.html.twig' %}
+                <div class="pt-24px d-flex w-100 col-md-8 px-0 px-md-15px col-lg-12 px-lg-0">
+                    <div class="col-6 p-0 d-flex">
+                        <a href="#"
+                           class="button lvl3 align-self-ls-md-center align-self-md-center position-relative left-0 left-hover-n12px d-flex justify-content-center fs-short-2"><i
+                                    class="fas fa-angle-left d-ls-md-inline pr-8px pr-md-12px fs-short-1 d-md-inline"></i>Article
+                            précédent</a>
+                    </div>
+                    <div class="col-6 p-0 d-flex justify-content-end">
+                        <a href="#"
+                           class="button lvl3 align-self-ls-md-center align-self-md-center position-relative left-0 left-hover-12px d-flex justify-content-center fs-short-2">Article
+                            suivant<i
+                                    class="fas fa-angle-right d-ls-md-inline pl-8px pl-md-12px fs-short-1 d-md-inline"></i></a>
+                    </div>
+                </div>
 
                 <!--OBJECT | RECOM-->
                 <div class="pt-24px w-100 col-md-8 px-0 px-md-15px d-lg-none">
-                    {% include 'article/_recommandation.html.twig' %}
+                    <h4 class="text-dark-primary ff-semibold fs-basic">Recommandation</h4>
+                    <div class="pt-12px object-recom">
+                        <a href="#" class="bg-img">
+                            <i class="bg-img-news-1">
+                                <b class="bg-img-bgcolor-hover-primary-55"></b>
+                            </i>
+                            <div class="col">
+                                <h5 class="text-hover-primary">Écoles de devoirs : un petit déjeuner avec les
+                                    volontaires</h5>
+                                <span class="color-cat-cit">Citoyen</span>
+                            </div>
+                        </a>
+                    </div>
                 </div>
             </div>
-            <div class="d-none d-lg-flex col-4 flex-column h-330px justify-content-between">
+
+            <div class="d-none d-lg-flex col-4 flex-column h-368px justify-content-between">
+
                 <!--OBJECT | SHARE-->
                 <div class="w-100">
-                    {% include 'article/_share.html.twig' %}
+                    <h4 class="text-dark-primary fs-basic text-right text-lg-left">Partagez l'article via</h4>
+                    <div class="pt-12px pt-md-16px object-share">
+                        <a href="http://www.facebook.com/sharer.php?u={{ currentUrl() }}">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="http://twitter.com/share?url={{ currentUrl() }}&amp;text={{ title }}">
+                            <i class="fas fa-link"></i>
+                        </a>
+                        <a href="javascript:window.print();" class="d-none d-xl-flex">
+                            <i class="fas fa-print"></i>
+                        </a>
+                    </div>
                 </div>
 
                 <!--OBJECT | TAGS-->
                 <div class="overflow-hidden w-100 pt-24px">
-                    {% include 'fiche/_tags.html.twig' %}
+                    <ul class="object-tags">
+                        {% for category in tags %}
+                            <li><a href="{{ category.term_id|category_link }}">{{ category.name }}</a></li>
+                        {% endfor %}
+                    </ul>
                 </div>
 
                 <!--OBJECT | RECOM-->
                 <div class="pt-24px w-100">
-                    {% include 'article/_recommandation.html.twig' %}
+                    <h4 class="text-dark-primary ff-semibold fs-basic">Recommandation</h4>
+                    <div class="pt-22px object-recom">
+                        <a href="#" class="bg-img">
+                            <i class="bg-img-news-1">
+                                <b class="bg-img-bgcolor-hover-primary-55"></b>
+                            </i>
+                            <div class="col">
+                                <h5 class="text-hover-primary">Écoles de devoirs : un petit déjeuner avec les
+                                    volontaires</h5>
+                                <span class="color-cat-cit">Citoyen</span>
+                            </div>
+                        </a>
+                    </div>
                 </div>
             </div>
-
         </div>
     </div>
 </section>
