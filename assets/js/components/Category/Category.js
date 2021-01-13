@@ -138,7 +138,7 @@ function Category( props ) {
                                 }}
                                 href="#"
                             >
-                                {object.name} | {object.id}
+                                {object.name}
                             </a>
                         </li>
                     ) )}

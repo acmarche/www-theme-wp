@@ -44,9 +44,7 @@ function ResultsNew( props ) {
                             <h3
                                 className="fs-short-2 ff-semibold text-dark-primary text-hover-primary transition-all ellipsis"
                                 dangerouslySetInnerHTML={{
-                                    __html: `${object.react_category_filter.join( ' | ' )} ${
-                                        object.post_title
-                                    }`
+                                    __html: `${object.post_title}`
                                 }}
                             />
                             <span

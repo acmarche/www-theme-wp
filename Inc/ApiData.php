@@ -116,7 +116,6 @@ class ApiData
         return $ids; //wp/bottin/association_wp_bottin ids
     }
 
-// This plugin also adds a custom endpoint that returns all events from HADES
     public static function ca_events()
     {
         $hadesRepository = new HadesRepository();

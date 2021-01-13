@@ -24,7 +24,14 @@ if ($slugFiche) {
 }
 
 if ( ! $fiche) {
-    Twig::rendPage('fiche/not_found.html.twig');
+    Twig::rendPage(
+        'fiche/not_found.html.twig',
+        [
+            'title'   => 'Fiche non trouvée',
+            'tags'    => [],
+            'content' => '',
+        ]
+    );
     get_footer();
 
     return;
@@ -48,7 +55,7 @@ Twig::rendPage(
     'fiche/show.html.twig',
     [
         'fiche'         => $fiche,
-        'nom'           => $fiche->societe,
+        'title'         => $fiche->societe,
         'tags'          => $categories,
         'isCentreVille' => $isCentreVille,
         'logo'          => $logo,
@@ -58,6 +65,7 @@ Twig::rendPage(
         'url_doc'       => Bottin::getUrlDocument().DIRECTORY_SEPARATOR,
         'latitude'      => $fiche->latitude,
         'longitude'     => $fiche->longitude,
+        'content'       => '',
     ]
 );
 get_footer();
