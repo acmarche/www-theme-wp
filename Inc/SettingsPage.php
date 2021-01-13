@@ -41,10 +41,17 @@ class SettingsPage
 
     static function registerSetting()
     {
+        $value   = self::isReactActivate();
         $current = get_current_blog_id();
         foreach (MarcheConst::SITES as $siteId => $slug) {
             switch_to_blog($siteId);
-            register_setting('my-cool-plugin-settings-group', self::NAME_OPTION);
+            register_setting(
+                'my-cool-plugin-settings-group',
+                self::NAME_OPTION,
+                [
+                    'default' => ! $value,
+                ]
+            );
         }
         switch_to_blog($current);
     }
