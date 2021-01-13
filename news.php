@@ -3,7 +3,7 @@
 namespace AcMarche\Theme;
 
 /**
- * Template Name: Events
+ * Template Name: News
  */
 
 use AcMarche\Common\Twig;

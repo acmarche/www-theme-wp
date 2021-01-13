@@ -20,13 +20,14 @@ if (has_post_thumbnail()) {
     }
 }
 Twig::rendPage(
-    'article/show.html.twig',
+    'article/page.html.twig',
     [
-        'post' => $post,
-        'url'  => $url,
-        'tags' => $categories,
-        'logo' => $logo,
-        'nom'  => $post->post_title,
+        'title'   => $titre,
+        'post'    => $post,
+        'url'     => $url,
+        'tags'    => $categories,
+        'logo'    => $logo,
+        'content' => $post->post_content,
     ]
 );
 get_footer();
