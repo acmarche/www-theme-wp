@@ -4,6 +4,8 @@
 namespace AcMarche\Theme\Inc;
 
 
+use AcMarche\Common\MarcheConst;
+
 class SettingsPage
 {
     const NAME_OPTION = 'react_activate';
@@ -39,7 +41,12 @@ class SettingsPage
 
     static function registerSetting()
     {
-        register_setting('my-cool-plugin-settings-group', self::NAME_OPTION);
+        $current = get_current_blog_id();
+        foreach (MarcheConst::SITES as $siteId => $slug) {
+            switch_to_blog($siteId);
+            register_setting('my-cool-plugin-settings-group', self::NAME_OPTION);
+        }
+        switch_to_blog($current);
     }
 
     static function renderPage()
