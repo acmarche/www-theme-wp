@@ -1,5 +1,6 @@
 import { fetchCategories } from './service/categories-service';
 import CategoryItem from './CategoryItem';
+import CategoryItemOption from './CategoryItemOption';
 
 const {
     useState,
@@ -48,12 +49,30 @@ function CategoryChildren( propos ) {
         />
     ) );
 
+    const options = categories.map( ( object, index ) => (
+        <CategoryItemOption
+            item={object}
+            key={object.id}
+            setItemActive={setItemActive}
+            setSelectedCategory={propos.setSelectedCategory}
+            setSelectedCategoryTitle={propos.setSelectedCategoryTitle}
+        />
+    ) );
+
     return (
-        <div className="overflow-hidden w-100 pt-48px col-6 px-0">
-            <ul className="object-tags">
-                {listItems}
-            </ul>
-        </div>
+        <>
+            <div className="d-lg-none pr-12px border border-dark-primary mt-48px">
+                <select name="categories" id="cat-select" className="fs-short-3 ff-semibold">
+                    <option value="0" selected>Tout</option>
+                    {options}
+                </select>
+            </div>
+            <div className="d-none d-lg-block overflow-hidden w-100 pt-48px col-6 px-0">
+                <ul className="object-tags">
+                    {listItems}
+                </ul>
+            </div>
+        </>
     );
 }
 

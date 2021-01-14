@@ -48,19 +48,21 @@ class AssetsLoad
 
     function marchebeLeaft()
     {
-        wp_enqueue_style(
-            'marchebe-leaflet',
-            'https://unpkg.com/leaflet@1.7.1/dist/leaflet.css',
-            array(),
-            wp_get_theme()->get('Version')
-        );
+        if ( ! is_category()) {
+            wp_enqueue_style(
+                'marchebe-leaflet',
+                'https://unpkg.com/leaflet@1.7.1/dist/leaflet.css',
+                array(),
+                wp_get_theme()->get('Version')
+            );
 
-        wp_enqueue_script(
-            'marchebe-leaflet-js',
-            'https://unpkg.com/leaflet@1.7.1/dist/leaflet.js',
-            array(),
-            wp_get_theme()->get('Version')
-        );
+            wp_enqueue_script(
+                'marchebe-leaflet-js',
+                'https://unpkg.com/leaflet@1.7.1/dist/leaflet.js',
+                array(),
+                wp_get_theme()->get('Version')
+            );
+        }
     }
 
 }

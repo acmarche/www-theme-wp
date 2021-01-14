@@ -17,7 +17,7 @@ function CategoryItem( propos ) {
                 onClick={( ( ) => handleClick( item.id, item.name ) )}
                 href="#"
             >
-                {item.name} {item.id}
+                {item.name}
             </a>
         </li>
     );
