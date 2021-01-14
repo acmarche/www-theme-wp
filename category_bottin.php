@@ -13,7 +13,6 @@ get_header();
 
 global $wp_query;
 
-$twig             = Twig::LoadTwig();
 $bottinRepository = new BottinRepository();
 
 $slug     = $wp_query->get(Router::PARAM_BOTTIN_CATEGORY, null);
@@ -60,7 +59,7 @@ array_map(
 );
 
 Twig::rendPage(
-    'category/category.html.twig',
+    'category/index.html.twig',
     [
         'title'       => $title,
         'description' => $description,
