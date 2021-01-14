@@ -1,23 +1,43 @@
-{% extends "article/show.html.twig" %}
+{% extends "article/base.html.twig" %}
+
+{% block url_back %}
+    /tourisme/agenda-des-manifestations/
+{% endblock %}
 
 {% block category %}
-    Agenda
+    Agenda des manifestations
+{% endblock %}
+
+{% block image %}
+    {% if image is not empty %}
+        <div class="bg-img w-100 h-220px position-relative h-lg-330px">
+            <i style="background-image: url('{{ image }}');"
+               class="position-absolute top-0 bottom-0 left-0 right-0 md-left-15px md-right-15px lg-left-0 lg-right-0"></i>
+        </div>
+    {% endif %}
 {% endblock %}
 
 {% block content %}
-{{ dump(event.description) }}
 
-{% if event.description %}
-    <p>{{ event.description|raw|nl2br }}</p>
-{% endif %}
+    <p>
+        {% if event.description1 | length > 0 %}
+            {{ event.description1[0]|raw|nl2br }}
+        {% endif %}
 
-<p>
-    {% for date in event.dates %}
-        {{ date.date_affichage }}
-    {% endfor %}
-</p>
+        {% if event.description | length > 0 %}
+            {{ event.description[0]|raw|nl2br }}
+        {% endif %}
+    </p>
 
-{% include 'agenda/show/_images.html.twig' %}
-{% include 'fiche/_carte.html.twig' %}<p>
+    <span class="mt-2"><strong>Date(s)</strong></span>
+
+    <ul class="list-group mt-2">
+        {% for date in event.dates %}
+            <li class="list-group-item">{{ date.date_affichage }}</li>
+        {% endfor %}
+    </ul>
+
+    {% include 'agenda/show/_images.html.twig' %}
+    {% include 'map/_carte.html.twig' %}
 
 {% endblock %}

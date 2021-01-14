@@ -13,7 +13,7 @@ $codeCgt = $wp_query->get(Router::PARAM_EVENT);
 
 $hadesRepository = new HadesRepository();
 $events          = $hadesRepository->getEvents();
-///$event = $pivotRepository->getDetailOffer($codeCgt);
+///$event = $hadesRepository->getDetailEvent($codeCgt);
 $event = null;
 foreach ($events as $element) {
     if ($codeCgt == $element['id']) {
@@ -22,24 +22,23 @@ foreach ($events as $element) {
     }
 }
 
-$logo   = null;
+$image  = null;
 $images = $event['images'];
 if (count($images) > 0) {
-    $logo = $images[0];
+    $image = $images[0];
 }
+dump($event);
 
-$url = get_site_url();
 Twig::rendPage(
     'agenda/show.html.twig',
     [
         'event'     => $event,
         'title'     => $event['nom'],
-        'url'       => $url,
-        'logo'      => $logo,
+        'image'     => $image,
         'tags'      => [],
         'images'    => $images,
-        'latitude'  => $event['latitude'],
-        'longitude' => $event['longitude'],
+        'latitude'  => $event['latitude'] ?? null,
+        'longitude' => $event['longitude'] ?? null,
     ]
 );
 get_footer();

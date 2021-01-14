@@ -1,9 +1,9 @@
-<div class="row">
-
-    {% for image in event.images %}
-        <div class="col-3">
-        <img src="{{ image }}" alt="">
-        </div>
-    {% endfor %}
-
-</div>
+{% if event.images | length > 1 %}
+    <div class="row">
+        {% for image in event.images %}
+            <div class="col-3">
+                <img src="{{ image }}" alt="">
+            </div>
+        {% endfor %}
+    </div>
+{% endif %}

@@ -4,6 +4,7 @@ namespace AcMarche\Theme\Inc;
 
 class Test
 {
+    /*
     function urls()
     {
         $urls = [
@@ -22,5 +23,5 @@ class Test
             'news_detail'              => 'https://new.marche.be/sante/focus/les-conseils-sante-en-12-tutos-11290/',
         ];
 
-    }
+    }*/
 }
