@@ -27,7 +27,6 @@ $images = $event['images'];
 if (count($images) > 0) {
     $image = $images[0];
 }
-dump($event);
 
 Twig::rendPage(
     'agenda/show.html.twig',

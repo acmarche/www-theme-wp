@@ -11,7 +11,7 @@ Twig::rendPage(
     [
         'title'   => 'Page non trouvée',
         'tags'    => [],
-        'content' => '',
+
     ]
 );
 get_footer();
