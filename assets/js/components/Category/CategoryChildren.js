@@ -10,12 +10,13 @@ const {
 function CategoryChildren( propos ) {
     const [ categories, setCategories ] = useState([]);
     const [ loading, setLoading ] = useState( false );
+    const categoryId = propos.catId;
 
     async function loadCategories() {
         setLoading( true );
         let response;
         try {
-            response = await fetchCategories( propos.siteSlug, propos.catId );
+            response = await fetchCategories( propos.siteSlug, categoryId );
             setCategories( response.data );
             setLoading( false );
         } catch ( e ) {
@@ -25,10 +26,10 @@ function CategoryChildren( propos ) {
     }
 
     useEffect( () => {
-        if ( 0 < propos.catId ) {
+        if ( 0 < categoryId ) {
             loadCategories();
         }
-    }, [ propos.catId ]);
+    }, [ categoryId ]);
 
     function setItemActive( idCat ) {
         categories.map( ( object ) => {
@@ -50,27 +51,20 @@ function CategoryChildren( propos ) {
     ) );
 
     function changeSelectedCategory( event ) {
-        let categoryId = event.target.getAttribute( 'data-category-id' );
-        let categoryTitle;
-        if ( null == categoryId ) {
-            categoryId = event.target.value;
-        }
-        // eslint-disable-next-line prefer-const
-        categoryTitle = event.target.getAttribute( 'data-category-name' );
-        console.log( categoryTitle );
-        setItemActive( categoryId );
-        propos.setSelectedCategory( categoryId );
-        propos.setSelectedCategoryTitle( categoryTitle );
-        document.title = categoryTitle;
+        const index = event.nativeEvent.target.selectedIndex;
+        const label = event.nativeEvent.target[index].text;
+        const categorySelectedId = event.target.value;
+
+        setItemActive( categorySelectedId );
+        propos.setSelectedCategory( categorySelectedId );
+        propos.setSelectedCategoryTitle( label );
+        document.title = label;
     }
 
     const options = categories.map( ( object ) => (
         <CategoryItemOption
             item={object}
             key={object.id}
-            setItemActive={setItemActive}
-            setSelectedCategory={propos.setSelectedCategory}
-            setSelectedCategoryTitle={propos.setSelectedCategoryTitle}
         />
     ) );
 
@@ -79,11 +73,10 @@ function CategoryChildren( propos ) {
             <div className="d-lg-none pr-12px border border-dark-primary mt-48px">
                 <select
                     name="categories"
+                    value={categoryId}
                     id="cat-select"
                     className="fs-short-3 ff-semibold"
-                    onChange={( e ) => {
-                        changeSelectedCategory( e );
-                    }}
+                    onChange={changeSelectedCategory}
                 >
                     {options}
                 </select>
