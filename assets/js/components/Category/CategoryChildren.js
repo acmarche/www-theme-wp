@@ -58,6 +58,7 @@ function CategoryChildren( propos ) {
         setItemActive( categorySelectedId );
         propos.setSelectedCategory( categorySelectedId );
         propos.setSelectedCategoryTitle( label );
+        propos.setSelectedCategoryTitle( label );
         document.title = label;
     }
 
@@ -74,7 +75,6 @@ function CategoryChildren( propos ) {
                 <select
                     name="categories"
                     value={categoryId}
-                    id="cat-select"
                     className="fs-short-3 ff-semibold"
                     onChange={changeSelectedCategory}
                 >
