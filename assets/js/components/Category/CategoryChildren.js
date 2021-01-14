@@ -39,7 +39,7 @@ function CategoryChildren( propos ) {
         });
     }
 
-    const listItems = categories.map( ( object, index ) => (
+    const listItems = categories.map( ( object ) => (
         <CategoryItem
             item={object}
             key={object.id}
@@ -49,7 +49,22 @@ function CategoryChildren( propos ) {
         />
     ) );
 
-    const options = categories.map( ( object, index ) => (
+    function changeSelectedCategory( event ) {
+        let categoryId = event.target.getAttribute( 'data-category-id' );
+        let categoryTitle;
+        if ( null == categoryId ) {
+            categoryId = event.target.value;
+        }
+        // eslint-disable-next-line prefer-const
+        categoryTitle = event.target.getAttribute( 'data-category-name' );
+        console.log( categoryTitle );
+        setItemActive( categoryId );
+        propos.setSelectedCategory( categoryId );
+        propos.setSelectedCategoryTitle( categoryTitle );
+        document.title = categoryTitle;
+    }
+
+    const options = categories.map( ( object ) => (
         <CategoryItemOption
             item={object}
             key={object.id}
@@ -67,7 +82,7 @@ function CategoryChildren( propos ) {
                     id="cat-select"
                     className="fs-short-3 ff-semibold"
                     onChange={( e ) => {
-                        propos.setSelectedCategory( e );
+                        changeSelectedCategory( e );
                     }}
                 >
                     {options}
