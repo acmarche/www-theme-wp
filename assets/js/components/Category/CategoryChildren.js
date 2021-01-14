@@ -62,7 +62,14 @@ function CategoryChildren( propos ) {
     return (
         <>
             <div className="d-lg-none pr-12px border border-dark-primary mt-48px">
-                <select name="categories" id="cat-select" className="fs-short-3 ff-semibold">
+                <select
+                    name="categories"
+                    id="cat-select"
+                    className="fs-short-3 ff-semibold"
+                    onChange={( e ) => {
+                        propos.setSelectedCategory( e );
+                    }}
+                >
                     <option value="0" selected>Tout</option>
                     {options}
                 </select>
