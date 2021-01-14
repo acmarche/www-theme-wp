@@ -1,5 +1,5 @@
 {% extends "article/base.html.twig" %}
 
 {% block content %}
-    <p>{{ post.post_content|raw }}</p>
+    <p>{{ post.post_content|raw|nl2br }}</p>
 {% endblock %}
