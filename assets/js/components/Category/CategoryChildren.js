@@ -69,6 +69,11 @@ function CategoryChildren( propos ) {
         />
     ) );
 
+    options.unshift( <CategoryItemOption
+        item={null}
+        key={0}
+    /> );
+
     return (
         <>
             <div className="d-lg-none pr-12px border border-dark-primary mt-48px">
@@ -78,7 +83,7 @@ function CategoryChildren( propos ) {
                     className="fs-short-3 ff-semibold"
                     onChange={changeSelectedCategory}
                 >
-                    {options}
+                    { options }
                 </select>
             </div>
             <div className="d-none d-lg-block overflow-hidden w-100 pt-48px col-6 px-0">
