@@ -1,73 +1,42 @@
-import Top from './Top';
-import Category from './Category';
-import Description from './Description';
-import Results from './Results';
+import CategoryChildren from './CategoryChildren';
+import PostResults from './PostResults';
+import CategoryTitle from './CategoryTitle';
 
 const {
     useState,
     useEffect
 } = wp.element;
 
-function App() {
-    const [ siteSlug, setSiteSlug ] = useState( '' ); //starting url request (HTML)
-    const [ mainCategoryId, setMainCategoryId ] = useState( 0 ); //narrow down request (HTML)
+function Category() {
+    const [ selectedCategory, setSelectedCategory ] = useState( 0 );
+    const [ selectedCategoryTitle, setSelectedCategoryTitle ] = useState( '' );
+    const name = 'app-category';
+
+    const mainCategory = document.getElementById( name )
+        .getAttribute( 'data-main-category-id' );
+    const siteSlug = document.getElementById( name )
+        .getAttribute( 'data-site-slug' );
+    const color = document.getElementById( name )
+        .getAttribute( 'data-color' );
+    const categoryTitle = document.getElementById( name )
+        .getAttribute( 'data-category-title' );
 
     useEffect( () => {
-        const adaptSiteSlug = ( tempSiteSlug ) => ( '/citoyen/' === tempSiteSlug ? '' : tempSiteSlug );
-        setSiteSlug(
-            adaptSiteSlug(
-                document.querySelector( '#app-category' )
-                    .getAttribute( 'data-site-url' )
-            )
-        );
-        setMainCategoryId(
-            document.querySelector( '#app-category' )
-                .getAttribute( 'data-main-category-id' )
-        );
+        setSelectedCategory( mainCategory );
+        setSelectedCategoryTitle( categoryTitle );
     }, []);
-
-    const [ categories, setCategories ] = useState([]);
-    const [ categoriesIds, setCategoriesIds ] = useState([]);
-    const [ selectedCategory, setSelectedCategory ] = useState( 0 );
-    const [ posts, setPosts ] = useState([]);
-    const [ filteredPosts, setFilteredPosts ] = useState([]);
-    const [
-        filteredCategoryDescription,
-        setFilteredCategoryDescription
-    ] = useState( '' );
 
     return (
         <>
-            <Top siteSlug={siteSlug} mainCategoryId={mainCategoryId}/>
-
-            <Category
+            <CategoryTitle title={selectedCategoryTitle} color={color}/>
+            <CategoryChildren
+                catId={mainCategory}
                 siteSlug={siteSlug}
-                mainCategoryId={mainCategoryId}
-                categories={categories}
-                setCategories={setCategories}
-                setCategoriesIds={setCategoriesIds}
                 setSelectedCategory={setSelectedCategory}
-            />
-
-            <Description
-                categories={categories}
-                selectedCategory={selectedCategory}
-                filteredCategoryDescription={filteredCategoryDescription}
-                setFilteredCategoryDescription={setFilteredCategoryDescription}
-            />
-
-            <Results
-                siteSlug={siteSlug}
-                mainCategoryId={mainCategoryId}
-                categoriesIds={categoriesIds}
-                posts={posts}
-                setPosts={setPosts}
-                selectedCategory={selectedCategory}
-                filteredPosts={filteredPosts}
-                setFilteredPosts={setFilteredPosts}
-            />
+                setSelectedCategoryTitle={setSelectedCategoryTitle} />
+            <PostResults catId={selectedCategory} siteSlug={siteSlug}/>
         </>
     );
 }
 
-export default App;
+export default Category;
