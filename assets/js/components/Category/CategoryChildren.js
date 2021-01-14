@@ -70,7 +70,6 @@ function CategoryChildren( propos ) {
                         propos.setSelectedCategory( e );
                     }}
                 >
-                    <option value="0" selected>Tout</option>
                     {options}
                 </select>
             </div>
