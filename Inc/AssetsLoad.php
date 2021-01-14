@@ -48,7 +48,7 @@ class AssetsLoad
 
     function marchebeLeaft()
     {
-        if ( ! is_category()) {
+        if ( ! is_category() && !is_search()) {
             wp_enqueue_style(
                 'marchebe-leaflet',
                 'https://unpkg.com/leaflet@1.7.1/dist/leaflet.css',
