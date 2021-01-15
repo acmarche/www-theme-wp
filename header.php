@@ -38,14 +38,14 @@ $data = $menu->getAllItems();
 
 if (is_front_page()) {
     Twig::rendPage(
-        'header/_top_bar_home.html.twig',
+        'header/_header_home.html.twig',
         [
             'data' => $data,
         ]
     );
 } else {
     Twig::rendPage(
-        'header/_top_bar.html.twig',
+        'header/_header.html.twig',
         [
             'data' => $data,
         ]
