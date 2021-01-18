@@ -23,10 +23,79 @@
                 {% include 'header/home/_subnav.html.twig' %}
             </div>
             <!--calendar-->
-           {% include 'header/inside/_menu_right.html.twig' %}
+            <!--calendar-->
+            <div class="calendar">
+
+                <!-- TODO : à brancher -->
+                <a href="#">
+                    <i class="icon_nav i-clock"></i>
+                    <span>Horaires-Contacts</span>
+                </a>
+            </div>
+
+            <!--more | TODO JF: à brancher-->
+            <div class="more">
+                <input type="checkbox" id="more" name="more"/>
+                <a href="#" for="more">
+                    <i class="icon_nav i-plus"></i>
+                </a>
+
+                <div class="bubble">
+                    <i class="graphicElement"></i>
+                    <div>
+                        <a href="#">E-Guichet</a>
+                        <a href="news.html">Actualités</a>
+                        <a href="events.html">Agenda</a>
+                    </div>
+                    <i class="graphicElement"></i>
+                </div>
+            </div>
+
+            <!--visible from extralarge-->
+            <!--e-ticket-->
+            <div class="eticket">
+
+                <!-- TODO : à brancher -->
+                <a href="#">
+                    <span>E-Guichet</span>
+                </a>
+            </div>
+            <!--news-->
+            <div class="news">
+                <a href="news.html">
+                    <span>Actualités</span>
+                </a>
+            </div>
+            <!--agenda-->
+            <div class="agenda">
+                <a href="events.html">
+                    <span>Agenda</span>
+                </a>
+            </div>
         </nav>
 
         <!-- social networks -->
-        {% include 'header/common/_social_networks.html.twig' %}
+        <div>
+
+            <!-- TODO : à brancher -->
+            <a href="#">
+                <i class="fab fa-facebook-f"></i>
+            </a>
+
+            <!-- TODO : à brancher -->
+            <a href="#">
+                <i class="fab fa-twitter"></i>
+            </a>
+
+            <!-- TODO : à brancher -->
+            <a href="#">
+                <i class="fab fa-instagram"></i>
+            </a>
+
+            <!-- TODO : à brancher -->
+            <a href="#">
+                <i class="fab fa-youtube"></i>
+            </a>
+        </div>
     </div>
 </header>

@@ -4,7 +4,6 @@ namespace AcMarche\Theme;
 
 use AcMarche\Common\Menu;
 use AcMarche\Common\Twig;
-
 ?>
     <!DOCTYPE html>
     <html lang="fr">
@@ -17,7 +16,6 @@ use AcMarche\Common\Twig;
             <?php
             wp_title('|', true, 'right');
             bloginfo('name');
-
             $site_description = get_bloginfo('description', 'display');
             if ($site_description && (is_home() || is_front_page())) {
                 echo " | $site_description";
