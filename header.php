@@ -26,7 +26,7 @@ use AcMarche\Common\Twig;
         <link rel="icon" type="image/png" href="<?php echo get_template_directory_uri() ?>/assets/tartine/rsc/favicon.png"/>
         <?php wp_head(); ?>
     </head>
-<body <?php body_class('bg-white'); ?>>
+<body class="bg-white">
     <?php
 wp_body_open();
 
