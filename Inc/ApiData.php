@@ -52,6 +52,9 @@ class ApiData
         //retrieves all posts and add the wp category ids to them
         $query = new WP_Query(['category__in' => $ids['wp']]);
         $posts = $query->get_posts();
+        foreach ($posts as $post) {
+            $post->link = get_permalink($post->ID);
+        }
         //combines formatted fiches (data) and posts
         $all = array_merge($data, $posts);
 
