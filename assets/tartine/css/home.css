@@ -8,12 +8,15 @@
 }*/
 @keyframes pulsar {
   0% {
-    opacity: 1; }
+    opacity: 1;
+  }
   50% {
-    opacity: 0; }
+    opacity: 0;
+  }
   100% {
-    opacity: 1; } }
-
+    opacity: 1;
+  }
+}
 /*@keyframes echo-active {
 	0% {
 		@include boxShadow(0 0 0 rgba(255, 136, 27, 0), 0 0 0 rgba(255, 136, 27, 0));
@@ -34,20 +37,23 @@
     -moz-transform: rotate(0);
     -ms-transform: rotate(0);
     -o-transform: rotate(0);
-    transform: rotate(0); }
+    transform: rotate(0);
+  }
   10% {
     -webkit-transform: rotate(-30deg);
     -moz-transform: rotate(-30deg);
     -ms-transform: rotate(-30deg);
     -o-transform: rotate(-30deg);
-    transform: rotate(-30deg); }
+    transform: rotate(-30deg);
+  }
   100% {
     -webkit-transform: rotate(360deg);
     -moz-transform: rotate(360deg);
     -ms-transform: rotate(360deg);
     -o-transform: rotate(360deg);
-    transform: rotate(360deg); } }
-
+    transform: rotate(360deg);
+  }
+}
 @keyframes roll-coordinated-reverse {
   0% {
     bottom: -2px;
@@ -56,13 +62,15 @@
     -moz-transform: rotate(0);
     -ms-transform: rotate(0);
     -o-transform: rotate(0);
-    transform: rotate(0); }
+    transform: rotate(0);
+  }
   10% {
     -webkit-transform: rotate(55deg);
     -moz-transform: rotate(55deg);
     -ms-transform: rotate(55deg);
     -o-transform: rotate(55deg);
-    transform: rotate(55deg); }
+    transform: rotate(55deg);
+  }
   100% {
     bottom: -2px;
     right: 0;
@@ -70,23 +78,25 @@
     -moz-transform: rotate(-1800deg);
     -ms-transform: rotate(-1800deg);
     -o-transform: rotate(-1800deg);
-    transform: rotate(-1800deg); } }
-
+    transform: rotate(-1800deg);
+  }
+}
 /* VARIABLES */
 /*- ONLY FOR THIS PROJECT -*/
 /*- END | ONLY FOR THIS PROJECT -*/
 /*56pt / 84px*/
 /*28pt / 37px*/
 /*22pt / 30px*/
+/*.75rem*/
+/*.688rem*/
 /* --------------------------- */
 /* MIXINS */
-/*@mixin highestBoxShadow() {
+/*
+@mixin highestBoxShadow() {
 	@include boxShadow(0 19px 38px rgba($darkestGrey, $alpha30), 0 15px 12px rgba($darkestGrey, .22));
 }
-
-@mixin higherBoxShadow() {
-	@include boxShadow(0 14px 28px rgba($darkestGrey, .25), 0 10px 10px rgba($darkestGrey, .22));
-}
+*/
+/*
 // (utliser pour les éléments qui ont un attribut de rotation)
 @mixin higherBoxShadow-45() {
 	@include boxShadow(14px 14px 28px rgba($darkestGrey, .25), 10px 10px 10px rgba($darkestGrey, .22));
@@ -115,189 +125,183 @@
 /*@mixin lowestBoxShadow-inset() {
 	@include boxInset(0 -1px 3px rgba($darkestGrey, .12), 0 -1px 2px rgba($darkestGrey, .24));
 }
-
-@mixin buttonInset() {
-	@include boxInset(-12px 0 33px rgba($darkCTA, $alpha0));
-}
-
-@mixin buttonInsetHover() {
-	@include boxInset(-12px 0 33px $darkCTA);
-}*/
+*/
 /* EXTENDS */
 /* HOME */
-/* line 5, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/home.scss */
 .bg-img-home {
   background-image: url(../rsc/img/bg_home.jpg);
   background-size: 375%;
-  background-position: 30% 55%; }
-
+  background-position: 30% 55%;
+}
 @media screen and (orientation: landscape) {
-  /* line 5, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/home.scss */
   .bg-img-home {
-    background-size: 325%; } }
-  @media screen and (orientation: landscape) and (min-width: 576px) {
-    /* line 5, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/home.scss */
-    .bg-img-home {
-      background-size: 300%; } }
-  @media screen and (orientation: landscape) and (min-width: 768px) {
-    /* line 5, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/home.scss */
-    .bg-img-home {
-      background-size: 200%; } }
-
+    background-size: 325%;
+  }
+}
+@media screen and (orientation: landscape) and (min-width: 576px) {
+  .bg-img-home {
+    background-size: 300%;
+  }
+}
+@media screen and (orientation: landscape) and (min-width: 768px) {
+  .bg-img-home {
+    background-size: 200%;
+  }
+}
 @media screen and (min-width: 768px) {
-  /* line 5, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/home.scss */
   .bg-img-home {
     background-size: 150%;
-    background-position: 30% 75%; } }
-
+    background-position: 30% 75%;
+  }
+}
 @media screen and (min-width: 992px) {
-  /* line 5, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/home.scss */
   .bg-img-home {
     background-size: cover;
-    background-position: bottom center; } }
-
+    background-position: bottom center;
+  }
+}
 @media screen and (min-width: 1200px) {
-  /* line 5, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/home.scss */
   .bg-img-home {
-    background-position: center; } }
-  /* line 37, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/home.scss */
-  .bg-img-home .searchHome > input[type="search"] {
-    width: 100%;
-    height: 100%;
-    left: 0; }
-    /* line 44, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/home.scss */
-    .bg-img-home .searchHome > input[type="search"] + button + .bubble {
-      width: auto;
-      top: -600px;
-      bottom: auto;
-      left: -24px;
-      right: -24px;
-      background-color: white;
-      opacity: 0;
-      z-index: 10;
-      -webkit-box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.125) !important;
-      -moz-box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.125) !important;
-      -ms-box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.125) !important;
-      -o-box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.125) !important;
-      box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.125) !important;
-      -webkit-transition: opacity 0.25s ease-in-out;
-      -moz-transition: opacity 0.25s ease-in-out;
-      -ms-transition: opacity 0.25s ease-in-out;
-      -o-transition: opacity 0.25s ease-in-out;
-      transition: opacity 0.25s ease-in-out; }
-      /* line 56, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/home.scss */
-      .bg-img-home .searchHome > input[type="search"] + button + .bubble .graphicElement {
-        bottom: auto;
-        right: auto;
-        opacity: 0;
-        -webkit-transition: all 0.25s ease-in-out;
-        -moz-transition: all 0.25s ease-in-out;
-        -ms-transition: all 0.25s ease-in-out;
-        -o-transition: all 0.25s ease-in-out;
-        transition: all 0.25s ease-in-out;
-        -webkit-transition-delay: 0.25s;
-        -moz-transition-delay: 0.25s;
-        -ms-transition-delay: 0.25s;
-        -o-transition-delay: 0.25s;
-        transition-delay: 0.25s; }
-        /* line 63, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/home.scss */
-        .bg-img-home .searchHome > input[type="search"] + button + .bubble .graphicElement:first-child {
-          width: 20px;
-          height: 20px;
-          top: 20px;
-          left: 48px;
-          -webkit-box-shadow: 0 -0.25rem 0.5rem rgba(0, 0, 0, 0.125) !important;
-          -moz-box-shadow: 0 -0.25rem 0.5rem rgba(0, 0, 0, 0.125) !important;
-          -ms-box-shadow: 0 -0.25rem 0.5rem rgba(0, 0, 0, 0.125) !important;
-          -o-box-shadow: 0 -0.25rem 0.5rem rgba(0, 0, 0, 0.125) !important;
-          box-shadow: 0 -0.25rem 0.5rem rgba(0, 0, 0, 0.125) !important; }
-        /* line 70, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/home.scss */
-        .bg-img-home .searchHome > input[type="search"] + button + .bubble .graphicElement:last-child {
-          width: 40px;
-          height: 20px;
-          top: 30px;
-          left: 38px;
-          -webkit-transform: none;
-          -moz-transform: none;
-          -ms-transform: none;
-          -o-transform: none;
-          transform: none; }
-      /* line 79, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/home.scss */
-      .bg-img-home .searchHome > input[type="search"] + button + .bubble h3 {
-        font-size: 1.25rem;
-        padding: 16px 24px;
-        color: #487f89;
-        text-align: left;
-        position: relative;
-        z-index: 30; }
-      /* line 88, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/home.scss */
-      .bg-img-home .searchHome > input[type="search"] + button + .bubble ul {
-        display: flex;
-        flex-direction: column;
-        padding: 0 0 12px;
-        text-align: left; }
-
+    background-position: center;
+  }
+}
+.bg-img-home .searchHome > input[type=search] {
+  width: 100%;
+  height: 100%;
+  left: 0;
+}
+.bg-img-home .searchHome > input[type=search] + button + .bubble {
+  width: auto;
+  top: -600px;
+  bottom: auto;
+  left: -24px;
+  right: -24px;
+  background-color: white;
+  opacity: 0;
+  z-index: 10;
+  -webkit-box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.125) !important;
+  -moz-box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.125) !important;
+  -ms-box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.125) !important;
+  -o-box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.125) !important;
+  box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.125) !important;
+  -webkit-transition: opacity 0.25s ease-in-out;
+  -moz-transition: opacity 0.25s ease-in-out;
+  -ms-transition: opacity 0.25s ease-in-out;
+  -o-transition: opacity 0.25s ease-in-out;
+  transition: opacity 0.25s ease-in-out;
+}
+.bg-img-home .searchHome > input[type=search] + button + .bubble .graphicElement {
+  bottom: auto;
+  right: auto;
+  opacity: 0;
+  -webkit-transition: all 0.25s ease-in-out;
+  -moz-transition: all 0.25s ease-in-out;
+  -ms-transition: all 0.25s ease-in-out;
+  -o-transition: all 0.25s ease-in-out;
+  transition: all 0.25s ease-in-out;
+  -webkit-transition-delay: 0.25s;
+  -moz-transition-delay: 0.25s;
+  -ms-transition-delay: 0.25s;
+  -o-transition-delay: 0.25s;
+  transition-delay: 0.25s;
+}
+.bg-img-home .searchHome > input[type=search] + button + .bubble .graphicElement:first-child {
+  width: 20px;
+  height: 20px;
+  top: 20px;
+  left: 48px;
+  -webkit-box-shadow: 0 -0.25rem 0.5rem rgba(0, 0, 0, 0.125) !important;
+  -moz-box-shadow: 0 -0.25rem 0.5rem rgba(0, 0, 0, 0.125) !important;
+  -ms-box-shadow: 0 -0.25rem 0.5rem rgba(0, 0, 0, 0.125) !important;
+  -o-box-shadow: 0 -0.25rem 0.5rem rgba(0, 0, 0, 0.125) !important;
+  box-shadow: 0 -0.25rem 0.5rem rgba(0, 0, 0, 0.125) !important;
+}
+.bg-img-home .searchHome > input[type=search] + button + .bubble .graphicElement:last-child {
+  width: 40px;
+  height: 20px;
+  top: 30px;
+  left: 38px;
+  -webkit-transform: none;
+  -moz-transform: none;
+  -ms-transform: none;
+  -o-transform: none;
+  transform: none;
+}
+.bg-img-home .searchHome > input[type=search] + button + .bubble h3 {
+  font-size: 1.25rem;
+  padding: 16px 24px;
+  color: #487f89;
+  text-align: left;
+  position: relative;
+  z-index: 30;
+}
+.bg-img-home .searchHome > input[type=search] + button + .bubble ul {
+  display: flex;
+  flex-direction: column;
+  padding: 0 0 12px;
+  text-align: left;
+}
 @media screen and (orientation: landscape) {
-  /* line 88, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/home.scss */
-  .bg-img-home .searchHome > input[type="search"] + button + .bubble ul {
+  .bg-img-home .searchHome > input[type=search] + button + .bubble ul {
     flex-wrap: wrap;
-    flex-direction: row; } }
-        /* line 101, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/home.scss */
-        .bg-img-home .searchHome > input[type="search"] + button + .bubble ul li {
-          display: flex;
-          position: relative;
-          z-index: 30; }
-          /* line 106, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/home.scss */
-          .bg-img-home .searchHome > input[type="search"] + button + .bubble ul li a {
-            display: flex;
-            font-family: 'montserratsemibold';
-            font-size: 0.688rem;
-            padding: 8px 24px;
-            color: #487f89; }
-            /* line 113, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/home.scss */
-            .bg-img-home .searchHome > input[type="search"] + button + .bubble ul li a i {
-              width: 20px;
-              height: 20px;
-              background-size: contain;
-              margin-right: 12px; }
-    /* line 127, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/home.scss */
-    .bg-img-home .searchHome > input[type="search"]:focus + button + .bubble {
-      top: 50px;
-      opacity: 1;
-      -webkit-transition: opacity 0.25s ease-in-out;
-      -moz-transition: opacity 0.25s ease-in-out;
-      -ms-transition: opacity 0.25s ease-in-out;
-      -o-transition: opacity 0.25s ease-in-out;
-      transition: opacity 0.25s ease-in-out; }
-      /* line 132, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/home.scss */
-      .bg-img-home .searchHome > input[type="search"]:focus + button + .bubble .graphicElement {
-        opacity: 1;
-        -webkit-transition: all 0.25s ease-in-out;
-        -moz-transition: all 0.25s ease-in-out;
-        -ms-transition: all 0.25s ease-in-out;
-        -o-transition: all 0.25s ease-in-out;
-        transition: all 0.25s ease-in-out;
-        -webkit-transition-delay: 0.25s;
-        -moz-transition-delay: 0.25s;
-        -ms-transition-delay: 0.25s;
-        -o-transition-delay: 0.25s;
-        transition-delay: 0.25s; }
-        /* line 137, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/home.scss */
-        .bg-img-home .searchHome > input[type="search"]:focus + button + .bubble .graphicElement:first-child {
-          top: -10px; }
-        /* line 140, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/home.scss */
-        .bg-img-home .searchHome > input[type="search"]:focus + button + .bubble .graphicElement:last-child {
-          top: 0; }
+    flex-direction: row;
+  }
+}
+.bg-img-home .searchHome > input[type=search] + button + .bubble ul li {
+  display: flex;
+  position: relative;
+  z-index: 30;
+}
+.bg-img-home .searchHome > input[type=search] + button + .bubble ul li a {
+  display: flex;
+  font-family: "montserratsemibold";
+  font-size: 0.75rem;
+  padding: 8px 24px;
+  color: #487f89;
+}
+.bg-img-home .searchHome > input[type=search] + button + .bubble ul li a i {
+  width: 20px;
+  height: 20px;
+  background-size: contain;
+  margin-right: 12px;
+}
+.bg-img-home .searchHome > input[type=search]:focus + button + .bubble {
+  top: 50px;
+  opacity: 1;
+  -webkit-transition: opacity 0.25s ease-in-out;
+  -moz-transition: opacity 0.25s ease-in-out;
+  -ms-transition: opacity 0.25s ease-in-out;
+  -o-transition: opacity 0.25s ease-in-out;
+  transition: opacity 0.25s ease-in-out;
+}
+.bg-img-home .searchHome > input[type=search]:focus + button + .bubble .graphicElement {
+  opacity: 1;
+  -webkit-transition: all 0.25s ease-in-out;
+  -moz-transition: all 0.25s ease-in-out;
+  -ms-transition: all 0.25s ease-in-out;
+  -o-transition: all 0.25s ease-in-out;
+  transition: all 0.25s ease-in-out;
+  -webkit-transition-delay: 0.25s;
+  -moz-transition-delay: 0.25s;
+  -ms-transition-delay: 0.25s;
+  -o-transition-delay: 0.25s;
+  transition-delay: 0.25s;
+}
+.bg-img-home .searchHome > input[type=search]:focus + button + .bubble .graphicElement:first-child {
+  top: -10px;
+}
+.bg-img-home .searchHome > input[type=search]:focus + button + .bubble .graphicElement:last-child {
+  top: 0;
+}
 
-/* line 150, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/home.scss */
 .bg-gradient-home {
   background: -webkit-linear-gradient(90deg, rgba(1, 31, 22, 0.38), rgba(0, 75, 142, 0.38)) !important;
   background: -moz-linear-gradient(90deg, rgba(1, 31, 22, 0.38), rgba(0, 75, 142, 0.38)) !important;
   background: -ms-linear-gradient(90deg, rgba(1, 31, 22, 0.38), rgba(0, 75, 142, 0.38)) !important;
   background: -o-linear-gradient(90deg, rgba(1, 31, 22, 0.38), rgba(0, 75, 142, 0.38)) !important;
-  background: linear-gradient(90deg, rgba(1, 31, 22, 0.38), rgba(0, 75, 142, 0.38)) !important; }
+  background: linear-gradient(90deg, rgba(1, 31, 22, 0.38), rgba(0, 75, 142, 0.38)) !important;
+}
 
-/* line 154, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/home.scss */
 .curve-svg-home {
   position: absolute;
   top: -28px;
@@ -311,78 +315,84 @@
   -moz-box-shadow: 0 -3px 0 white inset !important;
   -ms-box-shadow: 0 -3px 0 white inset !important;
   -o-box-shadow: 0 -3px 0 white inset !important;
-  box-shadow: 0 -3px 0 white inset !important; }
-
+  box-shadow: 0 -3px 0 white inset !important;
+}
 @media screen and (orientation: landscape) {
-  /* line 154, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/home.scss */
   .curve-svg-home {
-    top: -42px; } }
-  @media screen and (orientation: landscape) and (min-width: 576px) {
-    /* line 154, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/home.scss */
-    .curve-svg-home {
-      top: -55px;
-      height: 77px; } }
-  @media screen and (orientation: landscape) and (min-width: 768px) {
-    /* line 154, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/home.scss */
-    .curve-svg-home {
-      left: 15px;
-      right: 15px; } }
-  @media screen and (orientation: landscape) and (min-width: 992px) {
-    /* line 154, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/home.scss */
-    .curve-svg-home {
-      top: -88px;
-      height: 110px; } }
-  @media screen and (orientation: landscape) and (min-width: 1200px) {
-    /* line 154, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/home.scss */
-    .curve-svg-home {
-      top: -130px;
-      height: 140px; } }
-  @media screen and (orientation: landscape) and (min-width: 1440px) {
-    /* line 154, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/home.scss */
-    .curve-svg-home {
-      height: 200px; } }
-
-@media screen and (orientation: portrait) and (min-width: 768px) {
-  /* line 154, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/home.scss */
+    top: -42px;
+  }
+}
+@media screen and (orientation: landscape) and (min-width: 576px) {
   .curve-svg-home {
     top: -55px;
-    height: 77px; } }
-
-@media screen and (orientation: portrait) and (min-width: 992px) {
-  /* line 154, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/home.scss */
+    height: 77px;
+  }
+}
+@media screen and (orientation: landscape) and (min-width: 768px) {
+  .curve-svg-home {
+    left: 15px;
+    right: 15px;
+  }
+}
+@media screen and (orientation: landscape) and (min-width: 992px) {
   .curve-svg-home {
     top: -88px;
     height: 110px;
-    background-position: center; } }
+  }
+}
+@media screen and (orientation: landscape) and (min-width: 1200px) {
+  .curve-svg-home {
+    top: -130px;
+    height: 140px;
+  }
+}
+@media screen and (orientation: landscape) and (min-width: 1440px) {
+  .curve-svg-home {
+    height: 200px;
+  }
+}
+@media screen and (orientation: portrait) and (min-width: 768px) {
+  .curve-svg-home {
+    top: -55px;
+    height: 77px;
+  }
+}
+@media screen and (orientation: portrait) and (min-width: 992px) {
+  .curve-svg-home {
+    top: -88px;
+    height: 110px;
+    background-position: center;
+  }
+}
 
-/* line 207, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/home.scss */
 .bg-img-widgets-1 {
   background-image: url(../rsc/img/img_widget01.jpg);
   background-size: cover;
-  background-position: center center; }
+  background-position: center center;
+}
 
-/* line 212, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/home.scss */
 .bg-img-widgets-2 {
   background-image: url(../rsc/img/img_widget02.jpg);
   background-size: cover;
-  background-position: center center; }
+  background-position: center center;
+}
 
-/* line 217, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/home.scss */
 .bg-img-widgets-3 {
   background-image: url(../rsc/img/img_widget03.jpg);
   background-size: cover;
-  background-position: center center; }
+  background-position: center center;
+}
 
-/* line 222, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/home.scss */
 .bg-img-widgets-4 {
   background-image: url(../rsc/img/img_widget04.jpg);
   background-size: cover;
-  background-position: center center; }
+  background-position: center center;
+}
 
-/* line 227, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/home.scss */
 .bg-img-widgets-5 {
   background-image: url(../rsc/img/img_widget05.jpg);
   background-size: cover;
-  background-position: center center; }
+  background-position: center center;
+}
 
 /*# sourceMappingURL=home.css.map */

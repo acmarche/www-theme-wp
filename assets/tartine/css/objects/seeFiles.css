@@ -1,58 +1,59 @@
 @charset "UTF-8";
+/*@mixin boxShadow($dataFrom, $dataTo) {
+	-webkit-box-shadow: $dataFrom, $dataTo !important;
+	-moz-box-shadow: $dataFrom, $dataTo !important;
+	-ms-box-shadow: $dataFrom, $dataTo !important;
+	-o-box-shadow: $dataFrom, $dataTo !important;
+	box-shadow: $dataFrom, $dataTo !important;
+}*/
 @keyframes pulsar {
   0% {
-    opacity: 1; }
+    opacity: 1;
+  }
   50% {
-    opacity: 0; }
+    opacity: 0;
+  }
   100% {
-    opacity: 1; } }
-
-@keyframes echo-active {
-  0% {
-    -webkit-box-shadow: 0 0 0 rgba(255, 136, 27, 0), 0 0 0 rgba(255, 136, 27, 0) !important;
-    -moz-box-shadow: 0 0 0 rgba(255, 136, 27, 0), 0 0 0 rgba(255, 136, 27, 0) !important;
-    -ms-box-shadow: 0 0 0 rgba(255, 136, 27, 0), 0 0 0 rgba(255, 136, 27, 0) !important;
-    -o-box-shadow: 0 0 0 rgba(255, 136, 27, 0), 0 0 0 rgba(255, 136, 27, 0) !important;
-    box-shadow: 0 0 0 rgba(255, 136, 27, 0), 0 0 0 rgba(255, 136, 27, 0) !important; }
-  25% {
-    -webkit-box-shadow: 0 0 11px #ff881b, 0 0 8px rgba(255, 136, 27, 0.5) !important;
-    -moz-box-shadow: 0 0 11px #ff881b, 0 0 8px rgba(255, 136, 27, 0.5) !important;
-    -ms-box-shadow: 0 0 11px #ff881b, 0 0 8px rgba(255, 136, 27, 0.5) !important;
-    -o-box-shadow: 0 0 11px #ff881b, 0 0 8px rgba(255, 136, 27, 0.5) !important;
-    box-shadow: 0 0 11px #ff881b, 0 0 8px rgba(255, 136, 27, 0.5) !important; }
-  50% {
-    -webkit-box-shadow: 0 0 22px rgba(255, 136, 27, 0.5), 0 0 11px rgba(255, 136, 27, 0.3) !important;
-    -moz-box-shadow: 0 0 22px rgba(255, 136, 27, 0.5), 0 0 11px rgba(255, 136, 27, 0.3) !important;
-    -ms-box-shadow: 0 0 22px rgba(255, 136, 27, 0.5), 0 0 11px rgba(255, 136, 27, 0.3) !important;
-    -o-box-shadow: 0 0 22px rgba(255, 136, 27, 0.5), 0 0 11px rgba(255, 136, 27, 0.3) !important;
-    box-shadow: 0 0 22px rgba(255, 136, 27, 0.5), 0 0 11px rgba(255, 136, 27, 0.3) !important; }
-  100% {
-    -webkit-box-shadow: 0 0 99px rgba(255, 136, 27, 0), 0 0 55px rgba(255, 136, 27, 0) !important;
-    -moz-box-shadow: 0 0 99px rgba(255, 136, 27, 0), 0 0 55px rgba(255, 136, 27, 0) !important;
-    -ms-box-shadow: 0 0 99px rgba(255, 136, 27, 0), 0 0 55px rgba(255, 136, 27, 0) !important;
-    -o-box-shadow: 0 0 99px rgba(255, 136, 27, 0), 0 0 55px rgba(255, 136, 27, 0) !important;
-    box-shadow: 0 0 99px rgba(255, 136, 27, 0), 0 0 55px rgba(255, 136, 27, 0) !important; } }
-
+    opacity: 1;
+  }
+}
+/*@keyframes echo-active {
+	0% {
+		@include boxShadow(0 0 0 rgba(255, 136, 27, 0), 0 0 0 rgba(255, 136, 27, 0));
+	}
+	25% {
+		@include boxShadow(0 0 11px rgba(255, 136, 27, 1), 0 0 8px rgba(255, 136, 27, .5));
+	}
+	50% {
+		@include boxShadow(0 0 22px rgba(255, 136, 27, .5), 0 0 11px rgba(255, 136, 27, .3));
+	}
+	100% {
+		@include boxShadow(0 0 99px rgba(255, 136, 27, 0), 0 0 55px rgba(255, 136, 27, 0));
+	}
+}*/
 @keyframes roll {
   0% {
     -webkit-transform: rotate(0);
     -moz-transform: rotate(0);
     -ms-transform: rotate(0);
     -o-transform: rotate(0);
-    transform: rotate(0); }
+    transform: rotate(0);
+  }
   10% {
     -webkit-transform: rotate(-30deg);
     -moz-transform: rotate(-30deg);
     -ms-transform: rotate(-30deg);
     -o-transform: rotate(-30deg);
-    transform: rotate(-30deg); }
+    transform: rotate(-30deg);
+  }
   100% {
     -webkit-transform: rotate(360deg);
     -moz-transform: rotate(360deg);
     -ms-transform: rotate(360deg);
     -o-transform: rotate(360deg);
-    transform: rotate(360deg); } }
-
+    transform: rotate(360deg);
+  }
+}
 @keyframes roll-coordinated-reverse {
   0% {
     bottom: -2px;
@@ -61,13 +62,15 @@
     -moz-transform: rotate(0);
     -ms-transform: rotate(0);
     -o-transform: rotate(0);
-    transform: rotate(0); }
+    transform: rotate(0);
+  }
   10% {
     -webkit-transform: rotate(55deg);
     -moz-transform: rotate(55deg);
     -ms-transform: rotate(55deg);
     -o-transform: rotate(55deg);
-    transform: rotate(55deg); }
+    transform: rotate(55deg);
+  }
   100% {
     bottom: -2px;
     right: 0;
@@ -75,14 +78,56 @@
     -moz-transform: rotate(-1800deg);
     -ms-transform: rotate(-1800deg);
     -o-transform: rotate(-1800deg);
-    transform: rotate(-1800deg); } }
-
+    transform: rotate(-1800deg);
+  }
+}
 /* VARIABLES */
+/*- ONLY FOR THIS PROJECT -*/
+/*- END | ONLY FOR THIS PROJECT -*/
+/*56pt / 84px*/
+/*28pt / 37px*/
+/*22pt / 30px*/
+/*.75rem*/
+/*.688rem*/
 /* --------------------------- */
 /* MIXINS */
+/*
+@mixin highestBoxShadow() {
+	@include boxShadow(0 19px 38px rgba($darkestGrey, $alpha30), 0 15px 12px rgba($darkestGrey, .22));
+}
+*/
+/*
+// (utliser pour les éléments qui ont un attribut de rotation)
+@mixin higherBoxShadow-45() {
+	@include boxShadow(14px 14px 28px rgba($darkestGrey, .25), 10px 10px 10px rgba($darkestGrey, .22));
+}
+@mixin higherBoxShadow-315() {
+	@include boxShadow(-14px 14px 28px rgba($darkestGrey, .25), -10px 10px 10px rgba($darkestGrey, .22));
+}*/
+/*@mixin highBoxShadow() {
+	@include boxShadow(0 1rem 3rem rgba(0, 0, 0, .175), 0 1rem 3rem rgba(0, 0, 0, .175));
+}
+
+@mixin basicBoxShadow() {
+	@include boxShadow(0 .5rem 1rem rgba(0, 0, 0, .15), 0 .5rem 1rem rgba(0, 0, 0, .15));
+}
+
+@mixin lowestBoxShadow() {
+	@include boxShadow(0 .125rem .25rem rgba(0, 0, 0, .075), 0 .125rem .25rem rgba(0, 0, 0, .075));
+}
+// (utliser pour les éléments qui ont un attribut de rotation)
+@mixin lowestBoxShadow-45() {
+	@include boxShadow(.125rem .125rem .25rem rgba(0, 0, 0, .075), .125rem .125rem .25rem rgba(0, 0, 0, .075));
+}
+@mixin lowestBoxShadow-315() {
+	@include boxShadow(-.125rem .125rem .25rem rgba(0, 0, 0, .075), -.125rem .125rem .25rem rgba(0, 0, 0, .075));
+}*/
+/*@mixin lowestBoxShadow-inset() {
+	@include boxInset(0 -1px 3px rgba($darkestGrey, .12), 0 -1px 2px rgba($darkestGrey, .24));
+}
+*/
 /* EXTENDS */
 /* SEE FILE */
-/* line 5, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/•interne/charte_graphique/site/04integration/css/objects/seeFiles.scss */
 .seeFile {
   display: inline-block;
   width: auto;
@@ -92,86 +137,82 @@
   font-size: 0;
   border-radius: 4px;
   background-color: white;
-  -webkit-box-shadow: 0 1px 3px rgba(22, 22, 32, 0.12), 0 1px 2px rgba(22, 22, 32, 0.24) !important;
-  -moz-box-shadow: 0 1px 3px rgba(22, 22, 32, 0.12), 0 1px 2px rgba(22, 22, 32, 0.24) !important;
-  -ms-box-shadow: 0 1px 3px rgba(22, 22, 32, 0.12), 0 1px 2px rgba(22, 22, 32, 0.24) !important;
-  -o-box-shadow: 0 1px 3px rgba(22, 22, 32, 0.12), 0 1px 2px rgba(22, 22, 32, 0.24) !important;
-  box-shadow: 0 1px 3px rgba(22, 22, 32, 0.12), 0 1px 2px rgba(22, 22, 32, 0.24) !important;
+  -webkit-box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
+  -moz-box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
+  -ms-box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
+  -o-box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
   -webkit-transition: box-shadow 0.25s ease-in-out;
   -moz-transition: box-shadow 0.25s ease-in-out;
   -ms-transition: box-shadow 0.25s ease-in-out;
   -o-transition: box-shadow 0.25s ease-in-out;
-  transition: box-shadow 0.25s ease-in-out; }
-  /* line 17, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/•interne/charte_graphique/site/04integration/css/objects/seeFiles.scss */
-  .seeFile a {
-    display: flex;
-    align-items: center; }
-    /* line 21, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/•interne/charte_graphique/site/04integration/css/objects/seeFiles.scss */
-    .seeFile a p {
-      padding: 6px 11px;
-      color: #1493de; }
-      /* line 25, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/•interne/charte_graphique/site/04integration/css/objects/seeFiles.scss */
-      .seeFile a p i {
-        padding: 0 6px 0 0;
-        color: #1493de; }
-    /* line 30, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/•interne/charte_graphique/site/04integration/css/objects/seeFiles.scss */
-    .seeFile a .CTA {
-      width: 33px;
-      height: 33px;
-      padding: 9px 0;
-      text-align: center;
-      vertical-align: middle;
-      font-size: 1rem;
-      background-color: #1493de;
-      color: white;
-      -webkit-box-shadow: -12px 0 33px rgba(0, 64, 191, 0) inset !important;
-      -moz-box-shadow: -12px 0 33px rgba(0, 64, 191, 0) inset !important;
-      -ms-box-shadow: -12px 0 33px rgba(0, 64, 191, 0) inset !important;
-      -o-box-shadow: -12px 0 33px rgba(0, 64, 191, 0) inset !important;
-      box-shadow: -12px 0 33px rgba(0, 64, 191, 0) inset !important;
-      -webkit-transition: all 0.25s ease-in-out;
-      -moz-transition: all 0.25s ease-in-out;
-      -ms-transition: all 0.25s ease-in-out;
-      -o-transition: all 0.25s ease-in-out;
-      transition: all 0.25s ease-in-out; }
-  /* line 44, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/•interne/charte_graphique/site/04integration/css/objects/seeFiles.scss */
-  .seeFile:hover {
-    -webkit-box-shadow: 0 14px 28px rgba(22, 22, 32, 0.25), 0 10px 10px rgba(22, 22, 32, 0.22) !important;
-    -moz-box-shadow: 0 14px 28px rgba(22, 22, 32, 0.25), 0 10px 10px rgba(22, 22, 32, 0.22) !important;
-    -ms-box-shadow: 0 14px 28px rgba(22, 22, 32, 0.25), 0 10px 10px rgba(22, 22, 32, 0.22) !important;
-    -o-box-shadow: 0 14px 28px rgba(22, 22, 32, 0.25), 0 10px 10px rgba(22, 22, 32, 0.22) !important;
-    box-shadow: 0 14px 28px rgba(22, 22, 32, 0.25), 0 10px 10px rgba(22, 22, 32, 0.22) !important;
-    -webkit-transition: box-shadow 0.25s ease-in-out;
-    -moz-transition: box-shadow 0.25s ease-in-out;
-    -ms-transition: box-shadow 0.25s ease-in-out;
-    -o-transition: box-shadow 0.25s ease-in-out;
-    transition: box-shadow 0.25s ease-in-out; }
-    /* line 49, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/•interne/charte_graphique/site/04integration/css/objects/seeFiles.scss */
-    .seeFile:hover a .CTA {
-      background-color: #29eaff;
-      -webkit-box-shadow: -12px 0 33px #0040bf inset !important;
-      -moz-box-shadow: -12px 0 33px #0040bf inset !important;
-      -ms-box-shadow: -12px 0 33px #0040bf inset !important;
-      -o-box-shadow: -12px 0 33px #0040bf inset !important;
-      box-shadow: -12px 0 33px #0040bf inset !important;
-      -webkit-transition: all 0.25s ease-in-out;
-      -moz-transition: all 0.25s ease-in-out;
-      -ms-transition: all 0.25s ease-in-out;
-      -o-transition: all 0.25s ease-in-out;
-      transition: all 0.25s ease-in-out; }
+  transition: box-shadow 0.25s ease-in-out;
+}
+.seeFile a {
+  display: flex;
+  align-items: center;
+}
+.seeFile a p {
+  padding: 6px 11px;
+  color: #4ae0c7;
+}
+.seeFile a p i {
+  padding: 0 6px 0 0;
+  color: #4ae0c7;
+}
+.seeFile a .CTA {
+  width: 33px;
+  height: 33px;
+  padding: 9px 0;
+  text-align: center;
+  vertical-align: middle;
+  font-size: 1rem;
+  background-color: #4ae0c7;
+  color: white;
+  -webkit-box-shadow: -12px 0 33px rgba(72, 127, 137, 0) inset !important;
+  -moz-box-shadow: -12px 0 33px rgba(72, 127, 137, 0) inset !important;
+  -ms-box-shadow: -12px 0 33px rgba(72, 127, 137, 0) inset !important;
+  -o-box-shadow: -12px 0 33px rgba(72, 127, 137, 0) inset !important;
+  box-shadow: -12px 0 33px rgba(72, 127, 137, 0) inset !important;
+  -webkit-transition: all 0.25s ease-in-out;
+  -moz-transition: all 0.25s ease-in-out;
+  -ms-transition: all 0.25s ease-in-out;
+  -o-transition: all 0.25s ease-in-out;
+  transition: all 0.25s ease-in-out;
+}
+.seeFile:hover {
+  -webkit-transition: box-shadow 0.25s ease-in-out;
+  -moz-transition: box-shadow 0.25s ease-in-out;
+  -ms-transition: box-shadow 0.25s ease-in-out;
+  -o-transition: box-shadow 0.25s ease-in-out;
+  transition: box-shadow 0.25s ease-in-out;
+}
+.seeFile:hover a .CTA {
+  background-color: #7dbef5;
+  -webkit-box-shadow: -12px 0 33px #487f89 inset !important;
+  -moz-box-shadow: -12px 0 33px #487f89 inset !important;
+  -ms-box-shadow: -12px 0 33px #487f89 inset !important;
+  -o-box-shadow: -12px 0 33px #487f89 inset !important;
+  box-shadow: -12px 0 33px #487f89 inset !important;
+  -webkit-transition: all 0.25s ease-in-out;
+  -moz-transition: all 0.25s ease-in-out;
+  -ms-transition: all 0.25s ease-in-out;
+  -o-transition: all 0.25s ease-in-out;
+  transition: all 0.25s ease-in-out;
+}
 
 /* -------------- */
-/* line 64, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/•interne/charte_graphique/site/04integration/css/objects/seeFiles.scss */
 .documentStep .seeFile,
 .externalStep .seeFile {
-  margin: 0; }
-  /* line 68, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/•interne/charte_graphique/site/04integration/css/objects/seeFiles.scss */
-  .documentStep .seeFile a p,
-  .externalStep .seeFile a p {
-    padding: 6px 11px; }
-    /* line 71, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/•interne/charte_graphique/site/04integration/css/objects/seeFiles.scss */
-    .documentStep .seeFile a p i,
-    .externalStep .seeFile a p i {
-      padding: 0 6px 0 0; }
+  margin: 0;
+}
+.documentStep .seeFile a p,
+.externalStep .seeFile a p {
+  padding: 6px 11px;
+}
+.documentStep .seeFile a p i,
+.externalStep .seeFile a p i {
+  padding: 0 6px 0 0;
+}
 
 /*# sourceMappingURL=seeFiles.css.map */
