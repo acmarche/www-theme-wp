@@ -9,6 +9,7 @@ class AssetsLoad
         add_action('wp_enqueue_scripts', [$this, 'marchebeScripts']);
         //todo set condition
         add_action('wp_enqueue_scripts', [$this, 'marchebeLeaft']);
+        add_action('wp_enqueue_scripts', [$this, 'readSpeaker']);
     }
 
     /**
@@ -48,7 +49,7 @@ class AssetsLoad
 
     function marchebeLeaft()
     {
-        if ( ! is_category() && !is_search() && !is_front_page()) {
+        if ( ! is_category() && ! is_search() && ! is_front_page()) {
             wp_enqueue_style(
                 'marchebe-leaflet',
                 'https://unpkg.com/leaflet@1.7.1/dist/leaflet.css',
@@ -59,6 +60,18 @@ class AssetsLoad
             wp_enqueue_script(
                 'marchebe-leaflet-js',
                 'https://unpkg.com/leaflet@1.7.1/dist/leaflet.js',
+                array(),
+                wp_get_theme()->get('Version')
+            );
+        }
+    }
+
+    function readSpeaker()
+    {
+        if (is_single()) {
+            wp_enqueue_script(
+                'marchebe-readspeaker-js',
+                '//cdn1.readspeaker.com/script/11982/webReader/webReader.js?pids=wr',
                 array(),
                 wp_get_theme()->get('Version')
             );

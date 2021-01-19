@@ -48,9 +48,12 @@
                         <span class="less">Réduire</span>
                     </div>
                     <div for="text-dyn">
+                        {% include 'article/_readspeaker.html.twig' %}
+                        <div id="reading">
                         {% block content %}
                             <p></p>
                         {% endblock %}
+                        </div>
                     </div>
                 </div>
 
