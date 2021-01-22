@@ -19,6 +19,10 @@
         <!--results-->
         <noscript>
             Activer javascript
+            <!--search-->
+            {% include 'search/_form.html.twig' %}
+            <!--searched-->
+            <span class="pt-24px d-block text-center ff-semibold text-dark-primary fs-short-2">{{ count }} RÉSULTATS POUR "{{ keyword }}"</span>
             {% include 'search/_results.html.twig' %}
         </noscript>
     </div>

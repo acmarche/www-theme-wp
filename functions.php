@@ -10,8 +10,15 @@ use AcMarche\Theme\Inc\Router;
 use AcMarche\Theme\Inc\SecurityConfig;
 use AcMarche\Theme\Inc\Seo;
 use AcMarche\Theme\Inc\SettingsPage;
+use AcMarche\Theme\Inc\SetupTheme;
 use AcMarche\Theme\Inc\WidgetLoad;
 
+
+
+/**
+ *
+ */
+new SetupTheme();
 /**
  * Chargement css, js
  */

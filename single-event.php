@@ -12,14 +12,19 @@ global $wp_query;
 $codeCgt = $wp_query->get(Router::PARAM_EVENT);
 
 $hadesRepository = new HadesRepository();
-$events          = $hadesRepository->getEvents();
-///$event = $hadesRepository->getDetailEvent($codeCgt);
-$event = null;
-foreach ($events as $element) {
-    if ($codeCgt == $element['id']) {
-        $event = $element;
-        break;
-    }
+$event           = $hadesRepository->getEvent($codeCgt);
+if ( ! $event) {
+
+    Twig::rendPage(
+        'errors/404.html.twig',
+        [
+            'title' => 'Evènement non trouvé',
+            'tags'  => [],
+        ]
+    );
+    get_footer();
+
+    return;
 }
 
 $image  = null;

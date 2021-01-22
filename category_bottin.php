@@ -22,7 +22,13 @@ if ($slug) {
 }
 
 if ( ! $category) {
-    Twig::rendPage('errors/404.html.twig');
+    Twig::rendPage(
+        'errors/404.html.twig',
+        [
+            'title' => 'Page non trouvée',
+            'tags'  => [],
+        ]
+    );
     get_footer();
 
     return;

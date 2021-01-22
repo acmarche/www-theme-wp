@@ -3,14 +3,23 @@
 namespace AcMarche\Theme;
 
 use AcMarche\Common\Twig;
+use AcMarche\Pivot\Repository\HadesRemoteRepository;
 use AcMarche\Pivot\Repository\HadesRepository;
 use AcMarche\Theme\Inc\SettingsPage;
+use DOMDocument;
 
 get_header();
 
 $hadesRepository = new HadesRepository();
 $events          = $hadesRepository->getEvents();
 $react           = SettingsPage::isReactActivate();
+/*
+$hadesRemoteRepository = new HadesRemoteRepository();
+$domdoc = new DOMDocument();
+$domdoc->loadXML($hadesRemoteRepository->getEvents());
+foreach($domdoc->childNodes as $node) {
+ dump($node);
+}*/
 
 if ($react) {
     wp_enqueue_script(
