@@ -78,8 +78,8 @@
                         <i class="graphicElement"></i>
                     </div>
                 </div>
-                <!--all-->
-                <div class="all d-ls-flex align-items-ls-center justify-content-ls-center">
+                <!--all | TODO JF : tu peux utiliser la class .toggle-opened pour le toggleClass-->
+                <div class="all d-ls-flex align-items-ls-center justify-content-ls-center toggle-opened">
                     <a href="#" class="icon_custom position-relative">
                         <i class="icon_nav i-bars"></i>
                         <i class="i-bars i-dark-primary"></i>
@@ -98,8 +98,8 @@
                                </a>
                            </li>
 
-                           <!--administration-->
-                            <li class="c-adm col-xl-5 mt-xl-12px col-ls-6 col-ls-xl-5">
+                           <!--administration | TODO JF : tu peux utiliser la class .toggle-opened pour le toggleClass-->
+                            <li class="c-adm col-xl-5 mt-xl-12px col-ls-6 col-ls-xl-5 toggle-opened">
                                 <a href="#" class="icon_custom">Administration<i class="i-angle-right i-white bg-size-50"></i></a>
 
                                 <div class="col-xl-7">
@@ -133,7 +133,7 @@
                                 </div>
                             </li>
 
-                            <!--citoyen-->
+                            <!--citoyen | TODO JF : tu peux utiliser la class .toggle-opened pour le toggleClass-->
                             <li class="c-cit col-xl-5 col-ls-6 col-ls-xl-5">
                                 <a href="category.html" class="icon_custom">Citoyen<i class="i-angle-right i-white bg-size-50"></i></a>
 
@@ -169,7 +169,7 @@
                                 </div>
                             </li>
 
-                            <!--culture-->
+                            <!--culture | TODO JF : tu peux utiliser la class .toggle-opened pour le toggleClass-->
                             <li class="c-cul col-xl-5 col-ls-6 col-ls-xl-5">
                                 <a href="#" class="icon_custom">Culture<i class="i-angle-right i-white bg-size-50"></i></a>
 
@@ -200,7 +200,7 @@
                                 </div>
                             </li>
 
-                            <!--economie-->
+                            <!--economie | TODO JF : tu peux utiliser la class .toggle-opened pour le toggleClass-->
                             <li class="c-eco col-xl-5 col-ls-6 col-ls-xl-5">
                                 <a href="#" class="icon_custom">Économie<i class="i-angle-right i-white bg-size-50"></i></a>
 
@@ -227,7 +227,7 @@
                                 </div>
                             </li>
 
-                            <!--enfance/jeunesse-->
+                            <!--enfance/jeunesse | TODO JF : tu peux utiliser la class .toggle-opened pour le toggleClass-->
                             <li class="c-enf col-xl-5 col-ls-6 col-ls-xl-5">
                                 <a href="#" class="icon_custom">Enfance-Jeunesse<i class="i-angle-right i-white bg-size-50"></i></a>
 
@@ -255,7 +255,7 @@
                                 </div>
                             </li>
 
-                            <!--sante-->
+                            <!--sante | TODO JF : tu peux utiliser la class .toggle-opened pour le toggleClass-->
                             <li class="c-san col-xl-5 col-ls-6 col-ls-xl-5">
                                 <a href="#" class="icon_custom">Santé<i class="i-angle-right i-white bg-size-50"></i></a>
 
@@ -289,7 +289,7 @@
                                 </div>
                             </li>
 
-                            <!--social-->
+                            <!--social | TODO JF : tu peux utiliser la class .toggle-opened pour le toggleClass-->
                             <li class="c-soc col-xl-5 col-ls-6 col-ls-xl-5">
                                 <a href="#" class="icon_custom">Social<i class="i-angle-right i-white bg-size-50"></i></a>
 
@@ -323,7 +323,7 @@
                                 </div>
                             </li>
 
-                            <!--sport-->
+                            <!--sport | TODO JF : tu peux utiliser la class .toggle-opened pour le toggleClass-->
                             <li class="c-spo col-xl-5 col-ls-6 col-ls-xl-5">
                                 <a href="#" class="icon_custom">Sport<i class="i-angle-right i-white bg-size-50"></i></a>
 
@@ -357,7 +357,7 @@
                                 </div>
                             </li>
 
-                            <!--tourisme-->
+                            <!--tourisme | TODO JF : tu peux utiliser la class .toggle-opened pour le toggleClass-->
                             <li class="c-tou col-xl-5 mb-xl-12px col-ls-6 col-ls-xl-5">
                                 <a href="#" class="icon_custom">Tourisme<i class="i-angle-right i-white bg-size-50"></i></a>
 
@@ -466,7 +466,7 @@
         <div class="bg-img-home">
             <div class="bg-gradient-home col-12 mx-auto px-24px py-150px pt-ls-66px pb-ls-108px pt-ls-sm-88px pb-ls-sm-135px pt-ls-md-99px pb-ls-md-150px text-center pb-md-195px pt-ls-xl-175px pb-ls-xl-220px">
                 <h1 class="pb-22px">Bienvenue <br class="d-ls-md-none d-md-none">à Marche-en-Famenne</h1>
-                <div class="mw-550px position-relative m-auto searchHome">
+                <form action="post" class="mw-550px position-relative m-auto searchHome">
                     <input type="search" placeholder="Que cherchez-vous ?" class="border-0 rounded-pill h-42px pl-16px pr-58px fs-short-3">
                     <button class="position-absolute top-0 bottom-0 right-0 w-42px d-flex justify-content-center align-items-center p-0 border-0 rounded-right-pill bg-transparent icon_custom">
                         <!--<i class="fa fa-search text-dark-primary"></i>-->
@@ -486,7 +486,7 @@
                         </ul>
                         <i class="graphicElement"></i>
                     </div>
-                </div>
+                </form>
                 
                 <!--visible from landscape&&large / large-->
                 <ul class="d-none d-ls-lg-flex d-lg-flex flex-wrap justify-content-center mw-400px pt-42px mx-auto
@@ -785,6 +785,19 @@
                 <i class="i-angle-right i-dark-primary d-block h-100 m-auto bg-size-auto"></i>
             </button>
            </div>
+        </div>
+        
+        <!--OBJECT | ALERT-->
+        <div class="object-alert">
+            <div>
+                <div>
+                    <h3>Avertissement</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum sequi, quos autem blanditiis hic quisquam nihil neque. Quia, quae, eius! Ullam ab, minima magni iste ea quae perspiciatis quas consequatur.</p>
+                </div>
+                <a href="#">
+                    <i class="fas fa-times"></i>
+                </a>
+            </div>
         </div>
     </section>
     

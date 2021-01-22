@@ -2,6 +2,78 @@
 
 /* OBJECTS */
 
+// .object-alert
+.object-alert {
+    position: fixed;
+    top: auto;
+    bottom: 54px;
+    left: 12px;
+    right: 12px;
+    max-width: 660px;
+    margin: auto;
+    z-index: 10;
+    
+    @media screen {
+        @media (orientation: landscape) {
+            bottom: 12px;
+            left: 54px;
+            right: 12px;
+        }
+        
+        @media (min-width: $md) {
+            bottom: 40px;
+            max-width: 550px;
+        }
+        
+        @media (min-width: $lg) {
+            max-width: 660px;
+        }
+        
+        @media (min-width: $xl) {
+            left: 40px;
+            right: 40px;
+        }
+    }
+    
+    > div {
+        display: flex;
+        align-items: flex-start;
+        padding: 24px;
+        background-color: $white;
+        @include border(0 0 4px 0, $basicRed);
+        @include basicBoxShadow();
+        
+        div {
+            flex-grow: 1;
+            padding-right: 30px;
+            
+            h3 {
+                text-transform: uppercase;
+                color: $basicRed;
+            }
+            
+            p {
+                padding-top: 16px;
+            }
+        }
+        
+        a {
+            i {
+                font-size: $bigFontSize-1;
+                color: $basicRed;
+                @include colorTransition($basicDuration);
+            }
+            
+            &:hover {
+                i {
+                    color: $darkRed;
+                    @include colorTransition($basicDuration);
+                }
+            }
+        }
+    }
+}
+
 // .object-schedule
 .object-schedule {
     display: block;
