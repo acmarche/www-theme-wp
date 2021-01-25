@@ -10,9 +10,3 @@ ___
 ligne 501 : font-size: $shortFontSize-3=> font-size: $shortFontSize-1;
 ligne 598 : font-size: $shortFontSize-3=> font-size: $shortFontSize-1;
 
-
-
-Tiby
-______________
-Homepage pas de balise form sur l'input de recherche
-Si j'en mets, le css des suggestions par en chouille
