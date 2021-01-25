@@ -38,7 +38,18 @@ class AssetsLoad
             wp_get_theme()->get('Version')
         );
 
-        if (is_front_page()) {
+        wp_enqueue_script(
+            'marchebe-bootstrap-js',
+            'https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js',
+            array('jquery'),
+            wp_get_theme()->get('Version'),
+            true
+        );
+
+        global $post;
+        $currentBlog = get_current_blog_id();
+        if ($currentBlog ==1 && $post !== null && $post->ID = 1840) {
+
             wp_enqueue_style(
                 'marchebe-home-style',
                 get_template_directory_uri().'/assets/tartine/css/home.css',

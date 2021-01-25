@@ -19,6 +19,12 @@ class Seo
 
     static function metaTitle($data): string
     {
+        global $post;
+        $currentBlog = get_current_blog_id();
+        if ($currentBlog == 1 && $post !== null && $post->ID = 1840) {
+            return "Page d'accueil".$data;
+        }
+
         $slugFiche = get_query_var(Router::PARAM_BOTTIN_FICHE);
 
         if ($slugFiche) {
@@ -47,6 +53,12 @@ class Seo
 
     static function assignMetaInfo(): void
     {
+        global $post;
+        $currentBlog = get_current_blog_id();
+        if ($currentBlog == 1 && $post !== null && $post->ID = 1840) {
+            self::metaBottinHomePage();
+        }
+
         $slugFiche = get_query_var(Router::PARAM_BOTTIN_FICHE);
         if ($slugFiche) {
             self::metaBottinFiche($slugFiche);
@@ -128,6 +140,12 @@ class Seo
             //todo get categories event
             //self::$metas['keywords']    = join(',', $cats);
         }
+    }
+
+    private static function metaBottinHomePage()
+    {
+        self::$metas['description'] =  get_bloginfo('description', 'display');
+        self::$metas['keywords']    = 'Commune, Ville, Marche, Marche-en-Famenne, Famenne, Administration communal';
     }
 
     public function isGoole()
