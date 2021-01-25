@@ -7,6 +7,7 @@ use AcMarche\Bottin\Repository\BottinRepository;
 use AcMarche\Bottin\Repository\WpBottinRepository;
 use AcMarche\Common\Twig;
 use AcMarche\Theme\Inc\Router;
+use AcMarche\Theme\Inc\Theme;
 
 get_header();
 global $wp_query;
@@ -51,6 +52,14 @@ array_map(
     },
     $categories
 );
+
+
+$blodId   = get_current_blog_id();
+$path     = Theme::getPathBlog($blodId);
+$blogName = Theme::getTitleBlog($blodId);
+$color    = Theme::getColorBlog($blodId);
+
+
 Twig::rendPage(
     'fiche/show.html.twig',
     [
@@ -65,6 +74,9 @@ Twig::rendPage(
         'url_doc'       => Bottin::getUrlDocument().DIRECTORY_SEPARATOR,
         'latitude'      => $fiche->latitude,
         'longitude'     => $fiche->longitude,
+        'blogName'      => $blogName,
+        'color'         => $color,
+        'path'          => $path,
         'content'       => '',
     ]
 );
