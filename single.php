@@ -4,6 +4,7 @@
 namespace AcMarche\Theme;
 
 use AcMarche\Common\Twig;
+use AcMarche\Theme\Inc\Theme;
 
 get_header();
 global $post;
@@ -18,13 +19,22 @@ if (has_post_thumbnail()) {
     }
 }
 
+$blodId = get_current_blog_id();
+
+$path     = Theme::getPathBlog($blodId);
+$blogName = Theme::getTitleBlog($blodId);
+$color    = Theme::getColorBlog($blodId);
+
 Twig::rendPage(
     'article/show.html.twig',
     [
-        'post'  => $post,
-        'tags'  => $tags,
-        'image' => $image,
-        'title' => $post->post_title,
+        'post'     => $post,
+        'tags'     => $tags,
+        'image'    => $image,
+        'title'    => $post->post_title,
+        'blogName' => $blogName,
+        'color'    => $color,
+        'path'     => $path,
     ]
 );
 get_footer();

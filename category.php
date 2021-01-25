@@ -7,6 +7,7 @@ use AcMarche\Common\MarcheConst;
 use AcMarche\Common\TemplateRender;
 use AcMarche\Common\Twig;
 use AcMarche\Theme\Inc\SettingsPage;
+use AcMarche\Theme\Inc\Theme;
 
 get_header();
 
@@ -14,6 +15,7 @@ $react = SettingsPage::isReactActivate();
 if ($react == false) {
     TemplateRender::renderCategory();
     get_footer();
+
     return;
 }
 
@@ -21,15 +23,13 @@ $cat_ID      = get_queried_object_id();
 $category    = get_category($cat_ID);
 $description = $category->description;
 $title       = $category->name;
-$blodId      = get_current_blog_id();
-if ($blodId === 1) {
-    $siteSlug = 'Citoyen';
-    $path     = '';
-} else {
-    $siteSlug = $path = get_blog_details($blodId)->path;
-}
 
-$color = MarcheConst::COLORS[$blodId];
+$blodId = get_current_blog_id();
+
+$path     = Theme::getPathBlog($blodId);
+$siteSlug = Theme::getTitleBlog($blodId);
+$color    = Theme::getColorBlog($blodId);
+
 wp_enqueue_script(
     'react-app',
     get_template_directory_uri().'/assets/js/build/category.js',

@@ -46,10 +46,7 @@ class AssetsLoad
             true
         );
 
-        global $post;
-        $currentBlog = get_current_blog_id();
-        if ($currentBlog ==1 && $post !== null && $post->ID = 1840) {
-
+        if(Theme::isHomePage()) {
             wp_enqueue_style(
                 'marchebe-home-style',
                 get_template_directory_uri().'/assets/tartine/css/home.css',

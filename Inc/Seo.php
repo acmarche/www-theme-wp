@@ -19,9 +19,7 @@ class Seo
 
     static function metaTitle($data): string
     {
-        global $post;
-        $currentBlog = get_current_blog_id();
-        if ($currentBlog == 1 && $post !== null && $post->ID = 1840) {
+        if(Theme::isHomePage()) {
             return "Page d'accueil".$data;
         }
 
@@ -53,9 +51,7 @@ class Seo
 
     static function assignMetaInfo(): void
     {
-        global $post;
-        $currentBlog = get_current_blog_id();
-        if ($currentBlog == 1 && $post !== null && $post->ID = 1840) {
+        if(Theme::isHomePage()) {
             self::metaBottinHomePage();
         }
 

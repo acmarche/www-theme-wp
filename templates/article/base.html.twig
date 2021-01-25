@@ -18,8 +18,8 @@
         </h2>
 
         <!--category-->
-        <span class="color-cat-cit ff-semibold pt-12px d-block fs-short-2">
-            {% block category %}X{% endblock %}
+        <span class="{{ color}} ff-semibold pt-12px d-block fs-short-2">
+            {% block category %}{{ blogName }}{% endblock %}
         </span>
 
         <!--article-->
@@ -27,9 +27,12 @@
             <div class="d-flex flex-column align-items-center mx-md-n15px flex-md-wrap flex-md-row align-items-md-start flex-lg-column col-lg-8 mx-lg-0 flex-lg-nowrap">
                 <!--img-->
                 {% block image %}
-                    <div class="bg-img w-100 h-220px position-relative h-lg-330px">
-                        <i class="bg-img-news-1 position-absolute top-0 bottom-0 left-0 right-0 md-left-15px md-right-15px lg-left-0 lg-right-0"></i>
-                    </div>
+                    {% if image is not empty %}
+                        <div class="bg-img w-100 h-220px position-relative h-lg-330px">
+                            <i {% if image is defined %}style="background-image: url('{{ image }}');"
+                                    {% endif %}  class="position-absolute top-0 bottom-0 left-0 right-0 md-left-15px md-right-15px lg-left-0 lg-right-0"></i>
+                        </div>
+                    {% endif %}
                 {% endblock %}
                 <!--OBJECT | TAGS-->
                 {% block tags_smart %}
@@ -50,9 +53,9 @@
                     <div for="text-dyn">
                         {% include 'article/_readspeaker.html.twig' %}
                         <div id="reading">
-                        {% block content %}
-                            <p></p>
-                        {% endblock %}
+                            {% block content %}
+                                <p></p>
+                            {% endblock %}
                         </div>
                     </div>
                 </div>
