@@ -4,6 +4,7 @@ namespace AcMarche\Theme;
 
 use AcMarche\Common\Menu;
 use AcMarche\Common\Twig;
+use AcMarche\Theme\Inc\Theme;
 
 ?>
     <!DOCTYPE html>
@@ -36,7 +37,7 @@ $menu = new Menu();
 $data = $menu->getAllItems();
 //$form = get_search_form(false);
 
-if (is_front_page()) {
+if (Theme::isHomePage()) {
     Twig::rendPage(
         'header/_header_home.html.twig',
         [
