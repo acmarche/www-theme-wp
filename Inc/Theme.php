@@ -9,6 +9,8 @@ use AcMarche\Common\MarcheConst;
 class Theme
 {
 
+    const PAGE_ALERT = 5087;
+
     static function isHomePage(): bool
     {
         global $post;

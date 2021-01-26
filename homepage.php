@@ -13,14 +13,16 @@ get_header();
 
 $hadesRepository = new HadesRepository();
 
-$news   = WpRepository::getAllNews(6);
-$events = $hadesRepository->getEvents();
+$news      = WpRepository::getAllNews(6);
+$events    = $hadesRepository->getEvents();
+$pageAlert = WpRepository::getPageAlert();
 
 Twig::rendPage(
     'homepage/index.html.twig',
     [
         'actus'  => $news,
         'events' => $events,
+        'alert'  => $pageAlert,
     ]
 );
 
