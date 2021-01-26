@@ -8,12 +8,15 @@
 }*/
 @keyframes pulsar {
   0% {
-    opacity: 1; }
+    opacity: 1;
+  }
   50% {
-    opacity: 0; }
+    opacity: 0;
+  }
   100% {
-    opacity: 1; } }
-
+    opacity: 1;
+  }
+}
 /*@keyframes echo-active {
 	0% {
 		@include boxShadow(0 0 0 rgba(255, 136, 27, 0), 0 0 0 rgba(255, 136, 27, 0));
@@ -34,20 +37,23 @@
     -moz-transform: rotate(0);
     -ms-transform: rotate(0);
     -o-transform: rotate(0);
-    transform: rotate(0); }
+    transform: rotate(0);
+  }
   10% {
     -webkit-transform: rotate(-30deg);
     -moz-transform: rotate(-30deg);
     -ms-transform: rotate(-30deg);
     -o-transform: rotate(-30deg);
-    transform: rotate(-30deg); }
+    transform: rotate(-30deg);
+  }
   100% {
     -webkit-transform: rotate(360deg);
     -moz-transform: rotate(360deg);
     -ms-transform: rotate(360deg);
     -o-transform: rotate(360deg);
-    transform: rotate(360deg); } }
-
+    transform: rotate(360deg);
+  }
+}
 @keyframes roll-coordinated-reverse {
   0% {
     bottom: -2px;
@@ -56,13 +62,15 @@
     -moz-transform: rotate(0);
     -ms-transform: rotate(0);
     -o-transform: rotate(0);
-    transform: rotate(0); }
+    transform: rotate(0);
+  }
   10% {
     -webkit-transform: rotate(55deg);
     -moz-transform: rotate(55deg);
     -ms-transform: rotate(55deg);
     -o-transform: rotate(55deg);
-    transform: rotate(55deg); }
+    transform: rotate(55deg);
+  }
   100% {
     bottom: -2px;
     right: 0;
@@ -70,25 +78,27 @@
     -moz-transform: rotate(-1800deg);
     -ms-transform: rotate(-1800deg);
     -o-transform: rotate(-1800deg);
-    transform: rotate(-1800deg); } }
-
+    transform: rotate(-1800deg);
+  }
+}
 /* VARIABLES */
 /*- ONLY FOR THIS PROJECT -*/
 /*- END | ONLY FOR THIS PROJECT -*/
 /*56pt / 84px*/
 /*28pt / 37px*/
 /*22pt / 30px*/
-/*.75rem*/
-/*.688rem*/
+/*
+$shortFontSize-1: .875rem;
+$shortFontSize-2: .75rem;
+$shortFontSize-3: .688rem;
+*/
 /* --------------------------- */
 /* MIXINS */
 /*@mixin highestBoxShadow() {
 	@include boxShadow(0 19px 38px rgba($darkestGrey, $alpha30), 0 15px 12px rgba($darkestGrey, .22));
 }
-
-@mixin higherBoxShadow() {
-	@include boxShadow(0 14px 28px rgba($darkestGrey, .25), 0 10px 10px rgba($darkestGrey, .22));
-}
+*/
+/*
 // (utliser pour les éléments qui ont un attribut de rotation)
 @mixin higherBoxShadow-45() {
 	@include boxShadow(14px 14px 28px rgba($darkestGrey, .25), 10px 10px 10px rgba($darkestGrey, .22));
@@ -117,17 +127,9 @@
 /*@mixin lowestBoxShadow-inset() {
 	@include boxInset(0 -1px 3px rgba($darkestGrey, .12), 0 -1px 2px rgba($darkestGrey, .24));
 }
-
-@mixin buttonInset() {
-	@include boxInset(-12px 0 33px rgba($darkCTA, $alpha0));
-}
-
-@mixin buttonInsetHover() {
-	@include boxInset(-12px 0 33px $darkCTA);
-}*/
+*/
 /* EXTENDS */
 /* NAV */
-/* line 5, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/objects/nav.scss */
 nav {
   display: flex;
   position: fixed;
@@ -144,30 +146,29 @@ nav {
   -o-box-shadow: 0 -0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
   box-shadow: 0 -0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
   /*@media screen and (min-width: $md) {
-        flex-wrap: wrap;
-        width: 50px;
-        height: auto;
-        bottom: 40px;
-        left: auto;
-        right: 30px;
-        border-radius: $pillRadius;
-        @include basicBoxShadow();
-        background: none;
-        background-color: $white;
-        overflow: hidden;
-    }*/ }
-
+      flex-wrap: wrap;
+      width: 50px;
+      height: auto;
+      bottom: 40px;
+      left: auto;
+      right: 30px;
+      border-radius: $pillRadius;
+      @include basicBoxShadow();
+      background: none;
+      background-color: $white;
+      overflow: hidden;
+  }*/
+}
 @media screen and (orientation: landscape) {
-  /* line 5, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/objects/nav.scss */
   nav {
     width: 42px;
     flex-direction: column;
     top: 42px;
     left: 0;
-    right: auto; } }
-
+    right: auto;
+  }
+}
 @media screen and (min-width: 768px) {
-  /* line 5, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/objects/nav.scss */
   nav {
     width: 42px;
     flex-direction: column;
@@ -181,29 +182,30 @@ nav {
     -moz-box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.125) !important;
     -ms-box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.125) !important;
     -o-box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.125) !important;
-    box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.125) !important; } }
-  @media screen and (min-width: 768px) and (orientation: landscape) {
-    /* line 5, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/objects/nav.scss */
-    nav {
-      top: 42px;
-      bottom: 0;
-      left: 0;
-      right: auto;
-      border-radius: 0;
-      overflow: initial; } }
-
+    box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.125) !important;
+  }
+}
+@media screen and (min-width: 768px) and (orientation: landscape) {
+  nav {
+    top: 42px;
+    bottom: 0;
+    left: 0;
+    right: auto;
+    border-radius: 0;
+    overflow: initial;
+  }
+}
 @media screen and (min-width: 992px) and (orientation: landscape) {
-  /* line 5, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/objects/nav.scss */
   nav {
     top: auto;
     bottom: 24px;
     left: auto;
     right: 24px;
     border-radius: 4px;
-    overflow: hidden; } }
-
+    overflow: hidden;
+  }
+}
 @media screen and (min-width: 1200px) {
-  /* line 5, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/objects/nav.scss */
   nav {
     position: relative;
     width: initial;
@@ -224,94 +226,95 @@ nav {
     -o-box-shadow: none !important;
     box-shadow: none !important;
     /*@media (orientation: landscape) {
-                position: fixed;
-                width: 42px;
-                height: auto;
-                flex-direction: column;
-                flex-grow: none;
-                top: auto;
-                bottom: 24px;
-                right: 24px;
-                border-radius: $smallestRadius;
-                overflow: hidden;
-                background-color: $darkCTA;
-                align-items: center;
-                justify-content: center;
-                @include lowBoxShadow();
-            }*/ } }
-  /* line 105, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/objects/nav.scss */
-  nav > div {
-    flex: auto;
-    position: relative; }
-
+        position: fixed;
+        width: 42px;
+        height: auto;
+        flex-direction: column;
+        flex-grow: none;
+        top: auto;
+        bottom: 24px;
+        right: 24px;
+        border-radius: $smallestRadius;
+        overflow: hidden;
+        background-color: $darkCTA;
+        align-items: center;
+        justify-content: center;
+        @include lowBoxShadow();
+    }*/
+  }
+}
+nav > div {
+  flex: auto;
+  position: relative;
+}
 @media screen and (min-width: 992px) {
-  /* line 105, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/objects/nav.scss */
   nav > div {
-    height: 42px; } }
-
+    height: 42px;
+  }
+}
 @media screen and (min-width: 1200px) {
-  /* line 105, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/objects/nav.scss */
   nav > div {
     flex: initial;
     padding: 0 15px;
     /*@media (orientation: landscape) {
-                    flex: auto;
-                    padding: 0;
-                }*/ } }
-
+        flex: auto;
+        padding: 0;
+    }*/
+  }
+}
 @media screen and (min-width: 1200px) {
-  /* line 126, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/objects/nav.scss */
   nav > div.home {
     display: none;
     /*@media (orientation: landscape) {
-                        display: block;
-                    }*/ } }
-
+        display: block;
+    }*/
+  }
+}
 @media screen and (min-width: 1200px) {
-  /* line 137, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/objects/nav.scss */
   nav > div.search {
     padding: 0;
     margin: 0 15px;
     order: 6;
     /*@media (orientation: landscape) {
-                        order: initial;
-                    }*/ } }
-
+        order: initial;
+    }*/
+  }
+}
 @media screen and (min-width: 1200px) {
-  /* line 150, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/objects/nav.scss */
   nav > div.search > a {
-    width: 42px; } }
-    @media (min-width: 1200px) {
-      /* line 158, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/objects/nav.scss */
-      nav > div.search > a > i.icon_nav {
-        display: block;
-        -webkit-transition: opacity 0.25s ease-in-out;
-        -moz-transition: opacity 0.25s ease-in-out;
-        -ms-transition: opacity 0.25s ease-in-out;
-        -o-transition: opacity 0.25s ease-in-out;
-        transition: opacity 0.25s ease-in-out; }
-        /* line 163, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/objects/nav.scss */
-        nav > div.search > a > i.icon_nav:last-child {
-          opacity: 0; } }
-    /* line 171, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/objects/nav.scss */
-    nav > div.search .searchScreen {
-      display: flex;
-      flex-direction: column;
-      position: fixed;
-      top: 100%;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      padding: 0;
-      background-color: white;
-      -webkit-transition: top 0.25s ease-in-out;
-      -moz-transition: top 0.25s ease-in-out;
-      -ms-transition: top 0.25s ease-in-out;
-      -o-transition: top 0.25s ease-in-out;
-      transition: top 0.25s ease-in-out; }
-
+    width: 42px;
+  }
+}
+@media (min-width: 1200px) {
+  nav > div.search > a > i.icon_nav {
+    display: block;
+    -webkit-transition: opacity 0.25s ease-in-out;
+    -moz-transition: opacity 0.25s ease-in-out;
+    -ms-transition: opacity 0.25s ease-in-out;
+    -o-transition: opacity 0.25s ease-in-out;
+    transition: opacity 0.25s ease-in-out;
+  }
+  nav > div.search > a > i.icon_nav:last-child {
+    opacity: 0;
+  }
+}
+nav > div.search .searchScreen {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: 100%;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 0;
+  background-color: white;
+  -webkit-transition: top 0.25s ease-in-out;
+  -moz-transition: top 0.25s ease-in-out;
+  -ms-transition: top 0.25s ease-in-out;
+  -o-transition: top 0.25s ease-in-out;
+  transition: top 0.25s ease-in-out;
+}
 @media screen and (min-width: 1200px) {
-  /* line 171, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/objects/nav.scss */
   nav > div.search .searchScreen {
     width: auto;
     display: flex;
@@ -330,178 +333,179 @@ nav {
     -moz-transition: margin-left 0.45s ease-in-out;
     -ms-transition: margin-left 0.45s ease-in-out;
     -o-transition: margin-left 0.45s ease-in-out;
-    transition: margin-left 0.45s ease-in-out; } }
-      /* line 198, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/objects/nav.scss */
-      nav > div.search .searchScreen .graphicElement {
-        display: none;
-        position: absolute;
-        margin: 0 auto;
-        background-color: white; }
-
+    transition: margin-left 0.45s ease-in-out;
+  }
+}
+nav > div.search .searchScreen .graphicElement {
+  display: none;
+  position: absolute;
+  margin: 0 auto;
+  background-color: white;
+}
 @media screen and (min-width: 1200px) {
-  /* line 198, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/objects/nav.scss */
   nav > div.search .searchScreen .graphicElement {
-    display: block; } }
-        /* line 210, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/objects/nav.scss */
-        nav > div.search .searchScreen .graphicElement:first-child {
-          width: 20px;
-          height: 20px;
-          top: 0;
-          bottom: auto;
-          left: 70px;
-          right: auto;
-          z-index: 0;
-          -webkit-box-shadow: 0.125rem 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
-          -moz-box-shadow: 0.125rem 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
-          -ms-box-shadow: 0.125rem 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
-          -o-box-shadow: 0.125rem 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
-          box-shadow: 0.125rem 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
-          -webkit-transform: rotate(45deg);
-          -moz-transform: rotate(45deg);
-          -ms-transform: rotate(45deg);
-          -o-transform: rotate(45deg);
-          transform: rotate(45deg);
-          -webkit-transition: top 0.25s ease-in-out;
-          -moz-transition: top 0.25s ease-in-out;
-          -ms-transition: top 0.25s ease-in-out;
-          -o-transition: top 0.25s ease-in-out;
-          transition: top 0.25s ease-in-out; }
-        /* line 223, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/objects/nav.scss */
-        nav > div.search .searchScreen .graphicElement:last-child {
-          width: 45px;
-          height: 24px;
-          top: 0;
-          bottom: auto;
-          left: 57px;
-          right: auto;
-          z-index: 20; }
-      /* line 234, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/objects/nav.scss */
-      nav > div.search .searchScreen > ul {
-        display: flex;
-        flex-direction: column; }
-
+    display: block;
+  }
+}
+nav > div.search .searchScreen .graphicElement:first-child {
+  width: 20px;
+  height: 20px;
+  top: 0;
+  bottom: auto;
+  left: 70px;
+  right: auto;
+  z-index: 0;
+  -webkit-box-shadow: 0.125rem 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
+  -moz-box-shadow: 0.125rem 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
+  -ms-box-shadow: 0.125rem 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
+  -o-box-shadow: 0.125rem 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
+  box-shadow: 0.125rem 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  transform: rotate(45deg);
+  -webkit-transition: top 0.25s ease-in-out;
+  -moz-transition: top 0.25s ease-in-out;
+  -ms-transition: top 0.25s ease-in-out;
+  -o-transition: top 0.25s ease-in-out;
+  transition: top 0.25s ease-in-out;
+}
+nav > div.search .searchScreen .graphicElement:last-child {
+  width: 45px;
+  height: 24px;
+  top: 0;
+  bottom: auto;
+  left: 57px;
+  right: auto;
+  z-index: 20;
+}
+nav > div.search .searchScreen > ul {
+  display: flex;
+  flex-direction: column;
+}
 @media screen and (orientation: landscape) {
-  /* line 234, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/objects/nav.scss */
   nav > div.search .searchScreen > ul {
     flex-wrap: wrap;
     flex-direction: row;
-    align-items: flex-start; } }
-
+    align-items: flex-start;
+  }
+}
 @media screen and (min-width: 1200px) {
-  /* line 234, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/objects/nav.scss */
   nav > div.search .searchScreen > ul {
-    flex-direction: column; } }
-        /* line 252, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/objects/nav.scss */
-        nav > div.search .searchScreen > ul > li {
-          padding: 0;
-          display: flex;
-          flex-direction: column;
-          align-items: stretch; }
-          /* line 253, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/objects/nav.scss */
-          nav > div.search .searchScreen > ul > li:first-child {
-            padding: 24px 24px 12px;
-            flex-direction: row; }
-            /* line 257, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/objects/nav.scss */
-            nav > div.search .searchScreen > ul > li:first-child > form {
-              flex-grow: 1;
-              position: relative; }
-
+    flex-direction: column;
+  }
+}
+nav > div.search .searchScreen > ul > li {
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+nav > div.search .searchScreen > ul > li:first-child {
+  padding: 24px 24px 12px;
+  flex-direction: row;
+}
+nav > div.search .searchScreen > ul > li:first-child > form {
+  flex-grow: 1;
+  position: relative;
+}
 @media screen and (min-width: 1200px) {
-  /* line 257, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/objects/nav.scss */
   nav > div.search .searchScreen > ul > li:first-child > form {
-    min-width: 200px; } }
-              /* line 267, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/objects/nav.scss */
-              nav > div.search .searchScreen > ul > li:first-child > form input {
-                background-color: #ededec; }
-            /* line 272, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/objects/nav.scss */
-            nav > div.search .searchScreen > ul > li:first-child > a {
-              padding: 0;
-              margin-left: 12px; }
-
+    min-width: 200px;
+  }
+}
+nav > div.search .searchScreen > ul > li:first-child > form input {
+  background-color: #ededec;
+}
+nav > div.search .searchScreen > ul > li:first-child > a {
+  padding: 0;
+  margin-left: 12px;
+}
 @media screen and (min-width: 1200px) {
-  /* line 272, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/objects/nav.scss */
   nav > div.search .searchScreen > ul > li:first-child > a {
-    display: none; } }
-              /* line 282, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/objects/nav.scss */
-              nav > div.search .searchScreen > ul > li:first-child > a i {
-                margin-right: 0; }
-          /* line 293, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/objects/nav.scss */
-          nav > div.search .searchScreen > ul > li > a {
-            font-family: 'montserratsemibold';
-            font-size: 0.75rem;
-            color: #487f89;
-            text-align: left;
-            padding: 10px 24px;
-            white-space: nowrap;
-            display: flex;
-            align-items: center; }
-
+    display: none;
+  }
+}
+nav > div.search .searchScreen > ul > li:first-child > a i {
+  margin-right: 0;
+}
+nav > div.search .searchScreen > ul > li > a {
+  font-family: "montserratsemibold";
+  font-size: 0.875rem;
+  color: #487f89;
+  text-align: left;
+  padding: 10px 24px;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+}
 @media screen and (min-width: 1200px) {
-  /* line 305, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/objects/nav.scss */
   nav > div.search .searchScreen > ul > li > a:hover {
     color: white;
-    background-color: #4ae0c7; }
-    /* line 310, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/objects/nav.scss */
-    nav > div.search .searchScreen > ul > li > a:hover i.i-map {
-      background-image: url(../../rsc/svg/icon_map_white.svg); }
-    /* line 313, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/objects/nav.scss */
-    nav > div.search .searchScreen > ul > li > a:hover i.i-envelope {
-      background-image: url(../../rsc/svg/icon_envelope_white.svg); }
-    /* line 316, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/objects/nav.scss */
-    nav > div.search .searchScreen > ul > li > a:hover i.i-leaf {
-      background-image: url(../../rsc/svg/icon_leaf_white.svg); }
-    /* line 319, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/objects/nav.scss */
-    nav > div.search .searchScreen > ul > li > a:hover i.i-traffic-cone {
-      background-image: url(../../rsc/svg/icon_trafficcone_white.svg); }
-    /* line 322, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/objects/nav.scss */
-    nav > div.search .searchScreen > ul > li > a:hover i.i-handshake {
-      background-image: url(../../rsc/svg/icon_handshake_white.svg); }
-    /* line 325, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/objects/nav.scss */
-    nav > div.search .searchScreen > ul > li > a:hover i.i-swimmer {
-      background-image: url(../../rsc/svg/icon_swimmer_white.svg); }
-    /* line 328, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/objects/nav.scss */
-    nav > div.search .searchScreen > ul > li > a:hover i.i-beach-ball {
-      background-image: url(../../rsc/svg/icon_beachball_white.svg); } }
-            /* line 336, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/objects/nav.scss */
-            nav > div.search .searchScreen > ul > li > a i {
-              width: 20px;
-              height: 20px;
-              background-size: contain;
-              margin-right: 12px; }
-
+    background-color: #4ae0c7;
+  }
+  nav > div.search .searchScreen > ul > li > a:hover i.i-map {
+    background-image: url(../../rsc/svg/icon_map_white.svg);
+  }
+  nav > div.search .searchScreen > ul > li > a:hover i.i-envelope {
+    background-image: url(../../rsc/svg/icon_envelope_white.svg);
+  }
+  nav > div.search .searchScreen > ul > li > a:hover i.i-leaf {
+    background-image: url(../../rsc/svg/icon_leaf_white.svg);
+  }
+  nav > div.search .searchScreen > ul > li > a:hover i.i-traffic-cone {
+    background-image: url(../../rsc/svg/icon_trafficcone_white.svg);
+  }
+  nav > div.search .searchScreen > ul > li > a:hover i.i-handshake {
+    background-image: url(../../rsc/svg/icon_handshake_white.svg);
+  }
+  nav > div.search .searchScreen > ul > li > a:hover i.i-swimmer {
+    background-image: url(../../rsc/svg/icon_swimmer_white.svg);
+  }
+  nav > div.search .searchScreen > ul > li > a:hover i.i-beach-ball {
+    background-image: url(../../rsc/svg/icon_beachball_white.svg);
+  }
+}
+nav > div.search .searchScreen > ul > li > a i {
+  width: 20px;
+  height: 20px;
+  background-size: contain;
+  margin-right: 12px;
+}
 @media screen and (min-width: 1200px) {
-  /* line 348, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/objects/nav.scss */
   nav > div.search:hover > a {
     -webkit-box-shadow: 0 -42px 0 #4ae0c7 inset !important;
     -moz-box-shadow: 0 -42px 0 #4ae0c7 inset !important;
     -ms-box-shadow: 0 -42px 0 #4ae0c7 inset !important;
     -o-box-shadow: 0 -42px 0 #4ae0c7 inset !important;
-    box-shadow: 0 -42px 0 #4ae0c7 inset !important; } }
-  @media screen and (min-width: 1200px) and (min-width: 1200px) {
-    /* line 354, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/objects/nav.scss */
-    nav > div.search:hover > a > i.icon_nav {
-      -webkit-transition: opacity 0.25s ease-in-out;
-      -moz-transition: opacity 0.25s ease-in-out;
-      -ms-transition: opacity 0.25s ease-in-out;
-      -o-transition: opacity 0.25s ease-in-out;
-      transition: opacity 0.25s ease-in-out; }
-      /* line 358, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/objects/nav.scss */
-      nav > div.search:hover > a > i.icon_nav:first-child {
-        opacity: 0; }
-      /* line 361, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/objects/nav.scss */
-      nav > div.search:hover > a > i.icon_nav:last-child {
-        opacity: 1; } }
-    /* line 371, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/objects/nav.scss */
-    nav > div.search:hover .searchScreen {
-      top: 0;
-      -webkit-transition: top 0.25s ease-in-out;
-      -moz-transition: top 0.25s ease-in-out;
-      -ms-transition: top 0.25s ease-in-out;
-      -o-transition: top 0.25s ease-in-out;
-      transition: top 0.25s ease-in-out; }
-
+    box-shadow: 0 -42px 0 #4ae0c7 inset !important;
+  }
+}
+@media screen and (min-width: 1200px) and (min-width: 1200px) {
+  nav > div.search:hover > a > i.icon_nav {
+    -webkit-transition: opacity 0.25s ease-in-out;
+    -moz-transition: opacity 0.25s ease-in-out;
+    -ms-transition: opacity 0.25s ease-in-out;
+    -o-transition: opacity 0.25s ease-in-out;
+    transition: opacity 0.25s ease-in-out;
+  }
+  nav > div.search:hover > a > i.icon_nav:first-child {
+    opacity: 0;
+  }
+  nav > div.search:hover > a > i.icon_nav:last-child {
+    opacity: 1;
+  }
+}
+nav > div.search:hover .searchScreen {
+  top: 0;
+  -webkit-transition: top 0.25s ease-in-out;
+  -moz-transition: top 0.25s ease-in-out;
+  -ms-transition: top 0.25s ease-in-out;
+  -o-transition: top 0.25s ease-in-out;
+  transition: top 0.25s ease-in-out;
+}
 @media screen and (min-width: 1200px) {
-  /* line 371, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/objects/nav.scss */
   nav > div.search:hover .searchScreen {
     top: 76px;
     margin-left: -58px;
@@ -509,66 +513,66 @@ nav {
     -moz-transition: margin-left 0.45s ease-in-out;
     -ms-transition: margin-left 0.45s ease-in-out;
     -o-transition: margin-left 0.45s ease-in-out;
-    transition: margin-left 0.45s ease-in-out; }
-    /* line 383, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/objects/nav.scss */
-    nav > div.search:hover .searchScreen .graphicElement:first-child {
-      top: -10px;
-      -webkit-transition: top 0.25s ease-in-out;
-      -moz-transition: top 0.25s ease-in-out;
-      -ms-transition: top 0.25s ease-in-out;
-      -o-transition: top 0.25s ease-in-out;
-      transition: top 0.25s ease-in-out;
-      -webkit-transition-delay: 0.45s;
-      -moz-transition-delay: 0.45s;
-      -ms-transition-delay: 0.45s;
-      -o-transition-delay: 0.45s;
-      transition-delay: 0.45s; } }
-
+    transition: margin-left 0.45s ease-in-out;
+  }
+  nav > div.search:hover .searchScreen .graphicElement:first-child {
+    top: -10px;
+    -webkit-transition: top 0.25s ease-in-out;
+    -moz-transition: top 0.25s ease-in-out;
+    -ms-transition: top 0.25s ease-in-out;
+    -o-transition: top 0.25s ease-in-out;
+    transition: top 0.25s ease-in-out;
+    -webkit-transition-delay: 0.45s;
+    -moz-transition-delay: 0.45s;
+    -ms-transition-delay: 0.45s;
+    -o-transition-delay: 0.45s;
+    transition-delay: 0.45s;
+  }
+}
 @media screen and (min-width: 1200px) {
-  /* line 394, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/objects/nav.scss */
   nav > div.all {
     padding: 0;
     margin: 0 15px;
     order: 1;
     /*@media (orientation: landscape) {
-                        order: initial;
-                    }*/ } }
-    /* line 409, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/objects/nav.scss */
-    nav > div.all.toggle-opened .subnav {
-      top: 0;
-      z-index: 10;
-      -webkit-transition: top 0.25s ease-in-out;
-      -moz-transition: top 0.25s ease-in-out;
-      -ms-transition: top 0.25s ease-in-out;
-      -o-transition: top 0.25s ease-in-out;
-      transition: top 0.25s ease-in-out; }
-      /* line 417, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/objects/nav.scss */
-      nav > div.all.toggle-opened .subnav > ul > li.toggle-opened > div {
-        left: 0;
-        -webkit-transition: left 0.25s ease-in-out;
-        -moz-transition: left 0.25s ease-in-out;
-        -ms-transition: left 0.25s ease-in-out;
-        -o-transition: left 0.25s ease-in-out;
-        transition: left 0.25s ease-in-out; }
-    /* line 427, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/objects/nav.scss */
-    nav > div.all .subnav {
-      display: flex;
-      flex-direction: column;
-      position: fixed;
-      top: 100%;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      padding: 0;
-      background-color: #487f89;
-      -webkit-transition: top 0.25s ease-in-out;
-      -moz-transition: top 0.25s ease-in-out;
-      -ms-transition: top 0.25s ease-in-out;
-      -o-transition: top 0.25s ease-in-out;
-      transition: top 0.25s ease-in-out; }
-
+        order: initial;
+    }*/
+  }
+}
+nav > div.all.toggle-opened .subnav {
+  top: 0;
+  z-index: 10;
+  -webkit-transition: top 0.25s ease-in-out;
+  -moz-transition: top 0.25s ease-in-out;
+  -ms-transition: top 0.25s ease-in-out;
+  -o-transition: top 0.25s ease-in-out;
+  transition: top 0.25s ease-in-out;
+}
+nav > div.all.toggle-opened .subnav > ul > li.toggle-opened > div {
+  left: 0;
+  -webkit-transition: left 0.25s ease-in-out;
+  -moz-transition: left 0.25s ease-in-out;
+  -ms-transition: left 0.25s ease-in-out;
+  -o-transition: left 0.25s ease-in-out;
+  transition: left 0.25s ease-in-out;
+}
+nav > div.all .subnav {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: 100%;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 0;
+  background-color: #487f89;
+  -webkit-transition: top 0.25s ease-in-out;
+  -moz-transition: top 0.25s ease-in-out;
+  -ms-transition: top 0.25s ease-in-out;
+  -o-transition: top 0.25s ease-in-out;
+  transition: top 0.25s ease-in-out;
+}
 @media screen and (min-width: 1200px) {
-  /* line 427, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/objects/nav.scss */
   nav > div.all .subnav {
     display: none;
     top: 66px;
@@ -581,114 +585,115 @@ nav {
     -moz-box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
     -ms-box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
     -o-box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
-    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important; } }
-      /* line 453, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/objects/nav.scss */
-      nav > div.all .subnav > ul {
-        display: flex;
-        flex-direction: column; }
-        @media screen and (orientation: landscape) {
-          /* line 453, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/objects/nav.scss */
-          nav > div.all .subnav > ul {
-            flex-wrap: wrap;
-            flex-direction: row;
-            align-items: flex-start; } }
-
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
+  }
+}
+nav > div.all .subnav > ul {
+  display: flex;
+  flex-direction: column;
+}
+@media screen and (orientation: landscape) {
+  nav > div.all .subnav > ul {
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-items: flex-start;
+  }
+}
 @media screen and (min-width: 1200px) {
-  /* line 453, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/objects/nav.scss */
   nav > div.all .subnav > ul {
     height: auto;
-    flex-direction: column; } }
-        /* line 470, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/objects/nav.scss */
-        nav > div.all .subnav > ul > li {
-          padding: 0;
-          display: flex;
-          flex-direction: column;
-          align-items: stretch;
-          position: initial; }
-
+    flex-direction: column;
+  }
+}
+nav > div.all .subnav > ul > li {
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  position: initial;
+}
 @media screen and (min-width: 1200px) {
-  /* line 470, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/objects/nav.scss */
   nav > div.all .subnav > ul > li {
     align-items: flex-end;
     /*@media (orientation: landscape) {
-                                    align-items: stretch;
-                                }*/ } }
-          /* line 488, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/objects/nav.scss */
-          nav > div.all .subnav > ul > li:hover > a {
-            background-color: white;
-            color: #4ae0c7;
-            -webkit-transition: all 0.25s ease-in-out;
-            -moz-transition: all 0.25s ease-in-out;
-            -ms-transition: all 0.25s ease-in-out;
-            -o-transition: all 0.25s ease-in-out;
-            transition: all 0.25s ease-in-out; }
-          /* line 494, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/objects/nav.scss */
-          nav > div.all .subnav > ul > li:hover > div {
-            left: 0;
-            -webkit-transition: left 0.25s ease-in-out;
-            -moz-transition: left 0.25s ease-in-out;
-            -ms-transition: left 0.25s ease-in-out;
-            -o-transition: left 0.25s ease-in-out;
-            transition: left 0.25s ease-in-out; }
-
+        align-items: stretch;
+    }*/
+  }
+}
+nav > div.all .subnav > ul > li:hover > a {
+  background-color: white;
+  color: #4ae0c7;
+  -webkit-transition: all 0.25s ease-in-out;
+  -moz-transition: all 0.25s ease-in-out;
+  -ms-transition: all 0.25s ease-in-out;
+  -o-transition: all 0.25s ease-in-out;
+  transition: all 0.25s ease-in-out;
+}
+nav > div.all .subnav > ul > li:hover > div {
+  left: 0;
+  -webkit-transition: left 0.25s ease-in-out;
+  -moz-transition: left 0.25s ease-in-out;
+  -ms-transition: left 0.25s ease-in-out;
+  -o-transition: left 0.25s ease-in-out;
+  transition: left 0.25s ease-in-out;
+}
 @media screen and (min-width: 1200px) {
-  /* line 494, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/objects/nav.scss */
   nav > div.all .subnav > ul > li:hover > div {
     display: flex;
-    left: auto; } }
-          /* line 507, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/objects/nav.scss */
-          nav > div.all .subnav > ul > li > a {
-            font-family: 'montserratsemibold';
-            font-size: 0.75rem;
-            color: white;
-            text-align: left;
-            padding: 10px 24px;
-            white-space: nowrap;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            -webkit-transition: all 0.25s ease-in-out;
-            -moz-transition: all 0.25s ease-in-out;
-            -ms-transition: all 0.25s ease-in-out;
-            -o-transition: all 0.25s ease-in-out;
-            transition: all 0.25s ease-in-out; }
-
+    left: auto;
+  }
+}
+nav > div.all .subnav > ul > li > a {
+  font-family: "montserratsemibold";
+  font-size: 0.875rem;
+  color: white;
+  text-align: left;
+  padding: 10px 24px;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  -webkit-transition: all 0.25s ease-in-out;
+  -moz-transition: all 0.25s ease-in-out;
+  -ms-transition: all 0.25s ease-in-out;
+  -o-transition: all 0.25s ease-in-out;
+  transition: all 0.25s ease-in-out;
+}
 @media screen and (min-width: 1200px) {
-  /* line 507, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/objects/nav.scss */
   nav > div.all .subnav > ul > li > a {
     padding: 0 36px 0 999px;
     display: initial;
     /*@media (orientation: landscape) {
-                                        padding: 10px 24px;
-                                        display: flex;
-                                    }*/ } }
-          /* line 532, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/objects/nav.scss */
-          nav > div.all .subnav > ul > li > div {
-            display: flex;
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            left: 100%;
-            right: 0;
-            padding: 0 0 24px;
-            overflow-y: auto;
-            background-color: white;
-            flex-direction: column;
-            -webkit-transition: left 0.25s ease-in-out;
-            -moz-transition: left 0.25s ease-in-out;
-            -ms-transition: left 0.25s ease-in-out;
-            -o-transition: left 0.25s ease-in-out;
-            transition: left 0.25s ease-in-out; }
-
+        padding: 10px 24px;
+        display: flex;
+    }*/
+  }
+}
+nav > div.all .subnav > ul > li > div {
+  display: flex;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 100%;
+  right: 0;
+  padding: 0 0 24px;
+  overflow-y: auto;
+  background-color: white;
+  flex-direction: column;
+  -webkit-transition: left 0.25s ease-in-out;
+  -moz-transition: left 0.25s ease-in-out;
+  -ms-transition: left 0.25s ease-in-out;
+  -o-transition: left 0.25s ease-in-out;
+  transition: left 0.25s ease-in-out;
+}
 @media screen and (orientation: landscape) {
-  /* line 532, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/objects/nav.scss */
   nav > div.all .subnav > ul > li > div {
     flex-wrap: wrap;
     flex-direction: row;
-    justify-content: flex-start; } }
-
+    justify-content: flex-start;
+  }
+}
 @media screen and (min-width: 1200px) {
-  /* line 532, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/objects/nav.scss */
   nav > div.all .subnav > ul > li > div {
     display: none;
     left: auto;
@@ -696,271 +701,271 @@ nav {
     flex-direction: row;
     overflow: initial;
     /*@media (orientation: landscape) {
-                                        display: flex;
-                                        left: 100%;
-                                        padding: 0 0 24px;
-                                        overflow-y: auto;
-                                    }*/ } }
-            /* line 568, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/objects/nav.scss */
-            nav > div.all .subnav > ul > li > div > ul {
-              text-align: left; }
-
+        display: flex;
+        left: 100%;
+        padding: 0 0 24px;
+        overflow-y: auto;
+    }*/
+  }
+}
+nav > div.all .subnav > ul > li > div > ul {
+  text-align: left;
+}
 @media screen and (orientation: landscape) {
-  /* line 568, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/objects/nav.scss */
   nav > div.all .subnav > ul > li > div > ul {
     display: flex;
     flex-direction: column;
-    padding: 0; } }
-
+    padding: 0;
+  }
+}
 @media screen and (min-width: 1200px) {
-  /* line 568, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/objects/nav.scss */
   nav > div.all .subnav > ul > li > div > ul {
-    font-family: 'montserratlight';
+    font-family: "montserratlight";
     padding: 12px 0;
     /*@media (orientation: landscape) {
-                                            //font-family: 'montserratsemibold';
-                                            padding: 0;
-                                        }*/ } }
-              /* line 589, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/objects/nav.scss */
-              nav > div.all .subnav > ul > li > div > ul > li {
-                display: flex; }
-
+        //font-family: 'montserratsemibold';
+        padding: 0;
+    }*/
+  }
+}
+nav > div.all .subnav > ul > li > div > ul > li {
+  display: flex;
+}
 @media screen and (min-width: 1200px) {
-  /* line 589, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/objects/nav.scss */
   nav > div.all .subnav > ul > li > div > ul > li {
     height: 22px;
     /*@media (orientation: landscape) {
-                                                height: auto;
-                                            }*/ } }
-                /* line 602, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/objects/nav.scss */
-                nav > div.all .subnav > ul > li > div > ul > li > a {
-                  width: 100%;
-                  font-family: 'montserratsemibold';
-                  padding: 10px 24px;
-                  font-size: 0.75rem;
-                  color: #487f89;
-                  -webkit-transition: color 0.25s ease-in-out;
-                  -moz-transition: color 0.25s ease-in-out;
-                  -ms-transition: color 0.25s ease-in-out;
-                  -o-transition: color 0.25s ease-in-out;
-                  transition: color 0.25s ease-in-out; }
-
+        height: auto;
+    }*/
+  }
+}
+nav > div.all .subnav > ul > li > div > ul > li > a {
+  width: 100%;
+  font-family: "montserratsemibold";
+  padding: 10px 24px;
+  font-size: 0.975rem;
+  color: #487f89;
+  -webkit-transition: color 0.25s ease-in-out;
+  -moz-transition: color 0.25s ease-in-out;
+  -ms-transition: color 0.25s ease-in-out;
+  -o-transition: color 0.25s ease-in-out;
+  transition: color 0.25s ease-in-out;
+}
 @media screen and (min-width: 1200px) {
-  /* line 602, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/objects/nav.scss */
   nav > div.all .subnav > ul > li > div > ul > li > a {
-    font-family: 'montserratlight';
+    font-family: "montserratlight";
     padding: 0 0 0 36px;
     /*@media (orientation: landscape) {
-                                                    font-family: 'montserratsemibold';
-                                                    padding: 10px 24px;
-                                                }*/ } }
-                  /* line 622, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/objects/nav.scss */
-                  nav > div.all .subnav > ul > li > div > ul > li > a:hover {
-                    text-decoration: none;
-                    color: #4ae0c7;
-                    -webkit-transition: color 0.25s ease-in-out;
-                    -moz-transition: color 0.25s ease-in-out;
-                    -ms-transition: color 0.25s ease-in-out;
-                    -o-transition: color 0.25s ease-in-out;
-                    transition: color 0.25s ease-in-out; }
-                  /* line 628, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/objects/nav.scss */
-                  nav > div.all .subnav > ul > li > div > ul > li > a > i {
-                    font-size: 0.75rem;
-                    padding-left: 8px; }
-          /* line 639, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/objects/nav.scss */
-          nav > div.all .subnav > ul > li.c-adm:hover > a {
-            color: #82786f; }
-          /* line 648, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/objects/nav.scss */
-          nav > div.all .subnav > ul > li.c-adm > div > ul > li > a:hover {
-            color: #82786f; }
-          /* line 656, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/objects/nav.scss */
-          nav > div.all .subnav > ul > li.c-adm h3 {
-            color: #82786f; }
-          /* line 662, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/objects/nav.scss */
-          nav > div.all .subnav > ul > li.c-cit:hover > a {
-            color: #ff7200; }
-          /* line 671, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/objects/nav.scss */
-          nav > div.all .subnav > ul > li.c-cit > div > ul > li > a:hover {
-            color: #ff7200; }
-          /* line 679, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/objects/nav.scss */
-          nav > div.all .subnav > ul > li.c-cit h3 {
-            color: #ff7200; }
-          /* line 685, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/objects/nav.scss */
-          nav > div.all .subnav > ul > li.c-cul:hover > a {
-            color: #002f2f; }
-          /* line 694, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/objects/nav.scss */
-          nav > div.all .subnav > ul > li.c-cul > div > ul > li > a:hover {
-            color: #002f2f; }
-          /* line 701, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/objects/nav.scss */
-          nav > div.all .subnav > ul > li.c-cul h3 {
-            color: #002f2f; }
-          /* line 707, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/objects/nav.scss */
-          nav > div.all .subnav > ul > li.c-eco:hover > a {
-            color: #0098db; }
-          /* line 716, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/objects/nav.scss */
-          nav > div.all .subnav > ul > li.c-eco > div > ul > li > a:hover {
-            color: #0098db; }
-          /* line 723, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/objects/nav.scss */
-          nav > div.all .subnav > ul > li.c-eco h3 {
-            color: #0098db; }
-          /* line 729, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/objects/nav.scss */
-          nav > div.all .subnav > ul > li.c-enf:hover > a {
-            color: #00b092; }
-          /* line 738, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/objects/nav.scss */
-          nav > div.all .subnav > ul > li.c-enf > div > ul > li > a:hover {
-            color: #00b092; }
-          /* line 745, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/objects/nav.scss */
-          nav > div.all .subnav > ul > li.c-enf h3 {
-            color: #00b092; }
-          /* line 751, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/objects/nav.scss */
-          nav > div.all .subnav > ul > li.c-san:hover > a {
-            color: #d71f85; }
-          /* line 760, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/objects/nav.scss */
-          nav > div.all .subnav > ul > li.c-san > div > ul > li > a:hover {
-            color: #d71f85; }
-          /* line 767, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/objects/nav.scss */
-          nav > div.all .subnav > ul > li.c-san h3 {
-            color: #d71f85; }
-          /* line 773, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/objects/nav.scss */
-          nav > div.all .subnav > ul > li.c-soc:hover > a {
-            color: #cb0044; }
-          /* line 782, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/objects/nav.scss */
-          nav > div.all .subnav > ul > li.c-soc > div > ul > li > a:hover {
-            color: #cb0044; }
-          /* line 789, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/objects/nav.scss */
-          nav > div.all .subnav > ul > li.c-soc h3 {
-            color: #cb0044; }
-          /* line 795, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/objects/nav.scss */
-          nav > div.all .subnav > ul > li.c-spo:hover > a {
-            color: #98c02d; }
-          /* line 804, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/objects/nav.scss */
-          nav > div.all .subnav > ul > li.c-spo > div > ul > li > a:hover {
-            color: #98c02d; }
-          /* line 811, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/objects/nav.scss */
-          nav > div.all .subnav > ul > li.c-spo h3 {
-            color: #98c02d; }
-          /* line 817, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/objects/nav.scss */
-          nav > div.all .subnav > ul > li.c-tou:hover > a {
-            color: #8a5a9d; }
-          /* line 826, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/objects/nav.scss */
-          nav > div.all .subnav > ul > li.c-tou > div > ul > li > a:hover {
-            color: #8a5a9d; }
-          /* line 833, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/objects/nav.scss */
-          nav > div.all .subnav > ul > li.c-tou h3 {
-            color: #8a5a9d; }
-    /* line 843, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/objects/nav.scss */
-    nav > div.all:hover .subnav {
-      top: 0;
-      z-index: 10;
-      -webkit-transition: top 0.25s ease-in-out;
-      -moz-transition: top 0.25s ease-in-out;
-      -ms-transition: top 0.25s ease-in-out;
-      -o-transition: top 0.25s ease-in-out;
-      transition: top 0.25s ease-in-out; }
-
+        font-family: 'montserratsemibold';
+        padding: 10px 24px;
+    }*/
+  }
+}
+nav > div.all .subnav > ul > li > div > ul > li > a:hover {
+  text-decoration: none;
+  color: #4ae0c7;
+  -webkit-transition: color 0.25s ease-in-out;
+  -moz-transition: color 0.25s ease-in-out;
+  -ms-transition: color 0.25s ease-in-out;
+  -o-transition: color 0.25s ease-in-out;
+  transition: color 0.25s ease-in-out;
+}
+nav > div.all .subnav > ul > li > div > ul > li > a > i {
+  font-size: 0.875rem;
+  padding-left: 8px;
+}
+nav > div.all .subnav > ul > li.c-adm:hover > a {
+  color: #82786f;
+}
+nav > div.all .subnav > ul > li.c-adm > div > ul > li > a:hover {
+  color: #82786f;
+}
+nav > div.all .subnav > ul > li.c-adm h3 {
+  color: #82786f;
+}
+nav > div.all .subnav > ul > li.c-cit:hover > a {
+  color: #ff7200;
+}
+nav > div.all .subnav > ul > li.c-cit > div > ul > li > a:hover {
+  color: #ff7200;
+}
+nav > div.all .subnav > ul > li.c-cit h3 {
+  color: #ff7200;
+}
+nav > div.all .subnav > ul > li.c-cul:hover > a {
+  color: #002f2f;
+}
+nav > div.all .subnav > ul > li.c-cul > div > ul > li > a:hover {
+  color: #002f2f;
+}
+nav > div.all .subnav > ul > li.c-cul h3 {
+  color: #002f2f;
+}
+nav > div.all .subnav > ul > li.c-eco:hover > a {
+  color: #0098db;
+}
+nav > div.all .subnav > ul > li.c-eco > div > ul > li > a:hover {
+  color: #0098db;
+}
+nav > div.all .subnav > ul > li.c-eco h3 {
+  color: #0098db;
+}
+nav > div.all .subnav > ul > li.c-enf:hover > a {
+  color: #00b092;
+}
+nav > div.all .subnav > ul > li.c-enf > div > ul > li > a:hover {
+  color: #00b092;
+}
+nav > div.all .subnav > ul > li.c-enf h3 {
+  color: #00b092;
+}
+nav > div.all .subnav > ul > li.c-san:hover > a {
+  color: #d71f85;
+}
+nav > div.all .subnav > ul > li.c-san > div > ul > li > a:hover {
+  color: #d71f85;
+}
+nav > div.all .subnav > ul > li.c-san h3 {
+  color: #d71f85;
+}
+nav > div.all .subnav > ul > li.c-soc:hover > a {
+  color: #cb0044;
+}
+nav > div.all .subnav > ul > li.c-soc > div > ul > li > a:hover {
+  color: #cb0044;
+}
+nav > div.all .subnav > ul > li.c-soc h3 {
+  color: #cb0044;
+}
+nav > div.all .subnav > ul > li.c-spo:hover > a {
+  color: #98c02d;
+}
+nav > div.all .subnav > ul > li.c-spo > div > ul > li > a:hover {
+  color: #98c02d;
+}
+nav > div.all .subnav > ul > li.c-spo h3 {
+  color: #98c02d;
+}
+nav > div.all .subnav > ul > li.c-tou:hover > a {
+  color: #8a5a9d;
+}
+nav > div.all .subnav > ul > li.c-tou > div > ul > li > a:hover {
+  color: #8a5a9d;
+}
+nav > div.all .subnav > ul > li.c-tou h3 {
+  color: #8a5a9d;
+}
+nav > div.all:hover .subnav {
+  top: 0;
+  z-index: 10;
+  -webkit-transition: top 0.25s ease-in-out;
+  -moz-transition: top 0.25s ease-in-out;
+  -ms-transition: top 0.25s ease-in-out;
+  -o-transition: top 0.25s ease-in-out;
+  transition: top 0.25s ease-in-out;
+}
 @media screen and (min-width: 1200px) {
-  /* line 843, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/objects/nav.scss */
   nav > div.all:hover .subnav {
     display: block;
     top: 66px;
     /*@media (orientation: landscape) {
-                                top: 0;
-                            }*/ } }
-
+        top: 0;
+    }*/
+  }
+}
 @media screen and (min-width: 1200px) {
-  /* line 865, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/objects/nav.scss */
   nav > div.calendar {
     order: 4;
     /*@media (orientation: landscape) {
-                        order: initial;
-                    }*/ } }
-    /* line 876, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/objects/nav.scss */
-    nav > div.more {
-      position: relative; }
-
+        order: initial;
+    }*/
+  }
+}
+nav > div.more {
+  position: relative;
+}
 @media screen and (min-width: 1200px) {
-  /* line 876, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/objects/nav.scss */
   nav > div.more {
     display: none;
     /*@media (orientation: landscape) {
-                        display: block;
-                    }*/ } }
-      /* line 889, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/objects/nav.scss */
-      nav > div.more > input[type="checkbox"] {
-        width: 100%;
-        height: 100%;
-        left: 0; }
-        /* line 894, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/objects/nav.scss */
-        nav > div.more > input[type="checkbox"] + a {
-          -webkit-box-shadow: 0 0 0 #4ae0c7 inset !important;
-          -moz-box-shadow: 0 0 0 #4ae0c7 inset !important;
-          -ms-box-shadow: 0 0 0 #4ae0c7 inset !important;
-          -o-box-shadow: 0 0 0 #4ae0c7 inset !important;
-          box-shadow: 0 0 0 #4ae0c7 inset !important;
-          -webkit-transition: box-shadow 0.25s ease-in-out;
-          -moz-transition: box-shadow 0.25s ease-in-out;
-          -ms-transition: box-shadow 0.25s ease-in-out;
-          -o-transition: box-shadow 0.25s ease-in-out;
-          transition: box-shadow 0.25s ease-in-out; }
-          /* line 898, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/objects/nav.scss */
-          nav > div.more > input[type="checkbox"] + a + .bubble {
-            width: max-content;
-            top: auto;
-            bottom: 100%;
-            right: 8px;
-            background-color: white;
-            opacity: 0;
-            -webkit-box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.125) !important;
-            -moz-box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.125) !important;
-            -ms-box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.125) !important;
-            -o-box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.125) !important;
-            box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.125) !important;
-            -webkit-transition: all 0.25s ease-in-out;
-            -moz-transition: all 0.25s ease-in-out;
-            -ms-transition: all 0.25s ease-in-out;
-            -o-transition: all 0.25s ease-in-out;
-            transition: all 0.25s ease-in-out; }
-
+        display: block;
+    }*/
+  }
+}
+nav > div.more > input[type=checkbox] {
+  width: 100%;
+  height: 100%;
+  left: 0;
+}
+nav > div.more > input[type=checkbox] + a {
+  -webkit-box-shadow: 0 0 0 #4ae0c7 inset !important;
+  -moz-box-shadow: 0 0 0 #4ae0c7 inset !important;
+  -ms-box-shadow: 0 0 0 #4ae0c7 inset !important;
+  -o-box-shadow: 0 0 0 #4ae0c7 inset !important;
+  box-shadow: 0 0 0 #4ae0c7 inset !important;
+  -webkit-transition: box-shadow 0.25s ease-in-out;
+  -moz-transition: box-shadow 0.25s ease-in-out;
+  -ms-transition: box-shadow 0.25s ease-in-out;
+  -o-transition: box-shadow 0.25s ease-in-out;
+  transition: box-shadow 0.25s ease-in-out;
+}
+nav > div.more > input[type=checkbox] + a + .bubble {
+  width: max-content;
+  top: auto;
+  bottom: 100%;
+  right: 8px;
+  background-color: white;
+  opacity: 0;
+  -webkit-box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.125) !important;
+  -moz-box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.125) !important;
+  -ms-box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.125) !important;
+  -o-box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.125) !important;
+  box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.125) !important;
+  -webkit-transition: all 0.25s ease-in-out;
+  -moz-transition: all 0.25s ease-in-out;
+  -ms-transition: all 0.25s ease-in-out;
+  -o-transition: all 0.25s ease-in-out;
+  transition: all 0.25s ease-in-out;
+}
 @media screen and (orientation: landscape) {
-  /* line 898, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/objects/nav.scss */
-  nav > div.more > input[type="checkbox"] + a + .bubble {
+  nav > div.more > input[type=checkbox] + a + .bubble {
     bottom: 8px;
     left: -100%;
-    right: auto; } }
-
+    right: auto;
+  }
+}
 @media screen and (min-width: 768px) {
-  /* line 898, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/objects/nav.scss */
-  nav > div.more > input[type="checkbox"] + a + .bubble {
+  nav > div.more > input[type=checkbox] + a + .bubble {
     position: fixed;
     bottom: -88px;
-    right: 74px; } }
-
+    right: 74px;
+  }
+}
 @media screen and (min-width: 992px) and (orientation: landscape) {
-  /* line 898, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/objects/nav.scss */
-  nav > div.more > input[type="checkbox"] + a + .bubble {
+  nav > div.more > input[type=checkbox] + a + .bubble {
     position: fixed;
     bottom: -88px;
     left: auto;
-    right: 74px; } }
-            /* line 930, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/objects/nav.scss */
-            nav > div.more > input[type="checkbox"] + a + .bubble .graphicElement {
-              top: auto;
-              left: auto; }
-              /* line 934, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/objects/nav.scss */
-              nav > div.more > input[type="checkbox"] + a + .bubble .graphicElement:first-child {
-                width: 20px;
-                height: 20px;
-                bottom: -10px;
-                right: 14px;
-                -webkit-box-shadow: 0 -0.25rem 0.5rem rgba(0, 0, 0, 0.125) !important;
-                -moz-box-shadow: 0 -0.25rem 0.5rem rgba(0, 0, 0, 0.125) !important;
-                -ms-box-shadow: 0 -0.25rem 0.5rem rgba(0, 0, 0, 0.125) !important;
-                -o-box-shadow: 0 -0.25rem 0.5rem rgba(0, 0, 0, 0.125) !important;
-                box-shadow: 0 -0.25rem 0.5rem rgba(0, 0, 0, 0.125) !important; }
-
+    right: 74px;
+  }
+}
+nav > div.more > input[type=checkbox] + a + .bubble .graphicElement {
+  top: auto;
+  left: auto;
+}
+nav > div.more > input[type=checkbox] + a + .bubble .graphicElement:first-child {
+  width: 20px;
+  height: 20px;
+  bottom: -10px;
+  right: 14px;
+  -webkit-box-shadow: 0 -0.25rem 0.5rem rgba(0, 0, 0, 0.125) !important;
+  -moz-box-shadow: 0 -0.25rem 0.5rem rgba(0, 0, 0, 0.125) !important;
+  -ms-box-shadow: 0 -0.25rem 0.5rem rgba(0, 0, 0, 0.125) !important;
+  -o-box-shadow: 0 -0.25rem 0.5rem rgba(0, 0, 0, 0.125) !important;
+  box-shadow: 0 -0.25rem 0.5rem rgba(0, 0, 0, 0.125) !important;
+}
 @media screen and (orientation: landscape) {
-  /* line 934, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/objects/nav.scss */
-  nav > div.more > input[type="checkbox"] + a + .bubble .graphicElement:first-child {
+  nav > div.more > input[type=checkbox] + a + .bubble .graphicElement:first-child {
     bottom: 10px;
     left: -10px;
     right: auto;
@@ -968,22 +973,22 @@ nav {
     -moz-box-shadow: 0.25rem 0 0.5rem rgba(0, 0, 0, 0.125) !important;
     -ms-box-shadow: 0.25rem 0 0.5rem rgba(0, 0, 0, 0.125) !important;
     -o-box-shadow: 0.25rem 0 0.5rem rgba(0, 0, 0, 0.125) !important;
-    box-shadow: 0.25rem 0 0.5rem rgba(0, 0, 0, 0.125) !important; } }
-
+    box-shadow: 0.25rem 0 0.5rem rgba(0, 0, 0, 0.125) !important;
+  }
+}
 @media screen and (min-width: 768px) {
-  /* line 934, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/objects/nav.scss */
-  nav > div.more > input[type="checkbox"] + a + .bubble .graphicElement:first-child {
+  nav > div.more > input[type=checkbox] + a + .bubble .graphicElement:first-child {
     bottom: 11px;
     right: -10px;
     -webkit-box-shadow: 0.25rem 0 0.5rem rgba(0, 0, 0, 0.125) !important;
     -moz-box-shadow: 0.25rem 0 0.5rem rgba(0, 0, 0, 0.125) !important;
     -ms-box-shadow: 0.25rem 0 0.5rem rgba(0, 0, 0, 0.125) !important;
     -o-box-shadow: 0.25rem 0 0.5rem rgba(0, 0, 0, 0.125) !important;
-    box-shadow: 0.25rem 0 0.5rem rgba(0, 0, 0, 0.125) !important; } }
-
+    box-shadow: 0.25rem 0 0.5rem rgba(0, 0, 0, 0.125) !important;
+  }
+}
 @media screen and (min-width: 992px) and (orientation: landscape) {
-  /* line 934, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/objects/nav.scss */
-  nav > div.more > input[type="checkbox"] + a + .bubble .graphicElement:first-child {
+  nav > div.more > input[type=checkbox] + a + .bubble .graphicElement:first-child {
     bottom: 11px;
     left: auto;
     right: -10px;
@@ -991,242 +996,242 @@ nav {
     -moz-box-shadow: 0.25rem 0 0.5rem rgba(0, 0, 0, 0.125) !important;
     -ms-box-shadow: 0.25rem 0 0.5rem rgba(0, 0, 0, 0.125) !important;
     -o-box-shadow: 0.25rem 0 0.5rem rgba(0, 0, 0, 0.125) !important;
-    box-shadow: 0.25rem 0 0.5rem rgba(0, 0, 0, 0.125) !important; } }
-              /* line 964, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/objects/nav.scss */
-              nav > div.more > input[type="checkbox"] + a + .bubble .graphicElement:last-child {
-                width: 40px;
-                height: 20px;
-                bottom: 0;
-                right: 5px;
-                -webkit-transform: none;
-                -moz-transform: none;
-                -ms-transform: none;
-                -o-transform: none;
-                transform: none; }
-
+    box-shadow: 0.25rem 0 0.5rem rgba(0, 0, 0, 0.125) !important;
+  }
+}
+nav > div.more > input[type=checkbox] + a + .bubble .graphicElement:last-child {
+  width: 40px;
+  height: 20px;
+  bottom: 0;
+  right: 5px;
+  -webkit-transform: none;
+  -moz-transform: none;
+  -ms-transform: none;
+  -o-transform: none;
+  transform: none;
+}
 @media screen and (orientation: landscape) {
-  /* line 964, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/objects/nav.scss */
-  nav > div.more > input[type="checkbox"] + a + .bubble .graphicElement:last-child {
+  nav > div.more > input[type=checkbox] + a + .bubble .graphicElement:last-child {
     width: 20px;
     height: 45px;
     bottom: 0;
     left: 0;
-    right: auto; } }
-
+    right: auto;
+  }
+}
 @media screen and (min-width: 768px) {
-  /* line 964, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/objects/nav.scss */
-  nav > div.more > input[type="checkbox"] + a + .bubble .graphicElement:last-child {
+  nav > div.more > input[type=checkbox] + a + .bubble .graphicElement:last-child {
     width: 20px;
     height: 45px;
     bottom: 0;
-    right: 0; } }
-
+    right: 0;
+  }
+}
 @media screen and (min-width: 992px) and (orientation: landscape) {
-  /* line 964, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/objects/nav.scss */
-  nav > div.more > input[type="checkbox"] + a + .bubble .graphicElement:last-child {
+  nav > div.more > input[type=checkbox] + a + .bubble .graphicElement:last-child {
     width: 20px;
     height: 45px;
     bottom: 0;
     left: auto;
-    right: 0; } }
-            /* line 999, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/objects/nav.scss */
-            nav > div.more > input[type="checkbox"] + a + .bubble div {
-              display: flex;
-              flex-direction: column;
-              padding: 8px 0;
-              text-align: left; }
-              /* line 1005, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/objects/nav.scss */
-              nav > div.more > input[type="checkbox"] + a + .bubble div a {
-                font-family: 'montserratsemibold';
-                font-size: 0.75rem;
-                padding: 8px 24px 8px 12px;
-                color: #487f89;
-                position: relative;
-                z-index: 30; }
-        /* line 1018, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/objects/nav.scss */
-        nav > div.more > input[type="checkbox"]:checked + a {
-          -webkit-box-shadow: 0 -42px 0 #4ae0c7 inset !important;
-          -moz-box-shadow: 0 -42px 0 #4ae0c7 inset !important;
-          -ms-box-shadow: 0 -42px 0 #4ae0c7 inset !important;
-          -o-box-shadow: 0 -42px 0 #4ae0c7 inset !important;
-          box-shadow: 0 -42px 0 #4ae0c7 inset !important;
-          -webkit-transition: box-shadow 0.25s ease-in-out;
-          -moz-transition: box-shadow 0.25s ease-in-out;
-          -ms-transition: box-shadow 0.25s ease-in-out;
-          -o-transition: box-shadow 0.25s ease-in-out;
-          transition: box-shadow 0.25s ease-in-out; }
-
+    right: 0;
+  }
+}
+nav > div.more > input[type=checkbox] + a + .bubble div {
+  display: flex;
+  flex-direction: column;
+  padding: 8px 0;
+  text-align: left;
+}
+nav > div.more > input[type=checkbox] + a + .bubble div a {
+  font-family: "montserratsemibold";
+  font-size: 0.875rem;
+  padding: 8px 24px 8px 12px;
+  color: #487f89;
+  position: relative;
+  z-index: 30;
+}
+nav > div.more > input[type=checkbox]:checked + a {
+  -webkit-box-shadow: 0 -42px 0 #4ae0c7 inset !important;
+  -moz-box-shadow: 0 -42px 0 #4ae0c7 inset !important;
+  -ms-box-shadow: 0 -42px 0 #4ae0c7 inset !important;
+  -o-box-shadow: 0 -42px 0 #4ae0c7 inset !important;
+  box-shadow: 0 -42px 0 #4ae0c7 inset !important;
+  -webkit-transition: box-shadow 0.25s ease-in-out;
+  -moz-transition: box-shadow 0.25s ease-in-out;
+  -ms-transition: box-shadow 0.25s ease-in-out;
+  -o-transition: box-shadow 0.25s ease-in-out;
+  transition: box-shadow 0.25s ease-in-out;
+}
 @media screen and (orientation: landscape) {
-  /* line 1018, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/objects/nav.scss */
-  nav > div.more > input[type="checkbox"]:checked + a {
+  nav > div.more > input[type=checkbox]:checked + a {
     -webkit-box-shadow: 42px 0 0 #4ae0c7 inset !important;
     -moz-box-shadow: 42px 0 0 #4ae0c7 inset !important;
     -ms-box-shadow: 42px 0 0 #4ae0c7 inset !important;
     -o-box-shadow: 42px 0 0 #4ae0c7 inset !important;
-    box-shadow: 42px 0 0 #4ae0c7 inset !important; } }
-
+    box-shadow: 42px 0 0 #4ae0c7 inset !important;
+  }
+}
 @media screen and (min-width: 992px) and (orientation: landscape) {
-  /* line 1018, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/objects/nav.scss */
-  nav > div.more > input[type="checkbox"]:checked + a {
+  nav > div.more > input[type=checkbox]:checked + a {
     -webkit-box-shadow: 0 -42px 0 #4ae0c7 inset !important;
     -moz-box-shadow: 0 -42px 0 #4ae0c7 inset !important;
     -ms-box-shadow: 0 -42px 0 #4ae0c7 inset !important;
     -o-box-shadow: 0 -42px 0 #4ae0c7 inset !important;
-    box-shadow: 0 -42px 0 #4ae0c7 inset !important; } }
-          /* line 1034, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/objects/nav.scss */
-          nav > div.more > input[type="checkbox"]:checked + a + .bubble {
-            bottom: 50px;
-            opacity: 1;
-            -webkit-transition: all 0.25s ease-in-out;
-            -moz-transition: all 0.25s ease-in-out;
-            -ms-transition: all 0.25s ease-in-out;
-            -o-transition: all 0.25s ease-in-out;
-            transition: all 0.25s ease-in-out; }
-
+    box-shadow: 0 -42px 0 #4ae0c7 inset !important;
+  }
+}
+nav > div.more > input[type=checkbox]:checked + a + .bubble {
+  bottom: 50px;
+  opacity: 1;
+  -webkit-transition: all 0.25s ease-in-out;
+  -moz-transition: all 0.25s ease-in-out;
+  -ms-transition: all 0.25s ease-in-out;
+  -o-transition: all 0.25s ease-in-out;
+  transition: all 0.25s ease-in-out;
+}
 @media screen and (orientation: landscape) {
-  /* line 1034, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/objects/nav.scss */
-  nav > div.more > input[type="checkbox"]:checked + a + .bubble {
+  nav > div.more > input[type=checkbox]:checked + a + .bubble {
     bottom: 8px;
-    left: 50px; } }
-
+    left: 50px;
+  }
+}
 @media screen and (min-width: 768px) {
-  /* line 1034, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/objects/nav.scss */
-  nav > div.more > input[type="checkbox"]:checked + a + .bubble {
+  nav > div.more > input[type=checkbox]:checked + a + .bubble {
     bottom: 24px;
-    right: 74px; } }
-
+    right: 74px;
+  }
+}
 @media screen and (min-width: 992px) and (orientation: landscape) {
-  /* line 1034, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/objects/nav.scss */
-  nav > div.more > input[type="checkbox"]:checked + a + .bubble {
+  nav > div.more > input[type=checkbox]:checked + a + .bubble {
     bottom: 24px;
     left: auto;
-    right: 74px; } }
-    /* line 1062, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/objects/nav.scss */
-    nav > div.eticket {
-      display: none;
-      order: 2; }
-
+    right: 74px;
+  }
+}
+nav > div.eticket {
+  display: none;
+  order: 2;
+}
 @media screen and (min-width: 1200px) {
-  /* line 1062, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/objects/nav.scss */
   nav > div.eticket {
     display: flex;
     align-items: center;
     /*@media (orientation: landscape) {
-                        display: none;
-                    }*/ } }
-    /* line 1077, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/objects/nav.scss */
-    nav > div.news {
-      display: none;
-      order: 3; }
-
+        display: none;
+    }*/
+  }
+}
+nav > div.news {
+  display: none;
+  order: 3;
+}
 @media screen and (min-width: 1200px) {
-  /* line 1077, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/objects/nav.scss */
   nav > div.news {
     display: flex;
     align-items: center;
     /*@media (orientation: landscape) {
-                        display: none;
-                    }*/ } }
-    /* line 1092, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/objects/nav.scss */
-    nav > div.agenda {
-      display: none;
-      order: 5; }
-
+        display: none;
+    }*/
+  }
+}
+nav > div.agenda {
+  display: none;
+  order: 5;
+}
 @media screen and (min-width: 1200px) {
-  /* line 1092, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/objects/nav.scss */
   nav > div.agenda {
     display: flex;
     align-items: center;
     /*@media (orientation: landscape) {
-                        display: none;
-                    }*/ } }
-    /* line 1109, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/objects/nav.scss */
-    nav > div.active > a {
-      background-color: #4ae0c7; }
-
+        display: none;
+    }*/
+  }
+}
+nav > div.active > a {
+  background-color: #4ae0c7;
+}
 @media screen and (min-width: 1200px) {
-  /* line 1109, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/objects/nav.scss */
   nav > div.active > a {
     background: none;
     -webkit-box-shadow: 0 -4px 0 #4ae0c7 inset !important;
     -moz-box-shadow: 0 -4px 0 #4ae0c7 inset !important;
     -ms-box-shadow: 0 -4px 0 #4ae0c7 inset !important;
     -o-box-shadow: 0 -4px 0 #4ae0c7 inset !important;
-    box-shadow: 0 -4px 0 #4ae0c7 inset !important; } }
-    /* line 1121, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/objects/nav.scss */
-    nav > div > a {
-      display: flex;
-      height: 42px;
-      align-items: center;
-      justify-content: center;
-      color: white;
-      font-size: 1.25rem;
-      -webkit-box-shadow: 0 0 0 #4ae0c7 inset !important;
-      -moz-box-shadow: 0 0 0 #4ae0c7 inset !important;
-      -ms-box-shadow: 0 0 0 #4ae0c7 inset !important;
-      -o-box-shadow: 0 0 0 #4ae0c7 inset !important;
-      box-shadow: 0 0 0 #4ae0c7 inset !important;
-      -webkit-transition: box-shadow 0.25s ease-in-out;
-      -moz-transition: box-shadow 0.25s ease-in-out;
-      -ms-transition: box-shadow 0.25s ease-in-out;
-      -o-transition: box-shadow 0.25s ease-in-out;
-      transition: box-shadow 0.25s ease-in-out; }
-
+    box-shadow: 0 -4px 0 #4ae0c7 inset !important;
+  }
+}
+nav > div > a {
+  display: flex;
+  height: 42px;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 1.25rem;
+  -webkit-box-shadow: 0 0 0 #4ae0c7 inset !important;
+  -moz-box-shadow: 0 0 0 #4ae0c7 inset !important;
+  -ms-box-shadow: 0 0 0 #4ae0c7 inset !important;
+  -o-box-shadow: 0 0 0 #4ae0c7 inset !important;
+  box-shadow: 0 0 0 #4ae0c7 inset !important;
+  -webkit-transition: box-shadow 0.25s ease-in-out;
+  -moz-transition: box-shadow 0.25s ease-in-out;
+  -ms-transition: box-shadow 0.25s ease-in-out;
+  -o-transition: box-shadow 0.25s ease-in-out;
+  transition: box-shadow 0.25s ease-in-out;
+}
 @media screen and (orientation: landscape) {
-  /* line 1121, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/objects/nav.scss */
   nav > div > a {
     height: 100%;
     position: absolute;
     top: 0;
     bottom: 0;
     left: 0;
-    right: 0; } }
-
+    right: 0;
+  }
+}
 @media screen and (min-width: 992px) and (orientation: landscape) {
-  /* line 1121, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/objects/nav.scss */
   nav > div > a {
-    height: 42px; } }
-
+    height: 42px;
+  }
+}
 @media screen and (min-width: 1200px) {
-  /* line 1121, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/objects/nav.scss */
   nav > div > a {
     position: initial;
     /*@media (orientation: landscape) {
-                        width: 42px;
-                    }*/ } }
-      /* line 1155, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/objects/nav.scss */
-      nav > div > a:hover {
-        -webkit-box-shadow: 0 -42px 0 #4ae0c7 inset !important;
-        -moz-box-shadow: 0 -42px 0 #4ae0c7 inset !important;
-        -ms-box-shadow: 0 -42px 0 #4ae0c7 inset !important;
-        -o-box-shadow: 0 -42px 0 #4ae0c7 inset !important;
-        box-shadow: 0 -42px 0 #4ae0c7 inset !important;
-        -webkit-transition: box-shadow 0.25s ease-in-out;
-        -moz-transition: box-shadow 0.25s ease-in-out;
-        -ms-transition: box-shadow 0.25s ease-in-out;
-        -o-transition: box-shadow 0.25s ease-in-out;
-        transition: box-shadow 0.25s ease-in-out; }
-
+        width: 42px;
+    }*/
+  }
+}
+nav > div > a:hover {
+  -webkit-box-shadow: 0 -42px 0 #4ae0c7 inset !important;
+  -moz-box-shadow: 0 -42px 0 #4ae0c7 inset !important;
+  -ms-box-shadow: 0 -42px 0 #4ae0c7 inset !important;
+  -o-box-shadow: 0 -42px 0 #4ae0c7 inset !important;
+  box-shadow: 0 -42px 0 #4ae0c7 inset !important;
+  -webkit-transition: box-shadow 0.25s ease-in-out;
+  -moz-transition: box-shadow 0.25s ease-in-out;
+  -ms-transition: box-shadow 0.25s ease-in-out;
+  -o-transition: box-shadow 0.25s ease-in-out;
+  transition: box-shadow 0.25s ease-in-out;
+}
 @media screen and (orientation: landscape) {
-  /* line 1155, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/objects/nav.scss */
   nav > div > a:hover {
     -webkit-box-shadow: 42px 0 0 #4ae0c7 inset !important;
     -moz-box-shadow: 42px 0 0 #4ae0c7 inset !important;
     -ms-box-shadow: 42px 0 0 #4ae0c7 inset !important;
     -o-box-shadow: 42px 0 0 #4ae0c7 inset !important;
-    box-shadow: 42px 0 0 #4ae0c7 inset !important; } }
-
+    box-shadow: 42px 0 0 #4ae0c7 inset !important;
+  }
+}
 @media screen and (min-width: 992px) and (orientation: landscape) {
-  /* line 1155, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/objects/nav.scss */
   nav > div > a:hover {
     -webkit-box-shadow: 0 -42px 0 #4ae0c7 inset !important;
     -moz-box-shadow: 0 -42px 0 #4ae0c7 inset !important;
     -ms-box-shadow: 0 -42px 0 #4ae0c7 inset !important;
     -o-box-shadow: 0 -42px 0 #4ae0c7 inset !important;
-    box-shadow: 0 -42px 0 #4ae0c7 inset !important; } }
-
+    box-shadow: 0 -42px 0 #4ae0c7 inset !important;
+  }
+}
 @media screen and (min-width: 1200px) {
-  /* line 1155, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/objects/nav.scss */
   nav > div > a:hover {
     -webkit-box-shadow: 0 -4px 0 #4ae0c7 inset !important;
     -moz-box-shadow: 0 -4px 0 #4ae0c7 inset !important;
@@ -1234,48 +1239,50 @@ nav {
     -o-box-shadow: 0 -4px 0 #4ae0c7 inset !important;
     box-shadow: 0 -4px 0 #4ae0c7 inset !important;
     /*@media (orientation: landscape) {
-                            @include boxShadow(0 -42px 0 $CTA inset);
-                        }*/ } }
-      /* line 1179, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/objects/nav.scss */
-      nav > div > a i {
-        font-size: 1.25rem; }
-
+        @include boxShadow(0 -42px 0 $CTA inset);
+    }*/
+  }
+}
+nav > div > a i {
+  font-size: 1.25rem;
+}
 @media screen and (min-width: 1200px) {
-  /* line 1182, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/objects/nav.scss */
   nav > div > a i.icon_nav {
     display: none;
     /*@media (orientation: landscape) {
-                                display: flex;
-                            }*/ } }
-      /* line 1196, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/objects/nav.scss */
-      nav > div > a.icon_custom .i-dark-primary {
-        display: none; }
-
+        display: flex;
+    }*/
+  }
+}
+nav > div > a.icon_custom .i-dark-primary {
+  display: none;
+}
 @media screen and (min-width: 1200px) {
-  /* line 1196, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/objects/nav.scss */
   nav > div > a.icon_custom .i-dark-primary {
     display: inline;
     margin-right: 8px;
     background-size: auto;
     /*@media (orientation: landscape) {
-                                display: none;
-                            }*/ }
-    /* line 1209, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/objects/nav.scss */
-    nav > div > a.icon_custom .i-dark-primary.i-bars {
-      height: 10px; } }
-      /* line 1217, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/objects/nav.scss */
-      nav > div > a span {
         display: none;
-        color: #487f89;
-        font-size: 0.825rem;
-        font-family: 'montserratsemibold'; }
-
+    }*/
+  }
+  nav > div > a.icon_custom .i-dark-primary.i-bars {
+    height: 10px;
+  }
+}
+nav > div > a span {
+  display: none;
+  color: #487f89;
+  font-size: 0.85rem;
+  font-family: "montserratsemibold";
+}
 @media screen and (min-width: 1200px) {
-  /* line 1217, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/css/objects/nav.scss */
   nav > div > a span {
     display: block;
     /*@media (orientation: landscape) {
-                            display: none;
-                        }*/ } }
+        display: none;
+    }*/
+  }
+}
 
 /*# sourceMappingURL=nav.css.map */
