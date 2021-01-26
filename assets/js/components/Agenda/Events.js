@@ -9,14 +9,19 @@ const { useEffect } = wp.element;
 function Events({
     isLoading,
     setIsLoading,
-    dateFilter,
-    dateFilterId,
     events,
     setEvents,
     filteredEvents,
     setFilteredEvents,
-    isBetweenDate
+    dateSelectorValues
 }) {
+    const indexedClass = [
+        'object-card oc-event col-md-6 px-md-4px col-lg-4 px-lg-8px',
+        'object-card oc-event pt-8px pt-md-0 col-md-6 px-md-4px col-lg-4 px-lg-8px',
+        'object-card oc-event pt-8px pt-lg-0 col-md-6 px-md-4px col-lg-4 px-lg-8px',
+        'object-card oc-event pt-8px col-md-6 px-md-4px col-lg-4 pt-lg-16px px-lg-8px'
+    ];
+
     const getEventsData = () => {
         setIsLoading( true );
         axios
@@ -24,6 +29,7 @@ function Events({
             .then( ( res ) => {
                 setEvents( res.data );
                 setFilteredEvents( res.data );
+
                 console.log( res.data );
                 setIsLoading( false );
             })
@@ -34,74 +40,72 @@ function Events({
         getEventsData();
     }, []);
 
-    //Filters Event
+    //FilteringEvents once dateSelectorValues changes
     useEffect( () => {
-        if ( dateFilterId !== undefined ) {
-            if ( 0 == dateFilterId ) {
-                setFilteredEvents( events );
-            } else {
+        filteredEvents = events.filter( ( event ) => {
+            const selectorMonth = dateSelectorValues.split( '|' )[0];
+            const selectorYear = dateSelectorValues.split( '|' )[1];
+            let shouldStay = false;
 
-        //matches all event with starting MONTH date == dateFilterId
-                const matchingEvents = events.filter( ( object ) => object.month == dateFilterId );
-
-                //The selected category has a starting month value that is stored in isBetweenDate
-                //The isBetweenDate is used to check if an event occurs between the starting and ending date
-                //If true adds the event to an array that is merged with the first array
-
-                dayjs.extend( isBetween ); //extends isbetween function from dayjs
-
-                const isBetweenEvents = events.filter( ( object ) => {
-                    let startingDate = object.date_deb;
+            if ( 'tout' !== selectorMonth ) {
+                event.dates.forEach( ( e ) => {
+                    let startingDate = e.date_deb;
                     startingDate = startingDate.split( '/' ).reverse().join( '-' );
-                    let endingDate = object.date_fin;
+                    startingDate = `${startingDate.slice( 0, -2 )}01`;
+                    let endingDate = e.date_fin;
                     endingDate = endingDate.split( '/' ).reverse().join( '-' );
+                    endingDate = `${endingDate.slice( 0, -2 )}01`;
 
-                    return dayjs( isBetweenDate ).isBetween(
-                        startingDate,
-                        endingDate,
-                        null,
-                        []
-                    );
+                    dayjs.extend( isBetween ); //allows us to use isBetween function
+                    if (
+                        dayjs( `${selectorYear}-${selectorMonth}-01` ).isBetween(
+                            startingDate,
+                            endingDate,
+                            null,
+                            '[]'
+                        )
+                    ) {
+                        shouldStay = true;
+                    }
                 });
-
-                setFilteredEvents([ ...matchingEvents, ...isBetweenEvents ]);
+            } else {
+                shouldStay = true;
             }
-        }
-    }, [ dateFilter, dateFilterId ]);
+            return shouldStay;
+        });
 
-    useEffect( () => {
-        setEvents([ 1, 2, 3, 4, 5 ]);
-    }, []);
+        setFilteredEvents( filteredEvents );
+    }, [ dateSelectorValues ]);
 
-    const classCarte1 =
-    '1 object-card oc-event col-md-6 px-md-4px col-lg-4 px-lg-8px';
-    const classCarte2_3 =
-    '2 3 object-card oc-event pt-8px pt-md-0 col-md-6 px-md-4px col-lg-4 px-lg-8px';
-    const classCarte456789 =
-    '4 5 6 7 object-card oc-event pt-8px col-md-6 px-md-4px col-lg-4 pt-lg-16px px-lg-8px';
-
+    //HTML OUTPUT
     if ( true == isLoading ) {
         return (
             <div style={{ marginTop: '5vh', fontSize: '15px', color: '#487F89' }}>
                 <FontAwesomeIcon size="3x" spin={true} icon={faRedo} />
             </div>
         );
+    } if ( 0 == filteredEvents.length ) {
+        return (
+            <>
+                <ul className="pt-24px pt-md-32px justify-content-center d-md-flex flex-md-wrap mx-md-n4px mx-lg-n8px object-cardsList">
+                    <li className="alert alert-info d-block" role="alert">
+            aucun événement à afficher
+                    </li>
+                </ul>
+            </>
+        );
     }
     return (
         <>
-            <ul className="pt-24px pt-md-32px d-md-flex flex-md-wrap mx-md-n4px mx-lg-n8px">
+            <ul className="pt-24px pt-md-32px d-md-flex flex-md-wrap mx-md-n4px mx-lg-n8px object-cardsList">
                 {filteredEvents.map( ( object, index ) => (
                     <li
                         key={`key ${index}`}
                         className={
-                            0 == index ?
-                                classCarte1 :
-                                2 == index || 1 == index ?
-                                    classCarte2_3 :
-                                    classCarte456789
+                            indexedClass[index] ? indexedClass[index] : indexedClass[3]
                         }
                     >
-                        <a href="#" className="bg-img">
+                        <a href={object.url} className="bg-img">
                             <i
                                 className="bg-img-size-hover-110"
                                 style={{
@@ -116,17 +120,17 @@ function Events({
                             </i>
                             <div>
                                 <div className="col-3">
-                                    <span>{object.day}</span>
-                                    <span>{object.month}</span>
-                                    <span>{object.year}</span>
+                                    <span>{object.dates[0].day}</span>
+                                    <span>{object.dates[0].month}</span>
+                                    <span>{object.dates[0].year}</span>
                                 </div>
 
                                 <div className="col-9">
-                                    <h3 maxlenght="0">{object.nom}</h3>
+                                    <h3>{object.nom}</h3>
 
                                     <small>{object.localite}</small>
 
-                                    <small>{object.date_affichage}</small>
+                                    {object.dates.map( ( date ) => <small>{date.date_affichage}</small> )}
                                 </div>
                             </div>
                         </a>

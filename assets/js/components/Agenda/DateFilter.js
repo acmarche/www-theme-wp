@@ -1,15 +1,14 @@
 const { useEffect } = wp.element;
 
 function DateFilter({
-    dateFilter,
-    setDateFilter,
-    setDateFilterId,
+    dateSelector,
+    setDateSelector,
+    setDateSelectorValues,
     currentMonth,
-    currentYear,
-    setIsBetweenDate
+    currentYear
 }) {
-    const fillDateFilter = () => {
-        const monthsNames = [
+    const fillDateSelector = () => {
+        const hardCodedMonth = [
             'Jan',
             'Fev',
             'Mar',
@@ -23,7 +22,7 @@ function DateFilter({
             'Nov',
             'Dec'
         ];
-        const monthsNumbers = [
+        const hardCodedNumber = [
             '01',
             '02',
             '03',
@@ -38,47 +37,36 @@ function DateFilter({
             '12'
         ];
 
-        const arrayOfObject = [
+        const selectorArray = [
             {
-                name: 'Tout', id: 0, month: '', year: '', checked: true
+                name: 'Tout', id: 'tout', month: '', year: '', checked: true
             }
         ];
 
-        monthsNames.map( ( elem, index ) => {
-            const monthName = monthsNames[index];
-            const monthNumber = monthsNumbers[index];
-            const currentMonthNumber = currentMonth;
-            const id = 10 > index + 1 ? `0${index + 1}` : index + 1;
-            let year = 1900;
-            if ( monthNumber < currentMonthNumber ) {
-                console.log( monthNumber, currentMonthNumber );
-                year += currentYear + 1;
-            } else {
-                year += currentYear;
-            }
-            const object = {
-                name: monthName,
-                id,
-                month: monthNumber,
-                year,
+        for ( let i = 0; i < hardCodedMonth.length; i++ ) {
+            const selectorObject = {
+                name: hardCodedMonth[i],
+                id: i + 1,
+                month: hardCodedNumber[i],
+                year:
+                    hardCodedNumber[i] >= currentMonth ?
+                        currentYear + 1900 :
+                        currentYear + 1901,
                 checked: false
             };
-            arrayOfObject.push( object );
-        });
 
-        setDateFilter( arrayOfObject );
+            selectorArray.push( selectorObject );
+        }
+
+        setDateSelector( selectorArray );
     };
 
     useEffect( () => {
-        fillDateFilter();
+        fillDateSelector();
     }, []);
 
     function changeSelectedCategory( temp_e ) {
-        const eventDataFilterId = temp_e.target.value.split( '|' )[0];
-        setDateFilterId( eventDataFilterId );
-
-        const isBetweenDateValue = temp_e.target.value.split( '|' )[1];
-        setIsBetweenDate( isBetweenDateValue );
+        setDateSelectorValues( temp_e.target.value );
     }
 
     return (
@@ -92,10 +80,10 @@ function DateFilter({
                         changeSelectedCategory( e );
                     }}
                 >
-                    {dateFilter.map( ( object, index ) => (
+                    {dateSelector.map( ( object, index ) => (
                         <option
                             key={index + 1000}
-                            value={`${object.id}|${object.year}-${object.month}-01`}
+                            value={`${object.id}|${object.year}`}
                             defaultValue={object.checked}
                         >
                             {`${object.name} ${object.year}`}
@@ -105,7 +93,7 @@ function DateFilter({
             </div>
 
             <ul className="cat-filters d-md-flex mw-550px flex-wrap justify-content-center align-items-center d-none">
-                {dateFilter.map( ( object, index ) => (
+                {dateSelector.map( ( object, index ) => (
                     <li
                         key={index + 10000}
                         className={`${0 == index ? 'mx-16px' : ''} position-relative`}
@@ -114,7 +102,7 @@ function DateFilter({
                             name="cat"
                             className="position-absolute top-0 bottom-0 left-0 right-0 w-100 h-100"
                             type="radio"
-                            value={`${object.id}|${object.year}-${object.month}-01`}
+                            value={`${object.id}|${object.year}`}
                             defaultChecked={object.checked}
                             onClick={( e ) => {
                                 changeSelectedCategory( e );
