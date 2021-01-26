@@ -83,6 +83,12 @@ class AssetsLoad
                 array(),
                 wp_get_theme()->get('Version')
             );
+            wp_enqueue_script(
+                'marchebe-zoom-js',
+                get_template_directory_uri().'/assets/js/utils/zoom.js',
+                array(),
+                wp_get_theme()->get('Version')
+            );
         }
     }
 
