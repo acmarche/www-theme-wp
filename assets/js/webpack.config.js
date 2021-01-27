@@ -13,6 +13,9 @@ module.exports = {
         ],
         agenda: [
             `${path.resolve( __dirname, 'src' )}/agenda.js`
+        ],
+        map: [
+            `${path.resolve( __dirname, 'src' )}/map.js`
         ]
     },
     externals: {

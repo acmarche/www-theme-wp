@@ -147,4 +147,24 @@ class ApiData
 
         return rest_ensure_response($data);
     }
+
+// This plugin also adds a custom endpoint that returns all categories of the bottin
+   static function ca_bottinAllCategories()
+    {
+        $bottinRepository = new BottinRepository();
+        $allCategories    = $bottinRepository->getAllCategories();
+
+        return rest_ensure_response($allCategories);
+    }
+
+// This plugin also returns a data object that is used for the dynamic map
+  static  function ca_map($parameter)
+    {
+        $bottinRepository = new BottinRepository();
+        $fiches           = $bottinRepository->getFichesByCategories([$parameter["CatId"]]);
+
+        return rest_ensure_response($fiches);
+    }
+
+
 }

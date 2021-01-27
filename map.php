@@ -22,8 +22,17 @@ if (has_post_thumbnail()) {
         $logo = $images[0];
     }
 }
+
+wp_enqueue_script(
+    'react_map_plugin',
+    get_template_directory_uri().'/assets/js/build/map.js',
+    array('wp-element'),
+    time(),
+    true
+);//For production use wp_get_theme()->get('Version')
+
 Twig::rendPage(
-    'map/index.html.twig',
+    'map/index_react.html.twig',
     [
         'title'   => $titre,
         'post'    => $post,

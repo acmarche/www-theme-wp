@@ -17,6 +17,7 @@ class Api
             $this->registerEvent();
             $this->registerBottin();
             $this->registerSearch();
+            $this->mapApi();
         }
     }
 
@@ -137,6 +138,44 @@ class Api
                 // Our custom authentication check should have no effect
                 // on logged-in requests
                 return $result;
+            }
+        );
+    }
+
+    function mapApi()
+    {
+
+        add_action(
+            'rest_api_init',
+            function () {
+                register_rest_route(
+                    'ca/v1',
+                    'bottinAllCategories',
+                    [
+                        'methods'  => 'GET',
+                        'callback' => function () {
+                            return ApiData::ca_bottinAllCategories();
+                        },
+
+                    ]
+                );
+            }
+        );
+
+        add_action(
+            'rest_api_init',
+            function () {
+                register_rest_route(
+                    'ca/v1',
+                    'map/(?P<CatId>.*+)',
+                    [
+                        'methods'  => 'GET',
+                        'callback' => function ($args) {
+                            return ApiData::ca_map($args);
+                        },
+
+                    ]
+                );
             }
         );
     }
