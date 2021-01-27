@@ -1,0 +1,11 @@
+{% for relation in relations %}
+    <a href="{{ relation.url }}" class="bg-img">
+        <i {% if relation.image is defined %}style="background-image: url('{{ relation.image }}');"{% endif%} class="bg-img-news-1">
+            <b class="bg-img-bgcolor-hover-primary-55"></b>
+        </i>
+        <div class="col">
+            <h5 class="text-hover-primary">{{ relation.title }}</h5>
+            <span class="{{ color }}">{{ blogName }}</span>
+        </div>
+    </a>
+{% endfor %}
