@@ -5,6 +5,7 @@ namespace AcMarche\Theme\Inc;
 
 
 //@see https://www.whitehouse.gov/
+//@see https://fr.wordpress.org/plugins/opengraph/
 class OpenGraph
 {
     public function __construct()
