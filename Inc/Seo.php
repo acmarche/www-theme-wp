@@ -13,46 +13,23 @@ class Seo
 
     public function __construct()
     {
-        add_filter('wp_title', [$this, 'metaTitle']);
         add_action('wp_head', [$this, 'assignMetaInfo']);
-    }
-
-    static function metaTitle($data): string
-    {
-        if(Theme::isHomePage()) {
-            return "Page d'accueil".$data;
-        }
-
-        $slugFiche = get_query_var(Router::PARAM_BOTTIN_FICHE);
-
-        if ($slugFiche) {
-            self::metaBottinFiche($slugFiche);
-
-            return self::$metas['title'];
-        }
-
-        $slugCategory = get_query_var(Router::PARAM_BOTTIN_CATEGORY);
-        if ($slugCategory) {
-            self::metaBottinCategory($slugCategory);
-
-            return self::$metas['title'];
-        }
-
-        $codeCgt = get_query_var(Router::PARAM_EVENT);
-        if ($codeCgt) {
-            self::metaBottinEvent($codeCgt);
-
-            return self::$metas['title'];
-        }
-
-
-        return $data;
     }
 
     static function assignMetaInfo(): void
     {
-        if(Theme::isHomePage()) {
+        if (Theme::isHomePage()) {
             self::metaBottinHomePage();
+        }
+
+        $cat_id = get_query_var('cat');
+        if ($cat_id) {
+            self::metaCategory($cat_id);
+        }
+
+        $postId = get_query_var('cat');
+        if ($cat_id) {
+            self::metaCategory($cat_id);
         }
 
         $slugFiche = get_query_var(Router::PARAM_BOTTIN_FICHE);
@@ -69,6 +46,8 @@ class Seo
         if ($codeCgt) {
             self::metaBottinEvent($codeCgt);
         }
+
+        echo '<title>'.self::$metas['title'].'</title>';
 
         if (self::$metas['description'] != '') {
             echo '<meta name="description" content="'.self::$metas['description'].'" />';
@@ -140,13 +119,35 @@ class Seo
 
     private static function metaBottinHomePage()
     {
-        self::$metas['description'] =  get_bloginfo('description', 'display');
+        self::$metas['title']       = self::baseTitle("Page d'accueil");
+        self::$metas['description'] = get_bloginfo('description', 'display');
         self::$metas['keywords']    = 'Commune, Ville, Marche, Marche-en-Famenne, Famenne, Administration communal';
+    }
+
+    private static function metaCategory(int $cat_id)
+    {
+        $category                   = get_category($cat_id);
+        self::$metas['title']       = self::baseTitle("");
+        self::$metas['description'] = $category->description;
+        self::$metas['keywords']    = '';
     }
 
     public function isGoole()
     {
         global $is_lynx;
+    }
+
+    public static function baseTitle(string $begin)
+    {
+        $base = wp_title('|', false, 'right');
+
+        $nameSousSite = get_bloginfo('name', 'display');
+        if ($nameSousSite != 'Citoyen') {
+            $base .= $nameSousSite.' | ';
+        }
+        $base .= ' Ville de Marche-en-Famenne';
+
+        return $begin.' '.$base;
     }
 
 }

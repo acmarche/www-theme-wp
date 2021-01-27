@@ -15,15 +15,6 @@ use AcMarche\Theme\Inc\Theme;
         <meta name="author" content="Studio Tartine">
         <meta name="author" content="Nucleïd">
         <meta name="author" content="Cst">
-        <title>
-            <?php
-            wp_title('|', true, 'right');
-            $nameSousSite = get_bloginfo('name', 'display');
-            if ($nameSousSite != 'Citoyen') {
-                echo ' | '.$nameSousSite;
-            }
-            ?> | Ville de Marche-en-Famenne
-        </title>
         <!--FAVICON-->
         <link rel="icon" type="image/png"
               href="<?php echo get_template_directory_uri() ?>/assets/tartine/rsc/favicon.png"/>
