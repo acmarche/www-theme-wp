@@ -19,6 +19,9 @@ class Api
             $this->registerSearch();
             $this->mapApi();
         }
+        if (is_admin()) {
+            $this->blockApi();
+        }
     }
 
     public function registerEvent()
@@ -174,6 +177,42 @@ class Api
                             return ApiData::ca_map($args);
                         },
 
+                    ]
+                );
+            }
+        );
+    }
+
+    private function blockApi()
+    {
+        add_action(
+            'rest_api_init',
+            function () {
+                register_rest_route(
+                    'ca/v1',
+                    'bottin/(?P<ficheId>.*+)',
+                    [
+                        'methods'             => 'GET',
+                        'callback'            => function ($args) {
+                            return ApiData::ca_bottin($args);
+                        },
+                        'permission_callback' => '__return_true',
+                    ]
+                );
+            }
+        );
+        add_action(
+            'rest_api_init',
+            function () {
+                register_rest_route(
+                    'ca/v1',
+                    'bottinsocieteid',
+                    [
+                        'methods'             => 'GET',
+                        'callback'            => function () {
+                            return ApiData::ca_bottinSocieteId();
+                        },
+                        'permission_callback' => '__return_true',
                     ]
                 );
             }

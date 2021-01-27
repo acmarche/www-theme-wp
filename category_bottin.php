@@ -8,6 +8,7 @@ use AcMarche\Bottin\Repository\BottinRepository;
 use AcMarche\Common\MarcheConst;
 use AcMarche\Common\Twig;
 use AcMarche\Theme\Inc\Router;
+use AcMarche\Theme\Inc\Theme;
 
 get_header();
 
@@ -27,6 +28,8 @@ if ( ! $category) {
         [
             'title' => 'Page non trouvée',
             'tags'  => [],
+        'color'    => $color,
+        'blogName'  => $blogName,
         ]
     );
     get_footer();
@@ -38,12 +41,11 @@ $description = $category->description;
 $title       = $category->name;
 
 $blodId = get_current_blog_id();
-if ($blodId === 1) {
-    $siteSlug = 'Citoyen';
-} else {
-    $siteSlug = get_blog_details($blodId)->path;
-}
-$color = MarcheConst::COLORS[$blodId];
+
+$path     = Theme::getPathBlog($blodId);
+$siteSlug = Theme::getTitleBlog($blodId);
+$color    = Theme::getColorBlog($blodId);
+$blogName = Theme::getTitleBlog($blodId);
 
 $fiches   = $bottinRepository->getFichesByCategory($category->id);
 $children = $bottinRepository->getCategories($category->id);
@@ -73,7 +75,8 @@ Twig::rendPage(
         'posts'       => $fiches,
         'category_id' => $category->id,
         'site_slug'   => $siteSlug,
-        'color'       => $color,
+        'color'    => $color,
+        'blogName'  => $blogName,
     ]
 );
 get_footer();

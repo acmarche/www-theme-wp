@@ -2,9 +2,11 @@
 
 namespace AcMarche\Theme;
 
+use AcMarche\Common\MarcheConst;
 use AcMarche\Common\Twig;
 use AcMarche\Pivot\Repository\HadesRepository;
 use AcMarche\Theme\Inc\Router;
+use AcMarche\Theme\Inc\Theme;
 
 get_header();
 
@@ -18,8 +20,11 @@ if ( ! $event) {
     Twig::rendPage(
         'errors/404.html.twig',
         [
-            'title' => 'Evènement non trouvé',
-            'tags'  => [],
+            'title'     => 'Evènement non trouvé',
+            'tags'      => [],
+            'color'     => Theme::getColorBlog(MarcheConst::TOURISME),
+            'blogName'  => Theme::getTitleBlog(MarcheConst::TOURISME),
+            'relations' => [],
         ]
     );
     get_footer();
@@ -43,6 +48,10 @@ Twig::rendPage(
         'images'    => $images,
         'latitude'  => $event['latitude'] ?? null,
         'longitude' => $event['longitude'] ?? null,
+        'color'     => Theme::getColorBlog(MarcheConst::TOURISME),
+        'blogName'  => Theme::getTitleBlog(MarcheConst::TOURISME),
+        'relations' => [],
+        'readspeaker' => true,
     ]
 );
 get_footer();

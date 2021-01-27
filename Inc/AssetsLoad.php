@@ -46,11 +46,19 @@ class AssetsLoad
             true
         );
 
-        if(Theme::isHomePage()) {
+        if (Theme::isHomePage()) {
             wp_enqueue_style(
                 'marchebe-home-style',
                 get_template_directory_uri().'/assets/tartine/css/home.css',
                 array()
+            );
+
+            wp_enqueue_script(
+                'marchebe-close-js',
+                get_template_directory_uri().'/assets/js/utils/closeNavigation.js',
+                array(),
+                wp_get_theme()->get('Version'),
+                true
             );
         }
     }
@@ -76,20 +84,20 @@ class AssetsLoad
 
     function readSpeaker()
     {
-        if (is_single()) {
-            wp_enqueue_script(
-                'marchebe-readspeaker-js',
-                '//cdn1.readspeaker.com/script/11982/webReader/webReader.js?pids=wr',
-                array(),
-                wp_get_theme()->get('Version')
-            );
-            wp_enqueue_script(
-                'marchebe-zoom-js',
-                get_template_directory_uri().'/assets/js/utils/zoom.js',
-                array(),
-                wp_get_theme()->get('Version')
-            );
-        }
+        //Todo condition to load
+        wp_enqueue_script(
+            'marchebe-readspeaker-js',
+            '//cdn1.readspeaker.com/script/11982/webReader/webReader.js?pids=wr',
+            array(),
+            wp_get_theme()->get('Version')
+        );
+        wp_enqueue_script(
+            'marchebe-zoom-js',
+            get_template_directory_uri().'/assets/js/utils/zoom.js',
+            array(),
+            wp_get_theme()->get('Version')
+        );
+
     }
 
 }

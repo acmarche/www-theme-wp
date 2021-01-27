@@ -35,15 +35,16 @@ $relations = WpRepository::getRelations($post->ID, $tags);
 Twig::rendPage(
     'article/show.html.twig',
     [
-        'post'      => $post,
-        'tags'      => $tags,
-        'image'     => $image,
-        'title'     => $post->post_title,
-        'blogName'  => $blogName,
-        'color'     => $color,
-        'path'      => $path,
-        'relations' => $relations,
-        'url_back'  => $urlBack,
+        'post'         => $post,
+        'tags'         => $tags,
+        'image'        => $image,
+        'title'        => $post->post_title,
+        'blogName'     => $blogName,
+        'color'        => $color,
+        'path'         => $path,
+        'relations'    => $relations,
+        'url_back'     => $urlBack,
+        'readspeaker' => true,
     ]
 );
 get_footer();

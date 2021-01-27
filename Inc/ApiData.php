@@ -166,5 +166,33 @@ class ApiData
         return rest_ensure_response($fiches);
     }
 
+// This plugin returns the societe and the id of all companies in the bottin to retrieve them in the gutenberg block
+  static  function ca_bottinSocieteId()
+    {
+        $bottinRepository = new BottinRepository();
+        $allfiches           = $bottinRepository->getFiches();
+        $fichesSocieteId = [];
+
+        foreach ($allfiches as $fiche) {
+            $fichesSociete = $fiche['societe'];
+            $fichesId      = $fiche['id'];
+
+            $formattedFiche['societe'] = $fichesSociete;
+            $formattedFiche['id'] = $fichesId;
+
+            $fichesSocieteId[] = $formattedFiche;
+        }
+
+        return rest_ensure_response($fichesSocieteId);
+    }
+
+// This plugin also adds a custom endpoint that returns all sheets of the bottin based on their id
+ static   function ca_bottin($parameter)
+    {
+        $bottinRepository = new BottinRepository();
+        $fiches           = $bottinRepository->getFicheById($parameter['ficheId']);
+
+        return rest_ensure_response($fiches);
+    }
 
 }

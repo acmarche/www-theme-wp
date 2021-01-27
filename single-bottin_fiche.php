@@ -53,6 +53,7 @@ array_map(
     $categories
 );
 
+$relations = $bottinRepository->getRelations($categories);
 
 $blodId   = get_current_blog_id();
 $path     = Theme::getPathBlog($blodId);
@@ -78,6 +79,8 @@ Twig::rendPage(
         'color'         => $color,
         'path'          => $path,
         'content'       => '',
+        'relations'     => $relations,
+        'readspeaker'   => true,
     ]
 );
 get_footer();

@@ -7,7 +7,7 @@ window.addEventListener( 'load', () => {
     const searchScreen = document.querySelector( '.searchScreen' );
 
     btnCloseSearch.addEventListener( 'click', () => {
-        searchScreen.style.display = 'none';
+        searchScreen.classList.add( 'd-none' );
     });
 
     /**
@@ -17,11 +17,11 @@ window.addEventListener( 'load', () => {
     const alertMessage = document.querySelector( '.object-alert' );
 
     btnCloseAlert.addEventListener( 'click', () => {
-        alertMessage.style.display = 'none';
+        alertMessage.classList.add( 'd-none' );
     });
 
     /**
-     * Fermeture main nav
+     * Ouverture main nav
      */
     const btnOpenMainNav = document.getElementById( 'btn-open-main-nav' );
     const mainNav = document.getElementById( 'main-nav' );
@@ -46,12 +46,14 @@ window.addEventListener( 'load', () => {
      * Fermeture sub nav
      */
     const btnCloseSubNav = document.querySelector( '.btn-close-sub-nav' );
-    const subNav = document.querySelector( '.sub-nav' );
+    const subNav = document.querySelector( '.titi' );
 
     btnCloseSubNav.addEventListener( 'click', () => {
         console.log( 'clicked btn sub ' );
         console.log( subNav );
+        subNav.classList.add( 'd-none' );
         subNav.classList.remove( 'toggle-opened' );
+        subNav.classList.remove( 'd-block' );
     });
 });
 

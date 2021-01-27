@@ -14,7 +14,7 @@
         <h2 class="text-ls-md-left pt-ls-md-8px text-md-left pt-md-8px">{{ title }}</h2>
 
         <!--category-->
-        <span class="{{ color}} ff-semibold pt-12px d-block fs-short-2">{{ blogName }}</span>
+        <span class="{{ color }} ff-semibold pt-12px d-block fs-short-2">{{ blogName }}</span>
 
         <!--directory-->
         <div class="pt-48px d-lg-flex mx-n15px ml-lg-0">
@@ -49,36 +49,11 @@
                     </div>
                 </div>
 
-                <!--previous/next-->
-                <div class="pt-24px d-flex w-100 col-md-8 px-0 px-md-15px col-lg-12 px-lg-0">
-                    <div class="col-6 p-0 d-flex">
-                        <a href="#"
-                           class="button lvl3 align-self-ls-md-center align-self-md-center position-relative left-0 left-hover-n12px d-flex justify-content-center fs-short-2"><i
-                                    class="fas fa-angle-left d-ls-md-inline pr-8px pr-md-12px fs-short-1 d-md-inline"></i>Article
-                            précédent</a>
-                    </div>
-                    <div class="col-6 p-0 d-flex justify-content-end">
-                        <a href="#"
-                           class="button lvl3 align-self-ls-md-center align-self-md-center position-relative left-0 left-hover-12px d-flex justify-content-center fs-short-2">Article
-                            suivant<i
-                                    class="fas fa-angle-right d-ls-md-inline pl-8px pl-md-12px fs-short-1 d-md-inline"></i></a>
-                    </div>
-                </div>
-
                 <!--OBJECT | RECOM-->
                 <div class="pt-24px w-100 col-md-8 px-0 px-md-15px d-lg-none">
-                    <h4 class="text-dark-primary ff-semibold fs-basic">Recommandation</h4>
+                    <h4 class="text-dark-primary ff-semibold fs-basic">Consultez aussi</h4>
                     <div class="pt-12px object-recom">
-                        <a href="#" class="bg-img">
-                            <i class="bg-img-news-1">
-                                <b class="bg-img-bgcolor-hover-primary-55"></b>
-                            </i>
-                            <div class="col">
-                                <h5 class="text-hover-primary">Écoles de devoirs : un petit déjeuner avec les
-                                    volontaires</h5>
-                                <span class="color-cat-cit">Citoyen</span>
-                            </div>
-                        </a>
+                        {% include 'article/_recommandations.html.twig' %}
                     </div>
                 </div>
             </div>
@@ -104,18 +79,9 @@
 
                 <!--OBJECT | RECOM-->
                 <div class="pt-24px w-100">
-                    <h4 class="text-dark-primary ff-semibold fs-basic">Recommandation</h4>
+                    <h4 class="text-dark-primary ff-semibold fs-basic">Consultez aussi</h4>
                     <div class="pt-22px object-recom">
-                        <a href="#" class="bg-img">
-                            <i class="bg-img-news-1">
-                                <b class="bg-img-bgcolor-hover-primary-55"></b>
-                            </i>
-                            <div class="col">
-                                <h5 class="text-hover-primary">Écoles de devoirs : un petit déjeuner avec les
-                                    volontaires</h5>
-                                <span class="color-cat-cit">Citoyen</span>
-                            </div>
-                        </a>
+                        {% include 'article/_recommandations.html.twig' %}
                     </div>
                 </div>
             </div>
