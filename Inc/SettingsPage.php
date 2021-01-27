@@ -3,9 +3,6 @@
 
 namespace AcMarche\Theme\Inc;
 
-
-use AcMarche\Common\MarcheConst;
-
 class SettingsPage
 {
     const NAME_OPTION = 'react_activate';
@@ -74,6 +71,6 @@ class SettingsPage
 
     public static function isReactActivate(): bool
     {
-        return (bool)esc_attr(get_option(self::NAME_OPTION));
+        return (bool)esc_attr(get_option(self::NAME_OPTION, true));
     }
-} ?>
+}
