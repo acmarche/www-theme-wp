@@ -74,10 +74,15 @@ function CategoryChildren( propos ) {
         key={0}
     /> );
 
+    if ( 0 === categories.length ) {
+        return ( <></> );
+    }
+
     return (
         <>
             <div className="d-lg-none pr-12px border border-dark-primary mt-48px">
                 <select
+                    id="cat-select"
                     name="categories"
                     value={categoryId}
                     className="fs-short-3 ff-semibold"

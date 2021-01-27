@@ -15,7 +15,7 @@ function PostItem( propos ) {
                 <span
                     className="d-block pt-8px fs-short-3 ellipsis text-dark-primary"
                     dangerouslySetInnerHTML={{
-                        __html: item.excerpt
+                        __html: item.post_excerpt
                     }}
                 />
             </a>
