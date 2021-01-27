@@ -12,17 +12,16 @@
             {% include 'header/common/_search_screen.html.twig' with {'class': ''} %}
 
             <!--all | TODO JF: à brancher-->
-            <div class="all d-ls-flex align-items-ls-center justify-content-ls-center">
+            <div class="all d-ls-flex align-items-ls-center justify-content-ls-center" id="main-nav">
                 <a href="#" class="icon_custom position-relative">
-                    <i class="icon_nav i-bars"></i>
+                    <i class="icon_nav i-bars" id="btn-open-main-nav"></i>
                     <i class="i-bars i-dark-primary"></i>
                     <span>Vivre à Marche</span>
                     <!--<input type="radio" name="subnav" value="1" class="w-100 h-100">-->
                 </a>
                 <!--subnav | TODO JF: à brancher-->
-                {% include 'header/home/_subnav.html.twig' %}
+                {% include 'header/common/_subnav.html.twig' %}
             </div>
-            <!--calendar-->
             <!--calendar-->
             <div class="calendar">
 
