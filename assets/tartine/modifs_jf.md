@@ -1,15 +1,17 @@
 icones accueil (home_search.html.twig)
-___
+---
 
-mw-400px => mw-500px
-fs-short-3 => fs-short-1 ff-semibold
-sur li col-3 => col-3 d-flex justify-content-center
+Elargit div : mw-400px => mw-500px
+Texte plus grand en gras : fs-short-3 => fs-short-1 ff-semibold
+Centrage des textes : sur li col-3 => col-3 d-flex justify-content-center
 
 Navigation (nav.scss)
 ___
-ligne 606 : font-size: $shortFontSize-3=> font-size: $shortFontSize-1;
+Texte plus grand: ligne 606 : font-size: $shortFontSize-3=> font-size: $shortFontSize-1;
 <!-- not do ligne 501 : font-size: $shortFontSize-3=> font-size: $shortFontSize-1; -->
 
+Je met l'alerte plus haut
+---
 .object-alert {
     position: fixed;
     /*top: auto;*/
@@ -20,3 +22,12 @@ ligne 606 : font-size: $shortFontSize-3=> font-size: $shortFontSize-1;
 dans config.scss
 
 changé les valeurs de $shortFontSize-*
+
+Retirer bouton lire plus
+---
+
+Dans objects.scss
+
+A partir de la ligne 131, remplacer les max-height par 9999px
+Retirer la ligne 534: overflow: hidden;
+Dans base.html.twig mettre la class d-none sur span <span class="more"> et less

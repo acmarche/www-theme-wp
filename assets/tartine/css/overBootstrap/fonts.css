@@ -207,7 +207,7 @@ $shortFontSize-3: .688rem;
 }
 
 .fs-short-2 {
-  font-size: 0.85rem !important;
+  font-size: 0.95rem !important;
 }
 
 .fs-short-3 {
@@ -238,13 +238,13 @@ $shortFontSize-3: .688rem;
 
 @media screen and (min-width: 992px) {
   .fs-lg-short-2 {
-    font-size: 0.85rem !important;
+    font-size: 0.95rem !important;
   }
 }
 
 @media screen and (min-width: 1200px) {
   .fs-xl-short-2 {
-    font-size: 0.85rem !important;
+    font-size: 0.95rem !important;
   }
 }
 

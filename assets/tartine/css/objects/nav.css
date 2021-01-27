@@ -1273,7 +1273,7 @@ nav > div > a.icon_custom .i-dark-primary {
 nav > div > a span {
   display: none;
   color: #487f89;
-  font-size: 0.85rem;
+  font-size: 0.95rem;
   font-family: "montserratsemibold";
 }
 @media screen and (min-width: 1200px) {

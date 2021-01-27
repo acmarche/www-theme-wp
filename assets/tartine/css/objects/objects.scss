@@ -475,7 +475,7 @@
                         display: none;
                     }
                     &.less {
-                        display: initial;
+                        display: none;
                     }
                 }
 
@@ -530,29 +530,29 @@
 
             + div {
                 color: $darkCTA;
-                max-height: 159px;
-                overflow: hidden;
+                max-height: 9999px;
+
                 padding-bottom: 24px;
                 @include allTransition($basicDuration);
 
                 @media screen {
                     @media (orientation: landscape) {
                         @media (min-width: $sm) {
-                            max-height: 134px;
+                            max-height: 9999px;
                         }
                     }
 
                     @media (min-width: $lg) {
-                        max-height: 134px;
+                        max-height: 9999px;
                     }
                     @media (min-width: $xl) {
-                        max-height: 112px;
+                        max-height: 9999px;
                     }
                     @media (min-width: $xxl) {
-                        max-height: 223px;
+                        max-height: 9999px;
                     }
                     @media (min-width: $xxxl) {
-                        max-height: none;
+                        max-height: 9999px;
                     }
                 }
 

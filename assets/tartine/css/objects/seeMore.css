@@ -149,7 +149,7 @@ $shortFontSize-3: .688rem;
 }
 .seeMore p {
   padding: 4px 6px;
-  font-size: 0.85rem;
+  font-size: 0.95rem;
   font-weight: 600;
   line-height: 1.25rem;
   color: white;
@@ -160,7 +160,7 @@ $shortFontSize-3: .688rem;
   transition: box-shadow 0.25s ease-in-out;
 }
 .seeMore p.more {
-  display: block;
+  display: none;
   -webkit-box-shadow: -22px 0 55px rgba(72, 127, 137, 0) inset !important;
   -moz-box-shadow: -22px 0 55px rgba(72, 127, 137, 0) inset !important;
   -ms-box-shadow: -22px 0 55px rgba(72, 127, 137, 0) inset !important;

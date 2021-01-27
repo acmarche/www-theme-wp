@@ -148,7 +148,7 @@ $shortFontSize-3: .688rem;
   height: 8px;
   border-radius: 16px;
   overflow: hidden;
-  font-size: 0.85rem;
+  font-size: 0.95rem;
   background-color: #e9ecef;
 }
 .groupsContainer .completion .progress .target {

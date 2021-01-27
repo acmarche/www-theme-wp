@@ -338,7 +338,7 @@ $shortFontSize-3: .688rem;
   margin-right: 0;
   padding: 11px 12px;
   color: #487f89;
-  font-size: 0.85rem;
+  font-size: 0.95rem;
 }
 @media screen and (min-width: 992px) {
   .object-headtail input[type=radio] + a {
@@ -485,7 +485,7 @@ $shortFontSize-3: .688rem;
   padding: 4px 8px;
   text-align: center;
   color: #487f89;
-  font-size: 0.85rem;
+  font-size: 0.95rem;
   border-width: 1px;
   border-style: solid;
   border-color: #487f89;
@@ -551,7 +551,7 @@ $shortFontSize-3: .688rem;
 }
 .object-recom a div h5 {
   font-family: "montserratsemibold";
-  font-size: 0.85rem;
+  font-size: 0.95rem;
   line-height: 125%;
   color: #487f89;
   -webkit-transition: color 0.25s ease-in-out;
@@ -611,7 +611,7 @@ $shortFontSize-3: .688rem;
   display: none;
 }
 .object-text-dyn input[type=checkbox]:checked + div span.less {
-  display: initial;
+  display: none;
 }
 .object-text-dyn input[type=checkbox]:checked + div + div {
   max-height: 9999px;
@@ -663,7 +663,7 @@ $shortFontSize-3: .688rem;
 }
 .object-text-dyn input[type=checkbox] + div span {
   font-family: "montserratsemibold";
-  font-size: 0.85rem;
+  font-size: 0.95rem;
   color: #4ae0c7;
   padding-bottom: 4px;
   border-width: 0 0 1px 0;
@@ -680,8 +680,7 @@ $shortFontSize-3: .688rem;
 }
 .object-text-dyn input[type=checkbox] + div + div {
   color: #487f89;
-  max-height: 159px;
-  overflow: hidden;
+  max-height: 9999px;
   padding-bottom: 24px;
   -webkit-transition: all 0.25s ease-in-out;
   -moz-transition: all 0.25s ease-in-out;
@@ -691,36 +690,36 @@ $shortFontSize-3: .688rem;
 }
 @media screen and (orientation: landscape) and (min-width: 576px) {
   .object-text-dyn input[type=checkbox] + div + div {
-    max-height: 134px;
+    max-height: 9999px;
   }
 }
 @media screen and (min-width: 992px) {
   .object-text-dyn input[type=checkbox] + div + div {
-    max-height: 134px;
+    max-height: 9999px;
   }
 }
 @media screen and (min-width: 1200px) {
   .object-text-dyn input[type=checkbox] + div + div {
-    max-height: 112px;
+    max-height: 9999px;
   }
 }
 @media screen and (min-width: 1440px) {
   .object-text-dyn input[type=checkbox] + div + div {
-    max-height: 223px;
+    max-height: 9999px;
   }
 }
 @media screen and (min-width: 1600px) {
   .object-text-dyn input[type=checkbox] + div + div {
-    max-height: none;
+    max-height: 9999px;
   }
 }
 .object-text-dyn input[type=checkbox] + div + div p {
   padding-top: 24px;
-  font-size: 0.85rem;
+  font-size: 0.95rem;
   line-height: 200%;
 }
 .object-text-dyn input[type=checkbox] + div + div ul li {
-  font-size: 0.85rem;
+  font-size: 0.95rem;
   line-height: 200%;
 }
 
@@ -781,7 +780,7 @@ $shortFontSize-3: .688rem;
   overflow: hidden;
   line-height: 125%;
   color: #487f89;
-  font-size: 0.85rem;
+  font-size: 0.95rem;
 }
 .object-card a > div p {
   display: none;
@@ -906,7 +905,7 @@ $shortFontSize-3: .688rem;
 }
 .object-card.oc-event a > div > div span:last-child {
   padding: 0;
-  font-size: 0.85rem;
+  font-size: 0.95rem;
 }
 .object-card.oc-event a:hover > div > div:first-child {
   color: #4ae0c7;
