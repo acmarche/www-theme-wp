@@ -27,9 +27,9 @@ class Seo
             self::metaCategory($cat_id);
         }
 
-        $postId = get_query_var('cat');
-        if ($cat_id) {
-            self::metaCategory($cat_id);
+        $postId = get_query_var('p');
+        if ($postId) {
+            self::metaPost($postId);
         }
 
         $slugFiche = get_query_var(Router::PARAM_BOTTIN_FICHE);
@@ -130,6 +130,23 @@ class Seo
         self::$metas['title']       = self::baseTitle("");
         self::$metas['description'] = $category->description;
         self::$metas['keywords']    = '';
+    }
+
+    private static function metaPost(int $postId)
+    {
+        $post                       = get_post($postId);
+        self::$metas['title']       = self::baseTitle("");
+        self::$metas['description'] = $post->post_excerpt;
+        $tags                       = get_the_category($post->ID);
+        self::$metas['keywords']    = join(
+            ',',
+            array_map(
+                function ($tag) {
+                    return $tag->name;
+                },
+                $tags
+            )
+        );
     }
 
     public function isGoole()
