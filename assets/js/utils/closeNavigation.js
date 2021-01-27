@@ -14,11 +14,13 @@ window.addEventListener( 'load', () => {
      * Fermeture box alert
      */
     const btnCloseAlert = document.getElementById( 'btn-close-alert' );
-    const alertMessage = document.querySelector( '.object-alert' );
 
-    btnCloseAlert.addEventListener( 'click', () => {
-        alertMessage.classList.add( 'd-none' );
-    });
+    if ( null != btnCloseAlert ) {
+        const alertMessage = document.querySelector( '.object-alert' );
+        btnCloseAlert.addEventListener( 'click', () => {
+            alertMessage.classList.add( 'd-none' );
+        });
+    }
 
     /**
      * Ouverture main nav
