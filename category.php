@@ -29,6 +29,7 @@ $blodId = get_current_blog_id();
 $path     = Theme::getPathBlog($blodId);
 $siteSlug = Theme::getTitleBlog($blodId);
 $color    = Theme::getColorBlog($blodId);
+$blogName = Theme::getTitleBlog($blodId);
 
 wp_enqueue_script(
     'react-app',
@@ -45,6 +46,7 @@ Twig::rendPage(
         'category' => $category,
         'siteSlug' => $siteSlug,
         'color'    => $color,
+        'blogName'  => $blogName,
         'path'     => $path,
         'subTitle' => 'Tout',
     ]
