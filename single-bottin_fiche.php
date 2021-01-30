@@ -53,7 +53,7 @@ array_map(
     $categories
 );
 
-$relations = $bottinRepository->getRelations($categories);
+$relations = $bottinRepository->getRelations($fiche->id, $categories);
 
 $blodId   = get_current_blog_id();
 $path     = Theme::getPathBlog($blodId);

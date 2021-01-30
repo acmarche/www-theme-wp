@@ -31,19 +31,23 @@ $blogName = Theme::getTitleBlog($blodId);
 $color    = Theme::getColorBlog($blodId);
 
 $relations = WpRepository::getRelations($post->ID, $tags);
+$content = get_the_content( null, null, $post );
+$content = apply_filters( 'the_content', $content );
+$content = str_replace( ']]>', ']]&gt;', $content );
 
 Twig::rendPage(
     'article/show.html.twig',
     [
-        'post'         => $post,
-        'tags'         => $tags,
-        'image'        => $image,
-        'title'        => $post->post_title,
-        'blogName'     => $blogName,
-        'color'        => $color,
-        'path'         => $path,
-        'relations'    => $relations,
-        'url_back'     => $urlBack,
+        'post'        => $post,
+        'tags'        => $tags,
+        'image'       => $image,
+        'title'       => $post->post_title,
+        'blogName'    => $blogName,
+        'color'       => $color,
+        'path'        => $path,
+        'relations'   => $relations,
+        'url_back'    => $urlBack,
+        'content'     => $content,
         'readspeaker' => true,
     ]
 );
