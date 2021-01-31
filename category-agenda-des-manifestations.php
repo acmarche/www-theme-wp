@@ -41,18 +41,18 @@ foreach ($domdoc->getElementsByTagName('offres')->item(0)->childNodes as $offre)
         // dump($child);
         // dump($offre->childNodes->length);
         // dump($offre->tagName);//offre
+        getCategories($offre);
 
-        $cateogires = $offre->getElementsByTagName('categories');
         foreach ($offre->childNodes as $child) {
             //   dump($child->attributes);
             //    dump($child->tagName);
             if ($child->nodeType == XML_ELEMENT_NODE) {
                 $tagName = $child->tagName;
                 if ($tagName == 'titre') {
-                    dump($child->tagName);
+                    //     dump($child->tagName);
                     $lg = $child->getAttributeNode('lg');
-                    dump($lg->nodeValue);
-                    dump($child->firstChild->nodeValue);
+                    //   dump($lg->nodeValue);
+                    //   dump($child->firstChild->nodeValue);
                 }
             }
         }
@@ -60,8 +60,29 @@ foreach ($domdoc->getElementsByTagName('offres')->item(0)->childNodes as $offre)
     echo 'iiiiiii';
 }
 
-function getTitre() {
-
+function getCategories($offre)
+{
+    $categories = $offre->getElementsByTagName('categories');
+    $category = $categories->firstChild;
+    foreach ($categories as $category) {
+        //   dump($child->attributes);
+        //    dump($child->tagName);
+        if ($category->nodeType == XML_ELEMENT_NODE) {
+            $tagName = $category->tagName;
+            dump($tagName);
+            foreach ($category->getElementsByTagName('categorie') as $cat) {
+                // $cat = $child->getAttributeNode('categorie');
+                dump($cat);
+                if ($cat->nodeType == XML_ELEMENT_NODE) {
+                    $tagName = $cat->tagName;
+                    dump($tagName);
+                    $catId = $cat->getAttributeNode('id');
+                    dump($catId->nodeValue);
+                }
+                // dump($cat->firstChild->nodeValue);
+            }
+        }
+    }
 }
 
 return;
