@@ -1,27 +1,27 @@
 <a href="{{ event.url }}" class="bg-img">
     {% include 'agenda/list/_image.html.twig' %}
     <div>
-
         <!--date-->
         <div class="col-3">
-            {% set date = event.dates[0] %}
-            <span>{{ date.day }}</span>
-            <span>{{ date.month }}</span>
-            <span>{{ date.year }}</span>
+            {% set horaire = event.horaires[0] %}
+            {% set horline = horaire.horline %}
+            <span>{{ horline.day }}</span>
+            <span>{{ horline.month }}</span>
+            <span>{{ horline.year }}</span>
         </div>
 
         <!--other datas-->
         <div class="col-9">
 
             <!--TODO JF: placer la limite de caractère pour l'ellipsis-->
-            <h3 maxlenght="0">{{ event.nom }}</h3>
+            <h3>{{ event.titre }}</h3>
 
-            <small>{{ event.localite }}</small>
+            <small>{{ event.localisation.l_nom }}</small>
 
             <!--TODO JF: condition si événement sur plusieurs jours/mois/années/décénnies/...-->
             <small>
-                {% for date in event.dates %}
-                    {{ date.date_affichage }}
+                {% for horaire in event.horaires %}
+                {{ horaire.horline.date_deb }}
                 {% endfor %}
             </small>
         </div>
