@@ -4,7 +4,10 @@ import dayjs from 'dayjs';
 import isBetween from 'dayjs/plugin/isBetween';
 import axios from '../Axios';
 
-const { useEffect } = wp.element;
+const {
+    useEffect,
+    Fragment
+} = wp.element;
 
 function Events({
     isLoading,
@@ -136,8 +139,16 @@ function Events({
 
                                 <div className="col-9">
                                     <h3>{object.titre}</h3>
-                                    {object.dates.map( ( date ) => <small
-                                        key={`k${date.year}${date.month}${date.day}`}>{date.date_deb}</small> )}
+                                    <small>
+                                        {object.dates.map( ( date, index2 ) => {
+                                            if ( 4 > index2 ) {
+                                                return ( <Fragment
+                                                    key={index2}>{date.date_deb} | </Fragment> );
+                                            }
+                                            return ( null );
+                                        })
+                                        }
+                                    </small>
                                 </div>
                             </div>
                         </a>
