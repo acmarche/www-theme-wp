@@ -8,8 +8,8 @@ use AcMarche\Common\MarcheConst;
 
 class Theme
 {
-
     const PAGE_ALERT = 5087;
+    const PAGE_CARTO = 000;
 
     static function isHomePage(): bool
     {

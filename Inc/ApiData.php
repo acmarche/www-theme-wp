@@ -149,7 +149,7 @@ class ApiData
     }
 
 // This plugin also adds a custom endpoint that returns all categories of the bottin
-   static function ca_bottinAllCategories()
+    static function ca_bottinAllCategories()
     {
         $bottinRepository = new BottinRepository();
         $allCategories    = $bottinRepository->getAllCategories();
@@ -158,7 +158,7 @@ class ApiData
     }
 
 // This plugin also returns a data object that is used for the dynamic map
-  static  function ca_map($parameter)
+    static function ca_map($parameter)
     {
         $bottinRepository = new BottinRepository();
         $fiches           = $bottinRepository->getFichesByCategories([$parameter["CatId"]]);
@@ -167,18 +167,19 @@ class ApiData
     }
 
 // This plugin returns the societe and the id of all companies in the bottin to retrieve them in the gutenberg block
-  static  function ca_bottinSocieteId()
+    static function ca_bottinSocieteId()
     {
         $bottinRepository = new BottinRepository();
-        $allfiches           = $bottinRepository->getFiches();
-        $fichesSocieteId = [];
+        $allfiches        = $bottinRepository->getFiches();
+        $fichesSocieteId  = [];
 
         foreach ($allfiches as $fiche) {
-            $fichesSociete = $fiche['societe'];
-            $fichesId      = $fiche['id'];
-
+            $fichesSociete             = $fiche->societe;
+            $fichesId                  = $fiche->id;
+            $formattedFiche            = [];
             $formattedFiche['societe'] = $fichesSociete;
-            $formattedFiche['id'] = $fichesId;
+            $formattedFiche['id']      = $fichesId;
+            $formattedFiche['slug']      = $fiche->slug;
 
             $fichesSocieteId[] = $formattedFiche;
         }
@@ -186,8 +187,8 @@ class ApiData
         return rest_ensure_response($fichesSocieteId);
     }
 
-// This plugin also adds a custom endpoint that returns all sheets of the bottin based on their id
- static   function ca_bottin($parameter)
+    // This plugin also adds a custom endpoint that returns all sheets of the bottin based on their id
+    static function ca_bottin($parameter)
     {
         $bottinRepository = new BottinRepository();
         $fiches           = $bottinRepository->getFicheById($parameter['ficheId']);
