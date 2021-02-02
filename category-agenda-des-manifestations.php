@@ -3,89 +3,15 @@
 namespace AcMarche\Theme;
 
 use AcMarche\Common\Twig;
-use AcMarche\Pivot\Repository\HadesRemoteRepository;
 use AcMarche\Pivot\Repository\HadesRepository;
 use AcMarche\Theme\Inc\SettingsPage;
-use DOMDocument;
 
-//get_header();
+get_header();
 
 $hadesRepository = new HadesRepository();
-//$events          = $hadesRepository->getEvents();
-$react = SettingsPage::isReactActivate();
+$events          = $hadesRepository->getEvents();
+$react           = SettingsPage::isReactActivate();
 
-$hadesRemoteRepository = new HadesRemoteRepository();
-$domdoc                = new DOMDocument();
-$domdoc->loadXML($hadesRemoteRepository->getEvents());
-$root     = $domdoc->documentElement;//root
-$xml      = "<livre><titre>PHP 5</titre><auteur>E. D</auteur><auteur>C.
-PdG</auteur></livre>";
-$document = new DomDocument();
-$document->loadXML($xml);
-$livre = $document->documentElement;
-//Affichage des fils de $livre
-foreach ($livre->childNodes as $node) {
-    if ($node->nodeType == XML_ELEMENT_NODE) {
-        echo 'Balise <b>', $node->tagName, '</b><br>';
-        echo 'Contenu : <b>';
-        echo utf8_decode($node->firstChild->nodeValue), '</b><br>';
-    }
-}
-
-foreach ($domdoc->getElementsByTagName('offres')->item(0)->childNodes as $offre) {
-    if ($offre->nodeType === XML_ELEMENT_NODE) {
-        // dump($offre->nodeName);
-        $idOffre = $offre->getAttributeNode('id');
-        dump("ID: ".$idOffre->nodeValue);
-        $child = $offre->firstChild; //DomText
-        // dump($child);
-        // dump($offre->childNodes->length);
-        // dump($offre->tagName);//offre
-        getCategories($offre);
-
-        foreach ($offre->childNodes as $child) {
-            //   dump($child->attributes);
-            //    dump($child->tagName);
-            if ($child->nodeType == XML_ELEMENT_NODE) {
-                $tagName = $child->tagName;
-                if ($tagName == 'titre') {
-                    //     dump($child->tagName);
-                    $lg = $child->getAttributeNode('lg');
-                    //   dump($lg->nodeValue);
-                    //   dump($child->firstChild->nodeValue);
-                }
-            }
-        }
-    }
-    echo 'iiiiiii';
-}
-
-function getCategories($offre)
-{
-    $categories = $offre->getElementsByTagName('categories');
-    $category = $categories->firstChild;
-    foreach ($categories as $category) {
-        //   dump($child->attributes);
-        //    dump($child->tagName);
-        if ($category->nodeType == XML_ELEMENT_NODE) {
-            $tagName = $category->tagName;
-            dump($tagName);
-            foreach ($category->getElementsByTagName('categorie') as $cat) {
-                // $cat = $child->getAttributeNode('categorie');
-                dump($cat);
-                if ($cat->nodeType == XML_ELEMENT_NODE) {
-                    $tagName = $cat->tagName;
-                    dump($tagName);
-                    $catId = $cat->getAttributeNode('id');
-                    dump($catId->nodeValue);
-                }
-                // dump($cat->firstChild->nodeValue);
-            }
-        }
-    }
-}
-
-return;
 if ($react) {
     wp_enqueue_script(
         'react-app',
