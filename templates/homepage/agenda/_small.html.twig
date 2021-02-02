@@ -1,6 +1,6 @@
 {% set event = events[1] %}
 {% set horaire = event.horaires[0] %}
-{% set horline = horaire.horline %}
+{% set horline = horaire.horlines[0] %}
 <li class="d-none d-ls-sm-block col-ls-sm-4 col-ls-md-12 px-ls-sm-4px pt-ls-md-8px d-md-block col-md-12 pt-md-8px px-md-0">
     <a href="{{ event.url }}"
        class="d-flex shadow-sm-1 ls-md-shadow-none border border-width-1px border-default md-shadow-none thumbnail t-border-hover-primary t-transition-border-color">
@@ -17,7 +17,7 @@
 </li>
 {% set event = events[2] %}
 {% set horaire = event.horaires[0] %}
-{% set horline = horaire.horline %}
+{% set horline = horaire.horlines[0] %}
 <li class="d-none d-ls-sm-block col-ls-sm-4 col-ls-md-12 px-ls-sm-4px pt-ls-md-8px d-md-block col-md-12 pt-md-8px px-md-0">
     <a href="{{ event.url }}"
        class="d-flex shadow-sm-1 ls-md-shadow-none border border-width-1px border-default md-shadow-none thumbnail t-border-hover-primary t-transition-border-color">

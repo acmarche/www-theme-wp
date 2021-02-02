@@ -19,41 +19,43 @@
 
 {% block content %}
 
-    <p>
-        {% for description in event.descriptions %}
-            {{ description.texte|raw|nl2br }}
+    {% for description in event.descriptions %}
+        <p>      {{ description.texte|raw|nl2br }} </p>
+    {% endfor %}
+
+    <h4 class="mb-2 mt-2"><strong>Date(s)</strong></h4>
+    <ul class="list-group mt-2 mb-2">
+        {% for horaire in event.horaires %}
+            {% for horline in horaire.horlines %}
+                <li class="list-group-item">
+                    {{ horline.date_deb }}
+                </li>
+            {% endfor %}
         {% endfor %}
-    </p>
+    </ul>
 
-    <h4 class="mt-2"><strong>Où</strong></h4>
-
+    <h4 class="mb-2 mt-2"><strong>Où</strong></h4>
     {{ event.localisation.postal }} {{ event.localisation.localite }}
     <br/>
     {{ event.localisation.localite }}
-    {{ event.localisation.localite }}
 
-    <h4 class="mt-2"><strong>Contacts</strong></h4>
+    <h4 class="mb-2 mt-2"><strong>Contacts</strong></h4>
     {% for contact in event.contacts %}
-        <p> {{ contact.lib }}</p>
-        {{ contact.noms }} {{ contact.prenoms }}
+        {% if contact.lib %}
+            <strong>{{ contact.lib }}</strong>   <br/>
+        {% endif %}
+        {% if contact.noms %}
+            {{ contact.noms }} {{ contact.prenoms }} <br/>
+        {% endif %}
         <br/>
         {{ contact.adresse }} {{ contact.numero }}
         <br/>
-        {{ contact.adresse }} {{ contact.numero }}
-        <br/>
-        {{ contact.postal }} {{ contact.localite }}
-    {% endfor %}
-
-
-    <span class="mt-2"><strong>Date(s)</strong></span>
-
-    <ul class="list-group mt-2">
-        {% for horaire in event.horaires %}
-            <li class="list-group-item">
-                {{ horaire.horline.date_deb }}
-            </li>
+        {{ contact.postal }} {{ contact.localite }}<br/><br/>
+        {% for communication in contact.communications %}
+            <strong>{{ communication.name }}</strong> {{ communication.value }}
+            <br/>
         {% endfor %}
-    </ul>
+    {% endfor %}
 
     {% include 'agenda/show/_images.html.twig' %}
     {% include 'map/_carte.html.twig' %}

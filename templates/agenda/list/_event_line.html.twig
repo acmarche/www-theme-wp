@@ -4,7 +4,7 @@
         <!--date-->
         <div class="col-3">
             {% set horaire = event.horaires[0] %}
-            {% set horline = horaire.horline %}
+            {% set horline = horaire.horlines[0] %}
             <span>{{ horline.day }}</span>
             <span>{{ horline.month }}</span>
             <span>{{ horline.year }}</span>
@@ -21,7 +21,9 @@
             <!--TODO JF: condition si événement sur plusieurs jours/mois/années/décénnies/...-->
             <small>
                 {% for horaire in event.horaires %}
-                {{ horaire.horline.date_deb }}
+                    {% for horline in horaire.horlines %}
+                        {{ horline.date_deb }} {% if loop.last != true  %} | {% endif %}
+                    {% endfor %}
                 {% endfor %}
             </small>
         </div>
