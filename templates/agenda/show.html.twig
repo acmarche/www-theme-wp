@@ -11,7 +11,7 @@
 {% block image %}
     {% if image is not empty %}
         <div class="bg-img w-100 h-220px position-relative h-lg-330px">
-            <i style="background-image: url('{{ image }}');"
+            <i style="background-image: url('{{ image }}'); background-size: cover;"
                class="position-absolute top-0 bottom-0 left-0 right-0 md-left-15px md-right-15px lg-left-0 lg-right-0"></i>
         </div>
     {% endif %}
@@ -20,20 +20,38 @@
 {% block content %}
 
     <p>
-        {% if event.description1 | length > 0 %}
-            {{ event.description1[0]|raw|nl2br }}
-        {% endif %}
-
-        {% if event.description | length > 0 %}
-            {{ event.description[0]|raw|nl2br }}
-        {% endif %}
+        {% for description in event.descriptions %}
+            {{ description.texte|raw|nl2br }}
+        {% endfor %}
     </p>
+
+    <h4 class="mt-2"><strong>Où</strong></h4>
+
+    {{ event.localisation.postal }} {{ event.localisation.localite }}
+    <br/>
+    {{ event.localisation.localite }}
+    {{ event.localisation.localite }}
+
+    <h4 class="mt-2"><strong>Contacts</strong></h4>
+    {% for contact in event.contacts %}
+        <p> {{ contact.lib }}</p>
+        {{ contact.noms }} {{ contact.prenoms }}
+        <br/>
+        {{ contact.adresse }} {{ contact.numero }}
+        <br/>
+        {{ contact.adresse }} {{ contact.numero }}
+        <br/>
+        {{ contact.postal }} {{ contact.localite }}
+    {% endfor %}
+
 
     <span class="mt-2"><strong>Date(s)</strong></span>
 
     <ul class="list-group mt-2">
-        {% for date in event.dates %}
-            <li class="list-group-item">{{ date.date_affichage }}</li>
+        {% for horaire in event.horaires %}
+            <li class="list-group-item">
+                {{ horaire.horline.date_deb }}
+            </li>
         {% endfor %}
     </ul>
 

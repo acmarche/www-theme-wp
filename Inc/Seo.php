@@ -29,7 +29,11 @@ class Seo
 
         $postId = get_query_var('p');
         if ($postId) {
-            self::metaPost($postId);
+            if ($postId == Theme::PAGE_CARTO) {
+                self::metaCartographie();
+            } else {
+                self::metaPost($postId);
+            }
         }
 
         $slugFiche = get_query_var(Router::PARAM_BOTTIN_FICHE);
@@ -97,23 +101,30 @@ class Seo
         }
     }
 
-    private static function metaBottinEvent($codeCgt)
+    private static function metaBottinEvent(string $codeCgt)
     {
         $hadesRepository = new HadesRepository();
-
         $event = $hadesRepository->getEvent($codeCgt);
         if ($event) {
-            $description          = '';
-            self::$metas['title'] = $event['nom'].' | Agenda des manifestations ';
-            if (count($event['description1']) > 0) {
-                $description .= $event['description1'][0];
-            }
-            if (count($event['description']) > 0) {
-                $description .= ' '.$event['description'][0];
-            }
-            self::$metas['description'] = $description;
-            //todo get categories event
-            //self::$metas['keywords']    = join(',', $cats);
+            self::$metas['title'] = $event->titre.' | Agenda des manifestations ';
+            self::$metas['description'] = join(
+                ',',
+                array_map(
+                    function ($description) {
+                        return $description->texte;
+                    },
+                    $event->descriptions
+                )
+            );
+            self::$metas['keywords']    = join(
+                ',',
+                array_map(
+                    function ($category) {
+                        return $category->lib;
+                    },
+                    $event->categories
+                )
+            );
         }
     }
 
@@ -147,6 +158,12 @@ class Seo
                 $tags
             )
         );
+    }
+
+    private static function metaCartographie()
+    {
+        //todo
+
     }
 
     public function isGoole()

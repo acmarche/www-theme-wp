@@ -1,8 +1,8 @@
-{% if event.images | length > 1 %}
+{% if event.medias | length > 1 %}
     <div class="row">
-        {% for image in event.images %}
+        {% for media in event.medias %}
             <div class="col-3">
-                <img src="{{ image }}" alt="">
+                <img src="{{ media.url }}" alt="{{ media.titre }}">
             </div>
         {% endfor %}
     </div>

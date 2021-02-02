@@ -15,8 +15,8 @@ $codeCgt = $wp_query->get(Router::PARAM_EVENT);
 
 $hadesRepository = new HadesRepository();
 $event           = $hadesRepository->getEvent($codeCgt);
+//var_dump($event);
 if ( ! $event) {
-
     Twig::rendPage(
         'errors/404.html.twig',
         [
@@ -33,21 +33,21 @@ if ( ! $event) {
 }
 
 $image  = null;
-$images = $event['images'];
+$images = $event->medias;
 if (count($images) > 0) {
-    $image = $images[0];
+    $image = $images[0]->url;
 }
 
 Twig::rendPage(
     'agenda/show.html.twig',
     [
         'event'     => $event,
-        'title'     => $event['nom'],
+        'title'     => $event->titre,
         'image'     => $image,
         'tags'      => [],
         'images'    => $images,
-        'latitude'  => $event['latitude'] ?? null,
-        'longitude' => $event['longitude'] ?? null,
+        'latitude'  => $event->geocode->latitude() ?? null,
+        'longitude' => $event->geocode->longitude() ?? null,
         'color'     => Theme::getColorBlog(MarcheConst::TOURISME),
         'blogName'  => Theme::getTitleBlog(MarcheConst::TOURISME),
         'relations' => [],

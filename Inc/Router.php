@@ -3,6 +3,9 @@
 
 namespace AcMarche\Theme\Inc;
 
+
+use AcMarche\Pivot\Event\Entity\Event;
+
 /**
  * Ajouts des routes pour les articles virtuels du bottin et de l'agenda
  * https://roots.io/routing-wp-requests/
@@ -53,9 +56,9 @@ class Router
         return self::getBaseUrlSite().Router::BOTTIN_FICHE_URL.$fiche->slug;
     }
 
-    public static function getUrlEvent(array $event): string
+    public static function getUrlEvent(Event $event): string
     {
-        return self::getBaseUrlSite().Router::EVENT_URL.$event['id'];
+        return self::getBaseUrlSite().Router::EVENT_URL.$event->id;
     }
 
     public function addRouteEvent()
