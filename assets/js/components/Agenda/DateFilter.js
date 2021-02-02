@@ -39,7 +39,7 @@ function DateFilter({
 
         const selectorArray = [
             {
-                name: 'Tout', id: 'tout', month: '', year: '', checked: true
+                name: 'Toute l\'année', id: 'tout', month: '', year: '', checked: true
             }
         ];
 
