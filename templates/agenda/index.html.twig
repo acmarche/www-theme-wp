@@ -12,21 +12,24 @@
             l'accueil</a>
 
         <!--title-->
-        <h2 class="text-ls-md-left pt-ls-md-8px text-md-left pt-md-8px">Agenda</h2>
+        <h2 class="text-ls-md-left pt-ls-md-8px text-md-left pt-md-8px">Agenda des manifestations</h2>
 
         <!--events-->
         <div class="px-0 d-md-flex flex-md-column d-ls-md-flex flex-ls-md-column pt-48px align-items-center">
 
             <!--list | TODO JF: à brancher-->
-            <ul class="pt-24px pt-md-32px d-md-flex flex-md-wrap mx-md-n4px mx-lg-n8px object-cardsList">
-                {% include 'agenda/list/_first_lines.html.twig' %}
-                {% include 'agenda/list/_other_lines.html.twig' %}
-            </ul>
-
-            <!-- TODO JF: à brancher -->
+            <noscript>
+                <ul class="pt-24px pt-md-32px d-md-flex flex-md-wrap mx-md-n4px mx-lg-n8px object-cardsList">
+                    {% include 'agenda/list/_first_lines.html.twig' %}
+                    {% include 'agenda/list/_other_lines.html.twig' %}
+                </ul>
+            </noscript>
+            <div id="app-agenda"></div>
+            <!-- TODO JF: à brancher
             <a href="#"
                class="button lvl3 mt-12px align-self-ls-md-center align-self-md-center position-relative left-0 left-hover-12px d-flex justify-content-center">Charger
                 plus d'événements<i class="fas fa-angle-down d-ls-md-inline pl-8px pl-md-12px fs-basic d-md-inline"></i></a>
+            -->
         </div>
     </div>
 </section>
