@@ -4,6 +4,7 @@
 namespace AcMarche\Theme\Inc;
 
 
+use AcMarche\Pivot\Event\Entity\Categorie;
 use AcMarche\Pivot\Event\Entity\Event;
 
 /**
@@ -59,6 +60,11 @@ class Router
     public static function getUrlEvent(Event $event): string
     {
         return self::getBaseUrlSite().Router::EVENT_URL.$event->id;
+    }
+
+    public static function getUrlEventCategory(Categorie $categorie): string
+    {
+        return self::getBaseUrlSite().Router::EVENT_URL.$categorie->id;
     }
 
     public function addRouteEvent()
