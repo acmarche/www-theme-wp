@@ -5,10 +5,21 @@ window.addEventListener( 'load', () => {
      */
     const btnCloseSearch = document.getElementById( 'btn-close-search' );
     const searchScreen = document.querySelector( '.searchScreen' );
+    if ( null != btnCloseSearch ) {
+        btnCloseSearch.addEventListener( 'click', () => {
+            searchScreen.classList.add( 'd-none' );
+        });
+    }
 
-    btnCloseSearch.addEventListener( 'click', () => {
-        searchScreen.classList.add( 'd-none' );
-    });
+    /**
+     * Ouverture ecran de recherche
+     */
+    const btnOpenSearch = document.getElementById( 'btn-open-search' );
+    if ( null != btnOpenSearch ) {
+        btnCloseSearch.addEventListener( 'click', () => {
+            searchScreen.classList.add( 'd-none' );
+        });
+    }
 
     /**
      * Fermeture box alert
@@ -58,11 +69,6 @@ window.addEventListener( 'load', () => {
         subNav.classList.remove( 'd-block' );
     });
 });
-
-//La partie ci-dessus est responsable de la fermeture de la navigation principale
-//La classe toggle-opened est presente par defaut et provoque l'ouverture de la page
-//Enlever la classe manuellement ferme la page
-//clicker sur la croix pour enlever la classe fonctionne correctement mais ne ferme pas la navigation
 
 // TEST -----------------------------------------------------
 // let closeSecondNav = document.querySelectorAll(".closeSecondNav");
