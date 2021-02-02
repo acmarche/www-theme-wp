@@ -82,7 +82,7 @@ function DateFilter({
                 >
                     {dateSelector.map( ( object, index ) => (
                         <option
-                            key={index + 1000}
+                            key={object.id}
                             value={`${object.id}|${object.year}`}
                             defaultValue={object.checked}
                         >
@@ -95,8 +95,8 @@ function DateFilter({
             <ul className="cat-filters d-md-flex mw-550px flex-wrap justify-content-center align-items-center d-none">
                 {dateSelector.map( ( object, index ) => (
                     <li
-                        key={index + 10000}
-                        className={`${0 == index ? 'mx-16px' : ''} position-relative`}
+                        key={object.id}
+                        className={`${0 === index ? 'mx-16px' : ''} position-relative`}
                     >
                         <input
                             name="cat"
