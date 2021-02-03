@@ -15,7 +15,7 @@ class Theme
     {
         global $post;
         $currentBlog = get_current_blog_id();
-        if ($currentBlog == 1 && $post !== null && $post->ID = 1840) {
+        if ($currentBlog == 1 && $post !== null && $post->ID == 1840) {
             return true;
         }
 
