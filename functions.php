@@ -13,16 +13,14 @@ use AcMarche\Theme\Inc\SettingsPage;
 use AcMarche\Theme\Inc\SetupTheme;
 use AcMarche\Theme\Inc\WidgetLoad;
 
-
-
 /**
- *
+ * Initialisation du thème
  */
 new SetupTheme();
 /**
  * Chargement css, js
  */
-//new AssetsLoad();
+new AssetsLoad();
 /**
  * Déclaration des zones a widgets
  */
@@ -42,7 +40,7 @@ new Router();
 /**
  * Balises pour le référencement
  */
-//new Seo();
+new Seo();
 /**
  * Actions sur les filtres de wp
  */
