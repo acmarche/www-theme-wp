@@ -22,7 +22,7 @@ new SetupTheme();
 /**
  * Chargement css, js
  */
-new AssetsLoad();
+//new AssetsLoad();
 /**
  * Déclaration des zones a widgets
  */
@@ -42,7 +42,7 @@ new Router();
 /**
  * Balises pour le référencement
  */
-new Seo();
+//new Seo();
 /**
  * Actions sur les filtres de wp
  */
