@@ -5,7 +5,6 @@ namespace AcMarche\Theme;
 
 use AcMarche\Bottin\Bottin;
 use AcMarche\Bottin\Repository\BottinRepository;
-use AcMarche\Common\MarcheConst;
 use AcMarche\Common\Twig;
 use AcMarche\Theme\Inc\Router;
 use AcMarche\Theme\Inc\Theme;
@@ -22,14 +21,19 @@ if ($slug) {
     $category = $bottinRepository->getCategoryBySlug($slug);
 }
 
+$blodId   = get_current_blog_id();
+$color    = Theme::getColorBlog($blodId);
+$blogName = Theme::getTitleBlog($blodId);
+$path     = Theme::getPathBlog($blodId);
+
 if ( ! $category) {
     Twig::rendPage(
         'errors/404.html.twig',
         [
-            'title' => 'Page non trouvée',
-            'tags'  => [],
-        'color'    => $color,
-        'blogName'  => $blogName,
+            'title'    => 'Page non trouvée',
+            'tags'     => [],
+            'color'    => $color,
+            'blogName' => $blogName,
         ]
     );
     get_footer();
@@ -39,17 +43,16 @@ if ( ! $category) {
 
 $description = $category->description;
 $title       = $category->name;
-
-$blodId = get_current_blog_id();
-
-$path     = Theme::getPathBlog($blodId);
-$siteSlug = Theme::getTitleBlog($blodId);
-$color    = Theme::getColorBlog($blodId);
-$blogName = Theme::getTitleBlog($blodId);
-
-$fiches   = $bottinRepository->getFichesByCategory($category->id);
-$children = $bottinRepository->getCategories($category->id);
-
+$siteSlug    = Theme::getTitleBlog($blodId);
+$fiches      = $bottinRepository->getFichesByCategory($category->id);
+$children    = $bottinRepository->getCategories($category->id);
+$parent      = $bottinRepository->getCategory($category->parent_id);
+$urlBack     = $path;
+$nameBack    = $blogName;
+if ($parent) {
+    $nameBack = $parent->name;
+    $urlBack  = Router::getUrlCategoryBottin($parent);
+}
 array_map(
     function ($child) {
         $child->permalink = Router::getUrlCategoryBottin($child);
@@ -72,11 +75,14 @@ Twig::rendPage(
         'title'       => $title,
         'description' => $description,
         'children'    => $children,
+        'parent'      => $parent,
         'posts'       => $fiches,
         'category_id' => $category->id,
         'site_slug'   => $siteSlug,
-        'color'    => $color,
-        'blogName'  => $blogName,
+        'color'       => $color,
+        'blogName'    => $blogName,
+        'urlBack'     => $urlBack,
+        'nameBack'    => $nameBack,
     ]
 );
 get_footer();
