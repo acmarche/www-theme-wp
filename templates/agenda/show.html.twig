@@ -25,12 +25,10 @@
 
     <h4 class="mb-2 mt-2"><strong>Date(s)</strong></h4>
     <ul class="list-group mt-2 mb-2">
-        {% for horaire in event.horaires %}
-            {% for horline in horaire.horlines %}
-                <li class="list-group-item">
-                    {{ horline.date_deb }}
-                </li>
-            {% endfor %}
+        {% for date in event.dates %}
+            <li class="list-group-item">
+                {{ date.date_deb }}
+            </li>
         {% endfor %}
     </ul>
 

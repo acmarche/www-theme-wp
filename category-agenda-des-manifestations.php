@@ -4,11 +4,24 @@ namespace AcMarche\Theme;
 
 use AcMarche\Common\Twig;
 use AcMarche\Pivot\Repository\HadesRepository;
+use Psr\Cache\InvalidArgumentException;
 
 get_header();
 
 $hadesRepository = new HadesRepository();
-$events          = $hadesRepository->getEvents();
+try {
+    $events = $hadesRepository->getEvents();
+} catch (InvalidArgumentException $e) {
+    Twig::rendPage(
+        'errors/500.html.twig',
+        [
+            'message' => 'Impossible de charger les évènements: '.$e->getMessage(),
+        ]
+    );
+    get_footer();
+
+    return;
+}
 
 wp_enqueue_script(
     'react-app',

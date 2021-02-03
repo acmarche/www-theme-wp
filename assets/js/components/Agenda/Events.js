@@ -145,7 +145,7 @@ function Events({
                                                 return ( <Fragment
                                                     key={index2}>{date.date_deb} | </Fragment> );
                                             }
-                                            return ( null );
+                                            return null;
                                         })
                                         }
                                     </small>

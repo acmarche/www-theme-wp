@@ -20,10 +20,8 @@
 
             <!--TODO JF: condition si événement sur plusieurs jours/mois/années/décénnies/...-->
             <small>
-                {% for horaire in event.horaires %}
-                    {% for horline in horaire.horlines %}
-                        {{ horline.date_deb }} {% if loop.last != true  %} | {% endif %}
-                    {% endfor %}
+                {% for date in event.dates %}
+                    {{ date.date_deb }} {% if loop.last != true %} | {% endif %}
                 {% endfor %}
             </small>
         </div>
