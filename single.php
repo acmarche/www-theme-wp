@@ -10,8 +10,6 @@ use AcMarche\Theme\Inc\Theme;
 get_header();
 global $post;
 
-$tags = get_the_category($post->ID);
-
 $image = null;
 if (has_post_thumbnail()) {
     $images = wp_get_attachment_image_src(get_post_thumbnail_id(), 'original');
@@ -30,10 +28,12 @@ $path     = Theme::getPathBlog($blodId);
 $blogName = Theme::getTitleBlog($blodId);
 $color    = Theme::getColorBlog($blodId);
 
-$relations = WpRepository::getRelations($post->ID, $tags);
-$content = get_the_content( null, null, $post );
-$content = apply_filters( 'the_content', $content );
-$content = str_replace( ']]>', ']]&gt;', $content );
+$tags      = WpRepository::getTags($post->ID);
+$relations = WpRepository::getRelations($post->ID);
+
+$content = get_the_content(null, null, $post);
+$content = apply_filters('the_content', $content);
+$content = str_replace(']]>', ']]&gt;', $content);
 
 Twig::rendPage(
     'article/show.html.twig',

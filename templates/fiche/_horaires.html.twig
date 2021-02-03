@@ -1,59 +1,69 @@
+<!--schedule
+<div class="text-dark-primary pt-20px col-ls-6 px-ls-12px col-ls-md-12 pt-ls-md-20px">
+    <h4 class="ff-semibold fs-short-1">Horaires</h4>
+    <span class="fs-short-2 pt-8px d-block">Mercredi 13h à 17h30</span>
+    <span class="fs-short-2 pt-8px d-block">Vendredi 14h30 à 17h30</span>
+    <span class="fs-short-2 pt-8px d-block">Samedi 9h à 12h30</span>
+</div>
+-->
 {% if post.fiche is defined and post.fiche.horaires | length > 0 %}
-
-    <table class='table table-bordered table-hover'>
-        <thead>
-        <tr>
-            <th>Jour</th>
-            <th>Fermé ?</th>
-            <th>Ouvert à midi ?</th>
-            <th>Ouverture<br/> matinée</th>
-            <th>Fermeture<br/> matinée</th>
-            <th>Ouverture<br/> après midi</th>
-            <th>Fermeture<br/> après midi</th>
-            <th>Sur Rdv</th>
-        </tr>
-        </thead>
-        <tbody>
-        {% for horaire in fiche.horaires %}
+    <div class="text-dark-primary pt-20px col-ls-6 px-ls-12px col-ls-md-12 pt-ls-md-20px">
+        <h4 class="ff-semibold fs-short-1">Horaires</h4>
+        <table class='table table-bordered table-hover'>
+            <thead>
             <tr>
-                <td>{{ ("jour"~horaire.day) }}</td>
-                <td>
-                    {% if horaire.isClosed %}
-                        <span class="fas fa-check"></span>
-                    {% endif %}
-                </td>
-                <td>
-                    {% if horaire.isOpenAtLunch %}
-                        <span class="fas fa-check"></span>
-                    {% endif %}
-                </td>
-                <td>
-                    {% if not horaire.isClosed and horaire.morningStart %}
-                        {{ horaire.morningStart | date('H:i') }}
-                    {% endif %}
-                </td>
-                <td>
-                    {% if not horaire.isClosed and horaire.morningEnd %}
-                        {{ horaire.morningEnd | date('H:i') }}
-                    {% endif %}
-                </td>
-                <td>
-                    {% if not horaire.isClosed and horaire.noonStart %}
-                        {{ horaire.noonStart | date('H:i') }}
-                    {% endif %}
-                </td>
-                <td>
-                    {% if not horaire.isClosed and horaire.noonEnd %}
-                        {{ horaire.noonEnd | date('H:i') }}
-                    {% endif %}
-                </td>
-                <td>
-                    {% if not horaire.isClosed and horaire.isRdv %}
-                        <span class="fas fa-check"></span>
-                    {% endif %}
-                </td>
+                <th>Jour</th>
+                <th>Fermé ?</th>
+                <th>Ouvert à midi ?</th>
+                <th>Ouverture<br/> matinée</th>
+                <th>Fermeture<br/> matinée</th>
+                <th>Ouverture<br/> après midi</th>
+                <th>Fermeture<br/> après midi</th>
+                <th>Sur Rdv</th>
             </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+            {% for horaire in fiche.horaires %}
+                <tr>
+                    <td>{{ ("jour"~horaire.day) }}</td>
+                    <td>
+                        {% if horaire.isClosed %}
+                            <span class="fas fa-check"></span>
+                        {% endif %}
+                    </td>
+                    <td>
+                        {% if horaire.isOpenAtLunch %}
+                            <span class="fas fa-check"></span>
+                        {% endif %}
+                    </td>
+                    <td>
+                        {% if not horaire.isClosed and horaire.morningStart %}
+                            {{ horaire.morningStart | date('H:i') }}
+                        {% endif %}
+                    </td>
+                    <td>
+                        {% if not horaire.isClosed and horaire.morningEnd %}
+                            {{ horaire.morningEnd | date('H:i') }}
+                        {% endif %}
+                    </td>
+                    <td>
+                        {% if not horaire.isClosed and horaire.noonStart %}
+                            {{ horaire.noonStart | date('H:i') }}
+                        {% endif %}
+                    </td>
+                    <td>
+                        {% if not horaire.isClosed and horaire.noonEnd %}
+                            {{ horaire.noonEnd | date('H:i') }}
+                        {% endif %}
+                    </td>
+                    <td>
+                        {% if not horaire.isClosed and horaire.isRdv %}
+                            <span class="fas fa-check"></span>
+                        {% endif %}
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
 {% endif %}

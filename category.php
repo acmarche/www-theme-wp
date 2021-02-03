@@ -49,6 +49,7 @@ Twig::rendPage(
         'blogName'  => $blogName,
         'path'     => $path,
         'subTitle' => 'Tout',
+
     ]
 );
 

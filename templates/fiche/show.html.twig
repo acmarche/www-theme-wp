@@ -6,9 +6,9 @@
     <div class="bg-white pt-24px px-24px position-relative d-md-flex px-xl-48px mx-xl-n30px justify-content-md-center flex-column">
 
         <!--back | TODO JF: lien dynamique vers la page précédente-->
-        <a href="#"
+        <a href="{% if urlBack %} {{ urlBack }}{% else %}javascript:window.history.back();{% endif %}"
            class="button lvl3 align-self-ls-md-start align-self-md-start position-relative right-0 right-hover-12px fs-short-2"><i
-                    class="fas fa-angle-left pr-8px d-ls-md-inline pr-md-12px fs-short-2 d-md-inline"></i>Retour x</a>
+                    class="fas fa-angle-left pr-8px d-ls-md-inline pr-md-12px fs-short-2 d-md-inline"></i>Retour </a>
 
         <!--title-->
         <h2 class="text-ls-md-left pt-ls-md-8px text-md-left pt-md-8px">{{ title }}</h2>
@@ -23,7 +23,7 @@
                 <div class="bg-img w-100 h-auto position-relative h-lg-368px d-flex pr-md-15px">
 
                     <!--img-->
-                    <i class="bg-img-directory-1 position-absolute top-0 bottom-0 left-0 right-0 md-left-15px md-right-15px lg-left-0 lg-right-0 col-7 d-none d-md-block"></i>
+                    {% include 'fiche/_logo.html.twig' %}
 
                     <!--datas-->
                     {% include 'fiche/_data.html.twig' %}

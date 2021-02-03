@@ -38,7 +38,13 @@ if ( ! $fiche) {
     return;
 }
 
-$categories    = $bottinRepository->getCategoriesOfFiche($fiche->id);
+$categories          = $bottinRepository->getCategoriesOfFiche($fiche->id);
+$classementPrincipal = $bottinRepository->getCategoriePrincipale($fiche);
+$urlBack             = null;
+if ($classementPrincipal) {
+    $urlBack = Router::getUrlCategoryBottin($classementPrincipal);
+}
+
 $images        = $bottinRepository->getImagesFiche($fiche->id);
 $documents     = $bottinRepository->getDocuments($fiche->id);
 $isCentreVille = $bottinRepository->isCentreVille($fiche->id);
@@ -60,7 +66,6 @@ $path     = Theme::getPathBlog($blodId);
 $blogName = Theme::getTitleBlog($blodId);
 $color    = Theme::getColorBlog($blodId);
 
-
 Twig::rendPage(
     'fiche/show.html.twig',
     [
@@ -81,6 +86,7 @@ Twig::rendPage(
         'content'       => '',
         'relations'     => $relations,
         'readspeaker'   => true,
+        'urlBack'       => $urlBack,
     ]
 );
 get_footer();
