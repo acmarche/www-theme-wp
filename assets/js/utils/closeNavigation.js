@@ -30,6 +30,9 @@ window.addEventListener( 'load', () => {
         const alertMessage = document.querySelector( '.object-alert' );
         btnCloseAlert.addEventListener( 'click', () => {
             alertMessage.classList.add( 'd-none' );
+            const date = new Date( Date.now() );
+            date.setDate( date.getDate() + 3 );
+            document.cookie = `closeAlert=true; expires=${date.toUTCString()}`;
         });
     }
 

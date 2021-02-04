@@ -1,13 +1,14 @@
-<!--OBJECT | ALERT-->
-<div class="object-alert">
-    <div>
+{% if pageAlert != null %}
+    <!--OBJECT | ALERT-->
+    <div class="object-alert">
         <div>
-            <h3>Avertissement</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum sequi, quos autem blanditiis hic quisquam
-                nihil neque. Quia, quae, eius! Ullam ab, minima magni iste ea quae perspiciatis quas consequatur.</p>
+            <div>
+                <h3>{{ pageAlert.post_title }}</h3>
+                <p>{{ contentAlert|raw }}</p>
+            </div>
+            <a href="javascript: return null;">
+                <i class="fas fa-times" id="btn-close-alert"></i>
+            </a>
         </div>
-        <a href="javascript: return null;">
-            <i class="fas fa-times" id="btn-close-alert"></i>
-        </a>
     </div>
-</div>
+{% endif %}
