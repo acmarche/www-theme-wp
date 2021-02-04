@@ -46,7 +46,7 @@ function App() {
                         </button>
                     </form>
                     <a href="#" className="icon_custom">
-                        <i className="i-times"></i>
+                        <i className="i-times" id="btn-close-search"></i>
                     </a>
                 </li>
                 {inputContent ? (
