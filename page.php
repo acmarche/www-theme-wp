@@ -8,10 +8,10 @@ use AcMarche\Theme\Inc\Theme;
 get_header();
 global $post;
 
-$categories  = get_the_category($post->ID);
-$url         = get_permalink($post->ID);
-$image       = null;
-$blodId      = get_current_blog_id();
+$categories = get_the_category($post->ID);
+$url        = get_permalink($post->ID);
+$image      = null;
+$blodId     = get_current_blog_id();
 
 $path     = Theme::getPathBlog($blodId);
 $blogName = Theme::getTitleBlog($blodId);
@@ -23,18 +23,28 @@ if (has_post_thumbnail()) {
         $image = $images[0];
     }
 }
+
+$content   = get_the_content(null, null, $post);
+$content   = apply_filters('the_content', $content);
+$content   = str_replace(']]>', ']]&gt;', $content);
+$relations = [];
+$urlBack   = '/';
+
 Twig::rendPage(
     'article/page.html.twig',
     [
-        'image'    => $image,
-        'title'    => $post->post_title,
-        'post'     => $post,
-        'url'      => $url,
-        'tags'     => $categories,
-        'content'  => $post->post_content,
-        'blogName' => $blogName,
-        'color'    => $color,
-        'path'     => $path,
+        'image'       => $image,
+        'title'       => $post->post_title,
+        'post'        => $post,
+        'url'         => $url,
+        'tags'        => $categories,
+        'blogName'    => $blogName,
+        'color'       => $color,
+        'path'        => $path,
+        'relations'   => $relations,
+        'url_back'    => $urlBack,
+        'content'     => $content,
+        'readspeaker' => true,
     ]
 );
 get_footer();

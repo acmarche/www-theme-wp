@@ -5,7 +5,6 @@ namespace AcMarche\Theme;
 use AcMarche\Common\Twig;
 use AcMarche\Common\WpRepository;
 use AcMarche\Pivot\Repository\HadesRepository;
-use AcMarche\Theme\Inc\Theme;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
@@ -14,7 +13,6 @@ use Symfony\Component\HttpFoundation\Request;
 get_header();
 
 $hadesRepository = new HadesRepository();
-
 
 $news      = WpRepository::getAllNews(6);
 $events    = $hadesRepository->getEvents();
