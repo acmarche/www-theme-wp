@@ -15,7 +15,7 @@ $codeCgt = $wp_query->get(Router::PARAM_EVENT);
 
 $hadesRepository = new HadesRepository();
 $event           = $hadesRepository->getEvent($codeCgt);
-//dump($event);
+
 if ( ! $event) {
     Twig::rendPage(
         'errors/404.html.twig',
@@ -42,6 +42,8 @@ foreach ($event->categories as $category) {
     $tags[] = ['name' => $category->lib, 'url' => Router::getUrlEventCategory($category)];
 }
 
+$relations = $hadesRepository->getEventRelations($event);
+
 Twig::rendPage(
     'agenda/show.html.twig',
     [
@@ -54,7 +56,7 @@ Twig::rendPage(
         'longitude'   => $event->geocode->longitude() ?? null,
         'color'       => Theme::getColorBlog(MarcheConst::TOURISME),
         'blogName'    => Theme::getTitleBlog(MarcheConst::TOURISME),
-        'relations'   => [],
+        'relations'   => $relations,
         'readspeaker' => true,
     ]
 );
