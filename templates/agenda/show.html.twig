@@ -4,6 +4,10 @@
     /tourisme/agenda-des-manifestations/
 {% endblock %}
 
+{% block name_back %}
+    Retour aux manifestations
+{% endblock %}
+
 {% block category %}
     Agenda des manifestations
 {% endblock %}
@@ -25,20 +29,19 @@
     {% endfor %}
 
     <h4 class="mb-2 mt-2"><strong>Date(s)</strong></h4>
-    <ul class="list-group mt-2 mb-2">
-        {% for date in event.dates %}
-            <li class="list-group-item">
-                {{ date.date_deb }}
-            </li>
-        {% endfor %}
-    </ul>
+
+    {% for date in event.dates %}
+
+        {{ date.date_deb }} {% if loop.last != true %}, {% endif %}
+
+    {% endfor %}
 
     <h4 class="mb-2 mt-2"><strong>Où</strong></h4>
     {{ event.localisation.postal }} {{ event.localisation.localite }}
     <br/>
     {{ event.localisation.localite }}
 
-    <h4 class="mb-2 mt-2"><strong>Contacts</strong></h4>
+    <h4 class="mb-2 mt-2"><strong>Renseignements</strong></h4>
     {% for contact in event.contacts %}
         {% if contact.lib %}
             <strong>{{ contact.lib }}</strong>   <br/>

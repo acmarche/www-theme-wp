@@ -19,7 +19,8 @@ Je met l'alerte plus haut
 
   bottom: auto; ligne 24
 
-dans config.scss
+Dans config.scss
+---
 
 changé les valeurs de $shortFontSize-*
 
@@ -27,7 +28,8 @@ Retirer bouton lire plus
 ---
 
 Dans objects.scss
-
+---
+**Pour retirer le lire plus**
 A partir de la ligne 131, remplacer les max-height par 9999px
 Retirer la ligne 534: overflow: hidden;
 Dans base.html.twig mettre la class d-none sur span <span class="more"> et less

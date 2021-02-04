@@ -164,8 +164,8 @@ class AssetsLoad
             'marchebe-react-search-screen',
             get_template_directory_uri().'/assets/js/build/searchScreen.js',
             ['wp-element'],
-            time(),
-            wp_get_theme()->get('Version')
+            wp_get_theme()->get('Version'),
+            true
         );
     }
 
