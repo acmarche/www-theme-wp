@@ -17,6 +17,11 @@ class AssetsLoad
             add_action('wp_enqueue_scripts', [$this, 'marchebeLightGallery']);
             add_action('wp_enqueue_scripts', [$this, 'readSpeaker']);
         }
+
+        if ( ! Theme::isHomePage()) {
+            add_action('wp_enqueue_scripts', [$this, 'loadSearchScreen']);
+        }
+
     }
 
     function marchebeAssets()
@@ -149,6 +154,17 @@ class AssetsLoad
             'marchebe-zoom-js',
             get_template_directory_uri().'/assets/js/utils/zoom.js',
             array(),
+            wp_get_theme()->get('Version')
+        );
+    }
+
+    function loadSearchScreen()
+    {
+        wp_enqueue_script(
+            'marchebe-react-search-screen',
+            get_template_directory_uri().'/assets/js/build/searchScreen.js',
+            ['wp-element'],
+            time(),
             wp_get_theme()->get('Version')
         );
     }

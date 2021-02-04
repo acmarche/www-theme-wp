@@ -16,6 +16,9 @@ module.exports = {
         ],
         map: [
             `${path.resolve( __dirname, 'src' )}/map.js`
+        ],
+        searchScreen: [
+            `${path.resolve( __dirname, 'src' )}/searchScreen.js`
         ]
     },
     externals: {

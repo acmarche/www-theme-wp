@@ -151,7 +151,6 @@ class Api
 
     function mapApi()
     {
-
         add_action(
             'rest_api_init',
             function () {
