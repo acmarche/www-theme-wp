@@ -20,8 +20,6 @@ function Category() {
         .getAttribute( 'data-color' );
     const categoryTitle = document.getElementById( name )
         .getAttribute( 'data-site-name' );
-    const blogName = document.getElementById( name )
-        .getAttribute( 'data-site-name' );
 
     useEffect( () => {
         setSelectedCategory( mainCategory );
