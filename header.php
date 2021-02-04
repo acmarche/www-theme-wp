@@ -26,7 +26,6 @@ wp_body_open();
 
 $menu = new Menu();
 $data = $menu->getAllItems();
-//$form = get_search_form(false);
 
 if (Theme::isHomePage()) {
     Twig::rendPage(

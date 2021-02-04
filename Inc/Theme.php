@@ -5,6 +5,7 @@ namespace AcMarche\Theme\Inc;
 
 
 use AcMarche\Common\MarcheConst;
+use Symfony\Component\HttpFoundation\Request;
 
 class Theme
 {
@@ -13,9 +14,9 @@ class Theme
 
     static function isHomePage(): bool
     {
-        global $post;
-        $currentBlog = get_current_blog_id();
-        if ($currentBlog == 1 && $post !== null && $post->ID == 1840) {
+        $request = Request::createFromGlobals();
+        $uri     = $request->getRequestUri();
+        if ($uri === '/') {
             return true;
         }
 
