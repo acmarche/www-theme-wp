@@ -7,3 +7,18 @@
 {% block url_back %}
     {{ url_back }}
 {% endblock %}
+
+{% block scripts %}
+
+    <script type="text/javascript">
+        jQuery( document )
+            .ready( function() {
+                jQuery( '#content' )
+                    .lightGallery( {
+                            'selector': '.img-lightGallery'
+                        }
+                    );
+            } );
+    </script>
+
+{% endblock %}

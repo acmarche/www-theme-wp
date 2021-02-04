@@ -11,14 +11,15 @@
 {% block image %}
     {% if image is not empty %}
         <div class="bg-img w-100 h-220px position-relative h-lg-330px">
-            <i style="background-image: url('{{ image }}'); background-size: cover;"
-               class="position-absolute top-0 bottom-0 left-0 right-0 md-left-15px md-right-15px lg-left-0 lg-right-0"></i>
+            <a href="{{ image }}" class="img-lightGallery">
+                <i style="background-image: url('{{ image }}'); background-size: cover;"
+                   class="position-absolute top-0 bottom-0 left-0 right-0 md-left-15px md-right-15px lg-left-0 lg-right-0"></i>
+            </a>
         </div>
     {% endif %}
 {% endblock %}
 
 {% block content %}
-
     {% for description in event.descriptions %}
         <p>      {{ description.texte|raw|nl2br }} </p>
     {% endfor %}
@@ -57,5 +58,19 @@
 
     {% include 'agenda/show/_images.html.twig' %}
     {% include 'map/_carte.html.twig' %}
+{% endblock %}
+
+{% block scripts %}
+
+    <script type="text/javascript">
+        jQuery( document )
+            .ready( function() {
+                jQuery( '#content' )
+                    .lightGallery( {
+                            'selector': '.img-lightGallery'
+                        }
+                    );
+            } );
+    </script>
 
 {% endblock %}

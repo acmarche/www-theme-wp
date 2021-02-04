@@ -1,11 +1,15 @@
 <!--img-->
-
-<i {% if logo %}
-    style="background-image: url('{{ logo }}'); background-repeat: no-repeat;"
+{% if logo %}
+<a href="{{ logo }}" class="img-lightGallery">
+    {% endif %}
+    <i {% if logo %}
+        style="background-image: url('{{ logo }}'); background-repeat: no-repeat;"
+    {% endif %}
+            class="{% if logo is empty %}bg-img-directory-1{% endif %} position-absolute top-0 bottom-0 left-0 right-0 md-left-15px md-right-15px lg-left-0 lg-right-0 col-7 d-none d-md-block">
+    </i>
+    {% if logo %}
+</a>
 {% endif %}
-        class="{% if logo is empty %}bg-img-directory-1{% endif %} position-absolute top-0 bottom-0 left-0 right-0 md-left-15px md-right-15px lg-left-0 lg-right-0 col-7 d-none d-md-block">
-</i>
-
 {#
 <div class="bg-img w-100 h-auto position-relative h-lg-368px d-flex pr-md-15px">
 <!--img-->

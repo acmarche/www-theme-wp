@@ -1,7 +1,6 @@
-
 {% for image in images %}
     {% set image_url = url_base~image.image_name %}
-    <a href="{{ image_url }}" rel="groupbottin" class="img-fluid img-thumbnail">
+    <a href="{{ image_url }}" rel="groupbottin" class="img-fluid img-thumbnail img-lightGallery">
         <img style="max-width: 250px; max-height: 150px;margin-top: 10px;" src="{{ image_url }}"
              alt="commerce"
              class="alignLeft"/>
