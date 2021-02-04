@@ -15,10 +15,10 @@ use AcMarche\Theme\Inc\Theme;
         <meta name="author" content="Studio Tartine">
         <meta name="author" content="Nucleïd">
         <meta name="author" content="Cst">
-        <!--FAVICON-->
-        <link rel="icon" type="image/png"
-              href="<?php echo get_template_directory_uri() ?>/assets/images/favicon.png"/>
-        <?php wp_head(); ?>
+        <?php
+        Twig::rendPage('header/_favicons.html.twig');
+        wp_head();
+        ?>
     </head>
     <body class="bg-white">
     <?php
