@@ -31,3 +31,12 @@ Dans objects.scss
 A partir de la ligne 131, remplacer les max-height par 9999px
 Retirer la ligne 534: overflow: hidden;
 Dans base.html.twig mettre la class d-none sur span <span class="more"> et less
+
+Pour titre event en list
+max-height: de 30 a 40 ligne 753
+h3 {
+                        max-height: 40px;
+                    }
+
+ligne 889 default image .bg-img-directory-1
+background-image: url(../../../images/commerce_default.png);
