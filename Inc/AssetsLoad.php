@@ -6,16 +6,20 @@ class AssetsLoad
 {
     public function __construct()
     {
-        add_action('wp_enqueue_scripts', [$this, 'marchebeScripts']);
-        //todo set condition
-        add_action('wp_enqueue_scripts', [$this, 'marchebeLeaft']);
-        add_action('wp_enqueue_scripts', [$this, 'readSpeaker']);
+        add_action('wp_enqueue_scripts', [$this, 'marchebeAssets']);
+
+        if (Theme::isHomePage()) {
+            add_action('wp_enqueue_scripts', [$this, 'marchebeHome']);
+        }
+
+        if ( ! is_category() && ! is_search() && ! is_front_page()) {
+            add_action('wp_enqueue_scripts', [$this, 'marchebeLeaft']);
+            add_action('wp_enqueue_scripts', [$this, 'marchebeLightGallery']);
+            add_action('wp_enqueue_scripts', [$this, 'readSpeaker']);
+        }
     }
 
-    /**
-     * Enqueue scripts and styles.
-     */
-    function marchebeScripts()
+    function marchebeAssets()
     {
         wp_enqueue_style(
             'marchebe-bootstrap',
@@ -45,46 +49,96 @@ class AssetsLoad
             wp_get_theme()->get('Version'),
             true
         );
+    }
 
-        if (Theme::isHomePage()) {
-            wp_enqueue_style(
-                'marchebe-home-style',
-                get_template_directory_uri().'/assets/tartine/css/home.css',
-                array()
-            );
+    function marchebeHome()
+    {
+        wp_enqueue_style(
+            'marchebe-home-style',
+            get_template_directory_uri().'/assets/tartine/css/home.css',
+            array()
+        );
 
-            wp_enqueue_script(
-                'marchebe-close-js',
-                get_template_directory_uri().'/assets/js/utils/closeNavigation.js',
-                array(),
-                wp_get_theme()->get('Version'),
-                true
-            );
-        }
+        wp_enqueue_script(
+            'marchebe-close-js',
+            get_template_directory_uri().'/assets/js/utils/closeNavigation.js',
+            array(),
+            wp_get_theme()->get('Version'),
+            true
+        );
+
+        wp_enqueue_style(
+            'marchebe-lightSlider-style',
+            get_template_directory_uri().'/assets/js/lightslider/css/lightslider.css',
+            array()
+        );
+
+        wp_enqueue_script(
+            'marchebe-lightSlider-js',
+            get_template_directory_uri().'/assets/js/lightslider/js/lightslider.js',
+            array('jquery'),
+            wp_get_theme()->get('Version'),
+            true
+        );
+    }
+
+    function marchebeLightGallery()
+    {
+        wp_enqueue_style(
+            'marchebe-lightSlider-style',
+            get_template_directory_uri().'/assets/js/lightGallery/dist/css/lightgallery.min.css',
+            array()
+        );
+
+        wp_enqueue_script(
+            'marchebe-lightGallery-js',
+            get_template_directory_uri().'/assets/js/lightGallery/dist/js/lightgallery.min.js',
+            array(),
+            wp_get_theme()->get('Version'),
+            true
+        );
+        wp_enqueue_script(
+            'marchebe-lightGallery-zoom-js',
+            get_template_directory_uri().'/assets/js/lightGallery/modules/lg-zoom.min.js',
+            array(),
+            wp_get_theme()->get('Version'),
+            true
+        );
+        wp_enqueue_script(
+            'marchebe-lightGallery-mouse-js',
+            get_template_directory_uri().'/assets/js/lightGallery/lib/jquery.mousewheel.min.js',
+            array(),
+            wp_get_theme()->get('Version'),
+            true
+        );
+        wp_enqueue_script(
+            'marchebe-lightGallery-full-js',
+            get_template_directory_uri().'/assets/js/lightGallery/modules/lg-fullscreen.min.js',
+            array(),
+            wp_get_theme()->get('Version'),
+            true
+        );
     }
 
     function marchebeLeaft()
     {
-        if ( ! is_category() && ! is_search() && ! is_front_page()) {
-            wp_enqueue_style(
-                'marchebe-leaflet',
-                'https://unpkg.com/leaflet@1.7.1/dist/leaflet.css',
-                array(),
-                wp_get_theme()->get('Version')
-            );
+        wp_enqueue_style(
+            'marchebe-leaflet',
+            'https://unpkg.com/leaflet@1.7.1/dist/leaflet.css',
+            array(),
+            wp_get_theme()->get('Version')
+        );
 
-            wp_enqueue_script(
-                'marchebe-leaflet-js',
-                'https://unpkg.com/leaflet@1.7.1/dist/leaflet.js',
-                array(),
-                wp_get_theme()->get('Version')
-            );
-        }
+        wp_enqueue_script(
+            'marchebe-leaflet-js',
+            'https://unpkg.com/leaflet@1.7.1/dist/leaflet.js',
+            array(),
+            wp_get_theme()->get('Version')
+        );
     }
 
     function readSpeaker()
     {
-        //Todo condition to load
         wp_enqueue_script(
             'marchebe-readspeaker-js',
             '//cdn1.readspeaker.com/script/11982/webReader/webReader.js?pids=wr',
@@ -97,7 +151,6 @@ class AssetsLoad
             array(),
             wp_get_theme()->get('Version')
         );
-
     }
 
 }

@@ -33,9 +33,10 @@ if ($react) {
         'react-app',
         get_template_directory_uri().'/assets/js/build/search.js',
         array('wp-element'),
-        time(),
+        wp_get_theme()->get('Version'),
         true
-    );//For production use wp_get_theme()->get('Version')
+    );
+
     Twig::rendPage(
         'search/index_react.html.twig',
         [
