@@ -28,7 +28,7 @@
             <div class="d-flex flex-column align-items-center mx-md-n15px flex-md-wrap flex-md-row align-items-md-start flex-lg-column col-lg-8 mx-lg-0 flex-lg-nowrap">
                 <!--img-->
                 {% block image %}
-                    {% if image is defined %}
+                    {% if image is defined and image is not empty %}
                         <div class="bg-img w-100 h-220px position-relative h-lg-330px">
                             <a href="{{ image }}" class="img-lightGallery">
                                 <i style="background-image: url('{{ image }}'); background-repeat: no-repeat; background-size: cover;"
