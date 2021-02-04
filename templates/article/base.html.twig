@@ -87,14 +87,12 @@
                 </div>
 
                 <!--OBJECT | RECOM-->
-                {% if relations | length > 0 %}
-                    <div class="pt-24px w-100 col-md-8 px-0 px-md-15px d-lg-none">
-                        <h4 class="text-dark-primary ff-semibold fs-basic">Consultez aussi</h4>
-                        <div class="pt-12px object-recom">
-                            {% include 'article/_recommandations.html.twig' %}
-                        </div>
+                <div class="pt-24px w-100 col-md-8 px-0 px-md-15px d-lg-none">
+                    <h4 class="text-dark-primary ff-semibold fs-basic">Consultez aussi</h4>
+                    <div class="pt-12px object-recom">
+                        {% include 'article/_recommandations.html.twig' %}
                     </div>
-                {% endif %}
+                </div>
             </div>
 
             <div class="d-none d-lg-flex col-4 flex-column h-330px justify-content-between">
@@ -115,14 +113,12 @@
                 </div>
 
                 <!--OBJECT | RECOM-->
-                {% if relations | length > 0 %}
-                    <div class="pt-24px w-100">
-                        <h4 class="text-dark-primary ff-semibold fs-basic">Consultez aussi</h4>
-                        <div class="pt-22px object-recom">
-                            {% include 'article/_recommandations.html.twig' %}
-                        </div>
+                <div class="pt-24px w-100">
+                    <h4 class="text-dark-primary ff-semibold fs-basic">Consultez aussi</h4>
+                    <div class="pt-22px object-recom">
+                        {% include 'article/_recommandations.html.twig' %}
                     </div>
-                {% endif %}
+                </div>
             </div>
         </div>
     </div>
