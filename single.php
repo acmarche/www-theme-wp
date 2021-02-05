@@ -5,6 +5,7 @@ namespace AcMarche\Theme;
 
 use AcMarche\Common\Twig;
 use AcMarche\Common\WpRepository;
+use AcMarche\Theme\Inc\Router;
 use AcMarche\Theme\Inc\Theme;
 
 get_header();
@@ -18,9 +19,9 @@ if (has_post_thumbnail()) {
     }
 }
 
-$categorySlug = get_query_var('category_name');
-$category     = WpRepository::getCategoryBySlug($categorySlug);
-$urlBack      = get_category_link($category);
+//$categorySlug = get_query_var('category_name');
+//$category     = WpRepository::getCategoryBySlug($categorySlug);
+$urlBack      =  Router::getCurrentUrl();
 
 $blodId = get_current_blog_id();
 
@@ -46,7 +47,7 @@ Twig::rendPage(
         'color'       => $color,
         'path'        => $path,
         'relations'   => $relations,
-        'url_back'    => $urlBack,
+        'urlBack'    => $urlBack,
         'content'     => $content,
         'readspeaker' => true,
     ]

@@ -1,11 +1,11 @@
 {% extends "article/base.html.twig" %}
 
-{% block content %}
-    <p>{{ content|raw|nl2br }}</p>
+{% block url_back %}
+    {{ urlBack }}
 {% endblock %}
 
-{% block url_back %}
-    {{ url_back }}
+{% block content %}
+    <p>{{ content|raw|nl2br }}</p>
 {% endblock %}
 
 {% block scripts %}

@@ -190,4 +190,8 @@ class Router
         }
         switch_to_blog($current);
     }
+
+    public static function getCurrentUrl():string {
+        return get_site_url().esc_url_raw(add_query_arg([]));
+    }
 }
