@@ -87,6 +87,10 @@
 /*56pt / 84px*/
 /*28pt / 37px*/
 /*22pt / 30px*/
+/*
+$shortFontSize-1: .875rem;
+$shortFontSize-2: .75rem;
+$shortFontSize-3: .688rem;*/
 /* --------------------------- */
 /* MIXINS */
 /*@mixin highestBoxShadow() {
@@ -269,7 +273,7 @@
   left: 22px;
   right: 22px;
   text-align: center;
-  font-size: 0.875rem;
+  font-size: 0.975rem;
 }
 .toolboxContainer .toolboxContent ul .noResult i {
   padding: 0 11px 0 0;

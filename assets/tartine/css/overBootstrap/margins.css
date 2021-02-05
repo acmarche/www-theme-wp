@@ -87,6 +87,10 @@
 /*56pt / 84px*/
 /*28pt / 37px*/
 /*22pt / 30px*/
+/*
+$shortFontSize-1: .875rem;
+$shortFontSize-2: .75rem;
+$shortFontSize-3: .688rem;*/
 /* --------------------------- */
 /* MIXINS */
 /*@mixin highestBoxShadow() {

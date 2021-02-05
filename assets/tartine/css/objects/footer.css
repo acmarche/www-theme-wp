@@ -87,6 +87,10 @@
 /*56pt / 84px*/
 /*28pt / 37px*/
 /*22pt / 30px*/
+/*
+$shortFontSize-1: .875rem;
+$shortFontSize-2: .75rem;
+$shortFontSize-3: .688rem;*/
 /* --------------------------- */
 /* MIXINS */
 /*@mixin highestBoxShadow() {
@@ -177,11 +181,11 @@ footer section div {
 footer section div li {
   padding-top: 8px;
   color: white;
-  font-size: 0.688rem;
+  font-size: 0.875rem;
 }
 footer section div li a {
   color: white;
-  font-size: 0.688rem;
+  font-size: 0.875rem;
   padding-bottom: 0;
   border-bottom: 1px solid;
   border-color: rgba(255, 255, 255, 0);
@@ -208,7 +212,7 @@ footer section + section {
 }
 footer section + section a {
   color: white;
-  font-size: 0.688rem;
+  font-size: 0.875rem;
   -webkit-transition: all 0.25s ease-in-out;
   -moz-transition: all 0.25s ease-in-out;
   -ms-transition: all 0.25s ease-in-out;

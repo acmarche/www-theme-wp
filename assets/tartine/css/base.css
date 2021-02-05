@@ -90,6 +90,10 @@
 /*56pt / 84px*/
 /*28pt / 37px*/
 /*22pt / 30px*/
+/*
+$shortFontSize-1: .875rem;
+$shortFontSize-2: .75rem;
+$shortFontSize-3: .688rem;*/
 /* --------------------------- */
 /* MIXINS */
 /*@mixin highestBoxShadow() {
@@ -164,11 +168,11 @@ section li,
 section input,
 section label,
 section textarea {
-  font-size: 0.875rem;
+  font-size: 0.975rem;
 }
 div small,
 section small {
-  font-size: 0.75rem;
+  font-size: 0.95rem;
 }
 
 /* PROPRIETES DE BASE */
@@ -195,7 +199,7 @@ body {
   font-family: "montserratlight", "Arial", sans-serif;
   font-weight: 300;
   font-style: normal;
-  font-size: 0.875rem;
+  font-size: 0.975rem;
   box-sizing: border-box;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -258,7 +262,7 @@ h3 {
 
 h6 {
   font-family: "montserratsemibold";
-  font-size: 0.688rem;
+  font-size: 0.875rem;
 }
 
 p {
@@ -797,7 +801,7 @@ multi-languages-input {
   padding: 0;
   vertical-align: top;
   line-height: 150%;
-  font-size: 0.875rem;
+  font-size: 0.975rem;
   -webkit-transition: color 0.25s ease-in-out;
   -moz-transition: color 0.25s ease-in-out;
   -ms-transition: color 0.25s ease-in-out;
@@ -879,7 +883,7 @@ multi-languages-input {
   border-color: #487f89;
   background-color: white;
   resize: none;
-  font-size: 0.875rem;
+  font-size: 0.975rem;
   line-height: 150%;
   padding: 4px 8px;
   outline: none;

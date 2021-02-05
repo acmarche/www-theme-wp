@@ -87,6 +87,10 @@
 /*56pt / 84px*/
 /*28pt / 37px*/
 /*22pt / 30px*/
+/*
+$shortFontSize-1: .875rem;
+$shortFontSize-2: .75rem;
+$shortFontSize-3: .688rem;*/
 /* --------------------------- */
 /* MIXINS */
 /*@mixin highestBoxShadow() {
@@ -202,15 +206,15 @@
 }
 
 .fs-short-1 {
-  font-size: 0.875rem !important;
+  font-size: 0.975rem !important;
 }
 
 .fs-short-2 {
-  font-size: 0.75rem !important;
+  font-size: 0.95rem !important;
 }
 
 .fs-short-3 {
-  font-size: 0.688rem !important;
+  font-size: 0.875rem !important;
 }
 
 .fs-0 {
@@ -231,19 +235,19 @@
 
 @media screen and (min-width: 768px) {
   .fs-md-short-1 {
-    font-size: 0.875rem !important;
+    font-size: 0.975rem !important;
   }
 }
 
 @media screen and (min-width: 992px) {
   .fs-lg-short-2 {
-    font-size: 0.75rem !important;
+    font-size: 0.95rem !important;
   }
 }
 
 @media screen and (min-width: 1200px) {
   .fs-xl-short-2 {
-    font-size: 0.75rem !important;
+    font-size: 0.95rem !important;
   }
 }
 

@@ -87,6 +87,10 @@
 /*56pt / 84px*/
 /*28pt / 37px*/
 /*22pt / 30px*/
+/*
+$shortFontSize-1: .875rem;
+$shortFontSize-2: .75rem;
+$shortFontSize-3: .688rem;*/
 /* --------------------------- */
 /* MIXINS */
 /*@mixin highestBoxShadow() {
@@ -256,7 +260,7 @@
 .bg-img-home .searchHome > input[type=search] + button + .bubble ul li a {
   display: flex;
   font-family: "montserratsemibold";
-  font-size: 0.688rem;
+  font-size: 0.875rem;
   padding: 8px 24px;
   color: #487f89;
 }
