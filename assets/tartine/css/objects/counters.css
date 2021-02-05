@@ -87,11 +87,6 @@
 /*56pt / 84px*/
 /*28pt / 37px*/
 /*22pt / 30px*/
-/*
-$shortFontSize-1: .875rem;
-$shortFontSize-2: .75rem;
-$shortFontSize-3: .688rem;
-*/
 /* --------------------------- */
 /* MIXINS */
 /*@mixin highestBoxShadow() {
@@ -126,6 +121,10 @@ $shortFontSize-3: .688rem;
 }*/
 /*@mixin lowestBoxShadow-inset() {
 	@include boxInset(0 -1px 3px rgba($darkestGrey, .12), 0 -1px 2px rgba($darkestGrey, .24));
+}
+
+@mixin buttonInset() {
+	@include boxInset(-12px 0 33px rgba($darkCTA, $alpha0));
 }
 */
 /* EXTENDS */
@@ -235,7 +234,7 @@ $shortFontSize-3: .688rem;
   bottom: 9px;
   opacity: 1;
   line-height: 99%;
-  font-size: 0.95rem;
+  font-size: 0.75rem;
   -webkit-transition-delay: 0.45s;
   -moz-transition-delay: 0.45s;
   -ms-transition-delay: 0.45s;
@@ -249,11 +248,6 @@ $shortFontSize-3: .688rem;
 }
 #chatChoice .animatedCounter:hover + .chatHeader.icon {
   background-color: #7dbef5;
-  -webkit-box-shadow: 0 14px 28px rgba(5, 0, 50, 0.25) !important;
-  -moz-box-shadow: 0 14px 28px rgba(5, 0, 50, 0.25) !important;
-  -ms-box-shadow: 0 14px 28px rgba(5, 0, 50, 0.25) !important;
-  -o-box-shadow: 0 14px 28px rgba(5, 0, 50, 0.25) !important;
-  box-shadow: 0 14px 28px rgba(5, 0, 50, 0.25) !important;
 }
 #chatChoice .animatedCounter:hover + .chatHeader.icon i {
   -webkit-box-shadow: -12px 0 33px #487f89 inset !important;

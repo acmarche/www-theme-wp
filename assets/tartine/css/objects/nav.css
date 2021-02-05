@@ -87,11 +87,6 @@
 /*56pt / 84px*/
 /*28pt / 37px*/
 /*22pt / 30px*/
-/*
-$shortFontSize-1: .875rem;
-$shortFontSize-2: .75rem;
-$shortFontSize-3: .688rem;
-*/
 /* --------------------------- */
 /* MIXINS */
 /*@mixin highestBoxShadow() {
@@ -126,6 +121,10 @@ $shortFontSize-3: .688rem;
 }*/
 /*@mixin lowestBoxShadow-inset() {
 	@include boxInset(0 -1px 3px rgba($darkestGrey, .12), 0 -1px 2px rgba($darkestGrey, .24));
+}
+
+@mixin buttonInset() {
+	@include boxInset(-12px 0 33px rgba($darkCTA, $alpha0));
 }
 */
 /* EXTENDS */
@@ -432,7 +431,7 @@ nav > div.search .searchScreen > ul > li:first-child > a i {
 }
 nav > div.search .searchScreen > ul > li > a {
   font-family: "montserratsemibold";
-  font-size: 0.875rem;
+  font-size: 0.688rem;
   color: #487f89;
   text-align: left;
   padding: 10px 24px;
@@ -645,7 +644,7 @@ nav > div.all .subnav > ul > li:hover > div {
 }
 nav > div.all .subnav > ul > li > a {
   font-family: "montserratsemibold";
-  font-size: 0.875rem;
+  font-size: 0.688rem;
   color: white;
   text-align: left;
   padding: 10px 24px;
@@ -743,7 +742,7 @@ nav > div.all .subnav > ul > li > div > ul > li > a {
   width: 100%;
   font-family: "montserratsemibold";
   padding: 10px 24px;
-  font-size: 0.975rem;
+  font-size: 0.688rem;
   color: #487f89;
   -webkit-transition: color 0.25s ease-in-out;
   -moz-transition: color 0.25s ease-in-out;
@@ -771,7 +770,7 @@ nav > div.all .subnav > ul > li > div > ul > li > a:hover {
   transition: color 0.25s ease-in-out;
 }
 nav > div.all .subnav > ul > li > div > ul > li > a > i {
-  font-size: 0.875rem;
+  font-size: 0.688rem;
   padding-left: 8px;
 }
 nav > div.all .subnav > ul > li.c-adm:hover > a {
@@ -1044,7 +1043,7 @@ nav > div.more > input[type=checkbox] + a + .bubble div {
 }
 nav > div.more > input[type=checkbox] + a + .bubble div a {
   font-family: "montserratsemibold";
-  font-size: 0.875rem;
+  font-size: 0.688rem;
   padding: 8px 24px 8px 12px;
   color: #487f89;
   position: relative;
@@ -1273,7 +1272,7 @@ nav > div > a.icon_custom .i-dark-primary {
 nav > div > a span {
   display: none;
   color: #487f89;
-  font-size: 0.95rem;
+  font-size: 0.75rem;
   font-family: "montserratsemibold";
 }
 @media screen and (min-width: 1200px) {

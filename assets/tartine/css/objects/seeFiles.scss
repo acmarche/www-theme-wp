@@ -36,7 +36,7 @@
 			font-size: $basicFontSize;
 			background-color: $CTA;
 			color: $white;
-			@include buttonInset();
+		//	@include buttonInset();
 			@include allTransition($basicDuration);
 		}
 	}

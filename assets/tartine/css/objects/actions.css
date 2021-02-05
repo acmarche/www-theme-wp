@@ -87,11 +87,6 @@
 /*56pt / 84px*/
 /*28pt / 37px*/
 /*22pt / 30px*/
-/*
-$shortFontSize-1: .875rem;
-$shortFontSize-2: .75rem;
-$shortFontSize-3: .688rem;
-*/
 /* --------------------------- */
 /* MIXINS */
 /*@mixin highestBoxShadow() {
@@ -126,6 +121,10 @@ $shortFontSize-3: .688rem;
 }*/
 /*@mixin lowestBoxShadow-inset() {
 	@include boxInset(0 -1px 3px rgba($darkestGrey, .12), 0 -1px 2px rgba($darkestGrey, .24));
+}
+
+@mixin buttonInset() {
+	@include boxInset(-12px 0 33px rgba($darkCTA, $alpha0));
 }
 */
 /* EXTENDS */
@@ -213,11 +212,6 @@ $shortFontSize-3: .688rem;
 }
 .actions .text:hover {
   background-color: #7dbef5;
-  -webkit-box-shadow: 0 14px 28px rgba(5, 0, 50, 0.25) !important;
-  -moz-box-shadow: 0 14px 28px rgba(5, 0, 50, 0.25) !important;
-  -ms-box-shadow: 0 14px 28px rgba(5, 0, 50, 0.25) !important;
-  -o-box-shadow: 0 14px 28px rgba(5, 0, 50, 0.25) !important;
-  box-shadow: 0 14px 28px rgba(5, 0, 50, 0.25) !important;
   -webkit-transition: all 0.25s ease-in-out;
   -moz-transition: all 0.25s ease-in-out;
   -ms-transition: all 0.25s ease-in-out;
@@ -291,14 +285,6 @@ $shortFontSize-3: .688rem;
   -ms-box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
   -o-box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
   box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
-}
-.boardContainer .defaultCard .subCard.presentation .actions .icon:hover,
-.boardContainer .defaultCard .subCard.presentation .actions .text:hover {
-  -webkit-box-shadow: 0 14px 28px rgba(5, 0, 50, 0.25) !important;
-  -moz-box-shadow: 0 14px 28px rgba(5, 0, 50, 0.25) !important;
-  -ms-box-shadow: 0 14px 28px rgba(5, 0, 50, 0.25) !important;
-  -o-box-shadow: 0 14px 28px rgba(5, 0, 50, 0.25) !important;
-  box-shadow: 0 14px 28px rgba(5, 0, 50, 0.25) !important;
 }
 .boardContainer .defaultCard .subCard:hover .actions > i {
   color: #487f89;

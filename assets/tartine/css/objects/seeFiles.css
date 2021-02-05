@@ -87,11 +87,6 @@
 /*56pt / 84px*/
 /*28pt / 37px*/
 /*22pt / 30px*/
-/*
-$shortFontSize-1: .875rem;
-$shortFontSize-2: .75rem;
-$shortFontSize-3: .688rem;
-*/
 /* --------------------------- */
 /* MIXINS */
 /*@mixin highestBoxShadow() {
@@ -126,6 +121,10 @@ $shortFontSize-3: .688rem;
 }*/
 /*@mixin lowestBoxShadow-inset() {
 	@include boxInset(0 -1px 3px rgba($darkestGrey, .12), 0 -1px 2px rgba($darkestGrey, .24));
+}
+
+@mixin buttonInset() {
+	@include boxInset(-12px 0 33px rgba($darkCTA, $alpha0));
 }
 */
 /* EXTENDS */
@@ -171,11 +170,6 @@ $shortFontSize-3: .688rem;
   font-size: 1rem;
   background-color: #4ae0c7;
   color: white;
-  -webkit-box-shadow: -12px 0 33px rgba(72, 127, 137, 0) inset !important;
-  -moz-box-shadow: -12px 0 33px rgba(72, 127, 137, 0) inset !important;
-  -ms-box-shadow: -12px 0 33px rgba(72, 127, 137, 0) inset !important;
-  -o-box-shadow: -12px 0 33px rgba(72, 127, 137, 0) inset !important;
-  box-shadow: -12px 0 33px rgba(72, 127, 137, 0) inset !important;
   -webkit-transition: all 0.25s ease-in-out;
   -moz-transition: all 0.25s ease-in-out;
   -ms-transition: all 0.25s ease-in-out;
@@ -183,11 +177,6 @@ $shortFontSize-3: .688rem;
   transition: all 0.25s ease-in-out;
 }
 .seeFile:hover {
-  -webkit-box-shadow: 0 14px 28px rgba(5, 0, 50, 0.25) !important;
-  -moz-box-shadow: 0 14px 28px rgba(5, 0, 50, 0.25) !important;
-  -ms-box-shadow: 0 14px 28px rgba(5, 0, 50, 0.25) !important;
-  -o-box-shadow: 0 14px 28px rgba(5, 0, 50, 0.25) !important;
-  box-shadow: 0 14px 28px rgba(5, 0, 50, 0.25) !important;
   -webkit-transition: box-shadow 0.25s ease-in-out;
   -moz-transition: box-shadow 0.25s ease-in-out;
   -ms-transition: box-shadow 0.25s ease-in-out;

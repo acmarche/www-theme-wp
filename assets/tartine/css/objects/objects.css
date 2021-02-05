@@ -102,11 +102,6 @@
 /*56pt / 84px*/
 /*28pt / 37px*/
 /*22pt / 30px*/
-/*
-$shortFontSize-1: .875rem;
-$shortFontSize-2: .75rem;
-$shortFontSize-3: .688rem;
-*/
 /* --------------------------- */
 /* MIXINS */
 /*@mixin highestBoxShadow() {
@@ -142,13 +137,17 @@ $shortFontSize-3: .688rem;
 /*@mixin lowestBoxShadow-inset() {
 	@include boxInset(0 -1px 3px rgba($darkestGrey, .12), 0 -1px 2px rgba($darkestGrey, .24));
 }
+
+@mixin buttonInset() {
+	@include boxInset(-12px 0 33px rgba($darkCTA, $alpha0));
+}
 */
 /* EXTENDS */
 /* OBJECTS */
 .object-alert {
   position: fixed;
-  /*  top: auto;*/
-  top: 120px;
+  top: auto;
+  bottom: 54px;
   left: 12px;
   right: 12px;
   max-width: 660px;
@@ -164,7 +163,7 @@ $shortFontSize-3: .688rem;
 }
 @media screen and (min-width: 768px) {
   .object-alert {
-    bottom: auto;
+    bottom: 40px;
     max-width: 550px;
   }
 }
@@ -242,7 +241,7 @@ $shortFontSize-3: .688rem;
   align-items: center;
 }
 .object-schedule tr th {
-  font-size: 0.975rem;
+  font-size: 0.875rem;
   color: #487f89;
   padding: 17px 12px 16px;
   white-space: nowrap;
@@ -266,7 +265,7 @@ $shortFontSize-3: .688rem;
   border-color: #ededec;
 }
 .object-schedule tr td:first-child {
-  font-size: 0.975rem;
+  font-size: 0.875rem;
   color: #487f89;
   padding: 18px 12px 17px;
 }
@@ -338,7 +337,7 @@ $shortFontSize-3: .688rem;
   margin-right: 0;
   padding: 11px 12px;
   color: #487f89;
-  font-size: 0.95rem;
+  font-size: 0.75rem;
 }
 @media screen and (min-width: 992px) {
   .object-headtail input[type=radio] + a {
@@ -347,7 +346,7 @@ $shortFontSize-3: .688rem;
     margin: 0 24px;
     padding: 0;
     color: #487f89;
-    font-size: 0.975rem;
+    font-size: 0.875rem;
     -webkit-box-shadow: 0 0 0 #4ae0c7 inset !important;
     -moz-box-shadow: 0 0 0 #4ae0c7 inset !important;
     -ms-box-shadow: 0 0 0 #4ae0c7 inset !important;
@@ -485,7 +484,7 @@ $shortFontSize-3: .688rem;
   padding: 4px 8px;
   text-align: center;
   color: #487f89;
-  font-size: 0.95rem;
+  font-size: 0.75rem;
   border-width: 1px;
   border-style: solid;
   border-color: #487f89;
@@ -551,7 +550,7 @@ $shortFontSize-3: .688rem;
 }
 .object-recom a div h5 {
   font-family: "montserratsemibold";
-  font-size: 0.95rem;
+  font-size: 0.75rem;
   line-height: 125%;
   color: #487f89;
   -webkit-transition: color 0.25s ease-in-out;
@@ -563,7 +562,7 @@ $shortFontSize-3: .688rem;
 .object-recom a div span {
   display: block;
   font-family: "montserratsemibold";
-  font-size: 0.875rem;
+  font-size: 0.688rem;
   line-height: 150%;
   padding-top: 8px;
 }
@@ -611,7 +610,7 @@ $shortFontSize-3: .688rem;
   display: none;
 }
 .object-text-dyn input[type=checkbox]:checked + div span.less {
-  display: none;
+  display: initial;
 }
 .object-text-dyn input[type=checkbox]:checked + div + div {
   max-height: 9999px;
@@ -663,7 +662,7 @@ $shortFontSize-3: .688rem;
 }
 .object-text-dyn input[type=checkbox] + div span {
   font-family: "montserratsemibold";
-  font-size: 0.95rem;
+  font-size: 0.75rem;
   color: #4ae0c7;
   padding-bottom: 4px;
   border-width: 0 0 1px 0;
@@ -680,7 +679,8 @@ $shortFontSize-3: .688rem;
 }
 .object-text-dyn input[type=checkbox] + div + div {
   color: #487f89;
-  max-height: 9999px;
+  max-height: 159px;
+  overflow: hidden;
   padding-bottom: 24px;
   -webkit-transition: all 0.25s ease-in-out;
   -moz-transition: all 0.25s ease-in-out;
@@ -690,36 +690,36 @@ $shortFontSize-3: .688rem;
 }
 @media screen and (orientation: landscape) and (min-width: 576px) {
   .object-text-dyn input[type=checkbox] + div + div {
-    max-height: 9999px;
+    max-height: 134px;
   }
 }
 @media screen and (min-width: 992px) {
   .object-text-dyn input[type=checkbox] + div + div {
-    max-height: 9999px;
+    max-height: 134px;
   }
 }
 @media screen and (min-width: 1200px) {
   .object-text-dyn input[type=checkbox] + div + div {
-    max-height: 9999px;
+    max-height: 112px;
   }
 }
 @media screen and (min-width: 1440px) {
   .object-text-dyn input[type=checkbox] + div + div {
-    max-height: 9999px;
+    max-height: 223px;
   }
 }
 @media screen and (min-width: 1600px) {
   .object-text-dyn input[type=checkbox] + div + div {
-    max-height: 9999px;
+    max-height: none;
   }
 }
 .object-text-dyn input[type=checkbox] + div + div p {
   padding-top: 24px;
-  font-size: 0.95rem;
+  font-size: 0.75rem;
   line-height: 200%;
 }
 .object-text-dyn input[type=checkbox] + div + div ul li {
-  font-size: 0.95rem;
+  font-size: 0.75rem;
   line-height: 200%;
 }
 
@@ -780,7 +780,7 @@ $shortFontSize-3: .688rem;
   overflow: hidden;
   line-height: 125%;
   color: #487f89;
-  font-size: 0.95rem;
+  font-size: 0.75rem;
 }
 .object-card a > div p {
   display: none;
@@ -788,7 +788,7 @@ $shortFontSize-3: .688rem;
   padding-top: 8px;
   overflow: hidden;
   color: #232222;
-  font-size: 0.875rem;
+  font-size: 0.688rem;
 }
 @media screen and (min-width: 992px) {
   .object-card a > div p {
@@ -808,7 +808,7 @@ $shortFontSize-3: .688rem;
   display: block;
   padding: 8px 0 0;
   line-height: 100%;
-  font-size: 0.875rem;
+  font-size: 0.688rem;
 }
 .object-card.oc-new a > div {
   flex-direction: column;
@@ -829,7 +829,7 @@ $shortFontSize-3: .688rem;
 .object-card.oc-new a > div span {
   padding-top: 8px;
   line-height: 150%;
-  font-size: 0.875rem;
+  font-size: 0.688rem;
 }
 .object-card.oc-new a:hover > div h3 {
   color: #4ae0c7;
@@ -887,7 +887,7 @@ $shortFontSize-3: .688rem;
   }
 }
 .object-card.oc-event a > div > div h3 {
-  max-height: 40px;
+  max-height: 30px;
 }
 .object-card.oc-event a > div > div span {
   line-height: 100%;
@@ -905,7 +905,7 @@ $shortFontSize-3: .688rem;
 }
 .object-card.oc-event a > div > div span:last-child {
   padding: 0;
-  font-size: 0.95rem;
+  font-size: 0.75rem;
 }
 .object-card.oc-event a:hover > div > div:first-child {
   color: #4ae0c7;
@@ -1025,7 +1025,7 @@ $shortFontSize-3: .688rem;
 }
 
 .bg-img-directory-1 {
-  background-image: url(../../../images/commerce_default.png);
+  background-image: url(../../rsc/img/img_directory01.png);
   background-size: cover;
   background-position: center center;
 }

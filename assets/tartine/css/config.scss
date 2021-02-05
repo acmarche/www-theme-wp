@@ -42,14 +42,9 @@ $bigFontSize-3: 1.87rem; /*22pt / 30px*/
 $bigFontSize-2: 1.5rem;
 $bigFontSize-1: 1.25rem;
 $basicFontSize: 1rem;
-/*
 $shortFontSize-1: .875rem;
 $shortFontSize-2: .75rem;
 $shortFontSize-3: .688rem;
-*/
-$shortFontSize-1: .975rem;
-$shortFontSize-2: .95rem;
-$shortFontSize-3: .875rem;
 
 $boldFontFat: 400;
 $bolderFontFat: 600;
@@ -117,11 +112,9 @@ $xxxl : 1600px;
 	@include boxShadow(0 19px 38px rgba($darkestGrey, $alpha30), 0 15px 12px rgba($darkestGrey, .22));
 }
 */
-
 @mixin higherBoxShadow() {
-	@include boxShadow(0 14px 28px rgba($darkestGrey, .25));
-}
-/*
+	//@include boxShadow(0 14px 28px rgba($darkestGrey, .25), 0 10px 10px rgba($darkestGrey, .22));
+}/*
 // (utliser pour les éléments qui ont un attribut de rotation)
 @mixin higherBoxShadow-45() {
 	@include boxShadow(14px 14px 28px rgba($darkestGrey, .25), 10px 10px 10px rgba($darkestGrey, .22));
@@ -184,11 +177,11 @@ $xxxl : 1600px;
 /*@mixin lowestBoxShadow-inset() {
 	@include boxInset(0 -1px 3px rgba($darkestGrey, .12), 0 -1px 2px rgba($darkestGrey, .24));
 }
-*/
 
 @mixin buttonInset() {
 	@include boxInset(-12px 0 33px rgba($darkCTA, $alpha0));
 }
+*/
 
 @mixin buttonInsetHover() {
 	@include boxInset(-12px 0 33px $darkCTA);

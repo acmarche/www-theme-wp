@@ -87,11 +87,6 @@
 /*56pt / 84px*/
 /*28pt / 37px*/
 /*22pt / 30px*/
-/*
-$shortFontSize-1: .875rem;
-$shortFontSize-2: .75rem;
-$shortFontSize-3: .688rem;
-*/
 /* --------------------------- */
 /* MIXINS */
 /*@mixin highestBoxShadow() {
@@ -127,6 +122,10 @@ $shortFontSize-3: .688rem;
 /*@mixin lowestBoxShadow-inset() {
 	@include boxInset(0 -1px 3px rgba($darkestGrey, .12), 0 -1px 2px rgba($darkestGrey, .24));
 }
+
+@mixin buttonInset() {
+	@include boxInset(-12px 0 33px rgba($darkCTA, $alpha0));
+}
 */
 /* EXTENDS */
 /* PROGRESS */
@@ -148,7 +147,7 @@ $shortFontSize-3: .688rem;
   height: 8px;
   border-radius: 16px;
   overflow: hidden;
-  font-size: 0.95rem;
+  font-size: 0.75rem;
   background-color: #e9ecef;
 }
 .groupsContainer .completion .progress .target {
@@ -434,11 +433,6 @@ $shortFontSize-3: .688rem;
   color: white;
 }
 .contactsList li .defaultCard:hover .headElement .dataCompletion .completion {
-  -webkit-box-shadow: 0 14px 28px rgba(5, 0, 50, 0.25) !important;
-  -moz-box-shadow: 0 14px 28px rgba(5, 0, 50, 0.25) !important;
-  -ms-box-shadow: 0 14px 28px rgba(5, 0, 50, 0.25) !important;
-  -o-box-shadow: 0 14px 28px rgba(5, 0, 50, 0.25) !important;
-  box-shadow: 0 14px 28px rgba(5, 0, 50, 0.25) !important;
   -webkit-transition: box-shadow 0.25s ease-in-out;
   -moz-transition: box-shadow 0.25s ease-in-out;
   -ms-transition: box-shadow 0.25s ease-in-out;

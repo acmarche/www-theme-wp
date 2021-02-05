@@ -87,11 +87,6 @@
 /*56pt / 84px*/
 /*28pt / 37px*/
 /*22pt / 30px*/
-/*
-$shortFontSize-1: .875rem;
-$shortFontSize-2: .75rem;
-$shortFontSize-3: .688rem;
-*/
 /* --------------------------- */
 /* MIXINS */
 /*@mixin highestBoxShadow() {
@@ -126,6 +121,10 @@ $shortFontSize-3: .688rem;
 }*/
 /*@mixin lowestBoxShadow-inset() {
 	@include boxInset(0 -1px 3px rgba($darkestGrey, .12), 0 -1px 2px rgba($darkestGrey, .24));
+}
+
+@mixin buttonInset() {
+	@include boxInset(-12px 0 33px rgba($darkCTA, $alpha0));
 }
 */
 /* EXTENDS */
@@ -203,15 +202,15 @@ $shortFontSize-3: .688rem;
 }
 
 .fs-short-1 {
-  font-size: 0.975rem !important;
+  font-size: 0.875rem !important;
 }
 
 .fs-short-2 {
-  font-size: 0.95rem !important;
+  font-size: 0.75rem !important;
 }
 
 .fs-short-3 {
-  font-size: 0.875rem !important;
+  font-size: 0.688rem !important;
 }
 
 .fs-0 {
@@ -232,19 +231,19 @@ $shortFontSize-3: .688rem;
 
 @media screen and (min-width: 768px) {
   .fs-md-short-1 {
-    font-size: 0.975rem !important;
+    font-size: 0.875rem !important;
   }
 }
 
 @media screen and (min-width: 992px) {
   .fs-lg-short-2 {
-    font-size: 0.95rem !important;
+    font-size: 0.75rem !important;
   }
 }
 
 @media screen and (min-width: 1200px) {
   .fs-xl-short-2 {
-    font-size: 0.95rem !important;
+    font-size: 0.75rem !important;
   }
 }
 
