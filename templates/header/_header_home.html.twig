@@ -13,17 +13,7 @@
             <!--search | visible on mobile/tablet && !homepage-extralarge-->
             {% include 'header/common/_search_screen.html.twig' with {'class': 'd-xl-none'} %}
             <!--all-->
-            <div class="all d-ls-flex align-items-ls-center justify-content-ls-center">
-                <a href="#" class="icon_custom position-relative">
-                    <i class="icon_nav i-bars" id="btn-open-main-nav"></i>
-                    <i class="i-bars i-dark-primary"></i>
-                    <span>Vivre à Marche</span>
-                    <!--<input type="radio" name="subnav" value="1" class="w-100 h-100">-->
-                </a>
-
-                <!--subnav-->
-                {% include 'header/common/_subnav.html.twig' %}
-            </div>
+            {% include 'header/common/_vivre.html.twig' %}
             <!--calendar-->
             <div class="calendar">
                 <a href="/administration/contacter-la-commune/">
