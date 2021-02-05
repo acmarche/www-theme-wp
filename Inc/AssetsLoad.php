@@ -54,6 +54,14 @@ class AssetsLoad
             wp_get_theme()->get('Version'),
             true
         );
+
+        wp_enqueue_script(
+            'marchebe-close-js',
+            get_template_directory_uri().'/assets/js/utils/closeNavigation.js',
+            array(),
+            wp_get_theme()->get('Version'),
+            true
+        );
     }
 
     function marchebeHome()
@@ -62,14 +70,6 @@ class AssetsLoad
             'marchebe-home-style',
             get_template_directory_uri().'/assets/tartine/css/home.css',
             array()
-        );
-
-        wp_enqueue_script(
-            'marchebe-close-js',
-            get_template_directory_uri().'/assets/js/utils/closeNavigation.js',
-            array(),
-            wp_get_theme()->get('Version'),
-            true
         );
 
         wp_enqueue_style(
