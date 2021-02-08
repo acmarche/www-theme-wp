@@ -1,0 +1,888 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--<meta name="keywords" content=""> | TODO -->
+
+    <meta name="author" content="Studio Tartine">
+    <title>Accueil | Ville de Marche-en-Famenne</title>
+
+    <!--BOOTSTRAP-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+    <!--CSS-->
+    <link rel="stylesheet" href="css/home.css">
+    <link rel="stylesheet" href="css/base.css">
+
+    <!--FONT-AWESOME-->
+    <script src="https://kit.fontawesome.com/346aed29e3.js" crossorigin="anonymous"></script>
+
+    <!--FAVICON-->
+    <link rel="icon" type="image/png" href="rsc/favicon.png" />
+</head>
+
+<body class="bg-white">
+
+    <!--OBJECT | HEADER-->
+    <header>
+        <div>
+            <a href="#">
+                <img src="rsc/img/img_logo.png" alt="logo">
+            </a>
+            
+            <!--OBJECT | NAV-->
+            <nav>
+
+                <!--home-->
+                <div class="home active">
+                    <a href="#">
+                        <i class="icon_nav i-home"></i>
+                    </a>
+                </div>
+                <!--search | visible on mobile/tablet && !homepage-extralarge-->
+                <div class="search d-xl-none">
+                    <a href="#">
+                        <i class="icon_nav i-search"></i>
+                        <i class="icon_nav i-search i-white position-absolute d-none d-xl-block"></i>
+                    </a>
+
+                    <div class="searchScreen">
+                       <i class="graphicElement"></i>
+                       
+                        <ul>
+                            <li class="col-ls-12">
+                                <form class="h-32px">
+                                    <input type="search" placeholder="Que cherchez-vous ?" class="border-0 rounded-pill h-32px pl-16px pr-48px fs-short-3">
+                                    <button class="position-absolute top-0 bottom-0 right-0 w-32px h-32px d-flex justify-content-center align-items-center p-0 border-0 rounded-right-pill bg-transparent icon_custom">
+                                        <!--<i class="fa fa-search text-dark-primary"></i>-->
+                                        <i class="i-search i-dark-primary w-16px h-16px"></i>
+                                    </button>
+                                </form>
+                                <!--TODO JF: branchement-->
+                                <a href="#" class="icon_custom">
+                                    <i class="i-times"></i>
+                                </a>
+                            </li>
+                            <li class="col-ls-6 col-ls-sm-4 col-xl-12 col-ls-xl-12"><a href="pool.html" class="icon_custom"><i class="i-swimmer"></i>Piscine</a></li>
+                            <li class="col-ls-6 col-ls-sm-4 col-xl-12 col-ls-xl-12"><a href="#" class="icon_custom"><i class="i-leaf"></i>Environnment-Déchet</a></li>
+                            <li class="col-ls-6 col-ls-sm-4 col-xl-12 col-ls-xl-12"><a href="#" class="icon_custom"><i class="i-traffic-cone"></i>Travaux</a></li>
+                            <li class="col-ls-6 col-ls-sm-4 col-xl-12 col-ls-xl-12"><a href="#" class="icon_custom"><i class="i-beach-ball"></i>Jeunesse-Stages</a></li>
+                            <li class="col-ls-6 col-ls-sm-4 col-xl-12 col-ls-xl-12"><a href="map.html" class="icon_custom"><i class="i-map"></i>Cartes dynamiques</a></li>
+                            <li class="col-ls-6 col-ls-sm-4 col-xl-12 col-ls-xl-12"><a href="#" class="icon_custom"><i class="i-handshake"></i>CPAS</a></li>
+                            <li class="col-ls-6 col-ls-sm-4 col-xl-12 col-ls-xl-12"><a href="#" class="icon_custom"><i class="i-envelope"></i>Mon adresse e-mail</a></li>
+                        </ul>
+                        
+                        <i class="graphicElement"></i>
+                    </div>
+                </div>
+                <!--all | TODO JF : tu peux utiliser la class .toggle-opened pour le toggleClass-->
+                <div class="all d-ls-flex align-items-ls-center justify-content-ls-center toggle-opene22d">
+                    <a href="#" class="icon_custom position-relative">
+                        <i class="icon_nav i-bars"></i>
+                        <i class="i-bars i-dark-primary"></i>
+                        <span>Vivre à Marche</span>
+                        <!--<input type="radio" name="subnav" value="1" class="w-100 h-100">-->
+                    </a>
+
+                    <!--subnav-->
+                    <div class="subnav">
+                        <ul>
+                           <li class="d-flex flex-row align-items-center p-24px d-xl-none col-ls-12">
+                               <h3 class="flex-grow-1 text-white text-left">Vivre à Marche</h3>
+                               <a href="#" class="position-relative w-24px h-24px d-flex justify-content-center align-items-center p-0 icon_custom">
+                                   <i class="i-times i-white"></i>
+                                   <!--<input type="radio" name="subnav" value="0" class="w-100 h-100">-->
+                               </a>
+                           </li>
+
+                           <!--administration | TODO JF : tu peux utiliser la class .toggle-opened pour le toggleClass-->
+                            <li class="c-adm col-xl-5 mt-xl-12px col-ls-6 col-ls-xl-5 toggle-opened">
+                                <a href="#" class="icon_custom">Administration<i class="i-angle-right i-white bg-size-50"></i></a>
+
+                                <div class="col-xl-7">
+                                   <div class="p-24px d-xl-none col-ls-12">
+                                       <h3 class="text-left">Administration</h3>
+                                       <span class="d-flex flex-row align-items-center pt-8px">
+                                           <a href="#" class="d-flex flex-grow-1 align-items-center fs-short-2 text-dark-primary icon_custom"><i class="i-angle-left bg-size-40 bg-position-left"></i>Retour sur Vivre à Marche</a>
+                                           <a href="#" class="position-relative w-24px h-24px d-flex justify-content-center align-items-center icon_custom">
+                                               <i class="i-times"></i>
+                                           </a>
+                                       </span>
+                                   </div>
+                                    <ul class="col-ls-6">
+                                        <li><a href="#">Accueil administration</a></li>
+                                        <li><a href="#">Blason-Logos de la ville</a></li>
+                                        <li><a href="#">Horaires-Contact</a></li>
+                                        <li><a href="#">Collège communal</a></li>
+                                        <li><a href="#">Conseil communal</a></li>
+                                        <li><a href="#">Services communaux</a></li>
+                                        <li><a href="#">Autres services administratifs</a></li>
+                                        <li><a href="#">Taxes communales</a></li>
+                                        <li><a href="#">Publications communales</a></li>
+                                    </ul>
+                                    <ul class="col-ls-6">
+                                        <li><a href="#">Permanences institutions</a></li>
+                                        <li><a href="#">Procédures-Documents administratifs</a></li>
+                                        <li><a href="#">Subventions-Primes communales</a></li>
+                                        <li><a href="#">Enquêtes publiques</a></li>
+                                        <li><a href="#" alt="Programme stratégique transversal">PST</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+
+                            <!--citoyen | TODO JF : tu peux utiliser la class .toggle-opened pour le toggleClass-->
+                            <li class="c-cit col-xl-5 col-ls-6 col-ls-xl-5">
+                                <a href="category.html" class="icon_custom">Citoyen<i class="i-angle-right i-white bg-size-50"></i></a>
+
+                                <div class="col-xl-7">
+                                   <div class="p-24px d-xl-none col-ls-12">
+                                       <h3 class="text-left">Citoyen</h3>
+                                       <span class="d-flex flex-row align-items-center pt-8px">
+                                           <a href="#" class="d-flex flex-grow-1 align-items-center fs-short-2 text-dark-primary icon_custom"><i class="i-angle-left bg-size-40 bg-position-left"></i>Retour sur Vivre à Marche</a>
+                                           <a href="#" class="position-relative w-24px h-24px d-flex justify-content-center align-items-center icon_custom">
+                                               <i class="i-times"></i>
+                                           </a>
+                                       </span>
+                                   </div>
+                                    <ul class="col-ls-6">
+                                        <li><a href="category.html">Accueil citoyen</a></li>
+                                        <li><a href="#">Cultes</a></li>
+                                        <li><a href="#">Conseils-Commissions</a></li>
+                                        <li><a href="#">Emploi-Formation</a></li>
+                                        <li><a href="#">Enfance-Jeunesse</a></li>
+                                        <li><a href="#">Enseignement</a></li>
+                                        <li><a href="#">Environnement</a></li>
+                                        <li><a href="#">Famille</a></li>
+                                        <li><a href="#">Info travaux</a></li>
+                                    </ul>
+                                    <ul class="col-ls-6">
+                                        <li><a href="#">Justice</a></li>
+                                        <li><a href="#">Logement</a></li>
+                                        <li><a href="#">Participation citoyenne</a></li>
+                                        <li><a href="#">Petit patrimoine</a></li>
+                                        <li><a href="#">Mobilité</a></li>
+                                        <li><a href="#">Sécurité</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+
+                            <!--culture | TODO JF : tu peux utiliser la class .toggle-opened pour le toggleClass-->
+                            <li class="c-cul col-xl-5 col-ls-6 col-ls-xl-5">
+                                <a href="#" class="icon_custom">Culture<i class="i-angle-right i-white bg-size-50"></i></a>
+
+                                <div class="col-xl-7">
+                                   <div class="p-24px d-xl-none col-ls-12">
+                                       <h3 class="text-left">Culture</h3>
+                                       <span class="d-flex flex-row align-items-center pt-8px">
+                                           <a href="#" class="d-flex flex-grow-1 align-items-center fs-short-2 text-dark-primary icon_custom"><i class="i-angle-left bg-size-40 bg-position-left"></i>Retour sur Vivre à Marche</a>
+                                           <a href="#" class="position-relative w-24px h-24px d-flex justify-content-center align-items-center icon_custom">
+                                               <i class="i-times"></i>
+                                           </a>
+                                       </span>
+                                   </div>
+                                    <ul class="col-ls-6">
+                                        <li><a href="#">Accueil culture</a></li>
+                                        <li><a href="#">Art-Culture</a></li>
+                                        <li><a href="#">2ème roman</a></li>
+                                        <li><a href="#">Activités créatives</a></li>
+                                        <li><a href="#">Bibliothèque-Ludothèque</a></li>
+                                        <li><a href="#">Cercles thèmatiques</a></li>
+                                        <li><a href="#">Comités festifs</a></li>
+                                        <li><a href="#">Enseignement artistique</a></li>
+                                        <li><a href="#">Musées</a></li>
+                                    </ul>
+                                    <ul class="col-ls-6">
+                                        <li><a href="#">Musique</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+
+                            <!--economie | TODO JF : tu peux utiliser la class .toggle-opened pour le toggleClass-->
+                            <li class="c-eco col-xl-5 col-ls-6 col-ls-xl-5">
+                                <a href="#" class="icon_custom">Économie<i class="i-angle-right i-white bg-size-50"></i></a>
+
+                                <div class="col-xl-7">
+                                   <div class="p-24px d-xl-none col-ls-12">
+                                       <h3 class="text-left">Économie</h3>
+                                       <span class="d-flex flex-row align-items-center pt-8px">
+                                           <a href="#" class="d-flex flex-grow-1 align-items-center fs-short-2 text-dark-primary icon_custom"><i class="i-angle-left bg-size-40 bg-position-left"></i>Retour sur Vivre à Marche</a>
+                                           <a href="#" class="position-relative w-24px h-24px d-flex justify-content-center align-items-center icon_custom">
+                                               <i class="i-times"></i>
+                                           </a>
+                                       </span>
+                                   </div>
+                                    <ul class="col-ls-6">
+                                        <li><a href="#">Accueil économie</a></li>
+                                        <li><a href="#">Économie marchoise</a></li>
+                                        <li><a href="#">Créer une entreprise</a></li>
+                                        <li><a href="#">Ouvrir un commerce</a></li>
+                                        <li><a href="#">Pays de Famenne</a></li>
+                                        <li><a href="#">Wex</a></li>
+                                        <li><a href="#">Commerces-Entreprises</a></li>
+                                        <li><a href="#">e-Square</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+
+                            <!--enfance/jeunesse | TODO JF : tu peux utiliser la class .toggle-opened pour le toggleClass-->
+                            <li class="c-enf col-xl-5 col-ls-6 col-ls-xl-5">
+                                <a href="#" class="icon_custom">Enfance-Jeunesse<i class="i-angle-right i-white bg-size-50"></i></a>
+
+                                <div class="col-xl-7">
+                                   <div class="p-24px d-xl-none col-ls-12">
+                                       <h3 class="text-left">Enfance-Jeunesse</h3>
+                                       <span class="d-flex flex-row align-items-center pt-8px">
+                                           <a href="#" class="d-flex flex-grow-1 align-items-center fs-short-2 text-dark-primary icon_custom"><i class="i-angle-left bg-size-40 bg-position-left"></i>Retour sur Vivre à Marche</a>
+                                           <a href="#" class="position-relative w-24px h-24px d-flex justify-content-center align-items-center icon_custom">
+                                               <i class="i-times"></i>
+                                           </a>
+                                       </span>
+                                   </div>
+                                    <ul class="col-ls-6">
+                                        <li><a href="#">Accueil enfance-jeunesse</a></li>
+                                        <li><a href="#">0-3 ans</a></li>
+                                        <li><a href="#">3-12 ans</a></li>
+                                        <li><a href="#">12-18 ans</a></li>
+                                        <li><a href="#">Plus de 18 ans</a></li>
+                                        <li><a href="http://stages.marche.be/" target="_blank">Stages<i class="fas fa-external-link-alt"></i></a></li>
+                                        <li><a href="#">Conseil communal des enfants</a></li>
+                                        <li><a href="http://www.rescolm.be/" target="_blank">Repas scolaire<i class="fas fa-external-link-alt"></i></a></li>
+                                        <li><a href="#">Enseignement</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+
+                            <!--sante | TODO JF : tu peux utiliser la class .toggle-opened pour le toggleClass-->
+                            <li class="c-san col-xl-5 col-ls-6 col-ls-xl-5">
+                                <a href="#" class="icon_custom">Santé<i class="i-angle-right i-white bg-size-50"></i></a>
+
+                                <div class="col-xl-7">
+                                   <div class="p-24px d-xl-none col-ls-12">
+                                       <h3 class="text-left">Santé</h3>
+                                       <span class="d-flex flex-row align-items-center pt-8px">
+                                           <a href="#" class="d-flex flex-grow-1 align-items-center fs-short-2 text-dark-primary icon_custom"><i class="i-angle-left bg-size-40 bg-position-left"></i>Retour sur Vivre à Marche</a>
+                                           <a href="#" class="position-relative w-24px h-24px d-flex justify-content-center align-items-center icon_custom">
+                                               <i class="i-times"></i>
+                                           </a>
+                                       </span>
+                                   </div>
+                                    <ul class="col-ls-6">
+                                        <li><a href="#">Accueil santé</a></li>
+                                        <li><a href="#">Cellule communale santé & Viasano</a></li>
+                                        <li><a href="#">Centre médicaux - Services</a></li>
+                                        <li><a href="#">Collecte de sang</a></li>
+                                        <li><a href="#">Consultations ONE</a></li>
+                                        <li><a href="#">Hôpitaux</a></li>
+                                        <li><a href="#">Médecins généralistes</a></li>
+                                        <li><a href="#">Médecins spécialistes</a></li>
+                                        <li><a href="#">Mutuelles</a></li>
+                                    </ul>
+                                    <ul class="col-ls-6">
+                                        <li><a href="#">Numéros de secours</a></li>
+                                        <li><a href="#">Pharmacies</a></li>
+                                        <li><a href="#">Poste médical - médecin de garde</a></li>
+                                        <li><a href="#">Professionnels de la santé</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+
+                            <!--social | TODO JF : tu peux utiliser la class .toggle-opened pour le toggleClass-->
+                            <li class="c-soc col-xl-5 col-ls-6 col-ls-xl-5">
+                                <a href="#" class="icon_custom">Social<i class="i-angle-right i-white bg-size-50"></i></a>
+
+                                <div class="col-xl-7">
+                                   <div class="p-24px d-xl-none col-ls-12">
+                                       <h3 class="text-left">Social</h3>
+                                       <span class="d-flex flex-row align-items-center pt-8px">
+                                           <a href="#" class="d-flex flex-grow-1 align-items-center fs-short-2 text-dark-primary icon_custom"><i class="i-angle-left bg-size-40 bg-position-left"></i>Retour sur Vivre à Marche</a>
+                                           <a href="#" class="position-relative w-24px h-24px d-flex justify-content-center align-items-center icon_custom">
+                                               <i class="i-times"></i>
+                                           </a>
+                                       </span>
+                                   </div>
+                                    <ul class="col-ls-6">
+                                        <li><a href="#">Accueil social</a></li>
+                                        <li><a href="#">Aide aux personnes</a></li>
+                                        <li><a href="#">Associations</a></li>
+                                        <li><a href="#">CPAS</a></li>
+                                        <li><a href="#">Conseil de l'action sociale</a></li>
+                                        <li><a href="#">Économie sociale</a></li>
+                                        <li><a href="#">Info service</a></li>
+                                        <li><a href="#">Seconde main</a></li>
+                                        <li><a href="#" alt="Plan de cohésion sociale">PCS</a></li>
+                                    </ul>
+                                    <ul class="col-ls-6">
+                                        <li><a href="#">Résidence-service Joseph Marthoz</a></li>
+                                        <li><a href="#">Logement</a></li>
+                                        <li><a href="#">Services sociaux</a></li>
+                                        <li><a href="#">Solidarité-Volontariat</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+
+                            <!--sport | TODO JF : tu peux utiliser la class .toggle-opened pour le toggleClass-->
+                            <li class="c-spo col-xl-5 col-ls-6 col-ls-xl-5">
+                                <a href="#" class="icon_custom">Sport<i class="i-angle-right i-white bg-size-50"></i></a>
+
+                                <div class="col-xl-7">
+                                   <div class="p-24px d-xl-none col-ls-12">
+                                       <h3 class="text-left">Sport</h3>
+                                       <span class="d-flex flex-row align-items-center pt-8px">
+                                           <a href="#" class="d-flex flex-grow-1 align-items-center fs-short-2 text-dark-primary icon_custom"><i class="i-angle-left bg-size-40 bg-position-left"></i>Retour sur Vivre à Marche</a>
+                                           <a href="#" class="position-relative w-24px h-24px d-flex justify-content-center align-items-center icon_custom">
+                                               <i class="i-times"></i>
+                                           </a>
+                                       </span>
+                                   </div>
+                                    <ul class="col-ls-6">
+                                        <li><a href="#">Accueil sport</a></li>
+                                        <li><a href="#">Actu-Santé</a></li>
+                                        <li><a href="#">Challenges-Mérites sportifs</a></li>
+                                        <li><a href="#">Clubs-Compétitions</a></li>
+                                        <li><a href="#">Cours-Animations</a></li>
+                                        <li><a href="#">Clubs sports & loisirs</a></li>
+                                        <li><a href="#">Location salles & terrains multisports</a></li>
+                                        <li><a href="#">Missions des services</a></li>
+                                        <li><a href="pool.html">Piscine communale</a></li>
+                                    </ul>
+                                    <ul class="col-ls-6">
+                                        <li><a href="#">Sport en Marche</a></li>
+                                        <li><a href="#">Sports loisirs</a></li>
+                                        <li><a href="#">Stages</a></li>
+                                        <li><a href="#">Subventions-Subsides</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+
+                            <!--tourisme | TODO JF : tu peux utiliser la class .toggle-opened pour le toggleClass-->
+                            <li class="c-tou col-xl-5 mb-xl-12px col-ls-6 col-ls-xl-5">
+                                <a href="#" class="icon_custom">Tourisme<i class="i-angle-right i-white bg-size-50"></i></a>
+
+                                <div class="col-xl-7">
+                                   <div class="p-24px d-xl-none col-ls-12">
+                                       <h3 class="text-left">Tourisme</h3>
+                                       <span class="d-flex flex-row align-items-center pt-8px">
+                                           <a href="#" class="d-flex flex-grow-1 align-items-center fs-short-2 text-dark-primary icon_custom"><i class="i-angle-left bg-size-40 bg-position-left"></i>Retour sur Vivre à Marche</a>
+                                           <a href="#" class="position-relative w-24px h-24px d-flex justify-content-center align-items-center icon_custom">
+                                               <i class="i-times"></i>
+                                           </a>
+                                       </span>
+                                   </div>
+                                    <ul class="col-ls-6">
+                                        <li><a href="#">Manifestations</a></li>
+                                        <li><a href="#">Accueil tourisme</a></li>
+                                        <li><a href="#">Aires de jeux</a></li>
+                                        <li><a href="#">Plans</a></li>
+                                        <li><a href="#">Logements</a></li>
+                                        <li><a href="#">Horeca</a></li>
+                                        <li><a href="#">Statues-Sculptures</a></li>
+                                        <li><a href="#">Marche en livres</a></li>
+                                        <li><a href="#">Marchés locaux</a></li>
+                                    </ul>
+                                    <ul class="col-ls-6">
+                                        <li><a href="#">Médiathèque</a></li>
+                                        <li><a href="#">Mouvements de jeunesse</a></li>
+                                        <li><a href="#">Musées</a></li>
+                                        <li><a href="#">Noël à Marche</a></li>
+                                        <li><a href="#">Wifi public</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!--calendar-->
+                <div class="calendar">
+                    <a href="#">
+                        <i class="icon_nav i-clock"></i>
+                        <span>Horaires-Contacts</span>
+                    </a>
+                </div>
+                <!--more-->
+                <div class="more">
+                   <input type="checkbox" id="more" name="more"/>
+                    <a href="#" for="more">
+                        <i class="icon_nav i-plus"></i>
+                    </a>
+
+                    <div class="bubble">
+                        <i class="graphicElement"></i>
+                        <div>
+                            <a href="#">E-Guichet</a>
+                            <a href="news.html">Actualités</a>
+                            <a href="events.html">Agenda</a>
+                        </div>
+                        <i class="graphicElement"></i>
+                    </div>
+                </div>
+
+                <!--visible from extralarge-->
+                <!--e-ticket-->
+                <div class="eticket">
+                    <a href="#">
+                        <span>E-Guichet</span>
+                    </a>
+                </div>
+                <!--news-->
+                <div class="news">
+                    <a href="news.html">
+                        <span>Actualités</span>
+                    </a>
+                </div>
+                <!--agenda-->
+                <div class="agenda">
+                    <a href="events.html">
+                        <span>Agenda</span>
+                    </a>
+                </div>
+            </nav>
+            
+            <div>
+                <a href="#">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="#">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href="#">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="#">
+                    <i class="fab fa-youtube"></i>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    
+
+    <!--CONTENT-->
+    <section id="content" class="pt-42px pl-ls-42px overflow-ls-hidden overflow-md-hidden pl-ls-lg-0 pt-xl-66px">
+
+        <!--HOME_SEARCH-->
+        <div class="bg-img-home">
+            <div class="bg-gradient-home col-12 mx-auto px-24px py-150px pt-ls-66px pb-ls-108px pt-ls-sm-88px pb-ls-sm-135px pt-ls-md-99px pb-ls-md-150px text-center pb-md-195px pt-ls-xl-175px pb-ls-xl-220px">
+                <h1 class="pb-22px">Bienvenue <br class="d-ls-md-none d-md-none">à Marche-en-Famenne</h1>
+                <form action="post" class="mw-550px position-relative m-auto searchHome">
+                    <input type="search" placeholder="Que cherchez-vous ?" class="border-0 rounded-pill h-42px pl-16px pr-58px fs-short-3">
+                    <button class="position-absolute top-0 bottom-0 right-0 w-42px d-flex justify-content-center align-items-center p-0 border-0 rounded-right-pill bg-transparent icon_custom">
+                        <!--<i class="fa fa-search text-dark-primary"></i>-->
+                        <i class="i-search i-dark-primary"></i>
+                    </button>
+                    <div class="bubble d-ls-lg-none d-lg-none">
+                        <i class="graphicElement"></i>
+                        <h3>Suggestions</h3>
+                        <ul>
+                           <li class="col-ls-6"><a href="pool.html" class="icon_custom"><i class="i-swimmer"></i>Piscine</a></li>
+                           <li class="col-ls-6"><a href="#" class="icon_custom"><i class="i-leaf"></i>Environnment-Déchet</a></li>
+                           <li class="col-ls-6"><a href="#" class="icon_custom"><i class="i-traffic-cone"></i>Travaux</a></li>
+                           <li class="col-ls-6"><a href="#" class="icon_custom"><i class="i-beach-ball"></i>Jeunesse-Stages</a></li>
+                           <li class="col-ls-6"><a href="map.html" class="icon_custom"><i class="i-map"></i>Cartes dynamiques</a></li>
+                           <li class="col-ls-6"><a href="#" class="icon_custom"><i class="i-handshake"></i>CPAS</a></li>
+                           <li class="col-ls-6"><a href="#" class="icon_custom"><i class="i-envelope"></i>Mon adresse e-mail</a></li>
+                        </ul>
+                        <i class="graphicElement"></i>
+                    </div>
+                </form>
+                
+                <!--visible from landscape&&large / large-->
+                <ul class="d-none d-ls-lg-flex d-lg-flex flex-wrap justify-content-center mw-400px pt-42px mx-auto
+                   ">
+                    <li class="col-3">
+                        <a href="pool.html" class="icon_custom">
+                            <i class=" d-block w-54px h-54px shadow-sm-2 mx-auto rounded-circle i-swimmer i-bg-white i-bg-hover-primary i-hover-white i-bg-color-transition bg-size-62"></i>
+                            <span class="d-inline-block text-white fs-short-3 lh-150 pt-6px">Piscine</span>
+                        </a>
+                    </li>
+                    <li class="col-3">
+                        <a href="#" class="icon_custom">
+                            <i class=" d-block w-54px h-54px shadow-sm-2 mx-auto rounded-circle i-leaf i-bg-white i-bg-hover-primary i-hover-white i-bg-color-transition bg-size-53"></i>
+                            <span class="d-inline-block text-white fs-short-3 lh-150 pt-6px">Environnement Déchet</span>
+                        </a>
+                    </li>
+                    <li class="col-3">
+                        <a href="#" class="icon_custom">
+                            <i class=" d-block w-54px h-54px shadow-sm-2 mx-auto rounded-circle i-traffic-cone i-bg-white i-bg-hover-primary i-hover-white i-bg-color-transition bg-size-48"></i>
+                            <span class="d-inline-block text-white fs-short-3 lh-150 pt-6px">Travaux</span>
+                        </a>
+                    </li>
+                    <li class="col-3">
+                        <a href="#" class="icon_custom">
+                            <i class=" d-block w-54px h-54px shadow-sm-2 mx-auto rounded-circle i-beach-ball i-bg-white i-bg-hover-primary i-hover-white i-bg-color-transition bg-size-55"></i>
+                            <span class="d-inline-block text-white fs-short-3 lh-150 pt-6px">Jeunesse Stage</span>
+                        </a>
+                    </li>
+                    <li class="col-3 pt-12px">
+                        <a href="map.html" class="icon_custom">
+                            <i class=" d-block w-54px h-54px shadow-sm-2 mx-auto rounded-circle i-map i-bg-white i-bg-hover-primary i-hover-white i-bg-color-transition bg-size-55"></i>
+                            <span class="d-inline-block text-white fs-short-3 lh-150 pt-6px">Cartes dynamiques</span>
+                        </a>
+                    </li>
+                    <li class="col-3 pt-12px">
+                        <a href="#" class="icon_custom">
+                            <i class=" d-block w-54px h-54px shadow-sm-2 mx-auto rounded-circle i-handshake i-bg-white i-bg-hover-primary i-hover-white i-bg-color-transition bg-size-55"></i>
+                            <span class="d-inline-block text-white fs-short-3 lh-150 pt-6px">CPAS</span>
+                        </a>
+                    </li>
+                    <li class="col-3 pt-12px">
+                        <a href="#" class="icon_custom">
+                            <i class=" d-block w-54px h-54px shadow-sm-2 mx-auto rounded-circle i-envelope i-bg-white i-bg-hover-primary i-hover-white i-bg-color-transition bg-size-55"></i>
+                            <span class="d-inline-block text-white fs-short-3 lh-150 pt-6px">Mon adresse e-mail</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!--NEWS / CALENDAR-->
+        <div class="bg-white pt-24px px-24px text-center position-relative d-ls-md-flex mx-ls-md-n15px d-md-flex mx-md-n15px px-xl-48px mx-xl-n30px justify-content-md-center">
+            <i class="curve-svg-home"></i>
+
+            <!--news-->
+            <div class="px-0 col-md-8 d-md-flex flex-md-column px-md-15px col-ls-md-8 d-ls-md-flex flex-ls-md-column px-xl-30px mw-896px">
+                <h2 class="text-ls-md-left pt-ls-md-8px text-md-left pt-md-8px">Actualités</h2>
+                <ul class="pt-24px pt-ls-md-32px pt-md-32px d-ls-lg-flex flex-ls-lg-wrap mx-ls-lg-n4px d-lg-flex flex-lg-wrap mx-lg-n4px">
+                   
+                   <!--always visible-->
+                    <li class="px-0 w-md-100 col-ls-lg-4 px-ls-lg-4px col-lg-4 px-lg-4px">
+                       <a href="article.html" class="d-flex shadow-sm-1 border border-width-1px border-default flex-ls-lg-column flex-lg-column bg-img overflow-hidden">
+                            <i class="w-104px min-height-103px p-0 bg-img-news-1 w-ls-lg-100 w-lg-100 position-relative bg-img-size-hover-110 transition-all">
+                                <b class="d-block position-absolute top-0 bottom-0 left-0 right-0 bg-img-bgcolor-primary-0 bg-img-bgcolor-hover-primary-55 bg-img-transition-bgcolor"></b>
+                            </i>
+                            <div class="col py-18px pl-28px pr-14px text-left lh-0 min-height-ls-lg-104px min-height-104px px-lg-8px">
+                                <span class="lh-150 ff-semibold fs-short-3 color-cat-cit">Citoyen</span>
+                                <h3 class="pt-8px lh-125 fs-short-2 text-dark-primary text-hover-primary transition-all">Écoles de devoirs : un petit déjeuner avec les volontaires</h3>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="pt-8px px-0 w-md-100 col-ls-lg-4 pt-ls-lg-0 px-ls-lg-4px col-lg-4 px-lg-4px pt-lg-0">
+                       <a href="#" class="d-flex shadow-sm-1 border border-width-1px border-default flex-ls-lg-column flex-lg-column bg-img overflow-hidden">
+                            <i class="w-104px min-height-103px p-0 bg-img-news-2 w-ls-lg-100 w-lg-100 position-relative bg-img-size-hover-110 transition-all">
+                                <b class="d-block position-absolute top-0 bottom-0 left-0 right-0 bg-img-bgcolor-primary-0 bg-img-bgcolor-hover-primary-55 bg-img-transition-bgcolor"></b>
+                            </i>
+                            <div class="col py-18px pl-28px pr-14px text-left lh-0 min-height-ls-lg-104px min-height-104px px-lg-8px">
+                                <span class="lh-150 ff-semibold fs-short-3 color-cat-san">Santé</span>
+                                <h3 class="pt-8px lh-125 fs-short-2 text-dark-primary text-hover-primary transition-all">Opération Arc-en-Ciel : 14 et 15 mars</h3>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="pt-8px px-0 w-md-100 col-ls-lg-4 pt-ls-lg-0 px-ls-lg-4px col-lg-4 px-lg-4px pt-lg-0">
+                       <a href="#" class="d-flex shadow-sm-1 border border-width-1px border-default flex-ls-lg-column flex-lg-column bg-img overflow-hidden">
+                            <i class="w-104px min-height-103px p-0 bg-img-news-3 w-ls-lg-100 w-lg-100 position-relative bg-img-size-hover-110 transition-all">
+                                <b class="d-block position-absolute top-0 bottom-0 left-0 right-0 bg-img-bgcolor-primary-0 bg-img-bgcolor-hover-primary-55 bg-img-transition-bgcolor"></b>
+                            </i>
+                            <div class="col py-18px pl-28px pr-14px text-left lh-0 min-height-ls-lg-104px min-height-104px px-lg-8px">
+                                <span class="lh-150 ff-semibold fs-short-3 color-cat-eco">Économie</span>
+                                
+                                <!--hide from landscape-->
+                                <h3 class="pt-8px lh-125 fs-short-2 text-dark-primary d-ls-none d-md-none text-hover-primary transition-all">La RSE : La responsabilité sociétale des entr...</h3>
+                                
+                                <!--visible from landscape-->
+                                <h3 class="d-none pt-8px lh-125 fs-short-2 text-dark-primary d-ls-block text-hover-primary transition-all">La RSE : La responsabilité sociétale des entreprises</h3>
+                            </div>
+                        </a>
+                    </li>
+                    
+                    <!--visible from landscape&&large-->
+                    <li class="pt-8px col-ls-lg-4 px-ls-lg-4px d-none d-ls-lg-block d-lg-block col-lg-4 px-lg-4px">
+                       <a href="#" class="d-flex shadow-sm-1 border border-width-1px border-default flex-ls-lg-column flex-lg-column bg-img overflow-hidden">
+                            <i class="w-104px min-height-103px p-0 bg-img-news-4 w-ls-lg-100 w-lg-100 position-relative bg-img-size-hover-110 transition-all">
+                                <b class="d-block position-absolute top-0 bottom-0 left-0 right-0 bg-img-bgcolor-primary-0 bg-img-bgcolor-hover-primary-55 bg-img-transition-bgcolor"></b>
+                            </i>
+                            <div class="col py-18px pl-28px pr-14px text-left lh-0 min-height-ls-lg-104px min-height-104px px-lg-8px">
+                                <span class="lh-150 ff-semibold fs-short-3 color-cat-enf">Enfance-Jeunesse</span>
+                                <h3 class="pt-8px lh-125 fs-short-2 text-dark-primary text-hover-primary transition-all">Plaines d'été : (3-15 ans)</h3>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="pt-8px col-ls-lg-4 px-ls-lg-4px d-none d-ls-lg-block d-lg-block col-lg-4 px-lg-4px">
+                       <a href="#" class="d-flex shadow-sm-1 border border-width-1px border-default flex-ls-lg-column flex-lg-column bg-img overflow-hidden">
+                            <i class="w-104px min-height-103px p-0 bg-img-news-5 w-ls-lg-100 w-lg-100 position-relative bg-img-size-hover-110 transition-all"><b class="d-block position-absolute top-0 bottom-0 left-0 right-0 bg-img-bgcolor-primary-0 bg-img-bgcolor-hover-primary-55 bg-img-transition-bgcolor"></b></i>
+                            <div class="col py-18px pl-28px pr-14px text-left lh-0 min-height-ls-lg-104px min-height-104px px-lg-8px">
+                                <span class="lh-150 ff-semibold fs-short-3 color-cat-cit">Citoyen</span>
+                                <h3 class="pt-8px lh-125 fs-short-2 text-dark-primary text-hover-primary transition-all">Suspension des permanences Juillet-Août</h3>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="pt-8px col-ls-lg-4 px-ls-lg-4px d-none d-ls-lg-block d-lg-block col-lg-4 px-lg-4px">
+                       <a href="#" class="d-flex shadow-sm-1 border border-width-1px border-default flex-ls-lg-column flex-lg-column bg-img overflow-hidden">
+                            <i class="w-104px min-height-103px p-0 bg-img-news-6 w-ls-lg-100 w-lg-100 position-relative bg-img-size-hover-200 transition-all">
+                                <b class="d-block position-absolute top-0 bottom-0 left-0 right-0 bg-img-bgcolor-primary-0 bg-img-bgcolor-hover-primary-55 bg-img-transition-bgcolor"></b>
+                            </i>
+                            <div class="col py-18px pl-28px pr-14px text-left lh-0 min-height-ls-lg-104px min-height-104px px-lg-8px">
+                                <span class="lh-150 ff-semibold fs-short-3 color-cat-spo">Sport</span>
+                                <h3 class="pt-8px lh-125 fs-short-2 text-dark-primary text-hover-primary transition-all">Accès piscine Centre sportif pour le public</h3>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+                
+                <a href="#" class="button lvl3 mt-12px align-self-ls-md-end align-self-md-end position-relative left-0 left-hover-12px">Plus d'actualités<i class="fas fa-angle-right d-none d-ls-md-inline pl-12px fs-basic d-md-inline"></i></a>
+            </div>
+            
+            <!--events-->
+            <div class="pt-55px px-0 col-md-4 d-md-flex flex-md-column pt-md-0 px-md-15px pt-ls-md-0 col-ls-md-4 d-ls-md-flex flex-ls-md-column px-xl-30px mw-md-544px">
+                <div class="p-ls-md-8px ls-md-shadow-sm-1 p-md-8px md-shadow-sm-1">
+                    <h2 class="text-ls-md-left text-md-left">Agenda</h2>
+                    <ul class="pt-24px pt-ls-md-32px d-ls-sm-flex mx-ls-sm-n4px flex-ls-md-column pt-md-32px flex-md-column">
+                       
+                       <!--always visible-->
+                        <li class="px-0 col-ls-sm-4 col-ls-md-12 px-ls-sm-4px col-md-12 px-md-0">
+                           <a href="#" class="d-flex shadow-sm-1 ls-md-shadow-none border border-width-1px border-default md-shadow-none thumbnail t-border-hover-primary t-transition-border-color">
+                                <div class="col-3 border-right border-width-1px border-default py-11px t-bgcolor-hover-primary t-border-hover-white t-transition-all">
+                                    <span class="d-block text-dark-primary ff-semibold lh-100 fs-big-1 t-color-hover-white t-transition-color">05</span>
+                                    <span class="d-block text-dark-primary ff-semibold lh-100 fs-short-1 pt-4px pb-5px t-color-hover-white t-transition-color pb-md-4px pb-lg-5px">03</span>
+                                    <span class="d-block text-dark-primary ff-semibold lh-100 fs-short-3 t-color-hover-white t-transition-color">2020</span>
+                                </div>
+                                <div class="col-9 py-11px pl-28px pl-ls-sm-14px pr-14px align-self-center text-left lh-0 pl-md-14px">
+                                    <h3 class="lh-125 fs-short-2 text-dark-primary pb-4px">Concert Pomme</h3>
+                                    <small class="lh-100 fs-short-3 text-dark-primary">Marche-en-Famenne</small>
+                                </div>
+                            </a>
+                        </li>
+                        
+                        <!--visible from landscape&&small-->
+                        <li class="d-none d-ls-sm-block col-ls-sm-4 col-ls-md-12 px-ls-sm-4px pt-ls-md-8px d-md-block col-md-12 pt-md-8px px-md-0">
+                           <a href="#" class="d-flex shadow-sm-1 ls-md-shadow-none border border-width-1px border-default md-shadow-none thumbnail t-border-hover-primary t-transition-border-color">
+                                <div class="col-3 border-right border-width-1px border-default py-11px t-bgcolor-hover-primary t-border-hover-white t-transition-all">
+                                    <span class="d-block text-dark-primary ff-semibold lh-100 fs-big-1 t-color-hover-white t-transition-color">07</span>
+                                    <span class="d-block text-dark-primary ff-semibold lh-100 fs-short-1 pt-4px pb-5px t-color-hover-white t-transition-color pt-md-3px pb-md-4px pt-lg-4px pb-lg-5px">03</span>
+                                    <span class="d-block text-dark-primary ff-semibold lh-100 fs-short-3 t-color-hover-white t-transition-color">2020</span>
+                                </div>
+                                <div class="col-9 py-11px pl-28px pl-ls-sm-14px pr-14px align-self-center text-left lh-0 pl-md-14px">
+                                    <h3 class="lh-125 fs-short-2 text-dark-primary pb-4px">Souper couscous du Vieux Tilleul</h3>
+                                    <small class="lh-100 fs-short-3 text-dark-primary">Waha</small>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="d-none d-ls-sm-block col-ls-sm-4 col-ls-md-12 px-ls-sm-4px pt-ls-md-8px d-md-block col-md-12 pt-md-8px px-md-0">
+                           <a href="#" class="d-flex shadow-sm-1 ls-md-shadow-none border border-width-1px border-default md-shadow-none thumbnail t-border-hover-primary t-transition-border-color">
+                                <div class="col-3 border-right border-width-1px border-default py-11px t-bgcolor-hover-primary t-border-hover-white t-transition-all">
+                                    <span class="d-block text-dark-primary ff-semibold lh-100 fs-big-1 t-color-hover-white t-transition-color">07</span>
+                                    <span class="d-block text-dark-primary ff-semibold lh-100 fs-short-1 pt-4px pb-5px t-color-hover-white t-transition-color pt-md-3px pb-md-4px pt-lg-4px pb-lg-5px">03</span>
+                                    <span class="d-block text-dark-primary ff-semibold lh-100 fs-short-3 t-color-hover-white t-transition-color">2020</span>
+                                </div>
+                                <div class="col-9 py-11px pl-28px pl-ls-sm-14px pr-14px align-self-center text-left lh-0 pl-md-14px">
+                                    <h3 class="lh-125 fs-short-2 text-dark-primary pb-4px">Les Petits Feux</h3>
+                                    <small class="lh-100 fs-short-3 text-dark-primary">Verdenne</small>
+                                </div>
+                            </a>
+                        </li>
+                        
+                        <!--visible from landscape&&medium / medium-->
+                        <li class="d-none col-ls-md-12 px-ls-sm-4px pt-ls-md-8px d-md-block col-md-12 pt-md-8px px-md-0">
+                           <a href="#" class="d-flex shadow-sm-1 ls-md-shadow-none border border-width-1px border-default md-shadow-none thumbnail t-border-hover-primary t-transition-border-color">
+                                <div class="col-3 border-right border-width-1px border-default py-11px t-bgcolor-hover-primary t-border-hover-white t-transition-all">
+                                    <span class="d-block text-dark-primary ff-semibold lh-100 fs-big-1 t-color-hover-white t-transition-color">07</span>
+                                    <span class="d-block text-dark-primary ff-semibold lh-100 fs-short-1 pt-4px pb-5px t-color-hover-white t-transition-color pt-md-3px pb-md-4px pt-lg-4px pb-lg-5px">03</span>
+                                    <span class="d-block text-dark-primary ff-semibold lh-100 fs-short-3 t-color-hover-white t-transition-color">2020</span>
+                                </div>
+                                <div class="col-9 py-11px pl-28px pl-ls-sm-14px pr-14px align-self-center text-left lh-0 pl-md-14px">
+                                    <h3 class="lh-125 fs-short-2 text-dark-primary pb-4px">Grand feu des Godis</h3>
+                                    <small class="lh-100 fs-short-3 text-dark-primary">Aye</small>
+                                </div>
+                            </a>
+                        </li>
+                        
+                        <!--visible from landscape&&large / large-->
+                        <li class="d-none col-ls-lg-12 px-ls-sm-4px pt-ls-md-8px d-ls-lg-block d-lg-block pt-lg-8px">
+                           <a href="#" class="d-flex shadow-sm-1 ls-md-shadow-none border border-width-1px border-default md-shadow-none thumbnail t-border-hover-primary t-transition-border-color">
+                                <div class="col-3 border-right border-width-1px border-default py-11px t-bgcolor-hover-primary t-border-hover-white t-transition-all">
+                                    <span class="d-block text-dark-primary ff-semibold lh-100 fs-big-1 t-color-hover-white t-transition-color">08</span>
+                                    <span class="d-block text-dark-primary ff-semibold lh-100 fs-short-1 pt-4px pb-5px t-color-hover-white t-transition-color pt-md-3px pb-md-4px pt-lg-4px pb-lg-5px">03</span>
+                                    <span class="d-block text-dark-primary ff-semibold lh-100 fs-short-3 t-color-hover-white t-transition-color">2020</span>
+                                </div>
+                                <div class="col-9 py-11px pl-28px pl-ls-sm-14px pr-14px align-self-center text-left lh-0 pl-md-14px">
+                                    <h3 class="lh-125 fs-short-2 text-dark-primary pb-4px">Salon Horecatel</h3>
+                                    <small class="lh-100 fs-short-3 text-dark-primary">Marche-en-Famenne</small>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <a href="events.html" class="button lvl3 mt-12px align-self-ls-md-end align-self-md-end position-relative left-0 left-hover-12px">Tout l'agenda<i class="fas fa-angle-right d-none d-ls-md-inline pl-12px fs-basic d-md-inline"></i></a>
+            </div>
+        </div>
+        
+        <!--WIDGETS-->
+        <div class="text-center pt-24px d-ls-flex mx-ls-n2px d-md-flex mx-md-n2px">
+           
+           <!--always visible-->
+            <div class="position-relative px-0 col-ls-4 px-ls-2px col-md px-md-2px col-ls-lg bg-img overflow-hidden">
+               <i class="d-block position-absolute top-0 bottom-0 left-0 right-0 filter-grey bg-img-widgets-1 ls-left-2px ls-right-2px md-left-2px md-right-2px"></i>
+                <a href="#" class="d-flex justify-content-center align-items-center h-99px position-relative h-lg-120px flex-column bg-img-bgcolor-primary-55 bg-img-bgcolor-hover-dark-primary-75 bg-img-transition-bgcolor">
+                    <h3 class="w-120px text-white shadow-text-sm fs-short-1 position-relative bg-img-top-25 bg-img-top-hover-0 pb-ls-lg-8px transition-top">Avis de publication</h3>
+                    <span class="text-white shadow-text-sm fs-short-2 lh-125 position-relative bg-img-bottom-n75 bg-img-bottom-hover-0 pt-ls-lg-8px transition-bottom bg-img-delay-hover-basic">Achat de biens immobiliers, <br>devenir indépendant, <br>recruter</span>
+                </a>
+            </div>
+            
+            <div class="position-relative pt-4px px-0 col-ls-4 pt-ls-0 px-ls-2px col-md pt-md-0 px-md-2px col-ls-lg bg-img overflow-hidden">
+               <i class="d-block position-absolute top-4px bottom-0 left-0 right-0 filter-grey bg-img-widgets-2 ls-top-0 ls-left-2px ls-right-2px md-top-0 md-left-2px md-right-2px"></i>
+                <a href="#" class="d-flex justify-content-center align-items-center h-99px position-relative h-lg-120px flex-column bg-img-bgcolor-primary-55 bg-img-bgcolor-hover-dark-primary-75 bg-img-transition-bgcolor">
+                    <h3 class="w-120px text-white shadow-text-sm fs-short-1 position-relative bg-img-top-25 bg-img-top-hover-0 pb-ls-lg-8px transition-top">Économie</h3>
+                    <span class="text-white shadow-text-sm fs-short-2 lh-125 position-relative bg-img-bottom-n75 bg-img-bottom-hover-0 pt-ls-lg-8px transition-bottom bg-img-delay-hover-basic">Achat de biens immobiliers, <br>devenir indépendant, <br>recruter</span>
+                </a>
+            </div>
+            <div class="position-relative pt-4px px-0 col-ls-4 pt-ls-0 px-ls-2px col-md pt-md-0 px-md-2px col-ls-lg bg-img overflow-hidden">
+               <i class="d-block position-absolute top-4px bottom-0 left-0 right-0 filter-grey bg-img-widgets-3 ls-top-0 ls-left-2px ls-right-2px md-top-0 md-left-2px md-right-2px"></i>
+                <a href="#" class="d-flex justify-content-center align-items-center h-99px position-relative h-lg-120px flex-column bg-img-bgcolor-primary-55 bg-img-bgcolor-hover-dark-primary-75 bg-img-transition-bgcolor">
+                    <h3 class="w-120px text-white shadow-text-sm fs-short-1 position-relative bg-img-top-25 bg-img-top-hover-0 pb-ls-lg-8px transition-top">Participation citoyenne</h3>
+                    <span class="text-white shadow-text-sm fs-short-2 lh-125 position-relative bg-img-bottom-n75 bg-img-bottom-hover-0 pt-ls-lg-8px transition-bottom bg-img-delay-hover-basic">Achat de biens immobiliers, <br>devenir indépendant, <br>recruter</span>
+                </a>
+            </div>
+            
+            <!--visible from medium / landscape&&large-->
+            <div class="position-relative pt-4px px-0 col-ls-4 pt-ls-0 px-ls-2px d-none d-md-block col-md pt-md-0 px-md-2px d-ls-lg-block col-ls-lg bg-img overflow-hidden">
+               <i class="d-block position-absolute top-4px bottom-0 left-0 right-0 filter-grey bg-img-widgets-4 ls-top-0 ls-left-2px ls-right-2px md-top-0 md-left-2px md-right-2px"></i>
+                <a href="#" class="d-flex justify-content-center align-items-center h-99px position-relative h-lg-120px flex-column bg-img-bgcolor-primary-55 bg-img-bgcolor-hover-dark-primary-75 bg-img-transition-bgcolor">
+                    <h3 class="w-120px text-white shadow-text-sm fs-short-1 position-relative bg-img-top-25 bg-img-top-hover-0 pb-ls-lg-8px transition-top">Plateforme de volontariat</h3>
+                    <span class="text-white shadow-text-sm fs-short-2 lh-125 position-relative bg-img-bottom-n75 bg-img-bottom-hover-0 pt-ls-lg-8px transition-bottom bg-img-delay-hover-basic">Achat de biens immobiliers, <br>devenir indépendant, <br>recruter</span>
+                </a>
+            </div>
+            <div class="position-relative pt-4px px-0 col-ls-4 pt-ls-0 px-ls-2px d-none d-md-block col-md pt-md-0 px-md-2px d-ls-lg-block col-ls-lg bg-img overflow-hidden">
+               <i class="d-block position-absolute top-4px bottom-0 left-0 right-0 filter-grey bg-img-widgets-5 ls-top-0 ls-left-2px ls-right-2px md-top-0 md-left-2px md-right-2px"></i>
+                <a href="#" class="d-flex justify-content-center align-items-center h-99px position-relative h-lg-120px flex-column bg-img-bgcolor-primary-55 bg-img-bgcolor-hover-dark-primary-75 bg-img-transition-bgcolor">
+                    <h3 class="w-120px text-white shadow-text-sm fs-short-1 position-relative bg-img-top-25 bg-img-top-hover-0 pb-ls-lg-8px transition-top">Avis de décès</h3>
+                    <span class="text-white shadow-text-sm fs-short-2 lh-125 position-relative bg-img-bottom-n75 bg-img-bottom-hover-0 pt-ls-lg-8px transition-bottom bg-img-delay-hover-basic">Achat de biens immobiliers, <br>devenir indépendant, <br>recruter</span>
+                </a>
+            </div>
+        </div>
+        
+        <!--PARTNERS-->
+        <div class="bg-lighter">
+           <div class="d-flex align-items-center justify-content-between py-24px px-16px mw-1616px m-xl-auto">
+             
+            <!--visible from landscape&&extralarge-->
+            <button class="d-none border-0 h-66px col py-11px px-ls-20px text-center d-xl-block bg-none icon_custom">
+                <i class="i-angle-left i-dark-primary d-block h-100 m-auto bg-size-auto"></i>
+            </button>
+              
+            <!--always visible-->
+            <a href="#" class="col py-11px px-ls-20px text-center order-ls-md-2 order-md-2 filtred">
+                <img src="rsc/img/img_sponsor01.png" alt="img_partner_1" class="mw-100 mh-66px filter-grey filter-hover-grey-0 transition-all">
+            </a>
+            <a href="#" class="col py-11px px-ls-20px text-center order-ls-md-3 order-md-3 filtred">
+                <img src="rsc/img/img_sponsor02.png" alt="img_partner_2" class="mw-100 mh-66px filter-grey filter-hover-grey-0 transition-all">
+            </a>
+            <a href="#" class="col py-11px px-ls-20px text-center order-ls-md-5 order-md-5 filtred">
+                <img src="rsc/img/img_sponsor03.png" alt="img_partner_3" class="mw-100 mh-66px filter-grey filter-hover-grey-0 transition-all">
+            </a>
+            
+            <!--visible from landscape&&medium / medium-->
+            <a href="#" class="d-none d-ls-md-block col py-11px px-ls-20px text-center d-md-block filtred">
+                <img src="rsc/img/img_sponsor04.png" alt="img_partner_4" class="mw-100 mh-66px filter-grey filter-hover-grey-0 transition-all">
+            </a>
+            <a href="#" class="d-none d-ls-md-block col py-11px px-ls-20px text-center order-ls-md-4 d-md-block order-md-4 filtred">
+                <img src="rsc/img/img_sponsor05.png" alt="img_partner_5" class="mw-100 mh-66px filter-grey filter-hover-grey-0 transition-all">
+            </a>
+            
+            <!--visible from landscape&&extralarge-->
+            <button class="d-none order-7 border-0 h-66px col py-11px px-ls-20px text-center d-xl-block bg-none icon_custom">
+                <i class="i-angle-right i-dark-primary d-block h-100 m-auto bg-size-auto"></i>
+            </button>
+           </div>
+        </div>
+        
+        <!--OBJECT | ALERT-->
+        <div class="object-alert">
+            <div>
+                <div>
+                    <h3>Avertissement</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum sequi, quos autem blanditiis hic quisquam nihil neque. Quia, quae, eius! Ullam ab, minima magni iste ea quae perspiciatis quas consequatur.</p>
+                </div>
+                <a href="#">
+                    <i class="fas fa-times"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+    
+    <!--OBJECT | FOOTER-->
+    <footer>
+        <section class="px-0 d-md-flex flex-md-wrap mx-md-n15px px-md-15px d-ls-flex flex-ls-wrap mx-ls-n15px pl-ls-15px col-xl-9 order-xl-2">
+            <div class="px-0 col-ls-6 col-ls-md-4 col-md-6 col-lg-4 border-xl-left border-white-25 pl-xl-14px">
+                <h6>Découvrez</h6>
+                <ul class="d-flex flex-wrap mx-n11px">
+                    <li class="col-6 col-ls-12 col-md-12">
+                        <a href="#">E-Guichet</a>
+                    </li>
+                    <li class="col-6 col-ls-12 order-ls-3 col-md-12 order-md-3">
+                        <a href="#">Horaires-Contact</a>
+                    </li>
+                    <li class="col-6 col-ls-12 order-ls-2 col-md-12 order-md-2">
+                        <a href="news.html">Actualités</a>
+                    </li>
+                    <li class="col-6 col-ls-12 order-ls-4 col-md-12 order-md-4">
+                        <a href="events.html">Agenda</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="pt-24px px-0 col-ls-6 pt-ls-0 col-ls-md-4 pt-md-0 pl-md-12px pl-ls-md-0 col-md-6 col-lg-4 border-xl-left border-white-25 pl-xl-14px">
+                <h6>Raccourcis</h6>
+                <ul class="d-flex flex-wrap mx-n11px">
+                   <li class="col-6">
+                        <a href="pool.html">Piscine</a>
+                    </li>
+                    <li class="col-6">
+                        <a href="#">Environnment : Déchet</a>
+                    </li>
+                    <li class="col-6">
+                        <a href="#">Travaux</a>
+                    </li>
+                    <li class="col-6">
+                        <a href="#">Enfant-Stage</a>
+                    </li>
+                    <li class="col-6">
+                        <a href="map.html">Plan de la ville</a>
+                    </li>
+                    <li class="col-6">
+                        <a href="#">CPAS</a>
+                    </li>
+                    <li class="col-6">
+                        <a href="#">Mon mail</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="pt-24px px-0 col-ls-12 col-ls-md-4 pt-ls-md-0 col-md-12 col-lg-4 pt-lg-0 border-xl-left border-white-25 pl-xl-14px">
+                <h6>Contact</h6>
+                <ul>
+                    <li>Hôtel de ville : <a href="tel:+3284327000">084 32 70 00</a></li>
+                    <li>Du lundi au jeudi : de 8h à 12h et de 13h à 17h</li>
+                    <li>Vendredi : de 8h à 12h et de 13h à 15h</li>
+                    <li class="d-flex">
+                        <a href="#" class="text-white border-0 pb-0">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="ml-11px text-white border-0 pb-0">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="ml-11px text-white border-0 pb-0">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="ml-11px text-white border-0 pb-0">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </section>
+        <section class="d-flex mt-24px w-100 px-0 col-xl-3 border-xl-0 mt-xl-0 position-xl-initial">
+            <div class="col-6 pt-24px pl-0 pt-xl-12px">
+                <a href="#" class="d-block">
+                    <img src="rsc/img/img_logo_white.png" alt="logo" class="w-88px">
+                </a>
+            </div>
+            <div class="col-6 pt-24px pr-0 pl-md-0 position-xl-absolute xl-top-auto xl-bottom-0 xl-left-auto xl-right-70px pt-xl-16px pb-xl-16px pl-xl-0 d-xl-flex flex-xl-row w-xl-100 align-items-xl-center justify-content-xl-end">
+                <a href="#" class="d-block pt-xl-4px pb-xl-3px mr-xl-8px border-xl-bottom border-white-25">Vie privée</a>
+                <a href="#" class="d-block pt-8px pt-xl-4px pb-xl-3px ml-xl-8px border-xl-bottom border-white-25">Mentions légales</a>
+                <small class="pt-xl-0"><span class="d-none d-xl-inline pl-xl-8px pr-xl-4px fs-short-3"> - </span>Copyright © 2020<span class="d-none d-ls-md-inline d-md-inline"> - </span><br class="d-ls-md-none d-md-none">Ville de Marche-en-Famenne<span class="d-none d-ls-md-inline d-md-inline">. </span><br class="d-ls-md-none d-md-none">Tous droits réservés</small>
+            </div>
+        </section>
+    </footer>
+</body>
+
+</html>
