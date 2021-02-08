@@ -44,8 +44,10 @@ window.addEventListener( 'load', () => {
     const mainNav = document.getElementById( 'main-nav' );
 
     btnOpenMainNav.addEventListener( 'click', () => {
-        mainToggle.classList.add( 'toggle-opened' );
-        mainNav.classList.add( 'd-block' );
+        mainToggle.classList.toggle( 'toggle-opened' );
+        console.log( 'open main' );
+        mainNav.style.top = 0;
+        mainNav.style.zIndex = 10;
     });
 
     /**
@@ -54,9 +56,10 @@ window.addEventListener( 'load', () => {
     const btnCloseMainNav = document.getElementById( 'btn-close-main-nav' );
 
     btnCloseMainNav.addEventListener( 'click', () => {
-        mainToggle.classList.remove( 'toggle-opened' );
-        mainNav.classList.add( 'd-none' );
-        mainNav.classList.remove( 'd-block' );
+        mainToggle.classList.toggle( 'toggle-opened' );
+        console.log( 'close main' );
+        mainNav.style.top = '100%';
+        mainNav.style.zIndex = 'auto';
     });
 
     /**
@@ -68,7 +71,7 @@ window.addEventListener( 'load', () => {
     secondToggle.addEventListener( 'click', () => {
         if ( false === notAdd ) {
             console.log( 'ici' );
-            secondToggle.classList.add( 'toggle-opened' );
+            secondToggle.classList.toggle( 'toggle-opened' );
 
             //  secondToggle.classList.add( 'd-flex' );
             notAdd = true;
@@ -83,10 +86,11 @@ window.addEventListener( 'load', () => {
 
     if ( null !== btnCloseSubNav ) {
         btnCloseSubNav.addEventListener( 'click', () => {
-            secondToggle.classList.remove( 'toggle-opened' );
+            secondToggle.classList.toggle( 'toggle-opened' );
             console.log( 'second' );
             notAdd = true;
-            popo.classList.add( 'd-none' );
+
+            //     popo.classList.add( 'd-none' );
             console.log( 'la' );
 
         //    secondToggle.classList.remove( 'd-flex' );
