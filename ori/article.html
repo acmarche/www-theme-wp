@@ -1,0 +1,906 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <!--<meta name="keywords" content=""> | TODO -->
+
+        <meta name="author" content="Studio Tartine">
+        <title>Article : Écoles de devoirs : un petit déjeuner avec les volontaires | Ville de Marche-en-Famenne</title>
+
+        <!--BOOTSTRAP-->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+        <!--CSS-->
+        <link rel="stylesheet" href="css/base.css">
+
+        <!--FONT-AWESOME-->
+        <script src="https://kit.fontawesome.com/346aed29e3.js" crossorigin="anonymous"></script>
+
+        <!--FAVICON-->
+        <link rel="icon" type="image/png" href="rsc/favicon.png" />
+    </head>
+
+    <body class="bg-white">
+
+        <!--OBJECT | HEADER-->
+        <header>
+            <div>
+                <a href="index.html">
+                    <img src="rsc/img/img_logo.png" alt="logo">
+                </a>
+
+                <!--OBJECT | NAV-->
+                <nav>
+
+                    <!--home-->
+                    <div class="home">
+                        <a href="index.html">
+                            <i class="icon_nav i-home"></i>
+                        </a>
+                    </div>
+                    <!--search | visible on mobile/tablet && !homepage-extralarge | TODO JF: à brancher-->
+                    <div class="search">
+                        <a href="#">
+                            <i class="icon_nav i-search"></i>
+                            <i class="icon_nav i-search i-white position-absolute d-none d-xl-block"></i>
+                        </a>
+
+                        <div class="searchScreen">
+                           <i class="graphicElement"></i>
+
+                            <ul>
+                                <li class="col-ls-12">
+                                    <div class="h-32px">
+                                        <input type="search" placeholder="Que cherchez-vous ?" class="border-0 rounded-pill h-32px pl-16px pr-48px fs-short-3">
+                                        <button class="position-absolute top-0 bottom-0 right-0 w-32px h-32px d-flex justify-content-center align-items-center p-0 border-0 rounded-right-pill bg-transparent icon_custom">
+                                            <!--<i class="fa fa-search text-dark-primary"></i>-->
+                                            <i class="i-search i-dark-primary w-16px h-16px"></i>
+                                        </button>
+                                    </div>
+                                    <!--TODO JF: branchement-->
+                                    <a href="#" class="icon_custom">
+                                        <i class="i-times"></i>
+                                    </a>
+                                </li>
+                                <li class="col-ls-6 col-ls-sm-4 col-xl-12 col-ls-xl-12"><a href="pool.html" class="icon_custom"><i class="i-swimmer"></i>Piscine</a></li>
+                                <li class="col-ls-6 col-ls-sm-4 col-xl-12 col-ls-xl-12"><a href="#" class="icon_custom"><i class="i-leaf"></i>Environnment-Déchet</a></li>
+                                <li class="col-ls-6 col-ls-sm-4 col-xl-12 col-ls-xl-12"><a href="#" class="icon_custom"><i class="i-traffic-cone"></i>Travaux</a></li>
+                                <li class="col-ls-6 col-ls-sm-4 col-xl-12 col-ls-xl-12"><a href="#" class="icon_custom"><i class="i-beach-ball"></i>Jeunesse-Stages</a></li>
+                                <li class="col-ls-6 col-ls-sm-4 col-xl-12 col-ls-xl-12"><a href="map.html" class="icon_custom"><i class="i-map"></i>Cartes dynamiques</a></li>
+                                <li class="col-ls-6 col-ls-sm-4 col-xl-12 col-ls-xl-12"><a href="#" class="icon_custom"><i class="i-handshake"></i>CPAS</a></li>
+                                <li class="col-ls-6 col-ls-sm-4 col-xl-12 col-ls-xl-12"><a href="#" class="icon_custom"><i class="i-envelope"></i>Mon adresse e-mail</a></li>
+                            </ul>
+
+                            <i class="graphicElement"></i>
+                        </div>
+                    </div>
+                    <!--all | TODO JF: à brancher-->
+                    <div class="all d-ls-flex align-items-ls-center justify-content-ls-center">
+                        <a href="#" class="icon_custom position-relative">
+                            <i class="icon_nav i-bars"></i>
+                            <i class="i-bars i-dark-primary"></i>
+                            <span>Vivre à Marche</span>
+                            <!--<input type="radio" name="subnav" value="1" class="w-100 h-100">-->
+                        </a>
+
+                        <!--subnav | TODO JF: à brancher-->
+                        <div class="subnav">
+                            <ul>
+                                <li class="d-flex flex-row align-items-center p-24px d-xl-none col-ls-12">
+                                    <h3 class="flex-grow-1 text-white text-left">Vivre à Marche</h3>
+                                    <a href="#" class="position-relative w-24px h-24px d-flex justify-content-center align-items-center p-0 icon_custom">
+                                        <i class="i-times i-white"></i>
+                                        <!--<input type="radio" name="subnav" value="0" class="w-100 h-100">-->
+                                    </a>
+                                </li>
+
+                                <!--administration | TODO JF: à brancher-->
+                                <li class="c-adm col-xl-5 mt-xl-12px col-ls-6 col-ls-xl-5">
+                                    <a href="#" class="icon_custom">Administration<i class="i-angle-right i-white bg-size-50"></i></a>
+
+                                    <div class="col-xl-7">
+                                        <div class="p-24px d-xl-none col-ls-12">
+                                            <h3 class="text-left">Administration</h3>
+                                            <span class="d-flex flex-row align-items-center pt-8px">
+                                                <a href="#" class="d-flex flex-grow-1 align-items-center fs-short-2 text-dark-primary icon_custom"><i class="i-angle-left bg-size-40 bg-position-left"></i>Retour sur Vivre à Marche</a>
+                                                <a href="#" class="position-relative w-24px h-24px d-flex justify-content-center align-items-center icon_custom">
+                                                    <i class="i-times"></i>
+                                                </a>
+                                            </span>
+                                        </div>
+                                        <ul class="col-ls-6">
+                                            <li><a href="#">Accueil administration</a></li>
+                                            <li><a href="#">Blason-Logos de la ville</a></li>
+                                            <li><a href="#">Horaires-Contact</a></li>
+                                            <li><a href="#">Collège communal</a></li>
+                                            <li><a href="#">Conseil communal</a></li>
+                                            <li><a href="#">Services communaux</a></li>
+                                            <li><a href="#">Autres services administratifs</a></li>
+                                            <li><a href="#">Taxes communales</a></li>
+                                            <li><a href="#">Publications communales</a></li>
+                                        </ul>
+                                        <ul class="col-ls-6">
+                                            <li><a href="#">Permanences institutions</a></li>
+                                            <li><a href="#">Procédures-Documents administratifs</a></li>
+                                            <li><a href="#">Subventions-Primes communales</a></li>
+                                            <li><a href="#">Enquêtes publiques</a></li>
+                                            <li><a href="#" alt="Programme stratégique transversal">PST</a></li>
+                                        </ul>
+                                    </div>
+                                </li>
+
+                                <!--citoyen | TODO JF: à brancher-->
+                                <li class="c-cit col-xl-5 col-ls-6 col-ls-xl-5">
+                                    <a href="category.html" class="icon_custom">Citoyen<i class="i-angle-right i-white bg-size-50"></i></a>
+
+                                    <div class="col-xl-7">
+                                        <div class="p-24px d-xl-none col-ls-12">
+                                            <h3 class="text-left">Citoyen</h3>
+                                            <span class="d-flex flex-row align-items-center pt-8px">
+                                                <a href="#" class="d-flex flex-grow-1 align-items-center fs-short-2 text-dark-primary icon_custom"><i class="i-angle-left bg-size-40 bg-position-left"></i>Retour sur Vivre à Marche</a>
+                                                <a href="#" class="position-relative w-24px h-24px d-flex justify-content-center align-items-center icon_custom">
+                                                    <i class="i-times"></i>
+                                                </a>
+                                            </span>
+                                        </div>
+                                        <ul class="col-ls-6">
+                                            <li><a href="category.html">Accueil citoyen</a></li>
+                                            <li><a href="#">Cultes</a></li>
+                                            <li><a href="#">Conseils-Commissions</a></li>
+                                            <li><a href="#">Emploi-Formation</a></li>
+                                            <li><a href="#">Enfance-Jeunesse</a></li>
+                                            <li><a href="#">Enseignement</a></li>
+                                            <li><a href="#">Environnement</a></li>
+                                            <li><a href="#">Famille</a></li>
+                                            <li><a href="#">Info travaux</a></li>
+                                        </ul>
+                                        <ul class="col-ls-6">
+                                            <li><a href="#">Justice</a></li>
+                                            <li><a href="#">Logement</a></li>
+                                            <li><a href="#">Participation citoyenne</a></li>
+                                            <li><a href="#">Petit patrimoine</a></li>
+                                            <li><a href="#">Mobilité</a></li>
+                                            <li><a href="#">Sécurité</a></li>
+                                        </ul>
+                                    </div>
+                                </li>
+
+                                <!--culture | TODO JF: à brancher-->
+                                <li class="c-cul col-xl-5 col-ls-6 col-ls-xl-5">
+                                    <a href="#" class="icon_custom">Culture<i class="i-angle-right i-white bg-size-50"></i></a>
+
+                                    <div class="col-xl-7">
+                                        <div class="p-24px d-xl-none col-ls-12">
+                                            <h3 class="text-left">Culture</h3>
+                                            <span class="d-flex flex-row align-items-center pt-8px">
+                                                <a href="#" class="d-flex flex-grow-1 align-items-center fs-short-2 text-dark-primary icon_custom"><i class="i-angle-left bg-size-40 bg-position-left"></i>Retour sur Vivre à Marche</a>
+                                                <a href="#" class="position-relative w-24px h-24px d-flex justify-content-center align-items-center icon_custom">
+                                                    <i class="i-times"></i>
+                                                </a>
+                                            </span>
+                                        </div>
+                                        <ul class="col-ls-6">
+                                            <li><a href="#">Accueil culture</a></li>
+                                            <li><a href="#">Art-Culture</a></li>
+                                            <li><a href="#">2ème roman</a></li>
+                                            <li><a href="#">Activités créatives</a></li>
+                                            <li><a href="#">Bibliothèque-Ludothèque</a></li>
+                                            <li><a href="#">Cercles thèmatiques</a></li>
+                                            <li><a href="#">Comités festifs</a></li>
+                                            <li><a href="#">Enseignement artistique</a></li>
+                                            <li><a href="#">Musées</a></li>
+                                        </ul>
+                                        <ul class="col-ls-6">
+                                            <li><a href="#">Musique</a></li>
+                                        </ul>
+                                    </div>
+                                </li>
+
+                                <!--economie | TODO JF: à brancher-->
+                                <li class="c-eco col-xl-5 col-ls-6 col-ls-xl-5">
+                                    <a href="#" class="icon_custom">Économie<i class="i-angle-right i-white bg-size-50"></i></a>
+
+                                    <div class="col-xl-7">
+                                        <div class="p-24px d-xl-none col-ls-12">
+                                            <h3 class="text-left">Économie</h3>
+                                            <span class="d-flex flex-row align-items-center pt-8px">
+                                                <a href="#" class="d-flex flex-grow-1 align-items-center fs-short-2 text-dark-primary icon_custom"><i class="i-angle-left bg-size-40 bg-position-left"></i>Retour sur Vivre à Marche</a>
+                                                <a href="#" class="position-relative w-24px h-24px d-flex justify-content-center align-items-center icon_custom">
+                                                    <i class="i-times"></i>
+                                                </a>
+                                            </span>
+                                        </div>
+                                        <ul class="col-ls-6">
+                                            <li><a href="#">Accueil économie</a></li>
+                                            <li><a href="#">Économie marchoise</a></li>
+                                            <li><a href="#">Créer une entreprise</a></li>
+                                            <li><a href="#">Ouvrir un commerce</a></li>
+                                            <li><a href="#">Pays de Famenne</a></li>
+                                            <li><a href="#">Wex</a></li>
+                                            <li><a href="#">Commerces-Entreprises</a></li>
+                                            <li><a href="#">e-Square</a></li>
+                                        </ul>
+                                    </div>
+                                </li>
+
+                                <!--enfance/jeunesse | TODO JF: à brancher-->
+                                <li class="c-enf col-xl-5 col-ls-6 col-ls-xl-5">
+                                    <a href="#" class="icon_custom">Enfance-Jeunesse<i class="i-angle-right i-white bg-size-50"></i></a>
+
+                                    <div class="col-xl-7">
+                                        <div class="p-24px d-xl-none col-ls-12">
+                                            <h3 class="text-left">Enfance-Jeunesse</h3>
+                                            <span class="d-flex flex-row align-items-center pt-8px">
+                                                <a href="#" class="d-flex flex-grow-1 align-items-center fs-short-2 text-dark-primary icon_custom"><i class="i-angle-left bg-size-40 bg-position-left"></i>Retour sur Vivre à Marche</a>
+                                                <a href="#" class="position-relative w-24px h-24px d-flex justify-content-center align-items-center icon_custom">
+                                                    <i class="i-times"></i>
+                                                </a>
+                                            </span>
+                                        </div>
+                                        <ul class="col-ls-6">
+                                            <li><a href="#">Accueil enfance-jeunesse</a></li>
+                                            <li><a href="#">0-3 ans</a></li>
+                                            <li><a href="#">3-12 ans</a></li>
+                                            <li><a href="#">12-18 ans</a></li>
+                                            <li><a href="#">Plus de 18 ans</a></li>
+                                            <li><a href="http://stages.marche.be/" target="_blank">Stages<i class="fas fa-external-link-alt"></i></a></li>
+                                            <li><a href="#">Conseil communal des enfants</a></li>
+                                            <li><a href="http://www.rescolm.be/" target="_blank">Repas scolaire<i class="fas fa-external-link-alt"></i></a></li>
+                                            <li><a href="#">Enseignement</a></li>
+                                        </ul>
+                                    </div>
+                                </li>
+
+                                <!--sante | TODO JF: à brancher-->
+                                <li class="c-san col-xl-5 col-ls-6 col-ls-xl-5">
+                                    <a href="#" class="icon_custom">Santé<i class="i-angle-right i-white bg-size-50"></i></a>
+
+                                    <div class="col-xl-7">
+                                        <div class="p-24px d-xl-none col-ls-12">
+                                            <h3 class="text-left">Santé</h3>
+                                            <span class="d-flex flex-row align-items-center pt-8px">
+                                                <a href="#" class="d-flex flex-grow-1 align-items-center fs-short-2 text-dark-primary icon_custom"><i class="i-angle-left bg-size-40 bg-position-left"></i>Retour sur Vivre à Marche</a>
+                                                <a href="#" class="position-relative w-24px h-24px d-flex justify-content-center align-items-center icon_custom">
+                                                    <i class="i-times"></i>
+                                                </a>
+                                            </span>
+                                        </div>
+                                        <ul class="col-ls-6">
+                                            <li><a href="#">Accueil santé</a></li>
+                                            <li><a href="#">Cellule communale santé & Viasano</a></li>
+                                            <li><a href="#">Centre médicaux - Services</a></li>
+                                            <li><a href="#">Collecte de sang</a></li>
+                                            <li><a href="#">Consultations ONE</a></li>
+                                            <li><a href="#">Hôpitaux</a></li>
+                                            <li><a href="#">Médecins généralistes</a></li>
+                                            <li><a href="#">Médecins spécialistes</a></li>
+                                            <li><a href="#">Mutuelles</a></li>
+                                        </ul>
+                                        <ul class="col-ls-6">
+                                            <li><a href="#">Numéros de secours</a></li>
+                                            <li><a href="#">Pharmacies</a></li>
+                                            <li><a href="#">Poste médical - médecin de garde</a></li>
+                                            <li><a href="#">Professionnels de la santé</a></li>
+                                        </ul>
+                                    </div>
+                                </li>
+
+                                <!--social | TODO JF: à brancher-->
+                                <li class="c-soc col-xl-5 col-ls-6 col-ls-xl-5">
+                                    <a href="#" class="icon_custom">Social<i class="i-angle-right i-white bg-size-50"></i></a>
+
+                                    <div class="col-xl-7">
+                                        <div class="p-24px d-xl-none col-ls-12">
+                                            <h3 class="text-left">Social</h3>
+                                            <span class="d-flex flex-row align-items-center pt-8px">
+                                                <a href="#" class="d-flex flex-grow-1 align-items-center fs-short-2 text-dark-primary icon_custom"><i class="i-angle-left bg-size-40 bg-position-left"></i>Retour sur Vivre à Marche</a>
+                                                <a href="#" class="position-relative w-24px h-24px d-flex justify-content-center align-items-center icon_custom">
+                                                    <i class="i-times"></i>
+                                                </a>
+                                            </span>
+                                        </div>
+                                        <ul class="col-ls-6">
+                                            <li><a href="#">Accueil social</a></li>
+                                            <li><a href="#">Aide aux personnes</a></li>
+                                            <li><a href="#">Associations</a></li>
+                                            <li><a href="#">CPAS</a></li>
+                                            <li><a href="#">Conseil de l'action sociale</a></li>
+                                            <li><a href="#">Économie sociale</a></li>
+                                            <li><a href="#">Info service</a></li>
+                                            <li><a href="#">Seconde main</a></li>
+                                            <li><a href="#" alt="Plan de cohésion sociale">PCS</a></li>
+                                        </ul>
+                                        <ul class="col-ls-6">
+                                            <li><a href="#">Résidence-service Joseph Marthoz</a></li>
+                                            <li><a href="#">Logement</a></li>
+                                            <li><a href="#">Services sociaux</a></li>
+                                            <li><a href="#">Solidarité-Volontariat</a></li>
+                                        </ul>
+                                    </div>
+                                </li>
+
+                                <!--sport | TODO JF: à brancher-->
+                                <li class="c-spo col-xl-5 col-ls-6 col-ls-xl-5">
+                                    <a href="#" class="icon_custom">Sport<i class="i-angle-right i-white bg-size-50"></i></a>
+
+                                    <div class="col-xl-7">
+                                        <div class="p-24px d-xl-none col-ls-12">
+                                            <h3 class="text-left">Sport</h3>
+                                            <span class="d-flex flex-row align-items-center pt-8px">
+                                                <a href="#" class="d-flex flex-grow-1 align-items-center fs-short-2 text-dark-primary icon_custom"><i class="i-angle-left bg-size-40 bg-position-left"></i>Retour sur Vivre à Marche</a>
+                                                <a href="#" class="position-relative w-24px h-24px d-flex justify-content-center align-items-center icon_custom">
+                                                    <i class="i-times"></i>
+                                                </a>
+                                            </span>
+                                        </div>
+                                        <ul class="col-ls-6">
+                                            <li><a href="#">Accueil sport</a></li>
+                                            <li><a href="#">Actu-Santé</a></li>
+                                            <li><a href="#">Challenges-Mérites sportifs</a></li>
+                                            <li><a href="#">Clubs-Compétitions</a></li>
+                                            <li><a href="#">Cours-Animations</a></li>
+                                            <li><a href="#">Clubs sports & loisirs</a></li>
+                                            <li><a href="#">Location salles & terrains multisports</a></li>
+                                            <li><a href="#">Missions des services</a></li>
+                                            <li><a href="pool.html">Piscine communale</a></li>
+                                        </ul>
+                                        <ul class="col-ls-6">
+                                            <li><a href="#">Sport en Marche</a></li>
+                                            <li><a href="#">Sports loisirs</a></li>
+                                            <li><a href="#">Stages</a></li>
+                                            <li><a href="#">Subventions-Subsides</a></li>
+                                        </ul>
+                                    </div>
+                                </li>
+
+                                <!--tourisme | TODO JF: à brancher-->
+                                <li class="c-tou col-xl-5 mb-xl-12px col-ls-6 col-ls-xl-5">
+                                    <a href="#" class="icon_custom">Tourisme<i class="i-angle-right i-white bg-size-50"></i></a>
+
+                                    <div class="col-xl-7">
+                                        <div class="p-24px d-xl-none col-ls-12">
+                                            <h3 class="text-left">Tourisme</h3>
+                                            <span class="d-flex flex-row align-items-center pt-8px">
+                                                <a href="#" class="d-flex flex-grow-1 align-items-center fs-short-2 text-dark-primary icon_custom"><i class="i-angle-left bg-size-40 bg-position-left"></i>Retour sur Vivre à Marche</a>
+                                                <a href="#" class="position-relative w-24px h-24px d-flex justify-content-center align-items-center icon_custom">
+                                                    <i class="i-times"></i>
+                                                </a>
+                                            </span>
+                                        </div>
+                                        <ul class="col-ls-6">
+                                            <li><a href="#">Manifestations</a></li>
+                                            <li><a href="#">Accueil tourisme</a></li>
+                                            <li><a href="#">Aires de jeux</a></li>
+                                            <li><a href="#">Plans</a></li>
+                                            <li><a href="#">Logements</a></li>
+                                            <li><a href="#">Horeca</a></li>
+                                            <li><a href="#">Statues-Sculptures</a></li>
+                                            <li><a href="#">Marche en livres</a></li>
+                                            <li><a href="#">Marchés locaux</a></li>
+                                        </ul>
+                                        <ul class="col-ls-6">
+                                            <li><a href="#">Médiathèque</a></li>
+                                            <li><a href="#">Mouvements de jeunesse</a></li>
+                                            <li><a href="#">Musées</a></li>
+                                            <li><a href="#">Noël à Marche</a></li>
+                                            <li><a href="#">Wifi public</a></li>
+                                        </ul>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!--calendar-->
+                    <div class="calendar">
+
+                       <!-- TODO : à brancher -->
+                        <a href="#">
+                            <i class="icon_nav i-clock"></i>
+                            <span>Horaires-Contacts</span>
+                        </a>
+                    </div>
+
+                    <!--more | TODO JF: à brancher-->
+                    <div class="more">
+                        <input type="checkbox" id="more" name="more" />
+                        <a href="#" for="more">
+                            <i class="icon_nav i-plus"></i>
+                        </a>
+
+                        <div class="bubble">
+                            <i class="graphicElement"></i>
+                            <div>
+                                <a href="#">E-Guichet</a>
+                                <a href="news.html">Actualités</a>
+                                <a href="events.html">Agenda</a>
+                            </div>
+                            <i class="graphicElement"></i>
+                        </div>
+                    </div>
+
+                    <!--visible from extralarge-->
+                    <!--e-ticket-->
+                    <div class="eticket">
+
+                       <!-- TODO : à brancher -->
+                        <a href="#">
+                            <span>E-Guichet</span>
+                        </a>
+                    </div>
+                    <!--news-->
+                    <div class="news">
+                        <a href="news.html">
+                            <span>Actualités</span>
+                        </a>
+                    </div>
+                    <!--agenda-->
+                    <div class="agenda">
+                        <a href="events.html">
+                            <span>Agenda</span>
+                        </a>
+                    </div>
+                </nav>
+
+                <!-- social networks -->
+                <div>
+
+                   <!-- TODO : à brancher -->
+                    <a href="#">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+
+                    <!-- TODO : à brancher -->
+                    <a href="#">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+
+                    <!-- TODO : à brancher -->
+                    <a href="#">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+
+                    <!-- TODO : à brancher -->
+                    <a href="#">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                </div>
+            </div>
+        </header>
+
+
+
+        <!--CONTENT-->
+        <section id="content" class="pt-42px pb-36px pl-ls-42px overflow-ls-hidden overflow-md-hidden pl-ls-lg-0 pt-xl-66px pb-lg-66px mw-1440px mx-xl-auto w-100">
+
+            <!--ARTICLE-->
+            <div class="bg-white pt-24px px-24px position-relative d-md-flex px-xl-48px mx-xl-n30px justify-content-md-center flex-column">
+
+                <!--back | TODO JF: lien dynamique vers la page précédente-->
+                <a href="news.html" class="button lvl3 align-self-ls-md-start align-self-md-start position-relative right-0 right-hover-12px fs-short-2"><i class="fas fa-angle-left pr-8px d-ls-md-inline pr-md-12px fs-short-2 d-md-inline"></i>Retour aux actualités</a>
+
+                <!--title-->
+                <h2 class="text-ls-md-left pt-ls-md-8px text-md-left pt-md-8px">Écoles de devoirs : un petit déjeuner avec les volontaires</h2>
+
+                <!--category-->
+                <span class="color-cat-cit ff-semibold pt-12px d-block fs-short-2">Citoyen</span>
+
+                <!--article-->
+                <div class="pt-48px d-lg-flex mx-n15px">
+                    <div class="d-flex flex-column align-items-center mx-md-n15px flex-md-wrap flex-md-row align-items-md-start flex-lg-column col-lg-8 mx-lg-0 flex-lg-nowrap">
+                        <!--img-->
+                        <div class="bg-img w-100 h-220px position-relative h-lg-330px">
+                            <i class="bg-img-news-1 position-absolute top-0 bottom-0 left-0 right-0 md-left-15px md-right-15px lg-left-0 lg-right-0"></i>
+                        </div>
+
+                        <!--OBJECT | TAGS-->
+                        <div class="overflow-hidden w-100 pt-24px col-md-12 px-0 px-md-15px d-lg-none">
+                            <ul class="object-tags">
+                                <li><a href="#">École</a></li>
+                                <li><a href="#">Jeunesse</a></li>
+                                <li><a href="#">Devoirs</a></li>
+                                <li><a href="#">Volontariat</a></li>
+                            </ul>
+                        </div>
+
+                        <!--OBJECT | TEXT-DYN | TODO JF : brancher la possibilité d'ouvrir/réduire le content avec un ellipsis + condition sur l'extend-->
+                        <div class="object-text-dyn col-md-8 px-0 px-md-15px col-lg-12 px-lg-0">
+                          <input type="checkbox" id="text-dyn"/>
+                           <div for="text-dyn">
+                                <span class="more">Lire plus</span>
+                                <span class="less">Réduire</span>
+                            </div>
+                            <div for="text-dyn">
+                               <span>
+                            <p><strong>Brasserie Atrium<br>
+</strong>Webshop pour la région de Marche-en-Famenne +25 km!<br>
+<a href="https://new.marche.be/economie/files/2020/10/icone-horloge-e1603268595128.png"><img loading="lazy" class="size-full wp-image-12636 alignnone" src="https://new.marche.be/economie/files/2020/10/icone-horloge-e1603268595128.png" alt="" width="15" height="15"></a> Livraison tous les jeudis – Première livraison 29/10<br>
+Il est également possible de venir retirer sur place sur rendez-vous.<br>
+<span class="d2edcug0 hpfvmrgz qv66sw1b c1et5uql rrkovp55 a8c37x1j keod5gw0 nxhoafnm aigsh9s9 d3f4x2em fe6kdd0r mau55g9w c8b282yb iv3no6db jq4qci2q a3bd9o3v knj5qynh oo9gr5id hzawbc8m" dir="auto"><span class="d2edcug0 hpfvmrgz qv66sw1b c1et5uql rrkovp55 jq4qci2q a3bd9o3v knj5qynh oo9gr5id"><a href="https://new.marche.be/economie/files/2020/10/icone-tel-e1603268374335.png"><img loading="lazy" class="size-full wp-image-12634 alignnone" src="https://new.marche.be/economie/files/2020/10/icone-tel-e1603268374335.png" alt="" width="15" height="15"></a> 084 21 36 56<br>
+</span></span><a href="https://www.brasserieatrium.be/shop">https://www.brasserieatrium.be/shop</a><br>
+<br>
+<strong>Cap Marche Glacier<br>
+</strong>Salon fermé mais disponible pour commandes de gâteaux et demi-litres. Livraison possible.<br>
+<span class="d2edcug0 hpfvmrgz qv66sw1b c1et5uql rrkovp55 a8c37x1j keod5gw0 nxhoafnm aigsh9s9 d3f4x2em fe6kdd0r mau55g9w c8b282yb iv3no6db jq4qci2q a3bd9o3v knj5qynh oo9gr5id hzawbc8m" dir="auto"><span class="d2edcug0 hpfvmrgz qv66sw1b c1et5uql rrkovp55 jq4qci2q a3bd9o3v knj5qynh oo9gr5id"><a href="https://new.marche.be/economie/files/2020/10/icone-tel-e1603268374335.png"><img loading="lazy" class="size-full wp-image-12634 alignnone" src="https://new.marche.be/economie/files/2020/10/icone-tel-e1603268374335.png" alt="" width="15" height="15"></a></span></span> 084 37 81 67 ou 0477/71 97 52 ou par la page Facebook<br>
+<a href="https://www.facebook.com/GlacierCapoueMarcheenFamenne3">https://www.facebook.com/GlacierCapoueMarcheenFamenne3</a><br>
+<br>
+<strong>Délices d’Asie<br>
+</strong>Carte à emporter. Commandes uniquement par téléphone<br>
+<a href="https://new.marche.be/economie/files/2020/10/icone-horloge-e1603268595128.png"><img loading="lazy" class="size-full wp-image-12636 alignnone" src="https://new.marche.be/economie/files/2020/10/icone-horloge-e1603268595128.png" alt="" width="15" height="15"></a> Du mardi au dimanche&nbsp;: 12h00-14h00 et 17h30- 21h30<br>
+<span class="d2edcug0 hpfvmrgz qv66sw1b c1et5uql rrkovp55 a8c37x1j keod5gw0 nxhoafnm aigsh9s9 d3f4x2em fe6kdd0r mau55g9w c8b282yb iv3no6db jq4qci2q a3bd9o3v knj5qynh oo9gr5id hzawbc8m" dir="auto"><span class="d2edcug0 hpfvmrgz qv66sw1b c1et5uql rrkovp55 jq4qci2q a3bd9o3v knj5qynh oo9gr5id"><a href="https://new.marche.be/economie/files/2020/10/icone-tel-e1603268374335.png"><img loading="lazy" class="size-full wp-image-12634 alignnone" src="https://new.marche.be/economie/files/2020/10/icone-tel-e1603268374335.png" alt="" width="15" height="15"></a></span></span> 084-456 888<br>
+<a href="https://www.facebook.com/D%C3%A9lices-dAsie-136472166429495">https://www.facebook.com/D%C3%A9lices-dAsie-136472166429495</a><br>
+<br>
+<strong>Friterie de la Gare – Marloie<br>
+</strong>A emporter<br>
+<a href="https://new.marche.be/economie/files/2020/10/icone-horloge-e1603268595128.png"><img loading="lazy" class="size-full wp-image-12636 alignnone" src="https://new.marche.be/economie/files/2020/10/icone-horloge-e1603268595128.png" alt="" width="15" height="15"></a> Ouvert 7/7 de 10.30-13.45 &amp; 16.00-21.00<br>
+<a href="https://new.marche.be/economie/files/2020/10/icone-tel-e1603268374335.png"><img loading="lazy" class="size-full wp-image-12634 alignnone" src="https://new.marche.be/economie/files/2020/10/icone-tel-e1603268374335.png" alt="" width="15" height="15"></a>&nbsp;084 377 066<br>
+Commandes par téléphone pour le midi entre 10h et 11h45 et pour le soir entre 15h30 et 18h<br>
+<a href="https://www.facebook.com/friterie6900marloie">https://www.facebook.com/friterie6900marloie</a><br>
+<br>
+<strong>Friterie Johnny – Hargimont<br>
+</strong>Ouvert uniquement à emporter. A venir commander et chercher sur place.<br>
+<a href="https://new.marche.be/economie/files/2020/10/icone-horloge-e1603268595128.png"><img loading="lazy" class="size-full wp-image-12636 alignnone" src="https://new.marche.be/economie/files/2020/10/icone-horloge-e1603268595128.png" alt="" width="15" height="15"></a> 7/7 de 11h30 à 14h et de 17h à 21h<br>
+<br>
+<strong>Futari<br>
+</strong>Toujours ouvert à emporter<br>
+<a href="https://new.marche.be/economie/files/2020/10/icone-horloge-e1603268595128.png"><img loading="lazy" class="size-full wp-image-12636 alignnone" src="https://new.marche.be/economie/files/2020/10/icone-horloge-e1603268595128.png" alt="" width="15" height="15"></a> Ouvert tous les jours sauf le mercredi de 11h à 14h30 et de 16h30 à 21h<br>
+<a href="https://new.marche.be/economie/files/2020/10/icone-tel-e1603268374335.png"><img loading="lazy" class="size-full wp-image-12634 alignnone" src="https://new.marche.be/economie/files/2020/10/icone-tel-e1603268374335.png" alt="" width="15" height="15"></a> 0485 87 69 88<br>
+<a href="https://www.facebook.com/Futari-1993705647418624">https://www.facebook.com/Futari-1993705647418624</a><br>
+<br>
+<strong>Have a Nice Day</strong><br>
+Livraison petits-déjeuners tous les dimanches et jours fériés. Produits locaux. Brunch et box thématiques.<br>
+Réservation via la page Facebook<br>
+<a href="https://new.marche.be/economie/files/2020/10/icone-tel-e1603268374335.png"><img loading="lazy" class="size-full wp-image-12634 alignnone" src="https://new.marche.be/economie/files/2020/10/icone-tel-e1603268374335.png" alt="" width="15" height="15"></a> 0471 57 67 20<br>
+<a href="https://www.facebook.com/HAND0403">https://www.facebook.com/HAND0403</a><br>
+<br>
+<strong>L’Enka Toqué<br>
+</strong>Plats à emporter&nbsp;: soupe, pâtes, croquettes, falafel,…<br>
+<a href="https://new.marche.be/economie/files/2020/10/icone-horloge-e1603268595128.png"><img loading="lazy" class="size-full wp-image-12636 alignnone" src="https://new.marche.be/economie/files/2020/10/icone-horloge-e1603268595128.png" alt="" width="15" height="15"></a> Du mardi au samedi de 11h00 et 14h00<br>
+Commande UNIQUEMENT par téléphone au 0471 44 78 57 à venir enlever entre 11h00 et 14h00 du mardi au samedi<br>
+<a href="https://new.marche.be/economie/files/2020/10/icone-tel-e1603268374335.png"><img loading="lazy" class="size-full wp-image-12634 alignnone" src="https://new.marche.be/economie/files/2020/10/icone-tel-e1603268374335.png" alt="" width="15" height="15"></a> 0471 44 78 57<br>
+<a href="https://www.facebook.com/lenkatoque">https://www.facebook.com/lenkatoque</a><br>
+<br>
+<strong>L’effet Boeuf</strong><br>
+Menu Saint-Valentin à emporter<br>
+<span class="d2edcug0 hpfvmrgz qv66sw1b c1et5uql rrkovp55 a8c37x1j keod5gw0 nxhoafnm aigsh9s9 d3f4x2em fe6kdd0r mau55g9w c8b282yb iv3no6db jq4qci2q a3bd9o3v knj5qynh oo9gr5id" dir="auto"><a href="https://new.marche.be/economie/files/2020/10/icone-horloge-e1603268595128.png"><img loading="lazy" class="size-full wp-image-12636 alignnone" src="https://new.marche.be/economie/files/2020/10/icone-horloge-e1603268595128.png" alt="" width="15" height="15"></a> Commandes au plus tard le mercredi midi 10/02. Retrait de vos menus : Vendredi 12, et samedi 13 février de 16h à 18h.<br>
+</span><a href="https://new.marche.be/economie/files/2020/10/icone-tel-e1603268374335.png"><img loading="lazy" class="size-full wp-image-12634 alignnone" src="https://new.marche.be/economie/files/2020/10/icone-tel-e1603268374335.png" alt="" width="15" height="15"></a><span class="d2edcug0 hpfvmrgz qv66sw1b c1et5uql rrkovp55 a8c37x1j keod5gw0 nxhoafnm aigsh9s9 d3f4x2em fe6kdd0r mau55g9w c8b282yb iv3no6db jq4qci2q a3bd9o3v knj5qynh oo9gr5id" dir="auto">0496/10.44.88<br>
+<a href="https://www.facebook.com/leffetboeufmarche">https://www.facebook.com/leffetboeufmarche</a> </span><br>
+<br>
+<strong>L’Inévitable<br>
+</strong>Uniquement sur commande (de préférence le jour avant) par téléphone. Menu disponible sur la page Facebook.<br>
+<a href="https://new.marche.be/economie/files/2020/10/icone-horloge-e1603268595128.png"><img loading="lazy" class="size-full wp-image-12636 alignnone" src="https://new.marche.be/economie/files/2020/10/icone-horloge-e1603268595128.png" alt="" width="15" height="15"></a> Enlèvements de 17h30 à 18h30.<br>
+<a href="https://new.marche.be/economie/files/2020/10/icone-tel-e1603268374335.png"><img loading="lazy" class="size-full wp-image-12634 alignnone" src="https://new.marche.be/economie/files/2020/10/icone-tel-e1603268374335.png" alt="" width="15" height="15"></a> 084/400.284<br>
+<a href="https://www.facebook.com/restaurantlinevitable">https://www.facebook.com/restaurantlinevitable</a><br>
+<br>
+<strong>La Bella Notte<br>
+</strong>Toujours ouvert à emporter<br>
+<a href="https://new.marche.be/economie/files/2020/10/icone-horloge-e1603268595128.png"><img loading="lazy" class="size-full wp-image-12636 alignnone" src="https://new.marche.be/economie/files/2020/10/icone-horloge-e1603268595128.png" alt="" width="15" height="15"></a> Du mercredi au dimanche de 17h30 à 21h<br>
+<a href="https://new.marche.be/economie/files/2020/10/icone-tel-e1603268374335.png"><img loading="lazy" class="size-full wp-image-12634 alignnone" src="https://new.marche.be/economie/files/2020/10/icone-tel-e1603268374335.png" alt="" width="15" height="15"></a> 084 32 25 53<br>
+<a href="https://www.facebook.com/Bellanotte.aye">https://www.facebook.com/Bellanotte.aye</a><br>
+<br>
+<strong>La Bonne Porte<br>
+</strong>Plats préparés maison (faciles à réchauffer, se conservent 15 jours) de 8 à 14€/plat. Commandes sur place ou par téléphone<br>
+<a href="https://new.marche.be/economie/files/2020/10/icone-horloge-e1603268595128.png"><img loading="lazy" class="size-full wp-image-12636 alignnone" src="https://new.marche.be/economie/files/2020/10/icone-horloge-e1603268595128.png" alt="" width="15" height="15"></a> Ouvert du lundi au vendredi, de 9h à 14H.<br>
+<a href="https://new.marche.be/economie/files/2020/10/icone-tel-e1603268374335.png"><img loading="lazy" class="size-full wp-image-12634 alignnone" src="https://new.marche.be/economie/files/2020/10/icone-tel-e1603268374335.png" alt="" width="15" height="15"></a> 084 31 52 04.<br>
+<a href="https://www.facebook.com/labonneporte">https://www.facebook.com/labonneporte</a><br>
+<br>
+<strong>La Gloriette<br>
+</strong>Menu 3 services à 30€ – Menu 4 services à 39€<br>
+Menu différent chaque semaine<br>
+<a href="https://new.marche.be/economie/files/2020/10/icone-horloge-e1603268595128.png"><img loading="lazy" class="size-full wp-image-12636 alignnone" src="https://new.marche.be/economie/files/2020/10/icone-horloge-e1603268595128.png" alt="" width="15" height="15"></a> Commande avant 11h pour enlèvement le même jour. Livraison gratuite dans un rayon de 10km pour les commandes de minimum 95€<br>
+<a href="https://new.marche.be/economie/files/2020/10/icone-tel-e1603268374335.png"><img loading="lazy" class="size-full wp-image-12634 alignnone" src="https://new.marche.be/economie/files/2020/10/icone-tel-e1603268374335.png" alt="" width="15" height="15"></a> 084 37 98 22<br>
+<a href="https://www.facebook.com/restaurantlagloriette">https://www.facebook.com/restaurantlagloriette</a><br>
+<a href="http://www.lagloriette.net/">http://www.lagloriette.net/</a><br>
+<br>
+<strong>La Médina<br>
+</strong>Toute la carte à emporter<br>
+<a href="https://new.marche.be/economie/files/2020/10/icone-horloge-e1603268595128.png"><img loading="lazy" class="size-full wp-image-12636 alignnone" src="https://new.marche.be/economie/files/2020/10/icone-horloge-e1603268595128.png" alt="" width="15" height="15"></a> Tous les jours de 12h à 14h et de 18h à 21h<br>
+<a href="https://new.marche.be/economie/files/2020/10/icone-tel-e1603268374335.png"><img loading="lazy" class="size-full wp-image-12634 alignnone" src="https://new.marche.be/economie/files/2020/10/icone-tel-e1603268374335.png" alt="" width="15" height="15"></a> 084 45 67 53<br>
+<a href="https://www.facebook.com/restolamedina.be">https://www.facebook.com/restolamedina.be</a><br>
+<br>
+<strong>La Table du Moulin<br>
+</strong>Réservation la veille – Plat du jour à 10€<br>
+<a href="https://new.marche.be/economie/files/2020/10/icone-tel-e1603268374335.png"><img loading="lazy" class="size-full wp-image-12634 alignnone" src="https://new.marche.be/economie/files/2020/10/icone-tel-e1603268374335.png" alt="" width="15" height="15"></a>&nbsp;0498 24 75 18 ou 0497 30 83 88<br>
+<a href="https://www.facebook.com/moulin.hargimont">https://www.facebook.com/moulin.hargimont</a><br>
+<br>
+<strong>La Tart’in’e<br>
+</strong>Ouvert à emporter&nbsp;: pâtes chaudes, croques et sandwichs<br>
+<a href="https://new.marche.be/economie/files/2020/10/icone-tel-e1603268374335.png"><img loading="lazy" class="size-full wp-image-12634 alignnone" src="https://new.marche.be/economie/files/2020/10/icone-tel-e1603268374335.png" alt="" width="15" height="15"></a> 0491 88 98 25<br>
+<a href="https://www.facebook.com/La-Tartine-100950757926762/">https://www.facebook.com/La-Tartine-100950757926762/</a><br>
+<br>
+<strong>Le Baragou<br>
+</strong>Menus à emporter à 35,00€ (amuse-bouche, entrée, plat et dessert)<br>
+<a href="https://new.marche.be/economie/files/2020/10/icone-tel-e1603268374335.png"><img loading="lazy" class="size-full wp-image-12634 alignnone" src="https://new.marche.be/economie/files/2020/10/icone-tel-e1603268374335.png" alt="" width="15" height="15"></a> 084 44 58 68<br>
+<a href="https://www.facebook.com/lebaragou">https://www.facebook.com/lebaragou</a><br>
+<br>
+<strong>Le Comptoir Gourmand<br>
+</strong>Plats brasserie à emporter pour adultes et enfants. Possibilité de venir avec des contenants pour une démarche 0 déchet.<br>
+<a href="https://new.marche.be/economie/files/2020/10/icone-horloge-e1603268595128.png"><img loading="lazy" class="size-full wp-image-12636 alignnone" src="https://new.marche.be/economie/files/2020/10/icone-horloge-e1603268595128.png" alt="" width="15" height="15"></a> Vendredi-samedi-dimanche de 17h30 à 19h30<br>
+<a href="https://new.marche.be/economie/files/2020/10/icone-tel-e1603268374335.png"><img loading="lazy" class="size-full wp-image-12634 alignnone" src="https://new.marche.be/economie/files/2020/10/icone-tel-e1603268374335.png" alt="" width="15" height="15"></a>0489/<span class="d2edcug0 hpfvmrgz qv66sw1b c1et5uql rrkovp55 a8c37x1j keod5gw0 nxhoafnm aigsh9s9 d3f4x2em fe6kdd0r mau55g9w c8b282yb iv3no6db jq4qci2q a3bd9o3v knj5qynh oo9gr5id hzawbc8m" dir="auto">63.63.96</span><br>
+<a href="https://www.lecomptoirgourmand.eu">https://www.lecomptoirgourmand.eu</a><br>
+<br>
+<strong>Le Creta<br>
+</strong>Plat à emporter : Mezze, brochette d’agneau ou bœuf, plateau royal,…<br>
+<a href="https://new.marche.be/economie/files/2020/10/icone-horloge-e1603268595128.png"><img loading="lazy" class="size-full wp-image-12636 alignnone" src="https://new.marche.be/economie/files/2020/10/icone-horloge-e1603268595128.png" alt="" width="15" height="15"></a> Vendredi-samedi de 18h à 21h – Dimanche : de 11h30 à 14h et &nbsp;de 18h à 21h<br>
+<a href="https://new.marche.be/economie/files/2020/10/icone-tel-e1603268374335.png"><img loading="lazy" class="size-full wp-image-12634 alignnone" src="https://new.marche.be/economie/files/2020/10/icone-tel-e1603268374335.png" alt="" width="15" height="15"></a>084 31 37 57<br>
+<a href="https://www.facebook.com/LecretaMarche/">https://www.facebook.com/LecretaMarche/</a><br>
+<br>
+<strong>Le Dagobert<br>
+</strong>La sandwicherie reste ouverte, à emporter<br>
+<a href="https://new.marche.be/economie/files/2020/10/icone-horloge-e1603268595128.png"><img loading="lazy" class="size-full wp-image-12636 alignnone" src="https://new.marche.be/economie/files/2020/10/icone-horloge-e1603268595128.png" alt="" width="15" height="15"></a> De 11h15 à 14 h du lundi au samedi inclus<br>
+<a href="https://new.marche.be/economie/files/2020/10/icone-tel-e1603268374335.png"><img loading="lazy" class="size-full wp-image-12634 alignnone" src="https://new.marche.be/economie/files/2020/10/icone-tel-e1603268374335.png" alt="" width="15" height="15"></a> 0478 62 09 70<br>
+<br>
+<strong>Le Nonna<br>
+</strong>Sandwich, des pâtes ou des plats à emporter<br>
+<a href="https://new.marche.be/economie/files/2020/10/icone-horloge-e1603268595128.png"><img loading="lazy" class="size-full wp-image-12636 alignnone" src="https://new.marche.be/economie/files/2020/10/icone-horloge-e1603268595128.png" alt="" width="15" height="15"></a> Ouvert la semaine de 11h à 14h. Service traiteur (voir menu sur Facebook) les vendredis et samedi sur rdv.<br>
+Livraison en entreprise la semaine de 11h à 12h.<br>
+<a href="https://new.marche.be/economie/files/2020/10/icone-tel-e1603268374335.png"><img loading="lazy" class="size-full wp-image-12634 alignnone" src="https://new.marche.be/economie/files/2020/10/icone-tel-e1603268374335.png" alt="" width="15" height="15"></a> 084 40 11 32<br>
+<a href="https://www.facebook.com/lenonna">https://www.facebook.com/lenonna</a><br>
+<br>
+<strong>Le Palais d’Été<br>
+</strong>Plats à emporter<br>
+<a href="https://new.marche.be/economie/files/2020/10/icone-horloge-e1603268595128.png"><img loading="lazy" class="size-full wp-image-12636 alignnone" src="https://new.marche.be/economie/files/2020/10/icone-horloge-e1603268595128.png" alt="" width="15" height="15"></a> De mardi à dimanche de 18h à 21h<br>
+<a href="https://new.marche.be/economie/files/2020/10/icone-tel-e1603268374335.png"><img loading="lazy" class="size-full wp-image-12634 alignnone" src="https://new.marche.be/economie/files/2020/10/icone-tel-e1603268374335.png" alt="" width="15" height="15"></a> 084 32 27 56<br>
+<a href="https://www.facebook.com/Le-Palais-d%C3%A9t%C3%A9-149154995704924">https://www.facebook.com/Le-Palais-d%C3%A9t%C3%A9-149154995704924</a><br>
+<br>
+<strong>Le Quartier Latin<br>
+</strong>Plateau de fruits de mer à emporter, sur commande.<br>
+<a href="https://new.marche.be/economie/files/2020/10/icone-horloge-e1603268595128.png"><img loading="lazy" class="size-full wp-image-12636 alignnone" src="https://new.marche.be/economie/files/2020/10/icone-horloge-e1603268595128.png" alt="" width="15" height="15"></a> Tous les vendredis, samedis et dimanches à partir du 30 octobre.<br>
+Réservations à effectuer pour le jeudi 15h00 au plus tard.<br>
+<a href="https://new.marche.be/economie/files/2020/10/icone-tel-e1603268374335.png"><img loading="lazy" class="size-full wp-image-12634 alignnone" src="https://new.marche.be/economie/files/2020/10/icone-tel-e1603268374335.png" alt="" width="15" height="15"></a> 084/32 17 13<br>
+<a href="https://www.facebook.com/Quartier.Latin.Hotel/">https://www.facebook.com/Quartier.Latin.Hotel/</a><br>
+<br>
+<strong>Les 4 Saisons<br>
+</strong>Chaque semaine un nouveau menu à emporter. Menu 3 services à 40€.<br>
+Commandes jusque jeudi 19h par téléphone ou en ligne sous onglet «&nbsp;TAKE AWAY&nbsp;» : <a href="https://bit.ly/35Cpvzo">https://bit.ly/35Cpvzo</a><br>
+<a href="https://new.marche.be/economie/files/2020/10/icone-horloge-e1603268595128.png"><img loading="lazy" class="size-full wp-image-12636 alignnone" src="https://new.marche.be/economie/files/2020/10/icone-horloge-e1603268595128.png" alt="" width="15" height="15"></a> Commandes enlevées par la fenêtre du restaurant vendredi et samedi de 17h00 à 18h00 et de 11h30 à 12h30 le dimanche.<br>
+<a href="https://new.marche.be/economie/files/2020/10/icone-tel-e1603268374335.png"><img loading="lazy" class="size-full wp-image-12634 alignnone" src="https://new.marche.be/economie/files/2020/10/icone-tel-e1603268374335.png" alt="" width="15" height="15"></a> 0473/78.31.02<br>
+<a href="https://www.facebook.com/les.4.Saisons.Marche">https://www.facebook.com/les.4.Saisons.Marche</a><br>
+<br>
+<strong>Les Faveurs du Ciel<br>
+</strong>Plats à emporter. Les commandes se font uniquement par téléphone à partir de 16h00.<br>
+<a href="https://new.marche.be/economie/files/2020/10/icone-horloge-e1603268595128.png"><img loading="lazy" class="size-full wp-image-12636 alignnone" src="https://new.marche.be/economie/files/2020/10/icone-horloge-e1603268595128.png" alt="" width="15" height="15"></a> De 17h à 20h30 (fermé le mercredi sauf jour férié) – Ouvert également le dimanche midi de 11h30 à 14h.<br>
+<a href="https://new.marche.be/economie/files/2020/10/icone-tel-e1603268374335.png"><img loading="lazy" class="size-full wp-image-12634 alignnone" src="https://new.marche.be/economie/files/2020/10/icone-tel-e1603268374335.png" alt="" width="15" height="15"></a> 084/ 46 83 64<br>
+<a href="https://www.facebook.com/Les-Faveurs-Du-Ciel-333916276746569">https://www.facebook.com/Les-Faveurs-Du-Ciel-333916276746569</a><br>
+<br>
+<strong>Les Glaces de Lalie<br>
+</strong>A partir du 31/10/2020, ouvert à emporter. Également disponible pour les commandes de litres de glaces ou de gâteaux.<br>
+<a href="https://new.marche.be/economie/files/2020/10/icone-horloge-e1603268595128.png"><img loading="lazy" class="size-full wp-image-12636 alignnone" src="https://new.marche.be/economie/files/2020/10/icone-horloge-e1603268595128.png" alt="" width="15" height="15"></a> De 14h à 18h<br>
+<a href="https://new.marche.be/economie/files/2020/10/icone-tel-e1603268374335.png"><img loading="lazy" class="size-full wp-image-12634 alignnone" src="https://new.marche.be/economie/files/2020/10/icone-tel-e1603268374335.png" alt="" width="15" height="15"></a> 084 31 27 40<br>
+<a href="https://www.facebook.com/Les-glaces-de-Lalie-1532720390304221/">https://www.facebook.com/Les-glaces-de-Lalie-1532720390304221/</a><br>
+<br>
+<strong>Lunch Garden<br>
+</strong>Plats à emporter. Commande soit place soit par téléphone, soit via l’application Ord’r<br>
+<a href="https://new.marche.be/economie/files/2020/10/icone-horloge-e1603268595128.png"><img loading="lazy" class="size-full wp-image-12636 alignnone" src="https://new.marche.be/economie/files/2020/10/icone-horloge-e1603268595128.png" alt="" width="15" height="15"></a> De 11h30 à 19h30<br>
+<a href="https://new.marche.be/economie/files/2020/10/icone-tel-e1603268374335.png"><img loading="lazy" class="size-full wp-image-12634 alignnone" src="https://new.marche.be/economie/files/2020/10/icone-tel-e1603268374335.png" alt="" width="15" height="15"></a>&nbsp;084 34 56 21<br>
+<a href="https://www.facebook.com/lunchgarden.marche">https://www.facebook.com/lunchgarden.marche</a><br>
+<br>
+<strong>MandaBar<br>
+</strong>Burgers à emporter le vendredi.<br>
+Commandes par téléphone, à la terrasse arrière du MandaBar ou en ligne&nbsp;: <a href="https://bit.ly/2TzDiAX?fbclid=IwAR1OJKmXeP_gGw9wtS5Cfscr5TEbKIHcqx5JeuXKyqwppOFAMr2c07Gh3fA">https://bit.ly/2TzDiAX</a><br>
+<a href="https://new.marche.be/economie/files/2020/10/icone-horloge-e1603268595128.png"><img loading="lazy" class="size-full wp-image-12636 alignnone" src="https://new.marche.be/economie/files/2020/10/icone-horloge-e1603268595128.png" alt="" width="15" height="15"></a> Commandes à retirer le vendredi, avant 20h30!<br>
+<a href="https://new.marche.be/economie/files/2020/10/icone-tel-e1603268374335.png"><img loading="lazy" class="size-full wp-image-12634 alignnone" src="https://new.marche.be/economie/files/2020/10/icone-tel-e1603268374335.png" alt="" width="15" height="15"></a> 084/44.59.00<br>
+<a href="https://www.facebook.com/mandabarmarche/">https://www.facebook.com/mandabarmarche/</a><br>
+<br>
+<strong>MC DONALD’S<br>
+</strong>McDrive &amp; Take out restent disponibles<br>
+<br>
+<strong>N4 Snack<br>
+</strong>Ouvert pour l’emporter et va assurer un service livraison.<br>
+<a href="https://new.marche.be/economie/files/2020/10/icone-horloge-e1603268595128.png"><img loading="lazy" class="size-full wp-image-12636 alignnone" src="https://new.marche.be/economie/files/2020/10/icone-horloge-e1603268595128.png" alt="" width="15" height="15"></a> Pour l’emporter : du mercredi au dimanche 11h30 à 14h et de 17h à 22h<br>
+Pour le service de livraison du mercredi au dimanche de 11h30 à 14h et de 18h à 21h.<br>
+Dans un rayon de 10km pour un montant de minimum 25€<br>
+<a href="https://new.marche.be/economie/files/2020/10/icone-tel-e1603268374335.png"><img loading="lazy" class="size-full wp-image-12634 alignnone" src="https://new.marche.be/economie/files/2020/10/icone-tel-e1603268374335.png" alt="" width="15" height="15"></a> 0484 97 51 73<br>
+<a href="https://www.facebook.com/N4snack">https://www.facebook.com/N4snack</a><br>
+<br>
+<strong>San Marino<br>
+</strong>Le restaurant vous propose des plats à emporter (uniquement pizzas, pâtes, escalopes, viandes, suggestions, le tiramisu fait maison et entrées)<br>
+<a href="https://new.marche.be/economie/files/2020/10/icone-horloge-e1603268595128.png"><img loading="lazy" class="size-full wp-image-12636 alignnone" src="https://new.marche.be/economie/files/2020/10/icone-horloge-e1603268595128.png" alt="" width="15" height="15"></a> Tous les jours sauf le mercredi de 12h à 14h et de 18h à 21h30<br>
+<a href="https://new.marche.be/economie/files/2020/10/icone-tel-e1603268374335.png"><img loading="lazy" class="size-full wp-image-12634 alignnone" src="https://new.marche.be/economie/files/2020/10/icone-tel-e1603268374335.png" alt="" width="15" height="15"></a> 084 31 60 05<br>
+Merci de passer votre commande par téléphone à l’avance<br>
+<a href="https://www.sanmarino-marche.be/">https://www.sanmarino-marche.be/</a><br>
+<br>
+<strong>Vanille-Canelle<br>
+</strong>Pâtes à emporter<br>
+<a href="https://new.marche.be/economie/files/2020/10/icone-horloge-e1603268595128.png"><img loading="lazy" class="size-full wp-image-12636 alignnone" src="https://new.marche.be/economie/files/2020/10/icone-horloge-e1603268595128.png" alt="" width="15" height="15"></a> Tous les jours de 18h à 21h<br>
+<a href="https://new.marche.be/economie/files/2020/10/icone-tel-e1603268374335.png"><img loading="lazy" class="size-full wp-image-12634 alignnone" src="https://new.marche.be/economie/files/2020/10/icone-tel-e1603268374335.png" alt="" width="15" height="15"></a> 084/31.21.33<br>
+<a href="https://www.facebook.com/vanillecannelle.marche">https://www.facebook.com/vanillecannelle.marche</a><br>
+<br>
+<strong>Wok Garden<br>
+</strong>Passez vos commandes au 084322919 à partir de 14h00 ou sur Facebook en MP.<br>
+<a href="https://new.marche.be/economie/files/2020/10/icone-horloge-e1603268595128.png"><img loading="lazy" class="size-full wp-image-12636 alignnone" src="https://new.marche.be/economie/files/2020/10/icone-horloge-e1603268595128.png" alt="" width="15" height="15"></a> Tous les jours sauf mardi de 17:30 à 20:30<br>
+Dimanche de 11:30-13:00 et de 17:30-20:30<br>
+<a href="https://new.marche.be/economie/files/2020/10/icone-tel-e1603268374335.png"><img loading="lazy" class="size-full wp-image-12634 alignnone" src="https://new.marche.be/economie/files/2020/10/icone-tel-e1603268374335.png" alt="" width="15" height="15"></a> 084 32 29 19<br>
+<a href="https://www.facebook.com/wokgardenmarcheenfamenne">https://www.facebook.com/wokgardenmarcheenfamenne</a><br>
+<br>
+<strong>La Vita e Bella</strong><br>
+Pizza et plats à emporter<br>
+<strong><a href="https://new.marche.be/economie/files/2020/10/icone-horloge-e1603268595128.png"><img loading="lazy" class="size-full wp-image-12636 alignnone" src="https://new.marche.be/economie/files/2020/10/icone-horloge-e1603268595128.png" alt="" width="15" height="15"></a></strong>Tous les jours sauf le mardi de 12h00-14h00 et 18h00-22h00<br>
+<a href="https://new.marche.be/economie/files/2020/10/icone-tel-e1603268374335.png"><img loading="lazy" class="size-full wp-image-12634 alignnone" src="https://new.marche.be/economie/files/2020/10/icone-tel-e1603268374335.png" alt="" width="15" height="15"></a> 084 35 32 20<br>
+https://www.facebook.com/lavitaebellamarche<br>
+<span class="d2edcug0 hpfvmrgz qv66sw1b c1et5uql rrkovp55 a8c37x1j keod5gw0 nxhoafnm aigsh9s9 d3f4x2em fe6kdd0r mau55g9w c8b282yb iv3no6db jq4qci2q a3bd9o3v knj5qynh oo9gr5id hzawbc8m" dir="auto"><span class="d2edcug0 hpfvmrgz qv66sw1b c1et5uql rrkovp55 jq4qci2q a3bd9o3v knj5qynh py34i1dx"><a class="oajrlxb2 g5ia77u1 qu0x051f esr5mh6w e9989ue4 r7d6kgcz rq0escxv nhd2j8a9 nc684nl6 p7hjln8o kvgmc6g5 cxmmr5t8 oygrvhab hcukyx3x jb3vyjys rz4wbd8a qt6c0cv9 a8nywdso i1ao9s8h esuyzwwr f1sip0of lzcic4wl py34i1dx gpro0wi8" role="link" href="mailto:aliottanuccio@gmail.com" target="_blank" rel="noopener">aliottanuccio@gmail.com</a></span></span></p>
+                        </span>
+                            </div>
+                        </div>
+
+                        <!--OBJECT | SHARE-->
+                        <div class="pt-24px w-100 col-md-4 px-0 px-md-15px d-lg-none">
+                            <h4 class="text-dark-primary fs-basic text-right text-lg-left">Partagez l'article via</h4>
+                            <div class="pt-12px pt-md-16px object-share">
+                                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                                <a href="#"><i class="fas fa-link"></i></a>
+                                <a href="#" class="d-none d-xl-flex"><i class="fas fa-print"></i></a>
+                            </div>
+                        </div>
+
+                        <!--previous/next-->
+                        <div class="pt-24px d-flex w-100 col-md-8 px-0 px-md-15px col-lg-12 px-lg-0">
+                            <div class="col-6 p-0 d-flex">
+                                <a href="#" class="button lvl3 align-self-ls-md-center align-self-md-center position-relative left-0 left-hover-n12px d-flex justify-content-center fs-short-2"><i class="fas fa-angle-left d-ls-md-inline pr-8px pr-md-12px fs-short-1 d-md-inline"></i>Article précédent</a>
+                            </div>
+                            <div class="col-6 p-0 d-flex justify-content-end">
+                                <a href="#" class="button lvl3 align-self-ls-md-center align-self-md-center position-relative left-0 left-hover-12px d-flex justify-content-center fs-short-2">Article suivant<i class="fas fa-angle-right d-ls-md-inline pl-8px pl-md-12px fs-short-1 d-md-inline"></i></a>
+                            </div>
+                        </div>
+
+                        <!--OBJECT | RECOM-->
+                        <div class="pt-24px w-100 col-md-8 px-0 px-md-15px d-lg-none">
+                            <h4 class="text-dark-primary ff-semibold fs-basic">Recommandation</h4>
+                            <div class="pt-12px object-recom">
+                                <a href="#" class="bg-img">
+                                    <i class="bg-img-news-1">
+                                        <b class="bg-img-bgcolor-hover-primary-55"></b>
+                                    </i>
+                                    <div class="col">
+                                        <h5 class="text-hover-primary">Écoles de devoirs : un petit déjeuner avec les volontaires</h5>
+                                        <span class="color-cat-cit">Citoyen</span>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="d-none d-lg-flex col-4 flex-column h-330px justify-content-between">
+
+                     <!--OBJECT | SHARE-->
+                        <div class="w-100">
+                            <h4 class="text-dark-primary fs-basic text-right text-lg-left">Partagez l'article via</h4>
+                            <div class="pt-12px pt-md-16px object-share">
+                                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                                <a href="#"><i class="fas fa-link"></i></a>
+                                <a href="#" class="d-none d-xl-flex"><i class="fas fa-print"></i></a>
+                            </div>
+                        </div>
+
+                      <!--OBJECT | TAGS-->
+                        <div class="overflow-hidden w-100 pt-24px">
+                            <ul class="object-tags">
+                                <li><a href="#">École</a></li>
+                                <li><a href="#">Jeunesse</a></li>
+                                <li><a href="#">Devoirs</a></li>
+                                <li><a href="#">Volontariat</a></li>
+                            </ul>
+                        </div>
+
+                        <!--OBJECT | RECOM-->
+                        <div class="pt-24px w-100">
+                            <h4 class="text-dark-primary ff-semibold fs-basic">Recommandation</h4>
+                            <div class="pt-22px object-recom">
+                                <a href="#" class="bg-img">
+                                    <i class="bg-img-news-1">
+                                        <b class="bg-img-bgcolor-hover-primary-55"></b>
+                                    </i>
+                                    <div class="col">
+                                        <h5 class="text-hover-primary">Écoles de devoirs : un petit déjeuner avec les volontaires</h5>
+                                        <span class="color-cat-cit">Citoyen</span>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!--OBJECT | FOOTER-->
+        <footer>
+            <section class="px-0 d-md-flex flex-md-wrap mx-md-n15px px-md-15px d-ls-flex flex-ls-wrap mx-ls-n15px pl-ls-15px col-xl-9 order-xl-2">
+                <div class="px-0 col-ls-6 col-ls-md-4 col-md-6 col-lg-4 border-xl-left border-white-25 pl-xl-14px">
+                    <h6>Découvrez</h6>
+                    <ul class="d-flex flex-wrap mx-n11px">
+                        <li class="col-6 col-ls-12 col-md-12">
+
+                            <!-- TODO : à brancher -->
+                            <a href="#">E-Guichet</a>
+                        </li>
+                        <li class="col-6 col-ls-12 order-ls-3 col-md-12 order-md-3">
+
+                            <!-- TODO : à brancher -->
+                            <a href="#">Horaires-Contact</a>
+                        </li>
+                        <li class="col-6 col-ls-12 order-ls-2 col-md-12 order-md-2">
+                            <a href="news.html">Actualités</a>
+                        </li>
+                        <li class="col-6 col-ls-12 order-ls-4 col-md-12 order-md-4">
+                            <a href="events.html">Agenda</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="pt-24px px-0 col-ls-6 pt-ls-0 col-ls-md-4 pt-md-0 pl-md-12px pl-ls-md-0 col-md-6 col-lg-4 border-xl-left border-white-25 pl-xl-14px">
+                    <h6>Raccourcis</h6>
+                    <ul class="d-flex flex-wrap mx-n11px">
+                        <li class="col-6">
+                            <a href="pool.html">Piscine</a>
+                        </li>
+                        <li class="col-6">
+                            <a href="#">Environnment : Déchet</a>
+                        </li>
+                        <li class="col-6">
+                            <a href="#">Travaux</a>
+                        </li>
+                        <li class="col-6">
+                            <a href="#">Enfant-Stage</a>
+                        </li>
+                        <li class="col-6">
+                            <a href="map.html">Plan de la ville</a>
+                        </li>
+                        <li class="col-6">
+                            <a href="#">CPAS</a>
+                        </li>
+                        <li class="col-6">
+                            <a href="#">Mon mail</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="pt-24px px-0 col-ls-12 col-ls-md-4 pt-ls-md-0 col-md-12 col-lg-4 pt-lg-0 border-xl-left border-white-25 pl-xl-14px">
+                    <h6>Contact</h6>
+                    <ul>
+                        <li>Hôtel de ville : <a href="tel:+3284327000">084 32 70 00</a></li>
+                        <li>Du lundi au jeudi : de 8h à 12h et de 13h à 17h</li>
+                        <li>Vendredi : de 8h à 12h et de 13h à 15h</li>
+                        <li class="d-flex">
+
+                            <!-- TODO : à brancher -->
+                            <a href="#" class="text-white border-0 pb-0">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+
+                            <!-- TODO : à brancher -->
+                            <a href="#" class="ml-11px text-white border-0 pb-0">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+
+                            <!-- TODO : à brancher -->
+                            <a href="#" class="ml-11px text-white border-0 pb-0">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+
+                            <!-- TODO : à brancher -->
+                            <a href="#" class="ml-11px text-white border-0 pb-0">
+                                <i class="fab fa-youtube"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+            <section class="d-flex mt-24px w-100 px-0 col-xl-3 border-xl-0 mt-xl-0 position-xl-initial">
+                <div class="col-6 pt-24px pl-0 pt-xl-12px">
+                    <a href="index.html" class="d-block">
+                        <img src="rsc/img/img_logo_white.png" alt="logo" class="w-88px">
+                    </a>
+                </div>
+                <div class="col-6 pt-24px pr-0 pl-md-0 position-xl-absolute xl-top-auto xl-bottom-0 xl-left-auto xl-right-70px pt-xl-16px pb-xl-16px pl-xl-0 d-xl-flex flex-xl-row w-xl-100 align-items-xl-center justify-content-xl-end">
+
+                    <!-- TODO : à brancher -->
+                    <a href="#" class="d-block pt-xl-4px pb-xl-3px mr-xl-8px border-xl-bottom border-white-25">Vie privée</a>
+
+                    <!-- TODO : à brancher -->
+                    <a href="#" class="d-block pt-8px pt-xl-4px pb-xl-3px ml-xl-8px border-xl-bottom border-white-25">Mentions légales</a>
+                    <small class="pt-xl-0"><span class="d-none d-xl-inline pl-xl-8px pr-xl-4px fs-short-3"> - </span>Copyright © 2020<span class="d-none d-ls-md-inline d-md-inline"> - </span><br class="d-ls-md-none d-md-none">Ville de Marche-en-Famenne<span class="d-none d-ls-md-inline d-md-inline">. </span><br class="d-ls-md-none d-md-none">Tous droits réservés</small>
+                </div>
+            </section>
+        </footer>
+    </body>
+</html>
