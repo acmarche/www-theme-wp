@@ -1,59 +1,58 @@
 @charset "UTF-8";
-/*@mixin boxShadow($dataFrom, $dataTo) {
-	-webkit-box-shadow: $dataFrom, $dataTo !important;
-	-moz-box-shadow: $dataFrom, $dataTo !important;
-	-ms-box-shadow: $dataFrom, $dataTo !important;
-	-o-box-shadow: $dataFrom, $dataTo !important;
-	box-shadow: $dataFrom, $dataTo !important;
-}*/
 @keyframes pulsar {
   0% {
-    opacity: 1;
-  }
+    opacity: 1; }
   50% {
-    opacity: 0;
-  }
+    opacity: 0; }
   100% {
-    opacity: 1;
-  }
-}
-/*@keyframes echo-active {
-	0% {
-		@include boxShadow(0 0 0 rgba(255, 136, 27, 0), 0 0 0 rgba(255, 136, 27, 0));
-	}
-	25% {
-		@include boxShadow(0 0 11px rgba(255, 136, 27, 1), 0 0 8px rgba(255, 136, 27, .5));
-	}
-	50% {
-		@include boxShadow(0 0 22px rgba(255, 136, 27, .5), 0 0 11px rgba(255, 136, 27, .3));
-	}
-	100% {
-		@include boxShadow(0 0 99px rgba(255, 136, 27, 0), 0 0 55px rgba(255, 136, 27, 0));
-	}
-}*/
+    opacity: 1; } }
+
+@keyframes echo-active {
+  0% {
+    -webkit-box-shadow: 0 0 0 rgba(255, 136, 27, 0), 0 0 0 rgba(255, 136, 27, 0) !important;
+    -moz-box-shadow: 0 0 0 rgba(255, 136, 27, 0), 0 0 0 rgba(255, 136, 27, 0) !important;
+    -ms-box-shadow: 0 0 0 rgba(255, 136, 27, 0), 0 0 0 rgba(255, 136, 27, 0) !important;
+    -o-box-shadow: 0 0 0 rgba(255, 136, 27, 0), 0 0 0 rgba(255, 136, 27, 0) !important;
+    box-shadow: 0 0 0 rgba(255, 136, 27, 0), 0 0 0 rgba(255, 136, 27, 0) !important; }
+  25% {
+    -webkit-box-shadow: 0 0 11px #ff881b, 0 0 8px rgba(255, 136, 27, 0.5) !important;
+    -moz-box-shadow: 0 0 11px #ff881b, 0 0 8px rgba(255, 136, 27, 0.5) !important;
+    -ms-box-shadow: 0 0 11px #ff881b, 0 0 8px rgba(255, 136, 27, 0.5) !important;
+    -o-box-shadow: 0 0 11px #ff881b, 0 0 8px rgba(255, 136, 27, 0.5) !important;
+    box-shadow: 0 0 11px #ff881b, 0 0 8px rgba(255, 136, 27, 0.5) !important; }
+  50% {
+    -webkit-box-shadow: 0 0 22px rgba(255, 136, 27, 0.5), 0 0 11px rgba(255, 136, 27, 0.3) !important;
+    -moz-box-shadow: 0 0 22px rgba(255, 136, 27, 0.5), 0 0 11px rgba(255, 136, 27, 0.3) !important;
+    -ms-box-shadow: 0 0 22px rgba(255, 136, 27, 0.5), 0 0 11px rgba(255, 136, 27, 0.3) !important;
+    -o-box-shadow: 0 0 22px rgba(255, 136, 27, 0.5), 0 0 11px rgba(255, 136, 27, 0.3) !important;
+    box-shadow: 0 0 22px rgba(255, 136, 27, 0.5), 0 0 11px rgba(255, 136, 27, 0.3) !important; }
+  100% {
+    -webkit-box-shadow: 0 0 99px rgba(255, 136, 27, 0), 0 0 55px rgba(255, 136, 27, 0) !important;
+    -moz-box-shadow: 0 0 99px rgba(255, 136, 27, 0), 0 0 55px rgba(255, 136, 27, 0) !important;
+    -ms-box-shadow: 0 0 99px rgba(255, 136, 27, 0), 0 0 55px rgba(255, 136, 27, 0) !important;
+    -o-box-shadow: 0 0 99px rgba(255, 136, 27, 0), 0 0 55px rgba(255, 136, 27, 0) !important;
+    box-shadow: 0 0 99px rgba(255, 136, 27, 0), 0 0 55px rgba(255, 136, 27, 0) !important; } }
+
 @keyframes roll {
   0% {
     -webkit-transform: rotate(0);
     -moz-transform: rotate(0);
     -ms-transform: rotate(0);
     -o-transform: rotate(0);
-    transform: rotate(0);
-  }
+    transform: rotate(0); }
   10% {
     -webkit-transform: rotate(-30deg);
     -moz-transform: rotate(-30deg);
     -ms-transform: rotate(-30deg);
     -o-transform: rotate(-30deg);
-    transform: rotate(-30deg);
-  }
+    transform: rotate(-30deg); }
   100% {
     -webkit-transform: rotate(360deg);
     -moz-transform: rotate(360deg);
     -ms-transform: rotate(360deg);
     -o-transform: rotate(360deg);
-    transform: rotate(360deg);
-  }
-}
+    transform: rotate(360deg); } }
+
 @keyframes roll-coordinated-reverse {
   0% {
     bottom: -2px;
@@ -62,15 +61,13 @@
     -moz-transform: rotate(0);
     -ms-transform: rotate(0);
     -o-transform: rotate(0);
-    transform: rotate(0);
-  }
+    transform: rotate(0); }
   10% {
     -webkit-transform: rotate(55deg);
     -moz-transform: rotate(55deg);
     -ms-transform: rotate(55deg);
     -o-transform: rotate(55deg);
-    transform: rotate(55deg);
-  }
+    transform: rotate(55deg); }
   100% {
     bottom: -2px;
     right: 0;
@@ -78,69 +75,22 @@
     -moz-transform: rotate(-1800deg);
     -ms-transform: rotate(-1800deg);
     -o-transform: rotate(-1800deg);
-    transform: rotate(-1800deg);
-  }
-}
+    transform: rotate(-1800deg); } }
+
 /* VARIABLES */
-/*- ONLY FOR THIS PROJECT -*/
-/*- END | ONLY FOR THIS PROJECT -*/
-/*56pt / 84px*/
-/*28pt / 37px*/
-/*22pt / 30px*/
-/*
-$shortFontSize-1: .875rem;
-$shortFontSize-2: .75rem;
-$shortFontSize-3: .688rem;*/
 /* --------------------------- */
 /* MIXINS */
-/*@mixin highestBoxShadow() {
-	@include boxShadow(0 19px 38px rgba($darkestGrey, $alpha30), 0 15px 12px rgba($darkestGrey, .22));
-}
-*/
-/*
-// (utliser pour les éléments qui ont un attribut de rotation)
-@mixin higherBoxShadow-45() {
-	@include boxShadow(14px 14px 28px rgba($darkestGrey, .25), 10px 10px 10px rgba($darkestGrey, .22));
-}
-@mixin higherBoxShadow-315() {
-	@include boxShadow(-14px 14px 28px rgba($darkestGrey, .25), -10px 10px 10px rgba($darkestGrey, .22));
-}*/
-/*@mixin highBoxShadow() {
-	@include boxShadow(0 1rem 3rem rgba(0, 0, 0, .175), 0 1rem 3rem rgba(0, 0, 0, .175));
-}
-
-@mixin basicBoxShadow() {
-	@include boxShadow(0 .5rem 1rem rgba(0, 0, 0, .15), 0 .5rem 1rem rgba(0, 0, 0, .15));
-}
-
-@mixin lowestBoxShadow() {
-	@include boxShadow(0 .125rem .25rem rgba(0, 0, 0, .075), 0 .125rem .25rem rgba(0, 0, 0, .075));
-}
-// (utliser pour les éléments qui ont un attribut de rotation)
-@mixin lowestBoxShadow-45() {
-	@include boxShadow(.125rem .125rem .25rem rgba(0, 0, 0, .075), .125rem .125rem .25rem rgba(0, 0, 0, .075));
-}
-@mixin lowestBoxShadow-315() {
-	@include boxShadow(-.125rem .125rem .25rem rgba(0, 0, 0, .075), -.125rem .125rem .25rem rgba(0, 0, 0, .075));
-}*/
-/*@mixin lowestBoxShadow-inset() {
-	@include boxInset(0 -1px 3px rgba($darkestGrey, .12), 0 -1px 2px rgba($darkestGrey, .24));
-}
-
-@mixin buttonInset() {
-	@include boxInset(-12px 0 33px rgba($darkCTA, $alpha0));
-}
-*/
 /* EXTENDS */
 /* COUNTER */
+/* line 5, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/•interne/charte_graphique/site/04integration/css/objects/counters.scss */
 .counter {
   min-width: 13px;
   height: 13px;
   padding: 1px;
   position: absolute;
   text-align: center;
-  font-size: 0.625rem;
-  line-height: 0.7rem;
+  font-size: .625rem;
+  line-height: .7rem;
   font-weight: 600;
   border-radius: 6px;
   color: white;
@@ -149,14 +99,14 @@ $shortFontSize-3: .688rem;*/
   -moz-box-shadow: -4px 0 6px #ff881b inset !important;
   -ms-box-shadow: -4px 0 6px #ff881b inset !important;
   -o-box-shadow: -4px 0 6px #ff881b inset !important;
-  box-shadow: -4px 0 6px #ff881b inset !important;
-}
+  box-shadow: -4px 0 6px #ff881b inset !important; }
 
+/* line 23, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/•interne/charte_graphique/site/04integration/css/objects/counters.scss */
 .headerTools .counter {
   top: 11px;
-  right: 11px;
-}
+  right: 11px; }
 
+/* line 34, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/•interne/charte_graphique/site/04integration/css/objects/counters.scss */
 .boardContainer .subCard header .counter {
   height: auto;
   top: 11px;
@@ -169,16 +119,16 @@ $shortFontSize-3: .688rem;*/
   -moz-box-shadow: none !important;
   -ms-box-shadow: none !important;
   -o-box-shadow: none !important;
-  box-shadow: none !important;
-}
-.boardContainer .subCard header .counter p {
-  color: #ff881b;
-}
-.boardContainer .subCard header .counter p i {
-  padding: 0 6px 0 0;
-  color: #ff881b;
-}
+  box-shadow: none !important; }
+  /* line 44, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/•interne/charte_graphique/site/04integration/css/objects/counters.scss */
+  .boardContainer .subCard header .counter p {
+    color: #ff881b; }
+    /* line 47, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/•interne/charte_graphique/site/04integration/css/objects/counters.scss */
+    .boardContainer .subCard header .counter p i {
+      padding: 0 6px 0 0;
+      color: #ff881b; }
 
+/* line 60, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/•interne/charte_graphique/site/04integration/css/objects/counters.scss */
 #chatChoice .animatedCounter {
   width: 44px;
   height: 44px;
@@ -190,85 +140,88 @@ $shortFontSize-3: .688rem;*/
   cursor: pointer;
   border-radius: 50%;
   /*&.benef {
-  	@extend %extend-roll-infinite;
-  	.counter {
-  		@extend %extend-roll-coordinated-reverse-infinite;
-  	}
-  	&:hover,
-  	&.opened {
-  		animation-play-state: paused;
-  		&.counter {
-  			animation-play-state: paused;
-  		}
-  	}
-  }*/
-}
-@media screen and (min-width: 992px) {
-  #chatChoice .animatedCounter {
+			@extend %extend-roll-infinite;
+			.counter {
+				@extend %extend-roll-coordinated-reverse-infinite;
+			}
+			&:hover,
+			&.opened {
+				animation-play-state: paused;
+				&.counter {
+					animation-play-state: paused;
+				}
+			}
+		}*/ }
+  @media screen and (min-width: 992px) {
+    /* line 60, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/•interne/charte_graphique/site/04integration/css/objects/counters.scss */
+    #chatChoice .animatedCounter {
+      bottom: 11px; } }
+  /* line 76, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/•interne/charte_graphique/site/04integration/css/objects/counters.scss */
+  #chatChoice .animatedCounter .counter {
+    min-width: 16px;
+    position: fixed;
+    right: 22px;
+    /*bottom: -2px;
+			right: 0;*/
+    z-index: 10;
+    border-radius: 22px;
+    background-color: #ff881b;
+    width: 44px;
+    height: 44px;
+    padding: 12px 0;
     bottom: 11px;
-  }
-}
-#chatChoice .animatedCounter .counter {
-  min-width: 16px;
-  position: fixed;
-  right: 22px;
-  /*bottom: -2px;
-  right: 0;*/
-  z-index: 10;
-  border-radius: 22px;
-  background-color: #ff881b;
-  width: 44px;
-  height: 44px;
-  padding: 12px 0;
-  bottom: 11px;
-  opacity: 0;
-  line-height: 100%;
-  font-size: 1.5rem;
-  -webkit-transition-delay: 0.25s;
-  -moz-transition-delay: 0.25s;
-  -ms-transition-delay: 0.25s;
-  -o-transition-delay: 0.25s;
-  transition-delay: 0.25s;
-}
-#chatChoice .animatedCounter .counter.show {
-  min-width: max-content;
-  width: 16px;
-  height: 16px;
-  padding: 3px 2px;
-  bottom: 9px;
-  opacity: 1;
-  line-height: 99%;
-  font-size: 0.95rem;
-  -webkit-transition-delay: 0.45s;
-  -moz-transition-delay: 0.45s;
-  -ms-transition-delay: 0.45s;
-  -o-transition-delay: 0.45s;
-  transition-delay: 0.45s;
-  -webkit-transition: all 0.45s ease-in-out;
-  -moz-transition: all 0.45s ease-in-out;
-  -ms-transition: all 0.45s ease-in-out;
-  -o-transition: all 0.45s ease-in-out;
-  transition: all 0.45s ease-in-out;
-}
-#chatChoice .animatedCounter:hover + .chatHeader.icon {
-  background-color: #7dbef5;
-}
-#chatChoice .animatedCounter:hover + .chatHeader.icon i {
-  -webkit-box-shadow: -12px 0 33px #487f89 inset !important;
-  -moz-box-shadow: -12px 0 33px #487f89 inset !important;
-  -ms-box-shadow: -12px 0 33px #487f89 inset !important;
-  -o-box-shadow: -12px 0 33px #487f89 inset !important;
-  box-shadow: -12px 0 33px #487f89 inset !important;
-}
-#chatChoice .animatedCounter:hover + .chatHeader.icon.active {
-  background-color: #ffcf1b;
-}
-#chatChoice .animatedCounter:hover + .chatHeader.icon.active i {
-  -webkit-box-shadow: -12px 0 33px #ff881b inset !important;
-  -moz-box-shadow: -12px 0 33px #ff881b inset !important;
-  -ms-box-shadow: -12px 0 33px #ff881b inset !important;
-  -o-box-shadow: -12px 0 33px #ff881b inset !important;
-  box-shadow: -12px 0 33px #ff881b inset !important;
-}
+    opacity: 0;
+    line-height: 100%;
+    font-size: 1.375rem;
+    -webkit-transition-delay: 0.25s;
+    -moz-transition-delay: 0.25s;
+    -ms-transition-delay: 0.25s;
+    -o-transition-delay: 0.25s;
+    transition-delay: 0.25s; }
+    /* line 102, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/•interne/charte_graphique/site/04integration/css/objects/counters.scss */
+    #chatChoice .animatedCounter .counter.show {
+      min-width: max-content;
+      width: 16px;
+      height: 16px;
+      padding: 3px 2px;
+      bottom: 9px;
+      opacity: 1;
+      line-height: 99%;
+      font-size: 0.75rem;
+      -webkit-transition-delay: 0.45s;
+      -moz-transition-delay: 0.45s;
+      -ms-transition-delay: 0.45s;
+      -o-transition-delay: 0.45s;
+      transition-delay: 0.45s;
+      -webkit-transition: all 0.45s ease-in-out;
+      -moz-transition: all 0.45s ease-in-out;
+      -ms-transition: all 0.45s ease-in-out;
+      -o-transition: all 0.45s ease-in-out;
+      transition: all 0.45s ease-in-out; }
+  /* line 118, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/•interne/charte_graphique/site/04integration/css/objects/counters.scss */
+  #chatChoice .animatedCounter:hover + .chatHeader.icon {
+    background-color: #29eaff;
+    -webkit-box-shadow: 0 14px 28px rgba(22, 22, 32, 0.25), 0 10px 10px rgba(22, 22, 32, 0.22) !important;
+    -moz-box-shadow: 0 14px 28px rgba(22, 22, 32, 0.25), 0 10px 10px rgba(22, 22, 32, 0.22) !important;
+    -ms-box-shadow: 0 14px 28px rgba(22, 22, 32, 0.25), 0 10px 10px rgba(22, 22, 32, 0.22) !important;
+    -o-box-shadow: 0 14px 28px rgba(22, 22, 32, 0.25), 0 10px 10px rgba(22, 22, 32, 0.22) !important;
+    box-shadow: 0 14px 28px rgba(22, 22, 32, 0.25), 0 10px 10px rgba(22, 22, 32, 0.22) !important; }
+    /* line 122, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/•interne/charte_graphique/site/04integration/css/objects/counters.scss */
+    #chatChoice .animatedCounter:hover + .chatHeader.icon i {
+      -webkit-box-shadow: -12px 0 33px #0040bf inset !important;
+      -moz-box-shadow: -12px 0 33px #0040bf inset !important;
+      -ms-box-shadow: -12px 0 33px #0040bf inset !important;
+      -o-box-shadow: -12px 0 33px #0040bf inset !important;
+      box-shadow: -12px 0 33px #0040bf inset !important; }
+    /* line 126, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/•interne/charte_graphique/site/04integration/css/objects/counters.scss */
+    #chatChoice .animatedCounter:hover + .chatHeader.icon.active {
+      background-color: #ffcf1b; }
+      /* line 129, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/•interne/charte_graphique/site/04integration/css/objects/counters.scss */
+      #chatChoice .animatedCounter:hover + .chatHeader.icon.active i {
+        -webkit-box-shadow: -12px 0 33px #ff881b inset !important;
+        -moz-box-shadow: -12px 0 33px #ff881b inset !important;
+        -ms-box-shadow: -12px 0 33px #ff881b inset !important;
+        -o-box-shadow: -12px 0 33px #ff881b inset !important;
+        box-shadow: -12px 0 33px #ff881b inset !important; }
 
 /*# sourceMappingURL=counters.css.map */

@@ -5,36 +5,36 @@
 // .object-alert
 .object-alert {
     position: fixed;
-    top: 120px;
-    bottom: auto;
+    top: auto;
+    bottom: 54px;
     left: 12px;
     right: 12px;
     max-width: 660px;
     margin: auto;
     z-index: 10;
-
+    
     @media screen {
         @media (orientation: landscape) {
             bottom: 12px;
             left: 54px;
             right: 12px;
         }
-
+        
         @media (min-width: $md) {
             bottom: 40px;
             max-width: 550px;
         }
-
+        
         @media (min-width: $lg) {
             max-width: 660px;
         }
-
+        
         @media (min-width: $xl) {
             left: 40px;
             right: 40px;
         }
     }
-
+    
     > div {
         display: flex;
         align-items: flex-start;
@@ -42,28 +42,28 @@
         background-color: $white;
         @include border(0 0 4px 0, $basicRed);
         @include basicBoxShadow();
-
+        
         div {
             flex-grow: 1;
             padding-right: 30px;
-
+            
             h3 {
                 text-transform: uppercase;
                 color: $basicRed;
             }
-
+            
             p {
                 padding-top: 16px;
             }
         }
-
+        
         a {
             i {
                 font-size: $bigFontSize-1;
                 color: $basicRed;
                 @include colorTransition($basicDuration);
             }
-
+            
             &:hover {
                 i {
                     color: $darkRed;
@@ -80,7 +80,7 @@
     //width: 100%;
     overflow-x: auto;
     padding-left: 12px;
-
+    
     @media screen {
         @media (min-width: $xl) {
             display: flex;
@@ -91,21 +91,21 @@
             margin-left: -12px
         }
     }
-
+    
     tr {
         display: flex;
         align-items: center;
-
+        
         th {
             font-size: $shortFontSize-1;
             color: $darkCTA;
             padding: 17px 12px 16px;
             white-space: nowrap;
             @include border(1px 1px 0 0, $lighterGrey);
-
+            
             &:last-child {
                 margin-right: 24px;
-
+                
                 @media screen {
                     @media (min-width: $xl) {
                         margin-right: 0;
@@ -113,12 +113,12 @@
                 }
             }
         }
-
+        
         td {
             display: flex;
             padding: 0;
             @include border(1px 1px 0 0, $lighterGrey);
-
+            
             &:first-child {
                 font-size: $shortFontSize-1;
                 color: $darkCTA;
@@ -126,14 +126,14 @@
             }
             &:last-child {
                 margin-right: 24px;
-
+                
                 @media screen {
                     @media (min-width: $xl) {
                         margin-right: 0;
                     }
                 }
             }
-
+            
             i {
                 display: block;
                 height: 48px;
@@ -141,7 +141,7 @@
                 @include insetBorder(0 1px 0 0, rgba($lighterGrey, .45));
             }
         }
-
+        
         &:last-child {
             td {
                 border-width: 1px 1px 1px 0;
@@ -168,20 +168,20 @@
 .object-headtail {
     margin: 0 -24px;
     text-align: center;
-
+    
     @media screen {
         @media (min-width: $xl) {
             margin: 0;
         }
     }
-
+    
     input[type="radio"] {
         width: calc(50% - 24px);
         height: 36px;
         left: 0;
         margin-left: 24px;
         border: none;
-
+        
         @media screen {
             @media (min-width: $lg) {
                 width: 193px;
@@ -190,7 +190,7 @@
                 left: auto;
             }
         }
-
+        
         + a {
             display: inline-block;
             font-family: 'montserratsemibold';
@@ -200,7 +200,7 @@
             padding: 11px 12px;
             color: $darkCTA;
             font-size: $shortFontSize-2;
-
+            
             @media screen {
                 @media (min-width: $lg) {
                     width: auto;
@@ -213,13 +213,13 @@
                     @include transition(box-shadow, $basicDuration);
                 }
             }
-
+            
             + input[type="radio"] {
                 margin-left: 0;
                 margin-right: 24px;
                 left: auto;
                 right: 0;
-
+                
                 @media screen {
                     @media (min-width: $lg) {
                         width: 183px;
@@ -229,13 +229,13 @@
                 }
             }
         }
-
+        
         &:hover,
         &:checked {
             + a {
                 color: $white;
                 background-color: $darkCTA;
-
+                
                 @media screen {
                     @media (min-width: $lg) {
                         color: $darkCTA;
@@ -246,7 +246,7 @@
                 }
             }
         }
-
+        
         &[value="head"] {
             &:checked {
                 + a {
@@ -255,12 +255,12 @@
                             + div {
                                 .object-schedule {
                                     margin-top: 26px;
-
+                                    
                                     .osc-c-b1 {
                                         background-color: initial;
                                         border-color: rgba($lighterGrey, .45) !important;
                                     }
-
+                                    
                                     .osc-c-1 {
                                         background-color: $CTA;
                                         border-color: $CTA !important;
@@ -290,14 +290,14 @@
 
                         .object-schedule {
                             margin-top: 48px;
-
+                            
                             .osc-c-1,
                             .osc-c-2,
                             .osc-c-3 {
                                 background-color: initial;
                                 border-color: rgba($lighterGrey, .45) !important;
                             }
-
+                            
                             .osc-c-b1 {
                                 background-color: $CTA;
                                 border-color: $CTA !important;
@@ -314,13 +314,13 @@
 .object-share {
     display: flex;
     justify-content: flex-end;
-
+    
     @media screen {
         @media (min-width: $lg) {
             justify-content: flex-start;
         }
     }
-
+    
     a {
         width: 22px;
         height: 22px;
@@ -330,16 +330,16 @@
         margin-left: 12px;
         background-color: $darkCTA;
         @include transition(background-color, $basicDuration);
-
+        
         &:first-child {
             margin-left: 0;
         }
-
+        
         &:hover {
             background-color: $CTA;
             @include transition(background-color, $basicDuration);
         }
-
+        
         i {
             color: $white;
         }
@@ -352,19 +352,19 @@
     flex-wrap: wrap;
     width: 100%;
     margin: 0 -4px;
-
+    
     li {
         display: flex;
         padding: 0 4px 8px;
-
+        
         &.active {
-
+            
             a {
                 color: $white;
                 background-color: $darkCTA;
             }
         }
-
+        
         a {
             padding: 4px 8px;
             text-align: center;
@@ -372,14 +372,14 @@
             font-size: $shortFontSize-2;
             @include border(1px, $darkCTA);
             @include allTransition($basicDuration);
-
+            
             @media screen {
                 @media (min-width: $lg) {
                     padding-left: 12px;
                     padding-right: 12px;
                 }
             }
-
+            
             &:hover {
                 color: $white;
                 background-color: $darkCTA;
@@ -396,13 +396,13 @@
         overflow: hidden;
         @include border(1px, rgba($darkGrey, $alpha10));
         @include lowBoxShadow();
-
+        
         i {
             width: 104px;
             min-height: 104px;
             padding: 0;
             position: relative;
-
+            
             b {
                 display: block;
                 position: absolute;
@@ -414,13 +414,13 @@
                 @include transition(background-color, $basicDuration);
             }
         }
-
+        
         div {
             min-height: 104px;
             padding: 18px 14px 18px 28px;
             text-align: left;
             line-height: 0;
-
+            
             h5 {
                 font-family: 'montserratsemibold';
                 font-size: $shortFontSize-2;
@@ -428,7 +428,7 @@
                 color: $darkCTA;
                 @include colorTransition($basicDuration);
             }
-
+            
             span {
                 display: block;
                 font-family: 'montserratsemibold';
@@ -443,7 +443,7 @@
 // .object-text-dyn
 .object-text-dyn {
     position: relative;
-
+    
     input[type="checkbox"] {
         width: 60px;
         height: 20px;
@@ -452,7 +452,7 @@
         right: 0;
         border: none;
         z-index: 20;
-
+        
         @media screen {
             @media (min-width: $md) {
                 right: 15px;
@@ -464,12 +464,12 @@
                 display: none;
             }
         }
-
+        
         &:checked {
             + div {
                 @include boxShadow(0 0 12px rgba($white, 0));
                 @include transition(box-shadow, $basicDuration);
-
+                
                 span {
                     &.more {
                         display: none;
@@ -478,7 +478,7 @@
                         display: initial;
                     }
                 }
-
+                
                 + div {
                     max-height: 9999px;
                     padding-bottom: 24px;
@@ -486,7 +486,7 @@
                 }
             }
         }
-
+        
         + div {
             display: flex;
             align-items: center;
@@ -500,7 +500,7 @@
             background-color: $white;
             @include boxShadow(0 -12px 12px $white);
             @include transition(box-shadow, $basicDuration);
-
+            
             @media screen {
                 @media (min-width: $md) {
                     width: auto;
@@ -514,7 +514,7 @@
                     display: none;
                 }
             }
-
+            
             span {
                 font-family: 'montserratsemibold';
                 font-size: $shortFontSize-2;
@@ -522,26 +522,26 @@
                 padding-bottom: 4px;
                 @include border(0 0 1px 0, $CTA);
                 @include transition(border, $basicDuration);
-
+                
                 &.less {
                     display: none;
                 }
             }
-
+            
             + div {
                 color: $darkCTA;
                 max-height: 159px;
                 overflow: hidden;
                 padding-bottom: 24px;
                 @include allTransition($basicDuration);
-
+                
                 @media screen {
                     @media (orientation: landscape) {
                         @media (min-width: $sm) {
                             max-height: 134px;
                         }
                     }
-
+                    
                     @media (min-width: $lg) {
                         max-height: 134px;
                     }
@@ -555,13 +555,13 @@
                         max-height: none;
                     }
                 }
-
+                
                 p {
                     padding-top: 24px;
                     font-size: $shortFontSize-2;
                     line-height: 200%;
                 }
-
+                
                 ul {
                     li {
                         font-size: $shortFontSize-2;
@@ -571,7 +571,7 @@
             }
         }
     }
-
+        
 }
 
 // .object-card
@@ -588,20 +588,20 @@
 .object-card {
     padding-left: 0;
     padding-right: 0;
-
+    
     a {
         display: flex;
         border: 1px solid;
         border-color: rgba($darkGrey, $alpha10);
         overflow: hidden;
         @include lowBoxShadow();
-
+        
         @media screen {
             @media (min-width: $lg) {
                 flex-direction: column;
             }
         }
-
+        
         &.bg-img {
             i {
                 width: 104px;
@@ -653,7 +653,7 @@
                 display: block;
                 font-family: 'montserratsemibold';
             }
-
+            
             small {
                 display: block;
                 padding: 8px 0 0;
@@ -662,30 +662,30 @@
             }
         }
     }
-
+    
     &.oc-new {
-        a {
+        a { 
             > div {
                 flex-direction: column;
-
+                
                 h3 {
                     max-height: 45px;
                     @include colorTransition($basicDuration);
-
+                    
                     @media screen {
                         @media (min-width: $lg) {
                             height: 30px;
                         }
                     }
                 }
-
+                
                 span {
                     padding-top: 8px;
                     line-height: 150%;
                     font-size: $shortFontSize-3;
                 }
             }
-
+            
             &:hover {
                 > div {
                     h3 {
@@ -696,14 +696,14 @@
             }
         }
     }
-
+    
     &.oc-event {
         a {
-
+            
             &.bg-img {
                 i {
                     display: none;
-
+                    
                     @media screen {
                         @media (min-width: $lg) {
                             display: flex;
@@ -711,23 +711,23 @@
                     }
                 }
             }
-
+            
             > div {
                 width: 100%;
                 min-height: 90px;
-
+                
                 > div {
                     padding-top: 11px;
                     padding-bottom: 11px;
                     color: $darkCTA;
-
+                    
                     @media screen {
                         @media (min-width: $lg) {
                             padding-top: 24px;
                             padding-bottom: 24px;
                         }
                     }
-
+                    
                     &:first-child {
                         display: flex;
                         flex-direction: column;
@@ -741,7 +741,7 @@
                         align-self: center;
                         padding-left: 28px;
                         padding-right: 14px;
-
+                        
                         @media screen {
                             @media (min-width: $lg) {
                                 padding-left: 16px;
@@ -749,27 +749,27 @@
                             }
                         }
                     }
-
+                    
                     h3 {
-                        max-height: 40px;
+                        max-height: 30px;
                     }
-
+                    
                     span {
                         line-height: 100%;
                         padding: 4px 0;
                         font-size: $basicFontSize;
-
+                        
                         @media screen {
                             @media (min-width: $lg) {
                                 padding: 8px 0;
                             }
                         }
-
+                        
                         &:first-child {
                             padding: 0;
                             font-size: $bigFontSize-1;
                         }
-
+                        
                         &:last-child {
                             padding: 0;
                             font-size: $shortFontSize-2;
@@ -777,7 +777,7 @@
                     }
                 }
             }
-
+            
             &:hover {
                 > div {
                     > div {
@@ -887,7 +887,7 @@
 }
 
 .bg-img-directory-1 {
-    background-image: url(../../../images/commerce_default.png);
+    background-image: url(../../rsc/img/img_directory01.png);
     background-size: cover;
     background-position: center center;
 }
@@ -923,7 +923,7 @@
 // FILTRED
 
 .filtred {
-
+    
     &:hover {
         .filter-hover-grey-0 {
             filter: grayscale(0);
@@ -934,7 +934,7 @@
 // THUMBNAIL
 
 .thumbnail {
-
+    
     // transition
     .t-transition-all,
     &.t-transition-all {
@@ -948,21 +948,21 @@
     &.t-transition-border-color {
         @include transition(border-color, $basicDuration);
     }
-
+    
     &:hover {
-
+        
         // bgcolor
         .t-bgcolor-hover-primary,
         &.t-bgcolor-hover-primary {
             background-color: $CTA !important;
         }
-
+        
         // color
         .t-color-hover-white,
         &.t-color-hover-white {
             color: $white !important;
         }
-
+        
         // border-color
         .t-border-hover-white,
         &.t-border-hover-white {
@@ -972,7 +972,7 @@
         &.t-border-hover-primary {
             border-color: $CTA !important;
         }
-
+        
         // transition
         .t-transition-all,
         &.t-transition-all {
@@ -992,7 +992,7 @@
 // BG-IMG
 
 .bg-img {
-
+    
     // bf-blur
     .bg-img-bf-blur {
         -webkit-backdrop-filter: blur(2px);
@@ -1000,10 +1000,10 @@
         -ms-backdrop-filter: blur(2px);
         -o-backdrop-filter: blur(2px);
         backdrop-filter: blur(2px);
-
+        
         // -webkit- et autres à checker
     }
-
+    
     // bgcolor
     .bg-img-bgcolor-primary-0 {
         background-color: rgba($CTA, 0);
@@ -1011,7 +1011,7 @@
     .bg-img-bgcolor-primary-55 {
         background-color: rgba($CTA, .55);
     }
-
+    
     // position
     @for $i from 1 through 100 {
         .bg-img-top-#{$i} {
@@ -1023,7 +1023,7 @@
             bottom: calc(-1% * #{$i}) !important;
         }
     }
-
+    
     // opactiy
     .bg-img-opacity-0 {
         opacity: 0;
@@ -1032,9 +1032,9 @@
     .bg-img-transition-bgcolor {
         @include transition(background-color, $basicDuration);
     }
-
+    
     &:hover {
-
+        
         // size
         @for $i from 100 through 200 {
             .bg-img-size-hover-#{$i} {
@@ -1043,7 +1043,7 @@
                 margin-right: calc(50% - (1% * #{$i} / 2));
             }
         }
-
+        
         // bgcolor
         .bg-img-bgcolor-hover-primary-55 {
             background-color: rgba($CTA, .55);
@@ -1051,7 +1051,7 @@
         .bg-img-bgcolor-hover-dark-primary-75 {
             background-color: rgba($darkCTA, .75);
         }
-
+        
         // position
         .bg-img-top-hover-0 {
             top: 0 !important;
@@ -1059,17 +1059,17 @@
         .bg-img-bottom-hover-0 {
             bottom: 0 !important;
         }
-
+        
         // opacity
         .bg-img-opacity-hover-1 {
             opacity: 1;
         }
-
+        
         // transition
         .bg-img-transition-bgcolor {
             @include transition(background-color, $basicDuration);
         }
-
+        
         // delay
         .bg-img-delay-hover-basic {
             @include delay($basicDuration);
@@ -2069,15 +2069,15 @@ input {
 .cat-filters {
     input[type="radio"] {
         cursor: pointer;
-
+        
         & + label {
             color: $darkCTA;
         }
-
+        
         &:hover + label {
             color: $CTA;
         }
-
+        
         &:checked + label {
             color: $CTA;
         }
