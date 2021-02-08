@@ -1,44 +1,8 @@
-<script type="text/javascript">
-    jQuery( document )
-        .ready( function() {
-            jQuery( '#lightSlider' )
-                .lightSlider( {
-                    item: 5,
-                    loop: true,
-                    autoWidth: true,
-                    onSliderLoad: function() {
-                        jQuery( '#lightSlider' )
-                            .removeClass( 'cS-hidden' );
-                    },
-                    pager: true,
-                    auto: true,
-                    slideMove: 1,
-                    easing: 'cubic-bezier(0.25, 0, 0.25, 1)',
-                    speed: 600,
-                    responsive: [
-                        {
-                            breakpoint: 800,
-                            settings: {
-                                item: 3,
-                                slideMove: 1,
-                                slideMargin: 6
-                            }
-                        },
-                        {
-                            breakpoint: 480,
-                            settings: {
-                                item: 1,
-                                slideMove: 1
-                            }
-                        }
-                    ]
-                } );
-        } );
-</script>
-
+<script type="text/javascript" src="{{ template_directory }}/assets/js/utils/carousel-config.js"></script>
+<!-- cs-hidden d-flex align-items-center justify-content-between2 py-24px px-16px mw-1616px m-xl-auto -->
 <div class="bg-lighter">
     <div id="lightSlider"
-         class="cs-hidden d-flex align-items-center justify-content-between2 py-24px px-16px mw-1616px m-xl-auto">
+         class="">
 
         <!--visible from landscape&&extralarge
         <button class="d-none border-0 h-66px col py-11px px-ls-20px text-center d-xl-block bg-none icon_custom">
