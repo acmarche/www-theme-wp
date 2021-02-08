@@ -57,7 +57,7 @@ class AssetsLoad
 
         wp_enqueue_script(
             'marchebe-close-js',
-            get_template_directory_uri().'/assets/js/utils/closeNavigation.js',
+            get_template_directory_uri().'/assets/js/utils/navigation.js',
             array(),
             wp_get_theme()->get('Version'),
             true
