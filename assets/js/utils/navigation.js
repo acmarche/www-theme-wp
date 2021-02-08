@@ -66,36 +66,27 @@ window.addEventListener( 'load', () => {
      * Open sub nav
      */
     const secondToggle = document.getElementById( 'secondToggle' );//pour faire suivant infographiste mais marche pas
-    let notAdd = false;
+    const btnOpenSecond = document.getElementById( 'btnOpenSecond' );
+    const popo = document.getElementById( 'popo' );
 
-    secondToggle.addEventListener( 'click', () => {
-        if ( false === notAdd ) {
-            console.log( 'ici' );
-            secondToggle.classList.toggle( 'toggle-opened' );
-
-            //  secondToggle.classList.add( 'd-flex' );
-            notAdd = true;
-        }
+    btnOpenSecond.addEventListener( 'click', () => {
+        console.log( 'open second inside' );
+        secondToggle.classList.toggle( 'toggle-opened' );
+        popo.style.left = '0';
     });
 
     /**
      * Fermeture sub nav
      */
     const btnCloseSubNav = document.querySelector( '.btn-close-sub-nav' );
-    const popo = document.getElementById( 'popo' );
 
-    if ( null !== btnCloseSubNav ) {
-        btnCloseSubNav.addEventListener( 'click', () => {
-            secondToggle.classList.toggle( 'toggle-opened' );
-            console.log( 'second' );
-            notAdd = true;
-
-            //     popo.classList.add( 'd-none' );
-            console.log( 'la' );
-
-        //    secondToggle.classList.remove( 'd-flex' );
-        });
-    }
+    btnCloseSubNav.addEventListener( 'click', () => {
+        console.log( 'close second ' );
+        secondToggle.classList.toggle( 'toggle-opened' );
+        popo.style.left = '100%';
+        btnOpenSecond.style.color = 'white';
+        btnOpenSecond.style.backgroundColor = 'transparent';
+    });
 });
 
 // TEST -----------------------------------------------------
