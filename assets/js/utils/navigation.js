@@ -65,9 +65,9 @@ window.addEventListener( 'load', () => {
     /**
      * Open sub nav
      */
-    const secondToggle = document.getElementById( 'secondToggle' );//pour faire suivant infographiste mais marche pas
-    const btnOpenSecond = document.getElementById( 'btnOpenSecond' );
-    const popo = document.getElementById( 'popo' );
+    const secondToggle = document.querySelector( '.secondToggle' );//pour faire suivant infographiste mais marche pas
+    const btnOpenSecond = document.querySelector( '.btnOpenSecond' );
+    const popo = document.querySelector( '.popo' );
 
     btnOpenSecond.addEventListener( 'click', () => {
         console.log( 'open second inside' );

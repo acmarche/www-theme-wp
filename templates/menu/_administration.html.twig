@@ -1,7 +1,7 @@
 <li class="c-adm col-xl-5 mt-xl-12px col-ls-6 col-ls-xl-5 secondToggle">
     <a href="#" class="icon_custom btnOpenSecond">Administration2<i class="i-angle-right i-white bg-size-50"></i></a>
 
-    <div class="col-xl-7" id="popo">
+    <div class="col-xl-7 popo">
         <div class="p-24px d-xl-none col-ls-12">
             <h3 class="text-left">Administration3</h3>
             <span class="d-flex flex-row align-items-center pt-8px">
@@ -14,23 +14,6 @@
                    </a>
                </span>
         </div>
-        <ul class="col-ls-6">
-            <li><a href="#">Accueil administration</a></li>
-            <li><a href="#">Blason-Logos de la ville</a></li>
-            <li><a href="#">Horaires-Contact</a></li>
-            <li><a href="#">Collège communal</a></li>
-            <li><a href="#">Conseil communal</a></li>
-            <li><a href="#">Services communaux</a></li>
-            <li><a href="#">Autres services administratifs</a></li>
-            <li><a href="#">Taxes communales</a></li>
-            <li><a href="#">Publications communales</a></li>
-        </ul>
-        <ul class="col-ls-6">
-            <li><a href="#">Permanences institutions</a></li>
-            <li><a href="#">Procédures-Documents administratifs</a></li>
-            <li><a href="#">Subventions-Primes communales</a></li>
-            <li><a href="#">Enquêtes publiques</a></li>
-            <li><a href="#" alt="Programme stratégique transversal">PST</a></li>
-        </ul>
+        {% include 'menu/_items.html.twig' %}
     </div>
 </li>
