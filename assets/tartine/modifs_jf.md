@@ -30,10 +30,16 @@ $shortFontSize-3: .875rem;
 Dans objects.scss
 ---
 **Pour titre event en list**
-max-height: de 30 a 40 ligne 753
+max-height: de 30 a 40 ligne 756
 h3 {
      max-height: 40px;
    }
+
+**Pour news list**
+ligne 674 de 45 a 55 px
+h3 {
+   max-height: 55px;
+}
 
 **Pour image par defaut fiche bottin**
 ligne 889 default image .bg-img-directory-1

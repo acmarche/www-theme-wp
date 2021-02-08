@@ -815,7 +815,7 @@ $shortFontSize-3: .688rem;*/
   flex-direction: column;
 }
 .object-card.oc-new a > div h3 {
-  max-height: 45px;
+  max-height: 55px;
   -webkit-transition: color 0.25s ease-in-out;
   -moz-transition: color 0.25s ease-in-out;
   -ms-transition: color 0.25s ease-in-out;
@@ -888,7 +888,7 @@ $shortFontSize-3: .688rem;*/
   }
 }
 .object-card.oc-event a > div > div h3 {
-  max-height: 30px;
+  max-height: 40px;
 }
 .object-card.oc-event a > div > div span {
   line-height: 100%;
@@ -1026,7 +1026,7 @@ $shortFontSize-3: .688rem;*/
 }
 
 .bg-img-directory-1 {
-  background-image: url(../../rsc/img/img_directory01.png);
+  background-image: url(../../../images/commerce_default.png);
   background-size: cover;
   background-position: center center;
 }
