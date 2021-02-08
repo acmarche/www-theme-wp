@@ -150,8 +150,8 @@ $shortFontSize-3: .688rem;*/
 /* OBJECTS */
 .object-alert {
   position: fixed;
-  top: 120px;
-  bottom: auto;
+  top: auto;
+  bottom: 54px;
   left: 12px;
   right: 12px;
   max-width: 660px;
@@ -575,6 +575,7 @@ $shortFontSize-3: .688rem;*/
   position: relative;
 }
 .object-text-dyn input[type=checkbox] {
+  display: none;
   width: 60px;
   height: 20px;
   position: absolute;
@@ -626,7 +627,7 @@ $shortFontSize-3: .688rem;*/
   transition: all 0.25s ease-in-out;
 }
 .object-text-dyn input[type=checkbox] + div {
-  display: flex;
+  display: none;
   align-items: center;
   justify-content: flex-end;
   width: 100%;
@@ -683,33 +684,29 @@ $shortFontSize-3: .688rem;*/
 }
 .object-text-dyn input[type=checkbox] + div + div {
   color: #487f89;
-  max-height: 159px;
   overflow: hidden;
-  padding-bottom: 24px;
   -webkit-transition: all 0.25s ease-in-out;
   -moz-transition: all 0.25s ease-in-out;
   -ms-transition: all 0.25s ease-in-out;
   -o-transition: all 0.25s ease-in-out;
   transition: all 0.25s ease-in-out;
 }
+@media screen {
+  .object-text-dyn input[type=checkbox] + div + div {
+    /*@media (min-width: $lg) {
+        max-height: 134px;
+    }
+    @media (min-width: $xl) {
+        max-height: 112px;
+    }
+    @media (min-width: $xxl) {
+        max-height: 223px;
+    }*/
+  }
+}
 @media screen and (orientation: landscape) and (min-width: 576px) {
   .object-text-dyn input[type=checkbox] + div + div {
     max-height: 134px;
-  }
-}
-@media screen and (min-width: 992px) {
-  .object-text-dyn input[type=checkbox] + div + div {
-    max-height: 134px;
-  }
-}
-@media screen and (min-width: 1200px) {
-  .object-text-dyn input[type=checkbox] + div + div {
-    max-height: 112px;
-  }
-}
-@media screen and (min-width: 1440px) {
-  .object-text-dyn input[type=checkbox] + div + div {
-    max-height: 223px;
   }
 }
 @media screen and (min-width: 1600px) {
