@@ -19,7 +19,7 @@ class AssetsLoad
         }
 
         if ( ! Theme::isHomePage()) {
-         //   add_action('wp_enqueue_scripts', [$this, 'loadSearchScreen']);
+            add_action('wp_enqueue_scripts', [$this, 'loadSearchScreen']);
         }
 
     }
@@ -55,13 +55,13 @@ class AssetsLoad
             true
         );
 
-     /*   wp_enqueue_script(
+        wp_enqueue_script(
             'marchebe-close-js',
             get_template_directory_uri().'/assets/js/utils/closeNavigation.js',
             array(),
             wp_get_theme()->get('Version'),
             true
-        );*/
+        );
     }
 
     function marchebeHome()
