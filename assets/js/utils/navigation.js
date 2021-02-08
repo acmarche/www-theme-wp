@@ -65,14 +65,19 @@ window.addEventListener( 'load', () => {
     /**
      * Open sub nav
      */
-    const secondToggle = document.querySelector( '.secondToggle' );//pour faire suivant infographiste mais marche pas
     const btnOpenSecond = document.querySelector( '.btnOpenSecond' );
-    const popo = document.querySelector( '.popo' );
 
     btnOpenSecond.addEventListener( 'click', () => {
-        console.log( 'open second inside' );
-        secondToggle.classList.toggle( 'toggle-opened' );
-        popo.style.left = '0';
+        const idClicked = btnOpenSecond.getAttribute( 'data-menu' );
+        if ( idClicked ) {
+            const secondToggle = document.getElementById( idClicked );
+            if ( null !== secondToggle ) {
+                secondToggle.classList.toggle( 'toggle-opened' );//pour faire suivant infographiste mais marche pas
+                const popo = secondToggle.getElementsByTagName( 'div' )[0];
+                console.log( 'open second' );
+                popo.style.left = '0';
+            }
+        }
     });
 
     /**
@@ -81,11 +86,18 @@ window.addEventListener( 'load', () => {
     const btnCloseSubNav = document.querySelector( '.btn-close-sub-nav' );
 
     btnCloseSubNav.addEventListener( 'click', () => {
-        console.log( 'close second ' );
-        secondToggle.classList.toggle( 'toggle-opened' );
-        popo.style.left = '100%';
-        btnOpenSecond.style.color = 'white';
-        btnOpenSecond.style.backgroundColor = 'transparent';
+        const idClicked = btnOpenSecond.getAttribute( 'data-menu' );
+        if ( idClicked ) {
+            const secondToggle = document.getElementById( idClicked );
+            if ( null !== secondToggle ) {
+                secondToggle.classList.toggle( 'toggle-opened' );//pour faire suivant infographiste mais marche pas
+                const popo = secondToggle.getElementsByTagName( 'div' )[0];
+                console.log( 'close second' );
+                popo.style.left = '100%';
+                btnOpenSecond.style.color = 'white';
+                btnOpenSecond.style.backgroundColor = 'transparent';
+            }
+        }
     });
 });
 
