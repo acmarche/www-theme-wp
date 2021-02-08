@@ -1,3 +1,28 @@
+function btnOpenSecond( nameMenu ) {
+    if ( nameMenu ) {
+        const secondToggle = document.getElementById( nameMenu );
+        if ( null !== secondToggle ) {
+            secondToggle.classList.toggle( 'toggle-opened' );//pour faire suivant infographiste mais marche pas
+            const menu = secondToggle.getElementsByTagName( 'div' )[0];
+            menu.style.left = '0';
+        }
+    }
+}
+
+function btnCloseSecond( nameMenu ) {
+    if ( nameMenu ) {
+        const secondToggle = document.getElementById( nameMenu );
+        if ( null !== secondToggle ) {
+            secondToggle.classList.toggle( 'toggle-opened' );//pour faire suivant infographiste mais marche pas
+            const popo = secondToggle.getElementsByTagName( 'div' )[0];
+            popo.style.left = '100%';
+            const menu = secondToggle.getElementsByTagName( 'a' )[0];
+            menu.style.color = 'white';
+            menu.style.backgroundColor = 'transparent';
+        }
+    }
+}
+
 window.addEventListener( 'load', () => {
 
     /**
@@ -45,7 +70,6 @@ window.addEventListener( 'load', () => {
 
     btnOpenMainNav.addEventListener( 'click', () => {
         mainToggle.classList.toggle( 'toggle-opened' );
-        console.log( 'open main' );
         mainNav.style.top = 0;
         mainNav.style.zIndex = 10;
     });
@@ -57,61 +81,7 @@ window.addEventListener( 'load', () => {
 
     btnCloseMainNav.addEventListener( 'click', () => {
         mainToggle.classList.toggle( 'toggle-opened' );
-        console.log( 'close main' );
         mainNav.style.top = '100%';
         mainNav.style.zIndex = 'auto';
     });
-
-    /**
-     * Open sub nav
-     */
-    const btnOpenSecond = document.querySelector( '.btnOpenSecond' );
-
-    btnOpenSecond.addEventListener( 'click', () => {
-        const idClicked = btnOpenSecond.getAttribute( 'data-menu' );
-        if ( idClicked ) {
-            const secondToggle = document.getElementById( idClicked );
-            if ( null !== secondToggle ) {
-                secondToggle.classList.toggle( 'toggle-opened' );//pour faire suivant infographiste mais marche pas
-                const popo = secondToggle.getElementsByTagName( 'div' )[0];
-                console.log( 'open second' );
-                popo.style.left = '0';
-            }
-        }
-    });
-
-    /**
-     * Fermeture sub nav
-     */
-    const btnCloseSubNav = document.querySelector( '.btn-close-sub-nav' );
-
-    btnCloseSubNav.addEventListener( 'click', () => {
-        const idClicked = btnOpenSecond.getAttribute( 'data-menu' );
-        if ( idClicked ) {
-            const secondToggle = document.getElementById( idClicked );
-            if ( null !== secondToggle ) {
-                secondToggle.classList.toggle( 'toggle-opened' );//pour faire suivant infographiste mais marche pas
-                const popo = secondToggle.getElementsByTagName( 'div' )[0];
-                console.log( 'close second' );
-                popo.style.left = '100%';
-                btnOpenSecond.style.color = 'white';
-                btnOpenSecond.style.backgroundColor = 'transparent';
-            }
-        }
-    });
 });
-
-// TEST -----------------------------------------------------
-// let closeSecondNav = document.querySelectorAll(".closeSecondNav");
-// let secondNav = document.querySelectorAll(".secondNav");
-
-// closeSecondNav.forEach((elem) => {
-//   elem.addEventListener("click", () => {
-//     console.log("clicked");
-//     secondNav.forEach((el) => {
-//       el.style.display = "none";
-//     });
-//   });
-// });
-
-// TEST -----------------------------------------------------
