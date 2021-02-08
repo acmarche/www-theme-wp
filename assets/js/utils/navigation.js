@@ -39,11 +39,12 @@ window.addEventListener( 'load', () => {
     /**
      * Ouverture main nav
      */
+    const mainToggle = document.getElementById( 'main-toggle' );//pour faire suivant infographiste mais marche pas
     const btnOpenMainNav = document.getElementById( 'btn-open-main-nav' );
     const mainNav = document.getElementById( 'main-nav' );
 
     btnOpenMainNav.addEventListener( 'click', () => {
-        mainNav.classList.add( 'toggle-opened' );
+        mainToggle.classList.add( 'toggle-opened' );
         mainNav.classList.add( 'd-block' );
     });
 
@@ -53,24 +54,44 @@ window.addEventListener( 'load', () => {
     const btnCloseMainNav = document.getElementById( 'btn-close-main-nav' );
 
     btnCloseMainNav.addEventListener( 'click', () => {
+        mainToggle.classList.remove( 'toggle-opened' );
         mainNav.classList.add( 'd-none' );
-        mainNav.classList.remove( 'toggle-opened' );
         mainNav.classList.remove( 'd-block' );
+    });
+
+    /**
+     * Open sub nav
+     */
+    const secondToggle = document.getElementById( 'secondToggle' );//pour faire suivant infographiste mais marche pas
+    let notAdd = false;
+
+    secondToggle.addEventListener( 'click', () => {
+        if ( false === notAdd ) {
+            console.log( 'ici' );
+            secondToggle.classList.add( 'toggle-opened' );
+
+            //  secondToggle.classList.add( 'd-flex' );
+            notAdd = true;
+        }
     });
 
     /**
      * Fermeture sub nav
      */
     const btnCloseSubNav = document.querySelector( '.btn-close-sub-nav' );
-    const subNav = document.querySelector( '.titi' );
+    const popo = document.getElementById( 'popo' );
 
-    btnCloseSubNav.addEventListener( 'click', () => {
-        console.log( 'clicked btn sub ' );
-        console.log( subNav );
-        subNav.classList.add( 'd-none' );
-        subNav.classList.remove( 'toggle-opened' );
-        subNav.classList.remove( 'd-block' );
-    });
+    if ( null !== btnCloseSubNav ) {
+        btnCloseSubNav.addEventListener( 'click', () => {
+            secondToggle.classList.remove( 'toggle-opened' );
+            console.log( 'second' );
+            notAdd = true;
+            popo.classList.add( 'd-none' );
+            console.log( 'la' );
+
+        //    secondToggle.classList.remove( 'd-flex' );
+        });
+    }
 });
 
 // TEST -----------------------------------------------------
