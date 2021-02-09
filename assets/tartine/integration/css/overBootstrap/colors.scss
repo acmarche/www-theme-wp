@@ -1,0 +1,143 @@
+@import "../config.scss";
+
+/* COLORS */
+
+// filter
+
+.filter-grey {
+    filter: grayscale(1);
+}
+
+
+// background
+
+/*.bg-active {
+	background-color: $active !important;
+}*/
+/*.bg-gradient-active {
+	@include gradient(90deg, $lightActive, $active);
+}*/
+.bg-primary {
+	background-color: $CTA !important;
+}
+.bg-primary-55 {
+	background-color: rgba($CTA, .55) !important;
+}
+.bg-gradient-primary {
+	@include gradient(90deg, $CTA, $darkCTA);
+}
+
+.bg-dark-primary {
+	background-color: $darkCTA !important;
+}
+
+.bg-white-75 {
+	background-color: rgba($white, $alpha75) !important;
+}
+
+.bg-secondary {
+	background-color: $basicGrey !important;
+}
+
+.bg-dark {
+	background-color: $darkGrey !important;
+}
+.bg-dark-90 {
+	background-color: rgba($darkGrey, $alpha90) !important;
+}
+
+.bg-darkest {
+	background-color: $darkestGrey !important;
+}
+.bg-darkest-10 {
+	background-color: rgba($darkestGrey, $alpha10) !important;
+}
+
+.bg-light {
+	background-color: $lightGrey !important;
+}
+.bg-lighter {
+	background-color: $lighterGrey !important;
+}
+.bg-lighter-55 {
+	background-color: rgba($lighterGrey, .55) !important;
+}
+.bg-danger {
+	background-color: $darkRed !important;
+}
+.bg-success {
+	background-color: $darkGreen !important;
+}
+.bg-success-10 {
+	background-color: rgba($darkGreen, $alpha10) !important;
+}
+.bg-gradient-success {
+	@include gradient(90deg, $basicGreen, $darkGreen);
+}
+
+.bg-moon {
+	background-color: rgb(250, 251, 251);
+}
+
+.bg-none {
+    background: none !important;
+}
+
+// text
+
+/*.text-active {
+	color: $active !important;
+}*/
+/*.text-light-primary {
+	color: $lightCTA !important;
+}*/
+.text-primary {
+	color: $CTA !important;
+}
+.text-dark-primary {
+	color: $darkCTA !important;
+}
+/*.text-light-blue {
+	color: $lightBlue !important;
+}*/
+/*.text-dark-blue {
+	color: $darkBlue !important;
+}*/
+.text-secondary {
+	color: $basicGrey !important;
+}
+.text-default {
+	color: $darkGrey !important;
+}
+.text-darkest-10 {
+	color: rgba($darkestGrey, $alpha10);
+}
+.text-darkest-30 {
+	color: rgba($darkestGrey, $alpha30);
+}
+.text-light {
+	color: $lightGrey !important;
+}
+.text-danger {
+	color: $darkRed !important;
+}
+.text-success {
+	color: $darkGreen !important;
+}
+.text-success-50 {
+	color: rgba($darkGreen, $alpha50);
+}
+
+// hover
+
+a {
+    
+    &:hover {
+        &.text-hover-primary {
+            color: $CTA !important;
+        }
+        .text-hover-primary {
+            color: $CTA !important;
+        }
+    }
+}
