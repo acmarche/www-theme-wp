@@ -10,7 +10,7 @@ Navigation (nav.scss)
 **Texte dans menu plus grand**
 Texte plus grand: ligne 606 : font-size: $shortFontSize-3=> font-size: $shortFontSize-1;
 
-Je met l'alerte plus haut
+Je met l'alerte plus haut dans objects.scss
 ---
 .object-alert {
     position: fixed;
@@ -47,7 +47,7 @@ background-image: url(../../../images/commerce_default.png);
 
 Retirer bouton lire plus
 ---
-Dans base.html.twig mettre la class d-none sur span <span class="more"> et less
+Dans article/base.html.twig mettre la class d-none sur span <span class="more"> et less
 
 Tags
 ----
