@@ -52,6 +52,25 @@
                     z-index: 10;
                     @include lowBoxShadow();
                     @include transition(opacity, $basicDuration);
+                    
+                    &:hover {
+                        top: 50px;
+                        opacity: 1;
+                        @include transition(opacity, $basicDuration);
+                        
+                        .graphicElement {
+                            opacity: 1;
+                            @include allTransition($basicDuration);
+                            @include delay($basicDuration);
+                            
+                            &:first-child {
+                                top: -10px;
+                            }
+                            &:last-child {
+                                top: 0;
+                            }
+                        }
+                    }
 
                     .graphicElement {
                         bottom: auto;
@@ -105,6 +124,7 @@
 
                             a {
                                 display: flex;
+                                width: 100%;
                                 font-family: 'montserratsemibold';
                                 font-size: $shortFontSize-3;
                                 padding: 8px 24px;

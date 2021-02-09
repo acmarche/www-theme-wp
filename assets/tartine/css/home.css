@@ -195,6 +195,34 @@ $shortFontSize-3: .688rem;*/
   -o-transition: opacity 0.25s ease-in-out;
   transition: opacity 0.25s ease-in-out;
 }
+.bg-img-home .searchHome > input[type=search] + button + .bubble:hover {
+  top: 50px;
+  opacity: 1;
+  -webkit-transition: opacity 0.25s ease-in-out;
+  -moz-transition: opacity 0.25s ease-in-out;
+  -ms-transition: opacity 0.25s ease-in-out;
+  -o-transition: opacity 0.25s ease-in-out;
+  transition: opacity 0.25s ease-in-out;
+}
+.bg-img-home .searchHome > input[type=search] + button + .bubble:hover .graphicElement {
+  opacity: 1;
+  -webkit-transition: all 0.25s ease-in-out;
+  -moz-transition: all 0.25s ease-in-out;
+  -ms-transition: all 0.25s ease-in-out;
+  -o-transition: all 0.25s ease-in-out;
+  transition: all 0.25s ease-in-out;
+  -webkit-transition-delay: 0.25s;
+  -moz-transition-delay: 0.25s;
+  -ms-transition-delay: 0.25s;
+  -o-transition-delay: 0.25s;
+  transition-delay: 0.25s;
+}
+.bg-img-home .searchHome > input[type=search] + button + .bubble:hover .graphicElement:first-child {
+  top: -10px;
+}
+.bg-img-home .searchHome > input[type=search] + button + .bubble:hover .graphicElement:last-child {
+  top: 0;
+}
 .bg-img-home .searchHome > input[type=search] + button + .bubble .graphicElement {
   bottom: auto;
   right: auto;
@@ -259,6 +287,7 @@ $shortFontSize-3: .688rem;*/
 }
 .bg-img-home .searchHome > input[type=search] + button + .bubble ul li a {
   display: flex;
+  width: 100%;
   font-family: "montserratsemibold";
   font-size: 0.875rem;
   padding: 8px 24px;
