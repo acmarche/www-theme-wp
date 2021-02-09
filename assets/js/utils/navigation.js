@@ -28,11 +28,12 @@ window.addEventListener( 'load', () => {
     /**
      * Fermeture ecran de recherche
      */
+
     const btnCloseSearch = document.getElementById( 'btn-close-search' );
     const searchScreen = document.querySelector( '.searchScreen' );
     if ( null != btnCloseSearch ) {
         btnCloseSearch.addEventListener( 'click', () => {
-            searchScreen.classList.add( 'd-none' );
+            searchScreen.style.top = '100%';
         });
     }
 
@@ -40,9 +41,10 @@ window.addEventListener( 'load', () => {
      * Ouverture ecran de recherche
      */
     const btnOpenSearch = document.getElementById( 'btn-open-search' );
+
     if ( null != btnOpenSearch ) {
-        btnCloseSearch.addEventListener( 'click', () => {
-            searchScreen.classList.add( 'd-none' );
+        btnOpenSearch.addEventListener( 'click', () => {
+            searchScreen.style.top = 0;
         });
     }
 
