@@ -3,33 +3,35 @@
 
 namespace AcMarche\Theme;
 
-use AcMarche\Common\MarcheConst;
-use AcMarche\Common\TemplateRender;
 use AcMarche\Common\Twig;
-use AcMarche\Theme\Inc\SettingsPage;
+use AcMarche\Common\WpRepository;
 use AcMarche\Theme\Inc\Theme;
 
 get_header();
 
-$react = SettingsPage::isReactActivate();
-if ($react == false) {
-    TemplateRender::renderCategory();
-    get_footer();
-
-    return;
-}
+$wpRepository = new WpRepository();
 
 $cat_ID      = get_queried_object_id();
 $category    = get_category($cat_ID);
-$description = $category->description;
-$title       = $category->name;
+$description = $description = category_description($cat_ID);
+$title       = single_cat_title('', false);
 
-$blodId = get_current_blog_id();
-
+$blodId   = get_current_blog_id();
 $path     = Theme::getPathBlog($blodId);
 $siteSlug = Theme::getTitleBlog($blodId);
 $color    = Theme::getColorBlog($blodId);
 $blogName = Theme::getTitleBlog($blodId);
+
+$children = $wpRepository->getChildrenOfCategory($cat_ID);
+$posts    = $wpRepository->getPostsAndFiches($cat_ID);
+$parent   = $wpRepository->getParentCategory($cat_ID);
+$urlBack  = $path;
+$nameBack = $blogName;
+
+if ($parent) {
+    $urlBack  = get_category_link($parent->term_id);
+    $nameBack = $parent->name;
+}
 
 wp_enqueue_script(
     'react-app',
@@ -40,15 +42,21 @@ wp_enqueue_script(
 );
 
 Twig::rendPage(
-    'category/index_react.html.twig',
+    'category/index.html.twig',
     [
-        'title'    => $title,
-        'category' => $category,
-        'siteSlug' => $siteSlug,
-        'color'    => $color,
-        'blogName'  => $blogName,
-        'path'     => $path,
-        'subTitle' => 'Tout',
+        'title'       => $title,
+        'category'    => $category,
+        'siteSlug'    => $siteSlug,
+        'color'       => $color,
+        'blogName'    => $blogName,
+        'path'        => $path,
+        'subTitle'    => 'Tout',
+        'description' => $description,
+        'children'    => $children,
+        'posts'       => $posts,
+        'category_id' => $cat_ID,
+        'urlBack'     => $urlBack,
+        'nameBack'    => $nameBack,
     ]
 );
 
