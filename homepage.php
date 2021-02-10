@@ -2,6 +2,7 @@
 
 namespace AcMarche\Theme;
 
+use AcMarche\Common\Mailer;
 use AcMarche\Common\Twig;
 use AcMarche\Common\WpRepository;
 use AcMarche\Pivot\Repository\HadesRepository;
@@ -14,9 +15,15 @@ get_header();
 
 $hadesRepository = new HadesRepository();
 
-$news      = WpRepository::getAllNews(6);
-$events    = $hadesRepository->getEvents();
-$pageAlert = WpRepository::getPageAlert();
+$news = WpRepository::getAllNews(6);
+try {
+    $events = $hadesRepository->getEvents();
+} catch (\Exception $exception) {
+    $events = [];
+    Mailer::sendError("Erreur de chargement de l'agenda", $exception->getMessage());
+}
+
+$pageAlert    = WpRepository::getPageAlert();
 $contentAlert = null;
 
 if ($pageAlert) {
@@ -34,9 +41,9 @@ if ($pageAlert) {
 Twig::rendPage(
     'homepage/index.html.twig',
     [
-        'actus'     => $news,
-        'events'    => $events,
-        'pageAlert' => $pageAlert,
+        'actus'        => $news,
+        'events'       => $events,
+        'pageAlert'    => $pageAlert,
         'contentAlert' => $contentAlert,
     ]
 );
