@@ -42,9 +42,14 @@ $bigFontSize-3: 1.87rem; /*22pt / 30px*/
 $bigFontSize-2: 1.5rem;
 $bigFontSize-1: 1.25rem;
 $basicFontSize: 1rem;
-$shortFontSize-1: .875rem;
-$shortFontSize-2: .825rem; /*.75rem*/
-$shortFontSize-3: .75rem; /*.688rem*/
+
+//$shortFontSize-1: .875rem;
+//$shortFontSize-2: .825rem; /*.75rem*/
+//$shortFontSize-3: .75rem; /*.688rem*/
+
+$shortFontSize-1: .975rem;
+$shortFontSize-2: .95rem;
+$shortFontSize-3: .875rem;
 
 $boldFontFat: 400;
 $bolderFontFat: 600;
@@ -55,7 +60,7 @@ $bolderFontFat: 600;
 $CTA: rgb(74, 224, 199);
 $darkCTA: rgb(72, 127, 137);
 //$lightActive: rgb(255, 207, 27);
-//$active: rgb(255, 136, 27);
+$active: rgb(255, 136, 27);
 
 $white: rgb(255, 255, 255);
 $lighterGrey: rgb(237, 237, 236);

@@ -8,7 +8,7 @@ Centrage des textes : sur li col-3 => col-3 d-flex justify-content-center
 Navigation (nav.scss)
 ---
 **Texte dans menu plus grand**
-Texte plus grand: ligne 606 : font-size: $shortFontSize-3=> font-size: $shortFontSize-1;
+Texte plus grand: ligne 616 : font-size: $shortFontSize-3=> font-size: $shortFontSize-1;
 
 Je met l'alerte plus haut dans objects.scss
 ---
@@ -30,19 +30,19 @@ $shortFontSize-3: .875rem;
 Dans objects.scss
 ---
 **Pour titre event en list**
-max-height: de 30 a 40 ligne 756
+max-height: de 30 a 40 ligne 758
 h3 {
      max-height: 40px;
    }
 
 **Pour news list**
-ligne 674 de 45 a 55 px
+ligne 676 de 45 a 55 px
 h3 {
    max-height: 55px;
 }
 
 **Pour image par defaut fiche bottin**
-ligne 889 default image .bg-img-directory-1
+ligne 893 default image .bg-img-directory-1
 background-image: url(../../../images/commerce_default.png);
 
 Retirer bouton lire plus
