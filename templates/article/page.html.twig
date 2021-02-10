@@ -1,1 +1,24 @@
 {% extends "article/base.html.twig" %}
+
+{% block url_back %}
+    {{ urlBack }}
+{% endblock %}
+
+{% block content %}
+    <p>{{ content|raw|nl2br }}</p>
+{% endblock %}
+
+{% block scripts %}
+
+    <script type="text/javascript">
+        jQuery( document )
+            .ready( function() {
+                jQuery( '#content' )
+                    .lightGallery( {
+                            'selector': '.img-lightGallery'
+                        }
+                    );
+            } );
+    </script>
+
+{% endblock %}

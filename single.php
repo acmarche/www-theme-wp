@@ -19,8 +19,6 @@ if (has_post_thumbnail()) {
     }
 }
 
-//$categorySlug = get_query_var('category_name');
-//$category     = WpRepository::getCategoryBySlug($categorySlug);
 $urlBack      =  Router::getCurrentUrl();
 
 $blodId = get_current_blog_id();

@@ -194,4 +194,9 @@ class Router
     public static function getCurrentUrl():string {
         return get_site_url().esc_url_raw(add_query_arg([]));
     }
+
+    public static function getUrlWww():string {
+        $current = preg_replace("#new.marche.be#","www.marche.be",Router::getCurrentUrl());
+        return $current;
+    }
 }
