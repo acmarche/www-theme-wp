@@ -6,6 +6,7 @@ namespace AcMarche\Theme\Inc;
 use AcMarche\Bottin\Bottin;
 use AcMarche\Bottin\Repository\BottinRepository;
 use AcMarche\Common\Mailer;
+use AcMarche\Common\SortUtil;
 use AcMarche\Elasticsearch\Searcher;
 use AcMarche\Pivot\Repository\HadesRepository;
 use Elastica\Exception\InvalidException;
@@ -57,6 +58,7 @@ class ApiData
         }
         //combines formatted fiches (data) and posts
         $all = array_merge($data, $posts);
+        $all = SortUtil::sortPosts($all);
 
         // returns all posts and fiches with their respective wp category
         return rest_ensure_response($all);
