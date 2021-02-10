@@ -3,6 +3,7 @@ window.addEventListener( 'scroll', () => {
     if ( null != searchScreen ) {
         searchScreen.style.bottom = 0;
         console.log( 'scroll' );
+        console.log( searchScreen.style.bottom );
     }
 });
 
