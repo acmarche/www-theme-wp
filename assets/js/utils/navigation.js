@@ -1,3 +1,11 @@
+window.addEventListener( 'scroll', () => {
+    const searchScreen = document.querySelector( '.searchScreen' );
+    if ( null != searchScreen ) {
+        searchScreen.style.bottom = 0;
+        console.log( 'scroll' );
+    }
+});
+
 function btnOpenSecond( nameMenu ) {
     if ( nameMenu ) {
         const secondToggle = document.getElementById( nameMenu );
