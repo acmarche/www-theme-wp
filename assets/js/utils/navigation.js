@@ -1,21 +1,16 @@
+// Setup isScrolling variable
+let isScrolling;
+
 window.addEventListener( 'scroll', ( event ) => {
     const searchScreen = document.querySelector( '.searchScreen' );
     if ( null != searchScreen ) {
-
         searchScreen.classList.add( 'd-none' );
-        // Clear our timeout throughout the scroll
         window.clearTimeout( isScrolling );
-
-        // Set a timeout to run after scrolling ends
         isScrolling = setTimeout( () => {
-
-		    // Run the callback
             console.log( 'Scrolling has stopped.' );
-        searchScreen.classList.remove( 'd-none' );
+            searchScreen.classList.remove( 'd-none' );
         }, 66 );
-
         console.log( 'scroll' );
-        console.log( searchScreen.style.bottom );
     }
 }, false );
 
