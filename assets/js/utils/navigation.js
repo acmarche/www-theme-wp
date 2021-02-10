@@ -1,17 +1,3 @@
-let isScrolling;
-window.addEventListener( 'scroll', ( event ) => {
-    const searchScreen = document.querySelector( '.searchScreen' );
-    if ( null != searchScreen ) {
-        searchScreen.classList.add( 'd-none' );
-        window.clearTimeout( isScrolling );
-        isScrolling = setTimeout( () => {
-            console.log( 'Scrolling has stopped.' );
-            searchScreen.classList.remove( 'd-none' );
-        }, 10 );
-        console.log( 'scroll' );
-    }
-}, false );
-
 function btnOpenSecond( nameMenu ) {
     if ( nameMenu ) {
         const secondToggle = document.getElementById( nameMenu );
@@ -46,6 +32,8 @@ window.addEventListener( 'load', () => {
     const searchScreen = document.querySelector( '.searchScreen' );
     if ( null != btnCloseSearch ) {
         btnCloseSearch.addEventListener( 'click', () => {
+            searchScreen.classList.add( 'd-none' );//d-none pour bug samsung
+            searchScreen.classList.remove( 'd-block' );
             searchScreen.style.top = '100%';
         });
     }
@@ -57,6 +45,8 @@ window.addEventListener( 'load', () => {
 
     if ( null != btnOpenSearch ) {
         btnOpenSearch.addEventListener( 'click', () => {
+            searchScreen.classList.add( 'd-block' );
+            searchScreen.classList.remove( 'd-none' );//d-none pour bug samsung
             searchScreen.style.top = 0;
         });
     }
