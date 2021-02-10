@@ -2,8 +2,7 @@ import DateFilter from './DateFilter';
 import Events from './Events';
 
 const {
-    useState,
-    useEffect
+    useState
 } = wp.element;
 
 function App() {

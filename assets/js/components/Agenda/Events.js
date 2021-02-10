@@ -49,7 +49,7 @@ function Events({
             let shouldStay = false;
 
             if ( 'tout' !== selectorMonth ) {
-                event.dates.forEach( ( e ) => {
+                event.datesR.forEach( ( e ) => {
                     let startingDate = e.date_deb;
                     startingDate = startingDate.split( '/' )
                         .reverse()
@@ -100,7 +100,7 @@ function Events({
             <>
                 <ul className="pt-24px pt-md-32px justify-content-center d-md-flex flex-md-wrap mx-md-n4px mx-lg-n8px object-cardsList">
                     <li className="alert alert-info d-block" role="alert">
-                        aucun événement à afficher
+                        Aucun événement à afficher
                     </li>
                 </ul>
             </>
@@ -132,15 +132,15 @@ function Events({
                             </i>
                             <div>
                                 <div className="col-3">
-                                    <span>{object.dates[0].day}</span>
-                                    <span>{object.dates[0].month}</span>
-                                    <span>{object.dates[0].year}</span>
+                                    <span>{object.datesR[0].day}</span>
+                                    <span>{object.datesR[0].month}</span>
+                                    <span>{object.datesR[0].year}</span>
                                 </div>
 
                                 <div className="col-9">
                                     <h3>{object.titre}</h3>
                                     <small>
-                                        {object.dates.map( ( date, index2 ) => {
+                                        {object.datesR.map( ( date, index2 ) => {
                                             if ( 4 > index2 ) {
                                                 return ( <Fragment
                                                     key={index2}>{date.date_deb} | </Fragment> );
