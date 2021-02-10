@@ -7,7 +7,7 @@ window.addEventListener( 'scroll', ( event ) => {
         isScrolling = setTimeout( () => {
             console.log( 'Scrolling has stopped.' );
             searchScreen.classList.remove( 'd-none' );
-        }, 150 );
+        }, 10 );
         console.log( 'scroll' );
     }
 }, false );
