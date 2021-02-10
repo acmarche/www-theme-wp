@@ -1,3 +1,24 @@
+window.addEventListener( 'scroll', ( event ) => {
+    const searchScreen = document.querySelector( '.searchScreen' );
+    if ( null != searchScreen ) {
+
+        searchScreen.classList.add( 'd-none' );
+        // Clear our timeout throughout the scroll
+        window.clearTimeout( isScrolling );
+
+        // Set a timeout to run after scrolling ends
+        isScrolling = setTimeout( () => {
+
+		    // Run the callback
+            console.log( 'Scrolling has stopped.' );
+        searchScreen.classList.remove( 'd-none' );
+        }, 66 );
+
+        console.log( 'scroll' );
+        console.log( searchScreen.style.bottom );
+    }
+}, false );
+
 function btnOpenSecond( nameMenu ) {
     if ( nameMenu ) {
         const secondToggle = document.getElementById( nameMenu );
@@ -32,8 +53,6 @@ window.addEventListener( 'load', () => {
     const searchScreen = document.querySelector( '.searchScreen' );
     if ( null != btnCloseSearch ) {
         btnCloseSearch.addEventListener( 'click', () => {
-            searchScreen.classList.add('d-none') ;
-            searchScreen.classList.remove('d-block') ;
             searchScreen.style.top = '100%';
         });
     }
@@ -45,8 +64,6 @@ window.addEventListener( 'load', () => {
 
     if ( null != btnOpenSearch ) {
         btnOpenSearch.addEventListener( 'click', () => {
-            searchScreen.classList.add('d-block') ;
-            searchScreen.classList.remove('d-none') ;
             searchScreen.style.top = 0;
         });
     }
