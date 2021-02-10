@@ -226,7 +226,7 @@
 						right: auto;
 						overflow: hidden;
 						border-radius: $smallestRadius;
-						background-color: $lightActive;
+						//background-color: $lightActive;
 						@include lowestBoxShadow();
 						@include boxShadowTransition($basicDuration);
 						@include delay($shortDuration);
@@ -237,7 +237,7 @@
 							margin: auto;
 							border-radius: 0;
 							background: none;
-							@include boxInset(-11px 0 22px $active);
+							//@include boxInset(-11px 0 22px $active);
 
 							.percent {
 								display: block;
@@ -277,7 +277,7 @@
 						right: auto;
 						overflow: hidden;
 						border-radius: $smallestRadius;
-						background-color: $lightActive;
+						//background-color: $lightActive;
 						@include lowestBoxShadow();
 						@include boxShadowTransition($basicDuration);
 						@include delay($shortDuration);
@@ -288,7 +288,7 @@
 							margin: auto;
 							border-radius: 0;
 							background: none;
-							@include boxInset(-11px 0 22px $active);
+							//@include boxInset(-11px 0 22px $active);
 
 							.percent {
 								display: block;
@@ -310,7 +310,7 @@
 				.headElement {
 					.dataCompletion {
 						.completion {
-							@include higherBoxShadow();
+							//@include higherBoxShadow();
 							@include boxShadowTransition($basicDuration);
 							@include delay($shortDuration);
 						}

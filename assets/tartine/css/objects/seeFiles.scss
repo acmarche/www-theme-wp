@@ -36,19 +36,19 @@
 			font-size: $basicFontSize;
 			background-color: $CTA;
 			color: $white;
-		//	@include buttonInset();
+			//@include buttonInset();
 			@include allTransition($basicDuration);
 		}
 	}
 
 	&:hover {
-		@include higherBoxShadow();
+		//@include higherBoxShadow();
 		@include boxShadowTransition($basicDuration);
 
 		a {
 			.CTA {
-				background-color: $lightCTA;
-				@include buttonInsetHover();
+				//background-color: $lightCTA;
+				//@include buttonInsetHover();
 				@include allTransition($basicDuration);
 			}
 		}

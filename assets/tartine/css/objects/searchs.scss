@@ -78,7 +78,7 @@
 						color: $lightGrey;
 					}
 					p {
-						color: $active;
+						//color: $active;
 
 						&.missInfo {
 							color: $lightGrey;
@@ -89,15 +89,15 @@
 					@include basicBorder(0 0 0 1px);
 				}
 
-				.benefStatus {
+				/*.benefStatus {
 					p {
 						color: $active;
 					}
-				}
+				}*/
 			}
 
 			&:hover {
-				@include higherBoxShadow();
+				//@include higherBoxShadow();
 				@include boxShadowTransition($basicDuration);
 
 				.headElement {
@@ -116,7 +116,7 @@
 					}
 					.dataCompletion {
 						.completion {
-							@include higherBoxShadow();
+							//@include higherBoxShadow();
 							@include boxShadowTransition($basicDuration);
 							@include delay($shortDuration);
 						}

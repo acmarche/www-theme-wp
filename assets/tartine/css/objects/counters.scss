@@ -13,8 +13,8 @@
 	font-weight: 600;
 	border-radius: 6px;
 	color: $white;
-	background-color: $lightActive;
-	@include boxInset(-4px 0 6px $active);
+	//background-color: $lightActive;
+	//@include boxInset(-4px 0 6px $active);
 }
 
 // HEADER TOOLS
@@ -41,14 +41,14 @@
 				background: none;
 				@include noneBoxShadow();
 
-				p {
+				/*p {
 					color: $active;
 
 					i {
 						padding: 0 6px 0 0;
 						color: $active;
 					}
-				}
+				}*/
 			}
 		}
 	}
@@ -85,7 +85,7 @@
 			z-index: 10;
 			border-radius: 22px;
 			//font-size: $shortFontSize-2;
-			background-color: $active;
+			//background-color: $active;
 			//@include lowestBoxShadow();
 			//@extend %extend-roll-coordinated-reverse-one;
 
@@ -113,7 +113,7 @@
 			}
 		}
 
-		&:hover {
+		/*&:hover {
 			& + .chatHeader {
 				&.icon {
 					background-color: $lightCTA;
@@ -132,7 +132,7 @@
 					}
 				}
 			}
-		}
+		}*/
 
 		/*&.benef {
 			@extend %extend-roll-infinite;

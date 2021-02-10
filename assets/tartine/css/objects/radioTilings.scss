@@ -22,7 +22,7 @@
 		input {
 			&:hover {
 				& + label {
-					background-color: $lightCTA;
+					//background-color: $lightCTA;
 					@include boxInset(-22px 0 44px $darkCTA);
 					@include allTransition($basicDuration);
 
@@ -39,8 +39,8 @@
 
 			&:checked {
 				& + label {
-					background-color: $lightActive;
-					@include boxInset(-22px 0 44px $active);
+					//background-color: $lightActive;
+					//@include boxInset(-22px 0 44px $active);
 					@include allTransition($basicDuration);
 
 					i {
@@ -55,9 +55,9 @@
 
 				&:hover {
 					& + label {
-						background-color: $lightActive;
+						//background-color: $lightActive;
 						//@include border(1px, $active);
-						@include boxInset(-22px 0 44px $active);
+						//@include boxInset(-22px 0 44px $active);
 						@include allTransition($basicDuration);
 
 						i {

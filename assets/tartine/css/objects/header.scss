@@ -36,7 +36,9 @@ header {
             padding: 3px 1.5rem;
 
             @media screen and (orientation: landscape) {
-                padding: 6px 1.5rem 6px 9px;
+                @media (min-width: $sm) {
+                    padding: 6px 1.5rem 6px 9px;
+                }
             }
 
             @media screen {

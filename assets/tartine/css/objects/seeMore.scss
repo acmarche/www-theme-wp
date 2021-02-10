@@ -25,12 +25,12 @@
 		}
 		&.less {
 			display: none;
-			@include boxInset(-22px 0 55px rgba($active, $alpha0));
+			//@include boxInset(-22px 0 55px rgba($active, $alpha0));
 		}
 	}
 
 	&.active {
-		background-color: $active;
+		//background-color: $active;
 
 		p {
 			&.more {
@@ -42,12 +42,12 @@
 		}
 
 		&:hover {
-			background-color: $lightActive;
+			//background-color: $lightActive;
 		}
 	}
 
 	&:hover {
-		background-color: $lightCTA;
+		//background-color: $lightCTA;
 		@include highBoxShadow();
 		@include allTransition($basicDuration);
 
@@ -58,7 +58,7 @@
 				@include boxInset(-22px 0 55px $darkCTA);
 			}
 			&.less {
-				@include boxInset(-22px 0 55px $active);
+				//@include boxInset(-22px 0 55px $active);
 			}
 		}
 	}
@@ -139,7 +139,7 @@
 			}
 			&.less {
 				display: none;
-				@include boxInset(-66px 0 88px rgba($active, $alpha0));
+				//@include boxInset(-66px 0 88px rgba($active, $alpha0));
 			}
 		}
 
@@ -149,7 +149,7 @@
 					@include boxInset(-66px 0 88px $darkCTA);
 				}
 				&.less {
-					@include boxInset(-66px 0 88px $active);
+					//@include boxInset(-66px 0 88px $active);
 				}
 			}
 		}
