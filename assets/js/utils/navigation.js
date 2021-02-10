@@ -1,6 +1,4 @@
-// Setup isScrolling variable
 let isScrolling;
-
 window.addEventListener( 'scroll', ( event ) => {
     const searchScreen = document.querySelector( '.searchScreen' );
     if ( null != searchScreen ) {
@@ -9,7 +7,7 @@ window.addEventListener( 'scroll', ( event ) => {
         isScrolling = setTimeout( () => {
             console.log( 'Scrolling has stopped.' );
             searchScreen.classList.remove( 'd-none' );
-        }, 66 );
+        }, 150 );
         console.log( 'scroll' );
     }
 }, false );
