@@ -37,7 +37,6 @@ window.addEventListener( 'load', () => {
     /**
      * Fermeture ecran de recherche
      */
-
     const btnCloseSearch = document.getElementById( 'btn-close-search' );
     const searchScreen = document.querySelector( '.searchScreen' );
     if ( null != btnCloseSearch ) {
