@@ -1,12 +1,3 @@
-window.addEventListener( 'scroll', () => {
-    const searchScreen = document.querySelector( '.searchScreen' );
-    if ( null != searchScreen ) {
-        searchScreen.style.bottom = 0;
-        console.log( 'scroll' );
-        console.log( searchScreen.style.bottom );
-    }
-});
-
 function btnOpenSecond( nameMenu ) {
     if ( nameMenu ) {
         const secondToggle = document.getElementById( nameMenu );
@@ -41,6 +32,8 @@ window.addEventListener( 'load', () => {
     const searchScreen = document.querySelector( '.searchScreen' );
     if ( null != btnCloseSearch ) {
         btnCloseSearch.addEventListener( 'click', () => {
+            searchScreen.classList.add('d-none') ;
+            searchScreen.classList.remove('d-block') ;
             searchScreen.style.top = '100%';
         });
     }
@@ -52,6 +45,8 @@ window.addEventListener( 'load', () => {
 
     if ( null != btnOpenSearch ) {
         btnOpenSearch.addEventListener( 'click', () => {
+            searchScreen.classList.add('d-block') ;
+            searchScreen.classList.remove('d-none') ;
             searchScreen.style.top = 0;
         });
     }
