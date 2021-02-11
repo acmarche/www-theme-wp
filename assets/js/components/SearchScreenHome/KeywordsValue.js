@@ -27,27 +27,26 @@ function KeywordsValue({
 
     return (
         <>
-            {0 !== filteredKeywords.length ? (
+            <ul>
+                {0 !== filteredKeywords.length ? (
 
-                //Le slice permet de limiter le nombre de proposition
-                filteredKeywords.slice( 0, 10 )
-                    .map( ( elem, index ) => (
-                        <li
-                            key={index}
-                            className="col-ls-6 col-ls-sm-4 col-xl-12 col-ls-xl-12"
-                        >
-                            <a href={`/?s=${elem.name}`} className="icon_custom">
-                                {elem.name}
-                            </a>
-                        </li>
-                    ) )
-            ) : (
-                <li className="col-ls-6 col-ls-sm-4 col-xl-12 col-ls-xl-12">
-                    <a className="icon_custom">
-                        Pas de proposition
-                    </a>
-                </li>
-            )}
+                    //Le slice permet de limiter le nombre de proposition
+                    filteredKeywords.slice( 0, 10 )
+                        .map( ( elem, index ) => (
+                            <li key={index} className="col-ls-6">
+                                <a href={`/?s=${elem.name}`} className="icon_custom">
+                                    {elem.name}
+                                </a>
+                            </li>
+                        ) )
+                ) : (
+                    <li className="col-ls-6">
+                        <a className="icon_custom">
+                             Pas de proposition
+                        </a>
+                    </li>
+                )}
+            </ul>
         </>
     );
 }

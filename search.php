@@ -59,7 +59,7 @@ if ($react) {
         [
             'keyword' => $keyword,
             'hits'    => $results,
-            'count'   => $results,
+            'count'   => $count,
         ]
     );
 } else {
@@ -68,7 +68,7 @@ if ($react) {
         [
             'keyword' => $keyword,
             'hits'    => $results,
-            'count'   => $results,
+            'count'   => $count,
         ]
     );
 }

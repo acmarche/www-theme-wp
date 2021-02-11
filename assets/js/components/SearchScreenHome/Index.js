@@ -30,14 +30,31 @@ function App() {
         <>
             <h1 className="pb-22px">Bienvenue <br className="d-ls-md-none d-md-none"/>à
             Marche-en-Famenne</h1>
-            <form id="search-screen-ho" action="/" method="get" className="mw-550px position-relative m-auto searchHome">
-                <input name="s" autoComplete="off" type="search" placeholder="Que cherchez-vous ?"
-                    className="border-0 rounded-pill h-42px pl-16px pr-58px fs-short-3"/>
+            <form action="/" method="get" className="mw-550px position-relative m-auto searchHome">
+                <input
+                    autoComplete="off"
+                    type="search"
+                    placeholder="Que cherchez-vous ?"
+                    className="border-0 rounded-pill h-42px pl-16px pr-58px fs-short-3"
+                    onChange={( e ) => handleChange( e )}
+                />
                 <button
                     className="position-absolute top-0 bottom-0 right-0 w-42px d-flex justify-content-center align-items-center p-0 border-0 rounded-right-pill bg-transparent icon_custom">
                     <i className="i-search i-dark-primary"></i>
                 </button>
-                <HardCodedValues></HardCodedValues>
+                <div className="bubble d-ls-lg-none d-lg-none">
+                    <i className="graphicElement"></i>
+                    <h3>Suggestions</h3>
+                    {inputContent ? (
+                        <KeywordsValue
+                            inputContent={inputContent}
+                            keywordsElement={keywordsElement}
+                        />
+                    ) : (
+                        <HardCodedValues/>
+                    )}
+                    <i className="graphicElement"></i>
+                </div>
             </form>
         </>
     );
