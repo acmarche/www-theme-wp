@@ -18,10 +18,7 @@ class AssetsLoad
             add_action('wp_enqueue_scripts', [$this, 'readSpeaker']);
         }
 
-        if ( ! Theme::isHomePage()) {
-            add_action('wp_enqueue_scripts', [$this, 'loadSearchScreen']);
-        }
-
+        add_action('wp_enqueue_scripts', [$this, 'loadSearchScreen']);
     }
 
     function marchebeAssets()
