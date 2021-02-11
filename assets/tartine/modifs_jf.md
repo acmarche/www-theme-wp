@@ -34,7 +34,7 @@ max-height: de 30 a 40 ligne 758
 h3 {
      max-height: 40px;
    }
-
+ ligne 681:   height: 40px;
 **Pour news list**
 ligne 676 de 45 a 55 px
 h3 {
