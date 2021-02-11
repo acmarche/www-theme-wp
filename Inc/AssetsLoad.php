@@ -10,6 +10,7 @@ class AssetsLoad
 
         if (Theme::isHomePage()) {
             add_action('wp_enqueue_scripts', [$this, 'marchebeHome']);
+            add_action('wp_enqueue_scripts', [$this, 'loadSearchScreenHome']);
         }
 
         if ( ! is_category() && ! is_search() && ! is_front_page()) {
@@ -160,6 +161,17 @@ class AssetsLoad
         wp_enqueue_script(
             'marchebe-react-search-screen',
             get_template_directory_uri().'/assets/js/build/searchScreen.js',
+            ['wp-element'],
+            wp_get_theme()->get('Version'),
+            true
+        );
+    }
+
+    function loadSearchScreenHome()
+    {
+        wp_enqueue_script(
+            'marchebe-react-search-screen-home',
+            get_template_directory_uri().'/assets/js/build/searchScreenHome.js',
             ['wp-element'],
             wp_get_theme()->get('Version'),
             true

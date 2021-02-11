@@ -19,6 +19,9 @@ module.exports = {
         ],
         searchScreen: [
             `${path.resolve( __dirname, 'src' )}/searchScreen.js`
+        ],
+        searchScreenHome: [
+            `${path.resolve( __dirname, 'src' )}/searchScreenHome.js`
         ]
     },
     externals: {

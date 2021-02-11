@@ -150,6 +150,38 @@ class ApiData
         return rest_ensure_response($data);
     }
 
+    public static function suggest(WP_REST_Request $request)
+    {
+        $keyword = $request->get_param('keyword');
+        if ( ! $keyword) {
+            return new WP_Error(500, 'missing param keyword');
+        }
+
+        $searcher = new Searcher();
+
+        try {
+            $results = $searcher->search($keyword);
+            $data    = ['count' => $results->count()];
+        } catch (InvalidException $e) {
+            Mailer::sendError("wp error search", $e->getMessage());
+
+            return rest_ensure_response([]);
+        }
+
+        /**
+         * Je nettoie le resultat car je n'arrive pas avec react
+         */
+        $resultat = [];
+        foreach ($results->getResults() as $result) {
+            $hit        = $result->getHit();
+            $resultat[] = $hit['_source'];
+        }
+        $data['hits'] = $resultat;
+
+        return rest_ensure_response($data);
+
+    }
+
 // This plugin also adds a custom endpoint that returns all categories of the bottin
     static function ca_bottinAllCategories()
     {
@@ -181,7 +213,7 @@ class ApiData
             $formattedFiche            = [];
             $formattedFiche['societe'] = $fichesSociete;
             $formattedFiche['id']      = $fichesId;
-            $formattedFiche['slug']      = $fiche->slug;
+            $formattedFiche['slug']    = $fiche->slug;
 
             $fichesSocieteId[] = $formattedFiche;
         }
@@ -197,5 +229,6 @@ class ApiData
 
         return rest_ensure_response($fiches);
     }
+
 
 }
