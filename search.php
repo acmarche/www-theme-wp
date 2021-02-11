@@ -6,7 +6,8 @@ use AcMarche\Common\Mailer;
 use AcMarche\Common\Twig;
 use AcMarche\Elasticsearch\Searcher;
 use AcMarche\Theme\Inc\SettingsPage;
-use Elastica\Exception\InvalidException;
+use AcMarche\Theme\Inc\Theme;
+use \Exception;
 
 get_header();
 global $s;
@@ -17,10 +18,26 @@ $searcher = new Searcher();
 $keyword  = get_search_query();
 
 try {
-    $results = $searcher->search($keyword);
-} catch (InvalidException $e) {
+    $searching = $searcher->search($keyword);
+    $results   = $searching->getResults();
+    $count     = $searching->count();
+} catch (Exception $e) {
     Mailer::sendError("wp error search", $e->getMessage());
-    $results = [];
+
+    Twig::rendPage(
+        'errors/500.html.twig',
+        [
+            'message'   => $e->getMessage(),
+            'title'     => 'Erreur lors de la recherche',
+            'tags'      => [],
+            'color'     => Theme::getColorBlog(1),
+            'blogName'  => Theme::getTitleBlog(1),
+            'relations' => [],
+        ]
+    );
+    get_footer();
+
+    return;
 }
 
 /*
@@ -41,8 +58,8 @@ if ($react) {
         'search/index_react.html.twig',
         [
             'keyword' => $keyword,
-            'hits'    => $results->getResults(),
-            'count'   => $results->count(),
+            'hits'    => $results,
+            'count'   => $results,
         ]
     );
 } else {
@@ -50,8 +67,8 @@ if ($react) {
         'search/index.html.twig',
         [
             'keyword' => $keyword,
-            'hits'    => $results->getResults(),
-            'count'   => $results->count(),
+            'hits'    => $results,
+            'count'   => $results,
         ]
     );
 }
