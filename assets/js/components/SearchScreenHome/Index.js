@@ -1,6 +1,7 @@
 import HardCodedValues from './HardCodedValues';
 import KeywordsValue from './KeywordsValue';
 import axios from '../Axios';
+import Icones from './Icones';
 
 const {
     useState,
@@ -56,6 +57,7 @@ function App() {
                     <i className="graphicElement"></i>
                 </div>
             </form>
+            <Icones></Icones>
         </>
     );
 }
