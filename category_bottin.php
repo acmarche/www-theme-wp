@@ -83,6 +83,7 @@ Twig::rendPage(
         'blogName'    => $blogName,
         'urlBack'     => $urlBack,
         'nameBack'    => $nameBack,
+        'category'    => $category,
     ]
 );
 get_footer();
