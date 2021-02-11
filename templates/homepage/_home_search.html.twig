@@ -1,7 +1,7 @@
 <div class="bg-img-home">
     <div class="bg-gradient-home col-12 mx-auto px-24px py-150px pt-ls-66px pb-ls-108px pt-ls-sm-88px pb-ls-sm-135px pt-ls-md-99px pb-ls-md-150px text-center pb-md-195px pt-ls-xl-175px pb-ls-xl-220px">
         <h1 class="pb-22px">Bienvenue <br class="d-ls-md-none d-md-none">à Marche-en-Famenne</h1>
-        <form action="/" method="get" class="mw-550px position-relative m-auto searchHome">
+        <form id="search-screen-home" action="/" method="get" class="mw-550px position-relative m-auto searchHome">
             <input name="s" autocomplete="off" type="search" placeholder="Que cherchez-vous ?"
                    class="border-0 rounded-pill h-42px pl-16px pr-58px fs-short-3">
             <button class="position-absolute top-0 bottom-0 right-0 w-42px d-flex justify-content-center align-items-center p-0 border-0 rounded-right-pill bg-transparent icon_custom">
@@ -37,50 +37,6 @@
         </form>
 
         <!--visible from landscape&&large / large-->
-        <ul class="d-none d-ls-lg-flex d-lg-flex flex-wrap justify-content-center mw-500px pt-42px mx-auto
-                   ">
-            <li class="col-3 d-flex justify-content-center">
-                <a href="/sport/piscine-communale" class="icon_custom">
-                    <i class=" d-block w-54px h-54px shadow-sm-2 mx-auto rounded-circle i-swimmer i-bg-white i-bg-hover-primary i-hover-white i-bg-color-transition bg-size-62"></i>
-                    <span class="d-inline-block text-white fs-short-3 ff-semibold lh-150 pt-6px">Piscine</span>
-                </a>
-            </li>
-            <li class="col-3 d-flex justify-content-center">
-                <a href="/environnement" class="icon_custom">
-                    <i class=" d-block w-54px h-54px shadow-sm-2 mx-auto rounded-circle i-leaf i-bg-white i-bg-hover-primary i-hover-white i-bg-color-transition bg-size-53"></i>
-                    <span class="d-inline-block text-white fs-short-3 ff-semibold lh-150 pt-6px">Environnement Déchet</span>
-                </a>
-            </li>
-            <li class="col-3 d-flex justify-content-center">
-                <a href="/mobilite/infos-travaux/" class="icon_custom">
-                    <i class=" d-block w-54px h-54px shadow-sm-2 mx-auto rounded-circle i-traffic-cone i-bg-white i-bg-hover-primary i-hover-white i-bg-color-transition bg-size-48"></i>
-                    <span class="d-inline-block text-white fs-short-3 ff-semibold lh-150 pt-6px">Travaux</span>
-                </a>
-            </li>
-            <li class="col-3 d-flex justify-content-center">
-                <a href="https://enfance-jeunesse.marche.be" class="icon_custom">
-                    <i class=" d-block w-54px h-54px shadow-sm-2 mx-auto rounded-circle i-beach-ball i-bg-white i-bg-hover-primary i-hover-white i-bg-color-transition bg-size-55"></i>
-                    <span class="d-inline-block text-white fs-short-3 ff-semibold lh-150 pt-6px">Jeunesse Stage</span>
-                </a>
-            </li>
-            <li class="col-3 pt-12px d-flex justify-content-center">
-                <a href="/tourisme/cartographie" class="icon_custom">
-                    <i class=" d-block w-54px h-54px shadow-sm-2 mx-auto rounded-circle i-map i-bg-white i-bg-hover-primary i-hover-white i-bg-color-transition bg-size-55"></i>
-                    <span class="d-inline-block text-white fs-short-3 ff-semibold lh-150 pt-6px">Cartes dynamiques</span>
-                </a>
-            </li>
-            <li class="col-3 pt-12px d-flex justify-content-center">
-                <a href="/social/centre-public-daction-sociale-cpas/" class="icon_custom">
-                    <i class=" d-block w-54px h-54px shadow-sm-2 mx-auto rounded-circle i-handshake i-bg-white i-bg-hover-primary i-hover-white i-bg-color-transition bg-size-55"></i>
-                    <span class="d-inline-block text-white fs-short-3 ff-semibold lh-150 pt-6px">CPAS</span>
-                </a>
-            </li>
-            <li class="col-3 pt-12px d-flex justify-content-center">
-                <a href="https://citoyen.marche.be" class="icon_custom">
-                    <i class=" d-block w-54px h-54px shadow-sm-2 mx-auto rounded-circle i-envelope i-bg-white i-bg-hover-primary i-hover-white i-bg-color-transition bg-size-55"></i>
-                    <span class="d-inline-block text-white fs-short-3 ff-semibold lh-150 pt-6px">Mon adresse e-mail</span>
-                </a>
-            </li>
-        </ul>
+        {% include 'homepage/_icones.html.twig' %}
     </div>
 </div>
