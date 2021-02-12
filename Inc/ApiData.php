@@ -132,7 +132,7 @@ class ApiData
             $results = $searcher->search($keyword);
             $data    = ['count' => $results->count()];
         } catch (InvalidException $e) {
-            Mailer::sendError("wp error search", $e->getMessage());
+            Mailer::sendError("wp error search".$keyword, $e->getMessage());
 
             return rest_ensure_response([]);
         }
@@ -160,10 +160,9 @@ class ApiData
         $searcher = new Searcher();
 
         try {
-            $results = $searcher->search($keyword);
-            $data    = ['count' => $results->count()];
+            $results = $searcher->suggest($keyword);
         } catch (InvalidException $e) {
-            Mailer::sendError("wp error search", $e->getMessage());
+            Mailer::sendError("wp error suggest: ".$keyword, $e->getMessage());
 
             return rest_ensure_response([]);
         }
@@ -171,18 +170,19 @@ class ApiData
         /**
          * Je nettoie le resultat car je n'arrive pas avec react
          */
-        $resultat = [];
-        foreach ($results->getResults() as $result) {
-            $hit        = $result->getHit();
-            $resultat[] = $hit['_source'];
+        $data=[];
+        foreach ($results->getSuggests() as $suggest) {
+            foreach ($suggest as $suggest2) {
+                foreach ($suggest2['options'] as $option) {
+                    $data[]=$option['text'];
+                }
+            }
         }
-        $data['hits'] = $resultat;
 
         return rest_ensure_response($data);
 
     }
 
-// This plugin also adds a custom endpoint that returns all categories of the bottin
     static function ca_bottinAllCategories()
     {
         $bottinRepository = new BottinRepository();
@@ -191,7 +191,6 @@ class ApiData
         return rest_ensure_response($allCategories);
     }
 
-// This plugin also returns a data object that is used for the dynamic map
     static function ca_map($parameter)
     {
         $bottinRepository = new BottinRepository();
@@ -200,7 +199,7 @@ class ApiData
         return rest_ensure_response($fiches);
     }
 
-// This plugin returns the societe and the id of all companies in the bottin to retrieve them in the gutenberg block
+    // This plugin returns the societe and the id of all companies in the bottin to retrieve them in the gutenberg block
     static function ca_bottinSocieteId()
     {
         $bottinRepository = new BottinRepository();

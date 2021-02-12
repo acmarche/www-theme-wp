@@ -1,6 +1,6 @@
 import HardCodedValues from './HardCodedValues';
-import KeywordsValue from './KeywordsValue';
-import axios from '../Axios';
+import Suggestions from './Suggestions';
+import { suggestElastic } from '../Search/service/search-service';
 
 const {
     useState,
@@ -8,29 +8,46 @@ const {
 } = wp.element;
 
 function App() {
-    const [ inputContent, setInputContent ] = useState();
-    const [ keywordsElement, SetKeywordsElement ] = useState([]);
+    const [ keyword, setKeyword ] = useState( '' );
+    const [ searchTimeout, setSearchTimeout ] = useState( null );
+    const [ suggestionsList, setSuggestionsList ] = useState([]);
 
-    // Cette fonction change la valeur de la variable inputContent
-    // a chaque fois que l'utilisateur entre une lettre ou en supprime
-    const handleChange = ( e ) => {
-        setInputContent( e.target.value );
+    const handleChange = ( event ) => {
+        const query = event.target.value;
+
+        if ( searchTimeout ) {
+            clearTimeout( searchTimeout );
+        }
+
+        setSearchTimeout( setTimeout( () => {
+            setKeyword( query );
+            setSearchTimeout( null );
+        }, 500 ) );
     };
 
-    // C'est ici que je charge ma liste de proposition grace a axios
+    async function executeSearch() {
+        let response;
+        try {
+            response = await suggestElastic( keyword );
+            const { data } = response;
+            setSuggestionsList( data );
+        } catch ( e ) {
+            console.log( e );
+        }
+        return null;
+    }
+
+    const isSearching = undefined !== keyword && 2 < keyword.length;
+
     useEffect( () => {
-        axios
-            .get( 'https://new.marche.be/wp-json/ca/v1/bottinAllCategories' )
-            .then( ( res ) => {
-                SetKeywordsElement( res.data );
-            })
-            .catch( ( err ) => console.log( err.message ) );
-    }, []);
+        if ( isSearching ) {
+            executeSearch( keyword );
+        }
+    }, [ keyword ]);
 
     return (
         <>
             <i className="graphicElement"></i>
-
             <ul>
                 <li className="col-ls-12">
                     <form className="h-32px">
@@ -49,16 +66,14 @@ function App() {
                         <i className="i-times" id="btn-close-search"></i>
                     </a>
                 </li>
-                {inputContent ? (
-                    <KeywordsValue
-                        inputContent={inputContent}
-                        keywordsElement={keywordsElement}
+                {isSearching ? (
+                    <Suggestions
+                        suggestionsList={suggestionsList}
                     />
                 ) : (
                     <HardCodedValues/>
                 )}
             </ul>
-
             <i className="graphicElement"></i>
         </>
     );

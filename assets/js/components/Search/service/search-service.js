@@ -7,7 +7,21 @@ import axios from '../../Axios';
 export function searchElastic( keyword ) {
     const params = {};
 
-    const url = `wp-json/search/v1/search/${keyword}`;
+    const url = `wp-json/search/search/${keyword}`;
+
+    return axios.get( url, {
+        params
+    });
+}
+
+/**
+ * @param {string|null} keyword
+ * @returns {Promise}
+ */
+export function suggestElastic( keyword ) {
+    const params = {};
+
+    const url = `wp-json/search/suggest/${keyword}`;
 
     return axios.get( url, {
         params
