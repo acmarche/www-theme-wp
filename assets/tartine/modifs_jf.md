@@ -10,13 +10,6 @@ Navigation (nav.scss)
 **Texte dans menu plus grand**
 Texte plus grand: ligne 616 : font-size: $shortFontSize-3=> font-size: $shortFontSize-1;
 
-Je met l'alerte plus haut dans objects.scss
----
-.object-alert {
-    position: fixed;
-    /*top: auto;*/
-    top: 120px;
-    bottom: auto;
 
 Dans config.scss
 ---
@@ -29,18 +22,26 @@ $shortFontSize-3: .875rem;
 
 Dans objects.scss
 ---
+
+**Je met l'alerte plus haut dans objects.scss**
+
+.object-alert {
+position: fixed;
+/*top: auto;*/
+top: 120px;
+bottom: auto;
+
 **Pour titre event en list**
 max-height: de 30 a 40 ligne 758
 h3 {
      max-height: 40px;
    }
- ligne 681:   height: 40px;
+ligne 681:   height: 40px;
 **Pour news list**
 ligne 676 de 45 a 55 px
 h3 {
    max-height: 55px;
 }
-
 **Pour image par defaut fiche bottin**
 ligne 893 default image .bg-img-directory-1
 background-image: url(../../../images/commerce_default.png);

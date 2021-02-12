@@ -540,13 +540,13 @@
                 @include allTransition($basicDuration);
 
                 @media screen {
-                    @media (orientation: landscape) {
+                    /*@media (orientation: landscape) {
                         @media (min-width: $sm) {
                             max-height: 134px;
                         }
                     }
 
-                    /*@media (min-width: $lg) {
+                    @media (min-width: $lg) {
                         max-height: 134px;
                     }
                     @media (min-width: $xl) {

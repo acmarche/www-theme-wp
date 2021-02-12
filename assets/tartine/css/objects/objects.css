@@ -694,7 +694,13 @@
 }
 @media screen {
   .object-text-dyn input[type=checkbox] + div + div {
-    /*@media (min-width: $lg) {
+    /*@media (orientation: landscape) {
+        @media (min-width: $sm) {
+            max-height: 134px;
+        }
+    }
+
+    @media (min-width: $lg) {
         max-height: 134px;
     }
     @media (min-width: $xl) {
@@ -703,11 +709,6 @@
     @media (min-width: $xxl) {
         max-height: 223px;
     }*/
-  }
-}
-@media screen and (orientation: landscape) and (min-width: 576px) {
-  .object-text-dyn input[type=checkbox] + div + div {
-    max-height: 134px;
   }
 }
 @media screen and (min-width: 1600px) {
