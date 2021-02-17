@@ -52,6 +52,7 @@ function App() {
             Marche-en-Famenne</h1>
             <form action="/" method="get" className="mw-550px position-relative m-auto searchHome">
                 <input
+                    name="s"
                     autoComplete="off"
                     type="search"
                     placeholder="Que cherchez-vous ?"
@@ -59,6 +60,7 @@ function App() {
                     onChange={( e ) => handleChange( e )}
                 />
                 <button
+                    type="submit"
                     className="position-absolute top-0 bottom-0 right-0 w-42px d-flex justify-content-center align-items-center p-0 border-0 rounded-right-pill bg-transparent icon_custom">
                     <i className="i-search i-dark-primary"></i>
                 </button>
