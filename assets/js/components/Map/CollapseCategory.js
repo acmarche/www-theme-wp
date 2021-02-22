@@ -4,7 +4,6 @@ function CollapseCategory( {
     parentCategoryObject,
     categoriesToDisplay,
     setMarkerData,
-
     targetControlIdCollapse
 } ) {
     const scrollToMapIfMobile = () => {
