@@ -170,11 +170,11 @@ class ApiData
         /**
          * Je nettoie le resultat car je n'arrive pas avec react
          */
-        $data=[];
+        $data = [];
         foreach ($results->getSuggests() as $suggest) {
             foreach ($suggest as $suggest2) {
                 foreach ($suggest2['options'] as $option) {
-                    $data[]=$option['text'];
+                    $data[] = $option['text'];
                 }
             }
         }
@@ -189,14 +189,6 @@ class ApiData
         $allCategories    = $bottinRepository->getAllCategories();
 
         return rest_ensure_response($allCategories);
-    }
-
-    static function ca_map($parameter)
-    {
-        $bottinRepository = new BottinRepository();
-        $fiches           = $bottinRepository->getFichesByCategories([$parameter["CatId"]]);
-
-        return rest_ensure_response($fiches);
     }
 
     // This plugin returns the societe and the id of all companies in the bottin to retrieve them in the gutenberg block
@@ -227,6 +219,50 @@ class ApiData
         $fiches           = $bottinRepository->getFicheById($parameter['ficheId']);
 
         return rest_ensure_response($fiches);
+    }
+
+    public static function mapKml(WP_REST_Request $request)
+    {
+        $keyword = $request->get_param('keyword');
+        if ( ! $keyword) {
+            return new WP_Error(500, 'missing param keyword');
+        }
+
+        $carto = new Carto();
+
+        switch ($keyword) {
+            case 'seniors':
+                $data = $carto->seniors();
+                break;
+            default:
+                $data = $carto->seniors();
+                break;
+        }
+
+        return rest_ensure_response(['kmlText' => $data]);
+    }
+
+    public static function filtres()
+    {
+        $carto = new Carto();
+
+        return rest_ensure_response($carto->filtres());
+    }
+
+    static function mapData(WP_REST_Request $request)
+    {
+        $keyword = $request->get_param('keyword');
+        if ( ! $keyword) {
+            return new WP_Error(500, 'missing param keyword');
+        }
+
+        $bottinRepository = new BottinRepository();
+        $fiches           = $bottinRepository->getFichesByCategories([513]);
+
+        $data = ['data' => $fiches, 'kml' => false];
+        $data = ['data' => 'seniors', 'kml' => true];
+
+        return rest_ensure_response($data);
     }
 
 

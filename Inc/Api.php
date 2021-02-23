@@ -136,18 +136,33 @@ class Api
 
     function mapApi()
     {
-        add_action(
+         add_action(
             'rest_api_init',
             function () {
                 register_rest_route(
-                    'ca/v1',
-                    'bottinAllCategories',
+                    'map',
+                    'kml/(?P<keyword>.*+)',
+                    [
+                        'methods'  => 'GET',
+                        'callback' => function ($args) {
+                            return ApiData::mapKml($args);
+                        },
+                    ]
+                );
+            }
+        );
+
+         add_action(
+            'rest_api_init',
+            function () {
+                register_rest_route(
+                    'map',
+                    'filtres',
                     [
                         'methods'  => 'GET',
                         'callback' => function () {
-                            return ApiData::ca_bottinAllCategories();
+                            return ApiData::filtres();
                         },
-
                     ]
                 );
             }
@@ -157,12 +172,12 @@ class Api
             'rest_api_init',
             function () {
                 register_rest_route(
-                    'ca/v1',
-                    'map/(?P<CatId>.*+)',
+                    'map',
+                    'data/(?P<keyword>.*+)',
                     [
                         'methods'  => 'GET',
                         'callback' => function ($args) {
-                            return ApiData::ca_map($args);
+                            return ApiData::mapData($args);
                         },
 
                     ]
