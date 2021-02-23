@@ -7,12 +7,12 @@ const {
 
 function App() {
     const [ isLoading, setIsLoading ] = useState( true );
-    const [ currentMonth, setCurrentMonth ] = useState( new Date().getMonth() + 1 ); // 0 based
-    const [ currentYear, setCurrentYear ] = useState( new Date().getYear() );
     const [ dateSelector, setDateSelector ] = useState([]);
     const [ dateSelectorValues, setDateSelectorValues ] = useState();
     const [ events, setEvents ] = useState([]);
     const [ filteredEvents, setFilteredEvents ] = useState([]);
+    const currentMonth = useState( new Date().getMonth() + 1 ); // 0 based
+    const currentYear = useState( new Date().getYear() );
 
     return (
         <>
