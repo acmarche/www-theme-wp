@@ -41,7 +41,6 @@ function Search( ) {
 
     useEffect( () => {
         if ( undefined !== keyword && 2 < keyword.length ) {
-            console.log( `execute search ${keyword}` );
             executeSearch( keyword );
         }
     }, [ keyword ]);
