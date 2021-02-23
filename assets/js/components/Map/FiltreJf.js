@@ -4,14 +4,16 @@ import PopupDescription from './PopupDescription';
 function FiltreJf({
     filtres,
     markerData,
-    setMarkerData
+    setMarkerData,
+    setKmlKey
 }) {
     const listItems = Object.keys( filtres ).map( ( key ) => (
         <CollapseCategoryJf
             key={key}
             targetControlIdCollapse={`target-${key}`}
             categories={filtres[key]}
-            setMarkerData={setMarkerData}/>
+            setMarkerData={setMarkerData}
+            setKmlKey={setKmlKey}/>
     ) );
 
     return (

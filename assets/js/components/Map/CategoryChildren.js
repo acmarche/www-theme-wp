@@ -2,7 +2,9 @@ import Axios from 'axios';
 
 function CategoryChildren({
     name,
-    filtreKey
+    filtreKey,
+    setMarkerData,
+    setKmlKey
 }) {
   //  console.log( name, filtreKey );
     const scrollToMapIfMobile = () => {
@@ -27,11 +29,18 @@ function CategoryChildren({
             .then( ( res ) => {
                 if ( 0 !== res.data.length ) {
                     console.log( res );
-
-                    //   setMarkerData( res.data );
+                    if ( true === res.data.kml ) {
+                        setKmlKey( res.data.data );
+                        setMarkerData( null );
+                        console.log( 'kml' );
+                    } else {
+                        setMarkerData( res.data.data );
+                        setKmlKey( null );
+                    }
                 } else {
-
-                    //  return setMarkerData( null );
+                    setKmlKey( null );
+                    setMarkerData( null );
+                    return null;
                 }
             })
             .catch( ( err ) => console.log( err.message ) );

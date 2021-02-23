@@ -3,13 +3,16 @@ import CategoryChildren from './CategoryChildren';
 function CollapseCategoryJf({
     categories,
     targetControlIdCollapse,
-    setMarkerData
+    setMarkerData,
+    setKmlKey
 }) {
     const listChildren = Object.keys( categories.elements ).map( ( key ) => (
         <CategoryChildren
             key={key}
             name={categories.elements[key]}
-            filtreKey={key}/>
+            filtreKey={key}
+            setMarkerData={setMarkerData}
+            setKmlKey={setKmlKey}/>
     ) );
 
     return (
