@@ -9,7 +9,7 @@ function CollapseCategoryJf({
         <CategoryChildren
             key={key}
             name={categories.elements[key]}
-            targetControlIdCollapse={key}/>
+            filtreKey={key}/>
     ) );
 
     return (

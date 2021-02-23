@@ -2,15 +2,15 @@ import CollapseCategoryJf from './CollapseCategoryJf';
 import PopupDescription from './PopupDescription';
 
 function FiltreJf({
-    categories,
+    filtres,
     markerData,
     setMarkerData
 }) {
-    const listItems = Object.keys( categories ).map( ( key ) => (
+    const listItems = Object.keys( filtres ).map( ( key ) => (
         <CollapseCategoryJf
             key={key}
             targetControlIdCollapse={`target-${key}`}
-            categories={categories[key]}
+            categories={filtres[key]}
             setMarkerData={setMarkerData}/>
     ) );
 

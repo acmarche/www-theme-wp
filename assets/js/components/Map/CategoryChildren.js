@@ -1,16 +1,18 @@
 import Axios from 'axios';
 
 function CategoryChildren({
-    name
+    name,
+    filtreKey
 }) {
-    console.log( name );
+  //  console.log( name, filtreKey );
     const scrollToMapIfMobile = () => {
-        console.log( window.innerWidth );
+       // console.log( window.innerWidth );
         if ( 1000 > window.innerWidth ) {
             const mapPosition = document
                 .querySelector( '.leaflet-container' )
                 .getBoundingClientRect().bottom;
-            console.log( mapPosition );
+
+            //    console.log( mapPosition );
             window.scroll({
                 top: mapPosition,
                 left: 0,
@@ -18,11 +20,13 @@ function CategoryChildren({
             });
         }
     };
-    const handleClick = ( event ) => {
+    const handleClick = ( arg ) => {
+        console.log( arg );
         scrollToMapIfMobile();
-        Axios.get( `https://new.marche.be/wp-json/ca/v1/map/${event.target.id}` )
+        Axios.get( `https://new.marche.be/wp-json/map/data/${arg}` )
             .then( ( res ) => {
                 if ( 0 !== res.data.length ) {
+                    console.log( res );
 
                     //   setMarkerData( res.data );
                 } else {
@@ -34,10 +38,10 @@ function CategoryChildren({
     };
 
     return (
-        <li className="border-top" key="1">
+        <li className="border-top" key={filtreKey}>
             <p
                 style={{ cursor: 'pointer' }}
-                onClick={( e ) => handleClick( e )}
+                onClick={( e ) => handleClick( filtreKey )}
                 className="d-flex align-items-center p-16px text-dark-primary text-hover-primary transition-color icon_custom"
             >
                 { name }

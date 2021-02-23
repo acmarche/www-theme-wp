@@ -1,22 +1,21 @@
-import Axios from '../Axios';
 import MapComponent from './MapComponent';
 import FiltreJf from './FiltreJf';
 import Top from './Top';
-import { filtres } from './service/map-service';
+import { loadFiltres } from './service/map-service';
 
 const { useState, useEffect } = wp.element;
 
 function App() {
     const [ markerData, setMarkerData ] = useState([]);
-    const [ categories, setCategories ] = useState([]);
+    const [ filtres, setFiltres ] = useState([]);
     const [ popupDescription, setPopupDescription ] = useState();
 
-    async function loadFiltres() {
+    async function loadingFiltres() {
         let response;
         try {
-            response = await filtres();
+            response = await loadFiltres();
             const { data } = response;
-            setCategories( data );
+            setFiltres( data );
         } catch ( e ) {
             console.log( e );
         }
@@ -24,7 +23,7 @@ function App() {
     }
 
     useEffect( () => {
-        loadFiltres();
+        loadingFiltres();
     }, [ ]);
 
     window.addEventListener( 'resize', () => {
@@ -39,7 +38,7 @@ function App() {
                 <Top />
                 <div className="mt-48px d-flex flex-column flex-lg-row mx-0 mx-lg-n48px overflow-hidden align-items-lg-stretch mx-xxl-0 xxl-shadow-sm-1">
                     <FiltreJf
-                        categories={categories}
+                        filtres={filtres}
                         markerData={markerData}
                         setMarkerData={setMarkerData}
                     />

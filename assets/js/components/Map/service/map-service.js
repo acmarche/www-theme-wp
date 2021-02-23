@@ -17,7 +17,7 @@ export function loadKml( keyword ) {
 /**
  * @returns {Promise}
  */
-export function filtres() {
+export function loadFiltres() {
     const url = 'wp-json/map/filtres';
 
     return axios.get( url, {
