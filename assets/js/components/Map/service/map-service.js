@@ -13,3 +13,14 @@ export function loadKml( keyword ) {
         params
     });
 }
+
+/**
+ * @returns {Promise}
+ */
+export function filtres() {
+    const url = 'wp-json/map/filtres';
+
+    return axios.get( url, {
+
+    });
+}
