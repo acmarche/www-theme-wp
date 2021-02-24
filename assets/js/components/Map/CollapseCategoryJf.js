@@ -9,7 +9,7 @@ function CollapseCategoryJf({
     const listChildren = Object.keys( categories.elements ).map( ( key ) => (
         <CategoryChildren
             key={key}
-            name={categories.elements[key]}
+            name={categories.elements[key].name}
             filtreKey={key}
             setMarkerData={setMarkerData}
             setKmlKey={setKmlKey}/>

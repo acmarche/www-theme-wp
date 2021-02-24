@@ -235,7 +235,7 @@ class ApiData
                 $data = $carto->seniors();
                 break;
             default:
-                $data = $carto->seniors();
+
                 break;
         }
 
@@ -256,14 +256,32 @@ class ApiData
             return new WP_Error(500, 'missing param keyword');
         }
 
-        $bottinRepository = new BottinRepository();
-        $fiches           = $bottinRepository->getFichesByCategories([513]);
+        $carto   = new Carto();
+        $element = $carto->foundSource($keyword);
+        if (count($element) === 0) {
+            $data = ['error' => true];
 
-        $data = ['data' => $fiches, 'kml' => false];
-        $data = ['data' => 'seniors', 'kml' => true];
+            return rest_ensure_response($data);
+        }
+
+        $source = $element['source'];
+
+        if ($source == 'bottin') {
+            $bottinRepository = new BottinRepository();
+            $fiches           = $bottinRepository->getFichesByCategories([$element['id']]);
+            $data             = ['data' => $fiches, 'kml' => false];
+
+            return rest_ensure_response($data);
+        }
+
+        if ($source == 'kml') {
+            $data = ['data' => $element['id'], 'kml' => true];
+
+            return rest_ensure_response($data);
+        }
+
+        $data = ['error' => true];
 
         return rest_ensure_response($data);
     }
-
-
 }

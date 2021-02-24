@@ -21,46 +21,47 @@ class Carto
     public function filtres(): array
     {
         return [
-            'environnement'   => [
+            'environnement' => [
                 'name'     => 'Environnement',
                 'icone'    => 'fas fa-briefcase',
                 'elements' => [
-                    'bulles_verres'    => 'Bulles à verres',
-                    'bulles_vêtements' => 'Bulles à vêtements',
+                    'bulles_verres'    => ['name' => 'Bulles à verres', 'source' => 'bottin', 'id' => 513],
+                    'bulles_vetements' => ['name' => 'Bulles à vêtements', 'source' => 'kml', 'id' => 'seniors'],
                 ],
-            ],
-            'mobilite'        => [
-                'name'     => 'Mobilité',
-                'icone'    => 'fas fa-briefcase',
-                'elements' => [
-                    'travaux'      => 'Travaux',
-                    'parking'      => 'Parking',
-                    'pistes_cyclo' => 'Pistes cyclables',
-                ],
-            ],
-            'enfance'         => [
-                'name'     => 'Enfance',
-                'icone'    => 'fas fa-briefcase',
-                'elements' => [
-                    'Milieux d\'acceuil',
-                    'Aires de jeux, parcs',
-                ],
-            ],
-            'infrastructures' => [
-                'name'     => 'Infrastructures',
-                'icone'    => 'fas fa-briefcase',
-                'elements' => [
-                    'Salles communales',
-                    'Cimetières',
-                    'Infrastructures sportives',
-                ],
-            ],
-            'culture'         => [
-                'name'     => 'Culture',
-                'icone'    => 'fas fa-briefcase',
-                'elements' => ['Musées', 'Bibliothèques'],
             ],
         ];
+        /*     'mobilite'        => [
+                 'name'     => 'Mobilité',
+                 'icone'    => 'fas fa-briefcase',
+                 'elements' => [
+                     'travaux'      => 'Travaux',
+                     'parking'      => 'Parking',
+                     'pistes_cyclo' => 'Pistes cyclables',
+                 ],
+             ],
+             'enfance'         => [
+                 'name'     => 'Enfance',
+                 'icone'    => 'fas fa-briefcase',
+                 'elements' => [
+                     'Milieux d\'acceuil',
+                     'Aires de jeux, parcs',
+                 ],
+             ],
+             'infrastructures' => [
+                 'name'     => 'Infrastructures',
+                 'icone'    => 'fas fa-briefcase',
+                 'elements' => [
+                     'Salles communales',
+                     'Cimetières',
+                     'Infrastructures sportives',
+                 ],
+             ],
+             'culture'         => [
+                 'name'     => 'Culture',
+                 'icone'    => 'fas fa-briefcase',
+                 'elements' => ['Musées', 'Bibliothèques'],
+             ],
+         ];*/
     }
 
     public function travaux()
@@ -82,6 +83,19 @@ class Carto
         $content = $request->getContent();
 
         return $content;
+    }
+
+    public function foundSource(string $keySearch): array
+    {
+        foreach ($this->filtres() as $filtre) {
+            foreach ($filtre['elements'] as $key => $element) {
+                if ($keySearch == $key) {
+                    return $element;
+                }
+            }
+        }
+
+        return [];
     }
 
 }
