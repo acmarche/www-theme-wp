@@ -1,31 +1,14 @@
 import MapComponent from './MapComponent';
 import FiltreJf from './FiltreJf';
-import { loadFiltres, loadKml } from './service/map-service';
+import { loadKml } from './service/map-service';
 
 const { useState, useEffect } = wp.element;
 
 function App() {
     const [ markerData, setMarkerData ] = useState([]);
-    const [ filtres, setFiltres ] = useState([]);
     const [ popupDescription, setPopupDescription ] = useState();
     const [ kmlKey, setKmlKey ] = useState( null );
     const [ kmlContent, setKmlContent ] = useState( null );
-
-    async function loadingFiltres() {
-        let response;
-        try {
-            response = await loadFiltres();
-            const { data } = response;
-            setFiltres( data );
-        } catch ( e ) {
-            console.log( e );
-        }
-        return null;
-    }
-
-    useEffect( () => {
-        loadingFiltres();
-    }, [ ]);
 
     async function loadingKml() {
         let response;
@@ -59,7 +42,6 @@ function App() {
     return (
         <>
             <FiltreJf
-                filtres={filtres}
                 markerData={markerData}
                 setMarkerData={setMarkerData}
                 setKmlKey={setKmlKey}

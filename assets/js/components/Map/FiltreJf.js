@@ -1,12 +1,32 @@
 import CollapseCategoryJf from './CollapseCategoryJf';
 import PopupDescription from './PopupDescription';
+import { loadFiltres } from './service/map-service';
+
+const { useState, useEffect } = wp.element;
 
 function FiltreJf({
-    filtres,
     markerData,
     setMarkerData,
     setKmlKey
 }) {
+    const [ filtres, setFiltres ] = useState([]);
+
+    async function loadingFiltres() {
+        let response;
+        try {
+            response = await loadFiltres();
+            const { data } = response;
+            setFiltres( data );
+        } catch ( e ) {
+            console.log( e );
+        }
+        return null;
+    }
+
+    useEffect( () => {
+        loadingFiltres();
+    }, [ ]);
+
     const listItems = Object.keys( filtres )
         .map( ( key ) => (
             <CollapseCategoryJf
