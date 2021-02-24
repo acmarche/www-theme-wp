@@ -131,10 +131,15 @@ class AssetsLoad
             array(),
             wp_get_theme()->get('Version')
         );
-
         wp_enqueue_script(
             'marchebe-leaflet-js',
             'https://unpkg.com/leaflet@1.7.1/dist/leaflet.js',
+            array(),
+            wp_get_theme()->get('Version')
+        );
+        wp_enqueue_script(
+            'marchebe-zoom-js',
+            get_template_directory_uri().'/assets/js/components/Map/hooks/L.KML.js',
             array(),
             wp_get_theme()->get('Version')
         );
