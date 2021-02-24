@@ -11,9 +11,7 @@ get_header();
 global $post;
 
 $categories  = get_the_category($post->ID);
-$post_ID     = $post->ID;
 $titre       = $post->post_title;
-$description = strip_tags($post->post_excerpt);
 $url         = get_permalink($post->ID);
 $logo        = null;
 if (has_post_thumbnail()) {
@@ -32,7 +30,7 @@ wp_enqueue_script(
 );//For production use wp_get_theme()->get('Version')
 
 Twig::rendPage(
-    'map/index_react.html.twig',
+    'map/index.html.twig',
     [
         'title'   => $titre,
         'post'    => $post,
