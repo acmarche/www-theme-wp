@@ -22,7 +22,7 @@ function CategoryChildren({
     };
 
     const handleClick = ( arg ) => {
-        console.log( arg );
+        console.log( `request ${arg}` );
         scrollToMapIfMobile();
         Axios.get( `https://new.marche.be/wp-json/map/data/${arg}` )
             .then( ( res ) => {
@@ -32,26 +32,33 @@ function CategoryChildren({
                         setKmlKey( res.data.data );
                         setMarkerData( null );
                     } else {
+                        if ( 0 === res.data.data.length ) {
+                            alert( 'Aucune données trouvées' );
+                        }
                         setMarkerData( res.data.data );
                         setKmlKey( null );
                     }
                 } else {
+                    alert( 'Aucune données trouvées' );
                     setKmlKey( null );
                     setMarkerData( null );
                     return null;
                 }
             })
-            .catch( ( err ) => console.log( err.message ) );
+            .catch( ( err ) => {
+                //todo remote error for user
+                console.log( err.message );
+            });
     };
 
     return (
         <li className="border-top" key={filtreKey}>
             <p
                 style={{ cursor: 'pointer' }}
-                onClick={( ) => handleClick( filtreKey )}
+                onClick={() => handleClick( filtreKey )}
                 className="d-flex align-items-center p-16px text-dark-primary text-hover-primary transition-color icon_custom"
             >
-                { name }
+                {name}
             </p>
         </li>
     );

@@ -31,7 +31,9 @@ function MapComponent( {
                 />
 
                 {markerData?.map( ( object, index ) => {
-                    console.log( popupDescription );
+
+                   if(object.latitude&&object.longitude) {
+
                     return (
                         <Marker
                             eventHandlers={{
@@ -66,7 +68,7 @@ function MapComponent( {
                                     Consulter la fiche
                                 </a>
                                 <a
-                                    className="btn btn-outline-primary text-hover-white text-dark-primary btn-sm mt-3 border-dark-primary"
+                                    className="btn btn-outline-primary mt-2 m-0 p-0 text-center d-block"
                                     target="_blank"
                                     href={`https://www.google.com/maps/search/?api=1&query=${object.latitude},${object.longitude}`}
                                 >
@@ -74,7 +76,7 @@ function MapComponent( {
                                 </a>
                             </Popup>
                         </Marker>
-                    );
+                    );}
                 } )}
                 <FlyToMyPositionButton/>
                 {kmlContent && <ReactLeafletKml kml={kmlContent}/>}
