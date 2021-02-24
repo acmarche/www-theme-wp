@@ -1,6 +1,5 @@
 import MapComponent from './MapComponent';
 import FiltreJf from './FiltreJf';
-import Top from './Top';
 import { loadFiltres, loadKml } from './service/map-service';
 
 const { useState, useEffect } = wp.element;
@@ -30,11 +29,13 @@ function App() {
 
     async function loadingKml() {
         let response;
-        console.log( `load kml ${kmlKey}` );
+
+        //   console.log( `load kml ${kmlKey}` );
         try {
             response = await loadKml( kmlKey );
             const { data } = response;
-            console.log( data );
+
+            //     console.log( data );
             const parser = new DOMParser();
             const content = parser.parseFromString( data.kmlText, 'text/xml' );
             setKmlContent( content );
@@ -49,31 +50,26 @@ function App() {
         }
     }, [ kmlKey ]);
 
-    window.addEventListener( 'resize', () => {
+    /*   window.addEventListener( 'resize', () => {
         950 < window.innerWidth && 992 > window.innerWidth ?
             window.location.reload() :
             null;
-    });
+    });*/
 
     return (
         <>
-            <div className="bg-white pt-24px px-24px position-relative d-md-flex px-xl-48px mx-xl-n30px justify-content-md-center flex-column">
-                <Top />
-                <div className="mt-48px d-flex flex-column flex-lg-row mx-0 mx-lg-n48px overflow-hidden align-items-lg-stretch mx-xxl-0 xxl-shadow-sm-1">
-                    <FiltreJf
-                        filtres={filtres}
-                        markerData={markerData}
-                        setMarkerData={setMarkerData}
-                        setKmlKey={setKmlKey}
-                    />
-                    <MapComponent
-                        popupDescription={popupDescription}
-                        setPopupDescription={setPopupDescription}
-                        markerData={markerData}
-                        kmlContent={kmlContent}
-                    />
-                </div>
-            </div>
+            <FiltreJf
+                filtres={filtres}
+                markerData={markerData}
+                setMarkerData={setMarkerData}
+                setKmlKey={setKmlKey}
+            />
+            <MapComponent
+                popupDescription={popupDescription}
+                setPopupDescription={setPopupDescription}
+                markerData={markerData}
+                kmlContent={kmlContent}
+            />
         </>
     );
 }
