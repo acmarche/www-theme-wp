@@ -37,7 +37,7 @@ function FlyToMyPositionButton() {
                 >
                     <img
                         style={{ width: 25 }}
-                        src="https://cdn3.iconfinder.com/data/icons/mix-stroke-5/100/mix_stroke_5_area-512.png"
+                        src="/wp-content/themes/marchebe/assets/images/set_location_icon.png"
                         alt={'logo'}/>
                 </div>
                 <button
@@ -53,7 +53,7 @@ function FlyToMyPositionButton() {
                 </button>
                 <Marker
                     icon={L.icon({
-                        iconUrl: 'https://www.ramani.fr/images/location_icon.png',
+                        iconUrl: '/wp-content/themes/marchebe/assets/images/location_icon.png',
                         iconSize: [ 30, 30 ]
                     })}
                     position={[ location.coordinates.lat, location.coordinates.lng ]}
