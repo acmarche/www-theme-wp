@@ -8,18 +8,6 @@ namespace AcMarche\Theme;
 use AcMarche\Common\Twig;
 
 get_header();
-global $post;
-
-$categories  = get_the_category($post->ID);
-$titre       = $post->post_title;
-$url         = get_permalink($post->ID);
-$logo        = null;
-if (has_post_thumbnail()) {
-    $images = wp_get_attachment_image_src(get_post_thumbnail_id(), 'original');
-    if ($images) {
-        $logo = $images[0];
-    }
-}
 
 wp_enqueue_script(
     'react_map_plugin',
@@ -32,12 +20,7 @@ wp_enqueue_script(
 Twig::rendPage(
     'map/index.html.twig',
     [
-        'title'   => $titre,
-        'post'    => $post,
-        'url'     => $url,
-        'tags'    => $categories,
-        'logo'    => $logo,
-        'content' => $post->post_content,
+
     ]
 );
 get_footer();
