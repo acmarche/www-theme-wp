@@ -34,9 +34,15 @@ class Carto
                 'name'     => 'Mobilité',
                 'icone'    => 'fas fa-bus',
                 'elements' => [
-                    'travaux'      => ['name' => 'Travaux', 'source' => 'kml', 'id' => 'travaux'],
-                    'parking'      => ['name' => 'Parking', 'source' => 'kml', 'id' => 'parkings'],
-                    'pistes_cyclo' => ['name' => 'Pistes cyclables', 'source' => 'kml', 'id' => 'cyclos'],
+                    'travaux'             => ['name' => 'Travaux', 'source' => 'kml', 'id' => 'travaux'],
+                    'parking'             => ['name' => 'Parking', 'source' => 'kml', 'id' => 'parkings'],
+                    'pistes_cyclo'        => ['name' => 'Pistes cyclables', 'source' => 'kml', 'id' => 'cyclos'],
+                    'balades'             => ['name' => 'Balades', 'source' => 'kml', 'id' => 'balades'],
+                    'velos_stationnement' => [
+                        'name'   => 'Vélos stationnement',
+                        'source' => 'kml',
+                        'id'     => 'velos_stationnement',
+                    ],
                 ],
             ],
             'enfance'         => [
@@ -140,13 +146,19 @@ class Carto
                 $url = 'https://www.google.com/maps/d/u/1/kml?forcekml=1&mid=1NABWReYEqCBUaOjd3x5TmyTQEZw6PIfp';
                 break;
             case 'travaux':
-                $url = 'https://www.google.com/maps/d/u/1/kml?forcekml=1&mid=1-509jyExlQqn7c1ijeYxrkLVOa8';
+                $url = 'https://www.google.com/maps/d/u/1/kml?forcekml=1&mid=1kfhp1xhZcusuTMBxkDK5agYS5cQKAlrL';
                 break;
             case 'parkings':
                 $url = 'https://www.google.com/maps/d/u/1/kml?forcekml=1&mid=1-509jyExlQqn7c1ijeYxrkLVOa8';
                 break;
             case 'cyclos':
                 $url = 'https://www.google.com/maps/d/u/1/kml?forcekml=1&mid=1-509jyExlQqn7c1ijeYxrkLVOa8';
+                break;
+            case 'balades':
+                $url = 'https://www.google.com/maps/d/u/1/kml?forcekml=1&mid=1eC0t63jFfVhLAjGuWTkIkfHHYqc';
+                break;
+            case 'velos_stationnement':
+                $url = 'https://www.google.com/maps/d/u/1/kml?forcekml=1&mid=1A403qynTGRgt3FigLEqpIcRL4CGtazUJ';
                 break;
             default:
                 $url = false;
