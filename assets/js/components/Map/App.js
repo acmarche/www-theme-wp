@@ -25,6 +25,7 @@ function App() {
 
     useEffect( () => {
         if ( null !== kmlKey ) {
+            setKmlContent( null );//reset
             loadingKml();
         } else {
             setKmlContent( null );
