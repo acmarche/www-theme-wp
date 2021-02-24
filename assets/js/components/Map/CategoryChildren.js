@@ -6,9 +6,7 @@ function CategoryChildren({
     setMarkerData,
     setKmlKey
 }) {
-  //  console.log( name, filtreKey );
     const scrollToMapIfMobile = () => {
-       // console.log( window.innerWidth );
         if ( 1000 > window.innerWidth ) {
             const mapPosition = document
                 .querySelector( '.leaflet-container' )
@@ -22,6 +20,7 @@ function CategoryChildren({
             });
         }
     };
+
     const handleClick = ( arg ) => {
         console.log( arg );
         scrollToMapIfMobile();
@@ -32,7 +31,6 @@ function CategoryChildren({
                     if ( true === res.data.kml ) {
                         setKmlKey( res.data.data );
                         setMarkerData( null );
-                        console.log( 'kml' );
                     } else {
                         setMarkerData( res.data.data );
                         setKmlKey( null );
@@ -50,7 +48,7 @@ function CategoryChildren({
         <li className="border-top" key={filtreKey}>
             <p
                 style={{ cursor: 'pointer' }}
-                onClick={( e ) => handleClick( filtreKey )}
+                onClick={( ) => handleClick( filtreKey )}
                 className="d-flex align-items-center p-16px text-dark-primary text-hover-primary transition-color icon_custom"
             >
                 { name }

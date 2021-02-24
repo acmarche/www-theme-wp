@@ -12,13 +12,9 @@ function App() {
 
     async function loadingKml() {
         let response;
-
-        //   console.log( `load kml ${kmlKey}` );
         try {
             response = await loadKml( kmlKey );
             const { data } = response;
-
-            //     console.log( data );
             const parser = new DOMParser();
             const content = parser.parseFromString( data.kmlText, 'text/xml' );
             setKmlContent( content );
@@ -35,11 +31,11 @@ function App() {
         }
     }, [ kmlKey ]);
 
-    /*   window.addEventListener( 'resize', () => {
+    window.addEventListener( 'resize', () => {
         950 < window.innerWidth && 992 > window.innerWidth ?
             window.location.reload() :
             null;
-    });*/
+    });
 
     return (
         <>

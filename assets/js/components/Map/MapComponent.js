@@ -1,4 +1,4 @@
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
+import { MapContainer, TileLayer, Marker, Popup, Tooltip } from 'react-leaflet';
 import ReactLeafletKml from 'react-leaflet-kml';
 import FlyToMyPositionButton from './FlyToMyPositionButton';
 
@@ -31,6 +31,7 @@ function MapComponent( {
                 />
 
                 {markerData?.map( ( object, index ) => {
+                    console.log( popupDescription );
                     return (
                         <Marker
                             eventHandlers={{
@@ -41,22 +42,28 @@ function MapComponent( {
                             key={index}
                             position={[ object.latitude, object.longitude ]}
                         >
-                            <Popup className="d-block d-lg-none">
+                            <Tooltip><p>{object?.nom}</p></Tooltip>
+                            <Popup className="d-block d-lg-no2ne">
                                 <h3 className="mb-3 text-center text-dark-primary">
-                                    {popupDescription?.societe}
+                                    {object?.nom}
                                 </h3>
                                 <p className="m-0 p-0 text-center text-dark-primary">
-                                    {popupDescription?.telephone}
+                                    {object?.telephone}
+                                </p>
+                                <p className="m-0 p-0 text-center text-dark-primary">
+                                    {object?.rue}
+                                    <br />
+                                    {object?.localite}
                                 </p>
                                 <p className=" m-0 p-0 text-center text-dark-primary">
-                                    {popupDescription?.email}
+                                    {object?.email}
                                 </p>
                                 <a
-                                    href={popupDescription?.website}
+                                    href={object?.url}
                                     target="_blank"
-                                    className="m-0 p-0 text-center text-dark-primary d-block"
+                                    className="mt-2 btn btn-outline-success m-0 p-0 text-center d-block"
                                 >
-                                    {popupDescription?.website}
+                                   Consulter la fiche
                                 </a>
                             </Popup>
                         </Marker>

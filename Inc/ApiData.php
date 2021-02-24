@@ -229,15 +229,7 @@ class ApiData
         }
 
         $carto = new Carto();
-
-        switch ($keyword) {
-            case 'seniors':
-                $data = $carto->seniors();
-                break;
-            default:
-
-                break;
-        }
+        $data  = $carto->loadKml($keyword);
 
         return rest_ensure_response(['kmlText' => $data]);
     }
@@ -267,9 +259,9 @@ class ApiData
         $source = $element['source'];
 
         if ($source == 'bottin') {
-            $bottinRepository = new BottinRepository();
-            $fiches           = $bottinRepository->getFichesByCategories([$element['id']]);
-            $data             = ['data' => $fiches, 'kml' => false];
+
+            $fiches = $carto->getFichesBottin($element['id']);
+            $data   = ['data' => $fiches, 'kml' => false];
 
             return rest_ensure_response($data);
         }

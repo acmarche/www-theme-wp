@@ -4,6 +4,7 @@
 namespace AcMarche\Theme\Inc;
 
 
+use AcMarche\Bottin\Repository\BottinRepository;
 use Symfony\Component\HttpClient\HttpClient;
 
 class Carto
@@ -21,7 +22,7 @@ class Carto
     public function filtres(): array
     {
         return [
-            'environnement' => [
+            'environnement'   => [
                 'name'     => 'Environnement',
                 'icone'    => 'fas fa-briefcase',
                 'elements' => [
@@ -29,44 +30,41 @@ class Carto
                     'bulles_vetements' => ['name' => 'Bulles à vêtements', 'source' => 'kml', 'id' => 'seniors'],
                 ],
             ],
+            'mobilite'        => [
+                'name'     => 'Mobilité',
+                'icone'    => 'fas fa-briefcase',
+                'elements' => [
+                    'travaux'      => ['name' => 'Travaux', 'source' => 'bottin', 'id' => 513],
+                    'parking'      => ['name' => 'Parking', 'source' => 'bottin', 'id' => 513],
+                    'pistes_cyclo' => ['name' => 'Pistes cyclables', 'source' => 'bottin', 'id' => 513],
+                ],
+            ],
+            'enfance'         => [
+                'name'     => 'Enfance',
+                'icone'    => 'fas fa-briefcase',
+                'elements' => [
+                    ['name' => 'Milieux d\'acceuil', 'source' => 'bottin', 'id' => 513],
+                    ['name' => 'Aires de jeux, parcs', 'source' => 'bottin', 'id' => 513],
+                ],
+            ],
+            'infrastructures' => [
+                'name'     => 'Infrastructures',
+                'icone'    => 'fas fa-briefcase',
+                'elements' => [
+                    ['name' => 'Salles communales', 'source' => 'bottin', 'id' => 513],
+                    ['name' => 'Cimetières', 'source' => 'bottin', 'id' => 513],
+                    ['name' => 'Infrastructures sportives', 'source' => 'bottin', 'id' => 513],
+                ],
+            ],
+            'culture'         => [
+                'name'     => 'Culture',
+                'icone'    => 'fas fa-briefcase',
+                'elements' => [
+                    ['name' => 'Musées', 'source' => 'bottin', 'id' => 513],
+                    ['name' => 'Bibliothèques', 'source' => 'bottin', 'id' => 513],
+                ],
+            ],
         ];
-        /*     'mobilite'        => [
-                 'name'     => 'Mobilité',
-                 'icone'    => 'fas fa-briefcase',
-                 'elements' => [
-                     'travaux'      => 'Travaux',
-                     'parking'      => 'Parking',
-                     'pistes_cyclo' => 'Pistes cyclables',
-                 ],
-             ],
-             'enfance'         => [
-                 'name'     => 'Enfance',
-                 'icone'    => 'fas fa-briefcase',
-                 'elements' => [
-                     'Milieux d\'acceuil',
-                     'Aires de jeux, parcs',
-                 ],
-             ],
-             'infrastructures' => [
-                 'name'     => 'Infrastructures',
-                 'icone'    => 'fas fa-briefcase',
-                 'elements' => [
-                     'Salles communales',
-                     'Cimetières',
-                     'Infrastructures sportives',
-                 ],
-             ],
-             'culture'         => [
-                 'name'     => 'Culture',
-                 'icone'    => 'fas fa-briefcase',
-                 'elements' => ['Musées', 'Bibliothèques'],
-             ],
-         ];*/
-    }
-
-    public function travaux()
-    {
-
     }
 
     public function seniors()
@@ -96,6 +94,46 @@ class Carto
         }
 
         return [];
+    }
+
+    public function loadKml(string $keyword): string
+    {
+        switch ($keyword) {
+            case 'seniors':
+                $data = $this->seniors();
+                break;
+            default:
+
+                break;
+        }
+
+        return $data;
+    }
+
+    public function getFichesBottin(int $id): array
+    {
+        $bottinRepository = new BottinRepository();
+        $data             = [];
+        $fiches           = $bottinRepository->getFichesByCategories([$id]);
+        foreach ($fiches as $fiche) {
+            $data[] = $this->formatSocieteData($fiche);
+        }
+
+        return $data;
+    }
+
+    public function formatSocieteData($object): array
+    {
+        return [
+            'nom'       => $object->societe,
+            'latitude'  => $object->latitude,
+            'longitude' => $object->longitude,
+            'telephone' => $object->telephone.' '.$object->gsm,
+            'email'     => $object->email,
+            'rue'       => $object->rue.', '.$object->numero,
+            'localite'  => $object->cp.' '.$object->localite,
+            'url'       => Router::getUrlFicheBottin($object),
+        ];
     }
 
 }
