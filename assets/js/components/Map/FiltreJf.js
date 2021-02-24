@@ -7,18 +7,19 @@ function FiltreJf({
     setMarkerData,
     setKmlKey
 }) {
-    const listItems = Object.keys( filtres ).map( ( key ) => (
-        <CollapseCategoryJf
-            key={key}
-            targetControlIdCollapse={`target-${key}`}
-            categories={filtres[key]}
-            setMarkerData={setMarkerData}
-            setKmlKey={setKmlKey}/>
-    ) );
+    const listItems = Object.keys( filtres )
+        .map( ( key ) => (
+            <CollapseCategoryJf
+                key={key}
+                targetControlIdCollapse={`target-${key}`}
+                categories={filtres[key]}
+                setMarkerData={setMarkerData}
+                setKmlKey={setKmlKey}/>
+        ) );
 
     return (
-        <div className="accordion" id="accordionFiltres">
-            <div className="col-12 col-lg-3 px-0 lg-shadow-sm-1 position-relative z-10">
+        <div className="col-12 col-lg-3 px-0 lg-shadow-sm-1 position-relative z-10">
+            <div className="accordion" id="accordionFiltres">
                 {listItems}
             </div>
         </div>

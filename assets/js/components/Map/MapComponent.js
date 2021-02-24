@@ -13,11 +13,9 @@ function MapComponent( {
         setPopupDescription( object );
     };
 
-     console.log( kmlContent );
-
     return (
         <div
-            className="align-self-start col-12 min-height-330px mt-lg-0 col-lg-9 px-0 d-flex position-relative bg-lighter">
+            className="col-12 min-height-330px mt-24px mt-lg-0 col-lg-9 px-0 d-flex align-items-center justify-content-center overflow-hidden position-relative bg-lighter">
             <MapContainer
                 style={{
                     width: '100%',
