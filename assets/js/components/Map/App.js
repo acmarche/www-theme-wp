@@ -40,7 +40,6 @@ function App() {
     return (
         <>
             <FiltreJf
-                markerData={markerData}
                 setMarkerData={setMarkerData}
                 setKmlKey={setKmlKey}
             />

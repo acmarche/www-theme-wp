@@ -52,7 +52,7 @@ function MapComponent( {
                                 </p>
                                 <p className="m-0 p-0 text-center text-dark-primary">
                                     {object?.rue}
-                                    <br />
+                                    <br/>
                                     {object?.localite}
                                 </p>
                                 <p className=" m-0 p-0 text-center text-dark-primary">
@@ -63,7 +63,14 @@ function MapComponent( {
                                     target="_blank"
                                     className="mt-2 btn btn-outline-success m-0 p-0 text-center d-block"
                                 >
-                                   Consulter la fiche
+                                    Consulter la fiche
+                                </a>
+                                <a
+                                    className="btn btn-outline-primary text-hover-white text-dark-primary btn-sm mt-3 border-dark-primary"
+                                    target="_blank"
+                                    href={`https://www.google.com/maps/search/?api=1&query=${object.latitude},${object.longitude}`}
+                                >
+                                    Itineraire
                                 </a>
                             </Popup>
                         </Marker>

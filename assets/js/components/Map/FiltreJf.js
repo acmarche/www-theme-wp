@@ -5,7 +5,6 @@ import { loadFiltres } from './service/map-service';
 const { useState, useEffect } = wp.element;
 
 function FiltreJf({
-    markerData,
     setMarkerData,
     setKmlKey
 }) {
