@@ -6,8 +6,12 @@
 namespace AcMarche\Theme;
 
 use AcMarche\Common\Twig;
+use AcMarche\Theme\Inc\Carto;
 
 get_header();
+$carto   = new Carto();
+        $element = $carto->foundSource('s');
+        //dump($element);
 
 wp_enqueue_script(
     'react_map_plugin',

@@ -245,6 +245,8 @@ class ApiData
     {
         $keyword = $request->get_param('keyword');
         if ( ! $keyword) {
+            Mailer::sendError("error carto", "missing param keyword");
+
             return new WP_Error(500, 'missing param keyword');
         }
 
@@ -252,6 +254,7 @@ class ApiData
         $element = $carto->foundSource($keyword);
         if (count($element) === 0) {
             $data = ['error' => true];
+            Mailer::sendError("error carto", "missing source for keyword ".$keyword);
 
             return rest_ensure_response($data);
         }

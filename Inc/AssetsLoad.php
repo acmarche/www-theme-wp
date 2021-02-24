@@ -33,7 +33,7 @@ class AssetsLoad
 
         wp_enqueue_style(
             'marchebe-fontawesome',
-            'https://use.fontawesome.com/releases/v5.4.2/css/all.css',
+            'https://use.fontawesome.com/releases/v5.15.2/css/all.css',
             array(),
             wp_get_theme()->get('Version')
         );
