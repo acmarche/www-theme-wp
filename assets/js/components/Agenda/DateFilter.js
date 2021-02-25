@@ -92,7 +92,7 @@ function DateFilter({
                 </select>
             </div>
 
-            <ul className="cat-filters d-md-flex mw-550px flex-wrap justify-content-center align-items-center d-none">
+            <ul className="cat-filters m-auto d-md-flex mw-650px flex-wrap justify-content-center align-items-center d-none">
                 {dateSelector.map( ( object, index ) => (
                     <li
                         key={object.id}
