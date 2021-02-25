@@ -70,7 +70,7 @@ array_map(
 );
 
 Twig::rendPage(
-    'category/index.html.twig',
+    'category/index_bottin.html.twig',
     [
         'title'       => $title,
         'description' => $description,
@@ -84,6 +84,8 @@ Twig::rendPage(
         'urlBack'     => $urlBack,
         'nameBack'    => $nameBack,
         'category'    => $category,
+        'path'        => $path,
+        'subTitle'    => 'Tout',
     ]
 );
 get_footer();
