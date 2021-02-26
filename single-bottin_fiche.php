@@ -5,8 +5,8 @@ namespace AcMarche\Theme;
 use AcMarche\Bottin\Bottin;
 use AcMarche\Bottin\Repository\BottinRepository;
 use AcMarche\Bottin\Repository\WpBottinRepository;
+use AcMarche\Bottin\RouterBottin;
 use AcMarche\Common\Twig;
-use AcMarche\Theme\Inc\Router;
 use AcMarche\Theme\Inc\Theme;
 
 get_header();
@@ -14,7 +14,7 @@ global $wp_query;
 
 $bottinRepository = new BottinRepository();
 
-$slugFiche = $wp_query->get(Router::PARAM_BOTTIN_FICHE, null);
+$slugFiche = $wp_query->get(RouterBottin::PARAM_BOTTIN_FICHE, null);
 
 if ($slugFiche) {
     $fiche = $bottinRepository->getFicheBySlug($slugFiche);
@@ -42,7 +42,7 @@ $categories          = $bottinRepository->getCategoriesOfFiche($fiche->id);
 $classementPrincipal = $bottinRepository->getCategoriePrincipale($fiche);
 $urlBack             = null;
 if ($classementPrincipal) {
-    $urlBack = Router::getUrlCategoryBottin($classementPrincipal);
+    $urlBack = RouterBottin::getUrlCategoryBottin($classementPrincipal);
 }
 
 $images        = $bottinRepository->getImagesFiche($fiche->id);
@@ -54,7 +54,7 @@ if ($logo) {
 }
 array_map(
     function ($category) {
-        $category->url = Router::getUrlCategoryBottin($category);
+        $category->url = RouterBottin::getUrlCategoryBottin($category);
     },
     $categories
 );

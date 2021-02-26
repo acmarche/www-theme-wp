@@ -5,6 +5,7 @@ namespace AcMarche\Theme\Inc;
 
 
 use AcMarche\Bottin\Repository\BottinRepository;
+use AcMarche\Bottin\RouterBottin;
 use Symfony\Component\HttpClient\HttpClient;
 
 class Carto
@@ -211,7 +212,7 @@ class Carto
             'email'     => $object->email,
             'rue'       => $object->rue.', '.$object->numero,
             'localite'  => $object->cp.' '.$object->localite,
-            'url'       => Router::getUrlFicheBottin($object),
+            'url'       => RouterBottin::getUrlFicheBottin($object),
         ];
     }
 

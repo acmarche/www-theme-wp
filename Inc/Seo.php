@@ -5,7 +5,9 @@ namespace AcMarche\Theme\Inc;
 
 
 use AcMarche\Bottin\Repository\BottinRepository;
+use AcMarche\Bottin\RouterBottin;
 use AcMarche\Pivot\Repository\HadesRepository;
+use AcMarche\Pivot\RouterHades;
 
 class Seo
 {
@@ -36,17 +38,17 @@ class Seo
             }
         }
 
-        $slugFiche = get_query_var(Router::PARAM_BOTTIN_FICHE);
+        $slugFiche = get_query_var(RouterBottin::PARAM_BOTTIN_FICHE);
         if ($slugFiche) {
             self::metaBottinFiche($slugFiche);
         }
 
-        $slugCategory = get_query_var(Router::PARAM_BOTTIN_CATEGORY);
+        $slugCategory = get_query_var(RouterBottin::PARAM_BOTTIN_CATEGORY);
         if ($slugCategory) {
             self::metaBottinCategory($slugCategory);
         }
 
-        $codeCgt = get_query_var(Router::PARAM_EVENT);
+        $codeCgt = get_query_var(RouterHades::PARAM_EVENT);
         if ($codeCgt) {
             self::metaBottinEvent($codeCgt);
         }

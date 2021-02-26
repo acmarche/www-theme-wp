@@ -5,6 +5,7 @@ namespace AcMarche\Theme\Inc;
 
 use AcMarche\Bottin\Bottin;
 use AcMarche\Bottin\Repository\BottinRepository;
+use AcMarche\Bottin\RouterBottin;
 use AcMarche\Common\Mailer;
 use AcMarche\Common\SortUtil;
 use AcMarche\Elasticsearch\Searcher;
@@ -47,7 +48,7 @@ class ApiData
             $data[$fiche->id]['ID']         = $fiche->id;
             $data[$fiche->id]['excerpt']    = Bottin::getExcerpt($fiche);
             $data[$fiche->id]['post_title'] = $fiche->societe;
-            $data[$fiche->id]['link']       = Router::getUrlFicheBottin($fiche);
+            $data[$fiche->id]['link']       = RouterBottin::getUrlFicheBottin($fiche);
         }
 
         //retrieves all posts and add the wp category ids to them

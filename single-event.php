@@ -5,13 +5,13 @@ namespace AcMarche\Theme;
 use AcMarche\Common\MarcheConst;
 use AcMarche\Common\Twig;
 use AcMarche\Pivot\Repository\HadesRepository;
-use AcMarche\Pivot\Router;
+use AcMarche\Pivot\RouterHades;
 use AcMarche\Theme\Inc\Theme;
 
 get_header();
 
 global $wp_query;
-$codeCgt = $wp_query->get(Router::PARAM_EVENT);
+$codeCgt = $wp_query->get(RouterHades::PARAM_EVENT);
 
 $hadesRepository = new HadesRepository();
 $event           = $hadesRepository->getEvent($codeCgt);
@@ -39,7 +39,7 @@ if (count($images) > 0) {
 }
 $tags = [];
 foreach ($event->categories as $category) {
-    $tags[] = ['name' => $category->lib, 'url' => Router::getUrlEventCategory($category)];
+    $tags[] = ['name' => $category->lib, 'url' => RouterHades::getUrlEventCategory($category)];
 }
 
 $relations = $hadesRepository->getEventRelations($event);

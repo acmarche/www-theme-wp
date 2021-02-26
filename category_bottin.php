@@ -5,8 +5,8 @@ namespace AcMarche\Theme;
 
 use AcMarche\Bottin\Bottin;
 use AcMarche\Bottin\Repository\BottinRepository;
+use AcMarche\Bottin\RouterBottin;
 use AcMarche\Common\Twig;
-use AcMarche\Theme\Inc\Router;
 use AcMarche\Theme\Inc\Theme;
 
 get_header();
@@ -15,7 +15,7 @@ global $wp_query;
 
 $bottinRepository = new BottinRepository();
 
-$slug     = $wp_query->get(Router::PARAM_BOTTIN_CATEGORY, null);
+$slug     = $wp_query->get(RouterBottin::PARAM_BOTTIN_CATEGORY, null);
 $category = null;
 if ($slug) {
     $category = $bottinRepository->getCategoryBySlug($slug);
@@ -51,11 +51,11 @@ $urlBack     = $path;
 $nameBack    = $blogName;
 if ($parent) {
     $nameBack = $parent->name;
-    $urlBack  = Router::getUrlCategoryBottin($parent);
+    $urlBack  = RouterBottin::getUrlCategoryBottin($parent);
 }
 array_map(
     function ($child) {
-        $child->permalink = Router::getUrlCategoryBottin($child);
+        $child->permalink = RouterBottin::getUrlCategoryBottin($child);
     },
     $children
 );
@@ -64,7 +64,7 @@ array_map(
     function ($fiche) use ($bottinRepository) {
         $fiche->post_title = $fiche->societe;
         $fiche->excerpt    = Bottin::getExcerpt($fiche);
-        $fiche->permalink  = Router::getUrlFicheBottin($fiche);
+        $fiche->permalink  = RouterBottin::getUrlFicheBottin($fiche);
     },
     $fiches
 );
