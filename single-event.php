@@ -5,7 +5,7 @@ namespace AcMarche\Theme;
 use AcMarche\Common\MarcheConst;
 use AcMarche\Common\Twig;
 use AcMarche\Pivot\Repository\HadesRepository;
-use AcMarche\Theme\Inc\Router;
+use AcMarche\Pivot\Router;
 use AcMarche\Theme\Inc\Theme;
 
 get_header();

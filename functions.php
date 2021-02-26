@@ -2,16 +2,17 @@
 
 namespace AcMarche\Theme;
 
+use AcMarche\Pivot\Router as RouterPivot;
 use AcMarche\Theme\Inc\Api;
 use AcMarche\Theme\Inc\AssetsLoad;
 use AcMarche\Theme\Inc\Filter;
 use AcMarche\Theme\Inc\QueryAlter;
-use AcMarche\Theme\Inc\Router;
 use AcMarche\Theme\Inc\SecurityConfig;
 use AcMarche\Theme\Inc\Seo;
 use AcMarche\Theme\Inc\SettingsPage;
 use AcMarche\Theme\Inc\SetupTheme;
 use AcMarche\Theme\Inc\WidgetLoad;
+use AcMarche\Theme\Inc\Router;
 
 /**
  * Initialisation du thème
@@ -37,6 +38,7 @@ new SecurityConfig();
  * Ajout de routage pour pivot et bottin
  */
 new Router();
+new RouterPivot();
 /**
  * Balises pour le référencement
  */

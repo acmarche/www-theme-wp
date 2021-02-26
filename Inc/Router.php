@@ -21,12 +21,10 @@ class Router
     const PARAM_BOTTIN_CATEGORY = 'slugcategory';
     const BOTTIN_FICHE_URL = 'bottin/fiche/';
     const BOTTIN_CATEGORY_URL = 'bwp/categorie/';
-    const EVENT_URL = 'manifestation/';
 
     public function __construct()
     {
         //   $this->flushRoutes();
-        $this->addRouteEvent();
         $this->addRouteBottin();
         $this->addRouteBottinCategory();
     }
@@ -55,54 +53,6 @@ class Router
     public static function getUrlFicheBottin(\stdClass $fiche): string
     {
         return self::getBaseUrlSite().Router::BOTTIN_FICHE_URL.$fiche->slug;
-    }
-
-    public static function getUrlEvent(Event $event): string
-    {
-        return self::getBaseUrlSite().Router::EVENT_URL.$event->id;
-    }
-
-    public static function getUrlEventCategory(Categorie $categorie): string
-    {
-        return self::getBaseUrlSite().Router::EVENT_URL.$categorie->id;
-    }
-
-    public function addRouteEvent()
-    {
-        add_action(
-            'init',
-            function () {
-                add_rewrite_rule(
-                    self::EVENT_URL.'([a-zA-Z0-9-]+)[/]?$',
-                    'index.php?'.self::PARAM_EVENT.'=$matches[1]',
-                    'top'
-                );
-            }
-        );
-        add_filter(
-            'query_vars',
-            function ($query_vars) {
-                $query_vars[] = self::PARAM_EVENT;
-
-                return $query_vars;
-            }
-        );
-        add_action(
-            'template_include',
-            function ($template) {
-                global $wp_query;
-                if (is_admin() || ! $wp_query->is_main_query()) {
-                    return $template;
-                }
-
-                if (get_query_var(self::PARAM_EVENT) == false ||
-                    get_query_var(self::PARAM_EVENT) == '') {
-                    return $template;
-                }
-
-                return get_template_directory().'/single-event.php';
-            }
-        );
     }
 
     public function addRouteBottin()
@@ -191,12 +141,15 @@ class Router
         switch_to_blog($current);
     }
 
-    public static function getCurrentUrl():string {
+    public static function getCurrentUrl(): string
+    {
         return get_site_url().esc_url_raw(add_query_arg([]));
     }
 
-    public static function getUrlWww():string {
-        $current = preg_replace("#new.marche.be#","www.marche.be",Router::getCurrentUrl());
+    public static function getUrlWww(): string
+    {
+        $current = preg_replace("#new.marche.be#", "www.marche.be", Router::getCurrentUrl());
+
         return $current;
     }
 }
