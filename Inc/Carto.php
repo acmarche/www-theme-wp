@@ -59,10 +59,9 @@ class Carto
                 'icone'    => 'fas fa-briefcase',
                 'elements' => [
                     'wifi'               => ['name' => 'Wifi', 'source' => 'kml', 'id' => 'wifi'],
-                    'salles_commu'       => ['name' => 'Salles communales', 'source' => 'bottin', 'id' => 0],
+                    'salles_commu'       => ['name' => 'Salles communales', 'source' => 'bottin', 'id' => 680],
                     'cimetieres'         => ['name' => 'Cimetières', 'source' => 'bottin', 'id' => 0],
                     'services_communaux' => ['name' => 'Services communaux', 'source' => 'bottin', 'id' => 665],
-                    'infra'              => ['name' => 'Infrastructures sportives', 'source' => 'bottin', 'id' => 0],
                 ],
             ],
             'culture'         => [
@@ -97,6 +96,12 @@ class Carto
                     'chambres'    => ['name' => 'Chambres d\'hôtes', 'source' => 'bottin', 'id' => 651],
                     'camping'     => ['name' => 'Camping', 'source' => 'bottin', 'id' => 652],
                 ],
+            ],
+            'sport'           => [
+                'name'     => 'Sport',
+                'icone'    => 'far fa-hospital',
+                'elements' =>
+                    $this->getElements(486),
             ],
         ];
     }
@@ -179,6 +184,18 @@ class Carto
         $fiches           = $bottinRepository->getFichesByCategories([$id]);
         foreach ($fiches as $fiche) {
             $data[] = $this->formatSocieteData($fiche);
+        }
+
+        return $data;
+    }
+
+    public function getElements(int $id): array
+    {
+        $bottinRepository = new BottinRepository();
+        $data             = [];
+        $rubriques        = $bottinRepository->getCategories($id);
+        foreach ($rubriques as $rubrique) {
+            $data[$rubrique->slug] = ['name' => $rubrique->name, 'source' => 'bottin', 'id' => $rubrique->id];
         }
 
         return $data;
