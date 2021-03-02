@@ -50,7 +50,7 @@
 }
 
 // .mh-Npx
-@for $i from 1 through 199 {
+@for $i from 1 through 799 {
 	.mh-#{$i}px {
 		max-height: 1px*$i !important;
 	}

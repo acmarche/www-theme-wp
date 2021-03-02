@@ -1,5 +1,4 @@
 import CollapseCategoryJf from './CollapseCategoryJf';
-import PopupDescription from './PopupDescription';
 import { loadFiltres } from './service/map-service';
 
 const { useState, useEffect } = wp.element;
@@ -37,7 +36,7 @@ function FiltreJf({
         ) );
 
     return (
-        <div className="col-12 col-lg-3 px-0 lg-shadow-sm-1 position-relative z-10">
+        <div className="col-12 col-lg-3 px-0 lg-shadow-sm-1 position-relative z-10 overflowY-auto mh-700px">
             <div className="accordion" id="accordionFiltres">
                 {listItems}
             </div>

@@ -26,7 +26,9 @@
     "symfony/serializer": "^5.2",
     "phpdocumentor/reflection-common": "^2.2",
     "phpdocumentor/reflection-docblock": "^5.2",
-    "phpdocumentor/type-resolver": "^1.4"
+    "phpdocumentor/type-resolver": "^1.4",
+    "ext-dom": "*",
+    "twig/string-extra": "^3.3"
   },
   "autoload": {
     "psr-4": {
