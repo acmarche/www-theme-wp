@@ -43,7 +43,7 @@ class Carto
             ],
             'enseignement'    => [
                 'name'     => 'Enseignement',
-                'icone'    => 'fas fa-baby-carriage',
+                'icone'    => 'fas fa-graduation-cap',
                 'elements' => [
                     'enseignement_artistique' => ['name' => 'Artistique', 'source' => 'bottin', 'id' => 682],
                     'enseignement_maternelle' => ['name' => 'Maternel et primaire', 'source' => 'bottin', 'id' => 669],
