@@ -40,7 +40,7 @@ class Carto
                     'pistes_cyclo'        => ['name' => 'Pistes cyclables', 'source' => 'kml', 'id' => 'cyclos'],
                     'balade_pieds'             => ['name' => 'Balade des petits pieds', 'source' => 'kml', 'id' => 'balades'],
                     'velos_stationnement' => [
-                        'name'   => 'Parking vélos',
+                        'name'   => 'Parkings vélos',
                         'source' => 'kml',
                         'id'     => 'velos_stationnement',
                     ],
