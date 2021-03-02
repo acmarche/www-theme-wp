@@ -94,6 +94,10 @@ class Carto
                     'medecins'   => ['name' => 'Médecine générale', 'source' => 'bottin', 'id' => 370],
                     'pharmacies' => ['name' => 'Pharmacies', 'source' => 'bottin', 'id' => 390],
                     'mutuelles'  => ['name' => 'Mutuelles', 'source' => 'bottin', 'id' => 411],
+                    'hopital'  => ['name' => 'Hôptial', 'source' => 'bottin', 'id' => 681],
+                    'veterinaires'  => ['name' => 'Vétérinaires', 'source' => 'bottin', 'id' => 588],
+                    'kines'  => ['name' => 'Kinésithérapeutes', 'source' => 'bottin', 'id' => 385],
+                    'dentistes'  => ['name' => 'Dentistes', 'source' => 'bottin', 'id' => 383],
                 ],
             ],
             'horeca'          => [
