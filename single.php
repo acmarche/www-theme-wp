@@ -19,7 +19,6 @@ if (has_post_thumbnail()) {
     }
 }
 
-$urlBack      =  Router::getCurrentUrl();
 
 $blodId = get_current_blog_id();
 
@@ -29,6 +28,8 @@ $color    = Theme::getColorBlog($blodId);
 
 $tags      = WpRepository::getTags($post->ID);
 $relations = WpRepository::getRelations($post->ID);
+
+$urlBack      =  $tags[0]['url'];
 
 $content = get_the_content(null, null, $post);
 $content = apply_filters('the_content', $content);
