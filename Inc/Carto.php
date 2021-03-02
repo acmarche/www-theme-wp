@@ -62,11 +62,17 @@ class Carto
                     'jeux'          => ['name' => 'Aires de jeux, parcs', 'source' => 'kml', 'id' => 'jeux'],
                 ],
             ],
+            'wifi' => [
+                'name'     => 'Wifi gratuit',
+                'icone'    => 'fas fa-briefcase',
+                'elements' => [
+                    'wifi'               => ['name' => 'Réseaux Wifi 4 EU', 'source' => 'kml', 'id' => 'wifi'],
+                ],
+            ],
             'infrastructures' => [
                 'name'     => 'Infrastructures',
                 'icone'    => 'fas fa-briefcase',
                 'elements' => [
-                    'wifi'               => ['name' => 'Wifi', 'source' => 'kml', 'id' => 'wifi'],
                     'salles_commu'       => ['name' => 'Salles communales', 'source' => 'bottin', 'id' => 680],
                     'cimetieres'         => ['name' => 'Cimetières', 'source' => 'bottin', 'id' => 0],
                 ],
