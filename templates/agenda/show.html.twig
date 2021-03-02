@@ -25,7 +25,7 @@
 
 {% block content %}
     {% for description in event.descriptions %}
-        <p>      {{ description.texte|raw|nl2br }} </p>
+        <p>      {{ description.texte|raw }} </p>
     {% endfor %}
 
     <h4 class="mb-2 mt-2"><strong>Date(s)</strong></h4>
