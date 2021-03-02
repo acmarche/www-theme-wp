@@ -66,7 +66,7 @@ class Carto
                 'name'     => 'Wifi gratuit',
                 'icone'    => 'fas fa-briefcase',
                 'elements' => [
-                    'wifi'               => ['name' => 'Réseaux Wifi 4 EU', 'source' => 'kml', 'id' => 'wifi'],
+                    'wifi'               => ['name' => 'Réseau Wifi4EU', 'source' => 'kml', 'id' => 'wifi'],
                 ],
             ],
             'infrastructures' => [
