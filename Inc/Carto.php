@@ -36,9 +36,17 @@ class Carto
                 'icone'    => 'fas fa-bus',
                 'elements' => [
                     'travaux'             => ['name' => 'Travaux', 'source' => 'kml', 'id' => 'travaux'],
-                    'parking_centre'             => ['name' => 'Parking centre-véhicules ', 'source' => 'bottin', 'id' => 679],
+                    'parking_centre'      => [
+                        'name'   => 'Parkings centre-véhicules ',
+                        'source' => 'bottin',
+                        'id'     => 679,
+                    ],
                     'pistes_cyclo'        => ['name' => 'Pistes cyclables', 'source' => 'kml', 'id' => 'cyclos'],
-                    'balade_pieds'             => ['name' => 'Balade des petits pieds', 'source' => 'kml', 'id' => 'balades'],
+                    'balade_pieds'        => [
+                        'name'   => 'Balade des petits pieds',
+                        'source' => 'kml',
+                        'id'     => 'balades',
+                    ],
                     'velos_stationnement' => [
                         'name'   => 'Parkings vélos',
                         'source' => 'kml',
@@ -51,7 +59,6 @@ class Carto
                 'icone'    => 'fas fa-baby-carriage',
                 'elements' => [
                     'accueillantes' => ['name' => 'Accueillantes', 'source' => 'bottin', 'id' => 672],
-                    'creches'       => ['name' => 'Crèches', 'source' => 'bottin', 'id' => 495],
                     'jeux'          => ['name' => 'Aires de jeux, parcs', 'source' => 'kml', 'id' => 'jeux'],
                 ],
             ],
@@ -62,7 +69,6 @@ class Carto
                     'wifi'               => ['name' => 'Wifi', 'source' => 'kml', 'id' => 'wifi'],
                     'salles_commu'       => ['name' => 'Salles communales', 'source' => 'bottin', 'id' => 680],
                     'cimetieres'         => ['name' => 'Cimetières', 'source' => 'bottin', 'id' => 0],
-                    'services_communaux' => ['name' => 'Services communaux', 'source' => 'bottin', 'id' => 665],
                 ],
             ],
             'culture'         => [
