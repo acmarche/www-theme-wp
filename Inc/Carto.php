@@ -23,35 +23,14 @@ class Carto
     public function filtres(): array
     {
         return [
-            'environnement'   => [
-                'name'     => 'Environnement',
-                'icone'    => 'fas fa-leaf',
+            'culture'         => [
+                'name'     => 'Culture',
+                'icone'    => 'fas fa-book',
                 'elements' => [
-                    'bulles_verres'    => ['name' => 'Bulles à verres', 'source' => 'bottin', 'id' => 677],
-                    'bulles_vetements' => ['name' => 'Bulles à vêtements', 'source' => 'bottin', 'id' => 678],
-                ],
-            ],
-            'mobilite'        => [
-                'name'     => 'Mobilité',
-                'icone'    => 'fas fa-bus',
-                'elements' => [
-                    'travaux'             => ['name' => 'Travaux', 'source' => 'kml', 'id' => 'travaux'],
-                    'parking_centre'      => [
-                        'name'   => 'Parkings centre-véhicules ',
-                        'source' => 'bottin',
-                        'id'     => 679,
-                    ],
-                    'pistes_cyclo'        => ['name' => 'Pistes cyclables', 'source' => 'kml', 'id' => 'cyclos'],
-                    'balade_pieds'        => [
-                        'name'   => 'Balade des petits pieds',
-                        'source' => 'kml',
-                        'id'     => 'balades',
-                    ],
-                    'velos_stationnement' => [
-                        'name'   => 'Parkings vélos',
-                        'source' => 'kml',
-                        'id'     => 'velos_stationnement',
-                    ],
+                    'biblio'  => ['name' => 'Bibliothèques', 'source' => 'bottin', 'id' => 674],
+                    'cinema'  => ['name' => 'Cinéma', 'source' => 'bottin', 'id' => 675],
+                    'musees'  => ['name' => 'Musées', 'source' => 'bottin', 'id' => 673],
+                    'statues' => ['name' => 'Statues et sculptures', 'source' => 'kml', 'id' => 'statues'],
                 ],
             ],
             'enfance'         => [
@@ -62,42 +41,22 @@ class Carto
                     'jeux'          => ['name' => 'Aires de jeux, parcs', 'source' => 'kml', 'id' => 'jeux'],
                 ],
             ],
-            'wifi' => [
-                'name'     => 'Wifi gratuit',
-                'icone'    => 'fas fa-briefcase',
+            'enseignement'    => [
+                'name'     => 'Enfance',
+                'icone'    => 'fas fa-baby-carriage',
                 'elements' => [
-                    'wifi'               => ['name' => 'Réseau Wifi4EU', 'source' => 'kml', 'id' => 'wifi'],
+                    'enseignement_artistique' => ['name' => 'Artistique', 'source' => 'bottin', 'id' => 682],
+                    'enseignement_maternelle' => ['name' => 'Maternel et primaire', 'source' => 'bottin', 'id' => 669],
+                    'enseignement_secondaire' => ['name' => 'Secondaire', 'source' => 'bottin', 'id' => 668],
+                    'enseignement_superieur'  => ['name' => 'Supérieur', 'source' => 'bottin', 'id' => 670],
                 ],
             ],
-            'infrastructures' => [
-                'name'     => 'Infrastructures',
-                'icone'    => 'fas fa-briefcase',
+            'environnement'   => [
+                'name'     => 'Environnement',
+                'icone'    => 'fas fa-leaf',
                 'elements' => [
-                    'salles_commu'       => ['name' => 'Salles communales', 'source' => 'bottin', 'id' => 680],
-                    'cimetieres'         => ['name' => 'Cimetières', 'source' => 'bottin', 'id' => 0],
-                ],
-            ],
-            'culture'         => [
-                'name'     => 'Culture',
-                'icone'    => 'fas fa-book',
-                'elements' => [
-                    'musees'  => ['name' => 'Musées', 'source' => 'bottin', 'id' => 673],
-                    'biblio'  => ['name' => 'Bibliothèques', 'source' => 'bottin', 'id' => 674],
-                    'cinema'  => ['name' => 'Cinéma', 'source' => 'bottin', 'id' => 675],
-                    'statues' => ['name' => 'Statues et sculptures', 'source' => 'kml', 'id' => 'statues'],
-                ],
-            ],
-            'sante'           => [
-                'name'     => 'Santé',
-                'icone'    => 'far fa-hospital',
-                'elements' => [
-                    'medecins'   => ['name' => 'Médecine générale', 'source' => 'bottin', 'id' => 370],
-                    'pharmacies' => ['name' => 'Pharmacies', 'source' => 'bottin', 'id' => 390],
-                    'mutuelles'  => ['name' => 'Mutuelles', 'source' => 'bottin', 'id' => 411],
-                    'hopital'  => ['name' => 'Hôptial', 'source' => 'bottin', 'id' => 681],
-                    'veterinaires'  => ['name' => 'Vétérinaires', 'source' => 'bottin', 'id' => 588],
-                    'kines'  => ['name' => 'Kinésithérapeutes', 'source' => 'bottin', 'id' => 385],
-                    'dentistes'  => ['name' => 'Dentistes', 'source' => 'bottin', 'id' => 383],
+                    'bulles_verres'    => ['name' => 'Bulles à verres', 'source' => 'bottin', 'id' => 677],
+                    'bulles_vetements' => ['name' => 'Bulles à vêtements', 'source' => 'bottin', 'id' => 678],
                 ],
             ],
             'horeca'          => [
@@ -105,20 +64,72 @@ class Carto
                 'icone'    => 'fas fa-cookie',
                 'elements' => [
                     'brasseries'  => ['name' => 'Brasseries-Bar', 'source' => 'bottin', 'id' => 522],
+                    'camping'     => ['name' => 'Camping', 'source' => 'bottin', 'id' => 652],
+                    'chambres'    => ['name' => 'Chambres d\'hôtes', 'source' => 'bottin', 'id' => 651],
                     'friteries'   => ['name' => 'Friterie - Snack - sandwicherie', 'source' => 'bottin', 'id' => 523],
-                    'restaurants' => ['name' => 'Restaurants', 'source' => 'bottin', 'id' => 521],
+                    'gites'       => ['name' => 'Gîtes et meublés de tourisme', 'source' => 'bottin', 'id' => 650],
                     'glaciers'    => ['name' => 'Glaciers - Tea room', 'source' => 'bottin', 'id' => 524],
                     'hotels'      => ['name' => 'Hôtels', 'source' => 'bottin', 'id' => 649],
-                    'gites'       => ['name' => 'Gîtes et meublés de tourisme', 'source' => 'bottin', 'id' => 650],
-                    'chambres'    => ['name' => 'Chambres d\'hôtes', 'source' => 'bottin', 'id' => 651],
-                    'camping'     => ['name' => 'Camping', 'source' => 'bottin', 'id' => 652],
+                    'restaurants' => ['name' => 'Restaurants', 'source' => 'bottin', 'id' => 521],
                 ],
             ],
-            'sport'           => [
+            'infrastructures' => [
+                'name'     => 'Infrastructures',
+                'icone'    => 'fas fa-briefcase',
+                'elements' => [
+                    'cimetieres'   => ['name' => 'Cimetières', 'source' => 'bottin', 'id' => 0],
+                    'salles_commu' => ['name' => 'Salles communales', 'source' => 'bottin', 'id' => 680],
+                ],
+            ],
+            'mobilite'        => [
+                'name'     => 'Mobilité',
+                'icone'    => 'fas fa-bus',
+                'elements' => [
+                    'balade_pieds'        => [
+                        'name'   => 'Balade des petits pieds',
+                        'source' => 'kml',
+                        'id'     => 'balades',
+                    ],
+                    'parking_centre'      => [
+                        'name'   => 'Parkings centre-véhicules ',
+                        'source' => 'bottin',
+                        'id'     => 679,
+                    ],
+                    'pistes_cyclo'        => ['name' => 'Pistes cyclables', 'source' => 'kml', 'id' => 'cyclos'],
+                    'travaux'             => ['name' => 'Travaux', 'source' => 'kml', 'id' => 'travaux'],
+                    'velos_stationnement' => [
+                        'name'   => 'Parkings vélos',
+                        'source' => 'kml',
+                        'id'     => 'velos_stationnement',
+                    ],
+                ],
+            ],
+
+            'sante' => [
+                'name'     => 'Santé',
+                'icone'    => 'far fa-hospital',
+                'elements' => [
+                    'dentistes'    => ['name' => 'Dentistes', 'source' => 'bottin', 'id' => 383],
+                    'hopital'      => ['name' => 'Hôpital', 'source' => 'bottin', 'id' => 681],
+                    'kines'        => ['name' => 'Kinésithérapeutes', 'source' => 'bottin', 'id' => 385],
+                    'medecins'     => ['name' => 'Médecine générale', 'source' => 'bottin', 'id' => 370],
+                    'mutuelles'    => ['name' => 'Mutuelles', 'source' => 'bottin', 'id' => 411],
+                    'pharmacies'   => ['name' => 'Pharmacies', 'source' => 'bottin', 'id' => 390],
+                    'veterinaires' => ['name' => 'Vétérinaires', 'source' => 'bottin', 'id' => 588],
+                ],
+            ],
+            'sport' => [
                 'name'     => 'Sport',
                 'icone'    => 'far fa-hospital',
                 'elements' =>
                     $this->getElements(486),
+            ],
+            'wifi'  => [
+                'name'     => 'Wifi gratuit',
+                'icone'    => 'fas fa-briefcase',
+                'elements' => [
+                    'wifi' => ['name' => 'Réseau Wifi4EU', 'source' => 'kml', 'id' => 'wifi'],
+                ],
             ],
         ];
     }
