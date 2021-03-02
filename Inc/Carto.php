@@ -36,10 +36,9 @@ class Carto
                 'icone'    => 'fas fa-bus',
                 'elements' => [
                     'travaux'             => ['name' => 'Travaux', 'source' => 'kml', 'id' => 'travaux'],
-                    'parking'             => ['name' => 'Parking', 'source' => 'kml', 'id' => 'parkings'],
                     'parking_centre'             => ['name' => 'Parking centre', 'source' => 'bottin', 'id' => 679],
                     'pistes_cyclo'        => ['name' => 'Pistes cyclables', 'source' => 'kml', 'id' => 'cyclos'],
-                    'balades'             => ['name' => 'Balades', 'source' => 'kml', 'id' => 'balades'],
+                    'balade_pieds'             => ['name' => 'Balade des petits pieds', 'source' => 'kml', 'id' => 'balades'],
                     'velos_stationnement' => [
                         'name'   => 'Vélos stationnement',
                         'source' => 'kml',
