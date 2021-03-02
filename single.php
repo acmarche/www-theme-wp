@@ -3,9 +3,9 @@
 
 namespace AcMarche\Theme;
 
+use AcMarche\Common\Router;
 use AcMarche\Common\Twig;
 use AcMarche\Common\WpRepository;
-use AcMarche\Theme\Inc\Router;
 use AcMarche\Theme\Inc\Theme;
 
 get_header();
