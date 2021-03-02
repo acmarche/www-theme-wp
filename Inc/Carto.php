@@ -42,7 +42,7 @@ class Carto
                 ],
             ],
             'enseignement'    => [
-                'name'     => 'Enfance',
+                'name'     => 'Enseignement',
                 'icone'    => 'fas fa-baby-carriage',
                 'elements' => [
                     'enseignement_artistique' => ['name' => 'Artistique', 'source' => 'bottin', 'id' => 682],
@@ -104,7 +104,6 @@ class Carto
                     ],
                 ],
             ],
-
             'sante' => [
                 'name'     => 'Santé',
                 'icone'    => 'far fa-hospital',
