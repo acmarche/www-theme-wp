@@ -84,7 +84,7 @@ class Carto
                     'musees'  => ['name' => 'Musées', 'source' => 'bottin', 'id' => 673],
                     'biblio'  => ['name' => 'Bibliothèques', 'source' => 'bottin', 'id' => 674],
                     'cinema'  => ['name' => 'Cinéma', 'source' => 'bottin', 'id' => 675],
-                    'statues' => ['name' => 'Statues', 'source' => 'kml', 'id' => 'statues'],
+                    'statues' => ['name' => 'Statues et sculptures', 'source' => 'kml', 'id' => 'statues'],
                 ],
             ],
             'sante'           => [
