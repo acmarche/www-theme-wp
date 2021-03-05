@@ -3,10 +3,9 @@
 
 namespace AcMarche\Theme;
 
-use AcMarche\Common\Router;
-use AcMarche\Common\Twig;
-use AcMarche\Common\WpRepository;
 use AcMarche\Theme\Inc\Theme;
+use AcMarche\Theme\Lib\Twig;
+use AcMarche\Theme\Lib\WpRepository;
 
 get_header();
 global $post;
@@ -29,7 +28,8 @@ $color    = Theme::getColorBlog($blodId);
 $tags      = WpRepository::getTags($post->ID);
 $relations = WpRepository::getRelations($post->ID);
 
-$urlBack      =  $tags[0]['url'];
+$currentCategory = get_category_by_slug(get_query_var('category_name'));
+$urlBack         = get_category_link($currentCategory);
 
 $content = get_the_content(null, null, $post);
 $content = apply_filters('the_content', $content);
@@ -46,7 +46,7 @@ Twig::rendPage(
         'color'       => $color,
         'path'        => $path,
         'relations'   => $relations,
-        'urlBack'    => $urlBack,
+        'urlBack'     => $urlBack,
         'content'     => $content,
         'readspeaker' => true,
     ]

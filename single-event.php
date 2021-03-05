@@ -2,11 +2,10 @@
 
 namespace AcMarche\Theme;
 
-use AcMarche\Common\MarcheConst;
-use AcMarche\Common\Twig;
 use AcMarche\Pivot\Repository\HadesRepository;
 use AcMarche\Pivot\RouterHades;
 use AcMarche\Theme\Inc\Theme;
+use AcMarche\Theme\Lib\Twig;
 
 get_header();
 
@@ -14,7 +13,7 @@ global $wp_query;
 $codeCgt = $wp_query->get(RouterHades::PARAM_EVENT);
 
 $hadesRepository = new HadesRepository();
-$event           = $hadesRepository->getEvent($codeCgt);
+$event           = $hadesRepository->getOffre($codeCgt);
 
 if ( ! $event) {
     Twig::rendPage(
@@ -22,8 +21,8 @@ if ( ! $event) {
         [
             'title'     => 'Evènement non trouvé',
             'tags'      => [],
-            'color'     => Theme::getColorBlog(MarcheConst::TOURISME),
-            'blogName'  => Theme::getTitleBlog(MarcheConst::TOURISME),
+            'color'     => Theme::getColorBlog(Theme::TOURISME),
+            'blogName'  => Theme::getTitleBlog(Theme::TOURISME),
             'relations' => [],
         ]
     );
@@ -42,7 +41,8 @@ foreach ($event->categories as $category) {
     $tags[] = ['name' => $category->lib, 'url' => RouterHades::getUrlEventCategory($category)];
 }
 
-$relations = $hadesRepository->getEventRelations($event);
+$currentCategory = get_category_by_slug(get_query_var('category_name'));
+$relations       = $hadesRepository->getOffresSameCategories($event, $currentCategory->cat_ID);
 
 Twig::rendPage(
     'agenda/show.html.twig',
@@ -54,8 +54,8 @@ Twig::rendPage(
         'images'      => $images,
         'latitude'    => $event->geocode->latitude() ?? null,
         'longitude'   => $event->geocode->longitude() ?? null,
-        'color'       => Theme::getColorBlog(MarcheConst::TOURISME),
-        'blogName'    => Theme::getTitleBlog(MarcheConst::TOURISME),
+        'color'       => Theme::getColorBlog(Theme::TOURISME),
+        'blogName'    => Theme::getTitleBlog(Theme::TOURISME),
         'relations'   => $relations,
         'readspeaker' => true,
     ]

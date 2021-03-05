@@ -6,7 +6,7 @@ namespace AcMarche\Theme;
 use AcMarche\Bottin\Bottin;
 use AcMarche\Bottin\Repository\BottinRepository;
 use AcMarche\Bottin\RouterBottin;
-use AcMarche\Common\Twig;
+use AcMarche\Theme\Lib\Twig;
 use AcMarche\Theme\Inc\Theme;
 
 get_header();

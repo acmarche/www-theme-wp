@@ -6,8 +6,8 @@ namespace AcMarche\Theme;
  * Template Name: News
  */
 
-use AcMarche\Common\Twig;
-use AcMarche\Common\WpRepository;
+use AcMarche\Theme\Lib\Twig;
+use AcMarche\Theme\Lib\WpRepository;
 
 get_header();
 

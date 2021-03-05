@@ -2,7 +2,7 @@
 
 namespace AcMarche\Theme\Inc;
 
-use AcMarche\Common\Menu;
+use AcMarche\Theme\Lib\Menu;
 
 class SetupTheme
 {

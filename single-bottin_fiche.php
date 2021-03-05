@@ -6,8 +6,8 @@ use AcMarche\Bottin\Bottin;
 use AcMarche\Bottin\Repository\BottinRepository;
 use AcMarche\Bottin\Repository\WpBottinRepository;
 use AcMarche\Bottin\RouterBottin;
-use AcMarche\Common\Twig;
 use AcMarche\Theme\Inc\Theme;
+use AcMarche\Theme\Lib\Twig;
 
 get_header();
 global $wp_query;
@@ -44,6 +44,8 @@ $urlBack             = null;
 if ($classementPrincipal) {
     $urlBack = RouterBottin::getUrlCategoryBottin($classementPrincipal);
 }
+$currentCategory = get_category_by_slug(get_query_var('category_name'));
+$urlBack         = get_category_link($currentCategory);
 
 $images        = $bottinRepository->getImagesFiche($fiche->id);
 $documents     = $bottinRepository->getDocuments($fiche->id);

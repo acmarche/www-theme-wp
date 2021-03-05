@@ -3,7 +3,7 @@
 namespace AcMarche\Theme;
 
 use AcMarche\Common\Mailer;
-use AcMarche\Common\Twig;
+use AcMarche\Theme\Lib\Twig;
 use AcMarche\Theme\Inc\Theme;
 use Symfony\Component\HttpFoundation\Request;
 

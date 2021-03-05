@@ -106,7 +106,7 @@ class Seo
     private static function metaBottinEvent(string $codeCgt)
     {
         $hadesRepository = new HadesRepository();
-        $event           = $hadesRepository->getEvent($codeCgt);
+        $event           = $hadesRepository->getOffre($codeCgt);
         if ($event) {
             self::$metas['title']       = $event->titre.' | Agenda des manifestations ';
             self::$metas['description'] = join(

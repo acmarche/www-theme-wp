@@ -109,8 +109,13 @@ class ApiData
 
     public static function ca_events()
     {
+        $current = get_current_blog_id();
+        switch_to_blog(Theme::TOURISME);
+        $categoryAgenda = get_category_by_slug('agenda-des-manifestations');
+
         $hadesRepository = new HadesRepository();
-        $events          = $hadesRepository->getEvents();
+        $events          = $hadesRepository->getEvents($categoryAgenda->cat_ID);
+        switch_to_blog($current);
 
         return rest_ensure_response($events);
     }
