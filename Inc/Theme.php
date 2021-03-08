@@ -33,6 +33,7 @@ class Theme
         5                    => 'color-cat-spo',
         6                    => 'color-cat-san',
         7                    => 'color-cat-soc',
+        12                   => 'color-cat-cul',//=>roman
         11                   => 'color-cat-cul',
         14                   => 'color-cat-enf',
     ];
