@@ -3,6 +3,7 @@
 namespace AcMarche\Theme;
 
 use AcMarche\Common\Mailer;
+use AcMarche\Theme\Lib\Twig;
 use AcMarche\Theme\Lib\WpRepository;
 use AcMarche\Pivot\Repository\HadesRepository;
 use AcMarche\Theme\Inc\Theme;
