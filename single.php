@@ -28,8 +28,17 @@ $color    = Theme::getColorBlog($blodId);
 $tags      = WpRepository::getTags($post->ID);
 $relations = WpRepository::getRelations($post->ID);
 
-$currentCategory = get_category_by_slug(get_query_var('category_name'));
+$catSlug = get_query_var('category_name');
+
+if(preg_match("#/#", $catSlug)) {
+    $vars =  explode("/", $catSlug);
+    $catSlug = end($vars);
+}
+
+$currentCategory = get_category_by_slug($catSlug);
+
 $urlBack         = get_category_link($currentCategory);
+$nameBack         = $currentCategory->name;
 
 $content = get_the_content(null, null, $post);
 $content = apply_filters('the_content', $content);
@@ -47,6 +56,7 @@ Twig::rendPage(
         'path'        => $path,
         'relations'   => $relations,
         'urlBack'     => $urlBack,
+        'nameBack'     => $nameBack,
         'content'     => $content,
         'readspeaker' => true,
     ]

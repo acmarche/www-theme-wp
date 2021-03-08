@@ -14,7 +14,7 @@
         <!--title-->
         <h2 class="text-ls-md-left pt-ls-md-8px text-md-left pt-md-8px">
             {% block title %}
-                {{ title }}
+                {{ title|puriferHtml|raw }}
             {% endblock %}
         </h2>
 

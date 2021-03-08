@@ -12,6 +12,7 @@ use AcMarche\Theme\Inc\SecurityConfig;
 use AcMarche\Theme\Inc\Seo;
 use AcMarche\Theme\Inc\SettingsPage;
 use AcMarche\Theme\Inc\SetupTheme;
+use AcMarche\Theme\Inc\ShortCodes;
 use AcMarche\Theme\Inc\WidgetLoad;
 
 /**
@@ -52,6 +53,7 @@ new Filter();
  */
 new Api();
 /**
- * Activer ou pas react
+ * Short codes
  */
-new SettingsPage();
+new ShortCodes();
+

@@ -1,0 +1,13 @@
+{% for nomenclature in nomenclatures %}
+    <h3>{{ nomenclature.nom }}</h3>
+    <ul class="list-group">
+        {% for taxe in nomenclature.taxes %}
+            <li class="list-group-item">
+                {{ taxe.nom }}
+                {% for exercice in taxe.exercices %}
+                    <a href="{{ exercice.fileName }}">{{ exercice.annee }}</a>
+                {% endfor %}
+            </li>
+        {% endfor %}
+    </ul>
+{% endfor %}

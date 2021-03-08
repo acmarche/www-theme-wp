@@ -6,7 +6,7 @@
             <b class="bg-img-bgcolor-hover-primary-55"></b>
         </i>
         <div class="col">
-            <h5 class="text-hover-primary">{{ relation.title }}</h5>
+            <h5 class="text-hover-primary">{{ relation.title|puriferHtml|raw }}</h5>
             <span class="{{ color }}">{{ blogName }}</span>
         </div>
     </a>

@@ -25,15 +25,13 @@
 
 {% block content %}
     {% for description in event.descriptions %}
-        <p>      {{ description.texte|raw }} </p>
+        <span>{{ description.texte|puriferHtml|raw }}</span>
     {% endfor %}
 
     <h4 class="mb-2 mt-2"><strong>Date(s)</strong></h4>
 
     {% for date in event.dates %}
-
         {{ date.date_deb }} {% if loop.last != true %}, {% endif %}
-
     {% endfor %}
 
     <h4 class="mb-2 mt-2"><strong>Où</strong></h4>

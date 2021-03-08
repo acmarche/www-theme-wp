@@ -6,6 +6,8 @@ namespace AcMarche\Theme\Lib;
 use AcMarche\Common\Mailer;
 use AcMarche\Common\Router;
 use AcMarche\Theme\Inc\Theme;
+use HTMLPurifier;
+use HTMLPurifier_Config;
 use Twig\Environment;
 use Twig\Error\LoaderError;
 use Twig\Error\RuntimeError;
@@ -48,6 +50,7 @@ class Twig
         $environment->addFunction(self::currentUrl());
         $environment->addFunction(self::wwwUrl());
         $environment->addFunction(self::isExternalUrl());
+        $environment->addFilter(self::puriferHtml());
 
         return $environment;
     }
@@ -95,6 +98,7 @@ class Twig
             function (): string {
                 if (true === WP_DEBUG) {
                     global $template;
+
                     return 'template: '.$template;
                 }
 
@@ -145,6 +149,25 @@ class Twig
             'wwwUrl',
             function (): string {
                 return Router::getUrlWww();
+            }
+        );
+    }
+
+    /**
+     *
+     * @return TwigFilter
+     */
+    public static function puriferHtml(): TwigFilter
+    {
+        return new TwigFilter(
+            'puriferHtml',
+            function (string $content): string {
+                $config     = HTMLPurifier_Config::createDefault();
+                $config->set('Cache.SerializerPath', '/tmp');
+                $purifier   = new HTMLPurifier($config);
+                $clean_html = $purifier->purify($content);
+
+                return $clean_html;
             }
         );
     }

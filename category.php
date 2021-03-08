@@ -13,7 +13,7 @@ $wpRepository = new WpRepository();
 
 $cat_ID      = get_queried_object_id();
 $category    = get_category($cat_ID);
-$description = $description = category_description($cat_ID);
+$description = category_description($cat_ID);
 $title       = single_cat_title('', false);
 
 $blodId   = get_current_blog_id();

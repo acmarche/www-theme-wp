@@ -4,8 +4,12 @@
     {{ urlBack }}
 {% endblock %}
 
+{% block name_back %}
+    {{ nameBack|puriferHtml|raw }}
+{% endblock %}
+
 {% block content %}
-    <p>{{ content|raw }}</p>
+    {{ content|raw }}
 {% endblock %}
 
 {% block scripts %}

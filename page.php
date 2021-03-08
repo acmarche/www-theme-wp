@@ -29,6 +29,7 @@ $content   = apply_filters('the_content', $content);
 $content   = str_replace(']]>', ']]&gt;', $content);
 $relations = [];
 $urlBack   = '/';
+$nameBack  = 'Retour à l\'accueil';
 
 Twig::rendPage(
     'article/page.html.twig',
@@ -42,7 +43,8 @@ Twig::rendPage(
         'color'       => $color,
         'path'        => $path,
         'relations'   => $relations,
-        'urlBack'    => $urlBack,
+        'urlBack'     => $urlBack,
+        'nameBack'    => $nameBack,
         'content'     => $content,
         'readspeaker' => true,
     ]
