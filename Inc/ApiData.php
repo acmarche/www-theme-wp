@@ -46,7 +46,7 @@ class ApiData
         // Formats all fiches to fit front end requirements
         foreach ($fiches as $fiche) {
             $data[$fiche->id]['ID']         = $fiche->id;
-            $data[$fiche->id]['excerpt']    = Bottin::getExcerpt($fiche);
+            $data[$fiche->id]['post_excerpt']    = Bottin::getExcerpt($fiche);
             $data[$fiche->id]['post_title'] = $fiche->societe;
             $data[$fiche->id]['link']       = RouterBottin::getUrlFicheBottin($fiche);
         }
