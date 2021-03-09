@@ -3,11 +3,9 @@
 
 namespace AcMarche\Theme\Inc;
 
-
 use AcMarche\Bottin\Repository\BottinRepository;
 use AcMarche\Bottin\RouterBottin;
 use AcMarche\Pivot\Repository\HadesRepository;
-use AcMarche\Pivot\RouterHades;
 
 class Seo
 {
@@ -48,7 +46,7 @@ class Seo
             self::metaBottinCategory($slugCategory);
         }
 
-        $codeCgt = get_query_var(RouterHades::PARAM_EVENT);
+        $codeCgt = get_query_var(RouterMarche::PARAM_EVENT);
         if ($codeCgt) {
             self::metaBottinEvent($codeCgt);
         }

@@ -3,14 +3,14 @@
 namespace AcMarche\Theme;
 
 use AcMarche\Pivot\Repository\HadesRepository;
-use AcMarche\Pivot\RouterHades;
+use AcMarche\Theme\Inc\RouterMarche;
 use AcMarche\Theme\Inc\Theme;
 use AcMarche\Theme\Lib\Twig;
 
 get_header();
 
 global $wp_query;
-$codeCgt = $wp_query->get(RouterHades::PARAM_EVENT);
+$codeCgt = $wp_query->get(RouterMarche::PARAM_EVENT);
 
 $hadesRepository = new HadesRepository();
 $event           = $hadesRepository->getOffre($codeCgt);
@@ -38,10 +38,10 @@ if (count($images) > 0) {
 }
 $tags = [];
 foreach ($event->categories as $category) {
-    $tags[] = ['name' => $category->lib, 'url' => RouterHades::getUrlEventCategory($category)];
+    $tags[] = ['name' => $category->lib, 'url' => RouterMarche::getUrlEventCategory($category)];
 }
 
-$currentCategory = get_category_by_slug(get_query_var('category_name'));
+$currentCategory = RouterMarche::getCategoryAgenda();
 $relations       = $hadesRepository->getOffresSameCategories($event, $currentCategory->cat_ID);
 
 Twig::rendPage(

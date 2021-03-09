@@ -80,6 +80,7 @@ class WpRepository
             endwhile;
 
         endforeach;
+        switch_to_blog(1);
         wp_reset_postdata();
 
         if (count($news) > $max) {

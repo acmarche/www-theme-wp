@@ -3,10 +3,10 @@
 namespace AcMarche\Theme;
 
 use AcMarche\Common\Mailer;
+use AcMarche\Theme\Inc\RouterMarche;
 use AcMarche\Theme\Lib\Twig;
 use AcMarche\Theme\Lib\WpRepository;
 use AcMarche\Pivot\Repository\HadesRepository;
-use AcMarche\Theme\Inc\Theme;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
@@ -18,10 +18,8 @@ $hadesRepository = new HadesRepository();
 
 $news = WpRepository::getAllNews(6);
 try {
-    switch_to_blog(Theme::TOURISME);
-    $categoryAgenda = get_category_by_slug('agenda-des-manifestations');
-    $events = $hadesRepository->getEvents($categoryAgenda->cat_ID);
-    switch_to_blog(Theme::CITOYEN);
+    $events = $hadesRepository->getEvents();
+    RouterMarche::setRouteEvents($events);
 } catch (\Exception $exception) {
     $events = [];
     Mailer::sendError("Erreur de chargement de l'agenda", $exception->getMessage());

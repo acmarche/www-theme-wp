@@ -2,6 +2,7 @@
 
 namespace AcMarche\Theme;
 
+use AcMarche\Theme\Inc\RouterMarche;
 use AcMarche\Theme\Lib\Twig;
 use AcMarche\Pivot\Repository\HadesRepository;
 use Psr\Cache\InvalidArgumentException;
@@ -10,8 +11,8 @@ get_header();
 
 $hadesRepository = new HadesRepository();
 try {
-    $categoryAgenda = get_category_by_slug('agenda-des-manifestations');
-    $events         = $hadesRepository->getEvents($categoryAgenda->cat_ID);
+    $events         = $hadesRepository->getEvents();
+    RouterMarche::setRouteEvents($events);
 } catch (InvalidArgumentException $e) {
     Twig::rendPage(
         'errors/500.html.twig',

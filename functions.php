@@ -3,15 +3,14 @@
 namespace AcMarche\Theme;
 
 use AcMarche\Bottin\RouterBottin;
-use AcMarche\Pivot\RouterHades;
 use AcMarche\Theme\Inc\Api;
 use AcMarche\Theme\Inc\AssetsLoad;
 use AcMarche\Theme\Inc\BlockRender;
 use AcMarche\Theme\Inc\Filter;
 use AcMarche\Theme\Inc\QueryAlter;
+use AcMarche\Theme\Inc\RouterMarche;
 use AcMarche\Theme\Inc\SecurityConfig;
 use AcMarche\Theme\Inc\Seo;
-use AcMarche\Theme\Inc\SettingsPage;
 use AcMarche\Theme\Inc\SetupTheme;
 use AcMarche\Theme\Inc\ShortCodes;
 use AcMarche\Theme\Inc\WidgetLoad;
@@ -40,7 +39,7 @@ new SecurityConfig();
  * Ajout de routage pour pivot et bottin
  */
 new RouterBottin();
-new RouterHades();
+new RouterMarche();
 /**
  * Balises pour le référencement
  */

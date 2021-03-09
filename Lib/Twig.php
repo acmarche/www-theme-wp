@@ -5,6 +5,7 @@ namespace AcMarche\Theme\Lib;
 
 use AcMarche\Common\Mailer;
 use AcMarche\Common\Router;
+use AcMarche\Theme\Inc\RouterMarche;
 use AcMarche\Theme\Inc\Theme;
 use HTMLPurifier;
 use HTMLPurifier_Config;
@@ -148,7 +149,7 @@ class Twig
         return new TwigFunction(
             'wwwUrl',
             function (): string {
-                return Router::getUrlWww();
+                return RouterMarche::getUrlWww();
             }
         );
     }

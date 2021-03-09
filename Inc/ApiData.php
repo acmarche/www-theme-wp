@@ -45,10 +45,10 @@ class ApiData
         $data = [];
         // Formats all fiches to fit front end requirements
         foreach ($fiches as $fiche) {
-            $data[$fiche->id]['ID']         = $fiche->id;
-            $data[$fiche->id]['post_excerpt']    = Bottin::getExcerpt($fiche);
-            $data[$fiche->id]['post_title'] = $fiche->societe;
-            $data[$fiche->id]['link']       = RouterBottin::getUrlFicheBottin($fiche);
+            $data[$fiche->id]['ID']           = $fiche->id;
+            $data[$fiche->id]['post_excerpt'] = Bottin::getExcerpt($fiche);
+            $data[$fiche->id]['post_title']   = $fiche->societe;
+            $data[$fiche->id]['link']         = RouterBottin::getUrlFicheBottin($fiche);
         }
 
         //retrieves all posts and add the wp category ids to them
@@ -109,13 +109,9 @@ class ApiData
 
     public static function ca_events()
     {
-        $current = get_current_blog_id();
-        switch_to_blog(Theme::TOURISME);
-        $categoryAgenda = get_category_by_slug('agenda-des-manifestations');
-
         $hadesRepository = new HadesRepository();
-        $events          = $hadesRepository->getEvents($categoryAgenda->cat_ID);
-        switch_to_blog($current);
+        $events          = $hadesRepository->getEvents();
+        RouterMarche::setRouteEvents($events);
 
         return rest_ensure_response($events);
     }
