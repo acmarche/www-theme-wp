@@ -13,6 +13,21 @@ class Filter
         //   remove_filter('the_content', 'wpautop');
         //    remove_filter('the_excerpt', 'wpautop');
         add_filter('the_content', [$this, 'FilterContent']);
+       // add_filter('render_block_data', [$this, 'FilterBlock']);
+    }
+
+    function FilterBlock(array $context)
+    {
+        $blockRender = new BlockRender();
+        $blockName = $context['blockName'];
+        switch ($blockName) {
+            case 'core/gallery';
+                return $blockRender->renderGallery($context);
+            case 'core/media-text';
+                return $blockRender->renderMediaText($context);
+            default:
+                return $context;
+        }
     }
 
     function FilterContent(string $content)

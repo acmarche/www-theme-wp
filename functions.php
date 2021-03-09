@@ -6,6 +6,7 @@ use AcMarche\Bottin\RouterBottin;
 use AcMarche\Pivot\RouterHades;
 use AcMarche\Theme\Inc\Api;
 use AcMarche\Theme\Inc\AssetsLoad;
+use AcMarche\Theme\Inc\BlockRender;
 use AcMarche\Theme\Inc\Filter;
 use AcMarche\Theme\Inc\QueryAlter;
 use AcMarche\Theme\Inc\SecurityConfig;
@@ -56,4 +57,7 @@ new Api();
  * Short codes
  */
 new ShortCodes();
-
+/**
+ *
+ */
+new BlockRender();
