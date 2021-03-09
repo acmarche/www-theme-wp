@@ -28,7 +28,9 @@
     "phpdocumentor/reflection-docblock": "^5.2",
     "phpdocumentor/type-resolver": "^1.4",
     "ext-dom": "*",
-    "twig/string-extra": "^3.3"
+    "twig/string-extra": "^3.3",
+    "ext-libxml": "*",
+    "ezyang/htmlpurifier": "^4.13"
   },
   "autoload": {
     "psr-4": {
