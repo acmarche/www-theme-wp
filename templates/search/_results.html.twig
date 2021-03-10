@@ -2,7 +2,7 @@
     <ul class="d-flex mx-n12px flex-wrap">
         {% for result in hits %}
             {% set hit = result.hit %}
-            {% set data = hit._source %}
+            {% set doc = hit._source %}
             {% include 'search/_result_line.html.twig' %}
         {% endfor %}
     </ul>

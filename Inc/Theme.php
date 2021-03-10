@@ -7,15 +7,16 @@ use Symfony\Component\HttpFoundation\Request;
 
 class Theme
 {
-    const AGENDA_FULL = 'agenda_full';
     const CITOYEN = 1;
     const ADMINISTRATION = 2;
+    const ECONOMIE = 3;
     const TOURISME = 4;
+
     const SITES = [
-        1                    => 'citoyen',
+        self::CITOYEN        => 'citoyen',
         self::ADMINISTRATION => 'administration',
-        3                    => 'economie',
-        4                    => 'tourisme',
+        self::ECONOMIE       => 'economie',
+        self::TOURISME       => 'tourisme',
         5                    => 'sport',
         6                    => 'sante',
         7                    => 'social',
@@ -26,10 +27,10 @@ class Theme
         14                   => 'enfance',
     ];
     const COLORS = [
-        1                    => 'color-cat-cit',
+        self::CITOYEN        => 'color-cat-cit',
         self::ADMINISTRATION => 'color-cat-adm',
-        3                    => 'color-cat-eco',
-        4                    => 'color-cat-tou',
+        self::ECONOMIE       => 'color-cat-eco',
+        self::TOURISME       => 'color-cat-tou',
         5                    => 'color-cat-spo',
         6                    => 'color-cat-san',
         7                    => 'color-cat-soc',

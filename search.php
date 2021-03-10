@@ -37,11 +37,11 @@ try {
     return;
 }
 
-/*
-foreach ($results->getResults() as $result) {
+
+foreach ($results as $result) {
     $hit = $result->getHit();
     dump($result->getDocument());
-}*/
+}
 
 wp_enqueue_script(
     'react-app',

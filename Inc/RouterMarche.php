@@ -17,7 +17,6 @@ use AcMarche\Pivot\Entities\OffreInterface;
 class RouterMarche extends Router
 {
     const PARAM_EVENT = 'codecgt';
-    const EVENT_URL2 = 'manifestation';
     const PARAM_OFFRE = 'codeoffre';
     const OFFRE_URL = 'offre';
     const EVENT_URL = 'manifestation/';
@@ -32,7 +31,7 @@ class RouterMarche extends Router
 
     public static function getUrlEventCategory(Categorie $categorie): string
     {
-        return self::getBaseUrlSite().self::EVENT_URL.$categorie->id;
+        return self::getBaseUrlSite(Theme::TOURISME).self::EVENT_URL.$categorie->id;
     }
 
     public static function getUrlEvent(OffreInterface $offre): string
