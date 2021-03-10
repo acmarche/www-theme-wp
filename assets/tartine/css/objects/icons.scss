@@ -81,6 +81,45 @@
         &.i-book {
             background-image: url(../../rsc/svg/icon_book_primary.svg);
         }
+        &.i-boat {
+            background-image: url(../../rsc/svg/icon_boat_primary.svg);
+        }
+        &.i-school {
+            background-image: url(../../rsc/svg/icon_school_primary.svg);
+        }
+        &.i-sun {
+            background-image: url(../../rsc/svg/icon_sun_primary.svg);
+        }
+        &.i-board {
+            background-image: url(../../rsc/svg/icon_board_primary.svg);
+        }
+        &.i-healthcase {
+            background-image: url(../../rsc/svg/icon_healthcase_primary.svg);
+        }
+        &.i-chrono {
+            background-image: url(../../rsc/svg/icon_chrono_primary.svg);
+        }
+        &.i-search-plus {
+            background-image: url(../../rsc/svg/icon_searchplus_primary.svg);
+        }
+        &.i-search-less {
+            background-image: url(../../rsc/svg/icon_searchless_primary.svg);
+        }
+        &.i-list {
+            background-image: url(../../rsc/svg/icon_list_primary.svg);
+        }
+        &.i-sound-on {
+            background-image: url(../../rsc/svg/icon_soundon_primary.svg);
+        }
+        &.i-sound-off {
+            background-image: url(../../rsc/svg/icon_soundoff_primary.svg);
+        }
+        &.i-bus {
+            background-image: url(../../rsc/svg/icon_bus_primary.svg);
+        }
+        &.i-wifi {
+            background-image: url(../../rsc/svg/icon_wifi_primary.svg);
+        }
         
         &.i-dark-primary {
             &.i-search {
@@ -95,6 +134,12 @@
             &.i-bars {
                 background-image: url(../../rsc/svg/icon_bars_darkprimary.svg);
             }
+            &.i-map {
+                background-image: url(../../rsc/svg/icon_map_darkprimary.svg);
+            }
+            &.i-phone {
+                background-image: url(../../rsc/svg/icon_phone_darkprimary.svg);
+            }
         }
         
         &.i-white {
@@ -103,6 +148,24 @@
             }
             &.i-times {
                 background-image: url(../../rsc/svg/icon_times_white.svg);
+            }
+            &.i-map {
+                background-image: url(../../rsc/svg/icon_map_white.svg);
+            }
+            &.i-list {
+                background-image: url(../../rsc/svg/icon_list_white.svg);
+            }
+            &.i-sound-on {
+                background-image: url(../../rsc/svg/icon_soundon_white.svg);
+            }
+        }
+        
+        &.i-darkest-grey {
+            &.i-map {
+                background-image: url(../../rsc/svg/icon_map_darkestgrey.svg);
+            }
+            &.i-phone {
+                background-image: url(../../rsc/svg/icon_phone_darkestgrey.svg);
             }
         }
         
