@@ -18,7 +18,7 @@ wp_enqueue_script(
 );//For production use wp_get_theme()->get('Version')
 
 Twig::rendPage(
-    'map/index.twig.html',
+    'map/index.html.twig',
     [
 
     ]
