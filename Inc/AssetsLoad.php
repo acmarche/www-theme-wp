@@ -138,7 +138,7 @@ class AssetsLoad
             wp_get_theme()->get('Version')
         );
         wp_enqueue_script(
-            'marchebe-zoom-js',
+            'marchebe-kml',
             get_template_directory_uri().'/assets/js/components/Map/hooks/L.KML.js',
             array(),
             wp_get_theme()->get('Version')
@@ -148,13 +148,13 @@ class AssetsLoad
     function readSpeaker()
     {
         wp_enqueue_script(
-            'marchebe-readspeaker-js',
+            'marchebe-readspeaker',
             '//cdn1.readspeaker.com/script/11982/webReader/webReader.js?pids=wr',
             array(),
             wp_get_theme()->get('Version')
         );
         wp_enqueue_script(
-            'marchebe-zoom-js',
+            'marchebe-zoom',
             get_template_directory_uri().'/assets/js/utils/zoom.js',
             array(),
             wp_get_theme()->get('Version')
