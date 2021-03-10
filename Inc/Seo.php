@@ -6,6 +6,7 @@ namespace AcMarche\Theme\Inc;
 use AcMarche\Bottin\Repository\BottinRepository;
 use AcMarche\Bottin\RouterBottin;
 use AcMarche\Pivot\Repository\HadesRepository;
+use AcMarche\Theme\Lib\WpRepository;
 
 class Seo
 {
@@ -147,7 +148,17 @@ class Seo
         $category                   = get_category($cat_id);
         self::$metas['title']       = self::baseTitle("");
         self::$metas['description'] = self::cleanString($category->description);
-        self::$metas['keywords']    = '';
+        $wpRepository               = new WpRepository();
+        $children                   = $wpRepository->getChildrenOfCategory($category->cat_ID);
+        $tags                       = [];
+        foreach ($children as $child) {
+            $tags[] = $child->name;
+        }
+        $parent = $wpRepository->getParentCategory($category->cat_ID);
+        if ($parent) {
+            $tags[] = $parent->name;
+        }
+        self::$metas['keywords'] = join(',', $tags);
     }
 
     private static function metaPost(int $postId)
