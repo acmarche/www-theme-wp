@@ -51,7 +51,7 @@ wp_enqueue_script(
 );
 
 Twig::rendPage(
-    'search/index_react.html.twig',
+    'search/index.html.twig',
     [
         'keyword' => $keyword,
         'hits'    => $results,
