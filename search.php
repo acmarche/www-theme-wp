@@ -37,10 +37,9 @@ try {
     return;
 }
 
-
 foreach ($results as $result) {
     $hit = $result->getHit();
-    dump($result->getDocument());
+   // dump($result->getDocument());
 }
 
 wp_enqueue_script(
