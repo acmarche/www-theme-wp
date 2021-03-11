@@ -13,19 +13,35 @@ function MapComponent( {
         setPopupDescription( object );
     };
 
+    const handleBtn = ( object ) => {
+        console.log( object );
+
+        const container = document.getElementById( 'leaflet-container' );
+
+        if (object === 'map') {
+            container.classList.remove( 'd-none' );
+            container.classList.add( 'd-block' );
+        }
+        if (object === 'list') {
+            container.classList.add( 'd-none' );
+            container.classList.remove( 'd-block' );
+        }
+
+    };
+
     return (
         <>
             <div
                 className=" d-flex w-64px h-32px position-absolute top-16px right-16px z-20 shadow-sm-1">
             </div>
             <input type="radio" id="btn_list_view" name="view"
-                   onChange={() => {}}/>
+                   onChange={() => handleBtn( 'list' )}/>
             <span
                 className="d-flex align-items-center justify-content-center w-32px h-32px position-absolute top-16px right-48px z-30 icon_custom">
                             <i className="i-list w-18px h-18px bg-size-auto"></i>
                         </span>
             <input type="radio" id="btn_map_view" name="view"
-                   onChange={() => {}}/>
+                   onChange={() => handleBtn( 'map' )}/>
             <span
                 className="d-flex align-items-center justify-content-center w-32px h-32px position-absolute top-16px right-16px z-30 border-left icon_custom">
                             <i className="i-map w-18px h-18px bg-size-auto"></i>
@@ -42,8 +58,10 @@ function MapComponent( {
                             </span>
             </div>
             <div
-                className="position-absolute h-100 w-lg-100 h-lg-auto z-10" style={{width:100+'%'}}>
+                className="position-absolute h-100 w-lg-100 h-lg-auto z-10"
+                style={{ width: 100 + '%' }}>
                 <MapContainer
+                    id={'leaflet-container'}
                     style={{
                         width: '100%',
                         height: '700px'
