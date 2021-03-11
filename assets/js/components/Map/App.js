@@ -7,6 +7,7 @@ const { useState, useEffect } = wp.element;
 
 function App() {
     const [ markerData, setMarkerData ] = useState([]);
+    const [ optionSelected, setOptionSelected ] = useState([]);
     const [ popupDescription, setPopupDescription ] = useState();
     const [ kmlKey, setKmlKey ] = useState( null );
     const [ kmlContent, setKmlContent ] = useState( null );
@@ -44,6 +45,7 @@ function App() {
             <FiltreNew
                 setMarkerData={setMarkerData}
                 setKmlKey={setKmlKey}
+                setOptionSelected={setOptionSelected}
             />
             <div className="col-12 min-height-330px mt-24px mt-lg-0 col-lg-9 px-0 d-flex align-items-center justify-content-center overflow-hidden position-relative bg-lighter object-mapviews">
                 <MapComponent
@@ -52,6 +54,7 @@ function App() {
                     markerData={markerData}
                     kmlContent={kmlContent}/>
                 <ResultList
+                    optionSelected={optionSelected}
                     markerData={markerData}/>
             </div>
         </>

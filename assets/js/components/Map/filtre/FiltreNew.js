@@ -7,7 +7,8 @@ const { useState, useEffect } = wp.element;
 
 function FiltreNew({
     setMarkerData,
-    setKmlKey
+    setKmlKey,
+    setOptionSelected
 }) {
     const [ filtres, setFiltres ] = useState([]);
 
@@ -27,8 +28,10 @@ function FiltreNew({
         loadingFiltres();
     }, [ ]);
 
-    const handleClick = ( arg ) => {
+    const handleClick = ( arg, name ) => {
         console.log( `request ${arg}` );
+        setOptionSelected( name );
+
         Axios.get( `https://new.marche.be/wp-json/map/data/${arg}` )
             .then( ( res ) => {
                 if ( 0 !== res.data.length ) {

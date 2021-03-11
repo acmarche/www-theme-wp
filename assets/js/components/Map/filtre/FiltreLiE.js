@@ -16,7 +16,7 @@ function FiltreLiE( propos ) {
         .map( ( values, key ) => (
             <li
                 key={values[0]}
-                onClick={() => handleClick( values[0])}>
+                onClick={() => handleClick( values[0], values[1].name )}>
                 <input
                     type="radio"
                     id={ `sublist_element-${keyword}-${values[0]}` }
