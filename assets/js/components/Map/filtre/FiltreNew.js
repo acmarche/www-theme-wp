@@ -13,7 +13,6 @@ function FiltreNew( setMarkerData, setKmlKey ) {
             response = await loadFiltres();
             const { data } = response;
             setFiltres( data );
-            console.log( data );
         } catch ( e ) {
             console.log( e );
         }
@@ -30,10 +29,11 @@ function FiltreNew( setMarkerData, setKmlKey ) {
             <div
                 className="col-12 col-lg-3 px-0 lg-shadow-sm-1 position-relative z-10 overflowY-auto mh-700px">
                 <FiltreLi
-                    filtres = {filtres}
+                    filtres={filtres}
+                    setMarkerData={ setMarkerData}
                 />
                 <FiltreSelect
-                    filtres = {filtres}
+                    filtres={filtres}
                     setMarkerData={ setMarkerData}/>
             </div>
         </>
