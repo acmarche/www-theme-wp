@@ -51,7 +51,8 @@ function App() {
                     setPopupDescription={setPopupDescription}
                     markerData={markerData}
                     kmlContent={kmlContent}/>
-                <ResultList/>
+                <ResultList
+                    markerData={markerData}/>
             </div>
         </>
     );

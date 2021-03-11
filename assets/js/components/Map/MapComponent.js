@@ -58,8 +58,6 @@ function MapComponent( {
                     />
 
                     {markerData?.map( ( object, index ) => {
-
-                        console.log(object);
                         if (object.latitude && object.longitude) {
 
                             return (
