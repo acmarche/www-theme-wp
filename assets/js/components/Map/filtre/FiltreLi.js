@@ -1,4 +1,4 @@
-function FiltreLi( ) {
+function FiltreLi( filtres, setMarkerData ) {
     return (
         <>
             <ul className="d-none d-lg-block border-bottom border-default">

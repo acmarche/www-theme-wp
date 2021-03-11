@@ -4,7 +4,7 @@ import { loadFiltres } from '../service/map-service';
 
 const { useState, useEffect } = wp.element;
 
-function FiltreNew() {
+function FiltreNew( setMarkerData, setKmlKey ) {
     const [ filtres, setFiltres ] = useState([]);
 
     async function loadingFiltres() {
@@ -13,6 +13,7 @@ function FiltreNew() {
             response = await loadFiltres();
             const { data } = response;
             setFiltres( data );
+            console.log( data );
         } catch ( e ) {
             console.log( e );
         }
@@ -33,7 +34,7 @@ function FiltreNew() {
                 />
                 <FiltreSelect
                     filtres = {filtres}
-                    tagu={ setFiltres}/>
+                    setMarkerData={ setMarkerData}/>
             </div>
         </>
     );

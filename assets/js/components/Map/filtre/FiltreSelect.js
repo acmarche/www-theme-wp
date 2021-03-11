@@ -1,8 +1,9 @@
-function FiltreSelect() {
+function FiltreSelect( filtres, setMarkerData ) {
+    console.log( filtres );
     return (
         <>
             <div className="d-block d-lg-none pr-12px border border-dark-primary">
-                <select name="tabs" id="tab-select" className="fs-short-3 ff-semibold">
+                <select onChange={setMarkerData} name="tabs" id="tab-select" className="fs-short-3 ff-semibold">
                     <optgroup label="Culture">
                         <option value="1-1" selected>Bibliothèque</option>
                         <option value="1-2">Cinéma</option>
