@@ -1,5 +1,4 @@
 function FiltreItemOption( filtre ) {
-
     const name = filtre.filtres[0][1];
     const icone = filtre.filtres[1][1];
     const elements = filtre.filtres[2][1];

@@ -23,6 +23,10 @@ function FiltreNew( setMarkerData, setKmlKey ) {
         loadingFiltres();
     }, [ ]);
 
+    function onChange() {
+
+    }
+
     return (
         <>
             {/* <!--tabs --> */}
@@ -31,10 +35,12 @@ function FiltreNew( setMarkerData, setKmlKey ) {
                 <FiltreLi
                     filtres={filtres}
                     setMarkerData={ setMarkerData}
+                    setKmlKey={setKmlKey}
                 />
                 <FiltreSelect
                     filtres={filtres}
-                    setMarkerData={ setMarkerData}/>
+                    setMarkerData={ onChange()}
+                    setKmlKey={setKmlKey}/>
             </div>
         </>
     );
