@@ -15,11 +15,13 @@ function FiltreItemOption( filtre ) {
             </option>
         ) );
 
-    return ( <>
-        <optgroup label={name}>
-            {listItems}
-        </optgroup>
-    </> );
+    return (
+        <>
+            <optgroup label={name}>
+                {listItems}
+            </optgroup>
+        </>
+    );
 }
 
 export default FiltreItemOption;
