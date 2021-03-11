@@ -1,12 +1,10 @@
 import MapComponent from './MapComponent';
-import FiltreNew from './FiltreNew';
-import MapFictive from './MapFictive';
+import FiltreJf from './FiltreJf';
 import { loadKml } from './service/map-service';
-import ResultList from './ResultList';
 
 const { useState, useEffect } = wp.element;
 
-function App() {
+function AppSave() {
     const [ markerData, setMarkerData ] = useState([]);
     const [ popupDescription, setPopupDescription ] = useState();
     const [ kmlKey, setKmlKey ] = useState( null );
@@ -42,15 +40,18 @@ function App() {
 
     return (
         <>
-            <FiltreNew
-
+            <FiltreJf
+                setMarkerData={setMarkerData}
+                setKmlKey={setKmlKey}
             />
-            <div className="col-12 min-height-330px mt-24px mt-lg-0 col-lg-9 px-0 d-flex align-items-center justify-content-center overflow-hidden position-relative bg-lighter object-mapviews">
-                <MapFictive></MapFictive>
-                <ResultList></ResultList>
-            </div>
+            <MapComponent
+                popupDescription={popupDescription}
+                setPopupDescription={setPopupDescription}
+                markerData={markerData}
+                kmlContent={kmlContent}
+            />
         </>
     );
 }
 
-export default App;
+export default AppSave;
