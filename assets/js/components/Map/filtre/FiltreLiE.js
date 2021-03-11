@@ -7,12 +7,10 @@ function FiltreLiE( filtre ) {
 
     const listItems = entries
         .map( ( values, key ) => (
-            <option
-                key={values[0]}
-                value={values[0]}
-            >
-                {values[1].name}
-            </option>
+            <li key={values[0]}>
+                <input type="radio" id="sublist_element1-1" name="sublist_element"/>
+                <span>{values[1].name}</span>
+            </li>
         ) );
 
     return (
@@ -20,6 +18,9 @@ function FiltreLiE( filtre ) {
             <li className="border-top border-default object-sublist">
                 <input type="radio" id="list_element01" name="list_element"/>
                 <span className="icon_custom"><i className="i-book w-22px h-22px mr-16px bg-size-auto"></i>{name}</span>
+                <ul>
+                    {listItems}
+                </ul>
             </li>
         </>
     );
