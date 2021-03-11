@@ -1,14 +1,36 @@
-function FiltreLiE( filtre ) {
-    const name = filtre.filtres[0][1];
-    const icone = filtre.filtres[1][1];
-    const elements = filtre.filtres[2][1];
+function FiltreLiE( propos ) {
+    const { filtre, keyword } = propos;
 
+    if ( ! filtre ) {
+        return (
+            <></>
+        );
+    }
+
+    const name = filtre[0][1];
+    const icone = filtre[1][1];
+    const elements = filtre[2][1];
+    const categoryId = propos.keyword2;
     const entries = Object.entries( elements );
+
+    function onChange() {
+        console.log( 'change' );
+    }
+
+    const handleClick = ( arg ) => {
+        console.log( `request ${arg}` );
+    };
 
     const listItems = entries
         .map( ( values, key ) => (
-            <li key={values[0]}>
-                <input type="radio" id="sublist_element1-1" name="sublist_element"/>
+            <li
+                key={values[0]}
+                onClick={() => handleClick( values[0])}>
+                <input
+                    type="radio"
+                    id={ `sublist_element-${keyword}-${values[0]}` }
+                    name="sublist_element"
+                    onChange={() => handleClick( values[0])}/>
                 <span>{values[1].name}</span>
             </li>
         ) );
@@ -16,8 +38,8 @@ function FiltreLiE( filtre ) {
     return (
         <>
             <li className="border-top border-default object-sublist">
-                <input type="radio" id="list_element01" name="list_element"/>
-                <span className="icon_custom"><i className="i-book w-22px h-22px mr-16px bg-size-auto"></i>{name}</span>
+                <input type="radio" id={ `list_element-${keyword}` } name="list_element" onChange={onChange}/>
+                <span className="icon_custom"><i className={`${icone} w-22px h-22px mr-16px bg-size-auto`}></i>{name}</span>
                 <ul>
                     {listItems}
                 </ul>

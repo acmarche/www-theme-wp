@@ -3,13 +3,14 @@ import FiltreLiE from './FiltreLiE';
 function FiltreLi( propos ) {
     const data = Object.keys( propos.filtres );
 
-    console.log( propos.filtres );
+    //  console.log( data );
 
     const listItems = data
         .map( ( key, values ) => (
             <FiltreLiE
                 key={key}
-                filtres={Object.entries( propos.filtres[key])}/>
+                keyword={key}
+                filtre={Object.entries( propos.filtres[key])}/>
         ) );
 
     return (
