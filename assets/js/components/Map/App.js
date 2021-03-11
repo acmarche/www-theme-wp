@@ -1,6 +1,5 @@
 import MapComponent from './MapComponent';
 import FiltreNew from './filtre/FiltreNew';
-import MapFictive from './MapFictive';
 import { loadKml } from './service/map-service';
 import ResultList from './ResultList';
 
@@ -47,7 +46,11 @@ function App() {
                 setKmlKey={setKmlKey}
             />
             <div className="col-12 min-height-330px mt-24px mt-lg-0 col-lg-9 px-0 d-flex align-items-center justify-content-center overflow-hidden position-relative bg-lighter object-mapviews">
-                <MapComponent/>
+                <MapComponent
+                    popupDescription={popupDescription}
+                    setPopupDescription={setPopupDescription}
+                    markerData={markerData}
+                    kmlContent={kmlContent}/>
                 <ResultList/>
             </div>
         </>

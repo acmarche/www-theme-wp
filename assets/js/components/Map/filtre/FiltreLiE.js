@@ -1,5 +1,5 @@
 function FiltreLiE( propos ) {
-    const { filtre, keyword } = propos;
+    const { filtre, keyword, handleClick } = propos;
 
     if ( ! filtre ) {
         return (
@@ -10,16 +10,7 @@ function FiltreLiE( propos ) {
     const name = filtre[0][1];
     const icone = filtre[1][1];
     const elements = filtre[2][1];
-    const categoryId = propos.keyword2;
     const entries = Object.entries( elements );
-
-    function onChange() {
-        console.log( 'change' );
-    }
-
-    const handleClick = ( arg ) => {
-        console.log( `request ${arg}` );
-    };
 
     const listItems = entries
         .map( ( values, key ) => (
@@ -38,7 +29,7 @@ function FiltreLiE( propos ) {
     return (
         <>
             <li className="border-top border-default object-sublist">
-                <input type="radio" id={ `list_element-${keyword}` } name="list_element" onChange={onChange}/>
+                <input type="radio" id={ `list_element-${keyword}` } name="list_element" onChange={() => {}}/>
                 <span className="icon_custom"><i className={`${icone} w-22px h-22px mr-16px bg-size-auto`}></i>{name}</span>
                 <ul>
                     {listItems}
