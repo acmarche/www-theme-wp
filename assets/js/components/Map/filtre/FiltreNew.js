@@ -5,7 +5,10 @@ import { loadFiltres } from '../service/map-service';
 
 const { useState, useEffect } = wp.element;
 
-function FiltreNew( setMarkerData, setKmlKey ) {
+function FiltreNew({
+    setMarkerData,
+    setKmlKey
+}) {
     const [ filtres, setFiltres ] = useState([]);
 
     async function loadingFiltres() {
@@ -48,7 +51,7 @@ function FiltreNew( setMarkerData, setKmlKey ) {
                 }
             })
             .catch( ( err ) => {
-                console.log( err.message );
+                console.log( err );
             });
     };
 

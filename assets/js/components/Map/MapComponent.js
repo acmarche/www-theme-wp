@@ -13,10 +13,6 @@ function MapComponent( {
         setPopupDescription( object );
     };
 
-    function onChange() {
-        console.log( 'change' );
-    }
-
     return (
         <>
             <div

@@ -21,7 +21,7 @@ function FiltreLiE( propos ) {
                     type="radio"
                     id={ `sublist_element-${keyword}-${values[0]}` }
                     name="sublist_element"
-                    onChange={() => handleClick( values[0])}/>
+                    onChange={() => {}}/>
                 <span>{values[1].name}</span>
             </li>
         ) );
