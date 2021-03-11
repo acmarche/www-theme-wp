@@ -35,7 +35,7 @@ class Carto
             ],
             'enfance'         => [
                 'name'     => 'Enfance',
-                'icone'    => 'fas fa-baby-carriage',
+                'icone'    => 'i-beach-ball',
                 'elements' => [
                     'accueillantes' => ['name' => 'Accueillantes', 'source' => 'bottin', 'id' => 672],
                     'jeux'          => ['name' => 'Aires de jeux, parcs', 'source' => 'kml', 'id' => 'jeux'],
@@ -43,7 +43,7 @@ class Carto
             ],
             'enseignement'    => [
                 'name'     => 'Enseignement',
-                'icone'    => 'fas fa-graduation-cap',
+                'icone'    => 'i-school',
                 'elements' => [
                     'enseignement_artistique' => ['name' => 'Artistique', 'source' => 'bottin', 'id' => 682],
                     'enseignement_maternelle' => ['name' => 'Maternel et primaire', 'source' => 'bottin', 'id' => 669],
@@ -53,7 +53,7 @@ class Carto
             ],
             'environnement'   => [
                 'name'     => 'Environnement',
-                'icone'    => 'fas fa-leaf',
+                'icone'    => 'i-leaf',
                 'elements' => [
                     'bulles_verres'    => ['name' => 'Bulles à verres', 'source' => 'bottin', 'id' => 677],
                     'bulles_vetements' => ['name' => 'Bulles à vêtements', 'source' => 'bottin', 'id' => 678],
@@ -61,7 +61,7 @@ class Carto
             ],
             'horeca'          => [
                 'name'     => 'Horéca',
-                'icone'    => 'fas fa-cookie',
+                'icone'    => 'i-flatware',
                 'elements' => [
                     'brasseries'  => ['name' => 'Brasseries-Bar', 'source' => 'bottin', 'id' => 522],
                     'camping'     => ['name' => 'Camping', 'source' => 'bottin', 'id' => 652],
@@ -75,7 +75,7 @@ class Carto
             ],
             'infrastructures' => [
                 'name'     => 'Infrastructures',
-                'icone'    => 'fas fa-briefcase',
+                'icone'    => 'i-board',
                 'elements' => [
                     'cimetieres'   => ['name' => 'Cimetières', 'source' => 'bottin', 'id' => 0],
                     'salles_commu' => ['name' => 'Salles communales', 'source' => 'bottin', 'id' => 680],
@@ -83,7 +83,7 @@ class Carto
             ],
             'mobilite'        => [
                 'name'     => 'Mobilité',
-                'icone'    => 'fas fa-bus',
+                'icone'    => 'i-bus',
                 'elements' => [
                     'balade_pieds'        => [
                         'name'   => 'Balade des petits pieds',
@@ -106,7 +106,7 @@ class Carto
             ],
             'sante' => [
                 'name'     => 'Santé',
-                'icone'    => 'far fa-hospital',
+                'icone'    => 'i-healthcase',
                 'elements' => [
                     'dentistes'    => ['name' => 'Dentistes', 'source' => 'bottin', 'id' => 383],
                     'hopital'      => ['name' => 'Hôpital', 'source' => 'bottin', 'id' => 681],
@@ -119,13 +119,13 @@ class Carto
             ],
             'sport' => [
                 'name'     => 'Sport',
-                'icone'    => 'far fa-hospital',
+                'icone'    => 'i-chrono',
                 'elements' =>
                     $this->getElements(486),
             ],
             'wifi'  => [
                 'name'     => 'Wifi gratuit',
-                'icone'    => 'fas fa-briefcase',
+                'icone'    => 'i-wifi',
                 'elements' => [
                     'wifi' => ['name' => 'Réseau Wifi4EU', 'source' => 'kml', 'id' => 'wifi'],
                 ],
