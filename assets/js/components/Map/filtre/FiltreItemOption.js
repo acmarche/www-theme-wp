@@ -1,19 +1,22 @@
-function FiltreItemOption( propos ) {
-    const { items } = propos;
-    const objectArray = Object.entries( items );
+function FiltreItemOption( filtre ) {
+    console.log( filtre );
+    const name = filtre.filtres[0][1];
+    const icone = filtre.filtres[1][1];
+    const elements = filtre.filtres[2][1];
 
-    objectArray.forEach( ([ key, values ]) => {
-        console.log( key );
-        console.log( values );
-    });
+    console.log( name );
+    console.log( icone );
+    console.log( elements );
+
+    const entries = Object.entries( elements );
+
+    const listItems = entries
+        .forEach( ( key, values ) => {
+            console.log( key );
+        });
 
     return ( <>
-        <optgroup label="Culture">
-            <option value="1-1" selected>Bibliothèque</option>
-            <option value="1-2">Cinéma</option>
-            <option value="1-3">Musées</option>
-            <option value="1-4">Statues / Sculptures</option>
-        </optgroup>
+
     </> );
 }
 
