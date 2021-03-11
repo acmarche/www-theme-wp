@@ -211,9 +211,25 @@
 		}
 	}
 }
+// .ml-lg-nNpx
+@for $i from 1 through 110 {
+	.ml-lg-n#{$i}px {
+		@media screen and (min-width: $lg) {
+			margin-left: -1px*$i !important;
+		}
+	}
+}
 .ml-lg-0 {
 	@media screen and (min-width: $lg) {
 		margin-left: 0 !important;
+	}
+}
+// .mr-lg-nNpx
+@for $i from 1 through 110 {
+	.mr-lg-n#{$i}px {
+		@media screen and (min-width: $lg) {
+			margin-right: -1px*$i !important;
+		}
 	}
 }
 
