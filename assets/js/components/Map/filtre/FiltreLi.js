@@ -2,9 +2,6 @@ import FiltreLiE from './FiltreLiE';
 
 function FiltreLi( propos ) {
     const data = Object.keys( propos.filtres );
-
-    //  console.log( data );
-
     const listItems = data
         .map( ( key, values ) => (
             <FiltreLiE
