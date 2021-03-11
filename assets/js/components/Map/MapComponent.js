@@ -14,19 +14,15 @@ function MapComponent( {
     };
 
     const handleBtn = ( object ) => {
-        console.log( object );
-
-        const container = document.getElementById( 'leaflet-container' );
-
+        const containerMap = document.getElementById( 'leaflet-container' );
         if (object === 'map') {
-            container.classList.remove( 'd-none' );
-            container.classList.add( 'd-block' );
+            containerMap.classList.remove( 'd-none' );
+            containerMap.classList.add( 'd-block' );
         }
         if (object === 'list') {
-            container.classList.add( 'd-none' );
-            container.classList.remove( 'd-block' );
+            containerMap.classList.add( 'd-none' );
+            containerMap.classList.remove( 'd-block' );
         }
-
     };
 
     return (
