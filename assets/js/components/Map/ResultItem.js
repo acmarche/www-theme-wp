@@ -2,7 +2,7 @@ function ResultItem( propos ) {
     const { item } = propos;
     return (
         <>
-            <li className="col-4 py-16px">
+            <li className="col-12 col-md-6 col-xl-4 py-16px">
                 <a href={item.url} className="object-target">
                     <h4 className="ff-semibold lh-150">{item.nom}</h4>
                     <p className="d-flex pt-8px lh-150 icon_custom"><i
