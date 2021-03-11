@@ -1,5 +1,5 @@
 import MapComponent from './MapComponent';
-import FiltreNew from './FiltreNew';
+import FiltreNew from './filtre/FiltreNew';
 import MapFictive from './MapFictive';
 import { loadKml } from './service/map-service';
 import ResultList from './ResultList';
