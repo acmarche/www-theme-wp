@@ -8,9 +8,14 @@ function FiltreSelect( propos ) {
 
     const listItems = Object.keys( propos.filtres )
         .forEach( ( key, values ) => {
-            const filtres = propos.filtres[key];
-            console.log( filtres );
-            filtres.map( ( key2 ) => ( <></> ) );
+            const filtre = Object.entries( propos.filtres[key]);
+            console.log( filtre );
+            const name = filtre[0][1];
+            const icone = filtre[1][1];
+            const elements = filtre[2][1];
+            console.log( name );
+            console.log( icone );
+            console.log( elements );
         });
 
     return (

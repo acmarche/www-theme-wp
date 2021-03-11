@@ -7,7 +7,14 @@ function FiltreItemOption( propos ) {
         console.log( values );
     });
 
-    return ( <></> );
+    return ( <>
+        <optgroup label="Culture">
+            <option value="1-1" selected>Bibliothèque</option>
+            <option value="1-2">Cinéma</option>
+            <option value="1-3">Musées</option>
+            <option value="1-4">Statues / Sculptures</option>
+        </optgroup>
+    </> );
 }
 
 export default FiltreItemOption;
