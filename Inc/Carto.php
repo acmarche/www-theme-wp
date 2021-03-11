@@ -25,7 +25,7 @@ class Carto
         return [
             'culture'         => [
                 'name'     => 'Culture',
-                'icone'    => 'fas fa-book',
+                'icone'    => 'i-book',
                 'elements' => [
                     'biblio'  => ['name' => 'Bibliothèques', 'source' => 'bottin', 'id' => 674],
                     'cinema'  => ['name' => 'Cinéma', 'source' => 'bottin', 'id' => 675],
