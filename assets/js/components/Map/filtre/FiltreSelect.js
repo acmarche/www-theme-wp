@@ -2,11 +2,7 @@ import FiltreItemOption from './FiltreItemOption';
 
 function FiltreSelect( propos ) {
     const data = Object.keys( propos.filtres );
-
     const { handleClick } = propos;
-
-    // console.log( data );
-
     const listItems = data
         .map( ( key, values ) => (
             <FiltreItemOption
@@ -15,8 +11,11 @@ function FiltreSelect( propos ) {
             />
         ) );
 
-    function handleChange( e ) {
-        console.log( e );
+    function handleChange( event ) {
+        const index = event.nativeEvent.target.selectedIndex;
+        const label = event.nativeEvent.target[index].text;
+        const categorySelectedId = event.target.value;
+        handleClick( categorySelectedId, label );
     }
 
     return (
