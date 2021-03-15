@@ -1,7 +1,6 @@
 import { MapContainer, TileLayer, Marker, Popup, Tooltip  } from 'react-leaflet';
 import ReactLeafletKml from 'react-leaflet-kml';
-import FlyToMyPositionButton from './FlyToMyPositionButton';
-import ZoomButtons from './ZoomButtons';
+import ControlButtons from './ControlButtons';
 
 const {
     useState
@@ -54,7 +53,7 @@ function MapComponent( {
                             <i className="i-map w-18px h-18px bg-size-auto"></i>
                         </span>
 
-            <ZoomButtons map={map}/>
+            <ControlButtons map={map}/>
             <div
                 className="position-absolute h-100 w-lg-100 h-lg-auto z-10"
                 style={{ width: 100 + '%' }}>
@@ -122,7 +121,6 @@ function MapComponent( {
                             );
                         }
                     } )}
-                    <FlyToMyPositionButton/>
                     {kmlContent && <ReactLeafletKml kml={kmlContent}/>}
                 </MapContainer>
             </div>
