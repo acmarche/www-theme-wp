@@ -13,11 +13,15 @@ global $s;
 
 $searcher = new Searcher();
 $keyword  = get_search_query();
-
+$resultat = [];
 try {
     $searching = $searcher->search($keyword);
     $results   = $searching->getResults();
     $count     = $searching->count();
+    foreach ($results as $result) {
+        $hit        = $result->getHit();
+        $resultat[] = $hit['_source'];
+    }
 } catch (Exception $e) {
     Mailer::sendError("wp error search", $e->getMessage());
 
@@ -37,11 +41,6 @@ try {
     return;
 }
 
-foreach ($results as $result) {
-    $hit = $result->getHit();
-   // dump($result->getDocument());
-}
-
 wp_enqueue_script(
     'react-app',
     get_template_directory_uri().'/assets/js/build/search.js',
@@ -54,7 +53,7 @@ Twig::rendPage(
     'search/index.html.twig',
     [
         'keyword' => $keyword,
-        'hits'    => $results,
+        'hits'    => $resultat,
         'count'   => $count,
     ]
 );
