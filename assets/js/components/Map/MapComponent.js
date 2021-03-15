@@ -1,7 +1,11 @@
-import { MapContainer, TileLayer, Marker, Popup, Tooltip, ZoomControl } from 'react-leaflet';
+import { MapContainer, TileLayer, Marker, Popup, Tooltip  } from 'react-leaflet';
 import ReactLeafletKml from 'react-leaflet-kml';
 import FlyToMyPositionButton from './FlyToMyPositionButton';
 import ZoomButtons from './ZoomButtons';
+
+const {
+    useState
+} = wp.element;
 
 function MapComponent( {
     markerData,
@@ -10,9 +14,15 @@ function MapComponent( {
     setPopupDescription
 } ) {
 
+    const [ map, setMap ] = useState( null );
+
     const handleClick = ( object ) => {
         setPopupDescription( object );
     };
+
+    function handleCreated( map ) {
+        setMap( map );
+    }
 
     const handleBtn = ( object ) => {
         const containerMap = document.getElementById( 'leaflet-container' );
@@ -44,18 +54,7 @@ function MapComponent( {
                             <i className="i-map w-18px h-18px bg-size-auto"></i>
                         </span>
 
-            <ZoomButtons/>
-            {/*   <div
-                className="d-flex flex-column w-32px position-absolute top-16px left-16px z-20 shadow-sm-1">
-                            <span
-                                className="d-flex align-items-center justify-content-center w-32px h-32px bg-white icon_custom">
-                                <i className="i-search-plus w-18px h-18px bg-size-auto"></i>
-                            </span>
-                <span
-                    className="d-flex align-items-center justify-content-center w-32px h-32px bg-white icon_custom border-top">
-                                <i className="i-search-less w-18px h-18px bg-size-auto"></i>
-                            </span>
-            </div>*/}
+            <ZoomButtons map={map}/>
             <div
                 className="position-absolute h-100 w-lg-100 h-lg-auto z-10"
                 style={{ width: 100 + '%' }}>
@@ -65,6 +64,7 @@ function MapComponent( {
                         width: '100%',
                         height: '700px'
                     }}
+                    whenCreated={handleCreated}
                     center={[ 50.22799745011792, 5.34405188915553 ]}
                     zoom={13}
                     zoomControl={false}
@@ -74,8 +74,6 @@ function MapComponent( {
                         attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
                         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                     />
-
-                    <FlyToMyPositionButton/>
                     {markerData?.map( ( object, index ) => {
                         if (object.latitude && object.longitude) {
 
@@ -124,6 +122,7 @@ function MapComponent( {
                             );
                         }
                     } )}
+                    <FlyToMyPositionButton/>
                     {kmlContent && <ReactLeafletKml kml={kmlContent}/>}
                 </MapContainer>
             </div>
