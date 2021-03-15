@@ -13,7 +13,7 @@ class AssetsLoad
             add_action('wp_enqueue_scripts', [$this, 'loadSearchScreenHome']);
         }
 
-        if ( ! is_category() && ! is_search() && ! is_front_page()) {
+        if ( ! is_category() && ! is_search() && ! is_front_page() && ! is_404()) {
             add_action('wp_enqueue_scripts', [$this, 'marchebeLeaft']);
             add_action('wp_enqueue_scripts', [$this, 'marchebeLightGallery']);
             add_action('wp_enqueue_scripts', [$this, 'readSpeaker']);
