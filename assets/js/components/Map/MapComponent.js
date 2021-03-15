@@ -1,6 +1,7 @@
-import { MapContainer, TileLayer, Marker, Popup, Tooltip } from 'react-leaflet';
+import { MapContainer, TileLayer, Marker, Popup, Tooltip, ZoomControl } from 'react-leaflet';
 import ReactLeafletKml from 'react-leaflet-kml';
 import FlyToMyPositionButton from './FlyToMyPositionButton';
+import ZoomButtons from './ZoomButtons';
 
 function MapComponent( {
     markerData,
@@ -42,7 +43,9 @@ function MapComponent( {
                 className="d-flex align-items-center justify-content-center w-32px h-32px position-absolute top-16px right-16px z-30 border-left icon_custom">
                             <i className="i-map w-18px h-18px bg-size-auto"></i>
                         </span>
-            <div
+
+            <ZoomButtons/>
+            {/*   <div
                 className="d-flex flex-column w-32px position-absolute top-16px left-16px z-20 shadow-sm-1">
                             <span
                                 className="d-flex align-items-center justify-content-center w-32px h-32px bg-white icon_custom">
@@ -52,7 +55,7 @@ function MapComponent( {
                     className="d-flex align-items-center justify-content-center w-32px h-32px bg-white icon_custom border-top">
                                 <i className="i-search-less w-18px h-18px bg-size-auto"></i>
                             </span>
-            </div>
+            </div>*/}
             <div
                 className="position-absolute h-100 w-lg-100 h-lg-auto z-10"
                 style={{ width: 100 + '%' }}>
@@ -64,6 +67,7 @@ function MapComponent( {
                     }}
                     center={[ 50.22799745011792, 5.34405188915553 ]}
                     zoom={13}
+                    zoomControl={false}
                     scrollWheelZoom={false}
                 >
                     <TileLayer
@@ -71,6 +75,7 @@ function MapComponent( {
                         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                     />
 
+                    <FlyToMyPositionButton/>
                     {markerData?.map( ( object, index ) => {
                         if (object.latitude && object.longitude) {
 
@@ -119,7 +124,6 @@ function MapComponent( {
                             );
                         }
                     } )}
-                    <FlyToMyPositionButton/>
                     {kmlContent && <ReactLeafletKml kml={kmlContent}/>}
                 </MapContainer>
             </div>
