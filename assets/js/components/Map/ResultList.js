@@ -4,7 +4,8 @@ function ResultList({
     markerData,
     optionSelected
 }) {
-    if ( null === markerData ) {
+    console.log( markerData );
+    if ( 0 === markerData.length ) {
         return ( <>
             <div className="d-flex flex-column w-100 h-100 px-32px">
                 <h3 className="pt-32px text-dark-primary">Liste vide</h3>

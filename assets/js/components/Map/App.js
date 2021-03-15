@@ -2,13 +2,14 @@ import MapComponent from './MapComponent';
 import FiltreNew from './filtre/FiltreNew';
 import { loadKml } from './service/map-service';
 import ResultList from './ResultList';
+import SwitchView from './SwitchView';
 
 const { useState, useEffect } = wp.element;
 
 function App() {
     const [ markerData, setMarkerData ] = useState([]);
     const [ optionSelected, setOptionSelected ] = useState([]);
-    const [ popupDescription, setPopupDescription ] = useState();
+    const [ view, setView ] = useState( 'map' );
     const [ kmlKey, setKmlKey ] = useState( null );
     const [ kmlContent, setKmlContent ] = useState( null );
 
@@ -34,12 +35,7 @@ function App() {
         }
     }, [ kmlKey ]);
 
-    window.addEventListener( 'resize', () => {
-        950 < window.innerWidth && 992 > window.innerWidth ?
-            window.location.reload() :
-            null;
-    });
-
+    console.log( `view${view}` );
     return (
         <>
             <FiltreNew
@@ -47,15 +43,25 @@ function App() {
                 setKmlKey={setKmlKey}
                 setOptionSelected={setOptionSelected}
             />
-            <div className="col-12 min-height-330px mt-24px mt-lg-0 col-lg-9 px-0 d-flex align-items-center justify-content-center overflow-hidden position-relative bg-lighter object-mapviews">
+            <div
+                className="col-12 min-height-330px mt-24px mt-lg-0 col-lg-9 px-0 d-flex align-items-center justify-content-center overflow-hidden position-relative bg-lighter object-mapviews">
+                <div
+                    className="d-flex w-64px h-32px position-absolute top-16px right-16px z-20 shadow-sm-1">
+                    {/* <!--design_element--> */}
+                </div>
+                <SwitchView setView={setView}/>
+                {
+                    'map' === view &&
                 <MapComponent
-                    popupDescription={popupDescription}
-                    setPopupDescription={setPopupDescription}
                     markerData={markerData}
                     kmlContent={kmlContent}/>
+                }
+                {
+                    'list' === view &&
                 <ResultList
                     optionSelected={optionSelected}
                     markerData={markerData}/>
+                }
             </div>
         </>
     );

@@ -35,10 +35,9 @@ function FiltreNew({
         Axios.get( `https://new.marche.be/wp-json/map/data/${arg}` )
             .then( ( res ) => {
                 if ( 0 !== res.data.length ) {
-                    console.log( res );
                     if ( true === res.data.kml ) {
                         setKmlKey( res.data.data );
-                        setMarkerData( null );
+                        setMarkerData([]);
                     } else {
                         if ( 0 === res.data.data.length ) {
                             alert( 'Aucune données trouvées' );
@@ -49,7 +48,7 @@ function FiltreNew({
                 } else {
                     alert( 'Aucune données trouvées' );
                     setKmlKey( null );
-                    setMarkerData( null );
+                    setMarkerData([]);
                     return null;
                 }
             })

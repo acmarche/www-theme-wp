@@ -9,7 +9,6 @@ const {
 function MapComponent( {
     markerData,
     kmlContent,
-    popupDescription,
     setPopupDescription
 } ) {
 
@@ -23,36 +22,8 @@ function MapComponent( {
         setMap( map );
     }
 
-    const handleBtn = ( object ) => {
-        const containerMap = document.getElementById( 'leaflet-container' );
-        if (object === 'map') {
-            containerMap.classList.remove( 'd-none' );
-            containerMap.classList.add( 'd-block' );
-        }
-        if (object === 'list') {
-            containerMap.classList.add( 'd-none' );
-            containerMap.classList.remove( 'd-block' );
-        }
-    };
-
     return (
         <>
-            <div
-                className=" d-flex w-64px h-32px position-absolute top-16px right-16px z-20 shadow-sm-1">
-            </div>
-            <input type="radio" id="btn_list_view" name="view"
-                   onChange={() => handleBtn( 'list' )}/>
-            <span
-                className="d-flex align-items-center justify-content-center w-32px h-32px position-absolute top-16px right-48px z-30 icon_custom">
-                            <i className="i-list w-18px h-18px bg-size-auto"></i>
-                        </span>
-            <input type="radio" id="btn_map_view" name="view"
-                   onChange={() => handleBtn( 'map' )}/>
-            <span
-                className="d-flex align-items-center justify-content-center w-32px h-32px position-absolute top-16px right-16px z-30 border-left icon_custom">
-                            <i className="i-map w-18px h-18px bg-size-auto"></i>
-                        </span>
-
             <ControlButtons map={map}/>
             <div
                 className="position-absolute h-100 w-lg-100 h-lg-auto z-10"
