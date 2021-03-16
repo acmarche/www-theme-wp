@@ -1,6 +1,6 @@
 jQuery( document ).ready( () => {
     jQuery( '#lightSlider' ).lightSlider({
-        item: 5,
+        item: 6,
         loop: true,
         pager: false,
         auto: true,
