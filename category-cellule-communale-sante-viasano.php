@@ -32,7 +32,6 @@ if ($parent) {
 }
 
 $actus   = $wpRepository->getPostsByCategory(73,get_current_blog_id());
-$actus = WpRepository::getAllNews(6);
 
 Twig::rendPage(
     'viasano/index.html.twig',
