@@ -165,6 +165,21 @@ class WpRepository
         return $children;
     }
 
+    public function getRootCategories(): array
+    {
+        $args     = ['parent' => 0, 'hide_empty' => false];
+        $children = get_categories($args);
+        array_map(
+            function ($category) {
+                $category->url = get_category_link($category->term_id);
+                $category->id        = $category->term_id;
+            },
+            $children
+        );
+
+        return $children;
+    }
+
     /**
      * @param int $cat_ID
      *

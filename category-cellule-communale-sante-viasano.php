@@ -35,7 +35,7 @@ $actus   = $wpRepository->getPostsByCategory(73,get_current_blog_id());
 $actus = WpRepository::getAllNews(6);
 
 Twig::rendPage(
-    'category/viasano.html.twig',
+    'viasano/index.html.twig',
     [
         'title'       => $title,
         'category'    => $category,

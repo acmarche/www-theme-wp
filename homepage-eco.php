@@ -2,6 +2,7 @@
 
 namespace AcMarche\Theme;
 
+use AcMarche\Theme\Inc\Theme;
 use AcMarche\Theme\Lib\Twig;
 use AcMarche\Theme\Lib\WpRepository;
 
@@ -11,12 +12,24 @@ use AcMarche\Theme\Lib\WpRepository;
 get_header();
 $wpRepository = new WpRepository();
 
-$news   = $wpRepository->getPostsByCategory(258, get_current_blog_id());
+$news = $wpRepository->getPostsByCategory(258, get_current_blog_id());
+
+$children = $wpRepository->getRootCategories();
+
+$blodId   = get_current_blog_id();
+$path     = Theme::getPathBlog($blodId);
+$siteSlug = Theme::getTitleBlog($blodId);
+$color    = Theme::getColorBlog($blodId);
 
 Twig::rendPage(
-    'eco/index.html.twig',
+    'eco/eco.html.twig',
     [
-        'actus'  => $news,
+        'actus'       => $news,
+        'title'       => 'Economie marchoise',
+        'color'       => $color,
+        'children'    => $children,
+        'description' => '',
+        'posts'       => [],
     ]
 );
 
