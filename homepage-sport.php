@@ -2,6 +2,7 @@
 
 namespace AcMarche\Theme;
 
+use AcMarche\Theme\Inc\Theme;
 use AcMarche\Theme\Lib\Twig;
 use AcMarche\Theme\Lib\WpRepository;
 
@@ -29,11 +30,20 @@ array_map(
     $events
 );
 
+$children = $wpRepository->getRootCategories();
+$blodId   = get_current_blog_id();
+$color    = Theme::getColorBlog($blodId);
+
 Twig::rendPage(
-    'sport/index.html.twig',
+    'sport/sport.html.twig',
     [
         'actus'  => $news,
         'events' => $events,
+        'title'       => 'Le sport à Marche',
+        'color'       => $color,
+        'children'    => $children,
+        'description' => '',
+        'posts'       => [],
     ]
 );
 

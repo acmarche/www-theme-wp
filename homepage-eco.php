@@ -17,8 +17,6 @@ $news = $wpRepository->getPostsByCategory(258, get_current_blog_id());
 $children = $wpRepository->getRootCategories();
 
 $blodId   = get_current_blog_id();
-$path     = Theme::getPathBlog($blodId);
-$siteSlug = Theme::getTitleBlog($blodId);
 $color    = Theme::getColorBlog($blodId);
 
 Twig::rendPage(
