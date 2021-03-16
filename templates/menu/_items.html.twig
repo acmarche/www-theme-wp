@@ -3,7 +3,7 @@
         {% for item in row %}
             <li>
                 <a href="{{ item.url }}">
-                    {{ item.title }}
+                    {{ item.title|puriferHtml|raw }}
                     {% if  isExternalUrl(item.url) == true %}
                         <i class="fas fa-external-link-alt" aria-hidden="true"></i>
                     {% endif %}
