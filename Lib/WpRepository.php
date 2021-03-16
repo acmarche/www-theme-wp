@@ -227,4 +227,46 @@ class WpRepository
 
         return $all;
     }
+
+    public function getPostsByCategory(int $catId, int $siteId): array
+    {
+        $args = array(
+            'cat'         => $catId,
+            'numberposts' => 5000,
+            'orderby'     => 'post_title',
+            'order'       => 'ASC',
+            'post_status' => 'publish',
+        );
+
+        $querynews = new WP_Query($args);
+        $posts     = [];
+        while ($querynews->have_posts()) :
+
+            $post = $querynews->next_post();
+            $id   = $post->ID;
+
+            if (has_post_thumbnail($id)) {
+                $attachment_id      = get_post_thumbnail_id($id);
+                $images             = wp_get_attachment_image_src($attachment_id, 'original');
+                $post_thumbnail_url = $images[0];
+            } else {
+                $post_thumbnail_url = get_template_directory_uri().'/assets/images/404.jpg';
+            }
+
+            $post->post_thumbnail_url = $post_thumbnail_url;
+
+            $permalink       = get_permalink($id);
+            $post->permalink = $permalink;
+
+            $post->blog_id = $siteId;
+            $post->blog    = Theme::getTitleBlog($siteId);
+            $post->color   = Theme::COLORS[$siteId];
+
+            $news[] = $post;
+        endwhile;
+
+        $all = SortUtil::sortPosts($posts);
+
+        return $all;
+    }
 }

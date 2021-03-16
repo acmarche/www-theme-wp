@@ -13,7 +13,7 @@
         <ul class="object-tags">
             <li class="active pr-24px"><a href="#">Tout</a></li>
             {% for child in children %}
-                <li><a href="{{ child.permalink }}">{{ child.name }}</a></li>
+                <li><a href="{{ child.permalink }}">{{ child.name|puriferHtml|raw }}</a></li>
             {% endfor %}
         </ul>
     </div>
