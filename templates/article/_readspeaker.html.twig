@@ -1,5 +1,5 @@
 <!-- todo https://admin.readspeaker.com/portal/index.php/documentation/open_file/1603/fr_fr -->
-{% if readspeaker is defined %}
+{% if readspeaker22 is defined %}
     <div class="d-flex flex-row align-items-center ">
         <div id="readspeaker_button1" class="rs_skip rsbtn rs_preserve">
             <a rel="nofollow" class="rsbtn_play" accesskey="L" title="Ecoutez le texte avec ReadSpeaker webReader"
@@ -28,6 +28,13 @@
                  <i class="i-sound-on i-white w-18px h-18px bg-size-auto"></i>
                  <i class="i-sound-off w-18px h-18px bg-size-auto"></i>
             </span>
+        </div>
+        <div id="readspeaker_button1" class="d-flex border rs_skip rsbtn rs_preserve" style="padding-bottom:0;" >
+            <a rel="nofollow" class="rsbtn_play" accesskey="L" title="Ecoutez le texte avec ReadSpeaker webReader"
+               href="//app-eu.readspeaker.com/cgi-bin/rsent?customerid=11982&amp;lang=fr_fr&amp;readid=reading&amp;url={{ currentUrl()|url_encode }}">
+                <span class="rsbtn_left rsimg rspart"><span class="rsbtn_text"><span>Ecouter</span></span></span>
+                <span class="rsbtn_right rsimg rsplay rspart"></span>
+            </a>
         </div>
     </div>
 {% endif %}
