@@ -1,6 +1,7 @@
+{% if actus[3] is defined %}
 {% set actu = actus[3] %}
 <li class="pt-8px col-ls-lg-4 px-ls-lg-4px d-none d-ls-lg-block d-lg-block col-lg-4 px-lg-4px">
-    <a href="{{ actu.permalink }}"
+    <a href="{{ actu.url }}"
        class="d-flex shadow-sm-1 border border-width-1px border-default flex-ls-lg-column flex-lg-column bg-img overflow-hidden">
         {% include 'homepage/news/_image.html.twig' %}
         <div class="col py-18px pl-28px pr-14px text-left lh-0 min-height-ls-lg-104px min-height-104px px-lg-8px">
@@ -9,9 +10,11 @@
         </div>
     </a>
 </li>
+{% endif %}
+{% if actus[4] is defined %}
 {% set actu = actus[4] %}
 <li class="pt-8px col-ls-lg-4 px-ls-lg-4px d-none d-ls-lg-block d-lg-block col-lg-4 px-lg-4px">
-    <a href="{{ actu.permalink }}"
+    <a href="{{ actu.url }}"
        class="d-flex shadow-sm-1 border border-width-1px border-default flex-ls-lg-column flex-lg-column bg-img overflow-hidden">
         {% include 'homepage/news/_image.html.twig' %}
         <div class="col py-18px pl-28px pr-14px text-left lh-0 min-height-ls-lg-104px min-height-104px px-lg-8px">
@@ -20,9 +23,11 @@
         </div>
     </a>
 </li>
+{% endif %}
+{% if actus[5] is defined %}
 {% set actu = actus[5] %}
 <li class="pt-8px col-ls-lg-4 px-ls-lg-4px d-none d-ls-lg-block d-lg-block col-lg-4 px-lg-4px">
-    <a href="{{ actu.permalink }}"
+    <a href="{{ actu.url }}"
        class="d-flex shadow-sm-1 border border-width-1px border-default flex-ls-lg-column flex-lg-column bg-img overflow-hidden">
         {% include 'homepage/news/_image.html.twig' %}
         <div class="col py-18px pl-28px pr-14px text-left lh-0 min-height-ls-lg-104px min-height-104px px-lg-8px">
@@ -31,3 +36,4 @@
         </div>
     </a>
 </li>
+{% endif %}

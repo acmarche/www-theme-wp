@@ -1,0 +1,27 @@
+<div class="pt-55px px-0 col-md-4 d-md-flex flex-md-column pt-md-0 px-md-15px pt-ls-md-0 col-ls-md-4 d-ls-md-flex flex-ls-md-column px-xl-30px mw-md-544px">
+    <div class="p-ls-md-8px ls-md-shadow-sm-1 p-md-8px md-shadow-sm-1">
+        <h2 class="text-ls-md-left text-md-left">Agenda</h2>
+        <ul class="pt-24px pt-ls-md-32px d-ls-sm-flex mx-ls-sm-n4px flex-ls-md-column pt-md-32px flex-md-column">
+            {% if events|length > 0 %}
+                <!--always visible-->
+                {% include 'sport/agenda/_always.html.twig' %}
+
+                <!--visible from landscape&&small-->
+                {% include 'sport/agenda/_small.html.twig' %}
+
+                <!--visible from landscape&&medium / medium-->
+                {% include 'sport/agenda/_medium.html.twig' %}
+
+                <!--visible from landscape&&large / large-->
+                {% include 'sport/agenda/_large.html.twig' %}
+                {% else %}
+
+                {% include 'homepage/agenda/_error.html.twig' %}
+            {% endif %}
+        </ul>
+    </div>
+
+    <a href="/sport/agenda"
+       class="button lvl3 mt-12px align-self-ls-md-end align-self-md-end position-relative left-0 left-hover-12px">Tout
+        l'agenda<i class="fas fa-angle-right d-none d-ls-md-inline pl-12px fs-basic d-md-inline"></i></a>
+</div>

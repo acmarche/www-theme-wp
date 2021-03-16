@@ -2,34 +2,38 @@
 
 namespace AcMarche\Theme;
 
-use AcMarche\Common\Mailer;
-use AcMarche\Theme\Inc\RouterMarche;
 use AcMarche\Theme\Lib\Twig;
 use AcMarche\Theme\Lib\WpRepository;
-use AcMarche\Pivot\Repository\HadesRepository;
 
 /**
  * Template Name: Home-Page-Sport
  */
 get_header();
 
-$hadesRepository = new HadesRepository();
+$wpRepository = new WpRepository();
+$news         = $wpRepository->getPostsByCategory(71, get_current_blog_id());
+$events       = $wpRepository->getPostsByCategory(81, get_current_blog_id());
 
-$news = WpRepository::getAllNews(6);
-try {
-    $events = $hadesRepository->getEvents();
-    RouterMarche::setRouteEvents($events);
-} catch (\Exception $exception) {
-    $events = [];
-    Mailer::sendError("Erreur de chargement de l'agenda", $exception->getMessage());
-}
-
+array_map(
+    function ($post) {
+        $date = get_post_meta($post->ID, "acmarche_date", true);
+        if ( ! $date) {
+            $date = '0000-00-00';
+        }
+        $data = [];
+        list($data['year'], $data['month'], $data['day']) = explode('-', $date);
+        $post->date     = $data;
+        $post->titre    = $post->post_title;
+        $post->localite = 'Marche';
+    },
+    $events
+);
 
 Twig::rendPage(
     'sport/index.html.twig',
     [
-        'actus'        => $news,
-        'events'       => $events,
+        'actus'  => $news,
+        'events' => $events,
     ]
 );
 

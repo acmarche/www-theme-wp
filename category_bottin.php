@@ -55,7 +55,7 @@ if ($parent) {
 }
 array_map(
     function ($child) {
-        $child->permalink = RouterBottin::getUrlCategoryBottin($child);
+        $child->url = RouterBottin::getUrlCategoryBottin($child);
     },
     $children
 );
@@ -64,7 +64,7 @@ array_map(
     function ($fiche) use ($bottinRepository) {
         $fiche->post_title = $fiche->societe;
         $fiche->excerpt    = Bottin::getExcerpt($fiche);
-        $fiche->permalink  = RouterBottin::getUrlFicheBottin($fiche);
+        $fiche->url  = RouterBottin::getUrlFicheBottin($fiche);
     },
     $fiches
 );

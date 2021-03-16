@@ -70,7 +70,7 @@ class WpRepository
                 $post->post_thumbnail_url = $post_thumbnail_url;
 
                 $permalink       = get_permalink($id);
-                $post->permalink = $permalink;
+                $post->url = $permalink;
 
                 $post->blog_id = $siteId;
                 $post->blog    = $name;
@@ -156,7 +156,7 @@ class WpRepository
         $children = get_categories($args);
         array_map(
             function ($category) {
-                $category->permalink = get_category_link($category->term_id);
+                $category->url = get_category_link($category->term_id);
                 $category->id        = $category->term_id;
             },
             $children
@@ -201,7 +201,7 @@ class WpRepository
         while ($querynews->have_posts()) {
             $post            = $querynews->next_post();
             $post->excerpt   = $post->post_excerpt;
-            $post->permalink = get_permalink($post->ID);
+            $post->url = get_permalink($post->ID);
             $posts[]         = $post;
         }
 
@@ -216,7 +216,7 @@ class WpRepository
             function ($fiche) {
                 $fiche->fiche      = true;
                 $fiche->excerpt    = Bottin::getExcerpt($fiche);
-                $fiche->permalink  = RouterBottin::getUrlFicheBottin($fiche);
+                $fiche->url  = RouterBottin::getUrlFicheBottin($fiche);
                 $fiche->post_title = $fiche->societe;
             },
             $fiches
@@ -238,11 +238,10 @@ class WpRepository
             'post_status' => 'publish',
         );
 
-        $querynews = new WP_Query($args);
+        $query = new WP_Query($args);
         $posts     = [];
-        while ($querynews->have_posts()) :
-
-            $post = $querynews->next_post();
+        while ($query->have_posts()) :
+            $post = $query->next_post();
             $id   = $post->ID;
 
             if (has_post_thumbnail($id)) {
@@ -256,13 +255,13 @@ class WpRepository
             $post->post_thumbnail_url = $post_thumbnail_url;
 
             $permalink       = get_permalink($id);
-            $post->permalink = $permalink;
+            $post->url = $permalink;
 
             $post->blog_id = $siteId;
             $post->blog    = Theme::getTitleBlog($siteId);
             $post->color   = Theme::COLORS[$siteId];
 
-            $news[] = $post;
+            $posts[] = $post;
         endwhile;
 
         $all = SortUtil::sortPosts($posts);

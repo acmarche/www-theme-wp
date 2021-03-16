@@ -1,6 +1,6 @@
 {% set actu = actus[0] %}
 <li class="px-0 w-md-100 col-ls-lg-4 px-ls-lg-4px col-lg-4 px-lg-4px">
-    <a href="{{ actu.permalink }}" class="d-flex shadow-sm-1 border border-width-1px border-default flex-ls-lg-column flex-lg-column bg-img overflow-hidden">
+    <a href="{{ actu.url }}" class="d-flex shadow-sm-1 border border-width-1px border-default flex-ls-lg-column flex-lg-column bg-img overflow-hidden">
         {% include 'homepage/news/_image.html.twig' %}
         <div class="col py-18px pl-28px pr-14px text-left lh-0 min-height-ls-lg-104px min-height-104px px-lg-8px">
             <span class="lh-150 ff-semibold fs-short-3 {{ actu.color }}">{{ actu.blog | title }}</span>
@@ -8,10 +8,10 @@
         </div>
     </a>
 </li>
-
+{% if actus[1] is defined %}
 {% set actu = actus[1] %}
 <li class="pt-8px px-0 w-md-100 col-ls-lg-4 pt-ls-lg-0 px-ls-lg-4px col-lg-4 px-lg-4px pt-lg-0">
-    <a href="{{ actu.permalink }}" class="d-flex shadow-sm-1 border border-width-1px border-default flex-ls-lg-column flex-lg-column bg-img overflow-hidden">
+    <a href="{{ actu.url }}" class="d-flex shadow-sm-1 border border-width-1px border-default flex-ls-lg-column flex-lg-column bg-img overflow-hidden">
         {% include 'homepage/news/_image.html.twig' %}
         <div class="col py-18px pl-28px pr-14px text-left lh-0 min-height-ls-lg-104px min-height-104px px-lg-8px">
             <span class="lh-150 ff-semibold fs-short-3 {{ actu.color }}">{{ actu.blog | title }}</span>
@@ -19,10 +19,11 @@
         </div>
     </a>
 </li>
-
+{% endif %}
+{% if actus[2] is defined %}
 {% set actu = actus[2] %}
 <li class="pt-8px px-0 w-md-100 col-ls-lg-4 pt-ls-lg-0 px-ls-lg-4px col-lg-4 px-lg-4px pt-lg-0">
-    <a href="{{ actu.permalink }}" class="d-flex shadow-sm-1 border border-width-1px border-default flex-ls-lg-column flex-lg-column bg-img overflow-hidden">
+    <a href="{{ actu.url }}" class="d-flex shadow-sm-1 border border-width-1px border-default flex-ls-lg-column flex-lg-column bg-img overflow-hidden">
         {% include 'homepage/news/_image.html.twig' %}
         <div class="col py-18px pl-28px pr-14px text-left lh-0 min-height-ls-lg-104px min-height-104px px-lg-8px">
             <span class="lh-150 ff-semibold fs-short-3 {{ actu.color }}">{{ actu.blog | title }}</span>
@@ -35,3 +36,4 @@
         </div>
     </a>
 </li>
+{% endif %}
