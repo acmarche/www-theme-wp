@@ -52,7 +52,7 @@ $imagesBg = [
 $imageBg  = $imagesBg[4];
 $date  = new \DateTime();
 $heure = $date->format('H');
-if ($heure >= 18 && $heure <= 8) {
+if ($heure > 17 || $heure <= 7) {
     $imageBg = $imagesBg[0];
 }
 
