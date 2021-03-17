@@ -44,6 +44,9 @@ $imagesBg = [
     '/wp-content/themes/marchebe/assets/tartine/rsc/img/bg_home.jpg',
     '/wp-content/themes/marchebe/assets/images/home/fond1.jpg',
     '/wp-content/themes/marchebe/assets/images/home/fond2.jpg',
+    '/wp-content/themes/marchebe/assets/images/home/fond3.jpg',
+    '/wp-content/themes/marchebe/assets/images/home/fond4.jpg',
+    '/wp-content/themes/marchebe/assets/images/home/fond5.jpg',
 ];
 $imageBg  = $imagesBg[array_rand($imagesBg, 1)];
 Twig::rendPage(
