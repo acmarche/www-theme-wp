@@ -35,7 +35,6 @@ function App() {
         }
     }, [ kmlKey ]);
 
-    console.log( `view${view}` );
     return (
         <>
             <FiltreNew

@@ -1,6 +1,8 @@
-import { MapContainer, TileLayer, Marker, Popup, Tooltip  } from 'react-leaflet';
+import { MapContainer, TileLayer, Marker, Popup, Tooltip } from 'react-leaflet';
 import ReactLeafletKml from 'react-leaflet-kml';
 import ControlButtons from './ControlButtons';
+import PopupBottin from './Popup/PopupBottin';
+import PopupKml from './Popup/PopupKml';
 
 const {
     useState
@@ -8,14 +10,13 @@ const {
 
 function MapComponent( {
     markerData,
-    kmlContent,
-    setPopupDescription
+    kmlContent
 } ) {
 
     const [ map, setMap ] = useState( null );
 
     const handleClick = ( object ) => {
-        setPopupDescription( object );
+        //do nothing
     };
 
     function handleCreated( map ) {
@@ -45,8 +46,8 @@ function MapComponent( {
                         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                     />
                     {markerData?.map( ( object, index ) => {
+                        console.log(object);
                         if (object.latitude && object.longitude) {
-
                             return (
                                 <Marker
                                     eventHandlers={{
@@ -58,36 +59,8 @@ function MapComponent( {
                                     position={[ object.latitude, object.longitude ]}
                                 >
                                     <Tooltip><p>{object?.nom}</p></Tooltip>
-                                    <Popup className="d-block d-lg-no2ne">
-                                        <h3 className="mb-3 text-center text-dark-primary">
-                                            {object?.nom}
-                                        </h3>
-                                        <p className="m-0 p-0 text-center text-dark-primary">
-                                            {object?.telephone}
-                                        </p>
-                                        <p className="m-0 p-0 text-center text-dark-primary">
-                                            {object?.rue}
-                                            <br/>
-                                            {object?.localite}
-                                        </p>
-                                        <p className=" m-0 p-0 text-center text-dark-primary">
-                                            {object?.email}
-                                        </p>
-                                        <a
-                                            href={object?.url}
-                                            target="_blank"
-                                            className="mt-2 btn btn-outline-success m-0 p-0 text-center d-block"
-                                        >
-                                            Consulter la fiche
-                                        </a>
-                                        <a
-                                            className="btn btn-outline-primary mt-2 m-0 p-0 text-center d-block"
-                                            target="_blank"
-                                            href={`https://www.google.com/maps/search/?api=1&query=${object.latitude},${object.longitude}`}
-                                        >
-                                            Itineraire
-                                        </a>
-                                    </Popup>
+                                    {object.kml && <PopupKml object={object}/>}
+                                    {object.kml===false && <PopupBottin object={object}/>}
                                 </Marker>
                             );
                         }

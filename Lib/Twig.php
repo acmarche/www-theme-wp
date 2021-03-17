@@ -163,12 +163,7 @@ class Twig
         return new TwigFilter(
             'puriferHtml',
             function (string $content): string {
-                $config     = HTMLPurifier_Config::createDefault();
-                $config->set('Cache.SerializerPath', '/tmp');
-                $purifier   = new HTMLPurifier($config);
-                $clean_html = $purifier->purify($content);
-
-                return $clean_html;
+                return StringUtils::pureHtml($content);
             }
         );
     }

@@ -36,14 +36,13 @@ function FiltreNew({
             .then( ( res ) => {
                 if ( 0 !== res.data.length ) {
                     if ( true === res.data.kml ) {
-                        setKmlKey( res.data.data );
-                        setMarkerData([]);
+                        setMarkerData( res.data.data );
                     } else {
                         if ( 0 === res.data.data.length ) {
                             alert( 'Aucune données trouvées' );
                         }
+                        console.log( res.data.data );
                         setMarkerData( res.data.data );
-                        setKmlKey( null );
                     }
                 } else {
                     alert( 'Aucune données trouvées' );

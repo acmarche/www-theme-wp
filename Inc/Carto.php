@@ -6,6 +6,9 @@ namespace AcMarche\Theme\Inc;
 
 use AcMarche\Bottin\Repository\BottinRepository;
 use AcMarche\Bottin\RouterBottin;
+use AcMarche\Theme\Lib\KmlParser;
+use AcMarche\Theme\Lib\StringUtils;
+use DOMElement;
 use Symfony\Component\HttpClient\HttpClient;
 
 class Carto
@@ -14,10 +17,15 @@ class Carto
      * @var \Symfony\Contracts\HttpClient\HttpClientInterface
      */
     private $httpClient;
+    /**
+     * @var KmlParser
+     */
+    private $kmlParser;
 
     public function __construct()
     {
         $this->httpClient = HttpClient::create();
+        $this->kmlParser  = new KmlParser();
     }
 
     public function filtres(): array
@@ -104,7 +112,7 @@ class Carto
                     ],
                 ],
             ],
-            'sante' => [
+            'sante'           => [
                 'name'     => 'Santé',
                 'icone'    => 'i-healthcase',
                 'elements' => [
@@ -117,13 +125,13 @@ class Carto
                     'veterinaires' => ['name' => 'Vétérinaires', 'source' => 'bottin', 'id' => 588],
                 ],
             ],
-            'sport' => [
+            'sport'           => [
                 'name'     => 'Sport',
                 'icone'    => 'i-chrono',
                 'elements' =>
                     $this->getElements(486),
             ],
-            'wifi'  => [
+            'wifi'            => [
                 'name'     => 'Wifi gratuit',
                 'icone'    => 'i-wifi',
                 'elements' => [
@@ -162,7 +170,7 @@ class Carto
         return [];
     }
 
-    public function loadKml(string $keyword): string
+    public function loadKml(string $keyword): array
     {
         switch ($keyword) {
             case 'seniors':
@@ -183,9 +191,6 @@ class Carto
             case 'parkings':
                 $url = 'https://www.google.com/maps/d/u/1/kml?forcekml=1&mid=1-509jyExlQqn7c1ijeYxrkLVOa8';
                 break;
-            case 'cyclos':
-                $url = 'https://www.google.com/maps/d/u/1/kml?forcekml=1&mid=1-509jyExlQqn7c1ijeYxrkLVOa8';
-                break;
             case 'balades':
                 $url = 'https://www.google.com/maps/d/u/1/kml?forcekml=1&mid=1eC0t63jFfVhLAjGuWTkIkfHHYqc';
                 break;
@@ -198,10 +203,21 @@ class Carto
         }
 
         if ($url) {
-            return $this->fetchKml($url);
+            $kmlString = $this->fetchKml($url);
+            $kmlParser = new KmlParser();
+            $domdoc    = $kmlParser->parse($kmlString);
+            $places    = $kmlParser->getPlacesMark();
+            $points    = [];
+            foreach ($places as $place) {
+                if ($place instanceof DOMElement) {
+                    $points[] = $this->formatKmlData($place);
+                }
+            }
+
+            return $points;
         }
 
-        return '';
+        return [];
     }
 
     public function getFichesBottin(int $id): array
@@ -231,14 +247,35 @@ class Carto
     public function formatSocieteData($object): array
     {
         return [
-            'nom'       => $object->societe,
-            'latitude'  => $object->latitude,
-            'longitude' => $object->longitude,
-            'telephone' => $object->telephone.' '.$object->gsm,
-            'email'     => $object->email,
-            'rue'       => $object->rue.', '.$object->numero,
-            'localite'  => $object->cp.' '.$object->localite,
-            'url'       => RouterBottin::getUrlFicheBottin($object),
+            'nom'         => $object->societe,
+            'latitude'    => $object->latitude,
+            'longitude'   => $object->longitude,
+            'telephone'   => $object->telephone.' '.$object->gsm,
+            'email'       => $object->email,
+            'rue'         => $object->rue.', '.$object->numero,
+            'localite'    => $object->cp.' '.$object->localite,
+            'url'         => RouterBottin::getUrlFicheBottin($object),
+            'kml'         => false,
+            'description' => '',
+        ];
+    }
+
+    public function formatKmlData(DOMElement $place): array
+    {
+        $placeName   = $this->kmlParser->getValueByTagName($place, 'name');
+        $point       = $this->kmlParser->getElementsByTagName($place, 'Point');
+        $description = $this->kmlParser->getValueByTagName($place, 'description');
+        $coordinates = $this->kmlParser->getValueByTagName($point, 'coordinates');
+        list($longitude, $latitude) = explode(',', $coordinates);
+        $description = StringUtils::pureHtml($description);
+        $description = make_clickable($description);
+
+        return [
+            'nom'         => $placeName,
+            'latitude'    => trim($latitude),
+            'longitude'   => trim($longitude),
+            'description' => $description,
+            'kml'         => true,
         ];
     }
 

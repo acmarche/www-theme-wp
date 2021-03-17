@@ -272,7 +272,9 @@ class ApiData
         }
 
         if ($source == 'kml') {
-            $data = ['data' => $element['id'], 'kml' => true];
+            $carto  = new Carto();
+            $fiches = $carto->loadKml($keyword);
+            $data   = ['data' => $fiches, 'kml' => false];
 
             return rest_ensure_response($data);
         }
