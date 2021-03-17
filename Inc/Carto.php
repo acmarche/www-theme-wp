@@ -9,6 +9,7 @@ use AcMarche\Bottin\RouterBottin;
 use AcMarche\Theme\Lib\KmlParser;
 use AcMarche\Theme\Lib\StringUtils;
 use DOMElement;
+use DOMNode;
 use Symfony\Component\HttpClient\HttpClient;
 
 class Carto
@@ -206,11 +207,14 @@ class Carto
             $kmlString = $this->fetchKml($url);
             $kmlParser = new KmlParser();
             $kmlParser->parse($kmlString);
-            $places    = $kmlParser->getPlacesMark();
-            $points    = [];
+            $places = $kmlParser->getPlacesMark();
+            $points = [];
             foreach ($places as $place) {
                 if ($place instanceof DOMElement) {
-                    $points[] = $this->formatKmlData($place);
+                    $point = $this->getDataFromType($place);
+                    if ($point) {
+                        $points[] = $point;
+                    }
                 }
             }
 
@@ -260,23 +264,58 @@ class Carto
         ];
     }
 
-    public function formatKmlData(DOMElement $place): array
+    public function getDataFromType(DOMElement $place): ?array
     {
         $placeName   = $this->kmlParser->getValueByTagName($place, 'name');
-        $point       = $this->kmlParser->getElementsByTagName($place, 'Point');
         $description = $this->kmlParser->getValueByTagName($place, 'description');
-        $coordinates = $this->kmlParser->getValueByTagName($point, 'coordinates');
-        list($longitude, $latitude) = explode(',', $coordinates);
         $description = StringUtils::pureHtml($description);
         $description = make_clickable($description);
-
-        return [
+        $item        = [
             'nom'         => $placeName,
-            'latitude'    => trim($latitude),
-            'longitude'   => trim($longitude),
             'description' => $description,
             'kml'         => true,
         ];
+
+        $point = $this->kmlParser->getElementsByTagName($place, 'Point');
+        if ($point) {
+            return array_merge($item, $this->getCoordinatesPoint($point));
+        }
+
+        $lineString = $this->kmlParser->getElementsByTagName($place, 'Point');
+        if ($lineString) {
+            return null;
+        }
+
+        return null;
+    }
+
+    public function getCoordinatesPoint(DOMNode $point): array
+    {
+        $coordinates = $this->kmlParser->getValueByTagName($point, 'coordinates');
+        list($longitude, $latitude) = explode(',', $coordinates);
+
+        return [
+            'latitude'  => trim($latitude),
+            'longitude' => trim($longitude),
+        ];
+    }
+
+    public function getCoordinatesLine(DOMNode $point)
+    {
+        $coordinates = $this->kmlParser->getValueByTagName($point, 'coordinates');
+        $lines       = explode("\n", $coordinates);
+        $items       = [];
+        foreach ($lines as $line) {
+            if (preg_match('#,#', $line)) {
+                list($longitude, $latitude) = explode(',', $line);
+                $items[] = [
+                    'latitude'    => trim($latitude),
+                    'longitude'   => trim($longitude),
+                ];
+            }
+        }
+
+        return $items;
     }
 
 }
