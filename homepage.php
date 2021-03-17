@@ -40,6 +40,12 @@ if ($pageAlert) {
     }
 }
 
+$imagesBg = [
+    '/wp-content/themes/marchebe/assets/tartine/rsc/img/bg_home.jpg',
+    '/wp-content/themes/marchebe/assets/images/home/fond1.jpg',
+    '/wp-content/themes/marchebe/assets/images/home/fond2.jpg',
+];
+$imageBg  = $imagesBg[array_rand($imagesBg, 1)];
 Twig::rendPage(
     'homepage/index.html.twig',
     [
@@ -47,6 +53,7 @@ Twig::rendPage(
         'events'       => $events,
         'pageAlert'    => $pageAlert,
         'contentAlert' => $contentAlert,
+        'imageBg'        => $imageBg,
     ]
 );
 
