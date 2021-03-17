@@ -31,14 +31,16 @@ array_map(
 );
 
 $children = $wpRepository->getRootCategories();
-$blodId   = get_current_blog_id();
-$color    = Theme::getColorBlog($blodId);
+$children = $wpRepository->cleanHomeCategories($children);
+
+$blodId = get_current_blog_id();
+$color  = Theme::getColorBlog($blodId);
 
 Twig::rendPage(
     'sport/sport.html.twig',
     [
-        'actus'  => $news,
-        'events' => $events,
+        'actus'       => $news,
+        'events'      => $events,
         'title'       => 'Le sport à Marche',
         'color'       => $color,
         'children'    => $children,

@@ -18,7 +18,7 @@
         <!--category-->
         <span class="{{ color }} ff-semibold pt-12px d-block fs-short-2">{{ 'Economie'|title }}</span>
 
-        {% include 'category/_children.html.twig' %}
+        {% include 'category/_children.html.twig' with {'tout':false} %}
 
         {% if description != '' %}
             {{ description|puriferHtml|raw }}
@@ -30,3 +30,4 @@
     </div>
 
 </section>
+{% include 'category/_onchange.html.twig' %}

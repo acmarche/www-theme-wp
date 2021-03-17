@@ -15,6 +15,7 @@ $page = get_queried_object();
 $news = $wpRepository->getPostsByCategory(258, get_current_blog_id());
 
 $children = $wpRepository->getRootCategories();
+$children = $wpRepository->cleanHomeCategories($children);
 
 $blodId   = get_current_blog_id();
 $color    = Theme::getColorBlog($blodId);

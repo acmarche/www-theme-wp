@@ -21,6 +21,7 @@ $color    = Theme::getColorBlog($blodId);
 $blogName = Theme::getTitleBlog($blodId);
 
 $children = $wpRepository->getChildrenOfCategory($cat_ID);
+$children = $wpRepository->cleanHomeCategories($children);
 $posts    = $wpRepository->getPostsAndFiches($cat_ID);
 $parent   = $wpRepository->getParentCategory($cat_ID);
 $urlBack  = $path;

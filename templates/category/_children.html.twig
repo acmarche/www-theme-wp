@@ -1,17 +1,25 @@
 <!--categories | TODO JF: branchement des filtres-->
 {% if children|length > 0 %}
-    <div class="d-lg-none pr-12px border border-dark-primary mt-48px">
-        <select name="categories" id="cat-select" class="fs-short-3 ff-semibold">
-            <option value="0" selected>Tout</option>
-            {% for child in children %}
-                <option value="{{ child.id }}">{{ child.name }}</option>
-            {% endfor %}
-        </select>
+    <div class="d-lg-none pr-12px border border-dark-primary mt-48px mb-2">
+        <form>
+            <select name="categories" id="cat-select" class="fs-short-3 ff-semibold">
+                {% if tout is defined and tout != false %}
+                    <option value="0" selected>Tout</option>
+                    {% else %}
+                    <option value="0" selected>Sélectionnez une catégorie</option>
+                {% endif %}
+                {% for child in children %}
+                    <option value="{{ child.url }}">{{ child.name }}</option>
+                {% endfor %}
+            </select>
+        </form>
     </div>
     <!--OBJECT | TAGS-->
     <div class="d-none d-lg-block overflow-hidden w-100 pt-48px col-6 px-0">
         <ul class="object-tags">
-            <li class="active pr-24px"><a href="#">Tout</a></li>
+            {% if tout is defined and tout != false %}
+                <li class="active pr-24px"><a href="#">Tout</a></li>
+            {% endif %}
             {% for child in children %}
                 <li><a href="{{ child.url }}">{{ child.name|puriferHtml|raw }}</a></li>
             {% endfor %}

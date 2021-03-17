@@ -69,7 +69,7 @@ class WpRepository
 
                 $post->post_thumbnail_url = $post_thumbnail_url;
 
-                $permalink       = get_permalink($id);
+                $permalink = get_permalink($id);
                 $post->url = $permalink;
 
                 $post->blog_id = $siteId;
@@ -157,7 +157,7 @@ class WpRepository
         array_map(
             function ($category) {
                 $category->url = get_category_link($category->term_id);
-                $category->id        = $category->term_id;
+                $category->id  = $category->term_id;
             },
             $children
         );
@@ -172,12 +172,33 @@ class WpRepository
         array_map(
             function ($category) {
                 $category->url = get_category_link($category->term_id);
-                $category->id        = $category->term_id;
+                $category->id  = $category->term_id;
             },
             $children
         );
 
         return $children;
+    }
+
+    public function cleanHomeCategories(array $children): array
+    {
+        return array_filter(
+            $children,
+            function ($values, $key) use ($children) {
+                if (preg_match('#Focus#', $values->name)) {
+                    return false;
+                }
+                if (preg_match('#principal#', $values->name)) {
+                    return false;
+                }
+                if (preg_match('#Non classé#', $values->name)) {
+                    return false;
+                }
+
+                return true;
+            },
+            ARRAY_FILTER_USE_BOTH
+        );
     }
 
     /**
@@ -214,10 +235,10 @@ class WpRepository
         $querynews = new WP_Query($args);
         $posts     = [];
         while ($querynews->have_posts()) {
-            $post            = $querynews->next_post();
-            $post->excerpt   = $post->post_excerpt;
-            $post->url = get_permalink($post->ID);
-            $posts[]         = $post;
+            $post          = $querynews->next_post();
+            $post->excerpt = $post->post_excerpt;
+            $post->url     = get_permalink($post->ID);
+            $posts[]       = $post;
         }
 
         $fiches           = [];
@@ -231,7 +252,7 @@ class WpRepository
             function ($fiche) {
                 $fiche->fiche      = true;
                 $fiche->excerpt    = Bottin::getExcerpt($fiche);
-                $fiche->url  = RouterBottin::getUrlFicheBottin($fiche);
+                $fiche->url        = RouterBottin::getUrlFicheBottin($fiche);
                 $fiche->post_title = $fiche->societe;
             },
             $fiches
@@ -254,7 +275,7 @@ class WpRepository
         );
 
         $query = new WP_Query($args);
-        $posts     = [];
+        $posts = [];
         while ($query->have_posts()) :
             $post = $query->next_post();
             $id   = $post->ID;
@@ -269,7 +290,7 @@ class WpRepository
 
             $post->post_thumbnail_url = $post_thumbnail_url;
 
-            $permalink       = get_permalink($id);
+            $permalink = get_permalink($id);
             $post->url = $permalink;
 
             $post->blog_id = $siteId;
