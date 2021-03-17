@@ -48,7 +48,14 @@ $imagesBg = [
     '/wp-content/themes/marchebe/assets/images/home/fond4.jpg',
     '/wp-content/themes/marchebe/assets/images/home/fond5.jpg',
 ];
-$imageBg  = $imagesBg[array_rand($imagesBg, 1)];
+
+$imageBg  = $imagesBg[4];
+$date  = new \DateTime();
+$heure = $date->format('H');
+if ($heure >= 18 && $heure <= 8) {
+    $imageBg = $imagesBg[0];
+}
+
 Twig::rendPage(
     'homepage/index.html.twig',
     [
@@ -56,7 +63,7 @@ Twig::rendPage(
         'events'       => $events,
         'pageAlert'    => $pageAlert,
         'contentAlert' => $contentAlert,
-        'imageBg'        => $imageBg,
+        'imageBg'      => $imageBg,
     ]
 );
 
