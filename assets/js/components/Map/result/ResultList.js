@@ -1,10 +1,10 @@
-import ResultItem from './ResultItem';
+import ResultItemBottin from './ResultItemBottin';
+import ResultItemKml from './ResultItemKml';
 
 function ResultList({
     markerData,
     optionSelected
 }) {
-    console.log( markerData );
     if ( 0 === markerData.length ) {
         return ( <>
             <div className="d-flex flex-column w-100 h-100 px-32px">
@@ -16,12 +16,18 @@ function ResultList({
         </> );
     }
 
-    const listItems = markerData.map( ( object, index ) => (
-        <ResultItem
+    const listItems = markerData.map( ( object, index ) => {
+        if ( object.kml ) {
+            return <ResultItemKml
+                key={index}
+                item={object}
+            />;
+        }
+        return <ResultItemBottin
             key={index}
             item={object}
-        />
-    ) );
+        />;
+    });
 
     return (
         <>

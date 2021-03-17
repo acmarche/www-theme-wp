@@ -41,7 +41,6 @@ function Filtres({
                         if ( 0 === res.data.data.length ) {
                             alert( 'Aucune données trouvées' );
                         }
-                        console.log( res.data.data );
                         setMarkerData( res.data.data );
                     }
                 } else {

@@ -46,7 +46,6 @@ function MapComponent( {
                         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                     />
                     {markerData?.map( ( object, index ) => {
-                        console.log( object );
                         if (object.latitude && object.longitude) {
                             return (
                                 <Marker

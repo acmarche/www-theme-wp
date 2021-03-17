@@ -1,4 +1,4 @@
-function ResultItem( propos ) {
+function ResultItemBottin( propos ) {
     const { item } = propos;
     return (
         <>
@@ -16,4 +16,4 @@ function ResultItem( propos ) {
     );
 }
 
-export default ResultItem;
+export default ResultItemBottin;

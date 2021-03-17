@@ -4,7 +4,6 @@ export default function( propos ) {
     const object = propos.object;
 
     function createMarkup() {
-        console.log(object.description);
         return { __html: object?.description };
     }
 
