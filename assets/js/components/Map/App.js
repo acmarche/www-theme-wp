@@ -1,7 +1,7 @@
 import MapComponent from './MapComponent';
-import FiltreNew from './filtre/FiltreNew';
+import Filtres from './filtre/Filtres';
 import { loadKml } from './service/map-service';
-import ResultList from './ResultList';
+import ResultList from './result/ResultList';
 import SwitchView from './SwitchView';
 
 const { useState, useEffect } = wp.element;
@@ -37,7 +37,7 @@ function App() {
 
     return (
         <>
-            <FiltreNew
+            <Filtres
                 setMarkerData={setMarkerData}
                 setKmlKey={setKmlKey}
                 setOptionSelected={setOptionSelected}

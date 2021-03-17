@@ -1,8 +1,8 @@
-import { MapContainer, TileLayer, Marker, Popup, Tooltip } from 'react-leaflet';
+import { MapContainer, TileLayer, Marker, Tooltip } from 'react-leaflet';
 import ReactLeafletKml from 'react-leaflet-kml';
 import ControlButtons from './ControlButtons';
-import PopupBottin from './Popup/PopupBottin';
-import PopupKml from './Popup/PopupKml';
+import PopupBottin from './popup/PopupBottin';
+import PopupKml from './popup/PopupKml';
 
 const {
     useState
@@ -46,7 +46,7 @@ function MapComponent( {
                         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                     />
                     {markerData?.map( ( object, index ) => {
-                        console.log(object);
+                        console.log( object );
                         if (object.latitude && object.longitude) {
                             return (
                                 <Marker
@@ -59,8 +59,8 @@ function MapComponent( {
                                     position={[ object.latitude, object.longitude ]}
                                 >
                                     <Tooltip><p>{object?.nom}</p></Tooltip>
-                                    {object.kml && <PopupKml object={object}/>}
-                                    {object.kml===false && <PopupBottin object={object}/>}
+                                    {object.kml === true && <PopupKml object={object}/>}
+                                    {object.kml === false && <PopupBottin object={object}/>}
                                 </Marker>
                             );
                         }

@@ -5,7 +5,7 @@ import { loadFiltres } from '../service/map-service';
 
 const { useState, useEffect } = wp.element;
 
-function FiltreNew({
+function Filtres({
     setMarkerData,
     setKmlKey,
     setOptionSelected
@@ -75,4 +75,4 @@ function FiltreNew({
     );
 }
 
-export default FiltreNew;
+export default Filtres;

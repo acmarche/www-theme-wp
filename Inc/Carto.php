@@ -205,7 +205,7 @@ class Carto
         if ($url) {
             $kmlString = $this->fetchKml($url);
             $kmlParser = new KmlParser();
-            $domdoc    = $kmlParser->parse($kmlString);
+            $kmlParser->parse($kmlString);
             $places    = $kmlParser->getPlacesMark();
             $points    = [];
             foreach ($places as $place) {
