@@ -104,7 +104,7 @@ class Carto
                         'source' => 'bottin',
                         'id'     => 679,
                     ],
-                    'pistes_cyclo'        => ['name' => 'Pistes cyclables', 'source' => 'kml', 'id' => 'cyclos'],
+                 //   'pistes_cyclo'        => ['name' => 'Pistes cyclables', 'source' => 'kml', 'id' => 'cyclos'],
                     'travaux'             => ['name' => 'Travaux', 'source' => 'kml', 'id' => 'travaux'],
                     'velos_stationnement' => [
                         'name'   => 'Parkings vélos',
@@ -192,7 +192,7 @@ class Carto
             case 'parkings':
                 $url = 'https://www.google.com/maps/d/u/1/kml?forcekml=1&mid=1-509jyExlQqn7c1ijeYxrkLVOa8';
                 break;
-            case 'balades':
+            case 'balade_pieds':
                 $url = 'https://www.google.com/maps/d/u/1/kml?forcekml=1&mid=1eC0t63jFfVhLAjGuWTkIkfHHYqc';
                 break;
             case 'velos_stationnement':
@@ -309,8 +309,8 @@ class Carto
             if (preg_match('#,#', $line)) {
                 list($longitude, $latitude) = explode(',', $line);
                 $items[] = [
-                    'latitude'    => trim($latitude),
-                    'longitude'   => trim($longitude),
+                    'latitude'  => trim($latitude),
+                    'longitude' => trim($longitude),
                 ];
             }
         }
