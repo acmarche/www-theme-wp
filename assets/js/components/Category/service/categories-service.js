@@ -21,3 +21,14 @@ export function fetchCategories( siteSlug, mainCategoryId ) {
         params
     });
 }
+
+/**
+ * @param {string|null} siteSlug
+ * @param {int} categoryId
+ * @returns {Promise}
+ */
+export function fetchCategory( siteSlug, categoryId ) {
+    const url = `${siteSlug}wp-json/wp/v2/categories/${categoryId}`;
+    return axios.get( url, {
+    });
+}

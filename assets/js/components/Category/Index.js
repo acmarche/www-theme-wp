@@ -1,6 +1,8 @@
 import CategoryChildren from './CategoryChildren';
+import { fetchCategory } from './service/categories-service';
 import PostResults from './PostResults';
 import CategoryTitle from './CategoryTitle';
+import CategoryDescription from './CategoryDescription';
 
 const {
     useState,
@@ -9,7 +11,7 @@ const {
 
 function Category() {
     const [ selectedCategory, setSelectedCategory ] = useState( 0 );
-    const [ selectedCategoryTitle, setSelectedCategoryTitle ] = useState( '' );
+    const [ category, setCategory ] = useState( null );
     const name = 'app-category';
 
     const mainCategory = document.getElementById( name )
@@ -18,22 +20,36 @@ function Category() {
         .getAttribute( 'data-site-slug' );
     const color = document.getElementById( name )
         .getAttribute( 'data-color' );
-    const categoryTitle = document.getElementById( name )
-        .getAttribute( 'data-site-name' );
+
+    async function loadCategory() {
+        if ( 0 < selectedCategory ) {
+            let response;
+            try {
+                response = await fetchCategory( siteSlug, selectedCategory );
+                setCategory( response.data );
+                document.title = response.data.name;
+            } catch ( e ) {
+                console.log( e );
+            }
+        }
+        return null;
+    }
 
     useEffect( () => {
         setSelectedCategory( mainCategory );
-        setSelectedCategoryTitle( categoryTitle );
     }, []);
 
+    useEffect( () => {
+        loadCategory();
+    }, [ selectedCategory ]);
     return (
         <>
-            <CategoryTitle title={selectedCategoryTitle} color={color}/>
+            <CategoryTitle category={category} color={color}/>
             <CategoryChildren
                 catId={mainCategory}
                 siteSlug={siteSlug}
-                setSelectedCategory={setSelectedCategory}
-                setSelectedCategoryTitle={setSelectedCategoryTitle} />
+                setSelectedCategory={setSelectedCategory}/>
+            {category && <CategoryDescription category={category}/>}
             <PostResults catId={selectedCategory} siteSlug={siteSlug}/>
         </>
     );

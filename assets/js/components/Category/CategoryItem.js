@@ -1,11 +1,9 @@
 function CategoryItem( propos ) {
     const { item } = propos;
 
-    function handleClick( categoryId, categoryTitle ) {
+    function handleClick( categoryId ) {
         propos.setItemActive( categoryId );
         propos.setSelectedCategory( categoryId );
-        propos.setSelectedCategoryTitle( categoryTitle );
-        document.title = categoryTitle;
     }
 
     return (
@@ -14,7 +12,7 @@ function CategoryItem( propos ) {
         >
             <a
                 data-category-id={item.id}
-                onClick={( ( ) => handleClick( item.id, item.name ) )}
+                onClick={( ( ) => handleClick( item.id ) )}
                 href="#"
             >
                 {item.name}

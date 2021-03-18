@@ -46,20 +46,13 @@ function CategoryChildren( propos ) {
             key={object.id}
             setItemActive={setItemActive}
             setSelectedCategory={propos.setSelectedCategory}
-            setSelectedCategoryTitle={propos.setSelectedCategoryTitle}
         />
     ) );
 
     function changeSelectedCategory( event ) {
-        const index = event.nativeEvent.target.selectedIndex;
-        const label = event.nativeEvent.target[index].text;
         const categorySelectedId = event.target.value;
-
         setItemActive( categorySelectedId );
         propos.setSelectedCategory( categorySelectedId );
-        propos.setSelectedCategoryTitle( label );
-        propos.setSelectedCategoryTitle( label );
-        document.title = label;
     }
 
     const options = categories.map( ( object ) => (
