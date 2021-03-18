@@ -38,6 +38,9 @@ if ($pageAlert) {
         $contentAlert = apply_filters('the_content', $contentAlert);
         $contentAlert = str_replace(']]>', ']]&gt;', $contentAlert);
     }
+    $contentAlert = get_the_content(null, null, $pageAlert);
+        $contentAlert = apply_filters('the_content', $contentAlert);
+        $contentAlert = str_replace(']]>', ']]&gt;', $contentAlert);
 }
 
 $imagesBg = [
