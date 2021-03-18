@@ -24,7 +24,7 @@
             {% include 'category/_children.html.twig' %}
 
             {% if description != '' %}
-                {{ description|raw|nl2br }}
+                {{ description|puriferHtml|raw }}
             {% endif %}
 
             <!--results-->
