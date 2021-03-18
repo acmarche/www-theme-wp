@@ -32,7 +32,7 @@ if ($pageAlert) {
     $request = Request::createFromGlobals();
     $close   = (bool)$request->cookies->get('closeAlert');
     if ($close) {
-        $pageAlert = null;
+
     } else {
         $contentAlert = get_the_content(null, null, $pageAlert);
         $contentAlert = apply_filters('the_content', $contentAlert);
