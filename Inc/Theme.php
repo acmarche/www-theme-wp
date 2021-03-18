@@ -39,7 +39,7 @@ class Theme
         11                   => 'color-cat-cul',
         14                   => 'color-cat-enf',
     ];
-    const PAGE_ALERT = 9570;
+    const PAGE_ALERT = 5087;
     const PAGE_CARTO = 20644;//tourisme
 
     static function isHomePage(): bool
