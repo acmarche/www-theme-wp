@@ -11,13 +11,25 @@ function CategoryChildren( propos ) {
     const [ categories, setCategories ] = useState([]);
     const [ loading, setLoading ] = useState( false );
     const categoryId = propos.catId;
+    const { mainCategory } = propos;
+    const allItem = { name: 'Tout', id: mainCategory, active: true };
 
     async function loadCategories() {
         setLoading( true );
         let response;
         try {
             response = await fetchCategories( propos.siteSlug, categoryId );
-            setCategories( response.data );
+            setCategories([
+                {
+                    name: 'Tout', id: 0, description: '', active: true
+                },
+                {
+                    name: 'Information générale',
+                    id: mainCategory,
+                    active: false
+                },
+                ...response.data
+            ]);
             setLoading( false );
         } catch ( e ) {
             setLoading( false );
@@ -62,15 +74,9 @@ function CategoryChildren( propos ) {
         />
     ) );
 
-    options.unshift( <CategoryItemOption
-        item={null}
-        key={0}
-    /> );
-
     if ( 0 === categories.length ) {
         return ( <></> );
     }
-
     return (
         <>
             <div className="d-lg-none pr-12px border border-dark-primary mt-48px">

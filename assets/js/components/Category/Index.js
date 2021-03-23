@@ -14,7 +14,7 @@ function Category() {
     const [ category, setCategory ] = useState( null );
     const name = 'app-category';
 
-    const mainCategory = document.getElementById( name )
+    const mainCategoryId = document.getElementById( name )
         .getAttribute( 'data-main-category-id' );
     const siteSlug = document.getElementById( name )
         .getAttribute( 'data-site-slug' );
@@ -36,7 +36,7 @@ function Category() {
     }
 
     useEffect( () => {
-        setSelectedCategory( mainCategory );
+        setSelectedCategory( mainCategoryId );
     }, []);
 
     useEffect( () => {
@@ -46,7 +46,8 @@ function Category() {
         <>
             <CategoryTitle category={category} color={color}/>
             <CategoryChildren
-                catId={mainCategory}
+                catId={mainCategoryId}
+                mainCategory={mainCategoryId}
                 siteSlug={siteSlug}
                 setSelectedCategory={setSelectedCategory}/>
             {category && <CategoryDescription category={category}/>}
