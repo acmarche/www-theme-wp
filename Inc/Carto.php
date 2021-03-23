@@ -47,6 +47,7 @@ class Carto
                 'icone'    => 'i-beach-ball',
                 'elements' => [
                     'accueillantes' => ['name' => 'Accueillantes', 'source' => 'bottin', 'id' => 672],
+                    'creches'       => ['name' => 'Crêches', 'source' => 'bottin', 'id' => 495],
                     'jeux'          => ['name' => 'Aires de jeux, parcs', 'source' => 'kml', 'id' => 'jeux'],
                 ],
             ],
@@ -86,7 +87,7 @@ class Carto
                 'name'     => 'Infrastructures',
                 'icone'    => 'i-board',
                 'elements' => [
-                    'cimetieres'   => ['name' => 'Cimetières', 'source' => 'bottin', 'id' => 0],
+                    'cimetieres'   => ['name' => 'Cimetières', 'source' => 'kml', 'id' => 'cimetieres'],
                     'salles_commu' => ['name' => 'Salles communales', 'source' => 'bottin', 'id' => 680],
                 ],
             ],
@@ -104,7 +105,7 @@ class Carto
                         'source' => 'bottin',
                         'id'     => 679,
                     ],
-                 //   'pistes_cyclo'        => ['name' => 'Pistes cyclables', 'source' => 'kml', 'id' => 'cyclos'],
+                    //   'pistes_cyclo'        => ['name' => 'Pistes cyclables', 'source' => 'kml', 'id' => 'cyclos'],
                     'travaux'             => ['name' => 'Travaux', 'source' => 'kml', 'id' => 'travaux'],
                     'velos_stationnement' => [
                         'name'   => 'Parkings vélos',
@@ -197,6 +198,9 @@ class Carto
                 break;
             case 'velos_stationnement':
                 $url = 'https://www.google.com/maps/d/u/1/kml?forcekml=1&mid=1A403qynTGRgt3FigLEqpIcRL4CGtazUJ';
+                break;
+            case 'cimetieres':
+                $url = 'https://www.google.com/maps/d/kml?forcekml=1&mid=1Cw-353ODEVCerBBior9Y27Bf8sc';
                 break;
             default:
                 $url = false;
