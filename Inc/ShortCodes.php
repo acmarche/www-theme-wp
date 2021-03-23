@@ -4,6 +4,7 @@ namespace AcMarche\Theme\Inc;
 
 use AcMarche\Common\Cache;
 use AcMarche\Common\Mailer;
+use AcMarche\Conseil\ConseilDb;
 use AcMarche\Theme\Lib\Twig;
 use Symfony\Component\HttpClient\HttpClient;
 use Symfony\Contracts\HttpClient\Exception\ClientExceptionInterface;
@@ -35,6 +36,24 @@ class ShortCodes
     {
         add_shortcode('taxe', [new ShortCodes(), 'taxe']);
         add_shortcode('enaos', [new ShortCodes(), 'enaos']);
+        add_shortcode('conseilOrdre', [new ShortCodes(), 'conseilOrdre']);
+    }
+
+    public function conseilOrdre()
+    {
+        $conseilDb = new ConseilDb();
+        $ordres    = $conseilDb->getAllOrdre();
+
+        foreach ($ordres as $ordre) {
+            ?>
+            <p>
+                <a href="/wp-content/uploads/conseil/ordre/<?php echo $ordre['file_name']; ?>"
+                   title="Télécharger l'ordre" target="_blank">
+                    <?php echo $ordre['nom']; ?>
+                </a>
+            </p>
+            <?php
+        }
     }
 
     public function enaos()
