@@ -67,17 +67,17 @@ window.addEventListener( 'load', () => {
      * Fermeture box alert
      */
     const btnCloseAlert = document.getElementById( 'btn-close-alert' );
-    const dateAlert = document.getElementById( 'date-alert' );
+    const dateAlertObject = document.getElementById( 'date-alert' );
 
-    if ( null != dateAlert ) {
-        //console.log( dateAlert.getAttribute( 'data-date' ) );
+    if ( null != dateAlertObject ) {
         if ( null != btnCloseAlert ) {
             const alertMessage = document.querySelector( '.object-alert' );
             btnCloseAlert.addEventListener( 'click', () => {
                 alertMessage.classList.add( 'd-none' );
                 const date = new Date( Date.now() );
                 date.setDate( date.getDate() + 3 );
-                document.cookie = `closeAlert=true; expires=${date.toUTCString()}`;
+                const dateCookie = dateAlertObject.getAttribute( 'data-date' );
+                document.cookie = `closeAlert${dateCookie}=true; expires=${date.toUTCString()}`;
             });
         }
     }
