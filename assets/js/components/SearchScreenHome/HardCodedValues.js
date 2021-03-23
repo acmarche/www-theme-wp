@@ -8,7 +8,7 @@ function HardCodedValues() {
                 </li>
                 <li className="col-ls-6">
                     <a href="/environnement" className="icon_custom">
-                        <i className="i-leaf"></i>Environnment-Déchet</a>
+                        <i className="i-leaf"></i>Environnement-Déchet</a>
                 </li>
                 <li className="col-ls-6">
                     <a href="/mobilite/infos-travaux/" className="icon_custom">

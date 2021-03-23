@@ -3,12 +3,10 @@
 
 namespace AcMarche\Theme\Lib;
 
-
 use AcMarche\Common\Mailer;
 use DOMDocument;
 use DOMElement;
 use DOMNode;
-use mysql_xdevapi\SqlStatementResult;
 use Symfony\Component\PropertyAccess\PropertyAccess;
 
 class KmlParser
