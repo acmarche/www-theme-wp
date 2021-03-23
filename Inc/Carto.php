@@ -47,8 +47,8 @@ class Carto
                 'icone'    => 'i-beach-ball',
                 'elements' => [
                     'accueillantes' => ['name' => 'Accueillantes', 'source' => 'bottin', 'id' => 672],
-                    'creches'       => ['name' => 'Crêches', 'source' => 'bottin', 'id' => 495],
                     'jeux'          => ['name' => 'Aires de jeux, parcs', 'source' => 'kml', 'id' => 'jeux'],
+                    'creches'       => ['name' => 'Crêches', 'source' => 'bottin', 'id' => 495],
                 ],
             ],
             'enseignement'    => [
