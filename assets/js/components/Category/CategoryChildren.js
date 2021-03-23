@@ -21,13 +21,12 @@ function CategoryChildren( propos ) {
             response = await fetchCategories( propos.siteSlug, categoryId );
             setCategories([
                 {
-                    name: 'Tout', id: 0, description: '', active: true
-                },
-                {
+                    name: 'Tout', id: mainCategory, description: '', active: true
+                }, /*,                {
                     name: 'Information générale',
                     id: mainCategory,
                     active: false
-                },
+                }*/
                 ...response.data
             ]);
             setLoading( false );
