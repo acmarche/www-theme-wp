@@ -17,6 +17,8 @@ get_header();
 $hadesRepository = new HadesRepository();
 
 $news = WpRepository::getAllNews(6);
+$news = \AcSort::trieNews($news);
+
 try {
     $events = $hadesRepository->getEvents();
     RouterMarche::setRouteEvents($events);
