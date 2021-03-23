@@ -29,20 +29,19 @@ try {
 
 $pageAlert    = WpRepository::getPageAlert();
 $contentAlert = null;
+$dateAlert    = null;
 
 if ($pageAlert) {
-    $request = Request::createFromGlobals();
-    $close   = (bool)$request->cookies->get('closeAlert');
+    $request   = Request::createFromGlobals();
+    $dateAlert = preg_replace("#(\D)#","",$pageAlert->post_modified);
+    $close     = (bool)$request->cookies->get('closeAlert'.$dateAlert);
     if ($close) {
-
+        $pageAlert = null;
     } else {
         $contentAlert = get_the_content(null, null, $pageAlert);
         $contentAlert = apply_filters('the_content', $contentAlert);
         $contentAlert = str_replace(']]>', ']]&gt;', $contentAlert);
     }
-    $contentAlert = get_the_content(null, null, $pageAlert);
-        $contentAlert = apply_filters('the_content', $contentAlert);
-        $contentAlert = str_replace(']]>', ']]&gt;', $contentAlert);
 }
 
 $imagesBg = [
@@ -54,9 +53,9 @@ $imagesBg = [
     '/wp-content/themes/marchebe/assets/images/home/fond5.jpg',
 ];
 
-$imageBg  = $imagesBg[4];
-$date  = new \DateTime();
-$heure = $date->format('H');
+$imageBg = $imagesBg[4];
+$date    = new \DateTime();
+$heure   = $date->format('H');
 if ($heure > 17 || $heure <= 7) {
     $imageBg = $imagesBg[0];
 }
@@ -69,6 +68,7 @@ Twig::rendPage(
         'pageAlert'    => $pageAlert,
         'contentAlert' => $contentAlert,
         'imageBg'      => $imageBg,
+        'dateAlert'    => $dateAlert,
     ]
 );
 
