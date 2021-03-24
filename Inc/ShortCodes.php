@@ -42,21 +42,18 @@ class ShortCodes
         add_shortcode('menuDisplay', [new ShortCodes(), 'menuDisplay']);
     }
 
-    public function conseilOrdre()
+    public function conseilOrdre():string
     {
         $conseilDb = new ConseilDb();
         $ordres    = $conseilDb->getAllOrdre();
+        $twig  = Twig::LoadTwig();
 
-        foreach ($ordres as $ordre) {
-            ?>
-            <p>
-                <a href="/wp-content/uploads/conseil/ordre/<?php echo $ordre['file_name']; ?>"
-                   title="Télécharger l'ordre" target="_blank">
-                    <?php echo $ordre['nom']; ?>
-                </a>
-            </p>
-            <?php
-        }
+        return $twig->render(
+            'conseil/_ordre.html.twig',
+            [
+                'ordres' => $ordres,
+            ]
+        );
     }
 
     public function enaos()

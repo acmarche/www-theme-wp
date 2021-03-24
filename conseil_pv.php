@@ -48,7 +48,6 @@ $content = str_replace(']]>', ']]&gt;', $content);
 
 $conseilDb = new ConseilDb();
 $pvs       = $conseilDb->getAllPvs();
-dump($pvs);
 
 Twig::rendPage(
     'conseil/pv.html.twig',

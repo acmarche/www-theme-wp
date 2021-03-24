@@ -1,0 +1,8 @@
+{% for ordre in ordre %}
+<p>
+    <a href="/wp-content/uploads/conseil/ordre/{{ ordre.file_name }}"
+       title="Télécharger l'ordre" target="_blank">
+        {{ ordre.nom }}
+    </a>
+</p>
+{% endfor %}
