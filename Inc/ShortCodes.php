@@ -37,6 +37,7 @@ class ShortCodes
         add_shortcode('taxe', [new ShortCodes(), 'taxe']);
         add_shortcode('enaos', [new ShortCodes(), 'enaos']);
         add_shortcode('conseilOrdre', [new ShortCodes(), 'conseilOrdre']);
+        add_shortcode('google_map', [new ShortCodes(), 'googleMap']);
     }
 
     public function conseilOrdre()
@@ -112,6 +113,24 @@ class ShortCodes
         }
 
         return [];
+    }
+
+    public function googleMap(array $args): string
+    {
+        $latitude  = $args['lat'];
+        $longitude = $args['long'];
+        $twig      = Twig::LoadTwig();
+        $post      = get_post();
+        $title = $post ? $post->post_title : '';
+
+        return $twig->render(
+            'map/_carte.html.twig',
+            [
+                'latitude'  => $latitude,
+                'longitude' => $longitude,
+                'title'     => $title,
+            ]
+        );
     }
 
 
