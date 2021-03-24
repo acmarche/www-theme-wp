@@ -131,7 +131,7 @@ class ApiData
         $searcher = new Searcher();
 
         try {
-            $results = $searcher->search($keyword);
+            $results = $searcher->search(urldecode($keyword));
             $data    = ['count' => $results->count()];
         } catch (InvalidException $e) {
             Mailer::sendError("wp error search".$keyword, $e->getMessage());
