@@ -1,0 +1,16 @@
+<div class="pt-24px">
+    <ul class="d-flex mx-n12px flex-wrap">
+        {% for item in items %}
+            <li class="col-12 col-md-6" style="line-height: normal;">
+                <a href="{{ item.url }}" class="border border-default shadow-sm d-block pl-5px">
+                    <h3 class="fs-short-2 ff-semibold text-dark-primary text-hover-primary transition-all ellipsis">
+                        {{ item.title|puriferHtml|raw }}
+                        {% if  isExternalUrl(item.url) == true %}
+                            <i class="fas fa-external-link-alt" aria-hidden="true"></i>
+                        {% endif %}
+                    </h3>
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+</div>

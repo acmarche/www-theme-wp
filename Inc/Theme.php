@@ -11,7 +11,8 @@ class Theme
     const ADMINISTRATION = 2;
     const ECONOMIE = 3;
     const TOURISME = 4;
-    const CULTURE = 12;
+    const CULTURE = 11;
+    const ROMAN = 12;
 
     const SITES = [
         self::CITOYEN        => 'citoyen',
@@ -23,7 +24,7 @@ class Theme
         7                    => 'social',
         8                    => 'marchois',
         11                   => 'culture',
-        self::CULTURE        => 'roman',
+        self::ROMAN          => 'roman',
         13                   => 'noel',
         14                   => 'enfance',
     ];
@@ -35,7 +36,7 @@ class Theme
         5                    => 'color-cat-spo',
         6                    => 'color-cat-san',
         7                    => 'color-cat-soc',
-        self::CULTURE        => 'color-cat-cul',//=>roman
+        self::ROMAN          => 'color-cat-cul',//=>roman
         11                   => 'color-cat-cul',
         14                   => 'color-cat-enf',
     ];

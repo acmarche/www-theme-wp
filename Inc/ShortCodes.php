@@ -5,6 +5,7 @@ namespace AcMarche\Theme\Inc;
 use AcMarche\Common\Cache;
 use AcMarche\Common\Mailer;
 use AcMarche\Conseil\ConseilDb;
+use AcMarche\Theme\Lib\Menu;
 use AcMarche\Theme\Lib\Twig;
 use Symfony\Component\HttpClient\HttpClient;
 use Symfony\Contracts\HttpClient\Exception\ClientExceptionInterface;
@@ -38,6 +39,7 @@ class ShortCodes
         add_shortcode('enaos', [new ShortCodes(), 'enaos']);
         add_shortcode('conseilOrdre', [new ShortCodes(), 'conseilOrdre']);
         add_shortcode('google_map', [new ShortCodes(), 'googleMap']);
+        add_shortcode('menuDisplay', [new ShortCodes(), 'menuDisplay']);
     }
 
     public function conseilOrdre()
@@ -121,7 +123,7 @@ class ShortCodes
         $longitude = $args['long'];
         $twig      = Twig::LoadTwig();
         $post      = get_post();
-        $title = $post ? $post->post_title : '';
+        $title     = $post ? $post->post_title : '';
 
         return $twig->render(
             'map/_carte.html.twig',
@@ -133,5 +135,19 @@ class ShortCodes
         );
     }
 
+    public function menuDisplay(array $args): string
+    {
+        $menu  = new Menu();
+        $items = $menu->getItems($args['site']);
+        $twig  = Twig::LoadTwig();
+
+        return $twig->render(
+            'menu/_items_short_code.html.twig',
+            [
+                'items' => $items,
+            ]
+        );
+
+    }
 
 }
