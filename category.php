@@ -32,7 +32,9 @@ if ($parent) {
     $urlBack  = get_category_link($parent->term_id);
     $nameBack = $parent->name;
 }
-
+if ($urlBack == '') {
+    $urlBack = '/';//bug if blog citoyen
+}
 wp_enqueue_script(
     'react-app',
     get_template_directory_uri().'/assets/js/build/category.js',
