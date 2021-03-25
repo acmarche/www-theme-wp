@@ -42,7 +42,7 @@ if ($urlBack == '') {
 }
 
 Twig::rendPage(
-    'enfance/index.html.twig',
+    'culture/index.html.twig',
     [
         'title'       => $title,
         'category'    => $category,
