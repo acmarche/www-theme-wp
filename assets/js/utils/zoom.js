@@ -11,14 +11,14 @@ window.addEventListener( 'load', () => {
 
         if ( null != incrementBtn ) {
             incrementBtn.addEventListener( 'click', () => {
-                if ( 2 > fontSizeStatus ) {
+                if ( 4 > fontSizeStatus ) {
                     decrementBtn.disabled = false;
                     for ( let i = 0; i < containerChildren.length; i++ ) {
                         const { fontSize } = window.getComputedStyle( containerChildren[i]);
                         containerChildren[i].style.fontSize = `${parseInt( fontSize ) + 5}px`;
                     }
                     fontSizeStatus++;
-                    if ( 2 === fontSizeStatus ) {
+                    if ( 4 === fontSizeStatus ) {
                         incrementBtn.disabled = true;
                     }
                 }
