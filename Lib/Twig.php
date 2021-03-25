@@ -162,7 +162,7 @@ class Twig
     {
         return new TwigFilter(
             'puriferHtml',
-            function (string $content): string {
+            function (?string $content): ?string {
                 return StringUtils::pureHtml($content);
             }
         );
