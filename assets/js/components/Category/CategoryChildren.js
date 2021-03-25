@@ -12,7 +12,6 @@ function CategoryChildren( propos ) {
     const [ loading, setLoading ] = useState( false );
     const categoryId = propos.catId;
     const { mainCategory } = propos;
-    const allItem = { name: 'Tout', id: mainCategory, active: true };
 
     async function loadCategories() {
         setLoading( true );
@@ -29,7 +28,7 @@ function CategoryChildren( propos ) {
                     id: mainCategory,
                     active: false
                 }*/
-                    ...response.data
+                    ...categoriesData
                 ]);
             } else {
                 setCategories([]);
