@@ -19,16 +19,21 @@ function CategoryChildren( propos ) {
         let response;
         try {
             response = await fetchCategories( propos.siteSlug, categoryId );
-            setCategories([
-                {
-                    name: 'Tout', id: mainCategory, description: '', active: true
-                }, /*,                {
+            const categoriesData = response.data;
+            if ( 0 < categoriesData.length ) {
+                setCategories([
+                    {
+                        name: 'Tout', id: mainCategory, description: '', active: true
+                    }, /*,                {
                     name: 'Information générale',
                     id: mainCategory,
                     active: false
                 }*/
-                ...response.data
-            ]);
+                    ...response.data
+                ]);
+            } else {
+                setCategories([]);
+            }
             setLoading( false );
         } catch ( e ) {
             setLoading( false );
