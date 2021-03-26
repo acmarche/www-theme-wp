@@ -15,7 +15,7 @@ function HardCodedValues() {
                         <i className="i-traffic-cone"></i>Travaux</a></li>
                 <li className="col-ls-6">
                     <a href="https://enfance-jeunesse.marche.be" className="icon_custom">
-                        <i className="i-beach-ball"></i>Jeunesse-Stages</a>
+                        <i className="i-beach-ball"></i>Enfance Jeunesse</a>
                 </li>
                 <li className="col-ls-6">
                     <a href="/tourisme/cartographie" className="icon_custom">

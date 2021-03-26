@@ -19,7 +19,7 @@ function HardCodedValues() {
             </li>
             <li className="col-ls-6 col-ls-sm-4 col-xl-12 col-ls-xl-12">
                 <a href="https://enfance-jeunesse.marche.be" className="icon_custom">
-                    <i className="i-beach-ball"></i>Jeunesse-Stages
+                    <i className="i-beach-ball"></i>Enfance Jeunesse
                 </a>
             </li>
             <li className="col-ls-6 col-ls-sm-4 col-xl-12 col-ls-xl-12">

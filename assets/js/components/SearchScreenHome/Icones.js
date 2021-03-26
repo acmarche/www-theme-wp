@@ -25,7 +25,7 @@ function HardCodedValues() {
                 <li className="col-3 d-flex justify-content-center">
                     <a href="https://enfance-jeunesse.marche.be" className="icon_custom">
                         <i className=" d-block w-54px h-54px shadow-sm-2 mx-auto rounded-circle i-beach-ball i-bg-white i-bg-hover-primary i-hover-white i-bg-color-transition bg-size-55"></i>
-                        <span className="d-inline-block text-white fs-short-3 ff-semibold lh-150 pt-6px">Jeunesse Stage</span>
+                        <span className="d-inline-block text-white fs-short-3 ff-semibold lh-150 pt-6px">Enfance Jeunesse</span>
                     </a>
                 </li>
                 <li className="col-3 pt-12px d-flex justify-content-center">
