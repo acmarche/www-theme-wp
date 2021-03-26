@@ -14,7 +14,8 @@
 
 {% block content %}
     {% for description in event.descriptions %}
-        <p>{{ description.texte|puriferHtml|raw }}</p>
+        <p><strong>{{ description.lib('fr')|puriferHtml|raw }}</strong></p>
+        <p>{{ description.texte('fr')|puriferHtml|raw }} </p>
     {% endfor %}
 
     <h4 class="mb-2 mt-2"><strong>Date(s)</strong></h4>
@@ -30,8 +31,8 @@
 
     <h4 class="mb-2 mt-2"><strong>Renseignements</strong></h4>
     {% for contact in event.contacts %}
-        {% if contact.lib %}
-            <strong>{{ contact.lib }}</strong>   <br/>
+        {% if contact.lib('fr') %}
+            <strong>{{ contact.lib('fr') }}</strong>   <br/>
         {% endif %}
         {% if contact.noms %}
             {{ contact.noms }} {{ contact.prenoms }} <br/>
@@ -41,7 +42,7 @@
         <br/>
         {{ contact.postal }} {{ contact.localite }}<br/><br/>
         {% for communication in contact.communications %}
-            <strong>{{ communication.name }}</strong> {{ communication.value }}
+            <strong>{{ communication.lib('fr') }}</strong> {{ communication.val }}
             <br/>
         {% endfor %}
     {% endfor %}

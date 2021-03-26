@@ -112,6 +112,10 @@ class ApiData
         $hadesRepository = new HadesRepository();
         $events          = $hadesRepository->getEvents();
         RouterMarche::setRouteEvents($events);
+        //pour react
+        array_map(function ($event){
+            $event->titre = $event->getTitre('fr');
+        }, $events);
 
         return rest_ensure_response($events);
     }

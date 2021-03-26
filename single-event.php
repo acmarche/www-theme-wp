@@ -38,7 +38,7 @@ if (count($images) > 0) {
 }
 $tags = [];
 foreach ($event->categories as $category) {
-    $tags[] = ['name' => $category->lib, 'url' => RouterMarche::getUrlEventCategory($category)];
+    $tags[] = ['name' => $category->getLib('fr'), 'url' => RouterMarche::getUrlEventCategory($category)];
 }
 
 $currentCategory = RouterMarche::getCategoryAgenda();
@@ -48,7 +48,7 @@ Twig::rendPage(
     'agenda/show.html.twig',
     [
         'event'       => $event,
-        'title'       => $event->titre,
+        'title'       => $event->getTitre('fr'),
         'image'       => $image,
         'tags'        => $tags,
         'images'      => $images,

@@ -49,7 +49,7 @@ class Seo
 
         $codeCgt = get_query_var(RouterMarche::PARAM_EVENT);
         if ($codeCgt) {
-            self::metaBottinEvent($codeCgt);
+            self::metaHadesEvent($codeCgt);
         }
 
         echo '<title>'.self::$metas['title'].'</title>';
@@ -102,24 +102,24 @@ class Seo
         }
     }
 
-    private static function metaBottinEvent(string $codeCgt)
+    private static function metaHadesEvent(string $codeCgt)
     {
         $hadesRepository = new HadesRepository();
         $event           = $hadesRepository->getOffre($codeCgt);
         if ($event) {
-            self::$metas['title']       = $event->titre.' | Agenda des manifestations ';
+            self::$metas['title']       = $event->getTitre('fr').' | Agenda des manifestations ';
             self::$metas['description'] = join(
                 ',',
                 array_map(
                     function ($description) {
-                        return $description->texte;
+                        return $description->getTexte('fr');
                     },
                     $event->descriptions
                 )
             );
             $keywords                   = array_map(
                 function ($category) {
-                    return $category->lib;
+                    return $category->getLib('fr');
                 },
                 $event->categories
             );
