@@ -29,7 +29,7 @@ $blogName = Theme::getTitleBlog($blodId);
 $children = $wpRepository->getRootCategories();
 $children = $wpRepository->cleanHomeCategories($children);
 
-$posts    = $wpRepository->getPostsAndFiches($cat_ID);
+$posts    = $wpRepository->getPostsAndFiches(30);//cat accueil social
 $parent   = $wpRepository->getParentCategory($cat_ID);
 $urlBack  = $path;
 $nameBack = $blogName;
@@ -67,7 +67,7 @@ Twig::rendPage(
         'category_id' => $cat_ID,
         'urlBack'     => $urlBack,
         'nameBack'    => $nameBack,
-        'posts'       => [],
+        'posts'       => $posts,
     ]
 );
 
