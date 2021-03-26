@@ -6,6 +6,7 @@
 
 namespace AcMarche\Theme;
 
+use AcMarche\Theme\Lib\Menu;
 use AcMarche\Theme\Lib\Twig;
 use AcMarche\Theme\Lib\WpRepository;
 use AcMarche\Theme\Inc\Theme;
@@ -41,6 +42,16 @@ if ($urlBack == '') {
     $urlBack = '/';//bug if blog citoyen
 }
 
+$menu  = new Menu();
+$items = $menu->getItems(get_current_blog_id());
+array_map(
+    function ($item) {
+        $item->name = $item->title;
+      //  $item->url  = $item->url;
+    },
+    $items
+);
+
 Twig::rendPage(
     'enfance/index.html.twig',
     [
@@ -52,7 +63,7 @@ Twig::rendPage(
         'path'        => $path,
         'subTitle'    => 'Tout',
         'description' => $description,
-        'children'    => $children,
+        'children'    => $items,
         'category_id' => $cat_ID,
         'urlBack'     => $urlBack,
         'nameBack'    => $nameBack,

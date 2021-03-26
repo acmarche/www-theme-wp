@@ -3,6 +3,7 @@
 namespace AcMarche\Theme;
 
 use AcMarche\Theme\Inc\Theme;
+use AcMarche\Theme\Lib\Menu;
 use AcMarche\Theme\Lib\Twig;
 use AcMarche\Theme\Lib\WpRepository;
 
@@ -36,6 +37,16 @@ $children = $wpRepository->cleanHomeCategories($children);
 $blodId = get_current_blog_id();
 $color  = Theme::getColorBlog($blodId);
 
+$menu  = new Menu();
+$items = $menu->getItems(get_current_blog_id());
+array_map(
+    function ($item) {
+        $item->name = $item->title;
+      //  $item->url  = $item->url;
+    },
+    $items
+);
+
 Twig::rendPage(
     'sport/sport.html.twig',
     [
@@ -43,7 +54,7 @@ Twig::rendPage(
         'events'      => $events,
         'title'       => 'Le sport à Marche',
         'color'       => $color,
-        'children'    => $children,
+        'children'    => $items,
         'description' => '',
         'posts'       => [],
     ]

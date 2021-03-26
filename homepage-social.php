@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Template Name: Home-Page-Culture
+ * Template Name: Home-Page-Social
  */
 
 namespace AcMarche\Theme;
@@ -53,7 +53,7 @@ array_map(
 );
 
 Twig::rendPage(
-    'culture/index.html.twig',
+    'social/index.html.twig',
     [
         'title'       => $title,
         'category'    => $category,
