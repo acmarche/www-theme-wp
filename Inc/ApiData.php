@@ -3,17 +3,15 @@
 
 namespace AcMarche\Theme\Inc;
 
-use AcMarche\Bottin\Bottin;
 use AcMarche\Bottin\Repository\BottinRepository;
-use AcMarche\Bottin\RouterBottin;
 use AcMarche\Common\Mailer;
-use AcMarche\Common\SortUtil;
 use AcMarche\Elasticsearch\Searcher;
 use AcMarche\Pivot\Repository\HadesRepository;
+use AcMarche\Theme\Lib\WpRepository;
+use AcSort;
 use Elastica\Exception\InvalidException;
 use WP_Error;
 use WP_HTTP_Response;
-use WP_Query;
 use WP_REST_Request;
 use WP_REST_Response;
 
@@ -36,75 +34,15 @@ class ApiData
             return new WP_Error(500, 'missing param catParent');
         }
 
-        $ids = self::getIdsWpAndBottinCategories($catParent);
+        $wpRepository = new WpRepository();
+        $posts        = $wpRepository->getPostsAndFiches($catParent);
 
-        // retrieve all fiches and add the wp category ids to them
-        $bottinRepository = new BottinRepository();
-        $fiches           = $bottinRepository->getFichesByCategories($ids['bottin']);
-
-        $data = [];
-        // Formats all fiches to fit front end requirements
-        foreach ($fiches as $fiche) {
-            $data[$fiche->id]['ID']           = $fiche->id;
-            $data[$fiche->id]['post_excerpt'] = Bottin::getExcerpt($fiche);
-            $data[$fiche->id]['post_title']   = $fiche->societe;
-            $data[$fiche->id]['link']         = RouterBottin::getUrlFicheBottin($fiche);
+        $category_order = get_term_meta($catParent, 'acmarche_category_sort', true);
+        if ($category_order == 'manual') {
+            $posts = AcSort::getSortedItems($catParent, $posts);
         }
 
-        //retrieves all posts and add the wp category ids to them
-        $query = new WP_Query(['category__in' => $ids['wp']]);
-        $posts = $query->get_posts();
-        foreach ($posts as $post) {
-            $post->link = get_permalink($post->ID);
-        }
-        //combines formatted fiches (data) and posts
-        $all = array_merge($data, $posts);
-        $all = SortUtil::sortPosts($all);
-
-        // returns all posts and fiches with their respective wp category
-        return rest_ensure_response($all);
-    }
-
-    /**
-     * Based on MainCategoyId returns an associative and multidimensional array
-     * ids['wp'] = MainCategoryId and ChildrenCagegoryIds used to retrieve posts in ca_all()
-     * ids['bottin'] = BottinCategoryIds used to retrieve fiches in ca_all()
-     * ids['association_wp_bottin'] = the wp category is pushed in this array when a bottin id is added for filtering purposes
-     *
-     * @param $catParent
-     *
-     * @return array[]
-     */
-    public static function getIdsWpAndBottinCategories($catParent)
-    {
-        $idsWp = $idsBottin = [];
-
-        $args         = ['parent' => $catParent, 'hide_empty' => false];
-        $children_cat = get_categories($args);
-
-        $idsWp[] = $catParent; //adds the main category to the list of ids
-        foreach ($children_cat as $cat) {
-            $idsWp[]          = $cat->cat_ID; //adds the children from main category to the list of ids
-            $categoryBottinId = get_term_meta(
-                $cat->cat_ID,
-                \BottinCategoryMetaBox::KEY_NAME,
-                true
-            ); //checks if meta bottinID metadata contains and ID
-            if ($categoryBottinId) {
-                $idsBottin[] = $categoryBottinId;
-            }
-        }
-        // We also need to check if the main_cat has a bottin ID
-        $categoryBottinId = get_term_meta(
-            $catParent,
-            \BottinCategoryMetaBox::KEY_NAME,
-            true
-        ); //ici on recupere l'id du BOTTIN c'est encodé en méta donné de la categorie
-        if ($categoryBottinId) {
-            $idsBottin[] = $categoryBottinId;
-        }
-
-        return ['wp' => $idsWp, 'bottin' => $idsBottin]; //wp/bottin/association_wp_bottin ids
+        return rest_ensure_response($posts);
     }
 
     public static function ca_events()
@@ -113,9 +51,12 @@ class ApiData
         $events          = $hadesRepository->getEvents();
         RouterMarche::setRouteEvents($events);
         //pour react
-        array_map(function ($event){
-            $event->titre = $event->getTitre('fr');
-        }, $events);
+        array_map(
+            function ($event) {
+                $event->titre = $event->getTitre('fr');
+            },
+            $events
+        );
 
         return rest_ensure_response($events);
     }
@@ -187,14 +128,6 @@ class ApiData
 
         return rest_ensure_response($data);
 
-    }
-
-    static function ca_bottinAllCategories()
-    {
-        $bottinRepository = new BottinRepository();
-        $allCategories    = $bottinRepository->getAllCategories();
-
-        return rest_ensure_response($allCategories);
     }
 
     // This plugin returns the societe and the id of all companies in the bottin to retrieve them in the gutenberg block
