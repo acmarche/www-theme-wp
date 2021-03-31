@@ -7,6 +7,7 @@ use AcMarche\Bottin\Repository\BottinRepository;
 use AcMarche\Bottin\RouterBottin;
 use AcMarche\Common\SortUtil;
 use AcMarche\Theme\Inc\Theme;
+use AcSort;
 use BottinCategoryMetaBox;
 use WP_Post;
 use WP_Query;
@@ -30,7 +31,7 @@ class WpRepository
      *
      * @return WP_Post[]
      */
-    public static function getAllNews(int $max = 30): array
+    public static function getAllNews(int $max = 50): array
     {
         $sites = Theme::SITES;
         $news  = array();
@@ -39,7 +40,7 @@ class WpRepository
             switch_to_blog($siteId);
 
             $args = array(
-                'category_name' => 'quoi-de-neuf-principal,focus-principal',
+                'category_name' => 'quoi-de-neuf-principal',
                 'orderby'       => 'title',
                 'order'         => 'ASC',
             );
@@ -78,20 +79,16 @@ class WpRepository
 
                 $news[] = $post;
             endwhile;
-
         endforeach;
+
         switch_to_blog(1);
         wp_reset_postdata();
 
+        $news = AcSort::trieNews($news);
+
         if (count($news) > $max) {
-            $i   = 0;
-            $end = count($news) - $max;
-            while ($i < $end) {
-                unset($news[$i]);
-                $i++;
-            }
+            $news = array_slice($news, 0, $max);
         }
-        $news = array_values($news);
 
         return $news;
     }

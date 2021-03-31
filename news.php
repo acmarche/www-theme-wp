@@ -12,7 +12,7 @@ use AcMarche\Theme\Lib\WpRepository;
 get_header();
 
 $posts = WpRepository::getAllNews();
-$posts = \AcSort::trieNews($posts);
+
 Twig::rendPage(
     'news/index.html.twig',
     [
