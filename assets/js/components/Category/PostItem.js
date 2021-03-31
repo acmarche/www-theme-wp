@@ -3,7 +3,7 @@ function PostItem( propos ) {
     return (
         <li className="pb-12px px-12px col-12 col-md-6">
             <a
-                href={item.link}
+                href={item.url}
                 className="border border-default p-24px shadow-sm d-block"
             >
                 <h3
