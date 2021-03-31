@@ -4,6 +4,7 @@ namespace AcMarche\Theme\Inc;
 
 use AcMarche\Common\Cache;
 use AcMarche\Common\Mailer;
+use AcMarche\Conseil\Conseil;
 use AcMarche\Conseil\ConseilDb;
 use AcMarche\Theme\Lib\Menu;
 use AcMarche\Theme\Lib\Twig;
@@ -70,6 +71,24 @@ class ShortCodes
                 'pvs' => $pvs,
             ]
         );
+    }
+
+    public function conseilArchive(): string
+    {
+        $conseilDb = new Conseil();
+        $twig      = Twig::LoadTwig();
+        $txt       = '';
+        foreach (range(2013, 2018) as $year) {
+            $pvs = $conseilDb->find_all_files($year);
+            $txt .= $twig->render(
+                'conseil/_pv.html.twig',
+                [
+                    'pvs' => $pvs,
+                ]
+            );
+        }
+
+        return $txt;
     }
 
     public function enaos()
