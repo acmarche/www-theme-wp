@@ -13,8 +13,6 @@ use AcMarche\Theme\Inc\Theme;
 
 get_header();
 
-$wpRepository = new WpRepository();
-
 $cat_ID      = get_queried_object_id();
 $category    = get_category($cat_ID);
 $description = category_description($cat_ID);
@@ -26,21 +24,8 @@ $siteSlug = Theme::getTitleBlog($blodId);
 $color    = Theme::getColorBlog($blodId);
 $blogName = Theme::getTitleBlog($blodId);
 
-$children = $wpRepository->getRootCategories();
-$children = $wpRepository->cleanHomeCategories($children);
-
-$posts    = $wpRepository->getPostsAndFiches($cat_ID);
-$parent   = $wpRepository->getParentCategory($cat_ID);
-$urlBack  = $path;
-$nameBack = $blogName;
-
-if ($parent) {
-    $urlBack  = get_category_link($parent->term_id);
-    $nameBack = $parent->name;
-}
-if ($urlBack == '') {
-    $urlBack = '/';//bug if blog citoyen
-}
+$urlBack  = '/';
+$nameBack = 'l\'accueil';
 
 $menu  = new Menu();
 $items = $menu->getItems(get_current_blog_id());

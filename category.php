@@ -33,7 +33,8 @@ if ($parent) {
     $nameBack = $parent->name;
 }
 if ($urlBack == '') {
-    $urlBack = '/';//bug if blog citoyen
+    $urlBack  = '/';//bug if blog citoyen
+    $nameBack = 'l\'accueil';
 }
 wp_enqueue_script(
     'react-app',
