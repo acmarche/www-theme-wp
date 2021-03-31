@@ -6,6 +6,7 @@ namespace AcMarche\Theme;
 use AcMarche\Theme\Lib\Twig;
 use AcMarche\Theme\Lib\WpRepository;
 use AcMarche\Theme\Inc\Theme;
+use SortLink;
 
 get_header();
 
@@ -44,6 +45,8 @@ wp_enqueue_script(
     true
 );
 
+$sortLink = SortLink::linkSortArticles($cat_ID);
+
 Twig::rendPage(
     'category/index.html.twig',
     [
@@ -60,6 +63,7 @@ Twig::rendPage(
         'category_id' => $cat_ID,
         'urlBack'     => $urlBack,
         'nameBack'    => $nameBack,
+        'sortLink'    => $sortLink,
     ]
 );
 

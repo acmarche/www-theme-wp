@@ -7,6 +7,7 @@ use AcMarche\Theme\Inc\RouterMarche;
 use AcMarche\Theme\Lib\Twig;
 use AcMarche\Theme\Lib\WpRepository;
 use AcMarche\Pivot\Repository\HadesRepository;
+use SortLink;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
@@ -60,6 +61,9 @@ if ($heure > 17 || $heure <= 7) {
     $imageBg = $imagesBg[0];
 }
 
+
+$sortLink = SortLink::linkSortNews();
+
 Twig::rendPage(
     'homepage/index.html.twig',
     [
@@ -69,6 +73,7 @@ Twig::rendPage(
         'contentAlert' => $contentAlert,
         'imageBg'      => $imageBg,
         'dateAlert'    => $dateAlert,
+        'sortLink'    => $sortLink,
     ]
 );
 
