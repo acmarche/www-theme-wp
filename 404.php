@@ -2,6 +2,8 @@
 
 namespace AcMarche\Theme;
 
+use AcMarche\Common\Mailer;
+use AcMarche\Common\Router;
 use AcMarche\Theme\Lib\Twig;
 use AcMarche\Theme\Inc\Theme;
 
@@ -17,4 +19,6 @@ Twig::rendPage(
         'relations' => [],
     ]
 );
+$url = Router::getCurrentUrl();
+Mailer::sendError("404 page: ", $url.' \n ');
 get_footer();

@@ -3,6 +3,8 @@
 
 namespace AcMarche\Theme;
 
+use AcMarche\Common\Mailer;
+use AcMarche\Common\Router;
 use AcMarche\Theme\Inc\Theme;
 use AcMarche\Theme\Lib\Twig;
 
@@ -18,4 +20,7 @@ Twig::rendPage(
         'relations' => [],
     ]
 );
+
+$url = Router::getCurrentUrl();
+Mailer::sendError("archive page: ", $url.' \n ');
 get_footer();
