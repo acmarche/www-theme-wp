@@ -19,6 +19,6 @@ Twig::rendPage(
         'relations' => [],
     ]
 );
-$url = Router::getCurrentUrl();
-Mailer::sendError("404 page: ", $url.' \n ');
+//$url = Router::getCurrentUrl();
+//Mailer::sendError("404 page: ", $url.' \n ');
 get_footer();
