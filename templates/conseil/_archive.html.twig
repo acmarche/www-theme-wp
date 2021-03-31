@@ -1,0 +1,15 @@
+{% for year, pvt in pvs %}
+    {% if pvt|length > 0 %}
+        <h2>Les PV de {{ year }}</h2>
+        <ul class="list-group mb-2">
+            {% for file_name in pvt %}
+                <li class="list-group-item">
+                    <a href="/wp-content/uploads/conseil/pv/{{ file_name }}"
+                       title="Télécharger le pv" target="_blank">
+                        {{ file_name }}
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+{% endfor %}

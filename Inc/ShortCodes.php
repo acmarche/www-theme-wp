@@ -81,7 +81,7 @@ class ShortCodes
         foreach (range(2013, 2018) as $year) {
             $pvs = $conseilDb->find_all_files($year);
             $txt .= $twig->render(
-                'conseil/_pv.html.twig',
+                'conseil/_archive.html.twig',
                 [
                     'pvs' => $pvs,
                 ]
