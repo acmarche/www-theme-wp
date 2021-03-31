@@ -83,6 +83,7 @@ class ShortCodes
             $txt .= $twig->render(
                 'conseil/_archive.html.twig',
                 [
+                    'year'=>$year,
                     'pvs' => $pvs,
                 ]
             );
