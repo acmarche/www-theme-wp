@@ -64,4 +64,4 @@ new BlockRender();
 /**
  * Actions events
  */
-new Event();
+//new Event();
