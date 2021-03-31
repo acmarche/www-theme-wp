@@ -37,21 +37,37 @@ class ShortCodes
     {
         add_shortcode('taxe', [new ShortCodes(), 'taxe']);
         add_shortcode('enaos', [new ShortCodes(), 'enaos']);
-        add_shortcode('conseilOrdre', [new ShortCodes(), 'conseilOrdre']);
+        add_shortcode('conseil_ordre', [new ShortCodes(), 'conseilOrdre']);
+        add_shortcode('conseil_pv', [new ShortCodes(), 'conseilPv']);
+        add_shortcode('conseil_archive', [new ShortCodes(), 'conseilArchive']);
         add_shortcode('google_map', [new ShortCodes(), 'googleMap']);
         add_shortcode('menuDisplay', [new ShortCodes(), 'menuDisplay']);
     }
 
-    public function conseilOrdre():string
+    public function conseilOrdre(): string
     {
         $conseilDb = new ConseilDb();
         $ordres    = $conseilDb->getAllOrdre();
-        $twig  = Twig::LoadTwig();
+        $twig      = Twig::LoadTwig();
 
         return $twig->render(
             'conseil/_ordre.html.twig',
             [
                 'ordres' => $ordres,
+            ]
+        );
+    }
+
+    public function conseilPv(): string
+    {
+        $conseilDb = new ConseilDb();
+        $pvs       = $conseilDb->getAllPvs();
+        $twig      = Twig::LoadTwig();
+
+        return $twig->render(
+            'conseil/_pv.html.twig',
+            [
+                'pvs' => $pvs,
             ]
         );
     }

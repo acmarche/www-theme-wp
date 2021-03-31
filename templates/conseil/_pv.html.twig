@@ -1,0 +1,10 @@
+{% for year, pvt in pvs %}
+    {% if pvt|length > 0 %}
+        <h2>Les PV de {{ year }}</h2>
+        <ul class="list-group">
+            {% for pv in pvt %}
+                {% include 'conseil/_pv_line.html.twig' %}
+            {% endfor %}
+        </ul>
+    {% endif %}
+{% endfor %}
