@@ -7,6 +7,7 @@ use AcMarche\Theme\Inc\RouterMarche;
 use AcMarche\Theme\Lib\Twig;
 use AcMarche\Theme\Lib\WpRepository;
 use AcMarche\Pivot\Repository\HadesRepository;
+use AcSort;
 use SortLink;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -18,7 +19,7 @@ get_header();
 $hadesRepository = new HadesRepository();
 
 $news = WpRepository::getAllNews(6);
-$news = \AcSort::trieNews($news);
+$news = AcSort::trieNews($news);
 
 try {
     $events = $hadesRepository->getEvents();

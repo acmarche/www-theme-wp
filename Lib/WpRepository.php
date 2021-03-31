@@ -30,7 +30,7 @@ class WpRepository
      *
      * @return WP_Post[]
      */
-    public static function getAllNews(int $max = 20): array
+    public static function getAllNews(int $max = 30): array
     {
         $sites = Theme::SITES;
         $news  = array();
