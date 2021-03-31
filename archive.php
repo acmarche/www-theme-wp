@@ -3,24 +3,19 @@
 
 namespace AcMarche\Theme;
 
+use AcMarche\Theme\Inc\Theme;
 use AcMarche\Theme\Lib\Twig;
 
 get_header();
 
-if (have_posts()) :
-    Twig::rendPage(
-        'category/_articles_line.html.twig',
-        [
-            'title' => 'archive.php',
-
-        ]
-    );
-else :
-    Twig::rendPage(
-        'article/empty.html.twig',
-        [
-            'title' => 'archive.php',
-        ]
-    );
-endif;
+Twig::rendPage(
+    'errors/404.html.twig',
+    [
+        'title'     => 'Archive non trouvée',
+        'tags'      => [],
+        'color'     => Theme::getColorBlog(1),
+        'blogName'  => Theme::getTitleBlog(1),
+        'relations' => [],
+    ]
+);
 get_footer();
