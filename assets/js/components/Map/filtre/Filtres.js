@@ -32,7 +32,7 @@ function Filtres({
         console.log( `request ${arg}` );
         setOptionSelected( name );
 
-        Axios.get( `https://new.marche.be/wp-json/map/data/${arg}` )
+        Axios.get( `https://www.marche.be/wp-json/map/data/${arg}` )
             .then( ( res ) => {
                 if ( 0 !== res.data.length ) {
                     if ( true === res.data.kml ) {

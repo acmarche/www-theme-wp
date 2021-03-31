@@ -46,7 +46,7 @@ class RouterMarche extends Router
 
     public static function getUrlWww(): string
     {
-        $current = preg_replace("#new.marche.be#", "www.marche.be", RouterMarche::getCurrentUrl());
+        $current = preg_replace("#www.marche.be#", "www.marche.be", RouterMarche::getCurrentUrl());
 
         return $current;
     }

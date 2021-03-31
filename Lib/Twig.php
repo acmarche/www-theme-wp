@@ -114,7 +114,7 @@ class Twig
             'isExternalUrl',
             function (string $url): bool {
                 if (preg_match("#http#", $url)) {
-                    if ( ! preg_match("#https://new.marche.be#", $url)) {
+                    if ( ! preg_match("#https://www.marche.be#", $url)) {
                         return true;
                     }
 
