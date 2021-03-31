@@ -6,6 +6,7 @@ use AcMarche\Bottin\RouterBottin;
 use AcMarche\Theme\Inc\Api;
 use AcMarche\Theme\Inc\AssetsLoad;
 use AcMarche\Theme\Inc\BlockRender;
+use AcMarche\Theme\Inc\Event;
 use AcMarche\Theme\Inc\Filter;
 use AcMarche\Theme\Inc\QueryAlter;
 use AcMarche\Theme\Inc\RouterMarche;
@@ -60,3 +61,7 @@ new ShortCodes();
  *
  */
 new BlockRender();
+/**
+ * Actions events
+ */
+new Event();
