@@ -49,7 +49,7 @@ wp_enqueue_script(
 $sortLink       = SortLink::linkSortArticles($cat_ID);
 $category_order = get_term_meta($cat_ID, 'acmarche_category_sort', true);
 if ($category_order == 'manual') {
-    $posts = AcSort::getSortedItems($cat_ID, $posts);
+    //$posts = AcSort::getSortedItems($cat_ID, $posts);
 }
 Twig::rendPage(
     'category/index.html.twig',
