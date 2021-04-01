@@ -39,6 +39,21 @@ $currentCategory = get_category_by_slug($catSlug);
 
 $urlBack  = get_category_link($currentCategory);
 $nameBack = $currentCategory->name;
+$isActu   = array_filter(
+    $tags,
+    function ($tag) {
+        if (preg_match("#artistique#", $tag['name'])) {
+            return $tag;
+        }
+
+        return null;
+    }
+);
+
+if (count($isActu) > 0) {
+    $urlBack  = $isActu[0]['url'];
+    $nameBack = $isActu[0]['name'];
+}
 
 $content = get_the_content(null, null, $post);
 $content = apply_filters('the_content', $content);
