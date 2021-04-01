@@ -34,7 +34,7 @@ if (Theme::isHomePage()) {
         ]
     );
 } else {
-    $isContact = Theme::isContactPage();dump($isContact);
+    $isContact = Theme::isContactPage();
     Twig::rendPage(
         'header/_header.html.twig',
         [
