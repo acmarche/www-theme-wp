@@ -40,15 +40,17 @@ class WpRepository
             switch_to_blog($siteId);
 
             $args = array(
-                'category_name' => 'quoi-de-neuf-principal',
+                'category_name' => 'actualites-principal',
                 'orderby'       => 'title',
+                'post_status'   => 'publish',
                 'order'         => 'ASC',
             );
 
             if ($siteId == 1) {
                 $args = array(
-                    'category_name' => 'quoi-de-neuf',
+                    'category_name' => 'actualites',
                     'orderby'       => 'title',
+                    'post_status'   => 'publish',
                     'order'         => 'ASC',
                 );
             }
@@ -182,9 +184,6 @@ class WpRepository
         return array_filter(
             $children,
             function ($values, $key) use ($children) {
-                if (preg_match('#Focus#', $values->name)) {
-                    return false;
-                }
                 if (preg_match('#principal#', $values->name)) {
                     return false;
                 }
