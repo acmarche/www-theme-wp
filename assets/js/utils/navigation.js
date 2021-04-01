@@ -75,7 +75,7 @@ window.addEventListener( 'load', () => {
             btnCloseAlert.addEventListener( 'click', () => {
                 alertMessage.classList.add( 'd-none' );
                 const date = new Date( Date.now() );
-                date.setDate( date.getDate() + 3 );
+                date.setHours( date.getHours() + 10 );
                 const dateCookie = dateAlertObject.getAttribute( 'data-date' );
                 document.cookie = `closeAlert${dateCookie}=true; expires=${date.toUTCString()}`;
             });
