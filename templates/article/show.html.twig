@@ -1,11 +1,11 @@
 {% extends "article/base.html.twig" %}
 
 {% block url_back %}
-  Retour à {{ urlBack }}
+  {{ urlBack }}
 {% endblock %}
 
 {% block name_back %}
-    {{ nameBack|puriferHtml|raw }}
+  Retour à {{ nameBack|puriferHtml|raw }}
 {% endblock %}
 
 {% block content %}
