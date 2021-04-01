@@ -83,8 +83,8 @@ class ShortCodes
             $txt .= $twig->render(
                 'conseil/_archive.html.twig',
                 [
-                    'year'=>$year,
-                    'pvs' => $pvs,
+                    'year' => $year,
+                    'pvs'  => $pvs,
                 ]
             );
         }
@@ -158,7 +158,7 @@ class ShortCodes
         $post      = get_post();
         $title     = $post ? $post->post_title : '';
 
-        return $twig->render(
+        $t = $twig->render(
             'map/_carte.html.twig',
             [
                 'latitude'  => $latitude,
@@ -166,6 +166,9 @@ class ShortCodes
                 'title'     => $title,
             ]
         );
+        $t = preg_replace("#\n#", "", $t);//bug avec raw de twig
+
+        return $t;
     }
 
     public function menuDisplay(array $args): string
@@ -180,7 +183,6 @@ class ShortCodes
                 'items' => $items,
             ]
         );
-
     }
 
 }
