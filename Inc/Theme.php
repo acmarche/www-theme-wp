@@ -47,10 +47,20 @@ class Theme
     {
         $request = Request::createFromGlobals();
 
-        $uri     = $request->getPathInfo();
+        $uri = $request->getPathInfo();
         if ($uri === '/') {
             return true;
         }
+
+        return false;
+    }
+
+    static function isContactPage(): bool
+    {
+        if (get_current_blog_id() === Theme::ADMINISTRATION && get_queried_object_id() == 277) {
+            return true;
+        }
+
 
         return false;
     }

@@ -15,10 +15,9 @@
             {% include 'header/common/_vivre.html.twig' %}
 
             <!--calendar-->
-            <div class="calendar">
-
+            <div class="calendar{% if isContact %} active{% endif %}">
                 <!-- TODO : à brancher -->
-                <a href="/administration/contacter-la-commune/">
+                <a href="/administration/contacter-la-commune/" class="">
                     <i class="icon_nav i-clock"></i>
                     <span>Horaires-Contacts</span>
                 </a>
@@ -75,22 +74,22 @@
         <div>
 
             <!-- TODO : à brancher -->
-            <a href="https://www.facebook.com/VilledeMarcheenFamenne">
+            <a href="https://www.facebook.com/VilledeMarcheenFamenne" title="Facebook">
                 <i class="fab fa-facebook-f"></i>
             </a>
 
             <!-- TODO : à brancher -->
-            <a href="https://twitter.com/VilledeMarche">
+            <a href="https://twitter.com/VilledeMarche" title="Twitter">
                 <i class="fab fa-twitter"></i>
             </a>
 
             <!-- TODO : à brancher -->
-            <a href="https://www.instagram.com/villedemarche/">
+            <a href="https://www.instagram.com/villedemarche/" title="Instagram">
                 <i class="fab fa-instagram"></i>
             </a>
 
             <!-- TODO : à brancher -->
-            <a href="https://www.youtube.com/user/VilledeMarche">
+            <a href="https://www.youtube.com/user/VilledeMarche" title="Youtube">
                 <i class="fab fa-youtube"></i>
             </a>
         </div>
