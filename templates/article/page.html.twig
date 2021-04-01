@@ -9,7 +9,7 @@
 {% endblock %}
 
 {% block content %}
-    <p>{{ content|raw|nl2br }}</p>
+    <p>{{ content|puriferHtml|raw }}</p>
 {% endblock %}
 
 {% block scripts %}
