@@ -3,6 +3,8 @@
 
 namespace AcMarche\Theme;
 
+use AcMarche\Common\Mailer;
+use AcMarche\Common\Router;
 use AcMarche\Theme\Inc\Theme;
 use AcMarche\Theme\Lib\Twig;
 use AcMarche\Theme\Lib\WpRepository;
@@ -35,11 +37,19 @@ if (preg_match("#/#", $catSlug)) {
     $catSlug = end($vars);
 }
 
-$currentCategory = get_category_by_slug($catSlug);
+$urlBack  = '/';
+$nameBack = '';
 
-$urlBack  = get_category_link($currentCategory);
-$nameBack = $currentCategory->name;
-$isActu   = array_filter(
+$currentCategory = get_category_by_slug($catSlug);
+if ($currentCategory) {
+    $urlBack  = get_category_link($currentCategory);
+    $nameBack = $currentCategory->name;
+}
+else {
+    $url = Router::getCurrentUrl();
+    Mailer::sendError('No current category', "pour la page ".$url);
+}
+$isActu = array_filter(
     $tags,
     function ($tag) {
         if (preg_match("#artistique#", $tag['name'])) {
