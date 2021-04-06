@@ -31,9 +31,6 @@ array_map(
     $events
 );
 
-$children = $wpRepository->getRootCategories();
-$children = $wpRepository->cleanHomeCategories($children);
-
 $blodId = get_current_blog_id();
 $color  = Theme::getColorBlog($blodId);
 
@@ -42,10 +39,10 @@ $items = $menu->getItems(get_current_blog_id());
 array_map(
     function ($item) {
         $item->name = $item->title;
-      //  $item->url  = $item->url;
     },
     $items
 );
+unset($items[0]);//remove accueil sport
 
 Twig::rendPage(
     'sport/sport.html.twig',
