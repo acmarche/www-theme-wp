@@ -36,6 +36,7 @@ array_map(
     },
     $items
 );
+unset($items[0]);//remove accueil
 
 Twig::rendPage(
     'culture/index.html.twig',

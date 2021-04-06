@@ -15,9 +15,6 @@ $wpRepository = new WpRepository();
 $page = get_queried_object();
 $news = $wpRepository->getPostsByCategory(258, get_current_blog_id());
 
-$children = $wpRepository->getRootCategories();
-$children = $wpRepository->cleanHomeCategories($children);
-
 $blodId   = get_current_blog_id();
 $color    = Theme::getColorBlog($blodId);
 $posts    = $wpRepository->getPostsAndFiches(6);
@@ -27,10 +24,10 @@ $items = $menu->getItems(get_current_blog_id());
 array_map(
     function ($item) {
         $item->name = $item->title;
-      //  $item->url  = $item->url;
     },
     $items
 );
+unset($items[0]);//remove accueil
 
 Twig::rendPage(
     'roman/index.html.twig',

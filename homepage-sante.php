@@ -32,10 +32,10 @@ $items = $menu->getItems(get_current_blog_id());
 array_map(
     function ($item) {
         $item->name = $item->title;
-      //  $item->url  = $item->url;
     },
     $items
 );
+unset($items[0]);//remove accueil
 
 Twig::rendPage(
     'sante/index.html.twig',
