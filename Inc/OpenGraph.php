@@ -3,18 +3,17 @@
 
 namespace AcMarche\Theme\Inc;
 
-
 //@see https://www.whitehouse.gov/
 //@see https://fr.wordpress.org/plugins/opengraph/
 class OpenGraph
 {
     public function __construct()
     {
-        add_filter('language_attributes', 'opengraph_add_prefix');
-        add_filter('wp', 'opengraph_default_metadata');
+      //  add_filter('language_attributes', 'opengraph_add_prefix');
+      //  add_filter('wp', 'opengraph_default_metadata');
 
-        add_action('wp_head', 'meta_description');
-        add_action('wp_head', 'opengraph_meta_tags');
+      //  add_action('wp_head', 'meta_description');
+      //  add_action('wp_head', 'opengraph_meta_tags');
     }
 
 
