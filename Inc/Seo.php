@@ -179,17 +179,15 @@ class Seo
                     $tags
                 )
             );
-        }
-        else {
-            $url = Router::getCurrentUrl();
-            Mailer::sendError('seo post not found', $postId.' '.$url);
+        } else {
+            self::$metas['title']       = 'Page non trouvée'.self::baseTitle("");
+            self::$metas['description'] = 'Cette page n\'existe plus';
         }
     }
 
     private static function metaCartographie()
     {
         //todo
-
     }
 
     private static function cleanString(string $description): string
