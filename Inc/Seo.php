@@ -5,6 +5,8 @@ namespace AcMarche\Theme\Inc;
 
 use AcMarche\Bottin\Repository\BottinRepository;
 use AcMarche\Bottin\RouterBottin;
+use AcMarche\Common\Mailer;
+use AcMarche\Common\Router;
 use AcMarche\Pivot\Repository\HadesRepository;
 use AcMarche\Theme\Lib\WpRepository;
 
@@ -163,19 +165,25 @@ class Seo
 
     private static function metaPost(int $postId)
     {
-        $post                       = get_post($postId);
-        self::$metas['title']       = self::baseTitle("");
-        self::$metas['description'] = $post->post_excerpt;
-        $tags                       = get_the_category($post->ID);
-        self::$metas['keywords']    = join(
-            ',',
-            array_map(
-                function ($tag) {
-                    return $tag->name;
-                },
-                $tags
-            )
-        );
+        $post = get_post($postId);
+        if ($post) {
+            self::$metas['title']       = self::baseTitle("");
+            self::$metas['description'] = $post->post_excerpt;
+            $tags                       = get_the_category($post->ID);
+            self::$metas['keywords']    = join(
+                ',',
+                array_map(
+                    function ($tag) {
+                        return $tag->name;
+                    },
+                    $tags
+                )
+            );
+        }
+        else {
+            $url = Router::getCurrentUrl();
+            Mailer::sendError('seo post not found', $postId.' '.$url);
+        }
     }
 
     private static function metaCartographie()
