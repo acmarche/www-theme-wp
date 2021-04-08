@@ -45,10 +45,7 @@ if ($currentCategory) {
     $urlBack  = get_category_link($currentCategory);
     $nameBack = $currentCategory->name;
 }
-else {
-    $url = Router::getCurrentUrl();
-    Mailer::sendError('No current category', "pour la page ".$url);
-}
+
 $isActu = array_filter(
     $tags,
     function ($tag) {
