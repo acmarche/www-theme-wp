@@ -45,7 +45,11 @@ if ($currentCategory) {
     $urlBack  = get_category_link($currentCategory);
     $nameBack = $currentCategory->name;
 }
-
+else {
+    $url = Router::getCurrentUrl();
+    $referer = wp_get_referer();
+    Mailer::sendError('No current category', "pour la page ".$url." from ".$referer);
+}
 $isActu = array_filter(
     $tags,
     function ($tag) {

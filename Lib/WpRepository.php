@@ -40,7 +40,7 @@ class WpRepository
             switch_to_blog($siteId);
 
             $args = array(
-                'category_name' => 'actualites-principal',
+                'category_name' => 'actualites-principales',
                 'orderby'       => 'title',
                 'post_status'   => 'publish',
                 'order'         => 'ASC',
