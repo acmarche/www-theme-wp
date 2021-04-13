@@ -30,6 +30,9 @@ $path     = Theme::getPathBlog($blodId);
 $blogName = Theme::getTitleBlog($blodId);
 
 if ( ! $fiche) {
+    $object       = new \stdClass();
+    $object->slug = $path;
+    $route        = RouterBottin::getUrlCategoryBottin($object);
     Twig::rendPage(
         'fiche/not_found.html.twig',
         [
@@ -41,6 +44,7 @@ if ( ! $fiche) {
             'color'     => $color,
             'blogName'  => $blogName,
             'relations' => [],
+            'url'       => $route,
         ]
     );
     get_footer();
