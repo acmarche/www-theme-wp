@@ -204,26 +204,25 @@
 
 // .object-alert
 .object-alert {
-  position: fixed;
+  position: absolute;
   top: 120px;
-  bottom: auto;
-  left: 12px;
-  right: 12px;
+  left: 0;
+  right: 0;
   max-width: 660px;
+  max-height: 120px;
   margin: auto;
   z-index: 10;
 
   @media screen {
     @media (orientation: landscape) {
       @media (min-width: $sm) {
-        bottom: 12px;
-        left: 54px;
-        right: 12px;
+
+
       }
     }
 
     @media (min-width: $md) {
-      bottom: 40px;
+
       max-width: 550px;
     }
 
@@ -232,8 +231,7 @@
     }
 
     @media (min-width: $xl) {
-      left: 40px;
-      right: 40px;
+
     }
   }
 

@@ -7,7 +7,6 @@ use AcMarche\Theme\Inc\RouterMarche;
 use AcMarche\Theme\Lib\Twig;
 use AcMarche\Theme\Lib\WpRepository;
 use AcMarche\Pivot\Repository\HadesRepository;
-use AcSort;
 use SortLink;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -57,10 +56,9 @@ $imagesBg = [
 $imageBg = $imagesBg[4];
 $date    = new \DateTime();
 $heure   = $date->format('H');
-if ($heure > 17 || $heure <= 7) {
+if ($heure > 16 || $heure <= 7) {
     $imageBg = $imagesBg[0];
 }
-
 
 $sortLink = SortLink::linkSortNews();
 

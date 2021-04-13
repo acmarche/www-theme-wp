@@ -317,37 +317,23 @@
 }
 
 .object-alert {
-  position: fixed;
+  position: absolute;
   top: 120px;
-  bottom: auto;
-  left: 12px;
-  right: 12px;
+  left: 0;
+  right: 0;
   max-width: 660px;
+  max-height: 120px;
   margin: auto;
   z-index: 10;
 }
-@media screen and (orientation: landscape) and (min-width: 576px) {
-  .object-alert {
-    bottom: 12px;
-    left: 54px;
-    right: 12px;
-  }
-}
 @media screen and (min-width: 768px) {
   .object-alert {
-    bottom: 40px;
     max-width: 550px;
   }
 }
 @media screen and (min-width: 992px) {
   .object-alert {
     max-width: 660px;
-  }
-}
-@media screen and (min-width: 1200px) {
-  .object-alert {
-    left: 40px;
-    right: 40px;
   }
 }
 .object-alert > div {
