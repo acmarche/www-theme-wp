@@ -2,6 +2,10 @@
 
 {% block content %}
     <p>Cette page n'existe plus</p>
+    {% if result is defined %}
+        <p><strong>Voici quelques suggestions émises par le moteur de recherche:</strong></p>
+        {{ result|raw }}
+    {% endif %}
     <a href="/">
         <p>Retour à l'accueil</p>
     </a>
