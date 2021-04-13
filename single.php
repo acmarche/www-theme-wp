@@ -3,8 +3,6 @@
 
 namespace AcMarche\Theme;
 
-use AcMarche\Common\Mailer;
-use AcMarche\Common\Router;
 use AcMarche\Theme\Inc\Theme;
 use AcMarche\Theme\Lib\Twig;
 use AcMarche\Theme\Lib\WpRepository;
@@ -45,11 +43,7 @@ if ($currentCategory) {
     $urlBack  = get_category_link($currentCategory);
     $nameBack = $currentCategory->name;
 }
-else {
-    $url = Router::getCurrentUrl();
-    $referer = wp_get_referer();
-    Mailer::sendError('No current category', "pour la page ".$url." from ".$referer);
-}
+
 $isActu = array_filter(
     $tags,
     function ($tag) {
@@ -62,8 +56,8 @@ $isActu = array_filter(
 );
 
 if (count($isActu) > 0) {
-    $urlBack  = $isActu[0]['url'];
-    $nameBack = $isActu[0]['name'];
+    $urlBack  = $isActu[array_key_first($isActu)]['url'];
+    $nameBack = $isActu[array_key_first($isActu)]['name'];
 }
 
 $content = get_the_content(null, null, $post);
