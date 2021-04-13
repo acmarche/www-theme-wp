@@ -40,11 +40,10 @@ if ($queryString != '') {
         );
     } catch (Exception $e) {
         Mailer::sendError("wp error search query 404", $e->getMessage());
-
     }
     $url     = Router::getCurrentUrl();
     $referer = Router::getReferer();
-    Mailer::sendError("404 page: ", $url.' \n query search: '.$queryString. ' referer: '.$referer);
+ //   Mailer::sendError("404 page: ", $url.' \n query search: '.$queryString. ' referer: '.$referer);
 }
 Twig::rendPage(
     'errors/404.html.twig',
