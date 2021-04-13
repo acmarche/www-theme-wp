@@ -15,7 +15,7 @@ global $wp_query;
 $bottinRepository = new BottinRepository();
 
 $slugFiche = $wp_query->get(RouterBottin::PARAM_BOTTIN_FICHE, null);
-
+dump($slugFiche);
 if ($slugFiche) {
     $fiche = $bottinRepository->getFicheBySlug($slugFiche);
 } elseif ($post = $wp_query->post) {
@@ -23,7 +23,7 @@ if ($slugFiche) {
     $idfiche = get_metadata(WpBottinRepository::DATA_TYPE, $post->ID, 'id', true);
     $fiche   = $bottinRepository->getFicheById($idfiche);
 }
-
+dump($fiche);
 $blodId   = get_current_blog_id();
 $color    = Theme::getColorBlog($blodId);
 $path     = Theme::getPathBlog($blodId);
