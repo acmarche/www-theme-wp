@@ -24,13 +24,23 @@ if ($slugFiche) {
     $fiche   = $bottinRepository->getFicheById($idfiche);
 }
 
+$blodId   = get_current_blog_id();
+$color    = Theme::getColorBlog($blodId);
+$path     = Theme::getPathBlog($blodId);
+$blogName = Theme::getTitleBlog($blodId);
+
 if ( ! $fiche) {
     Twig::rendPage(
         'fiche/not_found.html.twig',
         [
-            'title'   => 'Fiche non trouvée',
-            'tags'    => [],
-            'content' => '',
+            'title'     => 'Fiche non trouvée',
+            'tags'      => [],
+            'content'   => '',
+            'urlBack'   => '/',
+            'nameBack'  => 'Accueil',
+            'color'     => $color,
+            'blogName'  => $blogName,
+            'relations' => [],
         ]
     );
     get_footer();
@@ -63,10 +73,6 @@ array_map(
 
 $relations = $bottinRepository->getRelations($fiche->id, $categories);
 
-$blodId   = get_current_blog_id();
-$path     = Theme::getPathBlog($blodId);
-$blogName = Theme::getTitleBlog($blodId);
-$color    = Theme::getColorBlog($blodId);
 
 Twig::rendPage(
     'fiche/show.html.twig',
