@@ -6,15 +6,21 @@ use AcMarche\Theme\Inc\Theme;
 use AcMarche\Theme\Lib\Menu;
 use AcMarche\Theme\Lib\Twig;
 use AcMarche\Theme\Lib\WpRepository;
+use AcSort;
 
 /**
  * Template Name: Home-Page-Sport
  */
 get_header();
 
-$wpRepository = new WpRepository();
-$news         = $wpRepository->getPostsByCategory(71, get_current_blog_id());
-$events       = $wpRepository->getPostsByCategory(81, get_current_blog_id());
+$wpRepository   = new WpRepository();
+$catNewsId      = 71;
+$news           = $wpRepository->getPostsByCategory($catNewsId, get_current_blog_id());
+$category_order = get_term_meta($catNewsId, 'acmarche_category_sort', true);
+if ($category_order == 'manual') {
+    $news = AcSort::getSortedItems($catNewsId, $news);
+}
+$events = $wpRepository->getPostsByCategory(81, get_current_blog_id());
 
 array_map(
     function ($post) {
