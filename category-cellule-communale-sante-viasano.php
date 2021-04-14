@@ -5,6 +5,7 @@ namespace AcMarche\Theme;
 use AcMarche\Theme\Inc\Theme;
 use AcMarche\Theme\Lib\Twig;
 use AcMarche\Theme\Lib\WpRepository;
+use AcSort;
 
 get_header();
 
@@ -32,7 +33,12 @@ if ($parent) {
     $nameBack = $parent->name;
 }
 
-$actus   = $wpRepository->getPostsByCategory(73,get_current_blog_id());
+$catNewsId      = 73;
+$news           = $wpRepository->getPostsByCategory($catNewsId, get_current_blog_id());
+$category_order = get_term_meta($catNewsId, 'acmarche_category_sort', true);
+if ($category_order == 'manual') {
+    $news = AcSort::getSortedItems($catNewsId, $news);
+}
 
 Twig::rendPage(
     'viasano/index.html.twig',
@@ -50,7 +56,7 @@ Twig::rendPage(
         'category_id' => $cat_ID,
         'urlBack'     => $urlBack,
         'nameBack'    => $nameBack,
-        'actus'       => $actus,
+        'actus'       => $news,
     ]
 );
 
