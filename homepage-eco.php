@@ -9,12 +9,18 @@ use AcMarche\Theme\Inc\Theme;
 use AcMarche\Theme\Lib\Menu;
 use AcMarche\Theme\Lib\Twig;
 use AcMarche\Theme\Lib\WpRepository;
+use AcSort;
 
 
 get_header();
 $wpRepository = new WpRepository();
 
-$news = $wpRepository->getPostsByCategory(258, get_current_blog_id());
+$catNewsId = 258;
+$news = $wpRepository->getPostsByCategory($catNewsId, get_current_blog_id());
+$category_order = get_term_meta($catNewsId, 'acmarche_category_sort', true);
+if ($category_order == 'manual') {
+    $news = AcSort::getSortedItems($catNewsId, $news);
+}
 
 $blodId = get_current_blog_id();
 $color  = Theme::getColorBlog($blodId);
