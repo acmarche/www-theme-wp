@@ -37,6 +37,7 @@ class Carto
                 'icone'    => 'i-book',
                 'elements' => [
                     'biblio'  => ['name' => 'Bibliothèques', 'source' => 'bottin', 'id' => 674],
+                    'boites_livres'  => ['name' => 'Boîtes à livres', 'source' => 'bottin', 'id' => 684],
                     'cinema'  => ['name' => 'Cinéma', 'source' => 'bottin', 'id' => 675],
                     'musees'  => ['name' => 'Musées', 'source' => 'bottin', 'id' => 673],
                     'statues' => ['name' => 'Statues et sculptures', 'source' => 'kml', 'id' => 'statues'],
