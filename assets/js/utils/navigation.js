@@ -59,7 +59,7 @@ window.addEventListener( 'load', () => {
         btnOpenSearch.addEventListener( 'click', () => {
             searchScreen.classList.add( 'd-block' );
             searchScreen.classList.remove( 'd-none' );//d-none pour bug samsung
-            searchScreen.style.top = 0;
+            //searchScreen.style.top = 0;
         });
     }
 
