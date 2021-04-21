@@ -46,8 +46,9 @@ function Category() {
         <>
             <CategoryTitle category={category} color={color}/>
             <CategoryChildren
-                catId={mainCategoryId}
+                categoryId={mainCategoryId}
                 mainCategory={mainCategoryId}
+                selectedCategory={selectedCategory}
                 siteSlug={siteSlug}
                 setSelectedCategory={setSelectedCategory}/>
             {category && <CategoryDescription category={category}/>}

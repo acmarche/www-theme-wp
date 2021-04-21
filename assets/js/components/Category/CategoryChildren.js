@@ -10,8 +10,7 @@ const {
 function CategoryChildren( propos ) {
     const [ categories, setCategories ] = useState([]);
     const [ loading, setLoading ] = useState( false );
-    const categoryId = propos.catId;
-    const { mainCategory } = propos;
+    const { categoryId, mainCategory, selectedCategory } = propos;
 
     async function loadCategories() {
         setLoading( true );
@@ -86,7 +85,7 @@ function CategoryChildren( propos ) {
                 <select
                     id="cat-select"
                     name="categories"
-                    value={categoryId}
+                    value={selectedCategory}
                     className="fs-short-3 ff-semibold"
                     onChange={changeSelectedCategory}
                 >
