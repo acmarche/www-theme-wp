@@ -36,7 +36,6 @@ function btnCloseSecond( nameMenu ) {
 }
 
 window.addEventListener( 'load', () => {
-
     /**
      * Fermeture ecran de recherche
      */
@@ -59,7 +58,9 @@ window.addEventListener( 'load', () => {
         btnOpenSearch.addEventListener( 'click', () => {
             searchScreen.classList.add( 'd-block' );
             searchScreen.classList.remove( 'd-none' );//d-none pour bug samsung
-            //searchScreen.style.top = 0;
+            if ( isMobile() ) {
+                searchScreen.style.top = 0;
+            }
         });
     }
 
