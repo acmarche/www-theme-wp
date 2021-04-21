@@ -147,12 +147,20 @@ class Seo
 
     private static function metaCategory(int $cat_id)
     {
-        $category                   = get_category($cat_id);
-        self::$metas['title']       = self::baseTitle("");
-        self::$metas['description'] = self::cleanString($category->description);
-        $wpRepository               = new WpRepository();
-        $children                   = $wpRepository->getChildrenOfCategory($category->cat_ID);
-        $tags                       = [];
+        $category = get_category($cat_id);
+        $url = Router::getCurrentUrl();
+        if ( ! $category) {
+            Mailer::sendError('seo cat', 'cat not found '.$url);
+            self::$metas['title'] = self::baseTitle("");
+            return;
+        }
+        self::$metas['title'] = self::baseTitle("");
+        if ($category->description) {
+            self::$metas['description'] = self::cleanString($category->description);
+        }
+        $wpRepository = new WpRepository();
+        $children     = $wpRepository->getChildrenOfCategory($category->cat_ID);
+        $tags         = [];
         foreach ($children as $child) {
             $tags[] = $child->name;
         }

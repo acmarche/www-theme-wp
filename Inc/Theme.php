@@ -68,7 +68,7 @@ class Theme
 
     static function getColorBlog(int $blodId)
     {
-        return self::COLORS[$blodId];
+       return self::COLORS[$blodId] ?? 'color-cat-cit';
     }
 
     static function getPathBlog(int $blodId)
