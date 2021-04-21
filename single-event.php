@@ -42,7 +42,20 @@ foreach ($event->categories as $category) {
 }
 
 $currentCategory = RouterMarche::getCategoryAgenda();
-$relations       = $hadesRepository->getOffresSameCategories($event, $currentCategory->cat_ID);
+$offres          = $hadesRepository->getOffresSameCategories($event);
+$relations = [];
+foreach ($offres as $item) {
+    if ($event->id == $item->id) {
+        continue;
+    }
+    $url               = RouterMarche::getUrlOffre($item, $currentCategory->cat_ID);
+    $relations[] = [
+        'title'      => $item->getTitre('fr'),
+        'url'        => $url,
+        'image'      => $item->firstImage(),
+        'categories' => $item->categories,
+    ];
+}
 
 Twig::rendPage(
     'agenda/show.html.twig',
