@@ -49,7 +49,7 @@ $imagesBg = [
     '/wp-content/themes/marchebe/assets/images/home/fond1.jpg',
     '/wp-content/themes/marchebe/assets/images/home/fond2.jpg',
     '/wp-content/themes/marchebe/assets/images/home/fond3.jpg',
-    '/wp-content/themes/marchebe/assets/images/home/fond4.jpg',
+    '/wp-content/themes/marchebe/assets/images/home/fond42.jpg',
     '/wp-content/themes/marchebe/assets/images/home/fond5.jpg',
 ];
 
