@@ -6,86 +6,95 @@ namespace AcMarche\Theme;
 use AcMarche\Bottin\Bottin;
 use AcMarche\Bottin\Repository\BottinRepository;
 use AcMarche\Bottin\RouterBottin;
+use AcMarche\Common\Cache;
 use AcMarche\Theme\Lib\Twig;
 use AcMarche\Theme\Inc\Theme;
 
 get_header();
 
 global $wp_query;
+$cache  = Cache::instance();
+$blodId = get_current_blog_id();
+$slug   = $wp_query->get(RouterBottin::PARAM_BOTTIN_CATEGORY, null);
+$code   = 'category-bottin-'.$blodId.'-'.$slug;
 
-$bottinRepository = new BottinRepository();
+echo $cache->get(
+    $code,
+    function () use ($slug, $blodId) {
 
-$slug     = $wp_query->get(RouterBottin::PARAM_BOTTIN_CATEGORY, null);
-$category = null;
-if ($slug) {
-    $category = $bottinRepository->getCategoryBySlug($slug);
-}
+        $twig             = Twig::LoadTwig();
+        $bottinRepository = new BottinRepository();
 
-$blodId   = get_current_blog_id();
-$color    = Theme::getColorBlog($blodId);
-$blogName = Theme::getTitleBlog($blodId);
-$path     = Theme::getPathBlog($blodId);
+        $category = null;
+        if ($slug) {
+            $category = $bottinRepository->getCategoryBySlug($slug);
+        }
 
-if ( ! $category) {
-    Twig::rendPage(
-        'errors/404.html.twig',
-        [
-            'title'    => 'Page non trouvée',
-            'tags'     => [],
-            'color'    => $color,
-            'blogName' => $blogName,
-        ]
-    );
-    get_footer();
+        $color    = Theme::getColorBlog($blodId);
+        $blogName = Theme::getTitleBlog($blodId);
+        $path     = Theme::getPathBlog($blodId);
 
-    return;
-}
+        if ( ! $category) {
+            return $twig->render(
+                'errors/404.html.twig',
+                [
+                    'title'    => 'Page non trouvée',
+                    'tags'     => [],
+                    'color'    => $color,
+                    'blogName' => $blogName,
+                ]
+            );
+        }
 
-$description = $category->description;
-$title       = $category->name;
-$siteSlug    = Theme::getTitleBlog($blodId);
-$fiches      = $bottinRepository->getFichesByCategory($category->id);
-$children    = $bottinRepository->getCategories($category->id);
-$parent      = $bottinRepository->getCategory($category->parent_id);
-$urlBack     = $path;
-$nameBack    = $blogName;
-if ($parent) {
-    $nameBack = $parent->name;
-    $urlBack  = RouterBottin::getUrlCategoryBottin($parent);
-}
-array_map(
-    function ($child) {
-        $child->url = RouterBottin::getUrlCategoryBottin($child);
-    },
-    $children
+        $description = $category->description;
+        $title       = $category->name;
+        $siteSlug    = Theme::getTitleBlog($blodId);
+        $fiches      = $bottinRepository->getFichesByCategory($category->id);
+        $children    = $bottinRepository->getCategories($category->id);
+        $parent      = $bottinRepository->getCategory($category->parent_id);
+        $urlBack     = $path;
+        $nameBack    = $blogName;
+        if ($parent) {
+            $nameBack = $parent->name;
+            $urlBack  = RouterBottin::getUrlCategoryBottin($parent);
+        }
+        array_map(
+            function ($child) {
+                $child->url = RouterBottin::getUrlCategoryBottin($child);
+            },
+            $children
+        );
+
+        array_map(
+            function ($fiche) use ($bottinRepository) {
+                $fiche->post_title = $fiche->societe;
+                $fiche->excerpt    = Bottin::getExcerpt($fiche);
+                $fiche->url        = RouterBottin::getUrlFicheBottin($fiche);
+            },
+            $fiches
+        );
+
+        return $twig->render(
+
+            'category/index_bottin.html.twig',
+            [
+                'title'       => $title,
+                'description' => $description,
+                'children'    => $children,
+                'parent'      => $parent,
+                'posts'       => $fiches,
+                'category_id' => $category->id,
+                'site_slug'   => $siteSlug,
+                'color'       => $color,
+                'blogName'    => $blogName,
+                'urlBack'     => $urlBack,
+                'nameBack'    => $nameBack,
+                'category'    => $category,
+                'path'        => $path,
+                'subTitle'    => 'Tout',
+            ]
+        );
+    }
 );
 
-array_map(
-    function ($fiche) use ($bottinRepository) {
-        $fiche->post_title = $fiche->societe;
-        $fiche->excerpt    = Bottin::getExcerpt($fiche);
-        $fiche->url  = RouterBottin::getUrlFicheBottin($fiche);
-    },
-    $fiches
-);
-
-Twig::rendPage(
-    'category/index_bottin.html.twig',
-    [
-        'title'       => $title,
-        'description' => $description,
-        'children'    => $children,
-        'parent'      => $parent,
-        'posts'       => $fiches,
-        'category_id' => $category->id,
-        'site_slug'   => $siteSlug,
-        'color'       => $color,
-        'blogName'    => $blogName,
-        'urlBack'     => $urlBack,
-        'nameBack'    => $nameBack,
-        'category'    => $category,
-        'path'        => $path,
-        'subTitle'    => 'Tout',
-    ]
-);
 get_footer();
