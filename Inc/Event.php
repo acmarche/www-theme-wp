@@ -3,7 +3,6 @@
 
 namespace AcMarche\Theme\Inc;
 
-
 use AcMarche\Common\Cache;
 use AcMarche\Common\Mailer;
 use AcMarche\Elasticsearch\ElasticIndexer;
@@ -14,6 +13,7 @@ class Event
     public function __construct()
     {
         add_action('post_updated', [$this, 'postUpdated'], 10, 3);
+        add_action('edited_category', [$this, 'categoryUpdated'], 10, 3);
         add_action('save_post', [$this, 'postCreated'], 10, 3);
         //     add_action('deleted_post', [$this, 'postDeleted'], 10, 3);
     }
@@ -49,5 +49,13 @@ class Event
     {
         $elastic = new ElasticIndexer();
         $elastic->deletePost($post_ID, get_current_blog_id());
+    }
+
+    function categoryUpdated(int $category_id)
+    {
+        $cache  = Cache::instance();
+        $blodId = get_current_blog_id();
+        $code   = 'category-'.$blodId.'-'.$category_id;
+        $cache->delete($code);
     }
 }
