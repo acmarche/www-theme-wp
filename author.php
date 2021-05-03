@@ -2,10 +2,8 @@
 
 namespace AcMarche\Theme;
 
-use AcMarche\Common\Mailer;
-use AcMarche\Theme\Lib\Twig;
 use AcMarche\Theme\Inc\Theme;
-use Symfony\Component\HttpFoundation\Request;
+use AcMarche\Theme\Lib\Twig;
 
 get_header();
 
@@ -21,7 +19,4 @@ Twig::rendPage(
     ]
 );
 
-$request = Request::createFromGlobals();
-$url = $request->getUri();
-Mailer::sendError("Error page author.php", "url: $url");
 get_footer();
