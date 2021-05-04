@@ -120,7 +120,7 @@ function Events({
                             <i
                                 className="bg-img-size-hover-110"
                                 style={{
-                                    backgroundImage: `url(${object.medias[0].url})`,
+                                    backgroundImage: `url(${object.image})`,
                                     backgroundSize: 'cover',
                                     backgroundPosition: 'center'
                                 }}
