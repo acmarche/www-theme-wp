@@ -5,7 +5,7 @@ namespace AcMarche\Theme\Inc;
 
 use AcMarche\Bottin\Repository\BottinRepository;
 use AcMarche\Common\Mailer;
-use AcMarche\Elasticsearch\Searcher;
+use AcMarche\Theme\Lib\Elasticsearch\Searcher;
 use AcMarche\Pivot\Repository\HadesRepository;
 use AcMarche\Theme\Lib\WpRepository;
 use AcSort;
