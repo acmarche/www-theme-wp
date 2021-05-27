@@ -43,6 +43,20 @@ class ShortCodes
         add_shortcode('conseil_archive', [new ShortCodes(), 'conseilArchive']);
         add_shortcode('google_map', [new ShortCodes(), 'googleMap']);
         add_shortcode('menuDisplay', [new ShortCodes(), 'menuDisplay']);
+        add_shortcode('enquete_publique', [new ShortCodes(), 'enquetePublique']);
+    }
+
+    public function enquetePublique()
+    {
+        $content = file_get_contents('https://extranet.marche.be/enquete/api/');
+        $twig      = Twig::LoadTwig();
+        $enquetes = json_decode($content);
+        return $twig->render(
+            'enquete/_list.html.twig',
+            [
+                'enquetes' => $enquetes,
+            ]
+        );
     }
 
     public function conseilOrdre(): string

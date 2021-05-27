@@ -1,0 +1,25 @@
+<table class="table table-bordered">
+    <thead>
+    <tr>
+        <th>Catégorie</th>
+        <th>Demandeur</th>
+        <th>Adresse</th>
+        <th>Consultez</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for enquete in enquetes %}
+        <tr>
+            <td>{{ enquete.categorie }}</td>
+            <td>{{ enquete.demandeur }}</td>
+            <td>
+                {{ enquete.rue }} {{ enquete.numero }}
+                <br/> {{ enquete.localite }}
+            </td>
+            <td>
+                <a href="{{ enquete.avis }}">Consulter</a>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
