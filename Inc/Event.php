@@ -15,7 +15,7 @@ class Event
         add_action('post_updated', [$this, 'postUpdated'], 10, 3);
         add_action('edited_category', [$this, 'categoryUpdated'], 10, 3);
         add_action('save_post', [$this, 'postCreated'], 10, 3);
-        //     add_action('deleted_post', [$this, 'postDeleted'], 10, 3);
+        add_action('deleted_post', [$this, 'postDeleted'], 10, 3);
     }
 
     function postUpdated($post_ID, WP_Post $post_after, WP_Post $post_before)
@@ -48,7 +48,11 @@ class Event
     function postDeleted(int $post_ID, WP_Post $post)
     {
         $elastic = new ElasticIndexer();
-        $elastic->deletePost($post_ID, get_current_blog_id());
+        try {
+            $elastic->deletePost($post_ID, get_current_blog_id());
+        } catch (\Exception $exception) {
+            Mailer::sendError("delete post error", "document: ".$post->post_title.' => '.$exception->getMessage());
+        }
     }
 
     function categoryUpdated(int $category_id)

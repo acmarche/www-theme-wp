@@ -7,6 +7,7 @@ use AcMarche\Pivot\Repository\HadesRepository;
 use AcMarche\Theme\Inc\RouterMarche;
 use AcMarche\Theme\Inc\Theme;
 use AcMarche\Theme\Lib\Twig;
+use AcMarche\Theme\Lib\WpRepository;
 
 get_header();
 
@@ -49,7 +50,7 @@ echo $cache->get(
             $tags[] = ['name' => $category->getLib('fr'), 'url' => RouterMarche::getUrlEventCategory($category)];
         }
 
-        $currentCategory = RouterMarche::getCategoryAgenda();
+        $currentCategory = WpRepository::getCategoryAgenda();
         $offres          = $hadesRepository->getOffresSameCategories($event);
         $relations       = [];
         foreach ($offres as $item) {

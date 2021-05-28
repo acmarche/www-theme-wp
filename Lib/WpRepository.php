@@ -300,4 +300,26 @@ class WpRepository
 
         return $all;
     }
+
+    public static function getCategoryAgenda(): object
+    {
+        $currentBlog = get_current_blog_id();
+        switch_to_blog(Theme::TOURISME);
+        $categoryAgenda = get_category_by_slug('agenda-des-manifestations');
+
+        switch_to_blog($currentBlog);
+
+        return $categoryAgenda;
+    }
+
+    public static function getCategoryEnquete(): object
+    {
+        $currentBlog = get_current_blog_id();
+        switch_to_blog(Theme::ADMINISTRATION);
+        $category = get_category(61);
+
+        switch_to_blog($currentBlog);
+
+        return $category;
+    }
 }

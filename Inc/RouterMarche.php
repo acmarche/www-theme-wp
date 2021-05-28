@@ -20,11 +20,13 @@ class RouterMarche extends Router
     const PARAM_OFFRE = 'codeoffre';
     const OFFRE_URL = 'offre';
     const EVENT_URL = 'manifestation/';
+    const PARAM_ENQUETE = 'enquete';
 
     public function __construct()
     {
         $this->addRouteEvent();
         $this->addRouteOffre();
+        $this->addRouteEnquete();
         //add_action('init', [$this, 'custom_rewrite_tag'], 10, 0);
         //    $this->flushRoutes();
     }
@@ -137,6 +139,52 @@ class RouterMarche extends Router
         );
     }
 
+    public function addRouteEnquete()
+    {
+        //Setup a rule
+        add_action(
+            'init',
+            function () {
+                $taxonomy     = get_taxonomy('category');
+                $categoryBase = $taxonomy->rewrite['slug'];
+
+                //^= depart, $ fin string, + one or more, * zero or more, ? zero or one, () capture
+                // [^/]* => veut dire tout sauf /
+                //https://regex101.com/r/guhLuX/1
+                add_rewrite_rule(
+                    '^/administration/(?:([a-zA-Z0-9_-]+)/){1,3}enquete/(\d+)/?$',
+                    'index.php?cat=$matches[1]&'.self::PARAM_ENQUETE.'=$matches[2]',
+                    'top'
+                );
+            }
+        );
+        //Whitelist the query param
+        add_filter(
+            'query_vars',
+            function ($query_vars) {
+                $query_vars[] = self::PARAM_ENQUETE;
+
+                return $query_vars;
+            }
+        );
+        //Add a handler to send it off to a template file
+        add_action(
+            'template_include',
+            function ($template) {
+                global $wp_query;
+                if (is_admin() || ! $wp_query->is_main_query()) {
+                    return $template;
+                }
+                if (get_query_var(self::PARAM_ENQUETE) == false ||
+                    get_query_var(self::PARAM_ENQUETE) == '') {
+                    return $template;
+                }
+
+                return get_template_directory().'/single-enquete.php';
+            }
+        );
+    }
+
     public function custom_rewrite_tag()
     {
         add_rewrite_tag('%offre%', '([^&]+)');//utilite?
@@ -151,27 +199,4 @@ class RouterMarche extends Router
             $events
         );
     }
-
-    public static function getCategoryAgendaUrl(): string
-    {
-        $currentBlog = get_current_blog_id();
-        switch_to_blog(Theme::TOURISME);
-        $categoryAgenda = get_category_by_slug('agenda-des-manifestations');
-        $url            = get_category_link($categoryAgenda);
-        switch_to_blog($currentBlog);
-
-        return $url;
-    }
-
-    public static function getCategoryAgenda(): object
-    {
-        $currentBlog = get_current_blog_id();
-        switch_to_blog(Theme::TOURISME);
-        $categoryAgenda = get_category_by_slug('agenda-des-manifestations');
-
-        switch_to_blog($currentBlog);
-
-        return $categoryAgenda;
-    }
-
 }
