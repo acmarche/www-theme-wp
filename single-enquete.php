@@ -4,6 +4,7 @@
 namespace AcMarche\Theme;
 
 use AcMarche\Common\Cache;
+use AcMarche\Theme\Inc\RouterMarche;
 use AcMarche\Theme\Inc\Theme;
 use AcMarche\Theme\Lib\Twig;
 use AcMarche\Theme\Lib\WpRepository;
@@ -13,14 +14,17 @@ $cache  = Cache::instance();
 $blodId = get_current_blog_id();
 $code   = 'post-'.$blodId.'-'.$post->ID;
 get_header();
-
-$refresh = (bool)$_GET['refresh'] ?? null;
-if($refresh){
+global $wp_query;
+dump($wp_query);
+$enqueteId = $wp_query->get(RouterMarche::PARAM_ENQUETE, null);
+$refresh   = $wp_query->get('refresh', null);
+dump($enqueteId);
+if ($refresh) {
     $cache->delete($code);
 }
 
 echo $cache->get(
-    $code,
+    $code.time(),
     function () use ($post, $blodId) {
 
         $image = null;
@@ -39,7 +43,7 @@ echo $cache->get(
         $relations = WpRepository::getRelations($post->ID);
 
         $catSlug = get_query_var('category_name');
-
+dump($catSlug);
         if (preg_match("#/#", $catSlug)) {
             $vars    = explode("/", $catSlug);
             $catSlug = end($vars);

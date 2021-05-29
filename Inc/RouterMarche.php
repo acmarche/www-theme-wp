@@ -151,7 +151,7 @@ class RouterMarche extends Router
                 //'^/administration/(?:([a-zA-Z0-9_-]+)/){1,2}([a-zA-Z0-9_-]+)/zizi/(\d+)/?$',
                 add_rewrite_rule(
                     'publications-communales/enquetes-publiques-publications-communales/([a-zA-Z0-9_-]+)/zizi/(\d+)/?$',
-                    'index.php?cat=$matches[2]',
+                    'index.php?category_name=$matches[1]&'.self::PARAM_ENQUETE.'=$matches[2]',
                     'top'
                 );
             }

@@ -9,12 +9,14 @@ use AcMarche\Theme\Lib\Twig;
 use AcMarche\Theme\Lib\WpRepository;
 
 global $post;
+global $wp_query;
+
 $cache  = Cache::instance();
 $blodId = get_current_blog_id();
 $code   = 'post-'.$blodId.'-'.$post->ID;
 get_header();
 
-$refresh = (bool)$_GET['refresh'] ?? null;
+$refresh = $wp_query->get('refresh', null);
 if($refresh){
     $cache->delete($code);
 }
