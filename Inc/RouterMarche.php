@@ -150,8 +150,8 @@ class RouterMarche extends Router
                 //https://regex101.com/r/guhLuX/1
                 //'^/administration/(?:([a-zA-Z0-9_-]+)/){1,2}([a-zA-Z0-9_-]+)/zizi/(\d+)/?$',
                 add_rewrite_rule(
-                    'publications-communales/enquetes-publiques-publications-communales/enquetes-publiques-urbanisme-commune-de-marche-en-famenne/zizi/5',
-                    'index.php?cat=5',
+                    'publications-communales/enquetes-publiques-publications-communales/([a-zA-Z0-9_-]+)/zizi/(\d+)/?$',
+                    'index.php?cat=$matches[2]',
                     'top'
                 );
             }
