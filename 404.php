@@ -11,9 +11,10 @@ use Exception;
 
 get_header();
 global $wp_rewrite;
-dump($wp_rewrite);
+//dump($wp_rewrite);
+
 global $wp_query;
-dump($wp_query);
+//dump($wp_query);
 $queries      = $wp_query->query;
 $queryString  = join(' ', $queries);
 $queryString  = preg_replace("#-#", " ", $queryString);

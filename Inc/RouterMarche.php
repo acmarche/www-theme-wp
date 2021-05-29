@@ -20,15 +20,14 @@ class RouterMarche extends Router
     const PARAM_OFFRE = 'codeoffre';
     const OFFRE_URL = 'offre';
     const EVENT_URL = 'manifestation/';
-    const PARAM_ENQUETE = 'enquete';
+    const PARAM_ENQUETE = 'zizi';
 
     public function __construct()
     {
         $this->addRouteEvent();
-        $this->addRouteOffre();
+        //     $this->addRouteOffre();
         $this->addRouteEnquete();
-        //add_action('init', [$this, 'custom_rewrite_tag'], 10, 0);
-        //    $this->flushRoutes();
+      //  $this->flushRoutes();
     }
 
     public static function getUrlEventCategory(Categorie $categorie): string
@@ -55,7 +54,7 @@ class RouterMarche extends Router
 
     public function addRouteEvent()
     {
-          add_action(
+        add_action(
             'init',
             function () {
                 add_rewrite_rule(
@@ -77,7 +76,6 @@ class RouterMarche extends Router
             'template_include',
             function ($template) {
                 global $wp_query;
-                global $wp_rewrite;
                 if (is_admin() || ! $wp_query->is_main_query()) {
                     return $template;
                 }
@@ -106,7 +104,7 @@ class RouterMarche extends Router
                 //attention si pas sous categorie
                 //https://regex101.com/r/guhLuX/1
                 add_rewrite_rule(
-                    '^'.$categoryBase.'/([^/]*)/([^/]*)/([^/]*)/([^/]*)/?',
+                    'publications-communales/([^/]*)/([^/]*)/([^/]*)/([^/]*)/?',
                     'index.php?category_name=$matches[1]/$matches[2]&'.self::PARAM_OFFRE.'=$matches[4]',
                     'top'
                 );
@@ -147,13 +145,13 @@ class RouterMarche extends Router
             function () {
                 $taxonomy     = get_taxonomy('category');
                 $categoryBase = $taxonomy->rewrite['slug'];
-
                 //^= depart, $ fin string, + one or more, * zero or more, ? zero or one, () capture
                 // [^/]* => veut dire tout sauf /
                 //https://regex101.com/r/guhLuX/1
+                //'^/administration/(?:([a-zA-Z0-9_-]+)/){1,2}([a-zA-Z0-9_-]+)/zizi/(\d+)/?$',
                 add_rewrite_rule(
-                    '^/administration/(?:([a-zA-Z0-9_-]+)/){1,3}enquete/(\d+)/?$',
-                    'index.php?cat=$matches[1]&'.self::PARAM_ENQUETE.'=$matches[2]',
+                    'publications-communales/enquetes-publiques-publications-communales/enquetes-publiques-urbanisme-commune-de-marche-en-famenne/zizi/5',
+                    'index.php?cat=5',
                     'top'
                 );
             }
@@ -175,6 +173,7 @@ class RouterMarche extends Router
                 if (is_admin() || ! $wp_query->is_main_query()) {
                     return $template;
                 }
+
                 if (get_query_var(self::PARAM_ENQUETE) == false ||
                     get_query_var(self::PARAM_ENQUETE) == '') {
                     return $template;
