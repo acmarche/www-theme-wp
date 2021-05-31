@@ -158,7 +158,7 @@ class RouterMarche extends Router
                 //https://regex101.com/r/guhLuX/1
                 //'^/administration/(?:([a-zA-Z0-9_-]+)/){1,2}([a-zA-Z0-9_-]+)/num/(\d+)/?$',
                 add_rewrite_rule(
-                    'publications-communales/enquetes-publiques-publications-communales/([a-zA-Z0-9_-]+)/'.self::PARAM_ENQUETE.'/(\d+)/?$',
+                    'publications-communales/([a-zA-Z0-9_-]+)/'.self::PARAM_ENQUETE.'/(\d+)/?$',
                     'index.php?category_name=$matches[1]&'.self::PARAM_ENQUETE.'=$matches[2]',
                     'top'
                 );
