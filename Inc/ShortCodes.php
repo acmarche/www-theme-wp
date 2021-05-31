@@ -95,8 +95,12 @@ class ShortCodes
         $endYear   = date('Y') - 1;
         $conseilDb = new Conseil();
         $twig      = Twig::LoadTwig();
-        $txt       = '';
-        foreach (range(2013, $endYear) as $year) {
+
+        $years = range(2013, $endYear);
+        rsort($years, SORT_NUMERIC);
+
+        $txt = '';
+        foreach ($years as $year) {
             $pvs = $conseilDb->find_all_files($year);
             $txt .= $twig->render(
                 'conseil/_archive.html.twig',
