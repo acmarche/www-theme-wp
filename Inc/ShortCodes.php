@@ -50,7 +50,8 @@ class ShortCodes
     public function enquetePublique()
     {
         $enquetes = WpRepository::getEnquetesPubliques();
-        $twig      = Twig::LoadTwig();
+        $twig     = Twig::LoadTwig();
+
         return $twig->render(
             'enquete/_list.html.twig',
             [
@@ -75,7 +76,7 @@ class ShortCodes
 
     public function conseilPv(): string
     {
-        $year = date('Y');
+        $year      = date('Y');
         $conseilDb = new ConseilDb();
         $pvs       = $conseilDb->getByYearPvs($year);
         $twig      = Twig::LoadTwig();
@@ -83,18 +84,19 @@ class ShortCodes
         return $twig->render(
             'conseil/_pv.html.twig',
             [
-                'pvs' => $pvs,
-                'year'=>$year
+                'pvs'  => $pvs,
+                'year' => $year,
             ]
         );
     }
 
     public function conseilArchive(): string
     {
+        $endYear   = date('Y') - 1;
         $conseilDb = new Conseil();
         $twig      = Twig::LoadTwig();
         $txt       = '';
-        foreach (range(2013, 2018) as $year) {
+        foreach (range(2013, $endYear) as $year) {
             $pvs = $conseilDb->find_all_files($year);
             $txt .= $twig->render(
                 'conseil/_archive.html.twig',
