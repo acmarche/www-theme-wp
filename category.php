@@ -21,10 +21,11 @@ get_header();
 $cache->delete($code);
 $wpRepository = new WpRepository();
 $children     = $wpRepository->getChildrenOfCategory($cat_ID);
+$isReact      = count($children) > 0;
 
 echo $cache->get(
     $code,
-    function () use ($cat_ID, $wpRepository, $children) {
+    function () use ($cat_ID, $wpRepository, $children, $isReact) {
 
         $category    = get_category($cat_ID);
         $description = category_description($cat_ID);
@@ -74,12 +75,13 @@ echo $cache->get(
                 'urlBack'     => $urlBack,
                 'nameBack'    => $nameBack,
                 'sortLink'    => $sortLink,
+                'isReact'     => $isReact,
             ]
         );
     }
 );
 
-
+if ($isReact) {
     wp_enqueue_script(
         'react-app',
         get_template_directory_uri().'/assets/js/build/category.js',
@@ -87,6 +89,7 @@ echo $cache->get(
         wp_get_theme()->get('Version'),
         true
     );
+}
 
 
 get_footer();
