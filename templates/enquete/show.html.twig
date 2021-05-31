@@ -15,21 +15,22 @@
     {{ enquete.demandeur }}
 
     <p>
-        {{ enquete.categorie }}
-    </p>
-    <h4>Dates d'affichage</h4>
-    <p>
-        Du {{ enquete.date_debut | date('d-m-Y') }}
-        au {{ enquete.date_fin | date('d-m-Y') }}
+        {{ enquete.intitule }}
     </p>
 
-    <h4><strong>Adresse</strong></h4>
-    <p>
+    <h4>Dates d'affichage</h4>
+    <span>
+        Du {{ enquete.date_debut | date('d-m-Y') }}
+        au {{ enquete.date_fin | date('d-m-Y') }}
+    </span>
+
+    <h4><strong>Situation du projet</strong></h4>
+    <span>
         {{ enquete.rue }}
         {{ enquete.numero }} <br/>
         {{ enquete.code_postal }}
         {{ enquete.localite }}
-    </p>
+    </span>
 
     {{ enquete.description|raw }}
 

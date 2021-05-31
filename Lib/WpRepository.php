@@ -263,8 +263,8 @@ class WpRepository
             array_map(
                 function ($enquete) {
                     $enquete->ID         = $enquete->id;
-                    $enquete->excerpt    = $enquete->categorie;
-                    $enquete->post_excerpt    = $enquete->categorie;
+                    $enquete->excerpt    = $enquete->intitule;
+                    $enquete->post_excerpt    = $enquete->intitule;
                     $enquete->url        = RouterMarche::getUrlEnquete($enquete->id);
                     $enquete->post_title = $enquete->demandeur . ' à '.$enquete->localite;
                 },

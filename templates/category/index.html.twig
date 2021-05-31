@@ -22,7 +22,7 @@
              data-site-name="{{ blogName }}"
              data-category-title="{{ subTitle }}">
         </div>
-        {% if children|length > 0 %}
+        {% if children|length == 0 %}
         <noscript>
             {% endif %}
             <!--category-->
