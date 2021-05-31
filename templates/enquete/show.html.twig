@@ -18,12 +18,12 @@
         {{ enquete.intitule }}
     </p>
 
-    <h4>Dates d'affichage</h4>
+    <h4><strong>Dates d'affichage</strong></h4>
     <span>
         Du {{ enquete.date_debut | date('d-m-Y') }}
         au {{ enquete.date_fin | date('d-m-Y') }}
     </span>
-
+<p> </p>
     <h4><strong>Situation du projet</strong></h4>
     <span>
         {{ enquete.rue }}
@@ -39,19 +39,4 @@
     </p>
 
     {% include 'map/_carte.html.twig' %}
-{% endblock %}
-
-{% block scripts %}
-
-    <script type="text/javascript">
-        jQuery( document )
-            .ready( function() {
-                jQuery( '#content' )
-                    .lightGallery( {
-                            'selector': '.img-lightGallery'
-                        }
-                    );
-            } );
-    </script>
-
 {% endblock %}
