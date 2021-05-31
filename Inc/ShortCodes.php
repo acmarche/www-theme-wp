@@ -92,16 +92,46 @@ class ShortCodes
 
     public function conseilArchive(): string
     {
-        $endYear   = date('Y') - 1;
-        $conseilDb = new Conseil();
         $twig      = Twig::LoadTwig();
+        $conseilDb = new ConseilDb();
+        $endYear   = date('Y') - 1;
+        $txt       = '';
 
-        $years = range(2013, $endYear);
+        $years = range(2019, $endYear);
+        foreach ($years as $year) {
+            $pvs = $conseilDb->getByYearPvs($year);
+            array_map(
+                function ($pv) {
+                    $pv->name = $pv->nom;
+                    $pv->url  = '/wp-content/uploads/conseil/pv/'.$pv->file_name;
+                },
+                $pvs
+            );
+            $txt .= $twig->render(
+                'conseil/_archive.html.twig',
+                [
+                    'year' => $year,
+                    'pvs'  => $pvs,
+                ]
+            );
+        }
+
+        $txt .= $this->getArchiveByFiles();
+
+        return $txt;
+    }
+
+    private function getArchiveByFiles()
+    {
+        $twig    = Twig::LoadTwig();
+        $conseil = new Conseil();
+
+        $years = range(2013, 2018);
         rsort($years, SORT_NUMERIC);
 
         $txt = '';
         foreach ($years as $year) {
-            $pvs = $conseilDb->find_all_files($year);
+            $pvs = $conseil->find_all_files($year);
             $txt .= $twig->render(
                 'conseil/_archive.html.twig',
                 [
