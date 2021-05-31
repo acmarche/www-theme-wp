@@ -6,6 +6,7 @@ use AcMarche\Bottin\Bottin;
 use AcMarche\Bottin\Repository\BottinRepository;
 use AcMarche\Bottin\RouterBottin;
 use AcMarche\Common\SortUtil;
+use AcMarche\Theme\Inc\RouterMarche;
 use AcMarche\Theme\Inc\Theme;
 use AcSort;
 use BottinCategoryMetaBox;
@@ -255,6 +256,22 @@ class WpRepository
         );
 
         $all = array_merge($posts, $fiches);
+
+        if(get_current_blog_id() === Theme::ADMINISTRATION && ($catId == 61 OR $catId == 48)) {
+            $enquetes = self::getEnquetesPubliques();
+            array_map(
+                function ($enquete) {
+                    $enquete->ID    = $enquete->id;
+                    $enquete->excerpt    = $enquete->demandeur;
+                    $enquete->url        = RouterMarche::getUrlEnquete($enquete->id);
+                    $enquete->post_title = $enquete->categorie;
+
+                },
+                $enquetes
+            );
+            $all = array_merge($all, $enquetes);
+        }
+
         $all = SortUtil::sortPosts($all);
 
         return $all;
@@ -321,5 +338,13 @@ class WpRepository
         switch_to_blog($currentBlog);
 
         return $category;
+    }
+
+    public static function getEnquetesPubliques()
+    {
+        $content  = file_get_contents('https://extranet.marche.be/enquete/api/');
+        $enquetes = json_decode($content);
+
+        return $enquetes;
     }
 }

@@ -6,6 +6,7 @@ namespace AcMarche\Theme\Inc;
 use AcMarche\Common\Router;
 use AcMarche\Pivot\Entities\Categorie;
 use AcMarche\Pivot\Entities\OffreInterface;
+use AcMarche\Theme\Lib\WpRepository;
 
 /**
  * Ajouts des routes pour les articles virtuels du bottin et de l'agenda
@@ -20,14 +21,14 @@ class RouterMarche extends Router
     const PARAM_OFFRE = 'codeoffre';
     const OFFRE_URL = 'offre';
     const EVENT_URL = 'manifestation/';
-    const PARAM_ENQUETE = 'zizi';
+    const PARAM_ENQUETE = 'numenquete';
 
     public function __construct()
     {
         $this->addRouteEvent();
         //     $this->addRouteOffre();
         $this->addRouteEnquete();
-      //  $this->flushRoutes();
+       //   $this->flushRoutes();
     }
 
     public static function getUrlEventCategory(Categorie $categorie): string
@@ -89,6 +90,13 @@ class RouterMarche extends Router
         );
     }
 
+    public static function getUrlEnquete(int $id):string
+    {
+        $category = WpRepository::getCategoryEnquete();
+
+        return get_category_link($category).self::PARAM_ENQUETE.'/'.$id;
+    }
+
     public function addRouteOffre()
     {
         //Setup a rule
@@ -148,9 +156,9 @@ class RouterMarche extends Router
                 //^= depart, $ fin string, + one or more, * zero or more, ? zero or one, () capture
                 // [^/]* => veut dire tout sauf /
                 //https://regex101.com/r/guhLuX/1
-                //'^/administration/(?:([a-zA-Z0-9_-]+)/){1,2}([a-zA-Z0-9_-]+)/zizi/(\d+)/?$',
+                //'^/administration/(?:([a-zA-Z0-9_-]+)/){1,2}([a-zA-Z0-9_-]+)/num/(\d+)/?$',
                 add_rewrite_rule(
-                    'publications-communales/enquetes-publiques-publications-communales/([a-zA-Z0-9_-]+)/zizi/(\d+)/?$',
+                    'publications-communales/enquetes-publiques-publications-communales/([a-zA-Z0-9_-]+)/'.self::PARAM_ENQUETE.'/(\d+)/?$',
                     'index.php?category_name=$matches[1]&'.self::PARAM_ENQUETE.'=$matches[2]',
                     'top'
                 );

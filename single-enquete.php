@@ -43,7 +43,7 @@ echo $cache->get(
         $relations = WpRepository::getRelations($post->ID);
 
         $catSlug = get_query_var('category_name');
-dump($catSlug);
+
         if (preg_match("#/#", $catSlug)) {
             $vars    = explode("/", $catSlug);
             $catSlug = end($vars);

@@ -8,6 +8,7 @@ use AcMarche\Conseil\Conseil;
 use AcMarche\Conseil\ConseilDb;
 use AcMarche\Theme\Lib\Menu;
 use AcMarche\Theme\Lib\Twig;
+use AcMarche\Theme\Lib\WpRepository;
 use Symfony\Component\HttpClient\HttpClient;
 use Symfony\Contracts\HttpClient\Exception\ClientExceptionInterface;
 use Symfony\Contracts\HttpClient\Exception\RedirectionExceptionInterface;
@@ -48,9 +49,8 @@ class ShortCodes
 
     public function enquetePublique()
     {
-        $content = file_get_contents('https://extranet.marche.be/enquete/api/');
+        $enquetes = WpRepository::getEnquetesPubliques();
         $twig      = Twig::LoadTwig();
-        $enquetes = json_decode($content);
         return $twig->render(
             'enquete/_list.html.twig',
             [
