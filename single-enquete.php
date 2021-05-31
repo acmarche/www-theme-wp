@@ -47,8 +47,7 @@ echo $cache->get(
         $tags = [WpRepository::getCategoryEnquete()];
         array_map(
             function ($tag) {
-                $tag->name = $tag->demandeur . ' à '.$tag->localite;
-                $tag->url  = RouterMarche::getUrlEnquete($tag->id);
+                $tag->url  = get_category_link($tag->cat_ID);
             },
             $tags
         );
@@ -56,7 +55,7 @@ echo $cache->get(
         $relations = WpRepository::getEnquetesPubliques();
         array_map(
             function ($relation) {
-                $relation->name = $relation->demandeur . ' à '.$relation->localite;
+                $relation->title = $relation->demandeur . ' à '.$relation->localite;
                 $relation->url  = RouterMarche::getUrlEnquete($relation->id);
             },
             $relations

@@ -10,20 +10,32 @@
 
 {% block content %}
 
-<p>
+    <h4 class="mt-3"><strong>Demandeur</strong></h4>
 
-    <a href="{{ enquete.avis }}">Consulter</a>
+    {{ enquete.demandeur }}
 
-    {{ enquete.demandeur }} {{ enquete.categorie }}
-    {{ enquete.date_debut | date('d-m-Y') }}
-    {{ enquete.date_fin | date('d-m-Y') }}
-    {{ enquete.rue }}
-    {{ enquete.numero }}
-    {{ enquete.code_postal }}
-    {{ enquete.localite }}
+    <p>
+        {{ enquete.categorie }}
+    </p>
+    <h4>Dates d'affichage</h4>
+    <p>
+        Du {{ enquete.date_debut | date('d-m-Y') }}
+        au {{ enquete.date_fin | date('d-m-Y') }}
+    </p>
 
-</p>
-    {{ content|raw }}
+    <h4><strong>Adresse</strong></h4>
+    <p>
+        {{ enquete.rue }}
+        {{ enquete.numero }} <br/>
+        {{ enquete.code_postal }}
+        {{ enquete.localite }}
+    </p>
+
+    {{ enquete.description|raw }}
+
+    <p>
+        <a href="{{ enquete.avis }}">Consulter l'avis</a>
+    </p>
 
     {% include 'map/_carte.html.twig' %}
 {% endblock %}
