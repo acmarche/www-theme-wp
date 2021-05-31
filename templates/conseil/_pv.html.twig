@@ -1,8 +1,6 @@
-{% for pv in pvs %}
-    <h2>Les PV de {{ year }}</h2>
-    <ul class="list-group mb-2">
-        {% for pv in pvt %}
-            {% include 'conseil/_pv_line.html.twig' %}
-        {% endfor %}
-    </ul>
-{% endfor %}
+<h2>Les PV de {{ year }}</h2>
+<ul class="list-group mb-2">
+    {% for pv in pvs %}
+        {% include 'conseil/_pv_line.html.twig' %}
+    {% endfor %}
+</ul>
