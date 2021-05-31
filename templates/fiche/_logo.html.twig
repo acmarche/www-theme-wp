@@ -3,7 +3,7 @@
 <a href="{{ logo }}" class="img-lightGallery">
     {% endif %}
     <i {% if logo %}
-        style="background-image: url('{{ logo }}'); background-repeat: no-repeat;"
+        style="background-image: url('{{ logo }}'); background-repeat: no-repeat; background-size: contain;"
     {% endif %}
             class="{% if logo is empty %}bg-img-directory-1{% endif %} position-absolute top-0 bottom-0 left-0 right-0 md-left-15px md-right-15px lg-left-0 lg-right-0 col-7 d-none d-md-block">
     </i>
