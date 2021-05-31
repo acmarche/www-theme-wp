@@ -257,11 +257,11 @@ class WpRepository
 
         $all = array_merge($posts, $fiches);
 
-        if(get_current_blog_id() === Theme::ADMINISTRATION && ($catId == 61 OR $catId == 48)) {
+        if (get_current_blog_id() === Theme::ADMINISTRATION && ($catId == 61 or $catId == 48)) {
             $enquetes = self::getEnquetesPubliques();
             array_map(
                 function ($enquete) {
-                    $enquete->ID    = $enquete->id;
+                    $enquete->ID         = $enquete->id;
                     $enquete->excerpt    = $enquete->demandeur;
                     $enquete->url        = RouterMarche::getUrlEnquete($enquete->id);
                     $enquete->post_title = $enquete->categorie;
@@ -346,5 +346,17 @@ class WpRepository
         $enquetes = json_decode($content);
 
         return $enquetes;
+    }
+
+    public static function getEnquetePublique(int $enqueteId): ?\stdClass
+    {
+        $enquetes = self::getEnquetesPubliques();
+        foreach ($enquetes as $enquete) {
+            if ($enquete->id == $enqueteId) {
+                return $enquete;
+            }
+        }
+
+        return null;
     }
 }

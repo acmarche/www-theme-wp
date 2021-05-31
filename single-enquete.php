@@ -13,27 +13,37 @@ global $post;
 $cache  = Cache::instance();
 $blodId = get_current_blog_id();
 $code   = 'post-'.$blodId.'-'.$post->ID;
+
 get_header();
 global $wp_query;
-dump($wp_query);
+
 $enqueteId = $wp_query->get(RouterMarche::PARAM_ENQUETE, null);
 $refresh   = $wp_query->get('refresh', null);
-dump($enqueteId);
+
 if ($refresh) {
     $cache->delete($code);
 }
 
 echo $cache->get(
     $code.time(),
-    function () use ($post, $blodId) {
+    function () use ($post, $blodId, $enqueteId) {
+
+        $twig    = Twig::LoadTwig();
+        $enquete = WpRepository::getEnquetePublique($enqueteId);
+        if ( ! $enquete) {
+            return $twig->render(
+                'errors/404.html.twig',
+                [
+                    'title'     => 'Enquête non trouvée',
+                    'tags'      => [],
+                    'color'     => Theme::getColorBlog(Theme::TOURISME),
+                    'blogName'  => Theme::getTitleBlog(Theme::TOURISME),
+                    'relations' => [],
+                ]
+            );
+        }
 
         $image = null;
-        if (has_post_thumbnail()) {
-            $images = wp_get_attachment_image_src(get_post_thumbnail_id(), 'original');
-            if ($images) {
-                $image = $images[0];
-            }
-        }
 
         $path     = Theme::getPathBlog($blodId);
         $blogName = Theme::getTitleBlog($blodId);
@@ -42,51 +52,23 @@ echo $cache->get(
         $tags      = WpRepository::getTags($post->ID);
         $relations = WpRepository::getRelations($post->ID);
 
-        $catSlug = get_query_var('category_name');
-
-        if (preg_match("#/#", $catSlug)) {
-            $vars    = explode("/", $catSlug);
-            $catSlug = end($vars);
-        }
-
-        $urlBack  = '/';
-        $nameBack = '';
-
+        $catSlug         = get_query_var('category_name');
         $currentCategory = get_category_by_slug($catSlug);
-        if ($currentCategory) {
-            $urlBack  = get_category_link($currentCategory);
-            $nameBack = $currentCategory->name;
-        }
 
-        $isActu = array_filter(
-            $tags,
-            function ($tag) {
-                if (preg_match("#artistique#", $tag['name'])) {
-                    return $tag;
-                }
+        $urlBack  = get_category_link($currentCategory);
+        $nameBack = $currentCategory->name;
 
-                return null;
-            }
-        );
-
-        if (count($isActu) > 0) {
-            $urlBack  = $isActu[array_key_first($isActu)]['url'];
-            $nameBack = $isActu[array_key_first($isActu)]['name'];
-        }
-
-        $content = get_the_content(null, null, $post);
-        $content = apply_filters('the_content', $content);
-        $content = str_replace(']]>', ']]&gt;', $content);
+        $content = $enquete->description;
 
         $twig = Twig::LoadTwig();
 
         return $twig->render(
-            'article/show.html.twig',
+            'enquete/show.html.twig',
             [
-                'post'        => $post,
+                'enquete'     => $enquete,
                 'tags'        => $tags,
                 'image'       => $image,
-                'title'       => $post->post_title,
+                'title'       => $enquete->categorie,
                 'blogName'    => $blogName,
                 'color'       => $color,
                 'path'        => $path,
@@ -95,6 +77,8 @@ echo $cache->get(
                 'nameBack'    => $nameBack,
                 'content'     => $content,
                 'readspeaker' => true,
+                'latitude'    => $enquete->latitude,
+                'longitude'   => $enquete->longitude,
             ]
         );
     }
