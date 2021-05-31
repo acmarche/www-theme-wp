@@ -19,6 +19,11 @@ $slugFiche = $wp_query->get(RouterBottin::PARAM_BOTTIN_FICHE, null);
 $code      = 'bottin-fiche-'.$blodId.'-'.$slugFiche;
 
 get_header();
+$refresh   = $wp_query->get('refresh', null);
+
+if ($refresh) {
+    $cache->delete($code);
+}
 
 echo $cache->get(
     $code,
