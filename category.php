@@ -19,11 +19,12 @@ $code   = 'category-'.$blodId.'-'.$cat_ID;
 get_header();
 
 $cache->delete($code);
+$wpRepository = new WpRepository();
+$children     = $wpRepository->getChildrenOfCategory($cat_ID);
 
 echo $cache->get(
-    $code,
-    function () use ($cat_ID) {
-        $wpRepository = new WpRepository();
+    $code.time(),
+    function () use ($cat_ID, $wpRepository, $children) {
 
         $category    = get_category($cat_ID);
         $description = category_description($cat_ID);
@@ -35,7 +36,6 @@ echo $cache->get(
         $color    = Theme::getColorBlog($blodId);
         $blogName = Theme::getTitleBlog($blodId);
 
-        $children = $wpRepository->getChildrenOfCategory($cat_ID);
         $posts    = $wpRepository->getPostsAndFiches($cat_ID);
         $parent   = $wpRepository->getParentCategory($cat_ID);
         $urlBack  = $path;
@@ -79,12 +79,14 @@ echo $cache->get(
     }
 );
 
-wp_enqueue_script(
-    'react-app',
-    get_template_directory_uri().'/assets/js/build/category.js',
-    array('wp-element'),
-    wp_get_theme()->get('Version'),
-    true
-);
+if (count($children) > 0) {
+    wp_enqueue_script(
+        'react-app',
+        get_template_directory_uri().'/assets/js/build/category.js',
+        array('wp-element'),
+        wp_get_theme()->get('Version'),
+        true
+    );
+}
 
 get_footer();

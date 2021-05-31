@@ -249,6 +249,7 @@ class WpRepository
             function ($fiche) {
                 $fiche->fiche      = true;
                 $fiche->excerpt    = Bottin::getExcerpt($fiche);
+                $fiche->post_excerpt    = Bottin::getExcerpt($fiche);
                 $fiche->url        = RouterBottin::getUrlFicheBottin($fiche);
                 $fiche->post_title = $fiche->societe;
             },
@@ -257,15 +258,15 @@ class WpRepository
 
         $all = array_merge($posts, $fiches);
 
-        if (get_current_blog_id() === Theme::ADMINISTRATION && ($catId == 61 or $catId == 48)) {
+        if (get_current_blog_id() === Theme::ADMINISTRATION && ($catId == 61 || $catId == 48)) {
             $enquetes = self::getEnquetesPubliques();
             array_map(
                 function ($enquete) {
                     $enquete->ID         = $enquete->id;
-                    $enquete->excerpt    = $enquete->demandeur;
+                    $enquete->excerpt    = $enquete->categorie;
+                    $enquete->post_excerpt    = $enquete->categorie;
                     $enquete->url        = RouterMarche::getUrlEnquete($enquete->id);
-                    $enquete->post_title = $enquete->categorie;
-
+                    $enquete->post_title = $enquete->demandeur . ' à '.$enquete->localite;
                 },
                 $enquetes
             );

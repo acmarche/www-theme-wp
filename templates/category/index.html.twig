@@ -22,7 +22,9 @@
              data-site-name="{{ blogName }}"
              data-category-title="{{ subTitle }}">
         </div>
+        {% if children|length > 0 %}
         <noscript>
+            {% endif %}
             <!--category-->
             <span class="{{ color }} ff-semibold pt-12px d-block fs-short-2">{{ blogName|title }}</span>
 
@@ -34,7 +36,9 @@
 
             <!--results-->
             {% include 'category/_articles.html.twig' %}
+            {% if children|length > 0 %}
         </noscript>
+        {% endif %}
     </div>
 
 </section>
