@@ -23,7 +23,7 @@ $wpRepository = new WpRepository();
 $children     = $wpRepository->getChildrenOfCategory($cat_ID);
 
 echo $cache->get(
-    $code.time(),
+    $code,
     function () use ($cat_ID, $wpRepository, $children) {
 
         $category    = get_category($cat_ID);
