@@ -18,6 +18,7 @@ get_header();
 
 $refresh = $wp_query->get('refresh', null);
 if($refresh){
+    dump($refresh);
     $cache->delete($code);
 }
 
