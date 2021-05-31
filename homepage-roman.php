@@ -21,19 +21,16 @@ $title       = single_cat_title('', false);
 $blodId   = get_current_blog_id();
 $path     = Theme::getPathBlog($blodId);
 $siteSlug = Theme::getTitleBlog($blodId);
-$color    = Theme::getColorBlog($blodId);
 $blogName = Theme::getTitleBlog($blodId);
 
 $urlBack  = '/';
 $nameBack = 'l\'accueil';
 
 $wpRepository = new WpRepository();
-$page         = get_queried_object();
 $news         = $wpRepository->getPostsByCategory(258, get_current_blog_id());
 
 $blodId = get_current_blog_id();
 $color  = Theme::getColorBlog($blodId);
-$posts  = $wpRepository->getPostsAndFiches(6);
 
 $menu  = new Menu();
 $items = $menu->getItems(get_current_blog_id());
