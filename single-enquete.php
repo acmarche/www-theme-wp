@@ -18,11 +18,8 @@ get_header();
 global $wp_query;
 
 $enqueteId = $wp_query->get(RouterMarche::PARAM_ENQUETE, null);
-$refresh   = $wp_query->get('refresh', null);
 
-if ($refresh) {
-    $cache->delete($code);
-}
+$cache->delete($code);
 
 echo $cache->get(
     $code.time(),

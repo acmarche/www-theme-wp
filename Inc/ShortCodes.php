@@ -98,12 +98,16 @@ class ShortCodes
         $txt       = '';
 
         $years = range(2019, $endYear);
+        rsort($years, SORT_NUMERIC);
+
         foreach ($years as $year) {
             $pvs = $conseilDb->getByYearPvs($year);
-            array_map(
+            $pvs = array_map(
                 function ($pv) {
-                    $pv->name = $pv->nom;
-                    $pv->url  = '/wp-content/uploads/conseil/pv/'.$pv->file_name;
+                    $pv['name'] = $pv['nom'];
+                    $pv['url']  = '/wp-content/uploads/conseil/pv/'.$pv['file_name'];
+
+                    return $pv;
                 },
                 $pvs
             );

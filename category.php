@@ -11,7 +11,6 @@ use AcSort;
 use SortLink;
 
 get_header();
-global $wp_query;
 
 $cat_ID = get_queried_object_id();
 $cache  = Cache::instance();
@@ -19,10 +18,7 @@ $blodId = get_current_blog_id();
 $code   = 'category-'.$blodId.'-'.$cat_ID;
 get_header();
 
-$refresh = $wp_query->get('refresh', null);
-if($refresh){
-    $cache->delete($code);
-}
+$cache->delete($code);
 
 echo $cache->get(
     $code,
