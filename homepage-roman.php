@@ -2,6 +2,7 @@
 /**
  * Template Name: Home-Page-Roman
  */
+
 namespace AcMarche\Theme;
 
 use AcMarche\Theme\Inc\Theme;
@@ -11,13 +12,28 @@ use AcMarche\Theme\Lib\WpRepository;
 
 
 get_header();
-$wpRepository = new WpRepository();
-$page = get_queried_object();
-$news = $wpRepository->getPostsByCategory(258, get_current_blog_id());
+
+$cat_ID      = get_queried_object_id();
+$category    = get_category($cat_ID);
+$description = category_description($cat_ID);
+$title       = single_cat_title('', false);
 
 $blodId   = get_current_blog_id();
+$path     = Theme::getPathBlog($blodId);
+$siteSlug = Theme::getTitleBlog($blodId);
 $color    = Theme::getColorBlog($blodId);
-$posts    = $wpRepository->getPostsAndFiches(6);
+$blogName = Theme::getTitleBlog($blodId);
+
+$urlBack  = '/';
+$nameBack = 'l\'accueil';
+
+$wpRepository = new WpRepository();
+$page         = get_queried_object();
+$news         = $wpRepository->getPostsByCategory(258, get_current_blog_id());
+
+$blodId = get_current_blog_id();
+$color  = Theme::getColorBlog($blodId);
+$posts  = $wpRepository->getPostsAndFiches(6);
 
 $menu  = new Menu();
 $items = $menu->getItems(get_current_blog_id());
@@ -32,12 +48,20 @@ unset($items[0]);//remove accueil
 Twig::rendPage(
     'roman/index.html.twig',
     [
-        'actus'       => $news,
-        'title'       => $page->post_title,
+        'title'       => $title,
+        'category'    => $category,
+        'siteSlug'    => $siteSlug,
         'color'       => $color,
+        'blogName'    => $blogName,
+        'path'        => $path,
+        'subTitle'    => 'Tout',
+        'description' => $description,
         'children'    => $items,
-        'description' => $page->post_content,
-        'posts'       => $posts,
+        'category_id' => $cat_ID,
+        'urlBack'     => $urlBack,
+        'nameBack'    => $nameBack,
+        'posts'       => [],
+        'actus'       => $news,
     ]
 );
 
