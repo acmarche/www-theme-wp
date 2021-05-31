@@ -75,14 +75,16 @@ class ShortCodes
 
     public function conseilPv(): string
     {
+        $year = date('Y');
         $conseilDb = new ConseilDb();
-        $pvs       = $conseilDb->getCurrentYearPvs();
+        $pvs       = $conseilDb->getByYearPvs($year);
         $twig      = Twig::LoadTwig();
 
         return $twig->render(
             'conseil/_pv.html.twig',
             [
                 'pvs' => $pvs,
+                'year'=>$year
             ]
         );
     }
