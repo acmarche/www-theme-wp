@@ -79,7 +79,7 @@ echo $cache->get(
     }
 );
 
-if (count($children) > 0) {
+
     wp_enqueue_script(
         'react-app',
         get_template_directory_uri().'/assets/js/build/category.js',
@@ -87,6 +87,6 @@ if (count($children) > 0) {
         wp_get_theme()->get('Version'),
         true
     );
-}
+
 
 get_footer();
