@@ -15,8 +15,7 @@ get_header();
 
 $cat_ID      = get_queried_object_id();
 $category    = get_category($cat_ID);
-$description = category_description($cat_ID);
-$title       = single_cat_title('', false);
+
 global $post;
 
 $blodId   = get_current_blog_id();
@@ -51,14 +50,13 @@ Twig::rendPage(
     'roman/index.html.twig',
     [
         'title'       => '2eRoman',
-        'content'     => $content,
+        'description' => $content,
         'category'    => $category,
         'siteSlug'    => $siteSlug,
         'color'       => $color,
         'blogName'    => $blogName,
         'path'        => $path,
         'subTitle'    => 'Tout',
-        'description' => $description,
         'children'    => $items,
         'category_id' => $cat_ID,
         'urlBack'     => $urlBack,
