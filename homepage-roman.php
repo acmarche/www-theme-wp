@@ -17,6 +17,7 @@ $cat_ID      = get_queried_object_id();
 $category    = get_category($cat_ID);
 $description = category_description($cat_ID);
 $title       = single_cat_title('', false);
+global $post;
 
 $blodId   = get_current_blog_id();
 $path     = Theme::getPathBlog($blodId);
@@ -42,10 +43,15 @@ array_map(
 );
 unset($items[0]);//remove accueil
 
+$content = get_the_content(null, null, $post);
+$content = apply_filters('the_content', $content);
+$content = str_replace(']]>', ']]&gt;', $content);
+
 Twig::rendPage(
     'roman/index.html.twig',
     [
-        'title'       => $title,
+        'title'       => '2eRoman',
+        'content'     => $content,
         'category'    => $category,
         'siteSlug'    => $siteSlug,
         'color'       => $color,
