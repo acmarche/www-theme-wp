@@ -76,7 +76,7 @@ class ShortCodes
     public function conseilPv(): string
     {
         $conseilDb = new ConseilDb();
-        $pvs       = $conseilDb->getAllPvs();
+        $pvs       = $conseilDb->getCurrentYearPvs();
         $twig      = Twig::LoadTwig();
 
         return $twig->render(
