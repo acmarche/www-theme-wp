@@ -9,21 +9,19 @@ use AcMarche\Theme\Inc\Theme;
 use AcMarche\Theme\Lib\Twig;
 use AcMarche\Theme\Lib\WpRepository;
 
-global $post;
-$cache  = Cache::instance();
-$blodId = get_current_blog_id();
-$code   = 'post-'.$blodId.'-'.$post->ID;
+global $wp_query;
+$cache     = Cache::instance();
+$blodId    = get_current_blog_id();
+$enqueteId = $wp_query->get(RouterMarche::PARAM_ENQUETE, null);
+$code      = 'enquete-'.$blodId.'-'.$enqueteId;
 
 get_header();
-global $wp_query;
-
-$enqueteId = $wp_query->get(RouterMarche::PARAM_ENQUETE, null);
 
 $cache->delete($code);
 
 echo $cache->get(
     $code.time(),
-    function () use ($post, $blodId, $enqueteId) {
+    function () use ($blodId, $enqueteId) {
 
         $twig    = Twig::LoadTwig();
         $enquete = WpRepository::getEnquetePublique($enqueteId);
@@ -46,8 +44,23 @@ echo $cache->get(
         $blogName = Theme::getTitleBlog($blodId);
         $color    = Theme::getColorBlog($blodId);
 
-        $tags      = WpRepository::getTags($post->ID);
-        $relations = WpRepository::getRelations($post->ID);
+        $tags = [WpRepository::getCategoryEnquete()];
+        array_map(
+            function ($tag) {
+                $tag->name = $tag->demandeur . ' à '.$tag->localite;
+                $tag->url  = RouterMarche::getUrlEnquete($tag->id);
+            },
+            $tags
+        );
+
+        $relations = WpRepository::getEnquetesPubliques();
+        array_map(
+            function ($relation) {
+                $relation->name = $relation->demandeur . ' à '.$relation->localite;
+                $relation->url  = RouterMarche::getUrlEnquete($relation->id);
+            },
+            $relations
+        );
 
         $catSlug         = get_query_var('category_name');
         $currentCategory = get_category_by_slug($catSlug);
