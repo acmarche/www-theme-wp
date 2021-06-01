@@ -110,7 +110,8 @@ class ElasticData
         if (get_current_blog_id() == Theme::ADMINISTRATION) {
             if ($categoryId == Theme::ENQUETE_DIRECTORY) {
                 foreach (WpRepository::getEnquetesPubliques() as $enquete) {
-                    $content .= $enquete->categorie.' '.$enquete->intitule.' '.$enquete->demandeur.' à '.$enquete->localite.' '.$enquete->description.' ';
+                    $document = $this->createDocumentElasticFromEnquete($enquete);
+                    $content .= $document->name.' '.$document->excerpt.' '.$document->content;
                 }
             }
         }
