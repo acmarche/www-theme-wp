@@ -183,6 +183,7 @@ class ElasticIndexer
 
     public function indexEnquetes()
     {
+        switch_to_blog(Theme::ADMINISTRATION);
         foreach ($this->elasticData->getEnquetesDocumentElastic() as $documentElastic) {
             $content = $this->serializer->serialize($documentElastic, 'json');
             $id      = 'enquete_'.$documentElastic->id;
