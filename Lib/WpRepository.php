@@ -247,11 +247,11 @@ class WpRepository
 
         array_map(
             function ($fiche) {
-                $fiche->fiche      = true;
-                $fiche->excerpt    = Bottin::getExcerpt($fiche);
-                $fiche->post_excerpt    = Bottin::getExcerpt($fiche);
-                $fiche->url        = RouterBottin::getUrlFicheBottin($fiche);
-                $fiche->post_title = $fiche->societe;
+                $fiche->fiche        = true;
+                $fiche->excerpt      = Bottin::getExcerpt($fiche);
+                $fiche->post_excerpt = Bottin::getExcerpt($fiche);
+                $fiche->url          = RouterBottin::getUrlFicheBottin($fiche);
+                $fiche->post_title   = $fiche->societe;
             },
             $fiches
         );
@@ -262,11 +262,15 @@ class WpRepository
             $enquetes = self::getEnquetesPubliques();
             array_map(
                 function ($enquete) {
-                    $enquete->ID         = $enquete->id;
-                    $enquete->excerpt    = $enquete->intitule;
-                    $enquete->post_excerpt    = $enquete->intitule. '<br /> Du ' .$enquete->date_debut.' au '.$enquete->date_fin;
-                    $enquete->url        = RouterMarche::getUrlEnquete($enquete->id);
-                    $enquete->post_title = $enquete->demandeur . ' à '.$enquete->localite;
+                    list($yearD, $monthD, $dayD) = explode('-', $enquete->date_debut);
+                    $dateDebut = $dayD.'-'.$monthD.'-'.$yearD;
+                    list($yearF, $monthF, $dayF) = explode('-', $enquete->date_fin);
+                    $dateFin               = $dayF.'-'.$monthF.'-'.$yearF;
+                    $enquete->ID           = $enquete->id;
+                    $enquete->excerpt      = $enquete->intitule;
+                    $enquete->post_excerpt = $enquete->intitule.'<br /> Du '.$dateDebut.' au '.$dateFin;
+                    $enquete->url          = RouterMarche::getUrlEnquete($enquete->id);
+                    $enquete->post_title   = $enquete->demandeur.' à '.$enquete->localite;
                 },
                 $enquetes
             );
