@@ -44,6 +44,7 @@ class Theme
     const PAGE_ALERT = 5087;
     const PAGE_CARTO = 20644;//tourisme
     const ENQUETE_DIRECTORY = 61;
+    const PUBLICATIOCOMMUNAL_CATEGORY = 15;
 
     static function isHomePage(): bool
     {
