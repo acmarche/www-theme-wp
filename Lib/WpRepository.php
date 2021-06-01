@@ -258,7 +258,7 @@ class WpRepository
 
         $all = array_merge($posts, $fiches);
 
-        if (get_current_blog_id() === Theme::ADMINISTRATION && ($catId == 61 || $catId == 48)) {
+        if (get_current_blog_id() === Theme::ADMINISTRATION && ($catId == Theme::ENQUETE_DIRECTORY || $catId == 48)) {
             $enquetes = self::getEnquetesPubliques();
             array_map(
                 function ($enquete) {
@@ -334,7 +334,7 @@ class WpRepository
     {
         $currentBlog = get_current_blog_id();
         switch_to_blog(Theme::ADMINISTRATION);
-        $category = get_category(61);
+        $category = get_category(Theme::ENQUETE_DIRECTORY);
 
         switch_to_blog($currentBlog);
 

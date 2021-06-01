@@ -7,6 +7,7 @@ use AcMarche\Theme\Lib\Elasticsearch\Data\DocumentElastic;
 use AcMarche\Theme\Lib\Elasticsearch\Data\ElasticData;
 use AcMarche\Theme\Inc\Theme;
 use Elastica\Document;
+use Elastica\Response;
 use Symfony\Component\Console\Style\SymfonyStyle;
 use Symfony\Component\Serializer\SerializerInterface;
 use WP_Post;
@@ -64,7 +65,12 @@ class ElasticIndexer
             if ($this->outPut) {
                 $this->outPut->writeln($post->name);
             }
-            $this->addPost($documentElactic, $siteId);
+            $response = $this->addPost($documentElactic, $siteId);
+            if ($response->hasError()) {
+                if ($this->outPut) {
+                    $this->outPut->writeln('Erreur lors de l\'indexation: '.$response->getErrorMessage());
+                }
+            }
         }
     }
 
@@ -75,16 +81,22 @@ class ElasticIndexer
             if ($this->outPut) {
                 $this->outPut->writeln($post->name);
             }
-            $this->addPost($post, Theme::ADMINISTRATION);
+            $response = $this->addPost($post, Theme::ADMINISTRATION);
+            if ($response->hasError()) {
+                if ($this->outPut) {
+                    $this->outPut->writeln('Erreur lors de l\'indexation: '.$response->getErrorMessage());
+                }
+            }
         }
     }
 
-    public function addPost(DocumentElastic $documentElastic, int $blogId)
+    public function addPost(DocumentElastic $documentElastic, int $blogId): Response
     {
         $content = $this->serializer->serialize($documentElastic, 'json');
         $id      = $this->createIdPost($documentElastic->id, $blogId);
         $doc     = new Document($id, $content);
-        $this->index->addDocument($doc);
+
+        return $this->index->addDocument($doc);
     }
 
     public function deletePost(int $postId, int $siteId)
@@ -121,10 +133,15 @@ class ElasticIndexer
 
     private function addCategory(DocumentElastic $documentElastic, int $blodId)
     {
-        $content = $this->serializer->serialize($documentElastic, 'json');
-        $id      = 'category_'.$blodId.'_'.$documentElastic->id;
-        $doc     = new Document($id, $content);
-        $this->index->addDocument($doc);
+        $content  = $this->serializer->serialize($documentElastic, 'json');
+        $id       = 'category_'.$blodId.'_'.$documentElastic->id;
+        $doc      = new Document($id, $content);
+        $response = $this->index->addDocument($doc);
+        if ($response->hasError()) {
+            if ($this->outPut) {
+                $this->outPut->writeln('Erreur lors de l\'indexation: '.$response->getErrorMessage());
+            }
+        }
     }
 
     public function indexAllBottin()
@@ -137,12 +154,15 @@ class ElasticIndexer
     {
         $categories = $this->elasticData->getAllCategoriesBottin();
         foreach ($categories as $documentElastic) {
-            $content = $this->serializer->serialize($documentElastic, 'json');
-            $id      = 'fiche_'.$documentElastic->id;
-            $doc     = new Document($id, $content);
-            $this->index->addDocument($doc);
+            $content  = $this->serializer->serialize($documentElastic, 'json');
+            $id       = 'fiche_'.$documentElastic->id;
+            $doc      = new Document($id, $content);
+            $response = $this->index->addDocument($doc);
             if ($this->outPut) {
                 $this->outPut->writeln($documentElastic->name);
+                if ($response->hasError()) {
+                    $this->outPut->writeln('Erreur lors de l\'indexation: '.$response->getErrorMessage());
+                }
             }
         }
     }
@@ -153,6 +173,19 @@ class ElasticIndexer
         foreach ($fiches as $documentElastic) {
             $content = $this->serializer->serialize($documentElastic, 'json');
             $id      = 'fiche_'.$documentElastic->id;
+            $doc     = new Document($id, $content);
+            $this->index->addDocument($doc);
+            if ($this->outPut) {
+                $this->outPut->writeln($documentElastic->name);
+            }
+        }
+    }
+
+    public function indexEnquetes()
+    {
+        foreach ($this->elasticData->getEnquetesDocumentElastic() as $documentElastic) {
+            $content = $this->serializer->serialize($documentElastic, 'json');
+            $id      = 'enquete_'.$documentElastic->id;
             $doc     = new Document($id, $content);
             $this->index->addDocument($doc);
             if ($this->outPut) {

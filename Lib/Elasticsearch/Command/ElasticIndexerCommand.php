@@ -22,7 +22,7 @@ class ElasticIndexerCommand extends Command
     protected function configure()
     {
         $this
-            ->setDescription('Mise à jour des données [all, posts, categories, bottin]')
+            ->setDescription('Mise à jour des données [all, posts, categories, bottin, enquetes]')
             ->addArgument('action', InputArgument::REQUIRED, 'all, posts, categories, bottin');
     }
 
@@ -46,6 +46,10 @@ class ElasticIndexerCommand extends Command
                 $this->io->section("BOTTIN");
                 $elastic->indexAllBottin();
                 break;
+            case 'enquetes':
+                $this->io->section("ENQUETES");
+                $elastic->indexEnquetes();
+                break;
             case 'all':
                 $this->io->section("POSTS");
                 $elastic->indexAllPosts();
@@ -54,6 +58,8 @@ class ElasticIndexerCommand extends Command
                 $elastic->indexAllCategories();
                 $this->io->section("BOTTIN");
                 $elastic->indexAllBottin();
+                $this->io->section("ENQUETES");
+                $elastic->indexEnquetes();
         }
 
         return Command::SUCCESS;

@@ -6,6 +6,7 @@ use AcMarche\Bottin\Bottin;
 use AcMarche\Bottin\Repository\BottinRepository;
 use AcMarche\Bottin\RouterBottin;
 use AcMarche\Common\Mailer;
+use AcMarche\Theme\Inc\RouterMarche;
 use AcMarche\Theme\Inc\Theme;
 use AcMarche\Theme\Lib\WpRepository;
 use BottinCategoryMetaBox;
@@ -76,6 +77,7 @@ class ElasticData
             }
 
             $content .= $this->getContentFiches($category);
+            $content .= $this->getContentEnquetes($category->cat_ID);
 
             $children = $this->wpRepository->getChildrenOfCategory($category->cat_ID);
             $tags     = [];
@@ -100,6 +102,33 @@ class ElasticData
         }
 
         return $datas;
+    }
+
+    public function getContentEnquetes(int $categoryId): string
+    {
+        $content = '';
+        if (get_current_blog_id() == Theme::ADMINISTRATION) {
+            if ($categoryId == Theme::ENQUETE_DIRECTORY) {
+                foreach (WpRepository::getEnquetesPubliques() as $enquete) {
+                    $content .= $enquete->categorie.' '.$enquete->intitule.' '.$enquete->demandeur.' à '.$enquete->localite.' '.$enquete->description.' ';
+                }
+            }
+        }
+
+        return $content;
+    }
+
+    /**
+     * @return array|DocumentElastic[]
+     */
+    public function getEnquetesDocumentElastic(): array
+    {
+        $data = [];
+        foreach (WpRepository::getEnquetesPubliques() as $enquete) {
+            $data[] = $this->createDocumentElasticFromEnquete($enquete);
+        }
+
+        return $data;
     }
 
     /**
@@ -279,5 +308,26 @@ class ElasticData
         }
 
         return $categories;
+    }
+
+    private function createDocumentElasticFromEnquete(\stdClass $enquete): DocumentElastic
+    {
+        $categorieEnqueteNom = '';
+        if ($categorieEnquete = WpRepository::getCategoryEnquete()) {
+            $categorieEnqueteNom = $categorieEnquete->name;
+        }
+
+        $content = $categorieEnqueteNom.' '.$enquete->intitule.' '.$enquete->demandeur.' à '.$enquete->localite.' '.$enquete->description;
+
+        $document          = new DocumentElastic();
+        $document->id      = $enquete->id;
+        $document->name    = $enquete->intitule;
+        $document->excerpt = $enquete->demandeur.' à '.$enquete->localite;
+        $document->content = $content;
+        $document->tags    = [];//todo
+        $document->date    = $enquete->date_debut;
+        $document->url     = RouterMarche::getUrlEnquete($enquete->id);
+
+        return $document;
     }
 }
