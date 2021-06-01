@@ -267,7 +267,7 @@ class WpRepository
                     list($yearF, $monthF, $dayF) = explode('-', $enquete->date_fin);
                     $dateFin               = $dayF.'-'.$monthF.'-'.$yearF;
                     $enquete->ID           = $enquete->id;
-                    $enquete->excerpt      = $enquete->intitule;
+                    $enquete->excerpt      = $enquete->intitule.'<br /> Du '.$dateDebut.' au '.$dateFin;
                     $enquete->post_excerpt = $enquete->intitule.'<br /> Du '.$dateDebut.' au '.$dateFin;
                     $enquete->url          = RouterMarche::getUrlEnquete($enquete->id);
                     $enquete->post_title   = $enquete->demandeur.' à '.$enquete->localite;
