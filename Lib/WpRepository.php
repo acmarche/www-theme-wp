@@ -264,7 +264,7 @@ class WpRepository
                 function ($enquete) {
                     $enquete->ID         = $enquete->id;
                     $enquete->excerpt    = $enquete->intitule;
-                    $enquete->post_excerpt    = $enquete->intitule. '<br /> du ' .$enquete->date_debut.' au '.$enquete->date_fin;
+                    $enquete->post_excerpt    = $enquete->intitule. '<br /> Du ' .$enquete->date_debut.' au '.$enquete->date_fin;
                     $enquete->url        = RouterMarche::getUrlEnquete($enquete->id);
                     $enquete->post_title = $enquete->demandeur . ' à '.$enquete->localite;
                 },
