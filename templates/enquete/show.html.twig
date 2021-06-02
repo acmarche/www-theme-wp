@@ -23,7 +23,7 @@
         Du {{ enquete.date_debut | date('d-m-Y') }}
         au {{ enquete.date_fin | date('d-m-Y') }}
     </span>
-<p> </p>
+    <p></p>
     <h4><strong>Situation du projet</strong></h4>
     <span>
         {{ enquete.rue }}
@@ -36,6 +36,31 @@
 
     <p>
         <a href="{{ enquete.avis }}">Consulter l'avis</a>
+    </p>
+
+    <p class="text-muted">
+        <strong>Protection de la vie privée</strong>
+    <p>
+
+    <p class="text-muted">
+        Conformément aux dispositions du Règlement général sur la protection des données (RGPD) 2016/679 du Parlement
+        européen et du Conseil du 27 avril 2016 relatif à la protection des personnes physiques à l’égard du traitement
+        des données à caractère personnel et à la libre circulation de ces données, les informations publiées font
+        l’objet d’un traitement par :<br /><br />
+
+        - le Responsable du traitement des données : la Ville de Marche-en-Famenne, dont les bureaux sont établis
+        Boulevard du Midi n° 22 à 6900 Marche-en-Famenne
+<br /><br />
+        Pour la finalité suivante : enquêté publique conformément à l'article au CoDT
+        Les destinataires de ces données sont : la Ville de Marche-en-Famenne.<br />
+        La durée de conservation des données correspond à la durée de conservation du dossier de permis d'urbanisme pour
+        lequel l'enquête est réalisée.<br />
+        Les titulaires des données personnelles collectées bénéficient d’un droit d’accès, de rectification, de
+        portabilité, d’effacement de celles-ci ou une limitation du traitement.<br />
+        Ils peuvent obtenir des informations sur le traitement des données les concernant ou s'opposer au traitement de
+        celles-ci.<br />
+        Le présent document reste propriété de la Ville de Marche-en-Famenne, toute reproduction, diffusion ou
+        utilisation à d'autres fins que celle mentionnée ci-dessus étant strictement interdite.
     </p>
 
     {% include 'map/_carte.html.twig' %}
