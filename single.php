@@ -15,7 +15,7 @@ $blodId = get_current_blog_id();
 $code   = 'post-'.$blodId.'-'.$post->ID;
 get_header();
 
-$cache->delete($code);
+//$cache->delete($code);
 
 echo $cache->get(
     $code,

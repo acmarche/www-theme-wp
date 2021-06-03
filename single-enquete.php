@@ -17,7 +17,7 @@ $code      = 'enquete-'.$blodId.'-'.$enqueteId;
 
 get_header();
 
-$cache->delete($code);
+//$cache->delete($code);
 
 echo $cache->get(
     $code.time(),

@@ -20,7 +20,7 @@ $code      = 'bottin-fiche-'.$blodId.'-'.$slugFiche;
 
 get_header();
 
-$cache->delete($code);
+//$cache->delete($code);
 
 echo $cache->get(
     $code,
