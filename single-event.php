@@ -19,6 +19,8 @@ $blodId = get_current_blog_id();
 $code   = 'event-'.$blodId.'-'.$codeCgt;
 get_header();
 
+$cache->delete($code);
+
 echo $cache->get(
     $code,
     function () use ($blodId, $codeCgt) {
