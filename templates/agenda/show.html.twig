@@ -15,7 +15,7 @@
 {% block content %}
     {% for description in event.descriptions %}
         <p><strong>{{ description.lib('fr')|puriferHtml|raw }}</strong></p>
-        <p>{{ description.texte('fr')|puriferHtml|raw }} </p>
+        <p>{{ description.texte('fr')|puriferHtml|nl2br }} </p>
     {% endfor %}
 
     <h4 class="mb-2 mt-2"><strong>Date(s)</strong></h4>
