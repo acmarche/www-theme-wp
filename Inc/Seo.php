@@ -10,6 +10,11 @@ use AcMarche\Common\Router;
 use AcMarche\Pivot\Repository\HadesRepository;
 use AcMarche\Theme\Lib\WpRepository;
 
+/**
+ * todo https://github.com/joshbuchea/HEAD
+ * Class Seo
+ * @package AcMarche\Theme\Inc
+ */
 class Seo
 {
     static private $metas = ['title' => '', 'keywords' => '', 'description' => ''];
