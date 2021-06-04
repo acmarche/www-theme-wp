@@ -5,8 +5,8 @@ namespace AcMarche\Theme;
 
 use AcMarche\Common\Mailer;
 use AcMarche\Common\Router;
-use AcMarche\Elasticsearch\Searcher;
 use AcMarche\Theme\Inc\Theme;
+use AcMarche\Theme\Lib\Elasticsearch\Searcher;
 use AcMarche\Theme\Lib\Twig;
 use Exception;
 
