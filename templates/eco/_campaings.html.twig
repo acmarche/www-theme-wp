@@ -1,0 +1,9 @@
+<ul class="list-group">
+    {% for campaing in campaings %}
+        <li class="list-group-item">
+            <a href="{{ campaing.archive_url }}">
+                {{ campaing.title }}
+            </a>
+        </li>
+    {% endfor %}
+</ul>

@@ -6,6 +6,7 @@ use AcMarche\Common\Cache;
 use AcMarche\Common\Mailer;
 use AcMarche\Conseil\Conseil;
 use AcMarche\Conseil\ConseilDb;
+use AcMarche\Theme\Lib\MailChimp;
 use AcMarche\Theme\Lib\Menu;
 use AcMarche\Theme\Lib\Twig;
 use AcMarche\Theme\Lib\WpRepository;
@@ -45,6 +46,7 @@ class ShortCodes
         add_shortcode('google_map', [new ShortCodes(), 'googleMap']);
         add_shortcode('menuDisplay', [new ShortCodes(), 'menuDisplay']);
         add_shortcode('enquete_publique', [new ShortCodes(), 'enquetePublique']);
+        add_shortcode('adl_chimp', [new ShortCodes(), 'adlChimp']);
     }
 
     public function enquetePublique()
@@ -237,6 +239,20 @@ class ShortCodes
             'menu/_items_short_code.html.twig',
             [
                 'items' => $items,
+            ]
+        );
+    }
+
+    public function adlChimp(): string
+    {
+        $mailchimp = new MailChimp();
+        $campaings = $mailchimp->getCampaings();
+        $twig      = Twig::LoadTwig();
+
+        return $twig->render(
+            'eco/_campaings.html.twig',
+            [
+                'campaings' => $campaings,
             ]
         );
     }

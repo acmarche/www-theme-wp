@@ -1,0 +1,46 @@
+<?php
+
+
+namespace AcMarche\Theme\Lib;
+
+
+use AcMarche\Common\Env;
+use MailchimpMarketing\ApiClient;
+
+class MailChimp
+{
+    public ApiClient $apiClient;
+
+    public function __construct()
+    {
+        Env::loadEnv();
+        $this->apiClient = new ApiClient();
+
+        $this->apiClient->setConfig(
+            [
+                'apiKey' => $_ENV['MAILCHIMP_KEY'],
+                'server' => $_ENV['MAILCHIMP_SERVER'],
+            ]
+        );
+
+        //  $response  = $this->apiClient->ping->get();
+        //   $this->apiClient->setDebug(true);
+    }
+
+    public function getCampaings(): array
+    {
+        $data = [];
+        $list = $this->apiClient->campaigns->list();
+        $i    = 0;
+        foreach ($list->campaigns as $campaing) {
+            $data[$i]['id']          = $campaing->id;
+            $data[$i]['archive_url'] = $campaing->archive_url;
+            $data[$i]['send_time']   = $campaing->send_time; //2021-05-12T15:10:19+00:00
+            $settings                = $campaing->settings;
+            $data[$i]['title']       = $settings->title;
+            $i++;
+        }
+
+        return $data;
+    }
+}
