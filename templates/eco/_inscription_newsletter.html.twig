@@ -1,0 +1,27 @@
+{% if inscrits %}
+<div class="alert alert-info">
+    <p>Votre inscription a bien été prise en compte.</p>
+   <p> Merci.</p>
+</div>
+{% else %}
+    <form method="post" name="inscription">
+        <div class="form-group">
+            <label for="email">Votre courriel</label>
+            <input name="email" type="email" class="form-control" id="email" placeholder="Email" required>
+        </div>
+        <div class="form-group">
+            <label for="nom">Nom</label>
+            <input type="text" class="form-control" id="nom" name="nom" required>
+        </div>
+        <div class="form-group">
+            <label for="prenom">Prénom</label>
+            <input type="text" class="form-control" id="prenom" name="prenom" required>
+        </div>
+        <div class="form-group form-check">
+            <input name="rgpd" type="checkbox" class="form-check-input" style="display: block; opacity: inherit; position: static;" id="exampleCheck1">
+            <label class="form-check-label" for="exampleCheck1">J'ai pris connaissance du règlement de la vie
+                privée</label>
+        </div>
+        <button type="submit" class="btn btn-primary">M'inscrire</button>
+    </form>
+{% endif %}

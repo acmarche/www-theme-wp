@@ -6,6 +6,7 @@ use AcMarche\Common\Cache;
 use AcMarche\Common\Mailer;
 use AcMarche\Conseil\Conseil;
 use AcMarche\Conseil\ConseilDb;
+use AcMarche\Theme\Lib\Adl;
 use AcMarche\Theme\Lib\MailChimp;
 use AcMarche\Theme\Lib\Menu;
 use AcMarche\Theme\Lib\Twig;
@@ -47,6 +48,7 @@ class ShortCodes
         add_shortcode('menuDisplay', [new ShortCodes(), 'menuDisplay']);
         add_shortcode('enquete_publique', [new ShortCodes(), 'enquetePublique']);
         add_shortcode('adl_chimp', [new ShortCodes(), 'adlChimp']);
+        add_shortcode('adl_inscription', [new ShortCodes(), 'adlInscription']);
     }
 
     public function enquetePublique()
@@ -255,6 +257,16 @@ class ShortCodes
                 'campaings' => $campaings,
             ]
         );
+    }
+
+    public function adlInscription(): string
+    {
+        $adl  = new Adl();
+        $form = $adl->generateForm();
+
+        $mailchimp = new MailChimp();
+
+        return $form;
     }
 
 }

@@ -1,0 +1,40 @@
+<?php
+
+
+namespace AcMarche\Theme\Lib;
+
+use AcMarche\Common\Mailer;
+use Symfony\Component\HttpFoundation\Request;
+
+class Adl
+{
+    public function generateForm(): string
+    {
+        $twig     = Twig::LoadTwig();
+        $inscrits = $this->handleInscription();
+
+        return $twig->render(
+            'eco/_inscription_newsletter.html.twig',
+            [
+                'inscrits' => $inscrits,
+            ]
+        );
+    }
+
+    public function handleInscription(): bool
+    {
+        $request = Request::createFromGlobals();
+        $nom     = $request->get('nom');
+        $prenom  = $request->get('prenom');
+        $email   = $request->get('email');
+        $rgpd    = $request->get('rgpd', false);
+dump($nom , $prenom , $email);
+        if ($nom && $prenom && $email) {dump(123);
+            Mailer::sendInscription($nom, $prenom, $email, $rgpd);
+
+            return true;
+        }
+
+        return false;
+    }
+}
