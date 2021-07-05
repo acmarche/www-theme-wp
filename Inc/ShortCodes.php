@@ -165,7 +165,7 @@ class ShortCodes
     public function taxe()
     {
         return $this->cache->get(
-            'taxes'.time(),
+            'taxes',
             function () {
                 $this->httpClient = HttpClient::create();
                 $nomenclatures    = $this->getContent('/taxes/api2');
