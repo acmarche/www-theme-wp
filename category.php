@@ -15,7 +15,7 @@ get_header();
 $cat_ID = get_queried_object_id();
 $cache  = Cache::instance();
 $blodId = get_current_blog_id();
-$code   = 'category-'.$blodId.'-'.$cat_ID;
+$code   = Cache::generateCodeCategory($blodId, $cat_ID);
 get_header();
 
 $cache->delete($code);

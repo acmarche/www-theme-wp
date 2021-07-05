@@ -20,8 +20,6 @@ $code      = 'bottin-fiche-'.$blodId.'-'.$slugFiche;
 
 get_header();
 
-//$cache->delete($code);
-
 echo $cache->get(
     $code,
     function () use ($slugFiche, $blodId, $wp_query) {

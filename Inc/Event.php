@@ -22,7 +22,7 @@ class Event
     {
         $cache  = Cache::instance();
         $blodId = get_current_blog_id();
-        $code   = 'post-'.$blodId.'-'.$post_ID;
+        $code   = Cache::generateCodeArticle($blodId, $post_ID);
         $cache->delete($code);
 
         try {
@@ -59,7 +59,7 @@ class Event
     {
         $cache  = Cache::instance();
         $blodId = get_current_blog_id();
-        $code   = 'category-'.$blodId.'-'.$category_id;
+        $code   = Cache::generateCodeCategory($blodId, $category_id);
         $cache->delete($code);
     }
 }
