@@ -4,6 +4,7 @@ namespace AcMarche\Theme;
 
 use AcMarche\Bottin\RouterBottin;
 use AcMarche\Theme\Inc\AdminBar;
+use AcMarche\Theme\Inc\AdminPage;
 use AcMarche\Theme\Inc\Api;
 use AcMarche\Theme\Inc\AssetsLoad;
 use AcMarche\Theme\Inc\BlockRender;
@@ -75,3 +76,7 @@ new OpenGraph();
  * Admin bar edit
  */
 new AdminBar();
+/**
+ * Admin pages
+ */
+new AdminPage();

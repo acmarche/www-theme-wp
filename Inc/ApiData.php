@@ -23,7 +23,7 @@ use WP_REST_Response;
 class ApiData
 {
     /**
-     * @param array $parameter
+     * @param WP_REST_Request $request
      *
      * @return WP_Error|WP_HTTP_Response|WP_REST_Response
      */
