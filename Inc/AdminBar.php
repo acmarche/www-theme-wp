@@ -24,7 +24,7 @@ class AdminBar
                     array(
                         'id'    => 'edit',
                         'title' => 'Modifier la fiche',
-                        'href'  => 'https://bottin.marche.be/fiche/'.$fiche->id.'/edit',
+                        'href'  => 'https://bottin.marche.be/admin/'.$fiche->id.'/edit',
                     )
                 );
             }
