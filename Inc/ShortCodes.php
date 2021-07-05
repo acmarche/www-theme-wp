@@ -165,26 +165,10 @@ class ShortCodes
     public function taxe()
     {
         return $this->cache->get(
-            'taxes',
+            'taxes'.time(),
             function () {
                 $this->httpClient = HttpClient::create();
-                $nomenclatures    = $this->getContent('/api/nomenclatures.json');
-
-                foreach ($nomenclatures as $nomenclature) {
-                    $taxes = [];
-                    foreach ($nomenclature->taxes as $taxeString) {
-                        $taxe      = $this->getContent($taxeString.'.json');
-                        $exercices = [];
-                        foreach ($taxe->exercices as $exerciceString) {
-                            $exercice           = $this->getContent($exerciceString.'.json');
-                            $exercice->fileName = 'https://extranet.marche.be/files/taxes/'.$exercice->fileName;
-                            $exercices[]        = $exercice;
-                        }
-                        $taxe->exercices = $exercices;
-                        $taxes[]         = $taxe;
-                    }
-                    $nomenclature->taxes = $taxes;
-                }
+                $nomenclatures    = $this->getContent('/taxes/api2');
 
                 $twig = Twig::LoadTwig();
 
