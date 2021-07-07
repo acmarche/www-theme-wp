@@ -8,6 +8,8 @@ use AcMarche\Bottin\RouterBottin;
 use AcMarche\Common\SortUtil;
 use AcMarche\Theme\Inc\RouterMarche;
 use AcMarche\Theme\Inc\Theme;
+use AcMarche\UrbaWeb\Entity\Permis;
+use AcMarche\UrbaWeb\UrbaWeb;
 use AcSort;
 use BottinCategoryMetaBox;
 use WP_Post;
@@ -258,23 +260,26 @@ class WpRepository
 
         $all = array_merge($posts, $fiches);
 
-        if (get_current_blog_id() === Theme::ADMINISTRATION && ($catId == Theme::ENQUETE_DIRECTORY || $catId == Theme::PUBLICATIOCOMMUNAL_CATEGORY)) {
-            $enquetes = self::getEnquetesPubliques();
-            array_map(
-                function ($enquete) {
-                    list($yearD, $monthD, $dayD) = explode('-', $enquete->date_debut);
-                    $dateDebut = $dayD.'-'.$monthD.'-'.$yearD;
-                    list($yearF, $monthF, $dayF) = explode('-', $enquete->date_fin);
-                    $dateFin               = $dayF.'-'.$monthF.'-'.$yearF;
-                    $enquete->ID           = $enquete->id;
-                    $enquete->excerpt      = $enquete->intitule.'<br /> Du '.$dateDebut.' au '.$dateFin;
-                    $enquete->post_excerpt = $enquete->intitule.'<br /> Du '.$dateDebut.' au '.$dateFin;
-                    $enquete->url          = RouterMarche::getUrlEnquete($enquete->id);
-                    $enquete->post_title   = $enquete->demandeur.' à '.$enquete->localite;
-                },
-                $enquetes
-            );
-            $all = array_merge($all, $enquetes);
+        if (get_current_blog_id(
+            ) === Theme::ADMINISTRATION && ($catId == Theme::ENQUETE_DIRECTORY || $catId == Theme::PUBLICATIOCOMMUNAL_CATEGORY)) {
+            $permis = self::getEnquetesPubliques();
+            $data   = [];
+            foreach ($permis as $permi) {
+                $demandeur = $permi->demandeurs[0];
+                $enquete         = $permi->enquete;
+                list($yearD, $monthD, $dayD) = explode('-', $enquete->dateDebut);
+                $dateDebut = $dayD.'-'.$monthD.'-'.$yearD;
+                list($yearF, $monthF, $dayF) = explode('-', $enquete->dateFin);
+                $dateFin         = $dayF.'-'.$monthF.'-'.$yearF;
+                $t               = new \stdClass();
+                $t->ID           = $permi->numeroPermis;
+                $t->excerpt      = $permi->nature->libelle.'<br /> Du '.$dateDebut.' au '.$dateFin;
+                $t->post_excerpt = $permi->typePermis->libelle.'<br />';
+                $t->url          = RouterMarche::getUrlEnquete($permi->numeroPermis);
+                $t->post_title   = $demandeur->civilite.' '.$demandeur->nom.' '.$demandeur->prenom.' à '.$permi->adresseSituation->localite;
+                $data[]          = $t;
+            }
+            $all = array_merge($all, $data);
         }
 
         $all = SortUtil::sortPosts($all);
@@ -345,15 +350,54 @@ class WpRepository
         return $category;
     }
 
-    public static function getEnquetesPubliques()
+    /**
+     * @return Permis[]
+     * @throws \Psr\Cache\InvalidArgumentException
+     */
+    public static function getEnquetesPubliques(): array
     {
+        $urbaweb   = new UrbaWeb();
+        $permisIds = $urbaweb->searchAdvancePermis(
+            [
+                'debutAffichageEnqueteDe' => '2021-05-19',
+                'debutAffichageEnqueteA'  => '2021-07-01',
+            ]
+        );
+        $permis    = [];
+        foreach ($permisIds as $permisId) {
+            $permi             = $urbaweb->informationsPermis((int)$permisId);
+            $permi->demandeurs = $urbaweb->demandeursPermis($permi->id);
+            $permi->documents  = $urbaweb->documentsPermis($permi->id);
+            $permi->enquete    = $urbaweb->informationsEnquete($permi->id);
+            $permis[]          = $permi;
+           // break;
+        }
+
+        return $permis;
+
+
+        return $enquetes;
         $content  = file_get_contents('https://extranet.marche.be/enquete/api/');
         $enquetes = json_decode($content);
 
         return $enquetes;
     }
 
-    public static function getEnquetePublique(int $enqueteId): ?\stdClass
+    public static function getEnquetePublique(string $numeroPermis): ?Permis
+    {
+        $urbaweb = new UrbaWeb();
+        $permiss = $urbaweb->searchPermis(
+            [
+                'numeroPermis' => $numeroPermis,
+            ]
+        );
+
+        $enquete = $urbaweb->informationsPermis($permiss[0]->id);
+
+        return $enquete;
+    }
+
+    public static function getEnquetePubliqueold(int $enqueteId): ?\stdClass
     {
         $enquetes = self::getEnquetesPubliques();
         foreach ($enquetes as $enquete) {

@@ -8,6 +8,7 @@ use AcMarche\Theme\Inc\RouterMarche;
 use AcMarche\Theme\Inc\Theme;
 use AcMarche\Theme\Lib\Twig;
 use AcMarche\Theme\Lib\WpRepository;
+use AcMarche\UrbaWeb\UrbaWeb;
 
 global $wp_query;
 $cache     = Cache::instance();
@@ -17,14 +18,15 @@ $code      = 'enquete-'.$blodId.'-'.$enqueteId;
 
 get_header();
 
-//$cache->delete($code);
+$cache->delete($code);
 
 echo $cache->get(
     $code.time(),
     function () use ($blodId, $enqueteId) {
 
+        $urbaweb = new UrbaWeb();
         $twig    = Twig::LoadTwig();
-        $enquete = WpRepository::getEnquetePublique($enqueteId);
+        $enquete = $urbaweb->informationsPermis($enqueteId);
         if ( ! $enquete) {
             return $twig->render(
                 'errors/404.html.twig',
@@ -47,7 +49,7 @@ echo $cache->get(
         $tags = [WpRepository::getCategoryEnquete()];
         array_map(
             function ($tag) {
-                $tag->url  = get_category_link($tag->cat_ID);
+                $tag->url = get_category_link($tag->cat_ID);
             },
             $tags
         );
@@ -55,8 +57,8 @@ echo $cache->get(
         $relations = WpRepository::getEnquetesPubliques();
         array_map(
             function ($relation) {
-                $relation->title = $relation->demandeur . ' à '.$relation->localite;
-                $relation->url  = RouterMarche::getUrlEnquete($relation->id);
+                $relation->title = $relation->demandeur.' à '.$relation->localite;
+                $relation->url   = RouterMarche::getUrlEnquete($relation->id);
             },
             $relations
         );

@@ -90,7 +90,7 @@ class RouterMarche extends Router
         );
     }
 
-    public static function getUrlEnquete(int $id):string
+    public static function getUrlEnquete(string $id):string
     {
         $category = WpRepository::getCategoryEnquete();
 
@@ -158,7 +158,7 @@ class RouterMarche extends Router
                 //https://regex101.com/r/guhLuX/1
                 //'^/administration/(?:([a-zA-Z0-9_-]+)/){1,2}([a-zA-Z0-9_-]+)/num/(\d+)/?$',
                 add_rewrite_rule(
-                    'publications-communales/([a-zA-Z0-9_-]+)/'.self::PARAM_ENQUETE.'/(\d+)/?$',
+                    'publications-communales/([a-zA-Z0-9_-]+)/'.self::PARAM_ENQUETE.'/([a-zA-Z0-9_-]+)/?$',
                     'index.php?category_name=$matches[1]&'.self::PARAM_ENQUETE.'=$matches[2]',
                     'top'
                 );
