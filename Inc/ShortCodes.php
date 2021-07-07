@@ -11,6 +11,7 @@ use AcMarche\Theme\Lib\MailChimp;
 use AcMarche\Theme\Lib\Menu;
 use AcMarche\Theme\Lib\Twig;
 use AcMarche\Theme\Lib\WpRepository;
+use AcMarche\UrbaWeb\UrbaWeb;
 use Symfony\Component\HttpClient\HttpClient;
 use Symfony\Contracts\HttpClient\Exception\ClientExceptionInterface;
 use Symfony\Contracts\HttpClient\Exception\RedirectionExceptionInterface;
@@ -53,13 +54,25 @@ class ShortCodes
 
     public function enquetePublique()
     {
-        $enquetes = WpRepository::getEnquetesPubliques();
-        $twig     = Twig::LoadTwig();
+        $urbaweb   = new UrbaWeb();
+        $types     = $urbaweb->typesPermis();
+        $status    = $urbaweb->typesStatus();
+        $permisIds = $urbaweb->searchPermis();
+        $enquetes  = [];
+        foreach ($permisIds as $permisId) {
+            $enquete    = $urbaweb->informationsPermis((int)$permisId);
+            $enquetes[] = $enquete;
+            break;
+        }
+
+        $twig = Twig::LoadTwig();
 
         return $twig->render(
             'enquete/_list.html.twig',
             [
                 'enquetes' => $enquetes,
+                'statuts'   => $status,
+                'types'    => $types,
             ]
         );
     }
