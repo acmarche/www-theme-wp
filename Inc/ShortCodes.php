@@ -10,11 +10,7 @@ use AcMarche\Theme\Lib\Adl;
 use AcMarche\Theme\Lib\MailChimp;
 use AcMarche\Theme\Lib\Menu;
 use AcMarche\Theme\Lib\Twig;
-use AcMarche\Theme\Lib\WpRepository;
-use AcMarche\UrbaWeb\Tools\Serializer;
-use AcMarche\UrbaWeb\UrbaWeb;
 use Symfony\Component\HttpClient\HttpClient;
-use Symfony\Component\Serializer\SerializerInterface;
 use Symfony\Contracts\Cache\CacheInterface;
 use Symfony\Contracts\HttpClient\Exception\ClientExceptionInterface;
 use Symfony\Contracts\HttpClient\Exception\RedirectionExceptionInterface;
@@ -44,44 +40,8 @@ class ShortCodes
         add_shortcode('conseil_archive', [new ShortCodes(), 'conseilArchive']);
         add_shortcode('google_map', [new ShortCodes(), 'googleMap']);
         add_shortcode('menuDisplay', [new ShortCodes(), 'menuDisplay']);
-        add_shortcode('enquete_publique', [new ShortCodes(), 'enquetePublique']);
         add_shortcode('adl_chimp', [new ShortCodes(), 'adlChimp']);
         add_shortcode('adl_inscription', [new ShortCodes(), 'adlInscription']);
-    }
-
-    public function enquetePublique()
-    {
-        $urbaweb = new UrbaWeb();
-        $types     = $urbaweb->typesPermis();
-        $status    = $urbaweb->statusPermis();
-        $permisIds = $urbaweb->searchAdvancePermis(
-            [
-                'debutAffichageEnqueteDe' => '2021-05-19',
-                'debutAffichageEnqueteA'  => '2021-07-01',
-            ]
-        );
-        $enquetes  = [];
-        foreach ($permisIds as $permisId) {
-            $enquete    = $urbaweb->informationsPermis((int)$permisId);
-            $enquetes[] = $enquete;
-        $enquete = $urbaweb->informationsEnquete($permisId);
-
-            break;
-        }
-        dump($urbaweb->listDemandeursPermis($enquete->id));
-        $documents = $urbaweb->documentsPermis((int)$permisId);
-        $twig = Twig::LoadTwig();
-        dump($enquetes);
-        $status = $types = [];
-
-        return $twig->render(
-            'enquete/_list.html.twig',
-            [
-                'enquetes' => $enquetes,
-                'statuts'  => $status,
-                'types'    => $types,
-            ]
-        );
     }
 
     public function conseilOrdre(): string
