@@ -29,7 +29,7 @@ class Adl
         $email   = $request->get('email');
         $rgpd    = $request->get('rgpd', false);
 
-        if ($nom && $prenom && $email) {dump(123);
+        if ($nom && $prenom && $email) {
             Mailer::sendInscription($nom, $prenom, $email, $rgpd);
 
             return true;
