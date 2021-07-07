@@ -52,8 +52,8 @@ class ShortCodes
     public function enquetePublique()
     {
         $urbaweb = new UrbaWeb();
-        //$types     = $urbaweb->typesPermis();
-        // $status    = $urbaweb->typesStatus();
+        $types     = $urbaweb->typesPermis();
+        $status    = $urbaweb->statusPermis();
         $permisIds = $urbaweb->searchAdvancePermis(
             [
                 'debutAffichageEnqueteDe' => '2021-05-19',
@@ -64,10 +64,12 @@ class ShortCodes
         foreach ($permisIds as $permisId) {
             $enquete    = $urbaweb->informationsPermis((int)$permisId);
             $enquetes[] = $enquete;
+        $enquete = $urbaweb->informationsEnquete($permisId);
+
             break;
         }
-
         dump($urbaweb->listDemandeursPermis($enquete->id));
+        $documents = $urbaweb->documentsPermis((int)$permisId);
         $twig = Twig::LoadTwig();
         dump($enquetes);
         $status = $types = [];
