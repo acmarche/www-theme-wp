@@ -11,8 +11,11 @@ use AcMarche\Theme\Lib\MailChimp;
 use AcMarche\Theme\Lib\Menu;
 use AcMarche\Theme\Lib\Twig;
 use AcMarche\Theme\Lib\WpRepository;
+use AcMarche\UrbaWeb\Tools\Serializer;
 use AcMarche\UrbaWeb\UrbaWeb;
 use Symfony\Component\HttpClient\HttpClient;
+use Symfony\Component\Serializer\SerializerInterface;
+use Symfony\Contracts\Cache\CacheInterface;
 use Symfony\Contracts\HttpClient\Exception\ClientExceptionInterface;
 use Symfony\Contracts\HttpClient\Exception\RedirectionExceptionInterface;
 use Symfony\Contracts\HttpClient\Exception\ServerExceptionInterface;
@@ -23,14 +26,8 @@ use function json_decode;
 
 class ShortCodes
 {
-    /**
-     * @var \Symfony\Contracts\Cache\CacheInterface
-     */
-    private $cache;
-    /**
-     * @var HttpClientInterface
-     */
-    private $httpClient;
+    private CacheInterface $cache;
+    private HttpClientInterface $httpClient;
 
     public function __construct()
     {
@@ -54,10 +51,15 @@ class ShortCodes
 
     public function enquetePublique()
     {
-        $urbaweb   = new UrbaWeb();
-        $types     = $urbaweb->typesPermis();
-        $status    = $urbaweb->typesStatus();
-        $permisIds = $urbaweb->searchPermis();
+        $urbaweb = new UrbaWeb();
+        //$types     = $urbaweb->typesPermis();
+        // $status    = $urbaweb->typesStatus();
+        $permisIds = $urbaweb->searchAdvancePermis(
+            [
+                'debutAffichageEnqueteDe' => '2021-05-19',
+                'debutAffichageEnqueteA'  => '2021-07-01',
+            ]
+        );
         $enquetes  = [];
         foreach ($permisIds as $permisId) {
             $enquete    = $urbaweb->informationsPermis((int)$permisId);
@@ -65,13 +67,16 @@ class ShortCodes
             break;
         }
 
+        dump($urbaweb->listDemandeursPermis($enquete->id));
         $twig = Twig::LoadTwig();
+        dump($enquetes);
+        $status = $types = [];
 
         return $twig->render(
             'enquete/_list.html.twig',
             [
                 'enquetes' => $enquetes,
-                'statuts'   => $status,
+                'statuts'  => $status,
                 'types'    => $types,
             ]
         );

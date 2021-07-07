@@ -4,14 +4,13 @@
 <table class="table table-bordered">
     <thead>
     <tr>
-        <th>Catégorie</th>
-        <th>Demandeur</th>
-        <th>Adresse</th>
-        <th>Consultez</th>
-        <th>Consultez</th>
-        <th>Consultez</th>
-        <th>Consultez</th>
-        <th>Consultez</th>
+        <th>Id</th>
+        <th>Numéro</th>
+        <th>Type de permis</th>
+        <th>Date de réception</th>
+        <th>Nature</th>
+        <th>Statut</th>
+        <th>Situation</th>
     </tr>
     </thead>
     <tbody>
@@ -22,9 +21,8 @@
             <td>{{ enquete.typePermis.libelle }}</td>
             <td>{{ enquete.dateRecepisse }}</td>
             <td>{{ enquete.nature.libelle }}</td>
-            <td>{{ enquete.typeStatut.libelle }}</td>
+            <td>{{ enquete.statut.libelle }}</td>
             <td>{{ enquete.adresseSituation.rue }} {{ enquete.adresseSituation.numero }} {{ enquete.adresseSituation.codePostal }} {{ enquete.adresseSituation.localite }}</td>
-            <td>{{ enquete.typeStatut.libelle }}</td>
         </tr>
     {% endfor %}
     </tbody>

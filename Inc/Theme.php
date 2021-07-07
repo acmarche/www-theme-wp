@@ -23,7 +23,7 @@ class Theme
         6                    => 'sante',
         7                    => 'social',
         8                    => 'marchois',
-        11                   => 'culture',
+        self::CULTURE        => 'culture',
         self::ROMAN          => 'roman',
         13                   => 'noel',
         14                   => 'enfance',
@@ -38,7 +38,7 @@ class Theme
         7                    => 'color-cat-soc',
         8                    => 'color-cat-cit',
         self::ROMAN          => 'color-cat-cul',//=>roman
-        11                   => 'color-cat-cul',
+        self::CULTURE        => 'color-cat-cul',
         14                   => 'color-cat-enf',
     ];
     const PAGE_ALERT = 5087;
@@ -70,7 +70,7 @@ class Theme
 
     static function getColorBlog(int $blodId)
     {
-       return self::COLORS[$blodId] ?? 'color-cat-cit';
+        return self::COLORS[$blodId] ?? 'color-cat-cit';
     }
 
     static function getPathBlog(int $blodId)

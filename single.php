@@ -15,6 +15,7 @@ $blodId = get_current_blog_id();
 $code   = Cache::generateCodeArticle($blodId, $post->ID);
 get_header();
 
+$cache->delete($code);
 echo $cache->get(
     $code,
     function () use ($post, $blodId) {
