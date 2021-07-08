@@ -7,14 +7,15 @@ use AcMarche\Common\Cache;
 use AcMarche\Theme\Inc\RouterMarche;
 use AcMarche\Theme\Inc\Theme;
 use AcMarche\Theme\Lib\Twig;
+use AcMarche\Theme\Lib\Urba;
 use AcMarche\Theme\Lib\WpRepository;
-use AcMarche\UrbaWeb\UrbaWeb;
+use AcMarche\UrbaWeb\Entity\Permis;
 
 global $wp_query;
-$cache     = Cache::instance();
-$blodId    = get_current_blog_id();
-$enqueteId = $wp_query->get(RouterMarche::PARAM_ENQUETE, null);
-$code      = 'enquete-'.$blodId.'-'.$enqueteId;
+$cache    = Cache::instance();
+$blodId   = get_current_blog_id();
+$permisId = $wp_query->get(RouterMarche::PARAM_ENQUETE, null);
+$code     = 'enquete-'.$blodId.'-'.$permisId;
 
 get_header();
 
@@ -22,26 +23,11 @@ $cache->delete($code);
 
 echo $cache->get(
     $code.time(),
-    function () use ($blodId, $enqueteId) {
+    function () use ($blodId, $permisId) {
 
-        $urbaweb  = new UrbaWeb();
-        $twig     = Twig::LoadTwig();
-        $result   = $urbaweb->searchPermis(['numeroPermis' => $enqueteId]);
-        $permisId = $result[0];
-        $permis   = WpRepository::getEnquetePublique($permisId);
-        dump($permis);
-
-        if ( ! $permis) {
-            return $twig->render(
-                'errors/404.html.twig',
-                [
-                    'title'     => 'Enquête publique non trouvée',
-                    'tags'      => [],
-                    'color'     => Theme::getColorBlog(Theme::TOURISME),
-                    'blogName'  => Theme::getTitleBlog(Theme::TOURISME),
-                    'relations' => [],
-                ]
-            );
+        $permis = Urba::checkPermis($permisId);
+        if ( ! $permis instanceof Permis) {
+            return $permis;
         }
 
         $image = null;
