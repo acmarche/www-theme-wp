@@ -24,14 +24,18 @@ echo $cache->get(
     $code.time(),
     function () use ($blodId, $enqueteId) {
 
-        $urbaweb = new UrbaWeb();
-        $twig    = Twig::LoadTwig();
-        $enquete = $urbaweb->informationsPermis($enqueteId);
-        if ( ! $enquete) {
+        $urbaweb  = new UrbaWeb();
+        $twig     = Twig::LoadTwig();
+        $result   = $urbaweb->searchPermis(['numeroPermis' => $enqueteId]);
+        $permisId = $result[0];
+        $permis   = WpRepository::getEnquetePublique($permisId);
+        dump($permis);
+
+        if ( ! $permis) {
             return $twig->render(
                 'errors/404.html.twig',
                 [
-                    'title'     => 'Enquête non trouvée',
+                    'title'     => 'Enquête publique non trouvée',
                     'tags'      => [],
                     'color'     => Theme::getColorBlog(Theme::TOURISME),
                     'blogName'  => Theme::getTitleBlog(Theme::TOURISME),
@@ -57,7 +61,8 @@ echo $cache->get(
         $relations = WpRepository::getEnquetesPubliques();
         array_map(
             function ($relation) {
-                $relation->title = $relation->demandeur.' à '.$relation->localite;
+                $demandeur       = $relation->demandeurs[0];
+                $relation->title = $demandeur->civilite.' '.$demandeur->nom.' '.$demandeur->prenom.' à '.$relation->adresseSituation->localite;
                 $relation->url   = RouterMarche::getUrlEnquete($relation->id);
             },
             $relations
@@ -69,17 +74,20 @@ echo $cache->get(
         $urlBack  = get_category_link($currentCategory);
         $nameBack = $currentCategory->name;
 
-        $content = $enquete->description;
+        $content = '';
 
         $twig = Twig::LoadTwig();
 
         return $twig->render(
             'enquete/show.html.twig',
             [
-                'enquete'     => $enquete,
+                'permis'      => $permis,
+                'enquete'     => $permis->enquete,
+                'annonce'     => $permis->annonce,
+                'documents'   => $permis->documents,
                 'tags'        => $tags,
                 'image'       => $image,
-                'title'       => $enquete->categorie,
+                'title'       => 'titile ici',
                 'blogName'    => $blogName,
                 'color'       => $color,
                 'path'        => $path,
@@ -88,8 +96,8 @@ echo $cache->get(
                 'nameBack'    => $nameBack,
                 'content'     => $content,
                 'readspeaker' => true,
-                'latitude'    => $enquete->latitude,
-                'longitude'   => $enquete->longitude,
+                'latitude'    => false,
+                'longitude'   => false,
             ]
         );
     }

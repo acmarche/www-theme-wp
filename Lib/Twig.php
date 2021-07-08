@@ -14,6 +14,7 @@ use Twig\Error\LoaderError;
 use Twig\Error\RuntimeError;
 use Twig\Error\SyntaxError;
 use Twig\Extension\DebugExtension;
+use Twig\Extra\Intl\IntlExtension;
 use Twig\Extra\String\StringExtension;
 use Twig\Loader\FilesystemLoader;
 use Twig\TwigFilter;
@@ -43,6 +44,7 @@ class Twig
         if (WP_DEBUG) {
             $environment->addExtension(new DebugExtension());
             $environment->addExtension(new StringExtension());
+            $environment->addExtension(new IntlExtension());
         }
 
         $environment->addGlobal('template_directory', get_template_directory_uri());

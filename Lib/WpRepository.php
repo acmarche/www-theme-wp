@@ -266,7 +266,7 @@ class WpRepository
             $data   = [];
             foreach ($permis as $permi) {
                 $demandeur = $permi->demandeurs[0];
-                $enquete         = $permi->enquete;
+                $enquete   = $permi->enquete;
                 list($yearD, $monthD, $dayD) = explode('-', $enquete->dateDebut);
                 $dateDebut = $dayD.'-'.$monthD.'-'.$yearD;
                 list($yearF, $monthF, $dayF) = explode('-', $enquete->dateFin);
@@ -370,42 +370,16 @@ class WpRepository
             $permi->documents  = $urbaweb->documentsPermis($permi->id);
             $permi->enquete    = $urbaweb->informationsEnquete($permi->id);
             $permis[]          = $permi;
-           // break;
+            // break;
         }
 
         return $permis;
-
-
-        return $enquetes;
-        $content  = file_get_contents('https://extranet.marche.be/enquete/api/');
-        $enquetes = json_decode($content);
-
-        return $enquetes;
     }
 
-    public static function getEnquetePublique(string $numeroPermis): ?Permis
+    public static function getEnquetePublique(int $permisId): ?Permis
     {
         $urbaweb = new UrbaWeb();
-        $permiss = $urbaweb->searchPermis(
-            [
-                'numeroPermis' => $numeroPermis,
-            ]
-        );
 
-        $enquete = $urbaweb->informationsPermis($permiss[0]->id);
-
-        return $enquete;
-    }
-
-    public static function getEnquetePubliqueold(int $enqueteId): ?\stdClass
-    {
-        $enquetes = self::getEnquetesPubliques();
-        foreach ($enquetes as $enquete) {
-            if ($enquete->id == $enqueteId) {
-                return $enquete;
-            }
-        }
-
-        return null;
+        return $urbaweb->fullInformationsPermis($permisId);
     }
 }
