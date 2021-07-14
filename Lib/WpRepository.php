@@ -265,19 +265,8 @@ class WpRepository
             $permis = self::getEnquetesPubliques();
             $data   = [];
             foreach ($permis as $permi) {
-                $demandeur = $permi->demandeurs[0];
-                $enquete   = $permi->enquete;
-                list($yearD, $monthD, $dayD) = explode('-', $enquete->dateDebut);
-                $dateDebut = $dayD.'-'.$monthD.'-'.$yearD;
-                list($yearF, $monthF, $dayF) = explode('-', $enquete->dateFin);
-                $dateFin         = $dayF.'-'.$monthF.'-'.$yearF;
-                $t               = new \stdClass();
-                $t->ID           = $permi->numeroPermis;
-                $t->excerpt      = $permi->nature->libelle.'<br /> Du '.$dateDebut.' au '.$dateFin;
-                $t->post_excerpt = $permi->typePermis->libelle.'<br />';
-                $t->url          = RouterMarche::getUrlEnquete($permi->numeroPermis);
-                $t->post_title   = $demandeur->civilite.' '.$demandeur->nom.' '.$demandeur->prenom.' à '.$permi->adresseSituation->localite;
-                $data[]          = $t;
+                $post   = Urba::permisToPost($permi);
+                $data[] = $post;
             }
             $all = array_merge($all, $data);
         }
@@ -354,23 +343,42 @@ class WpRepository
      * @return Permis[]
      * @throws \Psr\Cache\InvalidArgumentException
      */
-    public static function getEnquetesPubliques(): array
-    {
-        $urbaweb   = new UrbaWeb();
-        $permisIds = $urbaweb->searchAdvancePermis(
-            [
-                'debutAffichageEnqueteDe' => '2021-05-19',
-                'debutAffichageEnqueteA'  => '2021-07-01',
-            ]
+    public static function getEnquetesPubliques(
+        \DateTimeInterface $dateDebut = null,
+        \DateTimeInterface $dateFin = null
+    ): array {
+        if ( ! $dateDebut) {
+            $dateDebut = new \DateTime();
+            $dateDebut->modify('-6 months');
+        }
+        $dateFin = new \DateTime();
+        $dateFin->modify('+6 months');
+
+        $urbaWeb    = new UrbaWeb(false);
+        $args       = [
+            'debutAffichageEnqueteDe' => $dateDebut->format('Y-m-d'),
+            'debutAffichageEnqueteA'  => $dateFin->format('Y-m-d'),
+        ];
+        $enqueteIds = $urbaWeb->searchAdvancePermis(
+            $args
         );
-        $permis    = [];
+        $args       = [
+            'debutAnnonceProjetDe' => $dateDebut->format('Y-m-d'),
+            'debutAnnonceProjetA'  => $dateFin->format('Y-m-d'),
+        ];
+        $annonceIds = $urbaWeb->searchAdvancePermis(
+            $args
+        );
+        $permisIds  = array_merge($enqueteIds, $annonceIds);
+        $permisIds  = array_unique($permisIds);
+
+        $permis = [];
         foreach ($permisIds as $permisId) {
-            $permi             = $urbaweb->informationsPermis((int)$permisId);
-            $permi->demandeurs = $urbaweb->demandeursPermis($permi->id);
-            $permi->documents  = $urbaweb->documentsPermis($permi->id);
-            $permi->enquete    = $urbaweb->informationsEnquete($permi->id);
-            $permis[]          = $permi;
-            // break;
+            dump($permisId);
+            $permi    = self::getEnquetePublique($permisId);
+            $permis[] = $permi;
+            dump($permi);
+            break;
         }
 
         return $permis;
@@ -378,7 +386,7 @@ class WpRepository
 
     public static function getEnquetePublique(int $permisId): ?Permis
     {
-        $urbaweb = new UrbaWeb();
+        $urbaweb = new UrbaWeb(false);
 
         return $urbaweb->fullInformationsPermis($permisId);
     }
