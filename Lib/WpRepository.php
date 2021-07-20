@@ -262,7 +262,7 @@ class WpRepository
 
         if (get_current_blog_id(
             ) === Theme::ADMINISTRATION && ($catId == Theme::ENQUETE_DIRECTORY || $catId == Theme::PUBLICATIOCOMMUNAL_CATEGORY)) {
-            $permis = self::getEnquetesPubliques();
+            $permis = Urba::getEnquetesPubliques();
             $data   = [];
             foreach ($permis as $permi) {
                 $post   = Urba::permisToPost($permi);
@@ -337,57 +337,5 @@ class WpRepository
         switch_to_blog($currentBlog);
 
         return $category;
-    }
-
-    /**
-     * @return Permis[]
-     * @throws \Psr\Cache\InvalidArgumentException
-     */
-    public static function getEnquetesPubliques(
-        \DateTimeInterface $dateDebut = null,
-        \DateTimeInterface $dateFin = null
-    ): array {
-        if ( ! $dateDebut) {
-            $dateDebut = new \DateTime();
-            $dateDebut->modify('-6 months');
-        }
-        $dateFin = new \DateTime();
-        $dateFin->modify('+6 months');
-
-        $urbaWeb    = new UrbaWeb(false);
-        $args       = [
-            'debutAffichageEnqueteDe' => $dateDebut->format('Y-m-d'),
-            'debutAffichageEnqueteA'  => $dateFin->format('Y-m-d'),
-        ];
-        $enqueteIds = $urbaWeb->searchAdvancePermis(
-            $args
-        );
-        $args       = [
-            'debutAnnonceProjetDe' => $dateDebut->format('Y-m-d'),
-            'debutAnnonceProjetA'  => $dateFin->format('Y-m-d'),
-        ];
-        $annonceIds = $urbaWeb->searchAdvancePermis(
-            $args
-        );
-        $permisIds  = array_merge($enqueteIds, $annonceIds);
-        $permisIds  = array_unique($permisIds);
-
-        $permis = [];
-        foreach ($permisIds as $permisId) {
-            dump($permisId);
-            $permi    = self::getEnquetePublique($permisId);
-            $permis[] = $permi;
-            dump($permi);
-            break;
-        }
-
-        return $permis;
-    }
-
-    public static function getEnquetePublique(int $permisId): ?Permis
-    {
-        $urbaweb = new UrbaWeb(false);
-
-        return $urbaweb->fullInformationsPermis($permisId);
     }
 }

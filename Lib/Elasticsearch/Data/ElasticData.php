@@ -8,7 +8,9 @@ use AcMarche\Bottin\RouterBottin;
 use AcMarche\Common\Mailer;
 use AcMarche\Theme\Inc\RouterMarche;
 use AcMarche\Theme\Inc\Theme;
+use AcMarche\Theme\Lib\Urba;
 use AcMarche\Theme\Lib\WpRepository;
+use AcMarche\UrbaWeb\Entity\Permis;
 use BottinCategoryMetaBox;
 use WP_Post;
 
@@ -109,9 +111,9 @@ class ElasticData
         $content = '';
         if (get_current_blog_id() == Theme::ADMINISTRATION) {
             if ($categoryId == Theme::ENQUETE_DIRECTORY) {
-                foreach (WpRepository::getEnquetesPubliques() as $enquete) {
-                    $document = $this->createDocumentElasticFromEnquete($enquete);
-                    $content .= $document->name.' '.$document->excerpt.' '.$document->content;
+                foreach (Urba::getEnquetesPubliques() as $permis) {
+                    $document = $this->createDocumentElasticFromPermis($permis);
+                    $content  .= $document->name.' '.$document->excerpt.' '.$document->content;
                 }
             }
         }
@@ -125,8 +127,8 @@ class ElasticData
     public function getEnquetesDocumentElastic(): array
     {
         $data = [];
-        foreach (WpRepository::getEnquetesPubliques() as $enquete) {
-            $data[] = $this->createDocumentElasticFromEnquete($enquete);
+        foreach (Urba::getEnquetesPubliques() as $permis) {
+            $data[] = $this->createDocumentElasticFromPermis($permis);
         }
 
         return $data;
@@ -311,23 +313,24 @@ class ElasticData
         return $categories;
     }
 
-    private function createDocumentElasticFromEnquete(\stdClass $enquete): DocumentElastic
+    private function createDocumentElasticFromPermis(Permis $permis): DocumentElastic
     {
         $categorieEnqueteNom = '';
         if ($categorieEnquete = WpRepository::getCategoryEnquete()) {
             $categorieEnqueteNom = $categorieEnquete->name;
         }
 
-        $content = $categorieEnqueteNom.' '.$enquete->intitule.' '.$enquete->demandeur.' à '.$enquete->localite.' '.$enquete->description;
+        $demandeur = $permis->demandeurs[0];
+        $content   = $categorieEnqueteNom.' '.$permis->intitule.' '.$permis->demandeur.' à '.$permis->localite.' '.$permis->description;
 
         $document          = new DocumentElastic();
-        $document->id      = $enquete->id;
-        $document->name    = $enquete->intitule;
-        $document->excerpt = $enquete->demandeur.' à '.$enquete->localite;
+        $document->id      = $permis->id;
+        $document->name    = $permis->urbain;
+        $document->excerpt = $permis->demandeur.' à '.$permis->localite;
         $document->content = $content;
         $document->tags    = [];//todo
-        $document->date    = $enquete->date_debut;
-        $document->url     = RouterMarche::getUrlEnquete($enquete->id);
+        $document->date    = $permis->date_debut;
+        $document->url     = RouterMarche::getUrlEnquete($permis->id);
 
         return $document;
     }

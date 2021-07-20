@@ -25,7 +25,7 @@ echo $cache->get(
     $code.time(),
     function () use ($blodId, $permisId) {
 
-        $permis = Urba::checkPermis($permisId);
+        $permis = Urba::permisCanBeRead($permisId);
         if ( ! $permis instanceof Permis) {
             return $permis;
         }
@@ -44,11 +44,11 @@ echo $cache->get(
             $tags
         );
 
-        $relations = WpRepository::getEnquetesPubliques();
+        $relations = Urba::getEnquetesPubliques();
         array_map(
             function ($relation) {
-                $demandeur       = $relation->demandeurs[0];
-                $relation->title = $demandeur->civilite.' '.$demandeur->nom.' '.$demandeur->prenom.' à '.$relation->adresseSituation->localite;
+           //     $demandeur       = $relation->demandeurs[0];
+                $relation->title = $relation->urbain.' à '.$relation->adresseSituation->localite;
                 $relation->url   = RouterMarche::getUrlEnquete($relation->id);
             },
             $relations

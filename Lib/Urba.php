@@ -3,7 +3,6 @@
 
 namespace AcMarche\Theme\Lib;
 
-
 use AcMarche\Theme\Inc\RouterMarche;
 use AcMarche\Theme\Inc\Theme;
 use AcMarche\UrbaWeb\Entity\Permis;
@@ -20,7 +19,7 @@ class Urba
      * @throws \Twig\Error\RuntimeError
      * @throws \Twig\Error\SyntaxError
      */
-    public static function checkPermis(int $enqueteId)
+    public static function permisCanBeRead(int $enqueteId)
     {
         $urbaweb = new UrbaWeb(false);
         $twig    = Twig::LoadTwig();
@@ -28,7 +27,7 @@ class Urba
         $permis  = null;
         if (count($result) > 0) {
             $permisId = $result[0];
-            $permis   = WpRepository::getEnquetePublique($permisId);
+            $permis   = self::getEnqueteInformations($permisId);
         }
         if ( ! $permis) {
             return $twig->render(
@@ -60,6 +59,57 @@ class Urba
         return $permis;
     }
 
+     /**
+     * @return Permis[]
+     * @throws \Psr\Cache\InvalidArgumentException
+     */
+    public static function getEnquetesPubliques(
+        \DateTimeInterface $dateDebut = null,
+        \DateTimeInterface $dateFin = null
+    ): array {
+        if ( ! $dateDebut) {
+            $dateDebut = new \DateTime();
+            $dateDebut->modify('-6 months');
+        }
+        $dateFin = new \DateTime();
+        $dateFin->modify('+12 months');
+
+        $urbaWeb    = new UrbaWeb(false);
+        $args       = [
+            'debutAffichageEnqueteDe' => $dateDebut->format('Y-m-d'),
+            'debutAffichageEnqueteA'  => $dateFin->format('Y-m-d'),
+        ];
+        $enqueteIds = $urbaWeb->searchAdvancePermis(
+            $args
+        );
+        $args       = [
+            'debutAnnonceProjetDe' => $dateDebut->format('Y-m-d'),
+            'debutAnnonceProjetA'  => $dateFin->format('Y-m-d'),
+        ];
+        $annonceIds = $urbaWeb->searchAdvancePermis(
+            $args
+        );
+        $permisIds  = array_merge($enqueteIds, $annonceIds);
+        $permisIds  = array_unique($permisIds);
+
+        $all = [];
+        foreach ($permisIds as $permisId) {
+            $permis = self::getEnqueteInformations($permisId);
+            if ($urbaWeb->isPublic($permis)) {
+                $all[] = $permis;
+            }
+        }
+
+        return $all;
+    }
+
+    public static function getEnqueteInformations(int $permisId): ?Permis
+    {
+        $urbaweb = new UrbaWeb(false);
+
+        return $urbaweb->fullInformationsPermis($permisId);
+    }
+
     public static function permisToPost(Permis $permis): \stdClass
     {
         $demandeur = count($permis->demandeurs) > 0 ? $permis->demandeurs[0] : null;
@@ -70,7 +120,7 @@ class Urba
         $post               = new \stdClass();
         $post->ID           = $permis->numeroPermis;
         $nature             = $permis->nature ? $permis->nature->libelle : '';
-        $post->excerpt      = $nature.'<br /> Du '.$dateDebut.' au '.$dateFin;
+        $post->excerpt      = $nature.'<br />'.$permis->natureTexteLibre.'<br />'.$permis->urbain.'<br /> Du '.$dateDebut.' au '.$dateFin;
         $post->post_excerpt = '';
         $type               = $permis->typePermis ? $permis->typePermis->libelle : '';
         $post->post_excerpt = $type.'<br />';
