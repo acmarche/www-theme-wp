@@ -73,7 +73,7 @@ echo $cache->get(
                 'documents'   => $permis->documents,
                 'tags'        => $tags,
                 'image'       => $image,
-                'title'       => 'titile ici',
+                'title'       => $permis->urbain,
                 'blogName'    => $blogName,
                 'color'       => $color,
                 'path'        => $path,

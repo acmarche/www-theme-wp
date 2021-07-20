@@ -19,11 +19,11 @@ class Urba
      * @throws \Twig\Error\RuntimeError
      * @throws \Twig\Error\SyntaxError
      */
-    public static function permisCanBeRead(int $enqueteId)
+    public static function permisCanBeRead(string $numeroPermis)
     {
         $urbaweb = new UrbaWeb(false);
         $twig    = Twig::LoadTwig();
-        $result  = $urbaweb->searchPermis(['numeroPermis' => $enqueteId]);
+        $result  = $urbaweb->searchPermis(['numeroPermis' => $numeroPermis]);
         $permis  = null;
         if (count($result) > 0) {
             $permisId = $result[0];
