@@ -27,7 +27,7 @@ class Urba
         $permis  = null;
         if (count($result) > 0) {
             $permisId = $result[0];
-            $permis   = self::getEnqueteInformations($permisId);
+            $permis   = self::fullInformationsPermis($permisId);
         }
         if ( ! $permis) {
             return $twig->render(
@@ -94,7 +94,7 @@ class Urba
 
         $all = [];
         foreach ($permisIds as $permisId) {
-            $permis = self::getEnqueteInformations($permisId);
+            $permis = self::fullInformationsPermis($permisId);
             if ($urbaWeb->isPublic($permis)) {
                 $all[] = $permis;
             }
@@ -103,7 +103,7 @@ class Urba
         return $all;
     }
 
-    public static function getEnqueteInformations(int $permisId): ?Permis
+    public static function fullInformationsPermis(int $permisId): ?Permis
     {
         $urbaweb = new UrbaWeb(false);
 
