@@ -262,7 +262,8 @@ class WpRepository
 
         if (get_current_blog_id(
             ) === Theme::ADMINISTRATION && ($catId == Theme::ENQUETE_DIRECTORY || $catId == Theme::PUBLICATIOCOMMUNAL_CATEGORY)) {
-            $permis = Urba::getEnquetesPubliques();
+
+            $permis = [];
             $data   = [];
             foreach ($permis as $permi) {
                 $post   = Urba::permisToPost($permi);
