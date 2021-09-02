@@ -289,9 +289,7 @@ class WpRepository
             $all = array_merge($all, $enquetes);
         }
 
-        $all = SortUtil::sortPosts($all);
-
-        return $all;
+        return SortUtil::sortPosts($all);
     }
 
     public function getPostsByCategory(int $catId, int $siteId): array
