@@ -263,13 +263,30 @@ class WpRepository
         if (get_current_blog_id(
             ) === Theme::ADMINISTRATION && ($catId == Theme::ENQUETE_DIRECTORY || $catId == Theme::PUBLICATIOCOMMUNAL_CATEGORY)) {
 
-            $permis = [];
+            /*$permis = Urba::getEnquetesPubliques();
             $data   = [];
             foreach ($permis as $permi) {
                 $post   = Urba::permisToPost($permi);
                 $data[] = $post;
             }
-            $all = array_merge($all, $data);
+            $all = array_merge($all, $data);*/
+
+            $enquetes = self::getEnquetesPubliques();
+            array_map(
+                function ($enquete) {
+                    list($yearD, $monthD, $dayD) = explode('-', $enquete->date_debut);
+                    $dateDebut = $dayD.'-'.$monthD.'-'.$yearD;
+                    list($yearF, $monthF, $dayF) = explode('-', $enquete->date_fin);
+                    $dateFin               = $dayF.'-'.$monthF.'-'.$yearF;
+                    $enquete->ID           = $enquete->id;
+                    $enquete->excerpt      = $enquete->intitule.'<br /> Du '.$dateDebut.' au '.$dateFin;
+                    $enquete->post_excerpt = $enquete->intitule.'<br /> Du '.$dateDebut.' au '.$dateFin;
+                    $enquete->url          = RouterMarche::getUrlEnquete($enquete->id);
+                    $enquete->post_title   = $enquete->demandeur.' à '.$enquete->localite;
+                },
+                $enquetes
+            );
+            $all = array_merge($all, $enquetes);
         }
 
         $all = SortUtil::sortPosts($all);
@@ -338,5 +355,25 @@ class WpRepository
         switch_to_blog($currentBlog);
 
         return $category;
+    }
+
+    public static function getEnquetesPubliques()
+    {
+        $content  = file_get_contents('https://extranet.marche.be/enquete/api/');
+        $enquetes = json_decode($content);
+
+        return $enquetes;
+    }
+
+    public static function getEnquetePublique(int $enqueteId): ?\stdClass
+    {
+        $enquetes = self::getEnquetesPubliques();
+        foreach ($enquetes as $enquete) {
+            if ($enquete->id == $enqueteId) {
+                return $enquete;
+            }
+        }
+
+        return null;
     }
 }

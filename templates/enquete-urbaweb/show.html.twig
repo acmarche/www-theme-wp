@@ -10,39 +10,43 @@
 
 {% block content %}
 
-    <h4 class="mt-3"><strong>Demandeur</strong></h4>
+    <h4 class="mt-3"><strong>Situation</strong></h4>
+    {% if permis.adresseSituation %}
+        {{ permis.adresseSituation.rue }} {{ permis.adresseSituation.numero }} {{ permis.adresseSituation.boite }}<br/>
+        {{ permis.adresseSituation.codePostal }} {{ permis.adresseSituation.localite }}
+    {% endif %}
 
-    {{ enquete.demandeur }}
+    <h4 class="mt-3"><strong>Numéro délivré</strong></h4>
+    {{ permis.numeroPermisDelivre }}
 
-    <p>
-        {{ enquete.intitule }}
-    </p>
+    <h4 class="mt-3"><strong>Nature</strong></h4>
+    {{ permis.urbain }}<br />
+    {{ permis.natureTexteLibre }}<br/>
+    {{ permis.nature.libelle }}<br/>
 
-    <h4><strong>Dates d'affichage</strong></h4>
-    <span>
-        Du {{ enquete.date_debut | date('d-m-Y') }}
-        au {{ enquete.date_fin | date('d-m-Y') }}
-    </span>
-    <p></p>
-    <h4><strong>Situation du projet</strong></h4>
-    <span>
-        {{ enquete.rue }}
-        {{ enquete.numero }} <br/>
-        {{ enquete.code_postal }}
-        {{ enquete.localite }}
-    </span>
+    <h4 class="mt-3"><strong>Demandeur(s)</strong></h4>
+    <ul class="list-group">
+        {% for demandeur in permis.demandeurs %}
+            <li class="list-group-item">
+                {{ demandeur.civilite }} {{ demandeur.nom }} {{ demandeur.prenom }}
+            </li>
+        {% endfor %}
+    </ul>
 
-    {{ enquete.description|raw }}
+    {% if enquete %}
+        {% include 'enquete/_enquete.html.twig' %}
+    {% endif %}
 
-    <p>
-        <a href="{{ enquete.avis }}">Consulter l'avis</a>
-    </p>
+    {% if annonce %}
+        {% include 'enquete/_annonce.html.twig' %}
+    {% endif %}
 
-    <h4 class="text-muted mt-3">
-        <strong>Protection de la vie privée</strong>
-    </h4>
+    {% if documents|length > 0 %}
+        {% include 'enquete/_documents.html.twig' %}
+    {% endif %}
 
     <p class="text-muted">
+        ---------------------------------------------------------------------
         Conformément aux dispositions du Règlement général sur la protection des données (RGPD) 2016/679 du Parlement
         européen et du Conseil du 27 avril 2016 relatif à la protection des personnes physiques à l’égard du traitement
         des données à caractère personnel et à la libre circulation de ces données, les informations publiées font

@@ -7,35 +7,27 @@ use AcMarche\Common\Cache;
 use AcMarche\Theme\Inc\RouterMarche;
 use AcMarche\Theme\Inc\Theme;
 use AcMarche\Theme\Lib\Twig;
+use AcMarche\Theme\Lib\Urba;
 use AcMarche\Theme\Lib\WpRepository;
+use AcMarche\UrbaWeb\Entity\Permis;
 
 global $wp_query;
-$cache     = Cache::instance();
-$blodId    = get_current_blog_id();
-$enqueteId = $wp_query->get(RouterMarche::PARAM_ENQUETE, null);
-$code      = 'enquete-'.$blodId.'-'.$enqueteId;
+$cache    = Cache::instance();
+$blodId   = get_current_blog_id();
+$permisId = $wp_query->get(RouterMarche::PARAM_ENQUETE, null);
+$code     = 'enquete-'.$blodId.'-'.$permisId;
 
 get_header();
 
-//$cache->delete($code);
+$cache->delete($code);
 
 echo $cache->get(
     $code.time(),
-    function () use ($blodId, $enqueteId) {
+    function () use ($blodId, $permisId) {
 
-        $twig    = Twig::LoadTwig();
-        $enquete = WpRepository::getEnquetePublique($enqueteId);
-        if ( ! $enquete) {
-            return $twig->render(
-                'errors/404.html.twig',
-                [
-                    'title'     => 'Enquête non trouvée',
-                    'tags'      => [],
-                    'color'     => Theme::getColorBlog(Theme::TOURISME),
-                    'blogName'  => Theme::getTitleBlog(Theme::TOURISME),
-                    'relations' => [],
-                ]
-            );
+        $permis = Urba::permisCanBeRead($permisId);
+        if ( ! $permis instanceof Permis) {
+            return $permis;
         }
 
         $image = null;
@@ -47,16 +39,17 @@ echo $cache->get(
         $tags = [WpRepository::getCategoryEnquete()];
         array_map(
             function ($tag) {
-                $tag->url  = get_category_link($tag->cat_ID);
+                $tag->url = get_category_link($tag->cat_ID);
             },
             $tags
         );
 
-        $relations = WpRepository::getEnquetesPubliques();
+        $relations = Urba::getEnquetesPubliques();
         array_map(
             function ($relation) {
-                $relation->title = $relation->demandeur . ' à '.$relation->localite;
-                $relation->url  = RouterMarche::getUrlEnquete($relation->id);
+           //     $demandeur       = $relation->demandeurs[0];
+                $relation->title = $relation->urbain.' à '.$relation->adresseSituation->localite;
+                $relation->url   = RouterMarche::getUrlEnquete($relation->id);
             },
             $relations
         );
@@ -67,17 +60,20 @@ echo $cache->get(
         $urlBack  = get_category_link($currentCategory);
         $nameBack = $currentCategory->name;
 
-        $content = $enquete->description;
+        $content = '';
 
         $twig = Twig::LoadTwig();
 
         return $twig->render(
             'enquete/show.html.twig',
             [
-                'enquete'     => $enquete,
+                'permis'      => $permis,
+                'enquete'     => $permis->enquete,
+                'annonce'     => $permis->annonce,
+                'documents'   => $permis->documents,
                 'tags'        => $tags,
                 'image'       => $image,
-                'title'       => $enquete->categorie,
+                'title'       => $permis->urbain,
                 'blogName'    => $blogName,
                 'color'       => $color,
                 'path'        => $path,
@@ -86,8 +82,8 @@ echo $cache->get(
                 'nameBack'    => $nameBack,
                 'content'     => $content,
                 'readspeaker' => true,
-                'latitude'    => $enquete->latitude,
-                'longitude'   => $enquete->longitude,
+                'latitude'    => false,
+                'longitude'   => false,
             ]
         );
     }

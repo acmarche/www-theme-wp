@@ -1,28 +1,24 @@
-{% include 'enquete/_statuts.html.twig' %}
-{% include 'enquete/_types.html.twig' %}
-
 <table class="table table-bordered">
     <thead>
     <tr>
-        <th>Id</th>
-        <th>Numéro</th>
-        <th>Type de permis</th>
-        <th>Date de réception</th>
-        <th>Nature</th>
-        <th>Statut</th>
-        <th>Situation</th>
+        <th>Catégorie</th>
+        <th>Demandeur</th>
+        <th>Adresse</th>
+        <th>Consultez</th>
     </tr>
     </thead>
     <tbody>
     {% for enquete in enquetes %}
         <tr>
-            <td>{{ enquete.id }}</td>
-            <td>{{ enquete.numeroPermis }}</td>
-            <td>{{ enquete.typePermis.libelle }}</td>
-            <td>{{ enquete.dateRecepisse }}</td>
-            <td>{{ enquete.nature.libelle }}</td>
-            <td>{{ enquete.statut.libelle }}</td>
-            <td>{{ enquete.adresseSituation.rue }} {{ enquete.adresseSituation.numero }} {{ enquete.adresseSituation.codePostal }} {{ enquete.adresseSituation.localite }}</td>
+            <td>{{ enquete.categorie }}</td>
+            <td>{{ enquete.demandeur }}</td>
+            <td>
+                {{ enquete.rue }} {{ enquete.numero }}
+                <br/> {{ enquete.localite }}
+            </td>
+            <td>
+                <a href="{{ enquete.avis }}">Consulter</a>
+            </td>
         </tr>
     {% endfor %}
     </tbody>
