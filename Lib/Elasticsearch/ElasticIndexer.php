@@ -155,7 +155,7 @@ class ElasticIndexer
         $categories = $this->elasticData->getAllCategoriesBottin();
         foreach ($categories as $documentElastic) {
             $content  = $this->serializer->serialize($documentElastic, 'json');
-            $id       = 'fiche_'.$documentElastic->id;
+            $id       = 'cat_'.$documentElastic->id;
             $doc      = new Document($id, $content);
             $response = $this->index->addDocument($doc);
             if ($this->outPut) {

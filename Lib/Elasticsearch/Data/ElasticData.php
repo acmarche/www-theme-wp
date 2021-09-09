@@ -309,7 +309,6 @@ class ElasticData
             list($date, $heure) = explode(' ', $fiche->created_at);
             $document->date = $date;
             $document->url  = RouterBottin::getUrlFicheBottin($fiche);
-            //  $document->url     = $this->bottinData->generateUrlCapFiche($fiche);
             $documents[] = $document;
         }
 
