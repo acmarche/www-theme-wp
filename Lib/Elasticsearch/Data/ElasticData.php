@@ -309,7 +309,7 @@ class ElasticData
             list($date, $heure) = explode(' ', $fiche->created_at);
             $document->date = $date;
             $document->url  = RouterBottin::getUrlFicheBottin($fiche);
-            $documents[] = $document;
+            $documents[]    = $document;
         }
 
         return $documents;
@@ -332,9 +332,9 @@ class ElasticData
             $document->tags    = [];//todo
             $document->date    = $category->created_at;
             $document->url     = RouterBottin::getUrlCategoryBottin($category);
-            //$category->url = $this->bottinData->generateUrlCapCategorie($category);
             $fiches            = $this->bottinRepository->getFichesByCategory($category->id);
             $document->content = $this->bottinData->getContentForCategory($fiches);
+            $categories[]      = $data;
         }
 
         return $categories;
