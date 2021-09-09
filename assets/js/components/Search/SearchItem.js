@@ -1,5 +1,7 @@
 function SearchItem( propos ) {
     const { item } = propos;
+    item.name.replace( /[<]br[^>]*[>]/gi, '' );// removes all <br>
+
     return (
         <>
             <li className="pb-12px px-12px col-12 col-md-6">

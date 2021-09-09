@@ -45,25 +45,26 @@ function MapComponent( {
                         attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
                         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                     />
-                    {markerData?.map( ( object, index ) => {
-                        if (object.latitude && object.longitude) {
-                            return (
-                                <Marker
-                                    eventHandlers={{
-                                        click: () => {
-                                            handleClick( object );
-                                        }
-                                    }}
-                                    key={index}
-                                    position={[ object.latitude, object.longitude ]}
-                                >
-                                    <Tooltip><p>{object?.nom}</p></Tooltip>
-                                    {object.kml === true && <PopupKml object={object}/>}
-                                    {object.kml === false && <PopupBottin object={object}/>}
-                                </Marker>
-                            );
-                        }
-                    } )}
+                    {
+                        markerData ? markerData.map( ( object, index ) => {
+                            if (object.latitude && object.longitude) {
+                                return (
+                                    <Marker
+                                        eventHandlers={{
+                                            click: () => {
+                                                handleClick( object );
+                                            }
+                                        }}
+                                        key={index}
+                                        position={[ object.latitude, object.longitude ]}
+                                    >
+                                        <Tooltip><p>{object?.nom}</p></Tooltip>
+                                        {object.kml === true && <PopupKml object={object}/>}
+                                        {object.kml === false && <PopupBottin object={object}/>}
+                                    </Marker>
+                                );
+                            }
+                        } ) : ''}
                     {kmlContent && <ReactLeafletKml kml={kmlContent}/>}
                 </MapContainer>
             </div>
