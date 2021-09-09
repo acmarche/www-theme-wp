@@ -3,9 +3,9 @@
 namespace AcMarche\Theme\Lib\Elasticsearch;
 
 use AcMarche\Common\AcSerializer;
+use AcMarche\Theme\Inc\Theme;
 use AcMarche\Theme\Lib\Elasticsearch\Data\DocumentElastic;
 use AcMarche\Theme\Lib\Elasticsearch\Data\ElasticData;
-use AcMarche\Theme\Inc\Theme;
 use Elastica\Document;
 use Elastica\Response;
 use Symfony\Component\Console\Style\SymfonyStyle;
