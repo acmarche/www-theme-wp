@@ -146,7 +146,7 @@ class ElasticIndexer
 
     public function indexAllBottin()
     {
-        //   $this->indexFiches();
+        $this->indexFiches();
         $this->indexCategoriesBottin();
     }
 
