@@ -146,20 +146,20 @@ class ElasticIndexer
 
     public function indexAllBottin()
     {
-        $this->indexFiches();
+        //   $this->indexFiches();
         $this->indexCategoriesBottin();
     }
 
     public function indexCategoriesBottin()
     {
-        $categories = $this->elasticData->getAllCategoriesBottin();
+        $categories = $this->elasticData->getAllCategoriesBottin($this->outPut);
         foreach ($categories as $documentElastic) {
             $content  = $this->serializer->serialize($documentElastic, 'json');
             $id       = 'bottin_cat_'.$documentElastic->id;
             $doc      = new Document($id, $content);
             $response = $this->index->addDocument($doc);
             if ($this->outPut) {
-                $this->outPut->writeln("Bottin cat: ".$documentElastic->name);
+                $this->outPut->writeln("Bottin cat: ".$documentElastic->name.' '.$documentElastic->count.'fiches');
                 if ($response->hasError()) {
                     $this->outPut->writeln('Erreur lors de l\'indexation: '.$response->getErrorMessage());
                 }

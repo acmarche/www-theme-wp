@@ -12,22 +12,14 @@ use AcMarche\Theme\Lib\Urba;
 use AcMarche\Theme\Lib\WpRepository;
 use AcMarche\UrbaWeb\Entity\Permis;
 use BottinCategoryMetaBox;
+use Symfony\Component\Console\Style\SymfonyStyle;
 use WP_Post;
 
 class ElasticData
 {
-    /**
-     * @var BottinRepository
-     */
-    private $bottinRepository;
-    /**
-     * @var WpRepository
-     */
-    private $wpRepository;
-    /**
-     * @var ElasticBottinData
-     */
-    private $bottinData;
+    private BottinRepository $bottinRepository;
+    private WpRepository $wpRepository;
+    private ElasticBottinData $bottinData;
 
     public function __construct()
     {
@@ -320,21 +312,23 @@ class ElasticData
      *
      * @throws \Exception
      */
-    public function getAllCategoriesBottin(): array
+    public function getAllCategoriesBottin(?SymfonyStyle $outPut = null): array
     {
         $data       = $this->bottinRepository->getAllCategories();
         $categories = [];
         foreach ($data as $category) {
+            $created           = explode(' ', $category->created_at);
             $document          = new DocumentElastic();
             $document->id      = $category->id;
             $document->name    = $category->name;
             $document->excerpt = $category->description;
             $document->tags    = [];//todo
-            $document->date    = $category->created_at;
+            $document->date    = $created[0];
             $document->url     = RouterBottin::getUrlCategoryBottin($category);
             $fiches            = $this->bottinRepository->getFichesByCategory($category->id);
+            $document->count    = count($fiches);
             $document->content = $this->bottinData->getContentForCategory($fiches);
-            $categories[]      = $data;
+            $categories[]      = $document;
         }
 
         return $categories;

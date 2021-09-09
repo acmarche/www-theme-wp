@@ -35,4 +35,6 @@ class DocumentElastic
      */
     public $url;
 
+    public int $count;
+
 }
