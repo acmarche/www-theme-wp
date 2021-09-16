@@ -18,8 +18,16 @@
 
             <noscript>
                 <ul class="pt-24px pt-md-32px d-md-flex flex-md-wrap mx-md-n4px mx-lg-n8px object-cardsList">
-                    {% include 'agenda/list/_first_lines.html.twig' %}
-                    {% include 'agenda/list/_other_lines.html.twig' %}
+                    {% if events|length >0 %}
+                        {% include 'agenda/list/_first_lines.html.twig' %}
+                        {% include 'agenda/list/_other_lines.html.twig' %}
+                    {% else %}
+                        <li class="object-card oc-event col-md-6 px-md-4px col-lg-4 px-lg-8px">
+                            <a href="#" class="bg-img">
+                                Erreur de chargement
+                            </a>
+                        </li>
+                    {% endif %}
                 </ul>
             </noscript>
             <div id="app-agenda"></div>
