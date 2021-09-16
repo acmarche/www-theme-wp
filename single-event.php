@@ -16,7 +16,7 @@ $codeCgt = $wp_query->get(RouterMarche::PARAM_EVENT);
 
 $cache  = Cache::instance();
 $blodId = get_current_blog_id();
-$code   = 'event-'.$blodId.'-'.$codeCgt;
+$code   = 'event-'.$blodId.'-'.$codeCgt.time();
 get_header();
 
 echo $cache->get(
@@ -25,7 +25,8 @@ echo $cache->get(
 
         $twig            = Twig::LoadTwig();
         $hadesRepository = new HadesRepository();
-        $event           = $hadesRepository->getOffre($codeCgt);
+        //$event           = $hadesRepository->getOffre($codeCgt);
+        $event = false;
 
         if ( ! $event) {
             return $twig->render(
