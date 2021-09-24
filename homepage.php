@@ -20,8 +20,8 @@ $hadesRepository = new HadesRepository();
 $news = WpRepository::getAllNews(6);
 
 try {
-    $events = $hadesRepository->getEvents();
-   // $events=[];
+   // $events = $hadesRepository->getEvents();
+    $events=[];
     RouterMarche::setRouteEvents($events);
 } catch (\Exception $exception) {
     $events = [];
