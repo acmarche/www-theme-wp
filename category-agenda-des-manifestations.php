@@ -12,7 +12,7 @@ get_header();
 $hadesRepository = new HadesRepository();
 try {
     $events=[];
-   // $events         = $hadesRepository->getEvents();
+    $events         = $hadesRepository->getEvents();
     RouterMarche::setRouteEvents($events);
 } catch (InvalidArgumentException $e) {
     Twig::rendPage(

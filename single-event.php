@@ -25,8 +25,8 @@ echo $cache->get(
 
         $twig            = Twig::LoadTwig();
         $hadesRepository = new HadesRepository();
-        //$event           = $hadesRepository->getOffre($codeCgt);
-        $event = false;
+        $event           = $hadesRepository->getOffre($codeCgt);
+        //$event = false;
 
         if ( ! $event) {
             return $twig->render(
