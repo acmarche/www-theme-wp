@@ -27,7 +27,7 @@ $urlBack  = '/2eroman';
 $nameBack = 'l\'accueil';
 
 $wpRepository = new WpRepository();
-$news         = $wpRepository->getPostsByCategory(258, get_current_blog_id());
+$news         = $wpRepository->getPostsByCategory(9, get_current_blog_id());
 
 $blodId = get_current_blog_id();
 $color  = Theme::getColorBlog($blodId);

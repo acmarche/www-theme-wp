@@ -4,10 +4,13 @@
     <ul class="pt-24px pt-ls-md-32px pt-md-32px d-ls-lg-flex flex-ls-lg-wrap mx-ls-lg-n4px d-lg-flex flex-lg-wrap mx-lg-n4px">
 
         <!--always visible-->
-        {% include 'homepage/news/_always.html.twig' %}
-
-        <!--visible from landscape&&large-->
-        {% include 'homepage/news/_landscape_large.html.twig' %}
+        {% if actus | length > 0 %}
+            {% include 'homepage/news/_always.html.twig' %}
+            <!--visible from landscape&&large-->
+            {% include 'homepage/news/_landscape_large.html.twig' %}
+        {% endif %}
     </ul>
-    <a href="/2eroman/actualites" class="button lvl3 mt-12px align-self-ls-md-end align-self-md-end position-relative left-0 left-hover-12px">Plus d'actualités<i class="fas fa-angle-right d-none d-ls-md-inline pl-12px fs-basic d-md-inline"></i></a>
+    <a href="/2eroman/actualites"
+       class="button lvl3 mt-12px align-self-ls-md-end align-self-md-end position-relative left-0 left-hover-12px">Plus
+        d'actualités<i class="fas fa-angle-right d-none d-ls-md-inline pl-12px fs-basic d-md-inline"></i></a>
 </div>
