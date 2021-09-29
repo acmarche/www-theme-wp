@@ -23,7 +23,7 @@ $path     = Theme::getPathBlog($blodId);
 $siteSlug = Theme::getTitleBlog($blodId);
 $blogName = Theme::getTitleBlog($blodId);
 
-$urlBack  = '/';
+$urlBack  = '/2eroman';
 $nameBack = 'l\'accueil';
 
 $wpRepository = new WpRepository();
