@@ -22,6 +22,14 @@ class Api
         //if (is_admin()) {
         $this->registerBottin();
         // }
+
+        add_filter('application_password_is_api_request', function ($api_request) {
+            if (empty($api_request)) {
+                return strpos($_SERVER['REQUEST_URI'], '/wp-json/') !== false;
+            }
+
+            return $api_request;
+        }, 10, 1);
     }
 
     public function registerEvent()
@@ -136,7 +144,7 @@ class Api
 
     function mapApi()
     {
-         add_action(
+        add_action(
             'rest_api_init',
             function () {
                 register_rest_route(
@@ -152,7 +160,7 @@ class Api
             }
         );
 
-         add_action(
+        add_action(
             'rest_api_init',
             function () {
                 register_rest_route(
