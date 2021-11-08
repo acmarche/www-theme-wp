@@ -14,9 +14,6 @@ module.exports = {
         agenda: [
             `${path.resolve( __dirname, 'src' )}/agenda.js`
         ],
-        map: [
-            `${path.resolve( __dirname, 'src' )}/map.js`
-        ],
         searchScreen: [
             `${path.resolve( __dirname, 'src' )}/searchScreen.js`
         ],
@@ -27,5 +24,11 @@ module.exports = {
     externals: {
         react: 'React',
         'react-dom': 'ReactDOM'
+    },
+    module: {
+        rules: [ {
+            loader: 'babel-loader',
+            exclude: /node_modules/
+        } ]
     }
 };
