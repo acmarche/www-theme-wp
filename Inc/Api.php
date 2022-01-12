@@ -15,13 +15,10 @@ class Api
         if ( ! is_admin()) {
             $this->registerCateogry();
             $this->registerEvent();
-            //   $this->registerBottin();
             $this->registerSearch();
             $this->mapApi();
         }
-        //if (is_admin()) {
         $this->registerBottin();
-        // }
 
         add_filter('application_password_is_api_request', function ($api_request) {
             if (empty($api_request)) {
