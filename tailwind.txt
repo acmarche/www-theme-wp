@@ -1,4 +1,28 @@
 effet ligne bleu menu
 https://codepen.io/thirus/pen/8dc9145067fc5c7b38134a6e60f65792?editors=1100
-
+https://play.tailwindcss.com/EnhCYS0Xht?size=840x500
 https://codepen.io/thirus/pen/cebc25b8656a490a941ddef3a0c598d7?editors=1100
+
+icones social
+
+https://codepen.io/thirus/pen/f5421324525fe57f57098ae3ad4ae53d?editors=1100
+https://codepen.io/shadeed/pen/vPNQBr
+https://play.tailwindcss.com/IuyXJ1p4ma?size=500x400
+
+logos
+
+https://codepen.io/thirus/pen/e5daedef6718ebca0a28357f40e2fb49?editors=1100
+https://app.gumroad.com/read/1b355277b1faa236bf6853b2d05f4947/glLZUTKdfIQ4C4B1OJ4s0w==#
+
+header
+https://play.tailwindcss.com/kwMF9NtnIn?size=1000x500 avec flex
+
+footer
+https://play.tailwindcss.com/FF3sACeN78?size=1000x500 flex
+
+https://play.tailwindcss.com/d9SQv7KC1p?size=1000x700
+
+https://play.tailwindcss.com/bNVDIofD2N?size=1050x650
+
+https://play.tailwindcss.com/jQjQLsSitN?size=1000x700
+
