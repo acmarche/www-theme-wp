@@ -123,15 +123,15 @@ class Carto
                     'veterinaires' => ['name' => 'Vétérinaires', 'source' => 'bottin', 'id' => 588],
                 ],
             ],
-            'securite_routiere' => [
+          /*  'securite_routiere' => [
                 'name'     => 'Sécurité routière',
                 'icone'    => 'i-healthcase',
                 'elements' => [
-                    'radar'  => ['name' => 'Radars répréfisses', 'source' => 'bottin', 'id' => 688],
+                    'radar'  => ['name' => 'Radars répressifs', 'source' => 'bottin', 'id' => 688],
                     'radar_preventif'  => ['name' => 'Radars préventifs', 'source' => 'kml', 'id' => 'radar_preventif'],
                     'trafic' => ['name' => 'Analyseur de trafic', 'source' => 'kml', 'id' => 'trafic'],
                 ],
-            ],
+            ],*/
             'sport'             => [
                 'name'     => 'Sport',
                 'icone'    => 'i-chrono',
