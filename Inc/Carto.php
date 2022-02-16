@@ -124,8 +124,12 @@ class Carto
                 ],
             ],
             'securite_routiere' => [
-                'radar'  => ['name' => 'Radar', 'source' => 'bottin', 'id' => 688],
-                'trafic' => ['name' => 'Analyseur de trafic', 'source' => 'kml', 'id' => 'trafic'],
+                'name'     => 'Sécurité routière',
+                'icone'    => 'i-healthcase',
+                'elements' => [
+                    'radar'  => ['name' => 'Radar', 'source' => 'bottin', 'id' => 688],
+                    'trafic' => ['name' => 'Analyseur de trafic', 'source' => 'kml', 'id' => 'trafic'],
+                ],
             ],
             'sport'             => [
                 'name'     => 'Sport',
