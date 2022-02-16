@@ -127,7 +127,7 @@ class Carto
                 'name'     => 'Sécurité routière',
                 'icone'    => 'i-healthcase',
                 'elements' => [
-                    'radar'  => ['name' => 'Radar', 'source' => 'bottin', 'id' => 688],
+                    'radar'  => ['name' => 'Radars répréfisses', 'source' => 'bottin', 'id' => 688],
                     'radar_preventif'  => ['name' => 'Radars préventifs', 'source' => 'kml', 'id' => 'radar_preventif'],
                     'trafic' => ['name' => 'Analyseur de trafic', 'source' => 'kml', 'id' => 'trafic'],
                 ],
