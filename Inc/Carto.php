@@ -3,7 +3,6 @@
 
 namespace AcMarche\Theme\Inc;
 
-
 use AcMarche\Bottin\Repository\BottinRepository;
 use AcMarche\Bottin\RouterBottin;
 use AcMarche\Theme\Lib\KmlParser;
@@ -11,17 +10,13 @@ use AcMarche\Theme\Lib\StringUtils;
 use DOMElement;
 use DOMNode;
 use Symfony\Component\HttpClient\HttpClient;
+use Symfony\Contracts\HttpClient\HttpClientInterface;
 
 class Carto
 {
-    /**
-     * @var \Symfony\Contracts\HttpClient\HttpClientInterface
-     */
-    private $httpClient;
-    /**
-     * @var KmlParser
-     */
-    private $kmlParser;
+    private HttpClientInterface $httpClient;
+
+    private KmlParser $kmlParser;
 
     public function __construct()
     {
@@ -32,18 +27,18 @@ class Carto
     public function filtres(): array
     {
         return [
-            'culture'         => [
+            'culture'           => [
                 'name'     => 'Culture',
                 'icone'    => 'i-book',
                 'elements' => [
-                    'biblio'  => ['name' => 'Bibliothèques', 'source' => 'bottin', 'id' => 674],
-                    'boites_livres'  => ['name' => 'Boîtes à livres', 'source' => 'bottin', 'id' => 684],
-                    'cinema'  => ['name' => 'Cinéma', 'source' => 'bottin', 'id' => 675],
-                    'musees'  => ['name' => 'Musées', 'source' => 'bottin', 'id' => 673],
-                    'statues' => ['name' => 'Statues et sculptures', 'source' => 'kml', 'id' => 'statues'],
+                    'biblio'        => ['name' => 'Bibliothèques', 'source' => 'bottin', 'id' => 674],
+                    'boites_livres' => ['name' => 'Boîtes à livres', 'source' => 'bottin', 'id' => 684],
+                    'cinema'        => ['name' => 'Cinéma', 'source' => 'bottin', 'id' => 675],
+                    'musees'        => ['name' => 'Musées', 'source' => 'bottin', 'id' => 673],
+                    'statues'       => ['name' => 'Statues et sculptures', 'source' => 'kml', 'id' => 'statues'],
                 ],
             ],
-            'enfance'         => [
+            'enfance'           => [
                 'name'     => 'Enfance',
                 'icone'    => 'i-beach-ball',
                 'elements' => [
@@ -52,7 +47,7 @@ class Carto
                     'creches'       => ['name' => 'Crêches', 'source' => 'bottin', 'id' => 495],
                 ],
             ],
-            'enseignement'    => [
+            'enseignement'      => [
                 'name'     => 'Enseignement',
                 'icone'    => 'i-school',
                 'elements' => [
@@ -62,7 +57,7 @@ class Carto
                     'enseignement_superieur'  => ['name' => 'Supérieur', 'source' => 'bottin', 'id' => 670],
                 ],
             ],
-            'environnement'   => [
+            'environnement'     => [
                 'name'     => 'Environnement',
                 'icone'    => 'i-leaf',
                 'elements' => [
@@ -70,7 +65,7 @@ class Carto
                     'bulles_vetements' => ['name' => 'Bulles à vêtements', 'source' => 'bottin', 'id' => 678],
                 ],
             ],
-            'horeca'          => [
+            'horeca'            => [
                 'name'     => 'Horéca',
                 'icone'    => 'i-flatware',
                 'elements' => [
@@ -84,7 +79,7 @@ class Carto
                     'restaurants' => ['name' => 'Restaurants', 'source' => 'bottin', 'id' => 521],
                 ],
             ],
-            'infrastructures' => [
+            'infrastructures'   => [
                 'name'     => 'Infrastructures',
                 'icone'    => 'i-board',
                 'elements' => [
@@ -92,7 +87,7 @@ class Carto
                     'salles_commu' => ['name' => 'Salles communales', 'source' => 'bottin', 'id' => 680],
                 ],
             ],
-            'mobilite'        => [
+            'mobilite'          => [
                 'name'     => 'Mobilité',
                 'icone'    => 'i-bus',
                 'elements' => [
@@ -115,7 +110,7 @@ class Carto
                     ],
                 ],
             ],
-            'sante'           => [
+            'sante'             => [
                 'name'     => 'Santé',
                 'icone'    => 'i-healthcase',
                 'elements' => [
@@ -128,13 +123,17 @@ class Carto
                     'veterinaires' => ['name' => 'Vétérinaires', 'source' => 'bottin', 'id' => 588],
                 ],
             ],
-            'sport'           => [
+            'securite_routiere' => [
+                'radar'  => ['name' => 'Radar', 'source' => 'bottin', 'id' => 688],
+                'trafic' => ['name' => 'Analyseur de trafic', 'source' => 'kml', 'id' => 'trafic'],
+            ],
+            'sport'             => [
                 'name'     => 'Sport',
                 'icone'    => 'i-chrono',
                 'elements' =>
                     $this->getElements(486),
             ],
-            'wifi'            => [
+            'wifi'              => [
                 'name'     => 'Wifi gratuit',
                 'icone'    => 'i-wifi',
                 'elements' => [
@@ -202,6 +201,9 @@ class Carto
                 break;
             case 'cimetieres':
                 $url = 'https://www.google.com/maps/d/kml?forcekml=1&mid=1Cw-353ODEVCerBBior9Y27Bf8sc';
+                break;
+            case 'trafic':
+                $url = 'https://www.google.com/maps/d/u/0/kml?forcekml=1&mid=1KcaFoc4PdWEPezlKLxPJxOtSDjkdv6gz&lid=TxtOoLFqAYs';
                 break;
             default:
                 $url = false;
