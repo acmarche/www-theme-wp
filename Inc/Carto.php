@@ -128,6 +128,7 @@ class Carto
                 'icone'    => 'i-healthcase',
                 'elements' => [
                     'radar'  => ['name' => 'Radar', 'source' => 'bottin', 'id' => 688],
+                    'radar_preventif'  => ['name' => 'Radars préventifs', 'source' => 'kml', 'id' => 'radar_preventif'],
                     'trafic' => ['name' => 'Analyseur de trafic', 'source' => 'kml', 'id' => 'trafic'],
                 ],
             ],
@@ -208,6 +209,9 @@ class Carto
                 break;
             case 'trafic':
                 $url = 'https://www.google.com/maps/d/u/0/kml?forcekml=1&mid=1KcaFoc4PdWEPezlKLxPJxOtSDjkdv6gz&lid=TxtOoLFqAYs';
+                break;
+            case 'radar_preventif':
+                $url = 'https://www.google.com/maps/d/u/0/kml?forcekml=1&mid=1KcaFoc4PdWEPezlKLxPJxOtSDjkdv6gz&lid=MmcyPrPTS_w';
                 break;
             default:
                 $url = false;
