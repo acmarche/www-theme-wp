@@ -29,7 +29,7 @@ function Filtres( {
 
     useEffect( () => {
         loadingFiltres();
-        var hash = window.location.hash.substr( 1 );//#x in url
+        const hash = window.location.hash.substr( 1 );//#x in url
         if (hash) {
             handleClick( hash, hash );
         }
