@@ -3,14 +3,17 @@ import FiltreLi from './FiltreLi';
 import FiltreSelect from './FiltreSelect';
 import { loadFiltres } from '../service/map-service';
 
-const { useState, useEffect } = wp.element;
+const {
+    useState,
+    useEffect
+} = wp.element;
 
-function Filtres({
+function Filtres( {
     setMarkerData,
     setKmlKey,
     setOptionSelected
-}) {
-    const [ filtres, setFiltres ] = useState([]);
+} ) {
+    const [ filtres, setFiltres ] = useState( [] );
 
     async function loadingFiltres() {
         let response;
@@ -18,7 +21,7 @@ function Filtres({
             response = await loadFiltres();
             const { data } = response;
             setFiltres( data );
-        } catch ( e ) {
+        } catch (e) {
             console.log( e );
         }
         return null;
@@ -26,7 +29,11 @@ function Filtres({
 
     useEffect( () => {
         loadingFiltres();
-    }, [ ]);
+        var hash = window.location.hash.substr( 1 );//#x in url
+        if (hash) {
+            handleClick( hash, hash );
+        }
+    }, [] );
 
     const handleClick = ( arg, name ) => {
         console.log( `request ${arg}` );
@@ -34,11 +41,11 @@ function Filtres({
 
         Axios.get( `https://www.marche.be/wp-json/map/data/${arg}` )
             .then( ( res ) => {
-                if ( 0 !== res.data.length ) {
-                    if ( true === res.data.kml ) {
+                if (0 !== res.data.length) {
+                    if (true === res.data.kml) {
                         setMarkerData( res.data.data );
                     } else {
-                        if ( 0 === res.data.data.length ) {
+                        if (0 === res.data.data.length) {
                             alert( 'Aucune données trouvées' );
                         }
                         setMarkerData( res.data.data );
@@ -46,13 +53,13 @@ function Filtres({
                 } else {
                     alert( 'Aucune données trouvées' );
                     setKmlKey( null );
-                    setMarkerData([]);
+                    setMarkerData( [] );
                     return null;
                 }
-            })
+            } )
             .catch( ( err ) => {
                 console.log( err );
-            });
+            } );
     };
 
     return (
@@ -62,12 +69,12 @@ function Filtres({
                 className="col-12 col-lg-3 px-0 lg-shadow-sm-1 position-relative z-10 overflowY-auto mh-700px">
                 <FiltreLi
                     filtres={filtres}
-                    handleClick={ handleClick}
+                    handleClick={handleClick}
                     setKmlKey={setKmlKey}
                 />
                 <FiltreSelect
                     filtres={filtres}
-                    handleClick={ handleClick}
+                    handleClick={handleClick}
                     setKmlKey={setKmlKey}/>
             </div>
         </>
