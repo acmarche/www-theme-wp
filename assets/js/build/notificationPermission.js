@@ -1,0 +1,2 @@
+document.getElementById("notificationBtn").addEventListener("click",(function(){new Notification("Liste de trucs à faire",{body:'Coucou ! Votre tâche "Lolo" arrive maintenant à échéance.'})}));
+//# sourceMappingURL=notificationPermission.js.map
