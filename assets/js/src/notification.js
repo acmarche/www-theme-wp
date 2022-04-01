@@ -1,3 +1,4 @@
+// https://firebase.google.com/docs/cloud-messaging/js/receive?authuser=0
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
@@ -59,7 +60,7 @@ onMessage( messaging, function( payload ) {
     const notificationTitle = 'Background Message Title22';
     const notificationOptions = {
         body: 'Background Message body.22',
-        icon: '/firebase-logo.png'
+        icon: 'https://www.marche.be/wp-content/themes/marchebe/assets/tartine/rsc/img/img_logo.png'
     };
 
     self.registration.showNotification( notificationTitle,
