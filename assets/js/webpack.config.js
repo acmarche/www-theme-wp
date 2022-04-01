@@ -22,6 +22,12 @@ module.exports = {
         ],
         searchScreenHome: [
             `${path.resolve( __dirname, 'src' )}/searchScreenHome.js`
+        ],
+        notificationPermission: [
+            `${path.resolve( __dirname, 'src' )}/notificationPermission.js`
+        ],
+        notification: [
+            `${path.resolve( __dirname, 'src' )}/notification.js`
         ]
     },
     externals: {

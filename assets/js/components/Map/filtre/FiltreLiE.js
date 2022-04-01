@@ -28,7 +28,7 @@ function FiltreLiE( propos ) {
 
     return (
         <>
-            <li className="border-top border-default object-sublist">
+            <li className="border-top border-default object-sublist" id={ `list_element-${keyword}` }>
                 <input type="radio" id={ `list_element-${keyword}` } name="list_element" onChange={() => {}}/>
                 <span className="icon_custom"><i className={`${icone} w-22px h-22px mr-16px bg-size-auto`}></i>{name}</span>
                 <ul>
