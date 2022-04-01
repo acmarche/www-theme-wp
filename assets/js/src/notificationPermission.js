@@ -29,24 +29,28 @@ function askNotificationPermission() {
 
 function checkNotificationPromise() {
     try {
-      Notification.requestPermission().then();
-    } catch(e) {
-      return false;
+        Notification.requestPermission()
+            .then();
+    } catch (e) {
+        return false;
     }
 
     return true;
-  }
+}
 
-function createNotif(titre) {
+function createNotif( titre ) {
     const img = '/to-do-notifications/img/icon-128.png';
     const text = 'Coucou ! Votre tâche "' + titre + '" arrive maintenant à échéance.';
     const notification = new Notification( 'Liste de trucs à faire', {
-        body: text,
-       // icon: img
+        body: text
+        // icon: img
     } );
 }
 
 const notificationBtn = document.getElementById( 'notificationBtn' );
-notificationBtn.addEventListener( 'click', () => {
-    createNotif("Lolo");
-});
+if (notificationBtn != null) {
+    notificationBtn.addEventListener( 'click', () => {
+        createNotif( 'Lolo' );
+    } );
+}
+askNotificationPermission();

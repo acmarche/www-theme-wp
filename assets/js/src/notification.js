@@ -1,6 +1,6 @@
 // Import the functions you need from the SDKs you need
-import { initializeApp } from 'firebase/app';
-import { getAnalytics } from 'firebase/analytics';
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
 import { getMessaging, getToken, onMessage } from 'firebase/messaging';
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -8,26 +8,28 @@ import { getMessaging, getToken, onMessage } from 'firebase/messaging';
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-    apiKey: 'AIzaSyAWLMT0P9-Nu7ECNx6EYuFiFJax_mP21bk',
-    authDomain: 'notifications-bf2c8.firebaseapp.com',
-    projectId: 'notifications-bf2c8',
-    storageBucket: 'notifications-bf2c8.appspot.com',
-    messagingSenderId: '571583228471',
-    appId: '1:571583228471:web:3e76dbf7f287a0d19aedb2',
-    measurementId: 'G-YD6MK7CGVH'
+    apiKey: "AIzaSyA9LbyQzJrRkWsRvUJyf3dyWe0mPRWxN7s",
+    authDomain: "marchebe-af3e0.firebaseapp.com",
+    databaseURL: "https://marchebe-af3e0.firebaseio.com",
+    projectId: "marchebe-af3e0",
+    storageBucket: "marchebe-af3e0.appspot.com",
+    messagingSenderId: "510808639785",
+    appId: "1:510808639785:web:bb141aab46486792ebcf38",
+    measurementId: "G-J1K585BK2W"
 };
 
-const apiKeyPublic = 'BEhaaqfwyOQ9bYIwzikK3SCI_tJYzf_fle9idtkWuoYgtkNF0lj0-6vNpbp82RKuJLxWzTmHm10y4NXAnkkRMSs';
 // Initialize Firebase
-const app = initializeApp( firebaseConfig );
-const analytics = getAnalytics( app );
+const app = initializeApp(firebaseConfig);
+//const analytics = getAnalytics(app);
+const messaging = getMessaging();
+const apiKeyPublic = 'BM0PSKoJBRwKjoRWaA5aLTj5tGfxhk7XtAWwcsqygqUNfn-MakAVHcE0REQfMcGFAGz9fGAkOwV3jKuJex8XkbM';
+
 // Get registration token. Initially this makes a network call, once retrieved
 // subsequent calls to getToken will return from cache.
-const messaging = getMessaging();
 getToken( messaging, { vapidKey: apiKeyPublic } )
     .then( ( currentToken ) => {
         if (currentToken) {
-      console.log("Firebase Token", currentToken);
+            console.log( 'Firebase Token', currentToken );
             console.log( 'Send the token to your server and update the UI if necessary' );
             // ...
         } else {
@@ -51,15 +53,21 @@ onMessage( messaging, ( payload ) => {
 // and you should use data messages for custom notifications.
 // For more info see:
 // https://firebase.google.com/docs/cloud-messaging/concept-options
-messaging.onBackgroundMessage(function(payload) {
-  console.log('[firebase-messaging-sw.js] Received background message ', payload);
-  // Customize notification here
-  const notificationTitle = 'Background Message Title';
-  const notificationOptions = {
-    body: 'Background Message body.',
-   // icon: '/firebase-logo.png'
-  };
+onMessage( messaging, function( payload ) {
+    console.log( '[firebase-messaging-sw.js] Received background message ', payload );
+    // Customize notification here
+    const notificationTitle = 'Background Message Title22';
+    const notificationOptions = {
+        body: 'Background Message body.22',
+        icon: '/firebase-logo.png'
+    };
 
-  self.registration.showNotification(notificationTitle,
-    notificationOptions);
-});
+    self.registration.showNotification( notificationTitle,
+        notificationOptions );
+} );
+
+/**
+ * message.notification.title
+ message.notification.body
+ message.data
+ */

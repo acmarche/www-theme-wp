@@ -1,0 +1,18 @@
+{% extends "article/base.html.twig" %}
+
+{% block url_back %}
+    {{ urlBack }}
+{% endblock %}
+
+{% block name_back %}
+    {{ nameBack|puriferHtml|raw }}
+{% endblock %}
+
+{% block content %}
+    <p>{{ content|puriferHtml|raw }}</p>
+
+    <br/>
+    <br/>
+    <button class="btn btn-primary" style="display: block;" type="button" name="notif" id="notificationBtn">Demander la permission de notification</button>
+{% endblock %}
+
