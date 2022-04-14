@@ -13,39 +13,36 @@
 {% endblock %}
 
 {% block content %}
-    {% for description in event.descriptions %}
-        <p><strong>{{ description.lib('fr')|puriferHtml|raw }}</strong></p>
-        <p>{{ description.texte('fr')|puriferHtml|nl2br }} </p>
-    {% endfor %}
+    {{ event.description|raw }}<br/>
+    {{ event.tarif|nl2br }}<br/>
 
     <h4 class="mb-2 mt-2"><strong>Date(s)</strong></h4>
 
     {% for date in event.dates %}
-        {{ date.date_deb }} {% if loop.last != true %}, {% endif %}
+        {{ date.date_begin|format_date('full') }} {% if loop.last != true %}, {% endif %}
     {% endfor %}
 
     <h4 class="mb-2 mt-2"><strong>Où</strong></h4>
-    {{ event.localisation.postal }} {{ event.localisation.localite }}
-    <br/>
-    {{ event.localisation.localite }}
+    {{ offre.adresse.cp }} {{ offre.adresse.localiteByLanguage }}
+    ({{ offre.adresse.communeByLanguage }})<br/>
+    {{ offre.adresse.latitude }}<br/>
 
     <h4 class="mb-2 mt-2"><strong>Renseignements</strong></h4>
-    {% for contact in event.contacts %}
-        {% if contact.lib('fr') %}
-            <strong>{{ contact.lib('fr') }}</strong>   <br/>
-        {% endif %}
-        {% if contact.noms %}
-            {{ contact.noms }} {{ contact.prenoms }} <br/>
-        {% endif %}
-        <br/>
-        {{ contact.adresse }} {{ contact.numero }}
-        <br/>
-        {{ contact.postal }} {{ contact.localite }}<br/><br/>
-        {% for communication in contact.communications %}
-            <strong>{{ communication.lib('fr') }}</strong> {{ communication.val }}
-            <br/>
-        {% endfor %}
-    {% endfor %}
+    {% if event.tels|length > 1 %}
+        {{ dump(event.tels) }}
+    {% endif %}
+
+    {% if event.emails|length > 1 %}
+        {{ dump(event.emails) }}
+    {% endif %}
+
+    {% if event.email is defined %}
+        {{ event.email }}<br/>
+    {% endif %}
+    {% if event.tel is defined %}
+        {{ event.tel }}<br/>
+    {% endif %}
+
 
     {% include 'agenda/show/_images.html.twig' %}
     {% include 'map/_carte.html.twig' %}
