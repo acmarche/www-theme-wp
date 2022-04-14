@@ -2,7 +2,8 @@
 
 namespace AcMarche\Theme;
 
-use AcMarche\Common\Mailer;
+use AcMarche\Pivot\DependencyInjection\Kernel;
+use AcMarche\Pivot\Repository\PivotRepository;
 use AcMarche\Theme\Inc\RouterMarche;
 use AcMarche\Theme\Lib\Twig;
 use AcMarche\Theme\Lib\WpRepository;
@@ -13,18 +14,24 @@ use Symfony\Component\HttpFoundation\Request;
  * Template Name: Home-Page-Principal
  */
 get_header();
+$env = WP_DEBUG ? 'dev': 'prod';
+$kernel = new Kernel($env, WP_DEBUG);
+$kernel->boot();
+$container = $kernel->getContainer();
 
-//$hadesRepository = new HadesRepository();
-
-$news = WpRepository::getAllNews(6);
+$loader = $container->get('dotenv');
+$loader->loadEnv('.env');
+/**
+ * @var PivotRepository $pivotRepository
+ */
+$pivotRepository = $container->get('pivotRepository');
+$news            = WpRepository::getAllNews(6);
 
 try {
-    //$events = $hadesRepository->getEvents();
-    $events=[];
+    $events = $pivotRepository->getEvents();
     RouterMarche::setRouteEvents($events);
 } catch (\Exception $exception) {
     $events = [];
- //   Mailer::sendError("Erreur de chargement de l'agenda", $exception->getMessage());
 }
 
 $pageAlert    = WpRepository::getPageAlert();
@@ -33,7 +40,7 @@ $dateAlert    = null;
 
 if ($pageAlert) {
     $request   = Request::createFromGlobals();
-    $dateAlert = preg_replace("#(\D)#","",$pageAlert->post_modified);
+    $dateAlert = preg_replace("#(\D)#", "", $pageAlert->post_modified);
     $close     = (bool)$request->cookies->get('closeAlert'.$dateAlert);
     if ($close) {
         $pageAlert = null;
@@ -71,7 +78,7 @@ Twig::rendPage(
         'contentAlert' => $contentAlert,
         'imageBg'      => $imageBg,
         'dateAlert'    => $dateAlert,
-        'sortLink'    => $sortLink,
+        'sortLink'     => $sortLink,
     ]
 );
 

@@ -1,32 +1,34 @@
 {% set event = events[1] %}
-{% set date = event.dates[0] %}
+{% set dateBeginEnd = event.firstDate %}
+{% set dateBegin = dateBeginEnd.date_begin %}
 <li class="d-none d-ls-sm-block col-ls-sm-4 col-ls-md-12 px-ls-sm-4px pt-ls-md-8px d-md-block col-md-12 pt-md-8px px-md-0">
     <a href="{{ event.url }}"
        class="d-flex shadow-sm-1 ls-md-shadow-none border border-width-1px border-default md-shadow-none thumbnail t-border-hover-primary t-transition-border-color">
         <div class="col-3 border-right border-width-1px border-default py-11px t-bgcolor-hover-primary t-border-hover-white t-transition-all">
-            <span class="d-block text-dark-primary ff-semibold lh-100 fs-big-1 t-color-hover-white t-transition-color">{{ date.day }}</span>
-            <span class="d-block text-dark-primary ff-semibold lh-100 fs-short-1 pt-4px pb-5px t-color-hover-white t-transition-color pt-md-3px pb-md-4px pt-lg-4px pb-lg-5px">{{ date.month }}</span>
-            <span class="d-block text-dark-primary ff-semibold lh-100 fs-short-3 t-color-hover-white t-transition-color">{{ date.year }}</span>
+            <span class="d-block text-dark-primary ff-semibold lh-100 fs-big-1 t-color-hover-white t-transition-color">{{ dateBegin|date('d') }}</span>
+            <span class="d-block text-dark-primary ff-semibold lh-100 fs-short-1 pt-4px pb-5px t-color-hover-white t-transition-color pt-md-3px pb-md-4px pt-lg-4px pb-lg-5px">{{ dateBegin|date('m') }}</span>
+            <span class="d-block text-dark-primary ff-semibold lh-100 fs-short-3 t-color-hover-white t-transition-color">{{ dateBegin|date('Y') }}</span>
         </div>
         <div class="col-9 py-11px pl-28px pl-ls-sm-14px pr-14px align-self-center text-left lh-0 pl-md-14px">
-            <h3 class="lh-125 fs-short-2 text-dark-primary pb-4px">{{ event.titre }}</h3>
-            <small class="lh-100 fs-short-3 text-dark-primary">{{ event.localisation.localite }}</small>
+            <h3 class="lh-125 fs-short-2 text-dark-primary pb-4px">{{ event.nom }}</h3>
+            <small class="lh-100 fs-short-3 text-dark-primary">{{ event.adresse.localiteByLanguage }}</small>
         </div>
     </a>
 </li>
 {% set event = events[2] %}
-{% set date = event.dates[0] %}
+{% set dateBeginEnd = event.firstDate %}
+{% set dateBegin = dateBeginEnd.date_begin %}
 <li class="d-none d-ls-sm-block col-ls-sm-4 col-ls-md-12 px-ls-sm-4px pt-ls-md-8px d-md-block col-md-12 pt-md-8px px-md-0">
     <a href="{{ event.url }}"
        class="d-flex shadow-sm-1 ls-md-shadow-none border border-width-1px border-default md-shadow-none thumbnail t-border-hover-primary t-transition-border-color">
         <div class="col-3 border-right border-width-1px border-default py-11px t-bgcolor-hover-primary t-border-hover-white t-transition-all">
-            <span class="d-block text-dark-primary ff-semibold lh-100 fs-big-1 t-color-hover-white t-transition-color">{{ date.day }}</span>
-            <span class="d-block text-dark-primary ff-semibold lh-100 fs-short-1 pt-4px pb-5px t-color-hover-white t-transition-color pt-md-3px pb-md-4px pt-lg-4px pb-lg-5px">{{ date.month }}</span>
-            <span class="d-block text-dark-primary ff-semibold lh-100 fs-short-3 t-color-hover-white t-transition-color">{{ date.year }}</span>
+            <span class="d-block text-dark-primary ff-semibold lh-100 fs-big-1 t-color-hover-white t-transition-color">{{ dateBegin|date('d') }}</span>
+            <span class="d-block text-dark-primary ff-semibold lh-100 fs-short-1 pt-4px pb-5px t-color-hover-white t-transition-color pt-md-3px pb-md-4px pt-lg-4px pb-lg-5px">{{ dateBegin|date('m') }}</span>
+            <span class="d-block text-dark-primary ff-semibold lh-100 fs-short-3 t-color-hover-white t-transition-color">{{ dateBegin|date('Y') }}</span>
         </div>
         <div class="col-9 py-11px pl-28px pl-ls-sm-14px pr-14px align-self-center text-left lh-0 pl-md-14px">
-            <h3 class="lh-125 fs-short-2 text-dark-primary pb-4px">{{ event.titre }}</h3>
-            <small class="lh-100 fs-short-3 text-dark-primary">{{ event.localisation.localite }}</small>
+            <h3 class="lh-125 fs-short-2 text-dark-primary pb-4px">{{ event.nom }}</h3>
+            <small class="lh-100 fs-short-3 text-dark-primary">{{ event.adresse.localiteByLanguage }}</small>
         </div>
     </a>
 </li>

@@ -9,7 +9,8 @@ use AcMarche\Theme\Lib\Twig;
 
 get_header();
 try {
-    $kernel = new Kernel('dev', true);
+    $env = WP_DEBUG ? 'dev': 'prod';
+    $kernel = new Kernel($env, WP_DEBUG);
     $kernel->boot();
     $container = $kernel->getContainer();
 
