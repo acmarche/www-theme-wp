@@ -2,17 +2,32 @@
 
 namespace AcMarche\Theme;
 
+use AcMarche\Pivot\DependencyInjection\Kernel;
+use AcMarche\Pivot\Repository\PivotRepository;
 use AcMarche\Theme\Inc\RouterMarche;
 use AcMarche\Theme\Lib\Twig;
-use AcMarche\Pivot\Repository\HadesRepository;
 use Psr\Cache\InvalidArgumentException;
 
 get_header();
 
-$hadesRepository = new HadesRepository();
-$events=[];
+$kernel = new Kernel('dev', true);
+$kernel->boot();
+$container = $kernel->getContainer();
+
+$loader = $container->get('dotenv');
+$loader->loadEnv('.env');
+
+/**
+ * @var PivotRepository $pivot
+ */
+$pivot = $container->get('pivotRepository');
+$codeCgt = "EVT-A1-0016-2D6U";
+$data = $pivot->offreByCgt($codeCgt, date('Y-m-d H:m:s'));
+dd($data->getOffre()->codeCgt);
+
+$events          = [];
 try {
-    $events         = $hadesRepository->getEvents();
+    $events = $pivotRepository->getEvents();
     RouterMarche::setRouteEvents($events);
 } catch (InvalidArgumentException $e) {
     Twig::rendPage(

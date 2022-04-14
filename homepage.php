@@ -6,7 +6,6 @@ use AcMarche\Common\Mailer;
 use AcMarche\Theme\Inc\RouterMarche;
 use AcMarche\Theme\Lib\Twig;
 use AcMarche\Theme\Lib\WpRepository;
-use AcMarche\Pivot\Repository\HadesRepository;
 use SortLink;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -15,13 +14,13 @@ use Symfony\Component\HttpFoundation\Request;
  */
 get_header();
 
-$hadesRepository = new HadesRepository();
+//$hadesRepository = new HadesRepository();
 
 $news = WpRepository::getAllNews(6);
 
 try {
-    $events = $hadesRepository->getEvents();
-   // $events=[];
+    //$events = $hadesRepository->getEvents();
+    $events=[];
     RouterMarche::setRouteEvents($events);
 } catch (\Exception $exception) {
     $events = [];
