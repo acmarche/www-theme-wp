@@ -8,7 +8,7 @@ use AcMarche\Common\Mailer;
 use AcMarche\Theme\Lib\Elasticsearch\ElasticIndexer;
 use WP_Post;
 
-class Event
+class EventWpSubscriber
 {
     public function __construct()
     {
