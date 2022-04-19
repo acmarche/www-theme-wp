@@ -8,7 +8,7 @@ use AcMarche\Theme\Inc\AdminPage;
 use AcMarche\Theme\Inc\Api;
 use AcMarche\Theme\Inc\AssetsLoad;
 use AcMarche\Theme\Inc\BlockRender;
-use AcMarche\Theme\Inc\Event;
+use AcMarche\Theme\Inc\EventWpSubscriber;
 use AcMarche\Theme\Inc\Filter;
 use AcMarche\Theme\Inc\OpenGraph;
 use AcMarche\Theme\Inc\QueryAlter;
@@ -47,7 +47,7 @@ new RouterMarche();
 /**
  * Balises pour le référencement
  */
-new Seo();
+//new Seo();
 /**
  * Actions sur les filtres de wp
  */
@@ -67,7 +67,7 @@ new BlockRender();
 /**
  * Actions events
  */
-new Event();
+new EventWpSubscriber();
 /**
  * OpenGraph
  */

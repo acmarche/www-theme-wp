@@ -4,8 +4,8 @@
 namespace AcMarche\Theme\Inc;
 
 use AcMarche\Common\Router;
-use AcMarche\Pivot\Entities\Categorie;
-use AcMarche\Pivot\Entities\OffreInterface;
+use AcMarche\Pivot\Entities\Event\Event;
+use AcMarche\Pivot\Entities\Offre\Offre;
 use AcMarche\Theme\Lib\WpRepository;
 
 /**
@@ -31,19 +31,19 @@ class RouterMarche extends Router
        //   $this->flushRoutes();
     }
 
-    public static function getUrlEventCategory(Categorie $categorie): string
+    public static function getUrlEventCategory(Offre $categorie): string
     {
-        return self::getBaseUrlSite(Theme::TOURISME).self::EVENT_URL.$categorie->id;
+        return self::getBaseUrlSite(Theme::TOURISME).self::EVENT_URL.$categorie->codeCgt;
     }
 
-    public static function getUrlEvent(OffreInterface $offre): string
+    public static function getUrlEvent(Event $offre): string
     {
-        return '/tourisme/agenda-des-manifestations/'.self::EVENT_URL.$offre->id;
+        return '/tourisme/agenda-des-manifestations/'.self::EVENT_URL.$offre->codeCgt;
     }
 
-    public static function getUrlOffre(OffreInterface $offre, int $categoryId): string
+    public static function getUrlOffre(Offre $offre, int $categoryId): string
     {
-        return get_category_link($categoryId).self::OFFRE_URL.'/'.$offre->id;
+        return get_category_link($categoryId).self::OFFRE_URL.'/'.$offre->codeCgt;
     }
 
     public static function getUrlWww(): string

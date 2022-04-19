@@ -13,9 +13,15 @@
 {% endblock %}
 
 {% block content %}
-    {{ event.description|raw }}<br/>
-    {{ event.tarif|nl2br }}<br/>
+    {% for description in event.descriptions %}
+        {{ description|raw }}<br/>
+    {% endfor %}
 
+    {% for tarif in event.tarifs %}
+        {{ tarif|raw }}<br/>
+    {% endfor %}
+
+    <br/>
     <h4 class="mb-2 mt-2"><strong>Date(s)</strong></h4>
 
     {% for date in event.dates %}
@@ -23,9 +29,9 @@
     {% endfor %}
 
     <h4 class="mb-2 mt-2"><strong>Où</strong></h4>
-    {{ offre.adresse.cp }} {{ offre.adresse.localiteByLanguage }}
-    ({{ offre.adresse.communeByLanguage }})<br/>
-    {{ offre.adresse.latitude }}<br/>
+    {{ event.adresse1.cp }}
+    {{ event.adresse.localiteByLanguage }}
+    ({{ event.adresse.communeByLanguage }})<br/>
 
     <h4 class="mb-2 mt-2"><strong>Renseignements</strong></h4>
     {% if event.tels|length > 1 %}
@@ -42,6 +48,22 @@
     {% if event.tel is defined %}
         {{ event.tel }}<br/>
     {% endif %}
+
+    {% if event.homepage is defined %}
+        <a href="{{ event.homepage }}">{{ event.homepage }}</a><br/>
+    {% endif %}
+
+    {% for specInfo in event.specsDetailed %}
+        <strong>{{ specInfo.specDefinition.labelByLanguage('fr') }}</strong><br/>
+        {{ specInfo.specData.value }}
+        <span class="text-muted">
+    {{ specInfo.specData.urn }} /
+        {% if specInfo.specData.urnCat is defined %}
+            cat: {{ specInfo.specData.urnCat }}
+        {% endif %}
+    </span>
+        <br/><br/>
+    {% endfor %}
 
 
     {% include 'agenda/show/_images.html.twig' %}

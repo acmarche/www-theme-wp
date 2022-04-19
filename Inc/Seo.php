@@ -7,7 +7,6 @@ use AcMarche\Bottin\Repository\BottinRepository;
 use AcMarche\Bottin\RouterBottin;
 use AcMarche\Common\Mailer;
 use AcMarche\Common\Router;
-use AcMarche\Pivot\Repository\HadesRepository;
 use AcMarche\Theme\Lib\WpRepository;
 
 /**
@@ -110,8 +109,12 @@ class Seo
     }
 
     private static function metaHadesEvent(string $codeCgt)
-    {
-        $hadesRepository = new HadesRepository();
+    {  //todo
+        self::$metas['title']       = self::baseTitle("Page d'accueil");
+        self::$metas['description'] = get_bloginfo('description', 'display');
+        self::$metas['keywords']    = 'Commune, Ville, Marche, Marche-en-Famenne, Famenne, Administration communal';
+
+       /* $hadesRepository = new HadesRepository();
         $event           = $hadesRepository->getOffre($codeCgt);
         if ($event) {
             self::$metas['title']       = $event->getTitre('fr').' | Agenda des manifestations ';
@@ -140,7 +143,7 @@ class Seo
                 )
             );
             self::$metas['keywords']    = join(",", $keywords);
-        }
+        }*/
     }
 
     private static function metaBottinHomePage()
