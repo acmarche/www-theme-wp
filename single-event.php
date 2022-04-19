@@ -2,17 +2,14 @@
 
 namespace AcMarche\Theme;
 
-use AcMarche\Common\Cache;
 use AcMarche\Pivot\DependencyInjection\Kernel;
 use AcMarche\Pivot\Entities\Event\Event;
-use AcMarche\Pivot\Parser\PivotParser;
 use AcMarche\Pivot\Repository\PivotRepository;
 use AcMarche\Theme\Inc\RouterMarche;
 use AcMarche\Theme\Inc\Theme;
 use AcMarche\Theme\Lib\Twig;
 use AcMarche\Theme\Lib\WpRepository;
 use Exception;
-use Psr\Cache\InvalidArgumentException;
 use Symfony\Component\ErrorHandler\Debug;
 
 get_header();
@@ -66,9 +63,8 @@ if (count($images) > 0) {
 }
 $tags = [];
 foreach ($event->categories as $category) {
-    $tags[] = ['name' => $category, 'url' => 'cc'];//RouterMarche::getUrlEventCategory($category)];
+    $tags[] = ['name' => $category->labelByLanguage('fr'), 'url' => $category->id];//RouterMarche::getUrlEventCategory($category)];
 }
-
 $currentCategory = WpRepository::getCategoryAgenda();
 //$offres          = $hadesRepository->getOffresSameCategories($event);
 $offres    = [];
