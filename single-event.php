@@ -2,35 +2,21 @@
 
 namespace AcMarche\Theme;
 
-use AcMarche\Pivot\DependencyInjection\Kernel;
+use AcMarche\Common\Mailer;
+use AcMarche\Pivot\DependencyInjection\PivotContainer;
 use AcMarche\Pivot\Entities\Event\Event;
-use AcMarche\Pivot\Repository\PivotRepository;
 use AcMarche\Theme\Inc\RouterMarche;
 use AcMarche\Theme\Inc\Theme;
 use AcMarche\Theme\Lib\Twig;
 use AcMarche\Theme\Lib\WpRepository;
 use Exception;
-use Symfony\Component\ErrorHandler\Debug;
 
 get_header();
 
 global $wp_query;
-$twig    = Twig::LoadTwig();
-$codeCgt = $wp_query->get(RouterMarche::PARAM_EVENT);
-if (WP_DEBUG) {
-    Debug::enable();
-}
-$env    = WP_DEBUG ? 'dev' : 'prod';
-$kernel = new Kernel($env, WP_DEBUG);
-$kernel->boot();
-$container = $kernel->getContainer();
-
-$loader = $container->get('dotenv');
-$loader->loadEnv('.env');
-/**
- * @var PivotRepository $pivotRepository
- */
-$pivotRepository = $container->get('pivotRepository');
+$twig            = Twig::LoadTwig();
+$codeCgt         = $wp_query->get(RouterMarche::PARAM_EVENT);
+$pivotRepository = PivotContainer::getRepository();
 
 get_header();
 
@@ -40,18 +26,22 @@ get_header();
 try {
     $event = $pivotRepository->getEvent($codeCgt);
 } catch (Exception $e) {
-    return $twig->render(
+    echo $twig->render(
         'errors/500.html.twig',
         [
-            'message'     => 'Erreur lors du chargement de l\'évènement',
+            'message'   => $e->getMessage(),
+            'title'     => 'Erreur lors du chargement de l\'évènement',
             'tags'      => [],
             'color'     => Theme::getColorBlog(Theme::TOURISME),
             'blogName'  => Theme::getTitleBlog(Theme::TOURISME),
             'relations' => [],
         ]
     );
-}
+    Mailer::sendError("erreur chargement event", $e->getMessage());
 
+    return;
+}
+dump($event);
 if ( ! $event) {
     return $twig->render(
         'errors/404.html.twig',
@@ -72,10 +62,11 @@ if (count($images) > 0) {
 }
 $tags = [];
 foreach ($event->categories as $category) {
+    $urlCat = RouterMarche::getUrlEventCategory($category);
     $tags[] = [
         'name' => $category->labelByLanguage('fr'),
         'url'  => $category->id,
-    ];//RouterMarche::getUrlEventCategory($category)];
+    ];
 }
 $currentCategory = WpRepository::getCategoryAgenda();
 //$offres          = $hadesRepository->getOffresSameCategories($event);
@@ -93,7 +84,7 @@ foreach ($offres as $item) {
         'categories' => $item->categories,
     ];
 }
-dump($event);
+
 echo $twig->render(
     'agenda/show.html.twig',
     [

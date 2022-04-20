@@ -38,17 +38,25 @@
 
     <h4 class="mb-2 mt-2"><strong>Renseignements</strong></h4>
     {% if event.tels|length > 0 %}
-        <br/>   <strong>Téléphone:</strong>  <span>{{ event.tels|join }}</span><br/>
+        <br/><strong>Téléphone:</strong>  <span>{{ event.tels|join }}</span><br/>
     {% endif %}
 
     {% if event.emails|length > 0 %}
-        <br/>   <strong>Courriel:</strong> <span> {{ event.emails|join }}</span><br/>
+        <br/><strong>Courriel:</strong> <span> {{ event.emails|join }}</span><br/>
+    {% endif %}
+
+    {% if event.webs|length > 0 %}
+        {% for web in event.webs %}
+            <br/><strong>Site:</strong> <a href="{{ web.value }}">{{ web.value }}</a><br/>
+        {% endfor %}
+        <br/>
     {% endif %}
 
     {% if event.homepage is defined %}
         <br/><strong>Site web:</strong>  <a href="{{ event.homepage }}">{{ event.homepage }}</a><br/>
     {% endif %}
 
+    {#% include 'agenda/show/_specifications.html.twig' %#}
     {% include 'agenda/show/_images.html.twig' %}
     {% include 'map/_carte.html.twig' %}
 {% endblock %}

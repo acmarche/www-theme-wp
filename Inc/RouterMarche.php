@@ -4,6 +4,7 @@
 namespace AcMarche\Theme\Inc;
 
 use AcMarche\Common\Router;
+use AcMarche\Pivot\Entities\Category;
 use AcMarche\Pivot\Entities\Event\Event;
 use AcMarche\Pivot\Entities\Offre\Offre;
 use AcMarche\Theme\Lib\WpRepository;
@@ -31,9 +32,9 @@ class RouterMarche extends Router
        //   $this->flushRoutes();
     }
 
-    public static function getUrlEventCategory(Offre $categorie): string
+    public static function getUrlEventCategory(Category $categorie): string
     {
-        return self::getBaseUrlSite(Theme::TOURISME).self::EVENT_URL.$categorie->codeCgt;
+        return self::getBaseUrlSite(Theme::TOURISME).self::EVENT_URL.$categorie->id;
     }
 
     public static function getUrlEvent(Event $offre): string
