@@ -15,6 +15,7 @@ use Symfony\Component\ErrorHandler\Debug;
 get_header();
 
 global $wp_query;
+$twig    = Twig::LoadTwig();
 $codeCgt = $wp_query->get(RouterMarche::PARAM_EVENT);
 if (WP_DEBUG) {
     Debug::enable();
@@ -30,18 +31,26 @@ $loader->loadEnv('.env');
  * @var PivotRepository $pivotRepository
  */
 $pivotRepository = $container->get('pivotRepository');
+
+get_header();
+
 /**
  * @var Event $event
  */
 try {
     $event = $pivotRepository->getEvent($codeCgt);
 } catch (Exception $e) {
-    dd($e);
+    return $twig->render(
+        'errors/500.html.twig',
+        [
+            'message'     => 'Erreur lors du chargement de l\'évènement',
+            'tags'      => [],
+            'color'     => Theme::getColorBlog(Theme::TOURISME),
+            'blogName'  => Theme::getTitleBlog(Theme::TOURISME),
+            'relations' => [],
+        ]
+    );
 }
-
-get_header();
-
-$twig = Twig::LoadTwig();
 
 if ( ! $event) {
     return $twig->render(
@@ -63,7 +72,10 @@ if (count($images) > 0) {
 }
 $tags = [];
 foreach ($event->categories as $category) {
-    $tags[] = ['name' => $category->labelByLanguage('fr'), 'url' => $category->id];//RouterMarche::getUrlEventCategory($category)];
+    $tags[] = [
+        'name' => $category->labelByLanguage('fr'),
+        'url'  => $category->id,
+    ];//RouterMarche::getUrlEventCategory($category)];
 }
 $currentCategory = WpRepository::getCategoryAgenda();
 //$offres          = $hadesRepository->getOffresSameCategories($event);

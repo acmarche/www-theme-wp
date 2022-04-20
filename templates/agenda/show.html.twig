@@ -13,12 +13,16 @@
 {% endblock %}
 
 {% block content %}
+
     {% for description in event.descriptions %}
-        {{ description|raw }}<br/>
+        {% if description.urn == 'urn:fld:descmarket' %}
+            <p>{{ description.value|raw }}</p>
+            <br/>
+        {% endif %}
     {% endfor %}
 
     {% for tarif in event.tarifs %}
-        {{ tarif|raw }}<br/>
+        {{ tarif.value|raw }}<br/>
     {% endfor %}
 
     <br/>
@@ -29,42 +33,21 @@
     {% endfor %}
 
     <h4 class="mb-2 mt-2"><strong>Où</strong></h4>
-    {{ event.adresse1.cp }}
-    {{ event.adresse.localiteByLanguage }}
-    ({{ event.adresse.communeByLanguage }})<br/>
+    {{ event.adresse1.rue }} {{ event.adresse1.numero }}<br/>
+    {{ event.adresse1.cp }}  {{ event.adresse.localiteByLanguage }} <br/>
 
     <h4 class="mb-2 mt-2"><strong>Renseignements</strong></h4>
-    {% if event.tels|length > 1 %}
-        {{ dump(event.tels) }}
+    {% if event.tels|length > 0 %}
+        <br/>   <strong>Téléphone:</strong>  <span>{{ event.tels|join }}</span><br/>
     {% endif %}
 
-    {% if event.emails|length > 1 %}
-        {{ dump(event.emails) }}
-    {% endif %}
-
-    {% if event.email is defined %}
-        {{ event.email }}<br/>
-    {% endif %}
-    {% if event.tel is defined %}
-        {{ event.tel }}<br/>
+    {% if event.emails|length > 0 %}
+        <br/>   <strong>Courriel:</strong> <span> {{ event.emails|join }}</span><br/>
     {% endif %}
 
     {% if event.homepage is defined %}
-        <a href="{{ event.homepage }}">{{ event.homepage }}</a><br/>
+        <br/><strong>Site web:</strong>  <a href="{{ event.homepage }}">{{ event.homepage }}</a><br/>
     {% endif %}
-
-    {% for specInfo in event.specsDetailed %}
-        <strong>{{ specInfo.specDefinition.labelByLanguage('fr') }}</strong><br/>
-        {{ specInfo.specData.value }}
-        <span class="text-muted">
-    {{ specInfo.specData.urn }} /
-        {% if specInfo.specData.urnCat is defined %}
-            cat: {{ specInfo.specData.urnCat }}
-        {% endif %}
-    </span>
-        <br/><br/>
-    {% endfor %}
-
 
     {% include 'agenda/show/_images.html.twig' %}
     {% include 'map/_carte.html.twig' %}
