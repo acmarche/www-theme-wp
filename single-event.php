@@ -41,7 +41,7 @@ try {
 
     return;
 }
-dump($event);
+
 if ( ! $event) {
     return $twig->render(
         'errors/404.html.twig',
@@ -69,17 +69,18 @@ foreach ($event->categories as $category) {
     ];
 }
 $currentCategory = WpRepository::getCategoryAgenda();
-//$offres          = $hadesRepository->getOffresSameCategories($event);
-$offres    = [];
-$relations = [];
+$offres          = $pivotRepository->getSameEvents($event);
+$relations       = [];
+
+RouterMarche::setRouteEvents($offres);
+
 foreach ($offres as $item) {
     if ($event->codeCgt == $item->codeCgt) {
         continue;
     }
-    $url         = RouterMarche::getUrlOffre($item, $currentCategory->cat_ID);
     $relations[] = [
-        'title'      => $item->getTitre('fr'),
-        'url'        => $url,
+        'title'      => $item->nom,
+        'url'        => $item->url,
         'image'      => $item->firstImage(),
         'categories' => $item->categories,
     ];
