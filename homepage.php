@@ -2,8 +2,7 @@
 
 namespace AcMarche\Theme;
 
-use AcMarche\Pivot\DependencyInjection\Kernel;
-use AcMarche\Pivot\Repository\PivotRepository;
+use AcMarche\Pivot\DependencyInjection\PivotContainer;
 use AcMarche\Theme\Inc\RouterMarche;
 use AcMarche\Theme\Lib\Twig;
 use AcMarche\Theme\Lib\WpRepository;
@@ -14,21 +13,13 @@ use Symfony\Component\HttpFoundation\Request;
  * Template Name: Home-Page-Principal
  */
 get_header();
-$env = WP_DEBUG ? 'dev': 'prod';
-$kernel = new Kernel($env, WP_DEBUG);
-$kernel->boot();
-$container = $kernel->getContainer();
 
-$loader = $container->get('dotenv');
-$loader->loadEnv('.env');
-/**
- * @var PivotRepository $pivotRepository
- */
-$pivotRepository = $container->get('pivotRepository');
-$news            = WpRepository::getAllNews(6);
+$news = WpRepository::getAllNews(6);
 
 try {
-    $events = $pivotRepository->getEvents();
+    $pivotRepository = PivotContainer::getRepository();
+    $events          = $pivotRepository->getEvents(true);
+
     RouterMarche::setRouteEvents($events);
 } catch (\Exception $exception) {
     $events = [];
@@ -58,6 +49,7 @@ $imagesBg = [
     '/wp-content/themes/marchebe/assets/images/home/fond3.jpg',
     '/wp-content/themes/marchebe/assets/images/home/fond42.jpg',
     '/wp-content/themes/marchebe/assets/images/home/fond5.jpg',
+    '/wp-content/themes/marchebe/assets/images/home/marche-bg.jpg',
 ];
 
 $imageBg = $imagesBg[4];
