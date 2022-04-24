@@ -5,7 +5,6 @@ namespace AcMarche\Theme\Lib\Elasticsearch;
 
 use Elastica\Exception\InvalidException;
 use Elastica\Query\BoolQuery;
-use Elastica\Query\Match;
 use Elastica\Query\MatchQuery;
 use Elastica\Query\MultiMatch;
 use Elastica\Query\SimpleQueryString;
