@@ -4,7 +4,6 @@ namespace AcMarche\Theme;
 
 use AcMarche\Common\Mailer;
 use AcMarche\Pivot\DependencyInjection\PivotContainer;
-use AcMarche\Pivot\Entities\Event\Event;
 use AcMarche\Theme\Inc\RouterMarche;
 use AcMarche\Theme\Inc\Theme;
 use AcMarche\Theme\Lib\Twig;
@@ -20,26 +19,29 @@ $pivotRepository = PivotContainer::getRepository();
 
 get_header();
 
-/**
- * @var Event $event
- */
-try {
-    $event = $pivotRepository->getEvent($codeCgt);
-} catch (Exception $e) {
-    echo $twig->render(
-        'errors/500.html.twig',
-        [
-            'message'   => $e->getMessage(),
-            'title'     => 'Erreur lors du chargement de l\'évènement',
-            'tags'      => [],
-            'color'     => Theme::getColorBlog(Theme::TOURISME),
-            'blogName'  => Theme::getTitleBlog(Theme::TOURISME),
-            'relations' => [],
-        ]
-    );
-    Mailer::sendError("erreur chargement event", $e->getMessage());
+if ( ! str_starts_with($codeCgt, "EVT")) {
+    $event = $pivotRepository->getEventByIdHades($codeCgt);
+}
 
-    return;
+if ( ! $event) {
+    try {
+        $event = $pivotRepository->getEvent($codeCgt);
+    } catch (Exception $e) {
+        echo $twig->render(
+            'errors/500.html.twig',
+            [
+                'message'   => $e->getMessage(),
+                'title'     => 'Erreur lors du chargement de l\'évènement',
+                'tags'      => [],
+                'color'     => Theme::getColorBlog(Theme::TOURISME),
+                'blogName'  => Theme::getTitleBlog(Theme::TOURISME),
+                'relations' => [],
+            ]
+        );
+        Mailer::sendError("erreur chargement event", $e->getMessage());
+
+        return;
+    }
 }
 
 if ( ! $event) {
