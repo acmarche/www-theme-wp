@@ -3,6 +3,7 @@
 namespace AcMarche\Theme;
 
 use AcMarche\Common\Mailer;
+use AcMarche\Common\Router;
 use AcMarche\Pivot\DependencyInjection\PivotContainer;
 use AcMarche\Theme\Inc\RouterMarche;
 use AcMarche\Theme\Inc\Theme;
@@ -18,6 +19,7 @@ $codeCgt         = $wp_query->get(RouterMarche::PARAM_EVENT);
 $pivotRepository = PivotContainer::getRepository();
 
 get_header();
+$event = null;
 
 if ( ! str_starts_with($codeCgt, "EVT")) {
     $event = $pivotRepository->getEventByIdHades($codeCgt);
@@ -38,7 +40,8 @@ if ( ! $event) {
                 'relations' => [],
             ]
         );
-        Mailer::sendError("Error loading event", $e->getMessage()." ".$codeCgt);
+        $url = Router::getCurrentUrl();
+        Mailer::sendError("Error loading event", $e->getMessage()." ".$url);
 
         return;
     }
