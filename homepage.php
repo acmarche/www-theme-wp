@@ -52,7 +52,7 @@ $imagesBg = [
     '/wp-content/themes/marchebe/assets/images/home/marche-bg.jpg',
 ];
 
-$imageBg = $imagesBg[6];
+$imageBg = $imagesBg[4];
 $date    = new \DateTime();
 $heure   = $date->format('H');
 if ($heure > 16 || $heure <= 7) {
