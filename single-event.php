@@ -29,7 +29,17 @@ if ( ! $event) {
     try {
         $event = $pivotRepository->getEvent($codeCgt);
     } catch (Exception $e) {
-        echo $twig->render(
+        return $twig->render(
+            'errors/404.html.twig',
+            [
+                'title'     => 'Evènement non trouvé',
+                'tags'      => [],
+                'color'     => Theme::getColorBlog(Theme::TOURISME),
+                'blogName'  => Theme::getTitleBlog(Theme::TOURISME),
+                'relations' => [],
+            ]
+        );
+      /*  echo $twig->render(
             'errors/500.html.twig',
             [
                 'message'   => $e->getMessage(),
@@ -41,9 +51,7 @@ if ( ! $event) {
             ]
         );
         $url = Router::getCurrentUrl();
-        Mailer::sendError("Error loading event", $e->getMessage()." ".$url);
-
-        return;
+        Mailer::sendError("Error loading event", $e->getMessage()." ".$url);*/
     }
 }
 
