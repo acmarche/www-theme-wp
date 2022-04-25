@@ -43,9 +43,10 @@ class Twig
         // wp_get_environment_type();
         if (WP_DEBUG) {
             $environment->addExtension(new DebugExtension());
-            $environment->addExtension(new StringExtension());
-            $environment->addExtension(new IntlExtension());
         }
+
+        $environment->addExtension(new StringExtension());
+        $environment->addExtension(new IntlExtension());
 
         $environment->addGlobal('template_directory', get_template_directory_uri());
         $environment->addFilter(self::categoryLink());

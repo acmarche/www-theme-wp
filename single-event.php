@@ -10,6 +10,9 @@ use AcMarche\Theme\Inc\Theme;
 use AcMarche\Theme\Lib\Twig;
 use AcMarche\Theme\Lib\WpRepository;
 use Exception;
+use Twig\Error\LoaderError;
+use Twig\Error\RuntimeError;
+use Twig\Error\SyntaxError;
 
 get_header();
 
@@ -20,7 +23,6 @@ $pivotRepository = PivotContainer::getRepository();
 
 get_header();
 $event = null;
-
 if ( ! str_starts_with($codeCgt, "EVT")) {
     $event = $pivotRepository->getEventByIdHades($codeCgt);
 }
@@ -106,21 +108,35 @@ foreach ($offres as $item) {
     ];
 }
 
-echo $twig->render(
-    'agenda/show.html.twig',
-    [
-        'event'       => $event,
-        'title'       => $event->nom,
-        'image'       => $image,
-        'tags'        => $tags,
-        'images'      => $images,
-        'latitude'    => $event->getAdresse()->latitude ?? null,
-        'longitude'   => $event->getAdresse()->longitude ?? null,
-        'color'       => Theme::getColorBlog(Theme::TOURISME),
-        'blogName'    => Theme::getTitleBlog(Theme::TOURISME),
-        'relations'   => $relations,
-        'readspeaker' => true,
-    ]
-);
+try {
+    echo $twig->render(
+        'agenda/show.html.twig',
+        [
+            'event'       => $event,
+            'title'       => $event->nom,
+            'image'       => $image,
+            'tags'        => $tags,
+            'images'      => $images,
+            'latitude'    => $event->getAdresse()->latitude ?? null,
+            'longitude'   => $event->getAdresse()->longitude ?? null,
+            'color'       => Theme::getColorBlog(Theme::TOURISME),
+            'blogName'    => Theme::getTitleBlog(Theme::TOURISME),
+            'relations'   => $relations,
+            'readspeaker' => true,
+        ]
+    );
+} catch (LoaderError|SyntaxError|RuntimeError $e) {
+    echo $twig->render(
+        'errors/500.html.twig',
+        [
+            'title'     => 'Erreur de chargement de la page',
+            'message'   => $e->getMessage(),
+            'tags'      => [],
+            'color'     => Theme::getColorBlog(Theme::TOURISME),
+            'blogName'  => Theme::getTitleBlog(Theme::TOURISME),
+            'relations' => [],
+        ]
+    );
+}
 
 get_footer();
