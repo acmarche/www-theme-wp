@@ -23,7 +23,6 @@ $event = null;
 
 if ( ! str_starts_with($codeCgt, "EVT")) {
     $event = $pivotRepository->getEventByIdHades($codeCgt);
-    dd($event);
 }
 
 if ( ! $event) {
