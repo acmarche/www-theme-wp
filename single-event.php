@@ -38,7 +38,7 @@ if ( ! $event) {
                 'relations' => [],
             ]
         );
-        Mailer::sendError("erreur chargement event", $e->getMessage());
+        Mailer::sendError("Error loading event", $e->getMessage()." ".$codeCgt);
 
         return;
     }
