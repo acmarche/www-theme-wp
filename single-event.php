@@ -29,7 +29,7 @@ if ( ! $event) {
     try {
         $event = $pivotRepository->getEvent($codeCgt);
     } catch (Exception $e) {
-        return $twig->render(
+        echo $twig->render(
             'errors/404.html.twig',
             [
                 'title'     => 'Evènement non trouvé',
@@ -39,24 +39,28 @@ if ( ! $event) {
                 'relations' => [],
             ]
         );
-      /*  echo $twig->render(
-            'errors/500.html.twig',
-            [
-                'message'   => $e->getMessage(),
-                'title'     => 'Erreur lors du chargement de l\'évènement',
-                'tags'      => [],
-                'color'     => Theme::getColorBlog(Theme::TOURISME),
-                'blogName'  => Theme::getTitleBlog(Theme::TOURISME),
-                'relations' => [],
-            ]
-        );
-        $url = Router::getCurrentUrl();
-        Mailer::sendError("Error loading event", $e->getMessage()." ".$url);*/
+        /*  echo $twig->render(
+              'errors/500.html.twig',
+              [
+                  'message'   => $e->getMessage(),
+                  'title'     => 'Erreur lors du chargement de l\'évènement',
+                  'tags'      => [],
+                  'color'     => Theme::getColorBlog(Theme::TOURISME),
+                  'blogName'  => Theme::getTitleBlog(Theme::TOURISME),
+                  'relations' => [],
+              ]
+          );
+          $url = Router::getCurrentUrl();
+          Mailer::sendError("Error loading event", $e->getMessage()." ".$url);*/
+
+        get_footer();
+
+        return;
     }
 }
 
 if ( ! $event) {
-    return $twig->render(
+    echo $twig->render(
         'errors/404.html.twig',
         [
             'title'     => 'Evènement non trouvé',
@@ -66,6 +70,9 @@ if ( ! $event) {
             'relations' => [],
         ]
     );
+    get_footer();
+
+    return;
 }
 
 $image  = null;
