@@ -15,10 +15,10 @@ use Symfony\Component\HttpFoundation\Request;
 get_header();
 
 $news = WpRepository::getAllNews(6);
-
+$events = [];
 try {
     $pivotRepository = PivotContainer::getRepository();
-    $events          = $pivotRepository->getEvents(true);
+  //  $events          = $pivotRepository->getEvents(true);
 
     RouterMarche::setRouteEvents($events);
 } catch (\Exception $exception) {
