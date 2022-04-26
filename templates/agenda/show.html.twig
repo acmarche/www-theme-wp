@@ -32,7 +32,10 @@
         {{ date.date_begin|format_date('full') }} {% if loop.last != true %}, {% endif %}
     {% endfor %}
 
-    <h4 class="mb-2 mt-2"><strong>Où</strong></h4>
+    <h4 class="mb-2 mt-2"><strong>Contact</strong></h4>
+    {% if offre.adresse_rue|length > 0 %}
+        {{ offre.adresse_rue[0].value }}<br/>
+    {% endif %}
     {{ event.adresse1.rue }} {{ event.adresse1.numero }}<br/>
     {{ event.adresse1.cp }}  {{ event.adresse.localiteByLanguage }} <br/>
 
@@ -56,7 +59,7 @@
         <br/><strong>Site web:</strong>  <a href="{{ event.homepage }}">{{ event.homepage }}</a><br/>
     {% endif %}
 
-    {#% include 'agenda/show/_specifications.html.twig' %#}
+    {# % include 'agenda/show/_specifications.html.twig' % #}
     {% include 'agenda/show/_images.html.twig' %}
     {% include 'map/_carte.html.twig' %}
 {% endblock %}
