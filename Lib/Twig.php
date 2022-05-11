@@ -67,7 +67,7 @@ class Twig
                 $templatePath,
                 $variables,
             );
-        } catch (LoaderError | RuntimeError | SyntaxError $e) {
+        } catch (LoaderError | RuntimeError | SyntaxError $e) {  dump($e);
             echo $twig->render(
                 'errors/500.html.twig',
                 [

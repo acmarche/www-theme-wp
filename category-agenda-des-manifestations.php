@@ -15,6 +15,7 @@ try {
 
     RouterMarche::setRouteEvents($events);
 } catch (\Exception $e) {
+    dump($e);
     Twig::rendPage(
         'errors/500.html.twig',
         [
