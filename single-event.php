@@ -31,7 +31,6 @@ if ( ! $event) {
     try {
         $event = $pivotRepository->getEvent($codeCgt);
     } catch (Exception $e) {
-        dump($e);
         echo $twig->render(
             'errors/404.html.twig',
             [
@@ -42,19 +41,6 @@ if ( ! $event) {
                 'relations' => [],
             ]
         );
-        /*  echo $twig->render(
-              'errors/500.html.twig',
-              [
-                  'message'   => $e->getMessage(),
-                  'title'     => 'Erreur lors du chargement de l\'évènement',
-                  'tags'      => [],
-                  'color'     => Theme::getColorBlog(Theme::TOURISME),
-                  'blogName'  => Theme::getTitleBlog(Theme::TOURISME),
-                  'relations' => [],
-              ]
-          );
-          $url = Router::getCurrentUrl();
-          Mailer::sendError("Error loading event", $e->getMessage()." ".$url);*/
 
         get_footer();
 
@@ -126,7 +112,7 @@ try {
             'readspeaker' => true,
         ]
     );
-} catch (LoaderError|SyntaxError|RuntimeError $e) {  dump($e);
+} catch (LoaderError|SyntaxError|RuntimeError $e) {
     echo $twig->render(
         'errors/500.html.twig',
         [
