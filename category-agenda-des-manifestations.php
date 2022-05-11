@@ -4,6 +4,7 @@ namespace AcMarche\Theme;
 
 use AcMarche\Pivot\DependencyInjection\PivotContainer;
 use AcMarche\Theme\Inc\RouterMarche;
+use AcMarche\Theme\Inc\Theme;
 use AcMarche\Theme\Lib\Twig;
 
 get_header();
@@ -30,6 +31,7 @@ Twig::rendPage(
     'agenda/index.html.twig',
     [
         'events' => $events,
+        'color'     => Theme::getColorBlog(Theme::TOURISME),
     ]
 );
 
