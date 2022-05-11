@@ -31,6 +31,7 @@ if ( ! $event) {
     try {
         $event = $pivotRepository->getEvent($codeCgt);
     } catch (Exception $e) {
+        dump($e);
         echo $twig->render(
             'errors/404.html.twig',
             [
@@ -125,7 +126,7 @@ try {
             'readspeaker' => true,
         ]
     );
-} catch (LoaderError|SyntaxError|RuntimeError $e) {
+} catch (LoaderError|SyntaxError|RuntimeError $e) {  dump($e);
     echo $twig->render(
         'errors/500.html.twig',
         [
