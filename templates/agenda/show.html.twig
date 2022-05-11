@@ -33,8 +33,8 @@
     {% endfor %}
 
     <h4 class="mb-2 mt-2"><strong>Contact</strong></h4>
-    {% if offre.adresse_rue|length > 0 %}
-        {{ offre.adresse_rue[0].value }}<br/>
+    {% if event.adresse_rue|length > 0 %}
+        {{ event.adresse_rue[0].value }}<br/>
     {% endif %}
     {{ event.adresse1.rue }} {{ event.adresse1.numero }}<br/>
     {{ event.adresse1.cp }}  {{ event.adresse.localiteByLanguage }} <br/>
