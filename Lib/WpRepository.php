@@ -34,14 +34,15 @@ class WpRepository
      */
     public static function getEvents(): array
     {
+        $cacheKey = 'eventspivot2';
         $events = [];
         try {
             $pivotRepository = PivotContainer::getRepository();
-            if ( ! get_transient('eventspivot2')) {
+            if ( ! $events = get_transient($cacheKey)) {
                 $events = $pivotRepository->getEvents(true);
                 if (count($events) > 0) {
                     RouterMarche::setRouteEvents($events);
-                    set_transient('eventspivot2', $events, 36000);
+                    set_transient($cacheKey, $events, 36000);
                 }
             }
         } catch (\Exception $exception) {
