@@ -2,8 +2,6 @@
 
 namespace AcMarche\Theme;
 
-use AcMarche\Common\Mailer;
-use AcMarche\Common\Router;
 use AcMarche\Pivot\DependencyInjection\PivotContainer;
 use AcMarche\Theme\Inc\RouterMarche;
 use AcMarche\Theme\Inc\Theme;
@@ -69,17 +67,17 @@ $images = $event->images;
 if (count($images) > 0) {
     $image = $images[0];
 }
-$tags = [];
+$tags              = [];
+$urlCategoryAgenda = get_category_link(WpRepository::getCategoryAgenda());
 foreach ($event->categories as $category) {
-    $urlCat = RouterMarche::getUrlEventCategory($category);
     $tags[] = [
         'name' => $category->labelByLanguage('fr'),
-        'url'  => $category->id,
+        'url'  => $urlCategoryAgenda.'?filtre='.$category->id,
     ];
 }
-$currentCategory = WpRepository::getCategoryAgenda();
-$offres          = $pivotRepository->getSameEvents($event);
-$relations       = [];
+
+$offres    = $pivotRepository->getSameEvents($event);
+$relations = [];
 
 RouterMarche::setRouteEvents($offres);
 
