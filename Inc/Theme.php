@@ -11,6 +11,10 @@ class Theme
     const ADMINISTRATION = 2;
     const ECONOMIE = 3;
     const TOURISME = 4;
+    const SOCIAL = 7;
+    const SPORT = 5;
+    const SANTE = 6;
+    const ENFANCE = 14;
     const CULTURE = 11;
     const ROMAN = 12;
 
@@ -19,14 +23,14 @@ class Theme
         self::ADMINISTRATION => 'administration',
         self::ECONOMIE       => 'economie',
         self::TOURISME       => 'tourisme',
-        5                    => 'sport',
-        6                    => 'sante',
-        7                    => 'social',
+        self::SPORT          => 'sport',
+        self::SANTE          => 'sante',
+        self::SOCIAL         => 'social',
         8                    => 'marchois',
         self::CULTURE        => 'culture',
         self::ROMAN          => 'roman',
         13                   => 'noel',
-        14                   => 'enfance',
+        self::ENFANCE        => 'enfance',
     ];
     const COLORS = [
         self::CITOYEN        => 'color-cat-cit',

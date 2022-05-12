@@ -240,17 +240,19 @@ class WpRepository
 
         $fiches           = [];
         $categoryBottinId = get_term_meta($catId, BottinCategoryMetaBox::KEY_NAME, true);
+        $bottinRepository = new BottinRepository();
         if ($categoryBottinId) {
-            $bottinRepository = new BottinRepository();
-            $fiches           = $bottinRepository->getFichesByCategory($categoryBottinId);
+
+            $fiches = $bottinRepository->getFichesByCategory($categoryBottinId);
         }
 
         array_map(
-            function ($fiche) {
+            function ($fiche) use ($bottinRepository) {
+                $idSite              = $bottinRepository->findSiteFiche($fiche);
                 $fiche->fiche        = true;
                 $fiche->excerpt      = Bottin::getExcerpt($fiche);
                 $fiche->post_excerpt = Bottin::getExcerpt($fiche);
-                $fiche->url          = RouterBottin::getUrlFicheBottin($fiche);
+                $fiche->url          = RouterBottin::getUrlFicheBottin($idSite, $fiche);
                 $fiche->post_title   = $fiche->societe;
             },
             $fiches

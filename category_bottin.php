@@ -67,9 +67,10 @@ echo $cache->get(
 
         array_map(
             function ($fiche) use ($bottinRepository) {
+                $idSite            = $bottinRepository->findSiteFiche($fiche);
                 $fiche->post_title = $fiche->societe;
                 $fiche->excerpt    = Bottin::getExcerpt($fiche);
-                $fiche->url        = RouterBottin::getUrlFicheBottin($fiche);
+                $fiche->url        = RouterBottin::getUrlFicheBottin($idSite, $fiche);
             },
             $fiches
         );

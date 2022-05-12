@@ -127,9 +127,9 @@ class Carto
                 'name'     => 'Sécurité routière',
                 'icone'    => 'i-healthcase',
                 'elements' => [
-                    'radar'  => ['name' => 'Radars répressifs', 'source' => 'bottin', 'id' => 688],
-                    'radar_preventif'  => ['name' => 'Radars préventifs', 'source' => 'kml', 'id' => 'radar_preventif'],
-                    'trafic' => ['name' => 'Analyseur de trafic', 'source' => 'kml', 'id' => 'trafic'],
+                    'radar'           => ['name' => 'Radars répressifs', 'source' => 'bottin', 'id' => 688],
+                    'radar_preventif' => ['name' => 'Radars préventifs', 'source' => 'kml', 'id' => 'radar_preventif'],
+                    'trafic'          => ['name' => 'Analyseur de trafic', 'source' => 'kml', 'id' => 'trafic'],
                 ],
             ],
             'sport'             => [
@@ -265,6 +265,9 @@ class Carto
 
     public function formatSocieteData($object): array
     {
+        $bottinRepository = new BottinRepository();
+        $idSite           = $bottinRepository->findSiteFiche($object);
+
         return [
             'nom'         => $object->societe,
             'latitude'    => $object->latitude,
@@ -273,7 +276,7 @@ class Carto
             'email'       => $object->email,
             'rue'         => $object->rue.', '.$object->numero,
             'localite'    => $object->cp.' '.$object->localite,
-            'url'         => RouterBottin::getUrlFicheBottin($object),
+            'url'         => RouterBottin::getUrlFicheBottin($idSite, $object),
             'kml'         => false,
             'description' => '',
         ];
