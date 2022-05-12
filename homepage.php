@@ -21,7 +21,7 @@ try {
     if ( ! get_transient('eventspivot')) {
         $events = $pivotRepository->getEvents(true);
         RouterMarche::setRouteEvents($events);
-        $events = set_transient('eventspivot', $events);
+        $events = set_transient('eventspivot', $events, 36000);
     }
 } catch (\Exception $exception) {
     $events = [];
