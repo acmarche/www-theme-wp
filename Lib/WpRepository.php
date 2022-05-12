@@ -41,7 +41,7 @@ class WpRepository
                 $events = $pivotRepository->getEvents(true);
                 if (count($events) > 0) {
                     RouterMarche::setRouteEvents($events);
-                    $events = set_transient('eventspivot', $events, 36000);
+                    set_transient('eventspivot', $events, 36000);
                 }
             }
         } catch (\Exception $exception) {
