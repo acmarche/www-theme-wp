@@ -2,8 +2,6 @@
 
 namespace AcMarche\Theme;
 
-use AcMarche\Pivot\DependencyInjection\PivotContainer;
-use AcMarche\Theme\Inc\RouterMarche;
 use AcMarche\Theme\Lib\Twig;
 use AcMarche\Theme\Lib\WpRepository;
 use SortLink;
@@ -15,19 +13,7 @@ use Symfony\Component\HttpFoundation\Request;
 get_header();
 
 $news = WpRepository::getAllNews(6);
-
-try {
-    $pivotRepository = PivotContainer::getRepository();
-    if ( ! get_transient('eventspivot')) {
-        $events = $pivotRepository->getEvents(true);
-        if (count($events) > 0) {
-            RouterMarche::setRouteEvents($events);
-            $events = set_transient('eventspivot', $events, 36000);
-        }
-    }
-} catch (\Exception $exception) {
-    $events = [];
-}
+$events = WpRepository::getEvents();
 
 $pageAlert    = WpRepository::getPageAlert();
 $contentAlert = null;

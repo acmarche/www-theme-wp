@@ -6,6 +6,8 @@ use AcMarche\Bottin\Bottin;
 use AcMarche\Bottin\Repository\BottinRepository;
 use AcMarche\Bottin\RouterBottin;
 use AcMarche\Common\SortUtil;
+use AcMarche\Pivot\DependencyInjection\PivotContainer;
+use AcMarche\Pivot\Entities\Event\Event;
 use AcMarche\Theme\Inc\RouterMarche;
 use AcMarche\Theme\Inc\Theme;
 use AcSort;
@@ -25,6 +27,28 @@ class WpRepository
         }
 
         return null;
+    }
+
+    /**
+     * @return Event[]
+     */
+    public static function getEvents(): array
+    {
+        $events = [];
+        try {
+            $pivotRepository = PivotContainer::getRepository();
+            if ( ! get_transient('eventspivot')) {
+                $events = $pivotRepository->getEvents(true);
+                if (count($events) > 0) {
+                    RouterMarche::setRouteEvents($events);
+                    $events = set_transient('eventspivot', $events, 36000);
+                }
+            }
+        } catch (\Exception $exception) {
+
+        }
+
+        return $events;
     }
 
     /**
