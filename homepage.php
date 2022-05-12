@@ -20,8 +20,10 @@ try {
     $pivotRepository = PivotContainer::getRepository();
     if ( ! get_transient('eventspivot')) {
         $events = $pivotRepository->getEvents(true);
-        RouterMarche::setRouteEvents($events);
-        $events = set_transient('eventspivot', $events, 36000);
+        if (count($events) > 0) {
+            RouterMarche::setRouteEvents($events);
+            $events = set_transient('eventspivot', $events, 36000);
+        }
     }
 } catch (\Exception $exception) {
     $events = [];
