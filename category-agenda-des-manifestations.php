@@ -9,14 +9,11 @@ use AcMarche\Theme\Lib\WpRepository;
 get_header();
 $filtreParam = $_GET['filtre'] ?? null;
 $events      = WpRepository::getEvents();
+
 if ($filtreParam) {
-    $data = [];
-    foreach ($events as $event) {
-        if (in_array($filtreParam, array_column($event->categories, 'id'))) {
-            $data[] = $event;
-        }
-    }
-    $events = $data;
+    $events = array_filter($events, function ($event) use ($filtreParam) {
+        return in_array($filtreParam, array_column($event->categories, 'id'));
+    });
 }
 
 Twig::rendPage(
