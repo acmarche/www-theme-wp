@@ -8,8 +8,6 @@ use AcMarche\Bottin\RouterBottin;
 use AcMarche\Common\SortUtil;
 use AcMarche\Theme\Inc\RouterMarche;
 use AcMarche\Theme\Inc\Theme;
-use AcMarche\UrbaWeb\Entity\Permis;
-use AcMarche\UrbaWeb\UrbaWeb;
 use AcSort;
 use BottinCategoryMetaBox;
 use WP_Post;

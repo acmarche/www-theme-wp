@@ -11,10 +11,7 @@ class Menu
     const MENU_NAME = 'top-menu';
     const MENU_CACHE_NAME = 'menu_all';
 
-    /**
-     * @var CacheInterface
-     */
-    private $cache;
+    private CacheInterface $cache;
 
     public function __construct()
     {

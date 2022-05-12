@@ -5,7 +5,7 @@ namespace AcMarche\Theme\Inc;
 
 use AcMarche\Common\Cache;
 use AcMarche\Common\Mailer;
-use AcMarche\Theme\Lib\Elasticsearch\ElasticIndexer;
+use AcMarche\Bottin\Elasticsearch\ElasticIndexer;
 use WP_Post;
 
 class EventWpSubscriber

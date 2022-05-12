@@ -8,17 +8,13 @@ use DOMDocument;
 use DOMElement;
 use DOMNode;
 use Symfony\Component\PropertyAccess\PropertyAccess;
+use Symfony\Component\PropertyAccess\PropertyAccessor;
 
 class KmlParser
 {
-    /**
-     * @var DOMElement
-     */
-    public $offre;
-    /**
-     * @var \Symfony\Component\PropertyAccess\PropertyAccessor
-     */
-    public $propertyAccessor;
+    public DOMElement $offre;
+
+    public PropertyAccessor $propertyAccessor;
 
     public function __construct()
     {

@@ -14,7 +14,6 @@ use AcMarche\Theme\Inc\OpenGraph;
 use AcMarche\Theme\Inc\QueryAlter;
 use AcMarche\Theme\Inc\RouterMarche;
 use AcMarche\Theme\Inc\SecurityConfig;
-use AcMarche\Theme\Inc\Seo;
 use AcMarche\Theme\Inc\SetupTheme;
 use AcMarche\Theme\Inc\ShortCodes;
 use AcMarche\Theme\Inc\WidgetLoad;

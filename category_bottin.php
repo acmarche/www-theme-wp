@@ -7,8 +7,8 @@ use AcMarche\Bottin\Bottin;
 use AcMarche\Bottin\Repository\BottinRepository;
 use AcMarche\Bottin\RouterBottin;
 use AcMarche\Common\Cache;
-use AcMarche\Theme\Lib\Twig;
 use AcMarche\Theme\Inc\Theme;
+use AcMarche\Theme\Lib\Twig;
 
 get_header();
 
