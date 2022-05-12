@@ -18,9 +18,11 @@ $news = WpRepository::getAllNews(6);
 
 try {
     $pivotRepository = PivotContainer::getRepository();
-    $events          = $pivotRepository->getEvents(true);
-
-    RouterMarche::setRouteEvents($events);
+    if ( ! get_transient('eventspivot')) {
+        $events = $pivotRepository->getEvents(true);
+        RouterMarche::setRouteEvents($events);
+        $events = set_transient('eventspivot', $events);
+    }
 } catch (\Exception $exception) {
     $events = [];
 }
