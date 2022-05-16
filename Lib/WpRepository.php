@@ -388,7 +388,7 @@ class WpRepository
         if ($catId == null) {
             return $enquetes;
         }
-
+dump($enquetes);
         return array_filter($enquetes, function ($enquete) use($catId) {
             return $enquete->categoriewp == $catId;
         });
