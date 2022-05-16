@@ -304,10 +304,10 @@ class WpRepository
                     list($yearF, $monthF, $dayF) = explode('-', $enquete->date_fin);
                     $dateFin               = $dayF.'-'.$monthF.'-'.$yearF;
                     $enquete->ID           = $enquete->id;
-                    $enquete->excerpt      = $enquete->intitule.'<br /> Du '.$dateDebut.' au '.$dateFin;
-                    $enquete->post_excerpt = $enquete->intitule.'<br /> Du '.$dateDebut.' au '.$dateFin;
+                    $enquete->excerpt      = $enquete->demandeur.' à '.$enquete->localite.'<br /> Affichate: du '.$dateDebut.' au '.$dateFin;
+                    $enquete->post_excerpt = $enquete->demandeur.' à '.$enquete->localite.'<br /> Affichate: du '.$dateDebut.' au '.$dateFin;
                     $enquete->url          = RouterMarche::getUrlEnquete($enquete->id);
-                    $enquete->post_title   = $enquete->demandeur.' à '.$enquete->localite;
+                    $enquete->post_title   = $enquete->intitule.' à '.$enquete->localite;
                 },
                 $enquetes
             );
@@ -383,9 +383,8 @@ class WpRepository
     public static function getEnquetesPubliques()
     {
         $content  = file_get_contents('https://extranet.marche.be/enquete/api/');
-        $enquetes = json_decode($content);
 
-        return $enquetes;
+        return json_decode($content);
     }
 
     public static function getEnquetePublique(int $enqueteId): ?\stdClass
