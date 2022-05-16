@@ -35,7 +35,7 @@ class WpRepository
     public static function getEvents(): array
     {
         $cacheKey = 'eventspivot2';
-        $events = [];
+        $events   = [];
         try {
             $pivotRepository = PivotContainer::getRepository();
             if ( ! $events = get_transient($cacheKey)) {
@@ -286,7 +286,7 @@ class WpRepository
         $all = array_merge($posts, $fiches);
 
         if (get_current_blog_id(
-            ) === Theme::ADMINISTRATION && ($catId == Theme::ENQUETE_DIRECTORY || $catId == Theme::PUBLICATIOCOMMUNAL_CATEGORY)) {
+            ) === Theme::ADMINISTRATION && ($catId == Theme::ENQUETE_DIRECTORY_URBA || $catId == Theme::ENQUETE_DIRECTORY_INSTIT || $catId == Theme::PUBLICATIOCOMMUNAL_CATEGORY)) {
 
             /*$permis = Urba::getEnquetesPubliques();
             $data   = [];
@@ -296,7 +296,7 @@ class WpRepository
             }
             $all = array_merge($all, $data);*/
 
-            $enquetes = self::getEnquetesPubliques();
+            $enquetes = self::getEnquetesPubliques($catId);
             array_map(
                 function ($enquete) {
                     list($yearD, $monthD, $dayD) = explode('-', $enquete->date_debut);
@@ -373,18 +373,25 @@ class WpRepository
     {
         $currentBlog = get_current_blog_id();
         switch_to_blog(Theme::ADMINISTRATION);
-        $category = get_category(Theme::ENQUETE_DIRECTORY);
+        $category = get_category(Theme::ENQUETE_DIRECTORY_URBA);
 
         switch_to_blog($currentBlog);
 
         return $category;
     }
 
-    public static function getEnquetesPubliques()
+    public static function getEnquetesPubliques(?int $catId = null)
     {
-        $content  = file_get_contents('https://extranet.marche.be/enquete/api/');
+        $content = file_get_contents('https://extranet.marche.be/enquete/api/');
 
-        return json_decode($content);
+        $enquetes = json_decode($content);
+        if ($catId == null) {
+            return $enquetes;
+        }
+
+        return array_filter($enquetes, function ($enquete) use($catId) {
+            return $enquete->categoriewp == $catId;
+        });
     }
 
     public static function getEnquetePublique(int $enqueteId): ?\stdClass
