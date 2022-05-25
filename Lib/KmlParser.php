@@ -12,7 +12,7 @@ use Symfony\Component\PropertyAccess\PropertyAccessor;
 
 class KmlParser
 {
-    public DOMElement $offre;
+    public ?DOMElement $offre = null;
 
     public PropertyAccessor $propertyAccessor;
 
