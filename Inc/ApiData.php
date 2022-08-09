@@ -3,9 +3,9 @@
 
 namespace AcMarche\Theme\Inc;
 
+use AcMarche\Bottin\Elasticsearch\Searcher;
 use AcMarche\Bottin\Repository\BottinRepository;
 use AcMarche\Common\Mailer;
-use AcMarche\Bottin\Elasticsearch\Searcher;
 use AcMarche\Theme\Lib\WpRepository;
 use AcSort;
 use Elastica\Exception\InvalidException;
@@ -46,18 +46,7 @@ class ApiData
 
     public static function ca_events()
     {
-        $hadesRepository = new HadesRepository();
-        $events          = $hadesRepository->getEvents();
-        RouterMarche::setRouteEvents($events);
-        //pour react
-        array_map(
-            function ($event) {
-                $event->titre = $event->getTitre('fr');
-            },
-            $events
-        );
-
-        return rest_ensure_response($events);
+        return rest_ensure_response(WpRepository::getEvents());
     }
 
     /**
