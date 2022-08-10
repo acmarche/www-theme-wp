@@ -45,13 +45,15 @@ class AdminPage
 
     static function renderPage()
     {
-        $cache  = Cache::instance();
-        $slug   = $_GET['slug'];
-        $blodId = get_current_blog_id();
-        $code   = Cache::generateCodeBottin($blodId, $slug);
+        $cache = Cache::instance();
+        if (isset($_GET['slug'])) {
+            $slug = $_GET['slug'];
+            $blodId = get_current_blog_id();
+            $code = Cache::generateCodeBottin($blodId, $slug);
 
-        if ($code) {
-            $cache->delete($code);
+            if ($code) {
+                $cache->delete($code);
+            }
         }
         // $cache->invalidateTags(['marchebe']);
         ?>
