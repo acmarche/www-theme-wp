@@ -9,7 +9,7 @@ use Symfony\Contracts\Cache\CacheInterface;
 class Menu
 {
     const MENU_NAME = 'top-menu';
-    const MENU_CACHE_NAME = 'menu_all';
+    const MENU_CACHE_NAME = 'menu_all_refresh';
 
     private CacheInterface $cache;
 

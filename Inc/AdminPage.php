@@ -3,7 +3,6 @@
 namespace AcMarche\Theme\Inc;
 
 use AcMarche\Common\Cache;
-use Symfony\Component\Cache\Adapter\FilesystemAdapter;
 
 class AdminPage
 {
