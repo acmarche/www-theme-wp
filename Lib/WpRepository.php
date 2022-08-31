@@ -34,7 +34,7 @@ class WpRepository
      */
     public static function getEvents(): array
     {
-        $cacheKey = 'eventspivot56';
+        $cacheKey = 'events_pivot';
         $events   = [];
         try {
             $pivotRepository = PivotContainer::getRepository();
