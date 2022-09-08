@@ -2,3 +2,11 @@
 .alignleft {
     float: left;
 }
+
+.capteurColor {
+    height: 25px;
+    width: 25px;
+    border-radius: 50%;
+    display: inline-block;
+    font-size: 3rem;
+}
