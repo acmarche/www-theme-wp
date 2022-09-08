@@ -1,12 +1,10 @@
 <?php
 
 
-namespace AcMarche\Theme\Inc;
+namespace AcMarche\Theme\Lib;
 
 use AcMarche\Bottin\Repository\BottinRepository;
 use AcMarche\Bottin\RouterBottin;
-use AcMarche\Theme\Lib\KmlParser;
-use AcMarche\Theme\Lib\StringUtils;
 use DOMElement;
 use DOMNode;
 use Symfony\Component\HttpClient\HttpClient;
@@ -15,7 +13,6 @@ use Symfony\Contracts\HttpClient\HttpClientInterface;
 class Carto
 {
     private HttpClientInterface $httpClient;
-
     private KmlParser $kmlParser;
 
     public function __construct()
@@ -63,6 +60,7 @@ class Carto
                 'elements' => [
                     'bulles_verres'    => ['name' => 'Bulles à verres', 'source' => 'bottin', 'id' => 677],
                     'bulles_vetements' => ['name' => 'Bulles à vêtements', 'source' => 'bottin', 'id' => 678],
+                    'capteurs'         => ['name' => 'Capteurs', 'source' => 'kml', 'id' => 'capteurs'],
                 ],
             ],
             'horeca'            => [
@@ -212,6 +210,9 @@ class Carto
                 break;
             case 'radar_preventif':
                 $url = 'https://www.google.com/maps/d/u/0/kml?forcekml=1&mid=1KcaFoc4PdWEPezlKLxPJxOtSDjkdv6gz&lid=MmcyPrPTS_w';
+                break;
+            case 'capteurs':
+                $url = 'https://www.marche.be/api/capteurs.php';
                 break;
             default:
                 $url = false;

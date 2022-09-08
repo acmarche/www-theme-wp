@@ -6,6 +6,7 @@ namespace AcMarche\Theme\Inc;
 use AcMarche\Bottin\Elasticsearch\Searcher;
 use AcMarche\Bottin\Repository\BottinRepository;
 use AcMarche\Common\Mailer;
+use AcMarche\Theme\Lib\Carto;
 use AcMarche\Theme\Lib\WpRepository;
 use AcSort;
 use Elastica\Exception\InvalidException;
