@@ -11,9 +11,6 @@ module.exports = {
         search: [
             `${path.resolve( __dirname, 'src' )}/search.js`
         ],
-        agenda: [
-            `${path.resolve( __dirname, 'src' )}/agenda.js`
-        ],
         map: [
             `${path.resolve( __dirname, 'src' )}/map.js`
         ],
@@ -25,9 +22,6 @@ module.exports = {
         ],
         notificationPermission: [
             `${path.resolve( __dirname, 'src' )}/notificationPermission.js`
-        ],
-        notification: [
-            `${path.resolve( __dirname, 'src' )}/notification.js`
         ]
     },
     externals: {
