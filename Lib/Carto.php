@@ -23,7 +23,7 @@ class Carto
 
     public function filtres(): array
     {
-        return [
+        $tab = [
             'culture'           => [
                 'name'     => 'Culture',
                 'icone'    => 'i-book',
@@ -60,7 +60,6 @@ class Carto
                 'elements' => [
                     'bulles_verres'    => ['name' => 'Bulles à verres', 'source' => 'bottin', 'id' => 677],
                     'bulles_vetements' => ['name' => 'Bulles à vêtements', 'source' => 'bottin', 'id' => 678],
-                    'capteurs'         => ['name' => 'Capteurs', 'source' => 'kml', 'id' => 'capteurs'],
                 ],
             ],
             'horeca'            => [
@@ -144,6 +143,16 @@ class Carto
                 ],
             ],
         ];
+
+        if (current_user_can('manage_options')) {
+            $tab['environnement']['elements']['capteurs'] = [
+                'name'   => 'Capteurs',
+                'source' => 'kml',
+                'id'     => 'capteurs',
+            ];
+        }
+
+        return $tab;
     }
 
     public function fetchKml(string $url)
