@@ -144,14 +144,14 @@ class Carto
             ],
         ];
 
-        if (current_user_can('manage_options')) {
+        if (current_user_can('manage_options')) {dump(11111111111111);
             $tab['environnement']['elements']['capteurs'] = [
                 'name'   => 'Capteurs',
                 'source' => 'kml',
                 'id'     => 'capteurs',
             ];
         }
-
+dump($tab);
         return $tab;
     }
 
