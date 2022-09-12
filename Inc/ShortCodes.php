@@ -7,6 +7,7 @@ use AcMarche\Common\Mailer;
 use AcMarche\Conseil\Conseil;
 use AcMarche\Conseil\ConseilDb;
 use AcMarche\Theme\Lib\Adl;
+use AcMarche\Theme\Lib\Capteur;
 use AcMarche\Theme\Lib\MailChimp;
 use AcMarche\Theme\Lib\Menu;
 use AcMarche\Theme\Lib\Twig;
@@ -42,6 +43,7 @@ class ShortCodes
         add_shortcode('menuDisplay', [new ShortCodes(), 'menuDisplay']);
         add_shortcode('adl_chimp', [new ShortCodes(), 'adlChimp']);
         add_shortcode('adl_inscription', [new ShortCodes(), 'adlInscription']);
+        add_shortcode('capteur_list', [new ShortCodes(), 'capteurList']);
     }
 
     public function conseilOrdre(): string
@@ -167,7 +169,7 @@ class ShortCodes
             $response = $this->httpClient->request('GET', $base.$url);
 
             return json_decode($response->getContent());
-        } catch (TransportExceptionInterface | ClientExceptionInterface | RedirectionExceptionInterface | ServerExceptionInterface $e) {
+        } catch (TransportExceptionInterface|ClientExceptionInterface|RedirectionExceptionInterface|ServerExceptionInterface $e) {
             Mailer::sendError("list taxtes", $e->getMessage());
         }
 
@@ -228,9 +230,20 @@ class ShortCodes
         $adl  = new Adl();
         $form = $adl->generateForm();
 
-        $mailchimp = new MailChimp();
-
         return $form;
+    }
+
+    public function capteurList(): string
+    {
+        $twig    = Twig::LoadTwig();
+        $capteur = new Capteur();
+
+        return $twig->render(
+            'capteur/_list.html.twig',
+            [
+                'stations' => $capteur->getCapteurs(),
+            ]
+        );
     }
 
 }

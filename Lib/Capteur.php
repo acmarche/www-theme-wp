@@ -6,6 +6,7 @@ use AcMarche\Issep\Indice\IndiceUtils;
 use AcMarche\Issep\Repository\StationRemoteRepository;
 use AcMarche\Issep\Repository\StationRepository;
 use AcMarche\Issep\Utils\FeuUtils;
+use AcMarche\Common\Env;
 
 class Capteur
 {
@@ -21,6 +22,7 @@ class Capteur
 
     public function getCapteurs(): array
     {
+        Env::loadEnv();
         $stations = $this->stationRepository->getStations();
         $indices  = $this->stationRepository->getIndices();
         $this->indiceUtils->setIndices($stations, $indices);
