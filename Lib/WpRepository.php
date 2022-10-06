@@ -37,7 +37,7 @@ class WpRepository
         $cacheKey = 'events_pivot';
         $events   = [];
         try {
-            $pivotRepository = PivotContainer::getRepository();
+            $pivotRepository = PivotContainer::getPivotRepository();
             if ( ! $events = get_transient($cacheKey)) {
                 $events = $pivotRepository->getEvents(true);
                 if (count($events) > 0) {
