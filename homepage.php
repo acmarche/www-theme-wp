@@ -13,7 +13,7 @@ use Symfony\Component\HttpFoundation\Request;
 get_header();
 
 $news = WpRepository::getAllNews(6);
-$events = [];
+$events = WpRepository::getEvents();
 
 $pageAlert    = WpRepository::getPageAlert();
 $contentAlert = null;
