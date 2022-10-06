@@ -17,7 +17,7 @@ get_header();
 global $wp_query;
 $twig            = Twig::LoadTwig();
 $codeCgt         = $wp_query->get(RouterMarche::PARAM_EVENT);
-$pivotRepository = PivotContainer::getRepository();
+$pivotRepository = PivotContainer::getPivotRepository();
 
 get_header();
 $event = null;

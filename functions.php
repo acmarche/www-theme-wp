@@ -14,6 +14,7 @@ use AcMarche\Theme\Inc\OpenGraph;
 use AcMarche\Theme\Inc\QueryAlter;
 use AcMarche\Theme\Inc\RouterMarche;
 use AcMarche\Theme\Inc\SecurityConfig;
+use AcMarche\Theme\Inc\Seo;
 use AcMarche\Theme\Inc\SetupTheme;
 use AcMarche\Theme\Inc\ShortCodes;
 use AcMarche\Theme\Inc\WidgetLoad;
@@ -46,7 +47,7 @@ new RouterMarche();
 /**
  * Balises pour le référencement
  */
-//new Seo();
+new Seo();
 /**
  * Actions sur les filtres de wp
  */

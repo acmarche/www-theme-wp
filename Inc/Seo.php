@@ -7,6 +7,7 @@ use AcMarche\Bottin\Repository\BottinRepository;
 use AcMarche\Bottin\RouterBottin;
 use AcMarche\Common\Mailer;
 use AcMarche\Common\Router;
+use AcMarche\Pivot\DependencyInjection\PivotContainer;
 use AcMarche\Theme\Lib\WpRepository;
 
 /**
@@ -114,36 +115,30 @@ class Seo
         self::$metas['description'] = get_bloginfo('description', 'display');
         self::$metas['keywords']    = 'Commune, Ville, Marche, Marche-en-Famenne, Famenne, Administration communal';
 
-       /* $hadesRepository = new HadesRepository();
-        $event           = $hadesRepository->getOffre($codeCgt);
-        if ($event) {
-            self::$metas['title']       = $event->getTitre('fr').' | Agenda des manifestations ';
+        $pivotRepository = PivotContainer::getPivotRepository();
+        try {
+            $event                      = $pivotRepository->getEvent($codeCgt);
+            self::$metas['title']       = $event->nom.' | Agenda des manifestations ';
             self::$metas['description'] = join(
                 ',',
                 array_map(
                     function ($description) {
-                        return $description->getTexte('fr');
+                        return $description->value;
                     },
                     $event->descriptions
                 )
             );
             $keywords                   = array_map(
                 function ($category) {
-                    return $category->getLib('fr');
+                    return $category->nom;
                 },
                 $event->categories
             );
-            $keywords                   = array_merge(
-                $keywords,
-                array_map(
-                    function ($category) {
-                        return $category->lib;
-                    },
-                    $event->selections
-                )
-            );
             self::$metas['keywords']    = join(",", $keywords);
-        }*/
+        } catch (\Exception $e) {
+
+        }
+
     }
 
     private static function metaBottinHomePage()
@@ -156,10 +151,11 @@ class Seo
     private static function metaCategory(int $cat_id)
     {
         $category = get_category($cat_id);
-        $url = Router::getCurrentUrl();
+        $url      = Router::getCurrentUrl();
         if ( ! $category) {
             Mailer::sendError('seo cat', 'cat not found '.$url);
             self::$metas['title'] = self::baseTitle("");
+
             return;
         }
         self::$metas['title'] = self::baseTitle("");
