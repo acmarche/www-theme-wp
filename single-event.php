@@ -45,7 +45,7 @@ if ( ! $event) {
         return;
     }
 }
-
+$event = null;
 if ( ! $event) {
     echo $twig->render(
         'errors/404.html.twig',
