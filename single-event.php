@@ -2,32 +2,30 @@
 
 namespace AcMarche\Theme;
 
+use AcMarche\Common\Mailer;
 use AcMarche\Pivot\DependencyInjection\PivotContainer;
 use AcMarche\Theme\Inc\RouterMarche;
 use AcMarche\Theme\Inc\Theme;
 use AcMarche\Theme\Lib\Twig;
 use AcMarche\Theme\Lib\WpRepository;
 use Exception;
-use Symfony\Component\ErrorHandler\Debug;
-use Symfony\Component\ErrorHandler\ErrorHandler;
 use Twig\Error\LoaderError;
 use Twig\Error\RuntimeError;
 use Twig\Error\SyntaxError;
 
-Debug::enable();
 get_header();
 global $wp_query;
 $twig            = Twig::LoadTwig();
 $codeCgt         = $wp_query->get(RouterMarche::PARAM_EVENT);
-//$pivotRepository = PivotContainer::getPivotRepository();
+$pivotRepository = PivotContainer::getPivotRepository();
 
 get_header();
-$event = null;/*
+$event = null;
 if ( ! str_starts_with($codeCgt, "EVT")) {
     $event = $pivotRepository->getEventByIdHades($codeCgt);
-}*/
+}
 
-/*
+
 if ( ! $event) {
     try {
         $event = $pivotRepository->getEvent($codeCgt);
@@ -47,8 +45,8 @@ if ( ! $event) {
 
         return;
     }
-}*/
-$event = null;
+}
+
 if ( ! $event) {
     try {
         echo $twig->render(
@@ -61,10 +59,8 @@ if ( ! $event) {
                 'relations' => [],
             ]
         );
-    } catch (LoaderError $e) {
-        dump($e);
-    } catch (RuntimeError $e) {dump($e);
-    } catch (SyntaxError $e) {dump($e);
+    } catch (LoaderError|SyntaxError|RuntimeError $e) {
+        Mailer::sendError("error show event", $e->getMessage());
     }
     get_footer();
 
