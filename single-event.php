@@ -17,13 +17,13 @@ get_header();
 global $wp_query;
 $twig            = Twig::LoadTwig();
 $codeCgt         = $wp_query->get(RouterMarche::PARAM_EVENT);
-$pivotRepository = PivotContainer::getPivotRepository();
+//$pivotRepository = PivotContainer::getPivotRepository();
 
 get_header();
-$event = null;
+$event = null;/*
 if ( ! str_starts_with($codeCgt, "EVT")) {
-   // $event = $pivotRepository->getEventByIdHades($codeCgt);
-}
+    $event = $pivotRepository->getEventByIdHades($codeCgt);
+}*/
 
 /*
 if ( ! $event) {
