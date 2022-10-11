@@ -104,6 +104,7 @@ class WpRepository
                 $post->blog_id = $siteId;
                 $post->blog    = $name;
                 $post->color   = Theme::COLORS[$siteId];
+                $post->colorTailwind   = 'text-'.$name;
 
                 $news[] = $post;
             endwhile;
