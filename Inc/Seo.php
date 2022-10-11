@@ -130,7 +130,7 @@ class Seo
             );
             $keywords                   = array_map(
                 function ($category) {
-                    return $category->nom;
+                    return $category->labelByLanguage('fr');
                 },
                 $event->categories
             );
