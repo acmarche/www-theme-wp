@@ -22,7 +22,7 @@ $pivotRepository = PivotContainer::getPivotRepository();
 get_header();
 $event = null;
 if ( ! str_starts_with($codeCgt, "EVT")) {
-    $event = $pivotRepository->getEventByIdHades($codeCgt);
+   // $event = $pivotRepository->getEventByIdHades($codeCgt);
 }
 
 /*
