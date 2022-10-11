@@ -14,8 +14,8 @@ use Twig\Error\LoaderError;
 use Twig\Error\RuntimeError;
 use Twig\Error\SyntaxError;
 
-get_header();
 Debug::enable();
+get_header();
 global $wp_query;
 $twig            = Twig::LoadTwig();
 $codeCgt         = $wp_query->get(RouterMarche::PARAM_EVENT);
@@ -50,16 +50,22 @@ if ( ! $event) {
 }*/
 $event = null;
 if ( ! $event) {
-    echo $twig->render(
-        'errors/404.html.twig',
-        [
-            'title'     => 'Evènement non trouvé',
-            'tags'      => [],
-            'color'     => Theme::getColorBlog(Theme::TOURISME),
-            'blogName'  => Theme::getTitleBlog(Theme::TOURISME),
-            'relations' => [],
-        ]
-    );
+    try {
+        echo $twig->render(
+            'errors/404.html.twig',
+            [
+                'title'     => 'Evènement non trouvé',
+                'tags'      => [],
+                'color'     => Theme::getColorBlog(Theme::TOURISME),
+                'blogName'  => Theme::getTitleBlog(Theme::TOURISME),
+                'relations' => [],
+            ]
+        );
+    } catch (LoaderError $e) {
+        dump($e);
+    } catch (RuntimeError $e) {dump($e);
+    } catch (SyntaxError $e) {dump($e);
+    }
     get_footer();
 
     return;
