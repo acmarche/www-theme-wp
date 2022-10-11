@@ -25,6 +25,7 @@ if ( ! str_starts_with($codeCgt, "EVT")) {
     $event = $pivotRepository->getEventByIdHades($codeCgt);
 }
 
+/*
 if ( ! $event) {
     try {
         $event = $pivotRepository->getEvent($codeCgt);
@@ -44,7 +45,7 @@ if ( ! $event) {
 
         return;
     }
-}
+}*/
 $event = null;
 if ( ! $event) {
     echo $twig->render(
