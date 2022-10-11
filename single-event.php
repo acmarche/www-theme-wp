@@ -8,12 +8,14 @@ use AcMarche\Theme\Inc\Theme;
 use AcMarche\Theme\Lib\Twig;
 use AcMarche\Theme\Lib\WpRepository;
 use Exception;
+use Symfony\Component\ErrorHandler\Debug;
+use Symfony\Component\ErrorHandler\ErrorHandler;
 use Twig\Error\LoaderError;
 use Twig\Error\RuntimeError;
 use Twig\Error\SyntaxError;
 
 get_header();
-
+Debug::enable();
 global $wp_query;
 $twig            = Twig::LoadTwig();
 $codeCgt         = $wp_query->get(RouterMarche::PARAM_EVENT);
