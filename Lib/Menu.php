@@ -46,6 +46,7 @@ class Menu
                 $data = [];
                 foreach (Theme::SITES as $idSite => $site) {
                     $data[$idSite]['name']  = $site;
+                    $data[$idSite]['blogid']  = $idSite;
                     $data[$idSite]['items'] = $this->getItems($idSite);
                 }
                 switch_to_blog($blog);
