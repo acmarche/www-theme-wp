@@ -9,7 +9,7 @@ use Symfony\Contracts\Cache\CacheInterface;
 class Menu
 {
     const MENU_NAME = 'top-menu';
-    const MENU_CACHE_NAME = 'menu_all2';
+    const MENU_CACHE_NAME = 'menu_all3';
 
     private CacheInterface $cache;
 
@@ -59,7 +59,7 @@ class Menu
                 }
                 switch_to_blog($blog);
 
-                return $this->sortByName($data);
+                return $data;
             }
         );
     }
@@ -86,7 +86,7 @@ class Menu
                 }
                 switch_to_blog($blog);
 
-                return $data;
+                return $this->sortByName($data);
             }
         );
     }
