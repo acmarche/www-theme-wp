@@ -59,8 +59,23 @@ class Menu
                 }
                 switch_to_blog($blog);
 
-                return $data;
+                return $this->sortByName($data);
             }
         );
+    }
+
+    public function sortByName(array $data): array
+    {
+        usort(
+            $data,
+            function ($itemA, $itemB) {
+                $nameA = $itemA['name'];
+                $nameB = $itemB['name'];
+
+                return $nameA > $nameB ? +1 : -1;
+            }
+        );
+
+        return $data;
     }
 }
