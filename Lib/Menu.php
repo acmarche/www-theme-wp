@@ -45,9 +45,17 @@ class Menu
                 $blog = get_current_blog_id();
                 $data = [];
                 foreach (Theme::SITES as $idSite => $site) {
-                    $data[$idSite]['name']  = $site;
-                    $data[$idSite]['blogid']  = $idSite;
-                    $data[$idSite]['items'] = $this->getItems($idSite);
+                    if (in_array($idSite, [8, 12, 13])) {
+                        continue;
+                    }
+                    $data[$idSite]['name'] = ucfirst($site);
+                    if ($idSite == 14) {
+                        $data[$idSite]['name'] = 'Enfance-Jeunesse';
+                    }
+                    $data[$idSite]['blogid']     = $idSite;
+                    $data[$idSite]['colorhover'] = 'hover:text-'.$site;
+                    $data[$idSite]['color']      = 'text-'.$site;
+                    $data[$idSite]['items']      = $this->getItems($idSite);
                 }
                 switch_to_blog($blog);
 
