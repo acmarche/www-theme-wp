@@ -102,7 +102,7 @@ class WpRepository
                 $post->url = $permalink;
 
                 $post->blog_id = $siteId;
-                $post->blog    = $name;
+                $post->blog    = ucfirst($name);
                 $post->color   = Theme::COLORS[$siteId];
                 $post->colorTailwind   = 'text-'.Theme::SITES[$siteId];
 
