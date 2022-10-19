@@ -60,7 +60,7 @@ class Carto
                 'elements' => [
                     'bulles_verres'    => ['name' => 'Bulles à verres', 'source' => 'bottin', 'id' => 677],
                     'bulles_vetements' => ['name' => 'Bulles à vêtements', 'source' => 'bottin', 'id' => 678],
-                 //   'capteurs'         => ['name' => 'Capteurs', 'source' => 'kml', 'id' => 'capteurs'],
+                    'capteurs'         => ['name' => 'Stations qualité de l\'air', 'source' => 'kml', 'id' => 'capteurs'],
                 ],
             ],
             'horeca'            => [
