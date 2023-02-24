@@ -10,6 +10,9 @@ use AcMarche\Theme\Inc\Theme;
     <!DOCTYPE html>
     <html lang="fr">
     <head>
+        <?php
+        Twig::rendPage('footer/_analytics.html.twig');
+        ?>
         <meta charset="<?php bloginfo('charset'); ?>"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="author" content="Nucleïd">
