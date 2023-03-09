@@ -11,12 +11,9 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@wordpress/scripts": "^24.0.0",
+    "@wordpress/scripts": "^25.5.1",
     "axios": "^0.27.2",
-    "react-leaflet": "^3.2.5",
-    "react-leaflet-kml": "^2.0.3"
-  },
-  "dependencies": {
-
+    "react-leaflet": "^4.2.1",
+    "react-leaflet-kml": "^2.1.1"
   }
 }
