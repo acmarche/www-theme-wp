@@ -21,7 +21,7 @@ class WpRepository
     {
         switch_to_blog(1);
         $query = new WP_Query(array("page_id" => Theme::PAGE_ALERT, "post_status" => 'publish', 'post_type' => 'page'));
-        $post  = $query->get_posts();
+        $post = $query->get_posts();
         if (count($post) > 0) {
             return $post[0];
         }
@@ -30,23 +30,20 @@ class WpRepository
     }
 
     /**
-     * @return Offre[]
+     * @return array
+     * @throws \Doctrine\ORM\NonUniqueResultException
+     * @throws \Psr\Cache\InvalidArgumentException
      */
     public static function getEvents(): array
     {
         $cacheKey = 'events_pivot';
-        $events   = [];
-        try {
-            $pivotRepository = PivotContainer::getPivotRepository();
-            if ( ! $events = get_transient($cacheKey)) {
-                $events = $pivotRepository->fetchEvents(true);
-                if (count($events) > 0) {
-                    RouterMarche::setRouteEvents($events);
-                    set_transient($cacheKey, $events, 36000);
-                }
+        $pivotRepository = PivotContainer::getPivotRepository();
+        if (!$events = get_transient($cacheKey)) {
+            $events = $pivotRepository->fetchEvents();
+            if (count($events) > 0) {
+                RouterMarche::setRouteEvents($events);
+                set_transient($cacheKey, $events, 36000);
             }
-        } catch (\Exception $exception) {
-
         }
 
         return $events;
@@ -60,24 +57,24 @@ class WpRepository
     public static function getAllNews(int $max = 50): array
     {
         $sites = Theme::SITES;
-        $news  = array();
+        $news = array();
 
         foreach ($sites as $siteId => $name) :
             switch_to_blog($siteId);
 
             $args = array(
                 'category_name' => 'actualites-principales',
-                'orderby'       => 'title',
-                'post_status'   => 'publish',
-                'order'         => 'ASC',
+                'orderby' => 'title',
+                'post_status' => 'publish',
+                'order' => 'ASC',
             );
 
             if ($siteId == 1) {
                 $args = array(
                     'category_name' => 'actualites',
-                    'orderby'       => 'title',
-                    'post_status'   => 'publish',
-                    'order'         => 'ASC',
+                    'orderby' => 'title',
+                    'post_status' => 'publish',
+                    'order' => 'ASC',
                 );
             }
 
@@ -86,11 +83,11 @@ class WpRepository
             while ($querynews->have_posts()) :
 
                 $post = $querynews->next_post();
-                $id   = $post->ID;
+                $id = $post->ID;
 
                 if (has_post_thumbnail($id)) {
-                    $attachment_id      = get_post_thumbnail_id($id);
-                    $images             = wp_get_attachment_image_src($attachment_id, 'original');
+                    $attachment_id = get_post_thumbnail_id($id);
+                    $images = wp_get_attachment_image_src($attachment_id, 'original');
                     $post_thumbnail_url = $images[0];
                 } else {
                     $post_thumbnail_url = get_template_directory_uri().'/assets/images/404.jpg';
@@ -102,9 +99,9 @@ class WpRepository
                 $post->url = $permalink;
 
                 $post->blog_id = $siteId;
-                $post->blog    = ucfirst($name);
-                $post->color   = Theme::COLORS[$siteId];
-                $post->colorTailwind   = 'text-'.Theme::SITES[$siteId];
+                $post->blog = ucfirst($name);
+                $post->color = Theme::COLORS[$siteId];
+                $post->colorTailwind = 'text-'.Theme::SITES[$siteId];
 
                 $news[] = $post;
             endwhile;
@@ -124,8 +121,8 @@ class WpRepository
 
     public static function getRelations(int $postId): array
     {
-        $categories      = get_the_category($postId);
-        $args            = array(
+        $categories = get_the_category($postId);
+        $args = array(
             'category__in' => array_map(
                 function ($category) {
                     return $category->cat_ID;
@@ -133,10 +130,10 @@ class WpRepository
                 $categories
             ),
             'post__not_in' => [$postId],
-            'orderby'      => 'title',
-            'order'        => 'ASC',
+            'orderby' => 'title',
+            'order' => 'ASC',
         );
-        $query           = new \WP_Query($args);
+        $query = new \WP_Query($args);
         $recommandations = [];
         foreach ($query->posts as $post) {
             $image = null;
@@ -148,9 +145,9 @@ class WpRepository
             }
             $recommandations[] = [
                 'title' => $post->post_title,
-                'url'   => get_permalink($post->ID),
+                'url' => get_permalink($post->ID),
                 'image' => $image,
-                'tags'  => self::getTags($post->ID),
+                'tags' => self::getTags($post->ID),
             ];
 
         }
@@ -169,7 +166,7 @@ class WpRepository
         foreach (get_the_category($postId) as $category) {
             $tags[] = [
                 'name' => $category->name,
-                'url'  => get_category_link($category),
+                'url' => get_category_link($category),
             ];
         }
 
@@ -178,12 +175,12 @@ class WpRepository
 
     public function getChildrenOfCategory(int $cat_ID): array
     {
-        $args     = ['parent' => $cat_ID, 'hide_empty' => false];
+        $args = ['parent' => $cat_ID, 'hide_empty' => false];
         $children = get_categories($args);
         array_map(
             function ($category) {
                 $category->url = get_category_link($category->term_id);
-                $category->id  = $category->term_id;
+                $category->id = $category->term_id;
             },
             $children
         );
@@ -193,12 +190,12 @@ class WpRepository
 
     public function getRootCategories(): array
     {
-        $args     = ['parent' => 0, 'hide_empty' => false];
+        $args = ['parent' => 0, 'hide_empty' => false];
         $children = get_categories($args);
         array_map(
             function ($category) {
                 $category->url = get_category_link($category->term_id);
-                $category->id  = $category->term_id;
+                $category->id = $category->term_id;
             },
             $children
         );
@@ -248,23 +245,23 @@ class WpRepository
     public function getPostsAndFiches(int $catId): array
     {
         $args = array(
-            'cat'         => $catId,
+            'cat' => $catId,
             'numberposts' => 5000,
-            'orderby'     => 'post_title',
-            'order'       => 'ASC',
+            'orderby' => 'post_title',
+            'order' => 'ASC',
             'post_status' => 'publish',
         );
 
         $querynews = new WP_Query($args);
-        $posts     = [];
+        $posts = [];
         while ($querynews->have_posts()) {
-            $post          = $querynews->next_post();
+            $post = $querynews->next_post();
             $post->excerpt = $post->post_excerpt;
-            $post->url     = get_permalink($post->ID);
-            $posts[]       = $post;
+            $post->url = get_permalink($post->ID);
+            $posts[] = $post;
         }
 
-        $fiches           = [];
+        $fiches = [];
         $categoryBottinId = get_term_meta($catId, BottinCategoryMetaBox::KEY_NAME, true);
         $bottinRepository = new BottinRepository();
         if ($categoryBottinId) {
@@ -274,12 +271,12 @@ class WpRepository
 
         array_map(
             function ($fiche) use ($bottinRepository) {
-                $idSite              = $bottinRepository->findSiteFiche($fiche);
-                $fiche->fiche        = true;
-                $fiche->excerpt      = Bottin::getExcerpt($fiche);
+                $idSite = $bottinRepository->findSiteFiche($fiche);
+                $fiche->fiche = true;
+                $fiche->excerpt = Bottin::getExcerpt($fiche);
                 $fiche->post_excerpt = Bottin::getExcerpt($fiche);
-                $fiche->url          = RouterBottin::getUrlFicheBottin($idSite, $fiche);
-                $fiche->post_title   = $fiche->societe;
+                $fiche->url = RouterBottin::getUrlFicheBottin($idSite, $fiche);
+                $fiche->post_title = $fiche->societe;
             },
             $fiches
         );
@@ -303,12 +300,12 @@ class WpRepository
                     list($yearD, $monthD, $dayD) = explode('-', $enquete->date_debut);
                     $dateDebut = $dayD.'-'.$monthD.'-'.$yearD;
                     list($yearF, $monthF, $dayF) = explode('-', $enquete->date_fin);
-                    $dateFin               = $dayF.'-'.$monthF.'-'.$yearF;
-                    $enquete->ID           = $enquete->id;
-                    $enquete->excerpt      = $enquete->demandeur.' à '.$enquete->localite.'<br /> Affichate: du '.$dateDebut.' au '.$dateFin;
+                    $dateFin = $dayF.'-'.$monthF.'-'.$yearF;
+                    $enquete->ID = $enquete->id;
+                    $enquete->excerpt = $enquete->demandeur.' à '.$enquete->localite.'<br /> Affichate: du '.$dateDebut.' au '.$dateFin;
                     $enquete->post_excerpt = $enquete->demandeur.' à '.$enquete->localite.'<br /> Affichate: du '.$dateDebut.' au '.$dateFin;
-                    $enquete->url          = RouterMarche::getUrlEnquete($enquete->id);
-                    $enquete->post_title   = $enquete->intitule.' à '.$enquete->localite;
+                    $enquete->url = RouterMarche::getUrlEnquete($enquete->id);
+                    $enquete->post_title = $enquete->intitule.' à '.$enquete->localite;
                 },
                 $enquetes
             );
@@ -321,10 +318,10 @@ class WpRepository
     public function getPostsByCategory(int $catId, int $siteId): array
     {
         $args = array(
-            'cat'         => $catId,
+            'cat' => $catId,
             'numberposts' => 5000,
-            'orderby'     => 'post_title',
-            'order'       => 'ASC',
+            'orderby' => 'post_title',
+            'order' => 'ASC',
             'post_status' => 'publish',
         );
 
@@ -332,11 +329,11 @@ class WpRepository
         $posts = [];
         while ($query->have_posts()) :
             $post = $query->next_post();
-            $id   = $post->ID;
+            $id = $post->ID;
 
             if (has_post_thumbnail($id)) {
-                $attachment_id      = get_post_thumbnail_id($id);
-                $images             = wp_get_attachment_image_src($attachment_id, 'original');
+                $attachment_id = get_post_thumbnail_id($id);
+                $images = wp_get_attachment_image_src($attachment_id, 'original');
                 $post_thumbnail_url = $images[0];
             } else {
                 $post_thumbnail_url = get_template_directory_uri().'/assets/images/404.jpg';
@@ -348,8 +345,8 @@ class WpRepository
             $post->url = $permalink;
 
             $post->blog_id = $siteId;
-            $post->blog    = Theme::getTitleBlog($siteId);
-            $post->color   = Theme::COLORS[$siteId];
+            $post->blog = Theme::getTitleBlog($siteId);
+            $post->color = Theme::COLORS[$siteId];
 
             $posts[] = $post;
         endwhile;
@@ -390,7 +387,7 @@ class WpRepository
             return $enquetes;
         }
 
-        return array_filter($enquetes, function ($enquete) use($catId) {
+        return array_filter($enquetes, function ($enquete) use ($catId) {
             return $enquete->categoriewp == $catId;
         });
     }
