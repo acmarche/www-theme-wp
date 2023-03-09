@@ -2,6 +2,7 @@
 
 namespace AcMarche\Theme;
 
+use AcMarche\Common\Mailer;
 use AcMarche\Theme\Lib\Twig;
 use AcMarche\Theme\Lib\WpRepository;
 use SortLink;
@@ -12,17 +13,22 @@ use Symfony\Component\HttpFoundation\Request;
  */
 get_header();
 
+$events = [];
 $news = WpRepository::getAllNews(6);
-$events = WpRepository::getEvents();
+try {
+    $events = WpRepository::getEvents();
+} catch (\Exception $exception) {
+    Mailer::sendError('error marche.be', "page ".$exception->getMessage());
+}
 
-$pageAlert    = WpRepository::getPageAlert();
+$pageAlert = WpRepository::getPageAlert();
 $contentAlert = null;
-$dateAlert    = null;
+$dateAlert = null;
 
 if ($pageAlert) {
-    $request   = Request::createFromGlobals();
+    $request = Request::createFromGlobals();
     $dateAlert = preg_replace("#(\D)#", "", $pageAlert->post_modified);
-    $close     = (bool)$request->cookies->get('closeAlert'.$dateAlert);
+    $close = (bool)$request->cookies->get('closeAlert'.$dateAlert);
     if ($close) {
         $pageAlert = null;
     } else {
@@ -43,8 +49,8 @@ $imagesBg = [
 ];
 
 $imageBg = $imagesBg[4];
-$date    = new \DateTime();
-$heure   = $date->format('H');
+$date = new \DateTime();
+$heure = $date->format('H');
 if ($heure > 16 || $heure <= 7) {
     $imageBg = $imagesBg[0];
 }
@@ -54,13 +60,13 @@ $sortLink = SortLink::linkSortNews();
 Twig::rendPage(
     'homepage/index.html.twig',
     [
-        'actus'        => $news,
-        'events'       => $events,
-        'pageAlert'    => $pageAlert,
+        'actus' => $news,
+        'events' => $events,
+        'pageAlert' => $pageAlert,
         'contentAlert' => $contentAlert,
-        'imageBg'      => $imageBg,
-        'dateAlert'    => $dateAlert,
-        'sortLink'     => $sortLink,
+        'imageBg' => $imageBg,
+        'dateAlert' => $dateAlert,
+        'sortLink' => $sortLink,
     ]
 );
 
