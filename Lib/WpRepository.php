@@ -7,7 +7,7 @@ use AcMarche\Bottin\Repository\BottinRepository;
 use AcMarche\Bottin\RouterBottin;
 use AcMarche\Common\SortUtil;
 use AcMarche\Pivot\DependencyInjection\PivotContainer;
-use AcMarche\Pivot\Entities\Event\Event;
+use AcMarche\Pivot\Entities\Offre\Offre;
 use AcMarche\Theme\Inc\RouterMarche;
 use AcMarche\Theme\Inc\Theme;
 use AcSort;
@@ -30,7 +30,7 @@ class WpRepository
     }
 
     /**
-     * @return Event[]
+     * @return Offre[]
      */
     public static function getEvents(): array
     {
@@ -39,7 +39,7 @@ class WpRepository
         try {
             $pivotRepository = PivotContainer::getPivotRepository();
             if ( ! $events = get_transient($cacheKey)) {
-                $events = $pivotRepository->getEvents(true);
+                $events = $pivotRepository->fetchEvents(true);
                 if (count($events) > 0) {
                     RouterMarche::setRouteEvents($events);
                     set_transient($cacheKey, $events, 36000);
