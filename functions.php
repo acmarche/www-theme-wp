@@ -18,7 +18,17 @@ use AcMarche\Theme\Inc\Seo;
 use AcMarche\Theme\Inc\SetupTheme;
 use AcMarche\Theme\Inc\ShortCodes;
 use AcMarche\Theme\Inc\WidgetLoad;
+use Symfony\Component\ErrorHandler\Debug;
+use Symfony\Component\ErrorHandler\ErrorRenderer\HtmlErrorRenderer;
 
+/**
+ * Template sf
+ */
+if (WP_DEBUG === false) {
+    HtmlErrorRenderer::setTemplate(get_template_directory().'/error500.php');
+} else {
+    Debug::enable();
+}
 /**
  * Initialisation du thème
  */

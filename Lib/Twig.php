@@ -85,6 +85,23 @@ class Twig
 
     }
 
+    public static function rend500Page(string $error): void
+    {
+        $twig = self::LoadTwig();
+
+        echo $twig->render(
+            'errors/500.html.twig',
+            [
+                'message'   => $error,
+                'title'     => "La page n'a pas pu être chargée",
+                'tags'      => [],
+                'color'     => Theme::COLORS[1],
+                'blogName'  => Theme::COLORS[1],
+                'relations' => [],
+            ]
+        );
+    }
+
     protected static function categoryLink(): TwigFilter
     {
         return new TwigFilter(
