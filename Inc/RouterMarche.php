@@ -21,6 +21,7 @@ class RouterMarche extends Router
     const OFFRE_URL = 'offre';
     const EVENT_URL = 'manifestation/';
     const PARAM_ENQUETE = 'numenquete';
+    public const PARAM_FILTRE = 'filtre';
 
     public function __construct()
     {

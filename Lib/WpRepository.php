@@ -9,12 +9,14 @@ use AcMarche\Common\SortUtil;
 use AcMarche\Pivot\DependencyInjection\PivotContainer;
 use AcMarche\Pivot\Entities\Offre\Offre;
 use AcMarche\Pivot\Spec\UrnList;
+use AcMarche\Theme\Entity\CommonItem;
 use AcMarche\Theme\Inc\RouterMarche;
 use AcMarche\Theme\Inc\Theme;
 use AcSort;
 use BottinCategoryMetaBox;
 use WP_Post;
 use WP_Query;
+use WP_Term;
 
 class WpRepository
 {
@@ -85,6 +87,54 @@ class WpRepository
 
         return $pivotRepository->fetchOffreByCgtAndParse($codeCgt);
     }
+
+
+    /**
+     * @param Offre $offerRefer
+     * @param WP_Term $category
+     * @param string $language
+     * @return array|CommonItem[]
+     * @throws \Doctrine\ORM\NonUniqueResultException
+     * @throws \Psr\Cache\InvalidArgumentException
+     */
+    public function recommandationsByOffre(Offre $offerRefer, WP_Term $category, string $language): array
+    {
+        $cacheKey = 'recom-'.$offerRefer->codeCgt;
+
+        if ($recommandations = get_transient($cacheKey)) {
+            return $recommandations;
+        }
+
+        if (count($offerRefer->see_also)) {
+            $offres = $offerRefer->see_also;
+        } else {
+            $pivotRepository = PivotContainer::getPivotRepository();
+            $offres = $pivotRepository->fetchSameOffres($offerRefer, 10);
+        }
+        PostUtils::setLinkOnOffres($offres, $category->term_id, $language);
+        $recommandations = PostUtils::convertRecommandationsToArray($offres, $language);
+        $count = count($recommandations);
+        $data = [];
+
+        if ($count === 0) {
+            return $data;
+        }
+
+        if ($count > 3) {
+            $count = 3;
+        }
+
+        $keys = array_rand($recommandations, $count);
+
+        if (is_array($keys)) {
+            foreach ($keys as $key) {
+                $data[] = $recommandations[$key];
+            }
+        }
+
+        return $data;
+    }
+
 
     /**
      * @param int $max
@@ -392,7 +442,7 @@ class WpRepository
         return $all;
     }
 
-    public static function getCategoryAgenda(): object
+    public static function getCategoryAgenda(): bool|object
     {
         $currentBlog = get_current_blog_id();
         switch_to_blog(Theme::TOURISME);
