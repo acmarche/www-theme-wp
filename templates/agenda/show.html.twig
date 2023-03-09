@@ -14,10 +14,12 @@
 
 {% block content %}
 
-    {% for description in event.descriptions %}
+    {% for description in event.descriptionsByLanguage('fr') %}
         {% if description.urn == 'urn:fld:descmarket' %}
             <p>{{ description.value|raw }}</p>
-            <br/>
+        {% endif %}
+        {% if description.urn == 'urn:fld:desccirc' %}
+            {{ description.value|raw }}
         {% endif %}
     {% endfor %}
 
@@ -29,7 +31,13 @@
     <h4 class="mb-2 mt-2"><strong>Date(s)</strong></h4>
 
     {% for date in event.dates %}
-        {{ date.date_begin|format_date('full') }} {% if loop.last != true %}, {% endif %}
+        <span class="font-montserrat-semi-bold text-cta-dark">
+                {% if date.isPeriod %}
+                    De {{ date.date_begin|format_date('full') }} à {{ date.date_end|format_date('full') }}
+                {% else %}
+                    {{ date.date_begin|format_date('full') }}
+                {% endif %}
+            </span>
     {% endfor %}
 
     <h4 class="mb-2 mt-2"><strong>Contact</strong></h4>
@@ -67,14 +75,14 @@
 {% block scripts %}
 
     <script type="text/javascript">
-        jQuery( document )
-            .ready( function() {
-                jQuery( '#content' )
-                    .lightGallery( {
+        jQuery(document)
+            .ready(function () {
+                jQuery('#content')
+                    .lightGallery({
                             'selector': '.img-lightGallery'
                         }
                     );
-            } );
+            });
     </script>
 
 {% endblock %}
