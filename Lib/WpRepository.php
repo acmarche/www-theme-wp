@@ -7,7 +7,7 @@ use AcMarche\Bottin\Repository\BottinRepository;
 use AcMarche\Bottin\RouterBottin;
 use AcMarche\Common\SortUtil;
 use AcMarche\Pivot\DependencyInjection\PivotContainer;
-use AcMarche\Pivot\Entities\Offre\Offre;
+use AcMarche\Pivot\Spec\UrnList;
 use AcMarche\Theme\Inc\RouterMarche;
 use AcMarche\Theme\Inc\Theme;
 use AcSort;
@@ -34,19 +34,45 @@ class WpRepository
      * @throws \Doctrine\ORM\NonUniqueResultException
      * @throws \Psr\Cache\InvalidArgumentException
      */
-    public static function getEvents(): array
+    public function getEvents(): array
     {
         $cacheKey = 'events_pivot';
-        $pivotRepository = PivotContainer::getPivotRepository();
+        $pivotRepository = PivotContainer::getPivotRepository(WP_DEBUG);
         if (!$events = get_transient($cacheKey)) {
-            $events = $pivotRepository->fetchEvents();
+            $filtres = $this->getChildrenEvents(true);
+            $events = $pivotRepository->fetchEvents(typeOffres: $filtres);
+            $data = [];
             if (count($events) > 0) {
                 RouterMarche::setRouteEvents($events);
-                set_transient($cacheKey, $events, 36000);
             }
+            foreach ($events as $event) {
+                $event->locality = $event->getAdresse()->localite[0]->get('fr');
+                $event->dateEvent = [
+                    'year' => $event->dateEnd->format('Y'),
+                    'month' => $event->dateEnd->format('m'),
+                    'day' => $event->dateEnd->format('d'),
+                ];
+                if (count($event->images) == 0) {
+                    $event->images = [get_template_directory_uri().'/assets/tartine/bg_events.png'];
+                }
+                $data[] = $event;
+            }
+            if (count($data) > 0) {
+                set_transient($cacheKey, $data, 36000);
+            }
+
+            return $data;
         }
 
         return $events;
+    }
+
+    private static function getChildrenEvents(bool $filterCount): array
+    {
+        $filtreRepository = PivotContainer::getTypeOffreRepository(WP_DEBUG);
+        $parents = $filtreRepository->findByUrn(UrnList::EVENT_CINEMA->value);
+
+        return $filtreRepository->findByParent($parents[0]->parent->id, $filterCount);
     }
 
     /**
@@ -56,10 +82,9 @@ class WpRepository
      */
     public static function getAllNews(int $max = 50): array
     {
-        $sites = Theme::SITES;
         $news = array();
 
-        foreach ($sites as $siteId => $name) :
+        foreach (Theme::SITES as $siteId => $name) :
             switch_to_blog($siteId);
 
             $args = array(

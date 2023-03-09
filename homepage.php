@@ -5,6 +5,7 @@ namespace AcMarche\Theme;
 use AcMarche\Common\Mailer;
 use AcMarche\Theme\Lib\Twig;
 use AcMarche\Theme\Lib\WpRepository;
+use Psr\Cache\InvalidArgumentException;
 use SortLink;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -14,10 +15,12 @@ use Symfony\Component\HttpFoundation\Request;
 get_header();
 
 $events = [];
+$wpRepository = new WpRepository();
+
 $news = WpRepository::getAllNews(6);
 try {
-   // $events = WpRepository::getEvents();
-} catch (\Exception $exception) {
+    $events = $wpRepository->getEvents();
+} catch (\Exception|InvalidArgumentException $exception) {
     Mailer::sendError('error marche.be', "page ".$exception->getMessage());
 }
 
