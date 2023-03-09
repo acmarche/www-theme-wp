@@ -7,6 +7,7 @@ use AcMarche\Bottin\Repository\BottinRepository;
 use AcMarche\Bottin\RouterBottin;
 use AcMarche\Common\SortUtil;
 use AcMarche\Pivot\DependencyInjection\PivotContainer;
+use AcMarche\Pivot\Entities\Offre\Offre;
 use AcMarche\Pivot\Spec\UrnList;
 use AcMarche\Theme\Inc\RouterMarche;
 use AcMarche\Theme\Inc\Theme;
@@ -73,6 +74,16 @@ class WpRepository
         $parents = $filtreRepository->findByUrn(UrnList::EVENT_CINEMA->value);
 
         return $filtreRepository->findByParent($parents[0]->parent->id, $filterCount);
+    }
+
+    /**
+     * @throws \Psr\Cache\InvalidArgumentException
+     */
+    public function getOffreByCgtAndParse(string $codeCgt): ?Offre
+    {
+        $pivotRepository = PivotContainer::getPivotRepository(WP_DEBUG);
+
+        return $pivotRepository->fetchOffreByCgtAndParse($codeCgt);
     }
 
     /**

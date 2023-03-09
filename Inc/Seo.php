@@ -7,7 +7,6 @@ use AcMarche\Bottin\Repository\BottinRepository;
 use AcMarche\Bottin\RouterBottin;
 use AcMarche\Common\Mailer;
 use AcMarche\Common\Router;
-use AcMarche\Pivot\DependencyInjection\PivotContainer;
 use AcMarche\Theme\Lib\WpRepository;
 
 /**
@@ -76,16 +75,16 @@ class Seo
     private static function metaBottinFiche(string $slugFiche)
     {
         $bottinRepository = new BottinRepository();
-        $fiche            = $bottinRepository->getFicheBySlug($slugFiche);
+        $fiche = $bottinRepository->getFicheBySlug($slugFiche);
         if ($fiche) {
-            $cats                 = '';
-            $categories           = $bottinRepository->getCategoriesOfFiche($fiche->id);
-            $comment              = $fiche->comment1.' '.$fiche->comment2;
+            $cats = '';
+            $categories = $bottinRepository->getCategoriesOfFiche($fiche->id);
+            $comment = $fiche->comment1.' '.$fiche->comment2;
             self::$metas['title'] = $fiche->societe.' | ';
             foreach ($categories as $category) {
                 $cats .= $category->name;
             }
-            self::$metas['keywords']    = $cats;
+            self::$metas['keywords'] = $cats;
             self::$metas['description'] = $comment;
         }
     }
@@ -93,66 +92,73 @@ class Seo
     private static function metaBottinCategory($slug)
     {
         $bottinRepository = new BottinRepository();
-        $category         = $bottinRepository->getCategoryBySlug($slug);
+        $category = $bottinRepository->getCategoryBySlug($slug);
 
         if ($category) {
-            self::$metas['title']       = $category->name;
+            self::$metas['title'] = $category->name;
             self::$metas['description'] = $category->description;
-            $children                   = $bottinRepository->getCategories($category->id);
-            $cats                       = array_map(
+            $children = $bottinRepository->getCategories($category->id);
+            $cats = array_map(
                 function ($category) {
                     return $category->name;
                 },
                 $children
             );
-            self::$metas['keywords']    = join(',', $cats);
+            self::$metas['keywords'] = join(',', $cats);
         }
     }
 
     private static function metaHadesEvent(string $codeCgt)
     {  //todo
-        self::$metas['title']       = self::baseTitle("Page d'accueil");
+        self::$metas['title'] = self::baseTitle("Page d'accueil");
         self::$metas['description'] = get_bloginfo('description', 'display');
-        self::$metas['keywords']    = 'Commune, Ville, Marche, Marche-en-Famenne, Famenne, Administration communal';
+        self::$metas['keywords'] = 'Commune, Ville, Marche, Marche-en-Famenne, Famenne, Administration communal';
 
-        $pivotRepository = PivotContainer::getPivotRepository();
+        $wpRepository = new WpRepository();
         try {
-            $event                      = $pivotRepository->getEvent($codeCgt);
-            self::$metas['title']       = $event->nom.' | Agenda des manifestations ';
-            self::$metas['description'] = join(
+            $offre = $wpRepository->getOffreByCgtAndParse($codeCgt);
+        } catch (\Exception $exception) {
+            $base = self::baseTitle('');
+            self::$metas['title'] = "Error 500 ".$base;
+
+            return;
+        }
+        $language = 'fr';
+        if (null !== $offre) {
+            $base = self::baseTitle('| Agenda des manifestations');
+            $label = $offre->typeOffre->labelByLanguage($language);
+            self::$metas['title'] = $offre->nameByLanguage($language).' '.$label.' '.$base;
+            self::$metas['description'] = implode(
                 ',',
                 array_map(
-                    function ($description) {
-                        return $description->value;
-                    },
-                    $event->descriptions
+                    fn($description) => $description->value,
+                    $offre->descriptionsByLanguage($language)
                 )
             );
-            $keywords                   = array_map(
-                function ($category) {
-                    return $category->labelByLanguage('fr');
-                },
-                $event->categories
+            $keywords = array_map(
+                fn($tag) => $tag->labelByLanguage($language),
+                $offre->tags
             );
-            self::$metas['keywords']    = join(",", $keywords);
-        } catch (\Exception $e) {
-
+            self::$metas['keywords'] = implode(',', $keywords);
+            self::$metas['image'] = $offre->firstImage();
+            self::$metas['updated_time'] = $offre->dateModification;
+            self::$metas['published_time'] = $offre->dateCreation;
+            self::$metas['modified_time'] = $offre->dateModification;
         }
-
     }
 
     private static function metaBottinHomePage()
     {
-        self::$metas['title']       = self::baseTitle("Page d'accueil");
+        self::$metas['title'] = self::baseTitle("Page d'accueil");
         self::$metas['description'] = get_bloginfo('description', 'display');
-        self::$metas['keywords']    = 'Commune, Ville, Marche, Marche-en-Famenne, Famenne, Administration communal';
+        self::$metas['keywords'] = 'Commune, Ville, Marche, Marche-en-Famenne, Famenne, Administration communal';
     }
 
     private static function metaCategory(int $cat_id)
     {
         $category = get_category($cat_id);
-        $url      = Router::getCurrentUrl();
-        if ( ! $category) {
+        $url = Router::getCurrentUrl();
+        if (!$category) {
             Mailer::sendError('seo cat', 'cat not found '.$url);
             self::$metas['title'] = self::baseTitle("");
 
@@ -163,8 +169,8 @@ class Seo
             self::$metas['description'] = self::cleanString($category->description);
         }
         $wpRepository = new WpRepository();
-        $children     = $wpRepository->getChildrenOfCategory($category->cat_ID);
-        $tags         = [];
+        $children = $wpRepository->getChildrenOfCategory($category->cat_ID);
+        $tags = [];
         foreach ($children as $child) {
             $tags[] = $child->name;
         }
@@ -179,10 +185,10 @@ class Seo
     {
         $post = get_post($postId);
         if ($post) {
-            self::$metas['title']       = self::baseTitle("");
+            self::$metas['title'] = self::baseTitle("");
             self::$metas['description'] = $post->post_excerpt;
-            $tags                       = get_the_category($post->ID);
-            self::$metas['keywords']    = join(
+            $tags = get_the_category($post->ID);
+            self::$metas['keywords'] = join(
                 ',',
                 array_map(
                     function ($tag) {
@@ -192,7 +198,7 @@ class Seo
                 )
             );
         } else {
-            self::$metas['title']       = 'Page non trouvée'.self::baseTitle("");
+            self::$metas['title'] = 'Page non trouvée'.self::baseTitle("");
             self::$metas['description'] = 'Cette page n\'existe plus';
         }
     }
