@@ -2,25 +2,45 @@
 
 namespace AcMarche\Theme;
 
+use AcMarche\Common\Mailer;
+use AcMarche\Pivot\DependencyInjection\PivotContainer;
+use AcMarche\Pivot\Entity\TypeOffre;
 use AcMarche\Theme\Inc\Theme;
 use AcMarche\Theme\Lib\Twig;
 use AcMarche\Theme\Lib\WpRepository;
+use Doctrine\ORM\NonUniqueResultException;
+use Psr\Cache\InvalidArgumentException;
 
 get_header();
-$filtreParam = $_GET['filtre'] ?? null;
-$events      = WpRepository::getEvents();
 
-if ($filtreParam) {
-    $events = array_filter($events, function ($event) use ($filtreParam) {
-        return in_array($filtreParam, array_column($event->categories, 'id'));
-    });
+$filterSelected = $_GET['filtre'] ?? null;
+
+$wpRepository = new WpRepository();
+$filtre = null;
+if ($filterSelected) {
+    $typeOffreRepository = PivotContainer::getTypeOffreRepository(WP_DEBUG);
+    try {
+        $filtre = $typeOffreRepository->findOneByUrn($filterSelected);
+    } catch (NonUniqueResultException $e) {
+
+    }
+    if ($filtre instanceof TypeOffre) {
+        //$nameBack = $translator->trans('agenda.title');
+        //$categorName = $category->name.' - '.$filtre->labelByLanguage($language);
+    }
+}
+
+try {
+    $events = $wpRepository->getEvents(typeOffre: $filtre);
+} catch (NonUniqueResultException|InvalidArgumentException $e) {
+    Mailer::sendError('error marche.be', "page ".$e->getMessage());
 }
 
 Twig::rendPage(
     'agenda/index.html.twig',
     [
         'events' => $events,
-        'color'  => Theme::getColorBlog(Theme::TOURISME),
+        'color' => Theme::getColorBlog(Theme::TOURISME),
     ]
 );
 

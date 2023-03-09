@@ -8,6 +8,7 @@ use AcMarche\Bottin\RouterBottin;
 use AcMarche\Common\SortUtil;
 use AcMarche\Pivot\DependencyInjection\PivotContainer;
 use AcMarche\Pivot\Entities\Offre\Offre;
+use AcMarche\Pivot\Entity\TypeOffre;
 use AcMarche\Pivot\Spec\UrnList;
 use AcMarche\Theme\Entity\CommonItem;
 use AcMarche\Theme\Inc\RouterMarche;
@@ -37,12 +38,23 @@ class WpRepository
      * @throws \Doctrine\ORM\NonUniqueResultException
      * @throws \Psr\Cache\InvalidArgumentException
      */
-    public function getEvents(): array
+    public function getEvents(TypeOffre $typeOffre = null): array
     {
-        $cacheKey = 'events_pivot';
+        if ($typeOffre instanceof TypeOffre) {
+            $cacheKey = 'events_pivot'.$typeOffre->urn;
+        } else {
+            $cacheKey = 'events_pivot';
+        }
+
         $pivotRepository = PivotContainer::getPivotRepository(WP_DEBUG);
         if (!$events = get_transient($cacheKey)) {
-            $filtres = $this->getChildrenEvents(true);
+
+            if ($typeOffre instanceof TypeOffre) {
+                $filtres = [$typeOffre];
+            } else {
+                $filtres = $this->getChildrenEvents(true);
+            }
+
             $events = $pivotRepository->fetchEvents(typeOffres: $filtres);
             $data = [];
             if (count($events) > 0) {
