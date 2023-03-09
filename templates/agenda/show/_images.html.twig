@@ -2,7 +2,7 @@
     <div class="row">
         {% for image in event.images %}
             <div class="col-3">
-                <img loading="lazy" src="{{ image }}" alt="img" class="img-lightGallery">
+                <img loading="lazy" src="{{ image }}" alt="img" class="img-lightGallery" style="max-width: 550px;">
             </div>
         {% endfor %}
     </div>
