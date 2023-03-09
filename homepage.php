@@ -16,7 +16,7 @@ get_header();
 $events = [];
 $news = WpRepository::getAllNews(6);
 try {
-    $events = WpRepository::getEvents();
+   // $events = WpRepository::getEvents();
 } catch (\Exception $exception) {
     Mailer::sendError('error marche.be', "page ".$exception->getMessage());
 }
