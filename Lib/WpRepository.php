@@ -73,7 +73,7 @@ class WpRepository
                 }
                 $data[] = $event;
             }
-            if (count($data) > 0) {
+            if (count($data) > 3) {
                 set_transient($cacheKey, $data, 36000);
             }
 
