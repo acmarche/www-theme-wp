@@ -40,10 +40,11 @@ class WpRepository
      */
     public function getEvents(TypeOffre $typeOffre = null): array
     {
+        $today = new \DateTime();
         if ($typeOffre instanceof TypeOffre) {
             $cacheKey = 'events_pivot'.$typeOffre->urn;
         } else {
-            $cacheKey = 'events_pivot';
+            $cacheKey = 'events_pivot'.$today->format('Y-m-d');
         }
 
         $pivotRepository = PivotContainer::getPivotRepository(WP_DEBUG);
