@@ -15,6 +15,7 @@ use AcMarche\Theme\Inc\RouterMarche;
 use AcMarche\Theme\Inc\Theme;
 use AcSort;
 use BottinCategoryMetaBox;
+use Psr\Cache\InvalidArgumentException;
 use WP_Post;
 use WP_Query;
 use WP_Term;
@@ -34,9 +35,9 @@ class WpRepository
     }
 
     /**
-     * @return array
-     * @throws \Doctrine\ORM\NonUniqueResultException
-     * @throws \Psr\Cache\InvalidArgumentException
+     * @param TypeOffre|null $typeOffre
+     * @return array|Offre[]
+     * @throws InvalidArgumentException
      */
     public function getEvents(TypeOffre $typeOffre = null): array
     {
