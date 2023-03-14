@@ -46,7 +46,7 @@ class WpRepository
         if ($typeOffre instanceof TypeOffre) {
             $cacheKey = 'events_pivot'.$typeOffre->urn;
         } else {
-            $cacheKey = 'events_pivot44_'.$today->format('Y-m-d');
+            $cacheKey = 'events_pivot55_'.$today->format('Y-m-d');
         }
 
         $pivotRepository = PivotContainer::getPivotRepository(WP_DEBUG);
@@ -77,6 +77,7 @@ class WpRepository
             }
             if (count($data) > 3) {
                 if (!set_transient($cacheKey, json_encode($data), 36000)) {
+                    dd($data);
                     Mailer::sendError('key agendaa false', 'pas ete');
                 }
             }
