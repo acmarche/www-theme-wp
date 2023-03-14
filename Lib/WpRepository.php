@@ -45,7 +45,7 @@ class WpRepository
         if ($typeOffre instanceof TypeOffre) {
             $cacheKey = 'events_pivot'.$typeOffre->urn;
         } else {
-            $cacheKey = 'events_pivot-'.$today->format('Y-m-d');
+            $cacheKey = 'events_pivot_'.$today->format('Y-m-d');
         }
 
         $pivotRepository = PivotContainer::getPivotRepository(WP_DEBUG);
@@ -75,13 +75,17 @@ class WpRepository
                 $data[] = $event;
             }
             if (count($data) > 3) {
-                set_transient($cacheKey, $data, 36000);
+                set_transient($cacheKey, json_encode($data), 36000);
             }
 
             return $data;
         }
+        try {
+            return json_decode($events, flags: JSON_THROW_ON_ERROR);
+        } catch (\Exception $exception) {
+            return [];
+        }
 
-        return $events;
     }
 
     private static function getChildrenEvents(bool $filterCount): array
