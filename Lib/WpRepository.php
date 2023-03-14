@@ -76,9 +76,16 @@ class WpRepository
                 $data[] = $event;
             }
             if (count($data) > 3) {
-                if (!set_transient($cacheKey, json_encode($data), 36000)) {
-                    dd($data);
-                    Mailer::sendError('key agendaa false', 'pas ete');
+                dump($data);
+                try {
+                    if (!set_transient($cacheKey, json_encode($data, JSON_THROW_ON_ERROR), 36000)) {
+
+                        Mailer::sendError('key agendaa false', 'pas ete');
+                    }
+                } catch (\Exception $exception) {
+                    Mailer::sendError('json agenda ', $exception->getMessage());
+
+                    return [];
                 }
             }
 
