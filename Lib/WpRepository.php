@@ -46,7 +46,7 @@ class WpRepository
         if ($typeOffre instanceof TypeOffre) {
             $cacheKey = 'events_pivot'.$typeOffre->urn;
         } else {
-            $cacheKey = 'events_pivot_'.$today->format('Y-m-d');
+            $cacheKey = 'events_pivot2_'.$today->format('Y-m-d');
         }
 
         $pivotRepository = PivotContainer::getPivotRepository(WP_DEBUG);
