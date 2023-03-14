@@ -35,7 +35,7 @@ try {
 } catch (NonUniqueResultException|InvalidArgumentException $e) {
     Mailer::sendError('error marche.be', "page ".$e->getMessage());
 }
-
+dd($events);
 Twig::rendPage(
     'agenda/index.html.twig',
     [
