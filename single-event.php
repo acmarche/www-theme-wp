@@ -19,6 +19,23 @@ $codeCgt = $wp_query->get(RouterMarche::PARAM_EVENT);
 
 get_header();
 
+if (!str_contains($codeCgt, "EVT")) {
+    echo $twig->render(
+        'errors/404.html.twig',
+        [
+            'title' => 'Évènement non trouvé',
+            'tags' => [],
+            'color' => Theme::getColorBlog(Theme::TOURISME),
+            'blogName' => Theme::getTitleBlog(Theme::TOURISME),
+            'relations' => [],
+        ]
+    );
+
+    get_footer();
+
+    return;
+}
+
 $wpRepository = new WpRepository();
 try {
     $offre = $wpRepository->getOffreByCgtAndParse($codeCgt);
