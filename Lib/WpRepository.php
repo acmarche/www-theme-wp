@@ -76,7 +76,6 @@ class WpRepository
                 $data[] = $event;
             }
             if (count($data) > 3) {
-                dump($data);
                 try {
                     if (!set_transient($cacheKey, json_encode($data, JSON_THROW_ON_ERROR), 36000)) {
 
