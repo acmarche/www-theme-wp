@@ -5,6 +5,7 @@ namespace AcMarche\Theme\Lib;
 use AcMarche\Bottin\Bottin;
 use AcMarche\Bottin\Repository\BottinRepository;
 use AcMarche\Bottin\RouterBottin;
+use AcMarche\Common\Mailer;
 use AcMarche\Common\SortUtil;
 use AcMarche\Pivot\DependencyInjection\PivotContainer;
 use AcMarche\Pivot\Entities\Offre\Offre;
@@ -75,7 +76,9 @@ class WpRepository
                 $data[] = $event;
             }
             if (count($data) > 3) {
-                set_transient($cacheKey, json_encode($data), 36000);
+                if (!set_transient($cacheKey, json_encode($data), 36000)) {
+                    Mailer::sendError('key agendaa false', 'pas ete');
+                }
             }
 
             return $data;
@@ -83,6 +86,8 @@ class WpRepository
         try {
             return json_decode($events, flags: JSON_THROW_ON_ERROR);
         } catch (\Exception $exception) {
+            Mailer::sendError('json agenda ', $exception->getMessage());
+
             return [];
         }
 

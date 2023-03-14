@@ -47,7 +47,8 @@ class ApiData
 
     public static function ca_events()
     {
-        return rest_ensure_response(WpRepository::getEvents());
+        $wp = new WpRepository();
+        return rest_ensure_response($wp->getEvents());
     }
 
     /**
