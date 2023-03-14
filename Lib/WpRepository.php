@@ -46,7 +46,7 @@ class WpRepository
         if ($typeOffre instanceof TypeOffre) {
             $cacheKey = 'events_pivot'.$typeOffre->urn;
         } else {
-            $cacheKey = 'events_pivot2_'.$today->format('Y-m-d');
+            $cacheKey = 'events_pivot42_'.$today->format('Y-m-d');
         }
 
         $pivotRepository = PivotContainer::getPivotRepository(WP_DEBUG);
@@ -84,6 +84,7 @@ class WpRepository
             return $data;
         }
         try {
+            dd($events);
             return json_decode($events, flags: JSON_THROW_ON_ERROR);
         } catch (\Exception $exception) {
             Mailer::sendError('json agenda ', $exception->getMessage());
