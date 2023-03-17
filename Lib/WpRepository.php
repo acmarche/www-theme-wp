@@ -81,6 +81,9 @@ class WpRepository
 
                         Mailer::sendError('key agendaa false', 'pas ete');
                     }
+                    else {
+                        Mailer::sendError('agenda ok', count($data).' events cached');
+                    }
                 } catch (\Exception $exception) {
                     Mailer::sendError('json agenda ', $exception->getMessage());
 
