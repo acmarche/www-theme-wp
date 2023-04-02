@@ -118,7 +118,6 @@ class WpRepository
         return $pivotRepository->fetchOffreByCgtAndParse($codeCgt);
     }
 
-
     /**
      * @param Offre $offerRefer
      * @param WP_Term $category
