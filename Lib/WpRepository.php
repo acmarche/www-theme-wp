@@ -45,13 +45,14 @@ class WpRepository
         $today = new \DateTime();
         if ($typeOffre instanceof TypeOffre) {
             $cacheKey = 'events_pivot'.$typeOffre->urn;
+            $minEvents = 0;
         } else {
-            $cacheKey = 'events_pivot55_'.$today->format('Y-m-d');
+            $cacheKey = 'events_pivot_'.$today->format('Y-m-d');
+            $minEvents = 50;
         }
 
-        $pivotRepository = PivotContainer::getPivotRepository(WP_DEBUG);
         if (!$events = get_transient($cacheKey)) {
-
+            $pivotRepository = PivotContainer::getPivotRepository(WP_DEBUG);
             if ($typeOffre instanceof TypeOffre) {
                 $filtres = [$typeOffre];
             } else {
@@ -75,17 +76,13 @@ class WpRepository
                 }
                 $data[] = $event;
             }
-            if (count($data) > 3) {
+            if ($minEvents > 0 && count($data) > $minEvents) {
                 try {
-                    if (!set_transient($cacheKey, json_encode($data, JSON_THROW_ON_ERROR), 36000)) {
-
-                        Mailer::sendError('key agendaa false', 'pas ete');
-                    }
-                    else {
-                        Mailer::sendError('agenda ok', count($data).' events cached');
+                    if (set_transient($cacheKey, json_encode($data, JSON_THROW_ON_ERROR), 36000)) {
+                        Mailer::sendError('agenda ok', count($data).' events cached key: '.$cacheKey);
                     }
                 } catch (\Exception $exception) {
-                    Mailer::sendError('json agenda ', $exception->getMessage());
+                    Mailer::sendError('json agenda error', $exception->getMessage());
 
                     return [];
                 }
