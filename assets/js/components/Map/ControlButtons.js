@@ -7,18 +7,19 @@ function ControlButtons( propos ) {
 
     const zoomIn = ( e ) => {
         e.preventDefault();
-        map.setZoom( map.getZoom() + 1 );
+        map.setZoom( map.zoom + 1 );
     };
     const zoomOut = ( e ) => {
         e.preventDefault();
-        map.setZoom( map.getZoom() - 1 );
+        console.log(map);
+        map.setZoom( map.zoom - 1 );
     };
     const showMyLocation = () => {
         if ( location.loaded && ! location.error ) {
             L.marker([ location.coordinates.lat, location.coordinates.lng ]).addTo( map );
             map.flyTo(
                 [ location.coordinates.lat, location.coordinates.lng ],
-                map.getZoom()
+                map.zoom
             );
         } else {
             alert( location.error.message );

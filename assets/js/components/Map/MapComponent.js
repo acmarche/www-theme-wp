@@ -1,4 +1,4 @@
-import { MapContainer, TileLayer, Marker, Tooltip } from 'react-leaflet';
+import {MapContainer, TileLayer, Marker, Tooltip} from 'react-leaflet';
 import ReactLeafletKml from 'react-leaflet-kml';
 import ControlButtons from './ControlButtons';
 import PopupBottin from './popup/PopupBottin';
@@ -8,19 +8,20 @@ const {
     useState
 } = wp.element;
 
-function MapComponent( {
-    markerData,
-    kmlContent
-} ) {
+function MapComponent({
+                          markerData,
+                          kmlContent
+                      }) {
 
-    const [ map, setMap ] = useState( null );
+    const [map, setMap] = useState(null);
 
-    const handleClick = ( object ) => {
+    const handleClick = (object) => {
         //do nothing
     };
 
-    function handleCreated( map ) {
-        setMap( map );
+    function handleCreated(map) {
+        console.log('created')
+        setMap(map);
     }
 
     return (
@@ -28,35 +29,35 @@ function MapComponent( {
             <ControlButtons map={map}/>
             <div
                 className="position-absolute h-100 w-lg-100 h-lg-auto z-10"
-                style={{ width: 100 + '%' }}>
+                style={{width: 100 + '%'}}>
                 <MapContainer
                     id={'leaflet-container'}
                     style={{
                         width: '100%',
                         height: '700px'
                     }}
-                    whenCreated={handleCreated}
-                    center={[ 50.22799745011792, 5.34405188915553 ]}
+                    whenReady={handleCreated}
+                    center={[50.22799745011792, 5.34405188915553]}
                     zoom={13}
-                    zoomControl={false}
-                    scrollWheelZoom={false}
+                    zoomControl={true}
+                    scrollWheelZoom={true}
                 >
                     <TileLayer
                         attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
                         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                     />
                     {
-                        markerData ? markerData.map( ( object, index ) => {
+                        markerData ? markerData.map((object, index) => {
                             if (object.latitude && object.longitude) {
                                 return (
                                     <Marker
                                         eventHandlers={{
                                             click: () => {
-                                                handleClick( object );
+                                                handleClick(object);
                                             }
                                         }}
                                         key={index}
-                                        position={[ object.latitude, object.longitude ]}
+                                        position={[object.latitude, object.longitude]}
                                     >
                                         <Tooltip><p>{object?.nom}</p></Tooltip>
                                         {object.kml === true && <PopupKml object={object}/>}
@@ -64,7 +65,7 @@ function MapComponent( {
                                     </Marker>
                                 );
                             }
-                        } ) : ''}
+                        }) : ''}
                     {kmlContent && <ReactLeafletKml kml={kmlContent}/>}
                 </MapContainer>
             </div>
