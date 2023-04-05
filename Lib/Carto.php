@@ -99,6 +99,11 @@ class Carto
                         'source' => 'bottin',
                         'id'     => 679,
                     ],
+                    'parking_shop'      => [
+                        'name'   => 'Parkings Shop & Go ',
+                        'source' => 'bottin',
+                        'id'     => 705,
+                    ],
                     //   'pistes_cyclo'        => ['name' => 'Pistes cyclables', 'source' => 'kml', 'id' => 'cyclos'],
                     'travaux'             => ['name' => 'Travaux', 'source' => 'kml', 'id' => 'travaux'],
                     'velos_stationnement' => [
