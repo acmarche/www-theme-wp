@@ -5,8 +5,7 @@ import PopupBottin from './popup/PopupBottin';
 import PopupKml from './popup/PopupKml';
 
 const {
-    useState,
-    useEffect
+    useState
 } = wp.element;
 
 function MapComponent({
@@ -15,37 +14,24 @@ function MapComponent({
                       }) {
 
     const [map, setMap] = useState(null);
-    const [zoomLevel, setZoomLevel] = useState(13);
+    const [zoomLevel] = useState(13);
 
     const handleClick = (object) => {
         //do nothing
     };
 
     function handleCreated(map) {
-        console.log('created' + zoomLevel)
         setMap(map);
-        setZoomLevel(5)
-
-        console.log('sleeped' + zoomLevel)
     }
-
-    useEffect((zoomLevel) => {
-        // Mettre à jour le titre du document en utilisant l'API du navigateur
-        document.title = `Vous avez cliqué ${zoomLevel} fois`;
-        console.log('change zoom')
-        if (map != null)
-            map.zoom = zoomLevel
-    });
 
     return (
         <>
-            <ControlButtons map={map}/>
             <div
                 className="position-absolute h-100 w-lg-100 h-lg-auto z-10"
                 style={{width: 100 + '%'}}>
                 <MapContainer
                     id={'leaflet-container'}
-                    ref={}
+
                     style={{
                         width: '100%',
                         height: '700px'
@@ -54,7 +40,7 @@ function MapComponent({
                     center={[50.22799745011792, 5.34405188915553]}
                     zoom={zoomLevel}
                     zoomControl={false}
-                    scrollWheelZoom={false}
+                    scrollWheelZoom={true}
                 >
                     <TileLayer
                         attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
@@ -81,6 +67,7 @@ function MapComponent({
                             }
                         }) : ''}
                     {kmlContent && <ReactLeafletKml kml={kmlContent}/>}
+                    <ControlButtons/>
                 </MapContainer>
             </div>
         </>
