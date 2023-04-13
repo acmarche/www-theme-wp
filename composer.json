@@ -30,7 +30,8 @@
     "ext-dom": "*",
     "twig/string-extra": "^3.3",
     "ext-libxml": "*",
-    "ezyang/htmlpurifier": "^4.13"
+    "ezyang/htmlpurifier": "^4.13",
+    "ext-intl": "*"
   },
   "autoload": {
     "psr-4": {
