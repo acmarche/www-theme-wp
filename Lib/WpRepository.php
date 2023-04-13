@@ -79,7 +79,7 @@ class WpRepository
             if ($minEvents > 0 && count($data) > $minEvents) {
                 try {
                     if (set_transient($cacheKey, json_encode($data, JSON_THROW_ON_ERROR), 36000)) {
-                        Mailer::sendError('agenda ok', count($data).' events cached key: '.$cacheKey);
+
                     }
                 } catch (\Exception $exception) {
                     Mailer::sendError('json agenda error', $exception->getMessage());
