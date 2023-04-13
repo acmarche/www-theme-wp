@@ -25,7 +25,7 @@ class Twig
     public static function LoadTwig(?string $path = null): Environment
     {
         //todo get instance
-        if ( ! $path) {
+        if (!$path) {
             $path = get_template_directory().'/templates';
         }
 
@@ -34,8 +34,9 @@ class Twig
         $environment = new Environment(
             $loader,
             [
-                'cache'            => ABSPATH.'var/cache',
-                'debug'            => WP_DEBUG,
+                'cache' => $_ENV['APP_CACHE_DIR'] ?? self::getPathCache('twig'),
+                // 'cache'            => ABSPATH.'var/cache',
+                'debug' => WP_DEBUG,
                 'strict_variables' => WP_DEBUG,
             ]
         );
@@ -45,6 +46,8 @@ class Twig
             $environment->addExtension(new DebugExtension());
         }
 
+        locale_set_default('fr-FR');//for format date
+        $environment->addGlobal('locale', 'fr');
         $environment->addExtension(new StringExtension());
         $environment->addExtension(new IntlExtension());
 
@@ -59,6 +62,11 @@ class Twig
         return $environment;
     }
 
+    private static function getPathCache(string $folder): string
+    {
+        return ABSPATH.'var/cache/'.$folder;
+    }
+
     public static function rendPage(string $templatePath, array $variables = [])
     {
         $twig = self::LoadTwig();
@@ -67,15 +75,15 @@ class Twig
                 $templatePath,
                 $variables,
             );
-        } catch (LoaderError | RuntimeError | SyntaxError $e) {
+        } catch (LoaderError|RuntimeError|SyntaxError $e) {
             echo $twig->render(
                 'errors/500.html.twig',
                 [
-                    'message'   => $e->getMessage(),
-                    'title'     => "La page n'a pas pu être chargée",
-                    'tags'      => [],
-                    'color'     => Theme::COLORS[1],
-                    'blogName'  => Theme::COLORS[1],
+                    'message' => $e->getMessage(),
+                    'title' => "La page n'a pas pu être chargée",
+                    'tags' => [],
+                    'color' => Theme::COLORS[1],
+                    'blogName' => Theme::COLORS[1],
                     'relations' => [],
                 ]
             );
@@ -92,11 +100,11 @@ class Twig
         echo $twig->render(
             'errors/500.html.twig',
             [
-                'message'   => $error,
-                'title'     => "La page n'a pas pu être chargée",
-                'tags'      => [],
-                'color'     => Theme::COLORS[1],
-                'blogName'  => Theme::COLORS[1],
+                'message' => $error,
+                'title' => "La page n'a pas pu être chargée",
+                'tags' => [],
+                'color' => Theme::COLORS[1],
+                'blogName' => Theme::COLORS[1],
                 'relations' => [],
             ]
         );
@@ -134,7 +142,7 @@ class Twig
             'isExternalUrl',
             function (string $url): bool {
                 if (preg_match("#http#", $url)) {
-                    if ( ! preg_match("#https://www.marche.be#", $url)) {
+                    if (!preg_match("#https://www.marche.be#", $url)) {
                         return true;
                     }
 
