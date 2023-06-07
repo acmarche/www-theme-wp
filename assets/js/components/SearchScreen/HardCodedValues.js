@@ -2,7 +2,7 @@ function HardCodedValues() {
     return (
         <>
             <li className="col-ls-6 col-ls-sm-4 col-xl-12 col-ls-xl-12">
-                <a href="/sport/piscine-communal"
+                <a href="/sport?p=5153"
                     className="icon_custom">
                     <i className="i-swimmer"></i>Piscine
                 </a>

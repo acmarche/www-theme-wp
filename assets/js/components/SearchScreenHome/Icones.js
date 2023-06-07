@@ -5,7 +5,7 @@ function HardCodedValues() {
             <ul className="d-none d-ls-lg-flex d-lg-flex flex-wrap justify-content-center mw-500px pt-42px mx-auto
                    ">
                 <li className="col-3 d-flex justify-content-center">
-                    <a href="/sport/piscine-communale" className="icon_custom">
+                    <a href="/sport?p=5153" className="icon_custom">
                         <i className=" d-block w-54px h-54px shadow-sm-2 mx-auto rounded-circle i-swimmer i-bg-white i-bg-hover-primary i-hover-white i-bg-color-transition bg-size-62"></i>
                         <span className="d-inline-block text-white fs-short-3 ff-semibold lh-150 pt-6px">Piscine</span>
                     </a>

@@ -3,7 +3,7 @@ function HardCodedValues() {
         <>
             <ul>
                 <li className="col-ls-6">
-                    <a href="/sport/piscine-communale" className="icon_custom">
+                    <a href="/sport?p=5153" className="icon_custom">
                         <i className="i-swimmer"></i>Piscine</a>
                 </li>
                 <li className="col-ls-6">
