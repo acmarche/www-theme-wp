@@ -40,7 +40,6 @@ array_map(
     },
     $items
 );
-unset($items[0]);//remove accueil
 
 $content = get_the_content(null, null, $post);
 $content = apply_filters('the_content', $content);
