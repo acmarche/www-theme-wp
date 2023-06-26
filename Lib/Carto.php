@@ -18,132 +18,132 @@ class Carto
     public function __construct()
     {
         $this->httpClient = HttpClient::create();
-        $this->kmlParser  = new KmlParser();
+        $this->kmlParser = new KmlParser();
     }
 
     public function filtres(): array
     {
         return [
-            'culture'           => [
-                'name'     => 'Culture',
-                'icone'    => 'i-book',
+            'culture' => [
+                'name' => 'Culture',
+                'icone' => 'i-book',
                 'elements' => [
-                    'biblio'        => ['name' => 'Bibliothèques', 'source' => 'bottin', 'id' => 674],
+                    'biblio' => ['name' => 'Bibliothèques', 'source' => 'bottin', 'id' => 674],
                     'boites_livres' => ['name' => 'Boîtes à livres', 'source' => 'bottin', 'id' => 684],
-                    'cinema'        => ['name' => 'Cinéma', 'source' => 'bottin', 'id' => 675],
-                    'musees'        => ['name' => 'Musées', 'source' => 'bottin', 'id' => 673],
-                    'statues'       => ['name' => 'Statues et sculptures', 'source' => 'kml', 'id' => 'statues'],
+                    'cinema' => ['name' => 'Cinéma', 'source' => 'bottin', 'id' => 675],
+                    'musees' => ['name' => 'Musées', 'source' => 'bottin', 'id' => 673],
+                    'statues' => ['name' => 'Statues et sculptures', 'source' => 'kml', 'id' => 'statues'],
                 ],
             ],
-            'enfance'           => [
-                'name'     => 'Enfance',
-                'icone'    => 'i-beach-ball',
+            'enfance' => [
+                'name' => 'Enfance',
+                'icone' => 'i-beach-ball',
                 'elements' => [
                     'accueillantes' => ['name' => 'Accueillantes', 'source' => 'bottin', 'id' => 672],
-                    'jeux'          => ['name' => 'Aires de jeux, parcs', 'source' => 'kml', 'id' => 'jeux'],
-                    'creches'       => ['name' => 'Crêches', 'source' => 'bottin', 'id' => 495],
+                    'jeux' => ['name' => 'Aires de jeux, parcs', 'source' => 'kml', 'id' => 'jeux'],
+                    'creches' => ['name' => 'Crêches', 'source' => 'bottin', 'id' => 495],
                 ],
             ],
-            'enseignement'      => [
-                'name'     => 'Enseignement',
-                'icone'    => 'i-school',
+            'enseignement' => [
+                'name' => 'Enseignement',
+                'icone' => 'i-school',
                 'elements' => [
                     'enseignement_artistique' => ['name' => 'Artistique', 'source' => 'bottin', 'id' => 682],
                     'enseignement_maternelle' => ['name' => 'Maternel et primaire', 'source' => 'bottin', 'id' => 669],
                     'enseignement_secondaire' => ['name' => 'Secondaire', 'source' => 'bottin', 'id' => 668],
-                    'enseignement_superieur'  => ['name' => 'Supérieur', 'source' => 'bottin', 'id' => 670],
+                    'enseignement_superieur' => ['name' => 'Supérieur', 'source' => 'bottin', 'id' => 670],
                 ],
             ],
-            'environnement'     => [
-                'name'     => 'Environnement',
-                'icone'    => 'i-leaf',
+            'environnement' => [
+                'name' => 'Environnement',
+                'icone' => 'i-leaf',
                 'elements' => [
-                    'bulles_verres'    => ['name' => 'Bulles à verres', 'source' => 'bottin', 'id' => 677],
+                    'bulles_verres' => ['name' => 'Bulles à verres', 'source' => 'bottin', 'id' => 677],
                     'bulles_vetements' => ['name' => 'Bulles à vêtements', 'source' => 'bottin', 'id' => 678],
-                    'capteurs'         => ['name' => 'Stations qualité de l\'air', 'source' => 'kml', 'id' => 'capteurs'],
+                    'capteurs' => ['name' => 'Stations qualité de l\'air', 'source' => 'kml', 'id' => 'capteurs'],
                 ],
             ],
-            'horeca'            => [
-                'name'     => 'Horéca',
-                'icone'    => 'i-flatware',
+            'horeca' => [
+                'name' => 'Horéca',
+                'icone' => 'i-flatware',
                 'elements' => [
-                    'brasseries'  => ['name' => 'Brasseries-Bar', 'source' => 'bottin', 'id' => 522],
-                    'camping'     => ['name' => 'Camping', 'source' => 'bottin', 'id' => 652],
-                    'chambres'    => ['name' => 'Chambres d\'hôtes', 'source' => 'bottin', 'id' => 651],
-                    'friteries'   => ['name' => 'Friterie - Snack - sandwicherie', 'source' => 'bottin', 'id' => 523],
-                    'gites'       => ['name' => 'Gîtes et meublés de tourisme', 'source' => 'bottin', 'id' => 650],
-                    'glaciers'    => ['name' => 'Glaciers - Tea room', 'source' => 'bottin', 'id' => 524],
-                    'hotels'      => ['name' => 'Hôtels', 'source' => 'bottin', 'id' => 649],
+                    'brasseries' => ['name' => 'Brasseries-Bar', 'source' => 'bottin', 'id' => 522],
+                    'camping' => ['name' => 'Camping', 'source' => 'bottin', 'id' => 652],
+                    'chambres' => ['name' => 'Chambres d\'hôtes', 'source' => 'bottin', 'id' => 651],
+                    'friteries' => ['name' => 'Friterie - Snack - sandwicherie', 'source' => 'bottin', 'id' => 523],
+                    'gites' => ['name' => 'Gîtes et meublés de tourisme', 'source' => 'bottin', 'id' => 650],
+                    'glaciers' => ['name' => 'Glaciers - Tea room', 'source' => 'bottin', 'id' => 524],
+                    'hotels' => ['name' => 'Hôtels', 'source' => 'bottin', 'id' => 649],
                     'restaurants' => ['name' => 'Restaurants', 'source' => 'bottin', 'id' => 521],
                 ],
             ],
-            'infrastructures'   => [
-                'name'     => 'Infrastructures',
-                'icone'    => 'i-board',
+            'infrastructures' => [
+                'name' => 'Infrastructures',
+                'icone' => 'i-board',
                 'elements' => [
-                    'cimetieres'   => ['name' => 'Cimetières', 'source' => 'kml', 'id' => 'cimetieres'],
+                    'cimetieres' => ['name' => 'Cimetières', 'source' => 'kml', 'id' => 'cimetieres'],
                     'salles_commu' => ['name' => 'Salles communales', 'source' => 'bottin', 'id' => 680],
                 ],
             ],
-            'mobilite'          => [
-                'name'     => 'Mobilité',
-                'icone'    => 'i-bus',
+            'mobilite' => [
+                'name' => 'Mobilité',
+                'icone' => 'i-bus',
                 'elements' => [
-                    'balade_pieds'        => [
-                        'name'   => 'Balade des petits pieds',
+                    'balade_pieds' => [
+                        'name' => 'Balade des petits pieds',
                         'source' => 'kml',
-                        'id'     => 'balades',
+                        'id' => 'balades',
                     ],
-                    'parking_centre'      => [
-                        'name'   => 'Parkings centre-véhicules ',
+                    'parking_centre' => [
+                        'name' => 'Parkings centre-véhicules ',
                         'source' => 'bottin',
-                        'id'     => 679,
+                        'id' => 679,
                     ],
-                    'parking_shop'      => [
-                        'name'   => 'Parkings Shop & Go ',
+                    'parking_shop' => [
+                        'name' => 'Parkings Shop & Go ',
                         'source' => 'bottin',
-                        'id'     => 705,
+                        'id' => 705,
                     ],
                     //   'pistes_cyclo'        => ['name' => 'Pistes cyclables', 'source' => 'kml', 'id' => 'cyclos'],
-                    'travaux'             => ['name' => 'Travaux', 'source' => 'kml', 'id' => 'travaux'],
+                    'travaux' => ['name' => 'Travaux', 'source' => 'kml', 'id' => 'travaux'],
                     'velos_stationnement' => [
-                        'name'   => 'Parkings vélos',
+                        'name' => 'Parkings vélos',
                         'source' => 'kml',
-                        'id'     => 'velos_stationnement',
+                        'id' => 'velos_stationnement',
                     ],
                 ],
             ],
-            'sante'             => [
-                'name'     => 'Santé',
-                'icone'    => 'i-healthcase',
+            'sante' => [
+                'name' => 'Santé',
+                'icone' => 'i-healthcase',
                 'elements' => [
-                    'dentistes'    => ['name' => 'Dentistes', 'source' => 'bottin', 'id' => 383],
-                    'hopital'      => ['name' => 'Hôpital', 'source' => 'bottin', 'id' => 681],
-                    'kines'        => ['name' => 'Kinésithérapeutes', 'source' => 'bottin', 'id' => 385],
-                    'medecins'     => ['name' => 'Médecine générale', 'source' => 'bottin', 'id' => 370],
-                    'mutuelles'    => ['name' => 'Mutuelles', 'source' => 'bottin', 'id' => 411],
-                    'pharmacies'   => ['name' => 'Pharmacies', 'source' => 'bottin', 'id' => 390],
+                    'dentistes' => ['name' => 'Dentistes', 'source' => 'bottin', 'id' => 383],
+                    'hopital' => ['name' => 'Hôpital', 'source' => 'bottin', 'id' => 681],
+                    'kines' => ['name' => 'Kinésithérapeutes', 'source' => 'bottin', 'id' => 385],
+                    'medecins' => ['name' => 'Médecine générale', 'source' => 'bottin', 'id' => 370],
+                    'mutuelles' => ['name' => 'Mutuelles', 'source' => 'bottin', 'id' => 411],
+                    'pharmacies' => ['name' => 'Pharmacies', 'source' => 'bottin', 'id' => 390],
                     'veterinaires' => ['name' => 'Vétérinaires', 'source' => 'bottin', 'id' => 588],
                 ],
             ],
             'securite_routiere' => [
-                'name'     => 'Sécurité routière',
-                'icone'    => 'i-healthcase',
+                'name' => 'Sécurité routière',
+                'icone' => 'i-healthcase',
                 'elements' => [
-                    'radar'           => ['name' => 'Radars répressifs', 'source' => 'bottin', 'id' => 688],
+                    'radar' => ['name' => 'Radars répressifs', 'source' => 'bottin', 'id' => 688],
                     'radar_preventif' => ['name' => 'Radars préventifs', 'source' => 'kml', 'id' => 'radar_preventif'],
-                    'trafic'          => ['name' => 'Analyseur de trafic', 'source' => 'kml', 'id' => 'trafic'],
+                    'trafic' => ['name' => 'Analyseur de trafic', 'source' => 'kml', 'id' => 'trafic'],
                 ],
             ],
-            'sport'             => [
-                'name'     => 'Sport',
-                'icone'    => 'i-chrono',
+            'sport' => [
+                'name' => 'Sport',
+                'icone' => 'i-chrono',
                 'elements' =>
                     $this->getElements(486),
             ],
-            'wifi'              => [
-                'name'     => 'Wifi gratuit',
-                'icone'    => 'i-wifi',
+            'wifi' => [
+                'name' => 'Wifi gratuit',
+                'icone' => 'i-wifi',
                 'elements' => [
                     'wifi' => ['name' => 'Réseau Wifi4EU', 'source' => 'kml', 'id' => 'wifi'],
                 ],
@@ -248,8 +248,8 @@ class Carto
     public function getFichesBottin(int $id): array
     {
         $bottinRepository = new BottinRepository();
-        $data             = [];
-        $fiches           = $bottinRepository->getFichesByCategories([$id]);
+        $data = [];
+        $fiches = $bottinRepository->getFichesByCategories([$id]);
         foreach ($fiches as $fiche) {
             $data[] = $this->formatSocieteData($fiche);
         }
@@ -260,8 +260,8 @@ class Carto
     public function getElements(int $id): array
     {
         $bottinRepository = new BottinRepository();
-        $data             = [];
-        $rubriques        = $bottinRepository->getCategories($id);
+        $data = [];
+        $rubriques = $bottinRepository->getCategories($id);
         foreach ($rubriques as $rubrique) {
             $data[$rubrique->slug] = ['name' => $rubrique->name, 'source' => 'bottin', 'id' => $rubrique->id];
         }
@@ -272,32 +272,32 @@ class Carto
     public function formatSocieteData($object): array
     {
         $bottinRepository = new BottinRepository();
-        $idSite           = $bottinRepository->findSiteFiche($object);
+        $idSite = $bottinRepository->findSiteFiche($object);
 
         return [
-            'nom'         => $object->societe,
-            'latitude'    => $object->latitude,
-            'longitude'   => $object->longitude,
-            'telephone'   => $object->telephone.' '.$object->gsm,
-            'email'       => $object->email,
-            'rue'         => $object->rue.', '.$object->numero,
-            'localite'    => $object->cp.' '.$object->localite,
-            'url'         => RouterBottin::getUrlFicheBottin($idSite, $object),
-            'kml'         => false,
+            'nom' => $object->societe,
+            'latitude' => $object->latitude,
+            'longitude' => $object->longitude,
+            'telephone' => $object->telephone.' '.$object->gsm,
+            'email' => $object->email,
+            'rue' => $object->rue.', '.$object->numero,
+            'localite' => $object->cp.' '.$object->localite,
+            'url' => RouterBottin::getUrlFicheBottin($idSite, $object),
+            'kml' => false,
             'description' => '',
         ];
     }
 
     public function getDataFromType(DOMElement $place): ?array
     {
-        $placeName   = $this->kmlParser->getValueByTagName($place, 'name');
+        $placeName = $this->kmlParser->getValueByTagName($place, 'name');
         $description = $this->kmlParser->getValueByTagName($place, 'description');
         $description = StringUtils::pureHtml($description);
         $description = make_clickable($description);
-        $item        = [
-            'nom'         => $placeName,
+        $item = [
+            'nom' => $placeName,
             'description' => $description,
-            'kml'         => true,
+            'kml' => true,
         ];
 
         $point = $this->kmlParser->getElementsByTagName($place, 'Point');
@@ -319,7 +319,7 @@ class Carto
         list($longitude, $latitude) = explode(',', $coordinates);
 
         return [
-            'latitude'  => trim($latitude),
+            'latitude' => trim($latitude),
             'longitude' => trim($longitude),
         ];
     }
@@ -327,13 +327,13 @@ class Carto
     public function getCoordinatesLine(DOMNode $point)
     {
         $coordinates = $this->kmlParser->getValueByTagName($point, 'coordinates');
-        $lines       = explode("\n", $coordinates);
-        $items       = [];
+        $lines = explode("\n", $coordinates);
+        $items = [];
         foreach ($lines as $line) {
             if (preg_match('#,#', $line)) {
                 list($longitude, $latitude) = explode(',', $line);
                 $items[] = [
-                    'latitude'  => trim($latitude),
+                    'latitude' => trim($latitude),
                     'longitude' => trim($longitude),
                 ];
             }
