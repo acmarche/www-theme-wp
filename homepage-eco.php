@@ -23,11 +23,13 @@ if ($category_order == 'manual') {
 }
 
 $blodId = get_current_blog_id();
-$color  = Theme::getColorBlog($blodId);
+$color = Theme::getColorBlog($blodId);
 
-$cat_ID      = get_queried_object_id();
-$description = category_description($cat_ID);
-$menu     = new Menu();
+global $post;
+$content = get_the_content(null, null, $post);
+$content = apply_filters('the_content', $content);
+$content = str_replace(']]>', ']]&gt;', $content);
+$menu = new Menu();
 $children = $menu->getItems(get_current_blog_id());
 array_map(
     function ($item) {
@@ -40,12 +42,12 @@ unset($children[0]);//remove accueil
 Twig::rendPage(
     'eco/eco.html.twig',
     [
-        'actus'       => $news,
-        'title'       => 'Economie marchoise',
-        'color'       => $color,
-        'children'    => $children,
-        'description' => $description,
-        'posts'       => [],
+        'actus' => $news,
+        'title' => 'Economie marchoise',
+        'color' => $color,
+        'children' => $children,
+        'description' => $content,
+        'posts' => [],
     ]
 );
 
