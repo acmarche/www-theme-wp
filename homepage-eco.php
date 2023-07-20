@@ -25,6 +25,8 @@ if ($category_order == 'manual') {
 $blodId = get_current_blog_id();
 $color  = Theme::getColorBlog($blodId);
 
+$cat_ID      = get_queried_object_id();
+$description = category_description($cat_ID);
 $menu     = new Menu();
 $children = $menu->getItems(get_current_blog_id());
 array_map(
@@ -42,7 +44,7 @@ Twig::rendPage(
         'title'       => 'Economie marchoise',
         'color'       => $color,
         'children'    => $children,
-        'description' => '',
+        'description' => $description,
         'posts'       => [],
     ]
 );
