@@ -37,7 +37,6 @@ array_map(
     },
     $children
 );
-unset($children[0]);//remove accueil
 
 Twig::rendPage(
     'eco/eco.html.twig',
