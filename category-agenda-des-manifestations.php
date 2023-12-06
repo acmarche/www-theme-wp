@@ -31,7 +31,7 @@ if ($filterSelected) {
 }
 
 try {
-    $events = $wpRepository->getEvents(typeOffre: $filtre);
+    $events = $wpRepository->getEvents($filtre);
 } catch (NonUniqueResultException|InvalidArgumentException $e) {
     Mailer::sendError('error marche.be', "page ".$e->getMessage());
 }
