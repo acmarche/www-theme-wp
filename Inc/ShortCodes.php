@@ -147,7 +147,7 @@ class ShortCodes
     public function taxe()
     {
         return $this->cache->get(
-            'taxes',
+            'taxes'.time(),
             function () {
                 $this->httpClient = HttpClient::create();
                 $nomenclatures    = $this->getContent('/taxes/api2');
@@ -155,9 +155,8 @@ class ShortCodes
                 $twig = Twig::LoadTwig();
 
                 $template = 'article/taxe.html.twig';
-                $content  = $twig->render($template, ['nomenclatures' => $nomenclatures]);
 
-                return $content;
+                return $twig->render($template, ['nomenclatures' => $nomenclatures]);
             }
         );
     }
