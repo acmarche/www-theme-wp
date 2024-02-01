@@ -49,8 +49,8 @@ class ShortCodes
     public function conseilOrdre(): string
     {
         $conseilDb = new ConseilDb();
-        $ordres    = $conseilDb->getAllOrdre();
-        $twig      = Twig::LoadTwig();
+        $ordres = $conseilDb->getAllOrdre();
+        $twig = Twig::LoadTwig();
 
         return $twig->render(
             'conseil/_ordre.html.twig',
@@ -62,15 +62,15 @@ class ShortCodes
 
     public function conseilPv(): string
     {
-        $year      = date('Y');
+        $year = date('Y');
         $conseilDb = new ConseilDb();
-        $pvs       = $conseilDb->getByYearPvs($year);
-        $twig      = Twig::LoadTwig();
+        $pvs = $conseilDb->getByYearPvs($year);
+        $twig = Twig::LoadTwig();
 
         return $twig->render(
             'conseil/_pv.html.twig',
             [
-                'pvs'  => $pvs,
+                'pvs' => $pvs,
                 'year' => $year,
             ]
         );
@@ -78,10 +78,10 @@ class ShortCodes
 
     public function conseilArchive(): string
     {
-        $twig      = Twig::LoadTwig();
+        $twig = Twig::LoadTwig();
         $conseilDb = new ConseilDb();
-        $endYear   = date('Y') - 1;
-        $txt       = '';
+        $endYear = date('Y') - 1;
+        $txt = '';
 
         $years = range(2019, $endYear);
         rsort($years, SORT_NUMERIC);
@@ -91,7 +91,7 @@ class ShortCodes
             $pvs = array_map(
                 function ($pv) {
                     $pv['name'] = $pv['nom'];
-                    $pv['url']  = '/wp-content/uploads/conseil/pv/'.$pv['file_name'];
+                    $pv['url'] = '/wp-content/uploads/conseil/pv/'.$pv['file_name'];
 
                     return $pv;
                 },
@@ -101,7 +101,7 @@ class ShortCodes
                 'conseil/_archive.html.twig',
                 [
                     'year' => $year,
-                    'pvs'  => $pvs,
+                    'pvs' => $pvs,
                 ]
             );
         }
@@ -113,7 +113,7 @@ class ShortCodes
 
     private function getArchiveByFiles()
     {
-        $twig    = Twig::LoadTwig();
+        $twig = Twig::LoadTwig();
         $conseil = new Conseil();
 
         $years = range(2013, 2018);
@@ -126,7 +126,7 @@ class ShortCodes
                 'conseil/_archive.html.twig',
                 [
                     'year' => $year,
-                    'pvs'  => $pvs,
+                    'pvs' => $pvs,
                 ]
             );
         }
@@ -150,13 +150,15 @@ class ShortCodes
             'taxes'.time(),
             function () {
                 $this->httpClient = HttpClient::create();
-                $nomenclatures    = $this->getContent('/taxes/api2');
+                $nomenclatures = $this->getContent('/taxes/api2');
+                if ($nomenclatures) {
+                    $twig = Twig::LoadTwig();
+                    $template = 'article/taxe.html.twig';
 
-                $twig = Twig::LoadTwig();
+                    return $twig->render($template, ['nomenclatures' => $nomenclatures]);
+                }
 
-                $template = 'article/taxe.html.twig';
-
-                return $twig->render($template, ['nomenclatures' => $nomenclatures]);
+                return 'Erreur de chargement de la page';
             }
         );
     }
@@ -170,25 +172,25 @@ class ShortCodes
             return json_decode($response->getContent());
         } catch (TransportExceptionInterface|ClientExceptionInterface|RedirectionExceptionInterface|ServerExceptionInterface $e) {
             Mailer::sendError("list taxtes", $e->getMessage());
-        }
 
-        return [];
+            return null;
+        }
     }
 
     public function googleMap(array $args): string
     {
-        $latitude  = $args['lat'];
+        $latitude = $args['lat'];
         $longitude = $args['long'];
-        $twig      = Twig::LoadTwig();
-        $post      = get_post();
-        $title     = $post ? $post->post_title : '';
+        $twig = Twig::LoadTwig();
+        $post = get_post();
+        $title = $post ? $post->post_title : '';
 
         $t = $twig->render(
             'map/_carte.html.twig',
             [
-                'latitude'  => $latitude,
+                'latitude' => $latitude,
                 'longitude' => $longitude,
-                'title'     => $title,
+                'title' => $title,
             ]
         );
         $t = preg_replace("#\n#", "", $t);//bug avec raw de twig
@@ -198,9 +200,9 @@ class ShortCodes
 
     public function menuDisplay(array $args): string
     {
-        $menu  = new Menu();
+        $menu = new Menu();
         $items = $menu->getItems($args['site']);
-        $twig  = Twig::LoadTwig();
+        $twig = Twig::LoadTwig();
 
         return $twig->render(
             'menu/_items_short_code.html.twig',
@@ -214,7 +216,7 @@ class ShortCodes
     {
         $mailchimp = new MailChimp();
         $campaings = $mailchimp->getCampaings();
-        $twig      = Twig::LoadTwig();
+        $twig = Twig::LoadTwig();
 
         return $twig->render(
             'eco/_campaings.html.twig',
@@ -226,7 +228,7 @@ class ShortCodes
 
     public function adlInscription(): string
     {
-        $adl  = new Adl();
+        $adl = new Adl();
         $form = $adl->generateForm();
 
         return $form;
@@ -234,7 +236,7 @@ class ShortCodes
 
     public function capteurList(): string
     {
-        $twig    = Twig::LoadTwig();
+        $twig = Twig::LoadTwig();
         $capteur = new Capteur();
 
         return $twig->render(
