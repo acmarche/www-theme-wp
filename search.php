@@ -2,37 +2,31 @@
 
 namespace AcMarche\Theme;
 
+use AcMarche\Bottin\DependencyInjection\BottinContainer;
 use AcMarche\Common\Mailer;
-use AcMarche\Theme\Lib\Twig;
-use AcMarche\Bottin\Elasticsearch\Searcher;
 use AcMarche\Theme\Inc\Theme;
-use \Exception;
+use AcMarche\Theme\Lib\Twig;
+use Exception;
 
 get_header();
-global $s;
 
-$searcher = new Searcher();
-$keyword  = get_search_query();
-$resultat = [];
+$searcher = BottinContainer::getSearchMeili(WP_DEBUG);
+$keyword = get_search_query();
 try {
-    $searching = $searcher->search($keyword);
-    $results   = $searching->getResults();
-    $count     = $searching->count();
-    foreach ($results as $result) {
-        $hit        = $result->getHit();
-        $resultat[] = $hit['_source'];
-    }
+    $searching = $searcher->doSearch($keyword);
+    $hits = $searching->getHits();
+    $count = $searching->count();
 } catch (Exception $e) {
     Mailer::sendError("wp error search", $e->getMessage());
 
     Twig::rendPage(
         'errors/500.html.twig',
         [
-            'message'   => $e->getMessage(),
-            'title'     => 'Erreur lors de la recherche',
-            'tags'      => [],
-            'color'     => Theme::getColorBlog(1),
-            'blogName'  => Theme::getTitleBlog(1),
+            'message' => $e->getMessage(),
+            'title' => 'Erreur lors de la recherche',
+            'tags' => [],
+            'color' => Theme::getColorBlog(1),
+            'blogName' => Theme::getTitleBlog(1),
             'relations' => [],
         ]
     );
@@ -53,8 +47,8 @@ Twig::rendPage(
     'search/index.html.twig',
     [
         'keyword' => $keyword,
-        'hits'    => $resultat,
-        'count'   => $count,
+        'hits' => $hits,
+        'count' => $count,
     ]
 );
 

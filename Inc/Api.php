@@ -121,22 +121,6 @@ class Api
                 );
             }
         );
-
-        add_action(
-            'rest_api_init',
-            function () {
-                register_rest_route(
-                    'search',
-                    'suggest/(?P<keyword>.*+)',
-                    [
-                        'methods'  => 'GET',
-                        'callback' => function ($args) {
-                            return ApiData::suggest($args);
-                        },
-                    ]
-                );
-            }
-        );
     }
 
     function mapApi()

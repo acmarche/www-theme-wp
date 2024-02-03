@@ -3,10 +3,10 @@
 
 namespace AcMarche\Theme;
 
+use AcMarche\Bottin\DependencyInjection\BottinContainer;
 use AcMarche\Common\Mailer;
 use AcMarche\Common\Router;
 use AcMarche\Theme\Inc\Theme;
-use AcMarche\Bottin\Elasticsearch\Searcher;
 use AcMarche\Theme\Lib\Twig;
 use Exception;
 
@@ -15,23 +15,18 @@ get_header();
 global $wp_query;
 $tag = $wp_query->get('tag', null);
 if ($tag) {
-    $tag      = preg_replace("#-#", " ", $tag);
-    $searcher = new Searcher();
-    $resultat = [];
+    $tag = preg_replace("#-#", " ", $tag);
+    $searcher = BottinContainer::getSearchMeili(WP_DEBUG);
     try {
-        $searching = $searcher->search($tag);
-        $results   = $searching->getResults();
-        $count     = $searching->count();
-        foreach ($results as $result) {
-            $hit        = $result->getHit();
-            $resultat[] = $hit['_source'];
-        }
+        $searching = $searcher->doSearch($tag);
+        $hits = $searching->getHits();
+        $count = $searching->count();
         Twig::rendPage(
             'search/index_no_react.html.twig',
             [
                 'keyword' => $tag,
-                'hits'    => $resultat,
-                'count'   => $count,
+                'hits' => $hits,
+                'count' => $count,
             ]
         );
     } catch (Exception $e) {
@@ -46,10 +41,10 @@ if ($tag) {
 Twig::rendPage(
     'errors/404.html.twig',
     [
-        'title'     => 'Archive non trouvée',
-        'tags'      => [],
-        'color'     => Theme::getColorBlog(1),
-        'blogName'  => Theme::getTitleBlog(1),
+        'title' => 'Archive non trouvée',
+        'tags' => [],
+        'color' => Theme::getColorBlog(1),
+        'blogName' => Theme::getTitleBlog(1),
         'relations' => [],
     ]
 );
