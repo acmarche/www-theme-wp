@@ -260,6 +260,7 @@ class WpRepository
             }
             $recommandations[] = [
                 'title' => $post->post_title,
+                'name' => $post->post_title,
                 'url' => get_permalink($post->ID),
                 'image' => $image,
                 'tags' => self::getTags($post->ID),
