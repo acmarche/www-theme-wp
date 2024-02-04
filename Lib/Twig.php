@@ -7,8 +7,6 @@ use AcMarche\Common\Mailer;
 use AcMarche\Common\Router;
 use AcMarche\Theme\Inc\RouterMarche;
 use AcMarche\Theme\Inc\Theme;
-use HTMLPurifier;
-use HTMLPurifier_Config;
 use Twig\Environment;
 use Twig\Error\LoaderError;
 use Twig\Error\RuntimeError;
@@ -88,7 +86,13 @@ class Twig
                 ]
             );
             $url = Router::getCurrentUrl();
-            Mailer::sendError("Error page: ".$templatePath, $url.' \n '.$e->getMessage());
+            try {
+                $error = "File: ".$e->getFile().' Line '.$e->getLine().'TemplateLine '.$e->getTemplateLine();
+            } catch (\Exception $t) {
+                $error = '';
+            }
+            $error = $e->getFile().$e->getLine().$e->getTemplateLine();
+            Mailer::sendError("Error page: ".$templatePath, $url.' \n '.$e->getMessage().' '.$error);
         }
 
     }
