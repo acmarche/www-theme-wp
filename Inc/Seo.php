@@ -5,7 +5,6 @@ namespace AcMarche\Theme\Inc;
 
 use AcMarche\Bottin\Repository\BottinRepository;
 use AcMarche\Bottin\RouterBottin;
-use AcMarche\Common\Mailer;
 use AcMarche\Common\Router;
 use AcMarche\Theme\Lib\WpRepository;
 
@@ -162,7 +161,6 @@ class Seo
         $category = get_category($cat_id);
         $url = Router::getCurrentUrl();
         if (!$category) {
-            Mailer::sendError('seo cat', 'cat not found '.$url);
             self::$metas['title'] = self::baseTitle("");
 
             return;
