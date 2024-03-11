@@ -56,7 +56,22 @@ try {
 
     return;
 }
+if ($offre == null) {
+    echo $twig->render(
+        'errors/404.html.twig',
+        [
+            'title' => 'Évènement non trouvé',
+            'tags' => [],
+            'color' => Theme::getColorBlog(Theme::TOURISME),
+            'blogName' => Theme::getTitleBlog(Theme::TOURISME),
+            'relations' => [],
+        ]
+    );
 
+    get_footer();
+
+    return;
+}
 
 $image = null;
 $images = $offre->images;
