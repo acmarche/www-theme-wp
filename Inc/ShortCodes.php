@@ -8,7 +8,6 @@ use AcMarche\Conseil\Conseil;
 use AcMarche\Conseil\ConseilDb;
 use AcMarche\Theme\Lib\Adl;
 use AcMarche\Theme\Lib\Capteur;
-use AcMarche\Theme\Lib\MailChimp;
 use AcMarche\Theme\Lib\Menu;
 use AcMarche\Theme\Lib\Twig;
 use Symfony\Component\HttpClient\HttpClient;
@@ -41,7 +40,6 @@ class ShortCodes
         add_shortcode('conseil_archive', [new ShortCodes(), 'conseilArchive']);
         add_shortcode('google_map', [new ShortCodes(), 'googleMap']);
         add_shortcode('menuDisplay', [new ShortCodes(), 'menuDisplay']);
-        add_shortcode('adl_chimp', [new ShortCodes(), 'adlChimp']);
         add_shortcode('adl_inscription', [new ShortCodes(), 'adlInscription']);
         add_shortcode('capteur_list', [new ShortCodes(), 'capteurList']);
     }
@@ -208,20 +206,6 @@ class ShortCodes
             'menu/_items_short_code.html.twig',
             [
                 'items' => $items,
-            ]
-        );
-    }
-
-    public function adlChimp(): string
-    {
-        $mailchimp = new MailChimp();
-        $campaings = $mailchimp->getCampaings();
-        $twig = Twig::LoadTwig();
-
-        return $twig->render(
-            'eco/_campaings.html.twig',
-            [
-                'campaings' => $campaings,
             ]
         );
     }
