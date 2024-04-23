@@ -19,12 +19,11 @@
             <!--TODO JF: condition si événement sur plusieurs jours/mois/années/décénnies/...-->
             <small>
                 {% for date in event.dates %}
-                    {% if date.date_begin.date|date('Y-m-d') != date.date_end.date|date('Y-m-d') %}
-                        De {{ date.date_begin.date|format_date('full') }} au {{ date.date_end.date|format_date('full') }}
+                    {% if date.isPeriod %}
+                        De {{ date.date_begin|format_date('full') }} au {{ date.date_end|format_date('full') }}
                     {% else %}
-                        {{ date.date_begin.date|format_date('full') }}
+                        {{ date.date_begin|format_date('full') }}
                     {% endif %}
-
                     {% if loop.last != true %} | {% endif %}
                 {% endfor %}
             </small>
