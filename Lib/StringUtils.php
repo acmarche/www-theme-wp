@@ -15,6 +15,7 @@ class StringUtils
             return $html;
         }
         $config = HTMLPurifier_Config::createDefault();
+        $config->set('Attr.EnableID', true);
         $config->set('Cache.SerializerPath', '/tmp');
         $purifier = new HTMLPurifier($config);
 
