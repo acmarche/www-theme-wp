@@ -6,6 +6,7 @@ use AcMarche\Common\Cache;
 use AcMarche\Common\Mailer;
 use AcMarche\Conseil\Conseil;
 use AcMarche\Conseil\ConseilDb;
+use AcMarche\Issep\Indice\IndiceEnum;
 use AcMarche\Theme\Lib\Adl;
 use AcMarche\Theme\Lib\Capteur;
 use AcMarche\Theme\Lib\Menu;
@@ -42,6 +43,7 @@ class ShortCodes
         add_shortcode('menuDisplay', [new ShortCodes(), 'menuDisplay']);
         add_shortcode('adl_inscription', [new ShortCodes(), 'adlInscription']);
         add_shortcode('capteur_list', [new ShortCodes(), 'capteurList']);
+        add_shortcode('capteur_color', [new ShortCodes(), 'capteurColor']);
     }
 
     public function conseilOrdre(): string
@@ -227,6 +229,18 @@ class ShortCodes
             'capteur/_list.html.twig',
             [
                 'stations' => $capteur->getCapteurs(),
+            ]
+        );
+    }
+
+    public function capteurColor(): string
+    {
+        $twig = Twig::LoadTwig();
+
+        return $twig->render(
+            'capteur/_colors.html.twig',
+            [
+                'indices' => IndiceEnum::cases(),
             ]
         );
     }
