@@ -2,6 +2,7 @@
 
 namespace AcMarche\Theme\Lib;
 
+use AcMarche\Issep\Indice\IndiceEnum;
 use AcMarche\Issep\Indice\IndiceUtils;
 use AcMarche\Issep\Repository\StationRemoteRepository;
 use AcMarche\Issep\Repository\StationRepository;
@@ -11,7 +12,6 @@ use AcMarche\Common\Env;
 class Capteur
 {
     private StationRepository $stationRepository;
-    private StationRemoteRepository $stationRemoteRepository;
     private IndiceUtils $indiceUtils;
 
     public function __construct()
@@ -29,7 +29,7 @@ class Capteur
         foreach ($stations as $station) {
             $station->color = FeuUtils::colorGrey();
             if ($station->last_indice) {
-                $station->color = FeuUtils::color($station->last_indice->aqi_value);
+                $station->color = IndiceEnum::colorByIndice($station->last_indice->aqi_value);
             }
         }
 
