@@ -54,11 +54,13 @@
                     </div>
                     <div for="text-dyn">
                         {% include 'article/_readspeaker.html.twig' %}
-                        <span id="reading">
+                        <div id="reading" class="m-3">
+                            <span>
                         {% block content %}
                             <p></p>
                         {% endblock %}
-                        </span>
+                            </span>
+                        </div>
                     </div>
                 </div>
 
