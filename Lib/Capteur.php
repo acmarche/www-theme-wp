@@ -25,7 +25,7 @@ class Capteur
         $stations = $this->stationRepository->getStations();
         $this->indiceUtils->setIndices($stations);
 
-        $this->removeObjectById($stations, StationsEnum::SINSIN);
+        $this->removeObjectById($stations, StationsEnum::SINSIN->value);
 
         return $stations;
     }
