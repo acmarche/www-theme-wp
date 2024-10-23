@@ -25,21 +25,22 @@ class Capteur
         $stations = $this->stationRepository->getStations();
         $this->indiceUtils->setIndices($stations);
 
-        $this->removeObjectById($stations, StationsEnum::SINSIN->value);
+        $stations = $this->removeObjectById($stations, StationsEnum::SINSIN->value);
 
         return $stations;
     }
 
-    function removeObjectById(&$array, int $id)
+    function removeObjectById($array, int $id)
     {
         foreach ($array as $key => $object) {
             if ($object->id == $id) {
                 unset($array[$key]);
                 // Reindex
-                $array = array_values($array);
-                break;
+                return array_values($array);
             }
         }
+
+        return $array;
     }
 
 }
