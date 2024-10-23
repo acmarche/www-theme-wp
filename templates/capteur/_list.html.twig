@@ -11,13 +11,13 @@
                 {{ station.nom }}
             </td>
             <td style="display: flex; align-items: center; justify-content: space-evenly;">
-                {% if station.indice %}
-                    {{ station.indice.label }}
+                {% if station.last_indice %}
+                    {{ station.last_indice.label }}
                 {% endif %}
             </td>
             <td>
-                {% if station.indice %}
-                {% include 'capteur/_color.html.twig' with {'indice': station.indice} %}
+                {% if station.last_indice %}
+                {% include 'capteur/_color.html.twig' with {'indice': station.last_indice} %}
              {% endif %}
             </td>
         </tr>

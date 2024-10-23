@@ -228,7 +228,7 @@ class ShortCodes
         return $twig->render(
             'capteur/_list.html.twig',
             [
-                'stations' => $capteur->getCapteurs(),
+                'stations' => $capteur->getStations(),
             ]
         );
     }
