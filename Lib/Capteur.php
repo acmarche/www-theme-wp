@@ -6,6 +6,7 @@ use AcMarche\Common\Env;
 use AcMarche\Issep\Indice\IndiceUtils;
 use AcMarche\Issep\Repository\StationRemoteRepository;
 use AcMarche\Issep\Repository\StationRepository;
+use AcMarche\Issep\Repository\StationsEnum;
 
 class Capteur
 {
@@ -24,6 +25,21 @@ class Capteur
         $stations = $this->stationRepository->getStations();
         $this->indiceUtils->setIndices($stations);
 
+        $this->removeObjectById($stations, StationsEnum::SINSIN);
+
         return $stations;
     }
+
+    function removeObjectById(&$array, $id)
+    {
+        foreach ($array as $key => $object) {
+            if ($object->id == $id) {
+                unset($array[$key]);
+                // Reindex
+                $array = array_values($array);
+                break;
+            }
+        }
+    }
+
 }
