@@ -30,7 +30,7 @@ class Capteur
         return $stations;
     }
 
-    function removeObjectById(&$array, $id)
+    function removeObjectById(&$array, int $id)
     {
         foreach ($array as $key => $object) {
             if ($object->id == $id) {
