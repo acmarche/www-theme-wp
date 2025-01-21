@@ -19,7 +19,7 @@ $wpRepository = new WpRepository();
 
 $news = WpRepository::getAllNews(6);
 try {
-    $events = $wpRepository->getEvents();
+ //   $events = $wpRepository->getEvents();
 } catch (\Exception|InvalidArgumentException $exception) {
     Mailer::sendError('error marche.be', "page ".$exception->getMessage());
 }
