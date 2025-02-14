@@ -2,15 +2,17 @@
 
 {% block content %}
     <p>Cette page n'existe plus</p>
+    <br/>
+    <a href="/">
+        <p>Retour à la page d'accueil</p>
+    </a>
+    <br/>
 
     {% if hits|length > 0 %}
         <p><strong>Voici quelques suggestions émises par le moteur de recherche:</strong></p>
         {% include 'search/_results.html.twig' %}
     {% endif %}
 
-    <a href="/">
-        <p>Retour à l'accueil</p>
-    </a>
 {% endblock %}
 
 {% block image %}
