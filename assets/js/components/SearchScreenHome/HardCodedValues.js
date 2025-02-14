@@ -1,6 +1,7 @@
 function HardCodedValues() {
     return (
         <>
+            <h3>Suggestions</h3>
             <ul>
                 <li className="col-ls-6">
                     <a href="/sport?p=5153" className="icon_custom">
@@ -23,7 +24,7 @@ function HardCodedValues() {
                 </li>
                 <li className="col-ls-6">
                     <a href="/social/centre-public-daction-sociale-cpas/"
-                        className="icon_custom">
+                       className="icon_custom">
                         <i className="i-handshake"></i>CPAS</a>
                 </li>
                 <li className="col-ls-6">

@@ -1,7 +1,7 @@
 import HardCodedValues from './HardCodedValues';
 import Icones from './Icones';
 import Suggestions from './Suggestions';
-import { suggestElastic } from '../Search/service/search-service';
+import {suggestElastic} from '../Search/service/search-service';
 
 const {
     useState,
@@ -9,47 +9,47 @@ const {
 } = wp.element;
 
 function App() {
-    const [ keyword, setKeyword ] = useState( '' );
-    const [ searchTimeout, setSearchTimeout ] = useState( null );
-    const [ suggestionsList, setSuggestionsList ] = useState([]);
+    const [keyword, setKeyword] = useState('');
+    const [searchTimeout, setSearchTimeout] = useState(null);
+    const [suggestionsList, setSuggestionsList] = useState([]);
 
-    const handleChange = ( event ) => {
+    const handleChange = (event) => {
         const query = event.target.value;
 
-        if ( searchTimeout ) {
-            clearTimeout( searchTimeout );
+        if (searchTimeout) {
+            clearTimeout(searchTimeout);
         }
 
-        setSearchTimeout( setTimeout( () => {
-            setKeyword( query );
-            setSearchTimeout( null );
-        }, 500 ) );
+        setSearchTimeout(setTimeout(() => {
+            setKeyword(query);
+            setSearchTimeout(null);
+        }, 500));
     };
 
     async function executeSearch() {
         let response;
         try {
-            response = await suggestElastic( keyword );
-            const { data } = response;
-            setSuggestionsList( data );
-        } catch ( e ) {
-            console.log( e );
+            response = await suggestElastic(keyword);
+            const {data} = response;
+            setSuggestionsList(data);
+        } catch (e) {
+            console.log(e);
         }
         return null;
     }
 
     const isSearching = undefined !== keyword && 2 < keyword.length;
 
-    useEffect( () => {
-        if ( isSearching ) {
-            executeSearch( keyword );
+    useEffect(() => {
+        if (isSearching) {
+            executeSearch(keyword);
         }
-    }, [ keyword ]);
+    }, [keyword]);
 
     return (
         <>
             <h1 className="pb-22px">Bienvenue <br className="d-ls-md-none d-md-none"/>à
-            Marche-en-Famenne</h1>
+                Marche-en-Famenne</h1>
             <form action="/" method="get" className="mw-550px position-relative m-auto searchHome">
                 <input
                     name="s"
@@ -57,7 +57,7 @@ function App() {
                     type="search"
                     placeholder="Que cherchez-vous ?"
                     className="border-0 rounded-pill h-42px pl-16px pr-58px fs-short-3"
-                    onChange={( e ) => handleChange( e )}
+                    onChange={(e) => handleChange(e)}
                 />
                 <button
                     type="submit"
@@ -66,14 +66,19 @@ function App() {
                 </button>
                 <div className="bubble d-ls-lg-none d-lg-none">
                     <i className="graphicElement"></i>
-                    <h3>Suggestions</h3>
                     {isSearching ? (
-                        <Suggestions
-                            suggestionsList={suggestionsList}
-                        />
-                    ) : (
-                        <HardCodedValues/>
-                    )}
+                            <>
+                                <i className="graphicElement"></i>
+                                <bouton
+                                    className="d-relative h-50px ml-50px my-3 w-100px d-flex justify-content-center align-items-center p-0 border-0 rounded-right-pill bg-transparent icon_custom"
+                                    name="search" type="submit">
+                                    <i className="i-search i-dark-primary"></i>Rechercher
+                                </bouton>
+                            </>
+                        )
+                        : (
+                            <HardCodedValues/>
+                        )}
                     <i className="graphicElement"></i>
                 </div>
             </form>
