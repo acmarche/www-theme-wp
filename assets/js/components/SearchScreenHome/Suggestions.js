@@ -13,11 +13,9 @@ function Suggestions({
                         </li>
                     ) )
                 ) : (
-                    <li className="col-ls-6">
-                        <a className="icon_custom">
-                        Pas de proposition
-                        </a>
-                    </li>
+                    <>
+                        <i className="graphicElement"></i>
+                    </>
                 )}
             </ul>
         </>
