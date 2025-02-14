@@ -2,10 +2,12 @@
 
 {% block content %}
     <p>Cette page n'existe plus</p>
-    {% if result is defined %}
+
+    {% if hits|length > 0 %}
         <p><strong>Voici quelques suggestions émises par le moteur de recherche:</strong></p>
-        {{ result|raw }}
+        {% include 'search/_results.html.twig' %}
     {% endif %}
+
     <a href="/">
         <p>Retour à l'accueil</p>
     </a>

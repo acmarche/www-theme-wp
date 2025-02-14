@@ -31,7 +31,7 @@ if ($queryString != '') {
                 'keyword' => $queryString,
                 'hits' => $hits,
                 'count' => $count,
-            ]
+            ],
         );
     } catch (Exception $e) {
         Mailer::sendError("wp error search query 404", $e->getMessage());
@@ -45,8 +45,8 @@ Twig::rendPage(
         'color' => Theme::getColorBlog(1),
         'blogName' => Theme::getTitleBlog(1),
         'relations' => [],
-        'result' => 'Error search',
-    ]
+        'hits' => [],
+    ],
 );
 //$url = Router::getCurrentUrl();
 //Mailer::sendError("404 page: ", $url.' \n ');
