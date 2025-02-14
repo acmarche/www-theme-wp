@@ -69,11 +69,6 @@ function App() {
                     {isSearching ? (
                             <>
                                 <i className="graphicElement"></i>
-                                <bouton
-                                    className="d-relative h-50px ml-50px my-3 w-100px d-flex justify-content-center align-items-center p-0 border-0 rounded-right-pill bg-transparent icon_custom"
-                                    name="search" type="submit">
-                                    <i className="i-search i-dark-primary"></i>Rechercher
-                                </bouton>
                             </>
                         )
                         : (
