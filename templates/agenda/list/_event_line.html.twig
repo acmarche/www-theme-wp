@@ -3,9 +3,9 @@
     <div>
         <!--date-->
         <div class="col-3">
-            <span>{{ event.dateEvent.day }}</span>
-            <span>{{ event.dateEvent.month }}</span>
-            <span>{{ event.dateEvent.year }}</span>
+            <span>{{ event.shortCutDateEvent.day }}</span>
+            <span>{{ event.shortCutDateEvent.month }}</span>
+            <span>{{ event.shortCutDateEvent.year }}</span>
         </div>
 
         <!--other datas-->
@@ -18,12 +18,12 @@
 
             <!--TODO JF: condition si événement sur plusieurs jours/mois/années/décénnies/...-->
             <small>
-                {% for date in event.dates %}
-                    {% if date.date_begin.date is defined and date.date_end.date is defined %}
-                        {% if date.date_begin.date|date('Y-m-d') != date.date_end.date|date('Y-m-d') %}
-                            De {{ date.date_begin.date|format_date('full') }} au {{ date.date_end.date|format_date('full') }}
+                {% for dateEvent in event.datesEvent %}
+                    {% if dateEvent.dateBegin is defined and dateEvent.dateEnd is defined %}
+                        {% if dateEvent.dateBegin|date('Y-m-d') != dateEvent.dateEnd|date('Y-m-d') %}
+                            De {{ dateEvent.dateBegin|format_date('full') }} au {{ dateEvent.dateEnd|format_date('full') }}
                         {% else %}
-                            {{ date.date_begin.date|format_date('full') }}
+                            {{ dateEvent.dateBegin|format_date('full') }}
                         {% endif %}
                         {% if loop.last != true %} | {% endif %}
                     {% endif %}

@@ -30,14 +30,18 @@
     <br/>
     <h4 class="mb-2 mt-2"><strong>Date(s)</strong></h4>
 
-    {% for date in event.dates %}
+    {% for dateEvent in event.datesEvent %}
         <span class="font-montserrat-semi-bold text-cta-dark">
-                {% if date.isPeriod %}
-                    De {{ date.date_begin|format_date('full') }} au {{ date.date_end|format_date('full') }}
+                {% if dateEvent.isSameDate %}
+                    {{ dateEvent.dateBegin|format_date('full') }}
                 {% else %}
-                    {{ date.date_begin|format_date('full') }}
+                    De {{ dateEvent.dateBegin|format_date('full') }} au {{ dateEvent.dateEnd|format_date('full') }}
+                {% endif %}
+                {% if dateEvent.dateRange %}
+                    <br> {{ dateEvent.dateRange }}
                 {% endif %}
             </span>
+            {% include 'agenda/show/_date_details.html.twig' %}
     {% endfor %}
 
     <h4 class="mb-2 mt-2"><strong>Contact</strong></h4>
