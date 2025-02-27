@@ -20,14 +20,7 @@
             <small>
                 {% for dateEvent in event.datesEvent %}
                     {{ dump(dateEvent) }}
-                    {% if dateEvent.dateBegin is defined and dateEvent.dateEnd is defined %}
-                        {% if dateEvent.dateBegin|date('Y-m-d') != dateEvent.dateEnd|date('Y-m-d') %}
-                            De {{ dateEvent.dateBegin|format_date('full') }} au {{ dateEvent.dateEnd|format_date('full') }}
-                        {% else %}
-                            {{ dateEvent.dateBegin|format_date('full') }}
-                        {% endif %}
-                        {% if loop.last != true %} | {% endif %}
-                    {% endif %}
+
                 {% endfor %}
             </small>
         </div>
