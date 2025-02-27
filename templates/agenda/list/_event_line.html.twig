@@ -19,6 +19,7 @@
             <!--TODO JF: condition si événement sur plusieurs jours/mois/années/décénnies/...-->
             <small>
                 {% for dateEvent in event.datesEvent %}
+                    {{ dump(dateEvent) }}
                     {% if dateEvent.dateBegin is defined and dateEvent.dateEnd is defined %}
                         {% if dateEvent.dateBegin|date('Y-m-d') != dateEvent.dateEnd|date('Y-m-d') %}
                             De {{ dateEvent.dateBegin|format_date('full') }} au {{ dateEvent.dateEnd|format_date('full') }}
