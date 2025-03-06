@@ -117,6 +117,8 @@ class Carto
                 'name' => 'Santé',
                 'icone' => 'i-healthcase',
                 'elements' => [
+                    'baby_corner' => ['name' => 'Baby Friendly CORNER', 'source' => 'bottin', 'id' => 721],
+                    'defibrillateur' => ['name' => 'Défibrillateur', 'source' => 'bottin', 'id' => 720],
                     'dentistes' => ['name' => 'Dentistes', 'source' => 'bottin', 'id' => 383],
                     'hopital' => ['name' => 'Hôpital', 'source' => 'bottin', 'id' => 681],
                     'kines' => ['name' => 'Kinésithérapeutes', 'source' => 'bottin', 'id' => 385],
