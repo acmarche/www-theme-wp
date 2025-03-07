@@ -39,6 +39,7 @@ class Carto
                 'name' => 'Enfance',
                 'icone' => 'i-beach-ball',
                 'elements' => [
+                    'baby_corner' => ['name' => 'Baby Friendly CORNER', 'source' => 'bottin', 'id' => 721],
                     'accueillantes' => ['name' => 'Accueillantes', 'source' => 'bottin', 'id' => 672],
                     'jeux' => ['name' => 'Aires de jeux, parcs', 'source' => 'kml', 'id' => 'jeux'],
                     'creches' => ['name' => 'Crêches', 'source' => 'bottin', 'id' => 495],
@@ -117,7 +118,6 @@ class Carto
                 'name' => 'Santé',
                 'icone' => 'i-healthcase',
                 'elements' => [
-                    'baby_corner' => ['name' => 'Baby Friendly CORNER', 'source' => 'bottin', 'id' => 721],
                     'defibrillateur' => ['name' => 'Défibrillateur', 'source' => 'bottin', 'id' => 720],
                     'dentistes' => ['name' => 'Dentistes', 'source' => 'bottin', 'id' => 383],
                     'hopital' => ['name' => 'Hôpital', 'source' => 'bottin', 'id' => 681],
