@@ -16,6 +16,7 @@ use AcMarche\Theme\Inc\RouterMarche;
 use AcMarche\Theme\Inc\Theme;
 use AcSort;
 use BottinCategoryMetaBox;
+use Carbon\Carbon;
 use Psr\Cache\InvalidArgumentException;
 use WP_Post;
 use WP_Query;
@@ -40,14 +41,14 @@ class WpRepository
      * @return array|Offre[]
      * @throws InvalidArgumentException
      */
-    public function getEvents(TypeOffre $typeOffre = null): array
+    public function getEvents(TypeOffre $typeOffre = null, bool $removeOlder = false): array
     {
         $today = new \DateTime();
         if ($typeOffre instanceof TypeOffre) {
-            $cacheKey = 'events_pivot'.$typeOffre->urn;
+            $cacheKey = 'events_pivot'.$typeOffre->urn.$removeOlder;
             $minEvents = 0;
         } else {
-            $cacheKey = 'events_pivot_'.$today->format('Y-m-d');
+            $cacheKey = 'events_pivot_'.$today->format('Y-m-d').$removeOlder;
             $minEvents = 50;
         }
 
@@ -74,7 +75,13 @@ class WpRepository
                 if (count($event->images) == 0) {
                     $event->images = [get_template_directory_uri().'/assets/tartine/bg_events.png'];
                 }
-                $data[] = $event;
+                if ($removeOlder) {
+                    if (Carbon::parse($event->firstRealDate())->diffInMonths($today) < 1) {
+                        $data[] = $event;
+                    }
+                } else {
+                    $data[] = $event;
+                }
             }
             if ($minEvents > 0 && count($data) > $minEvents) {
                 try {
