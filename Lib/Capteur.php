@@ -26,7 +26,7 @@ class Capteur
         } catch (\JsonException $e) {
             $stations = [];
         }
-        $this->indiceUtils->setLastBelAqiOnStations($stations);
+        $this->indiceUtils->setLastBelAqiOnStations($stations, true);
 
         return $stations;
     }
