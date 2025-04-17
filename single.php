@@ -71,6 +71,9 @@ echo $cache->get(
         $content = apply_filters('the_content', $content);
         $content = str_replace(']]>', ']]&gt;', $content);
 
+        //bug link files
+        $content = str_replace('/administration/files/', '/wp-content/blogs.dir/2/files/', $content);
+
         $twig = Twig::LoadTwig();
 
         return $twig->render(
