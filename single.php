@@ -10,9 +10,9 @@ use AcMarche\Theme\Lib\WpRepository;
 
 global $post;
 
-$cache  = Cache::instance();
+$cache = Cache::instance();
 $blodId = get_current_blog_id();
-$code   = Cache::generateCodeArticle($blodId, $post->ID);
+$code = Cache::generateCodeArticle($blodId, $post->ID);
 get_header();
 
 $cache->delete($code);
@@ -28,26 +28,26 @@ echo $cache->get(
             }
         }
 
-        $path     = Theme::getPathBlog($blodId);
+        $path = Theme::getPathBlog($blodId);
         $blogName = Theme::getTitleBlog($blodId);
-        $color    = Theme::getColorBlog($blodId);
+        $color = Theme::getColorBlog($blodId);
 
-        $tags      = WpRepository::getTags($post->ID);
+        $tags = WpRepository::getTags($post->ID);
         $relations = WpRepository::getRelations($post->ID);
 
         $catSlug = get_query_var('category_name');
 
         if (preg_match("#/#", $catSlug)) {
-            $vars    = explode("/", $catSlug);
+            $vars = explode("/", $catSlug);
             $catSlug = end($vars);
         }
 
-        $urlBack  = '/';
+        $urlBack = '/';
         $nameBack = '';
 
         $currentCategory = get_category_by_slug($catSlug);
         if ($currentCategory) {
-            $urlBack  = get_category_link($currentCategory);
+            $urlBack = get_category_link($currentCategory);
             $nameBack = $currentCategory->name;
         }
 
@@ -63,7 +63,7 @@ echo $cache->get(
         );
 
         if (count($isActu) > 0) {
-            $urlBack  = $isActu[array_key_first($isActu)]['url'];
+            $urlBack = $isActu[array_key_first($isActu)]['url'];
             $nameBack = $isActu[array_key_first($isActu)]['name'];
         }
 
@@ -72,24 +72,32 @@ echo $cache->get(
         $content = str_replace(']]>', ']]&gt;', $content);
 
         //bug link files
+        $content = str_replace('/files/', '/wp-content/blogs.dir/1/files/', $content);
         $content = str_replace('/administration/files/', '/wp-content/blogs.dir/2/files/', $content);
+        $content = str_replace('/economie/files/', '/wp-content/blogs.dir/3/files/', $content);
+        $content = str_replace('/tourisme/files/', '/wp-content/blogs.dir/4/files/', $content);
+        $content = str_replace('/sport/files/', '/wp-content/blogs.dir/5/files/', $content);
+        $content = str_replace('/sante/files/', '/wp-content/blogs.dir/6/files/', $content);
+        $content = str_replace('/sociale/files/', '/wp-content/blogs.dir/7/files/', $content);
+        $content = str_replace('/culture/files/', '/wp-content/blogs.dir/11/files/', $content);
+        $content = str_replace('/enfance-jeunesse/files/', '/wp-content/blogs.dir/14/files/', $content);
 
         $twig = Twig::LoadTwig();
 
         return $twig->render(
             'article/show.html.twig',
             [
-                'post'        => $post,
-                'tags'        => $tags,
-                'image'       => $image,
-                'title'       => $post->post_title,
-                'blogName'    => $blogName,
-                'color'       => $color,
-                'path'        => $path,
-                'relations'   => $relations,
-                'urlBack'     => $urlBack,
-                'nameBack'    => $nameBack,
-                'content'     => $content,
+                'post' => $post,
+                'tags' => $tags,
+                'image' => $image,
+                'title' => $post->post_title,
+                'blogName' => $blogName,
+                'color' => $color,
+                'path' => $path,
+                'relations' => $relations,
+                'urlBack' => $urlBack,
+                'nameBack' => $nameBack,
+                'content' => $content,
                 'readspeaker' => true,
             ]
         );
