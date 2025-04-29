@@ -71,21 +71,6 @@ echo $cache->get(
         $content = apply_filters('the_content', $content);
         $content = str_replace(']]>', ']]&gt;', $content);
 
-        $site = 'https://www.marche.be';
-        //bug link files
-        $replacements = [
-            $site.'/files/' => '/wp-content/blogs.dir/1/files/',
-            $site.'/administration/files/' => '/wp-content/blogs.dir/2/files/',
-            $site.'/economie/files/' => '/wp-content/blogs.dir/3/files/',
-            $site.'/tourisme/files/' => '/wp-content/blogs.dir/4/files/',
-            $site.'/sport/files/' => '/wp-content/blogs.dir/5/files/',
-            $site.'/sante/files/' => '/wp-content/blogs.dir/6/files/',
-            $site.'/sociale/files/' => '/wp-content/blogs.dir/7/files/',
-            $site.'/culture/files/' => '/wp-content/blogs.dir/11/files/',
-            $site.'/enfance-jeunesse/files/' => '/wp-content/blogs.dir/14/files/',
-        ];
-
-        $content = str_replace(array_keys($replacements), array_values($replacements), $content);
 
         $twig = Twig::LoadTwig();
 
