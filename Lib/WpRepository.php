@@ -526,4 +526,71 @@ class WpRepository
 
         return null;
     }
+
+    /**
+     * Generates an array of breadcrumb items.
+     *
+     * @return array An array of breadcrumb items, each with 'title' and 'url'. The current item has a null URL.
+     */
+    public static function get_breadcrumb_items(int $postId)
+    {
+        $items = [];
+        // 1. Home Page
+        $items[] = [
+            'title' => esc_html__('Home', 'your-text-domain'),
+            'url' => get_home_url(),
+        ];
+
+        // 2. Blog Posts (single.php)
+        if (is_singular('post')) {
+            $categories = get_the_category($postId);
+            if (!empty($categories)) {
+                // Use the first category. You could add more complex logic here if needed.
+                $category = $categories[0];
+                $items[] = [
+                    'title' => esc_html($category->name),
+                    'url' => esc_url(get_category_link($category->term_id)),
+                ];
+            }
+            // Add the current post title (no URL)
+            $items[] = ['title' => get_the_title($postId), 'url' => null];
+        } // 3. Pages (page.php)
+        elseif (is_page()) {
+            $ancestors = get_post_ancestors($postId);
+            if ($ancestors) {
+                // Get ancestors in the correct order
+                $ancestors = array_reverse($ancestors);
+                foreach ($ancestors as $ancestor_id) {
+                    $items[] = [
+                        'title' => get_the_title($ancestor_id),
+                        'url' => get_permalink($ancestor_id),
+                    ];
+                }
+            }
+            // Add the current page title (no URL)
+            $items[] = ['title' => get_the_title($postId), 'url' => null];
+        } // 4. Category Archives (category.php)
+        elseif (is_category()) {
+            $current_cat = get_queried_object();
+            // Check for parent category
+            if ($current_cat->parent != 0) {
+                $parent_cats = get_ancestors($current_cat->term_id, 'category');
+                $parent_cats = array_reverse($parent_cats);
+                foreach ($parent_cats as $parent_id) {
+                    $parent = get_term($parent_id, 'category');
+                    $items[] = [
+                        'title' => esc_html($parent->name),
+                        'url' => esc_url(get_term_link($parent)),
+                    ];
+                }
+            }
+            // Add the current category name (no URL)
+            $items[] = ['title' => single_cat_title('', false), 'url' => null];
+        }
+
+        // Add other conditions like is_tag(), is_author(), is_search(), is_404() as needed
+
+        return $items;
+    }
+
 }
