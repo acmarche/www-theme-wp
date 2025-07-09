@@ -8,26 +8,38 @@ class Filter
 {
     public function __construct()
     {
-        //add_filter('get_the_archive_title', [Setup::get_instance(), 'removeCategoryPrefixTitle']);
-        // Stop WP adding extra <p> </p> to your pages' content
-        //   remove_filter('the_content', 'wpautop');
-        //    remove_filter('the_excerpt', 'wpautop');
         add_filter('the_content', [$this, 'FilterContent']);
-       // add_filter('render_block_data', [$this, 'FilterBlock']);
+        add_filter('rest_prepare_category', [$this, 'remove_p_tags_from_category_description'], 10, 3);
     }
 
-    function FilterBlock(array $context)
+    /**
+     * Removes <p> tags from the category description in the WP REST API response.
+     *
+     * @param \WP_REST_Response $response The response object.
+     * @param \WP_Term $item The term object.
+     * @param \WP_REST_Request $request The request object.
+     * @return \WP_REST_Response The modified response object.
+     */
+    function remove_p_tags_from_category_description($response, $item, $request)
     {
-        $blockRender = new BlockRender();
-        $blockName = $context['blockName'];
-        switch ($blockName) {
-            case 'core/gallery';
-                return $blockRender->renderGallery($context);
-            case 'core/media-text';
-                return $blockRender->renderMediaText($context);
-            default:
-                return $context;
+        // Check if the description field exists in the response data.
+        if (isset($response->data['description'])) {
+            // Get the description.
+            $description = $response->data['description'];
+
+            // Remove the opening and closing <p> tags.
+            // str_replace is good for specific tags.
+          //  $description = str_replace('<p>', '', $description);
+          //  $description = str_replace('</p>', '', $description);
+
+            // If you want to remove ALL HTML tags, use strip_tags instead:
+            // $description = strip_tags( $description );
+
+            // Update the response data with the cleaned description.
+            $response->data['description'] = nl2br(trim($description));
         }
+
+        return $response;
     }
 
     function FilterContent(string $content)
@@ -37,21 +49,5 @@ class Filter
         $content = preg_replace("#<table#", '<table class="table table-bordered table-hover"', $content);
 
         return $content;
-    }
-
-    /**
-     * Remove word "Category"
-     *
-     * @param $title
-     *
-     * @return string|void
-     */
-    function removeCategoryPrefixTitle($title)
-    {
-        if (is_category()) {
-            $title = single_cat_title('', false);
-        }
-
-        return $title;
     }
 }
