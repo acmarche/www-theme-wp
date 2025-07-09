@@ -290,6 +290,7 @@ class WpRepository
             $tags[] = [
                 'name' => $category->name,
                 'url' => get_category_link($category),
+                'id' => $category->cat_ID,
             ];
         }
 
