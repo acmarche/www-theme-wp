@@ -35,7 +35,7 @@
             {% include 'category/_children.html.twig' %}
 
             {% if description != '' %}
-                {{ description|raw }}
+                {{ description|puriferHtml|raw }}
             {% endif %}
 
             <!--results-->
