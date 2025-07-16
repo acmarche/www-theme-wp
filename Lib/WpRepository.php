@@ -73,7 +73,7 @@ class WpRepository
                     'day' => $event->firstDate()->format('d'),
                 ];
                 if (count($event->images) == 0) {
-                    $event->images = ['https://www.marche.be/wp-content/uploads/2021/02/bg_events.png'];
+                    $event->images = ['https://www.visitmarche.be/wp-content/uploads/2021/02/bg_events.png'];
                 }
                 if ($removeOlder) {
                     if (Carbon::parse($event->firstRealDate())->diffInMonths($today) < 1) {
