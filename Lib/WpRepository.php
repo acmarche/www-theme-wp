@@ -529,6 +529,61 @@ class WpRepository
     }
 
     /**
+     * Get the category breadcrumb trail as an array of WP_Term objects.
+     *
+     * This function starts from a given category and traverses up the hierarchy
+     * to the top-level parent, returning an ordered array of category objects.
+     *
+     * @param int|null $category_id The ID of the starting category. If null, it will automatically
+     *                              try to get the current category from the main WordPress query
+     *                              (e.g., when on a category archive page).
+     * @return WP_Term[] An array of WP_Term objects, ordered from the top-level parent to the
+     *                   current category. Returns an empty array if the category is not found
+     *                   or if not on a category archive page (and no ID is provided).
+     */
+    public static function get_category_breadcrumb_array( $category_id = null ) {
+        // Initialize an empty array to store the breadcrumb trail.
+        $breadcrumb = [];
+
+        $current_category = null;
+
+        // 1. Determine the starting category.
+        if ( $category_id ) {
+            // If a specific category ID is provided, get that term object.
+            $current_category = get_term( $category_id, 'category' );
+        } elseif ( is_category() ) {
+            // If no ID is given, check if we are on a category archive page.
+            // get_queried_object() returns the current category object on its archive page.
+            $current_category = get_queried_object();
+        }
+
+        // If we couldn't find a valid category object, exit and return the empty array.
+        if ( ! $current_category || is_wp_error( $current_category ) ) {
+            return $breadcrumb;
+        }
+
+        // 2. Traverse up the hierarchy from the current category.
+        while ( $current_category && ! is_wp_error( $current_category ) ) {
+            // Add the current category object to our breadcrumb array.
+            $breadcrumb[] = $current_category;
+
+            // Check if the current category has a parent.
+            if ( $current_category->parent > 0 ) {
+                // If it has a parent, get the parent term object for the next loop iteration.
+                $current_category = get_term( $current_category->parent, 'category' );
+            } else {
+                // If parent is 0, we've reached the top-level category, so we can stop.
+                break;
+            }
+        }
+
+        // 3. Reverse the array.
+        // The array is currently in [child, parent, grandparent] order.
+        // We need to reverse it to get the correct breadcrumb order [grandparent, parent, child].
+        return array_reverse( $breadcrumb );
+    }
+
+    /**
      * Generates an array of breadcrumb items.
      *
      * @return array An array of breadcrumb items, each with 'title' and 'url'. The current item has a null URL.
