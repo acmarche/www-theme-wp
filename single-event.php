@@ -28,6 +28,7 @@ if (!str_contains($codeCgt, "EVT")) {
             'color' => Theme::getColorBlog(Theme::TOURISME),
             'blogName' => Theme::getTitleBlog(Theme::TOURISME),
             'relations' => [],
+            'hits' => [],
         ]
     );
 
@@ -49,6 +50,7 @@ try {
             'color' => Theme::getColorBlog(Theme::TOURISME),
             'blogName' => Theme::getTitleBlog(Theme::TOURISME),
             'relations' => [],
+            'hits' => [],
         ]
     );
 
@@ -81,6 +83,7 @@ if (count($offre->datesEvent) === 0) {
             'color' => Theme::getColorBlog(Theme::TOURISME),
             'blogName' => Theme::getTitleBlog(Theme::TOURISME),
             'relations' => [],
+            'hits' => [],
         ]
     );
 
