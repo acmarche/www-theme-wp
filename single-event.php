@@ -72,7 +72,22 @@ if ($offre == null) {
 
     return;
 }
+if (count($offre->datesEvent) === 0) {
+    echo $twig->render(
+        'errors/404.html.twig',
+        [
+            'title' => 'Évènement expiré',
+            'tags' => [],
+            'color' => Theme::getColorBlog(Theme::TOURISME),
+            'blogName' => Theme::getTitleBlog(Theme::TOURISME),
+            'relations' => [],
+        ]
+    );
 
+    get_footer();
+
+    return;
+}
 $image = null;
 $images = $offre->images;
 if (count($images) > 0) {
