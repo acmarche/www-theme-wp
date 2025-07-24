@@ -5,12 +5,11 @@ namespace AcMarche\Theme\Lib;
 use AcMarche\Bottin\Bottin;
 use AcMarche\Bottin\Repository\BottinRepository;
 use AcMarche\Bottin\RouterBottin;
-use AcMarche\Common\Mailer;
 use AcMarche\Common\SortUtil;
 use AcMarche\Pivot\DependencyInjection\PivotContainer;
 use AcMarche\Pivot\Entities\Offre\Offre;
-use AcMarche\Pivot\Entity\TypeOffre;
 use AcMarche\Pivot\Spec\UrnList;
+use AcMarche\Pivot\Utils\CacheUtils;
 use AcMarche\Theme\Entity\CommonItem;
 use AcMarche\Theme\Inc\RouterMarche;
 use AcMarche\Theme\Inc\Theme;
@@ -37,29 +36,23 @@ class WpRepository
     }
 
     /**
-     * @param TypeOffre|null $typeOffre
-     * @return array|Offre[]
+     * @return Offre[]
      * @throws InvalidArgumentException
      */
-    public function getEvents(TypeOffre $typeOffre = null, bool $removeOlder = false): array
+    public function getEvents(bool $removeOlder = false): array
     {
+        $cacheUtils = new CacheUtils();
+        $cache = $cacheUtils->instance();
         $today = new \DateTime();
-        if ($typeOffre instanceof TypeOffre) {
-            $cacheKey = 'events_pivot'.$typeOffre->urn.$removeOlder;
-            $minEvents = 0;
-        } else {
-            $cacheKey = 'events_pivot_'.$today->format('Y-m-d').$removeOlder;
-            $minEvents = 50;
-        }
 
-        if (!$events = get_transient($cacheKey)) {
+        $cacheKey = 'events_pivot_'.$today->format('Y-m-d').$removeOlder;
+
+        $cacheKey = $cacheUtils->generateKey($cacheKey).time();
+
+        return $cache->get($cacheKey, function () use ($removeOlder, $today) {
+
             $pivotRepository = PivotContainer::getPivotRepository(WP_DEBUG);
-            if ($typeOffre instanceof TypeOffre) {
-                $filtres = [$typeOffre];
-            } else {
-                $filtres = $this->getChildrenEvents(true);
-            }
-
+            $filtres = $this->getChildrenEvents(true);
             $events = $pivotRepository->fetchEvents(typeOffres: $filtres);
             $data = [];
             if (count($events) > 0) {
@@ -83,28 +76,10 @@ class WpRepository
                     $data[] = $event;
                 }
             }
-            if ($minEvents > 0 && count($data) > $minEvents) {
-                try {
-                    if (set_transient($cacheKey, json_encode($data, JSON_THROW_ON_ERROR), 36000)) {
-
-                    }
-                } catch (\Exception $exception) {
-                    Mailer::sendError('json agenda error', $exception->getMessage());
-
-                    return [];
-                }
-            }
 
             return $data;
-        }
-        try {
-            return json_decode($events, flags: JSON_THROW_ON_ERROR);
-        } catch (\Exception $exception) {
-            Mailer::sendError('json agenda ', $exception->getMessage());
 
-            return [];
-        }
-
+        });
     }
 
     private static function getChildrenEvents(bool $filterCount): array
@@ -541,36 +516,37 @@ class WpRepository
      *                   current category. Returns an empty array if the category is not found
      *                   or if not on a category archive page (and no ID is provided).
      */
-    public static function get_category_breadcrumb_array( $category_id = null ) {
+    public static function get_category_breadcrumb_array($category_id = null)
+    {
         // Initialize an empty array to store the breadcrumb trail.
         $breadcrumb = [];
 
         $current_category = null;
 
         // 1. Determine the starting category.
-        if ( $category_id ) {
+        if ($category_id) {
             // If a specific category ID is provided, get that term object.
-            $current_category = get_term( $category_id, 'category' );
-        } elseif ( is_category() ) {
+            $current_category = get_term($category_id, 'category');
+        } elseif (is_category()) {
             // If no ID is given, check if we are on a category archive page.
             // get_queried_object() returns the current category object on its archive page.
             $current_category = get_queried_object();
         }
 
         // If we couldn't find a valid category object, exit and return the empty array.
-        if ( ! $current_category || is_wp_error( $current_category ) ) {
+        if (!$current_category || is_wp_error($current_category)) {
             return $breadcrumb;
         }
 
         // 2. Traverse up the hierarchy from the current category.
-        while ( $current_category && ! is_wp_error( $current_category ) ) {
+        while ($current_category && !is_wp_error($current_category)) {
             // Add the current category object to our breadcrumb array.
             $breadcrumb[] = $current_category;
 
             // Check if the current category has a parent.
-            if ( $current_category->parent > 0 ) {
+            if ($current_category->parent > 0) {
                 // If it has a parent, get the parent term object for the next loop iteration.
-                $current_category = get_term( $current_category->parent, 'category' );
+                $current_category = get_term($current_category->parent, 'category');
             } else {
                 // If parent is 0, we've reached the top-level category, so we can stop.
                 break;
@@ -580,7 +556,7 @@ class WpRepository
         // 3. Reverse the array.
         // The array is currently in [child, parent, grandparent] order.
         // We need to reverse it to get the correct breadcrumb order [grandparent, parent, child].
-        return array_reverse( $breadcrumb );
+        return array_reverse($breadcrumb);
     }
 
     /**
