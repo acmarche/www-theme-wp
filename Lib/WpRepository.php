@@ -47,7 +47,7 @@ class WpRepository
 
         $cacheKey = 'events_pivot_'.$today->format('Y-m-d').$removeOlder;
 
-        $cacheKey = $cacheUtils->generateKey($cacheKey).time();
+        $cacheKey = $cacheUtils->generateKey($cacheKey);
 
         return $cache->get($cacheKey, function () use ($removeOlder, $today) {
 
