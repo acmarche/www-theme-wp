@@ -21,6 +21,7 @@ get_header();
 $cache->delete($code);
 $wpRepository = new WpRepository();
 $children     = $wpRepository->getChildrenOfCategory($cat_ID);
+dump(count($children));
 $isReact      = count($children) > 0;
 
 echo $cache->get(
