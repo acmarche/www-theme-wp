@@ -14,7 +14,7 @@ $cache = Cache::instance();
 $blodId = get_current_blog_id();
 $code = Cache::generateCodeArticle($blodId, $post->ID);
 get_header();
-
+dd(8888);
 $cache->delete($code);
 echo $cache->get(
     $code,
