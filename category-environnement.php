@@ -18,7 +18,7 @@ get_header();
 $cache->delete($code);
 $wpRepository = new WpRepository();
 $children = $wpRepository->getChildrenOfCategory($cat_ID);
-
+dd(555);
 $isReact = count($children) > 0;
 
 echo $cache->get(
