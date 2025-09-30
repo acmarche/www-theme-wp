@@ -5,7 +5,7 @@
             <li class="list-group-item">
                 {{ taxe.nom }}
                 {% for exercice in taxe.exercices %}
-                    {% if exercice.url %}
+                    {% if exercice.url|length > 1 %}
                         <a href="{{ exercice.url }}" target="_blank">
                             {{ exercice.annee }}
                         </a>
