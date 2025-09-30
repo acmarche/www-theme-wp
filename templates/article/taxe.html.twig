@@ -5,7 +5,13 @@
             <li class="list-group-item">
                 {{ taxe.nom }}
                 {% for exercice in taxe.exercices %}
-                    <a href="https://extranet.marche.be/files/taxes/{{ exercice.fileName }}">{{ exercice.annee }}</a>
+                    {% if exercice.url %}
+                        <a href="{{ exercice.url }}" target="_blank">
+                            {{ exercice.annee }}
+                        </a>
+                    {% elseif exercicie.fileName %}
+                        <a href="https://extranet.marche.be/files/taxes/{{ exercice.fileName }}">{{ exercice.annee }}</a>
+                    {% endif %}
                 {% endfor %}
             </li>
         {% endfor %}
