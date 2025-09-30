@@ -77,7 +77,7 @@ echo $cache->get(
                 'blogName'    => $blogName,
                 'color'       => $color,
                 'path'        => $path,
-                'relations'   => $relations,
+                'relations'   => [],
                 'urlBack'     => $urlBack,
                 'nameBack'    => $nameBack,
                 'content'     => $content,
