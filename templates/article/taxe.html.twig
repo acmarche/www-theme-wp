@@ -12,6 +12,7 @@
                     {% elseif exercicie.fileName %}
                         <a href="https://extranet.marche.be/files/taxes/{{ exercice.fileName }}">{{ exercice.annee }}</a>
                     {% endif %}
+                   url {{ exercice.url }}  name {{ exercice.fileName }}
                 {% endfor %}
             </li>
         {% endfor %}
