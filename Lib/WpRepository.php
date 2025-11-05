@@ -35,6 +35,33 @@ class WpRepository
         return null;
     }
 
+    private static function getOrdonnancesPolice(): array
+    {
+        global $wpdb;
+
+        $results = $wpdb->get_results(
+            "SELECT * FROM publication.publication ORDER BY createdAt DESC",
+            OBJECT
+        );
+
+        if (!$results) {
+            return [];
+        }
+
+        array_map(
+            function ($ordonnance) {
+                $ordonnance->ID = $ordonnance->id;
+                $ordonnance->excerpt = "";
+                $ordonnance->post_excerpt = "";
+                $ordonnance->url = $ordonnance->url;
+                $ordonnance->post_title = $ordonnance->title;
+            },
+            $results
+        );
+
+        return $results;
+    }
+
     /**
      * @return Offre[]
      * @throws InvalidArgumentException
@@ -409,6 +436,11 @@ class WpRepository
                 $enquetes
             );
             $all = array_merge($all, $enquetes);
+        }
+
+        if (get_current_blog_id() === Theme::ADMINISTRATION && $catId === Theme::ORDONNANCE_POLICE) {
+            $ordonnances = self::getOrdonnancesPolice();
+            $all = array_merge($all, $ordonnances);
         }
 
         return SortUtil::sortPosts($all);
