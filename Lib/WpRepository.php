@@ -35,7 +35,7 @@ class WpRepository
         return null;
     }
 
-    private static function getOrdonnancesPolice(): array
+    public static function getOrdonnancesPolice(): array
     {
         global $wpdb;
 
