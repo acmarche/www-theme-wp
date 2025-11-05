@@ -20,7 +20,7 @@ $wpRepository = new WpRepository();
 $children = $wpRepository->getChildrenOfCategory($cat_ID);
 
 $isReact = count($children) > 0;
-dump(123,$wpRepository->getOrdonnancesPolice());
+
 echo $cache->get(
     $code,
     function () use ($cat_ID, $wpRepository, $children, $isReact) {
