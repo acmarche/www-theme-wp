@@ -35,14 +35,14 @@ class WpRepository
         return null;
     }
 
-    public static function getPublications(int $categoryId): array
+    public static function getPublications(int $wpCategoryId): array
     {
         global $wpdb;
-dump($categoryId);
+dump($wpCategoryId);
         $category = $wpdb->get_results(
             $wpdb->prepare(
-                "SELECT * FROM publication.category WHERE publication.category.id = %d",
-                $categoryId
+                "SELECT * FROM publication.category WHERE publication.category.wpCategoryId = %d",
+                $wpCategoryId
             ),
             OBJECT
         );
@@ -50,16 +50,16 @@ dump($categoryId);
         if (empty($category)) {
             return [];
         }
-dump($category);
-        $wpCategoryId = $category[0]->wpCategoryId ?? null;
-        if (!$wpCategoryId) {
+
+        $categoryId = $category[0]->id ?? null;
+        if (!$categoryId) {
             return [];
         }
 
         $results = $wpdb->get_results(
             $wpdb->prepare(
                 "SELECT * FROM publication.publication WHERE publication.publication.category_id = %d ORDER BY createdAt DESC",
-                $wpCategoryId
+                $categoryId
             ),
             OBJECT
         );
