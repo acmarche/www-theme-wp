@@ -390,7 +390,6 @@ class WpRepository
         $categoryBottinId = get_term_meta($catId, BottinCategoryMetaBox::KEY_NAME, true);
         $bottinRepository = new BottinRepository();
         if ($categoryBottinId) {
-
             $fiches = $bottinRepository->getFichesByCategory($categoryBottinId);
         }
 
@@ -409,7 +408,7 @@ class WpRepository
         $all = array_merge($posts, $fiches);
 
         if (get_current_blog_id(
-            ) === Theme::ADMINISTRATION && ($catId == Theme::ENQUETE_DIRECTORY_URBA || $catId == Theme::ENQUETE_DIRECTORY_INSTIT || $catId == Theme::PUBLICATIOCOMMUNAL_CATEGORY)) {
+            ) === Theme::ADMINISTRATION && ($catId == Theme::ENQUETE_DIRECTORY_URBA  || $catId == Theme::PUBLICATIOCOMMUNAL_CATEGORY)) {
 
             /*$permis = Urba::getEnquetesPubliques();
             $data   = [];
