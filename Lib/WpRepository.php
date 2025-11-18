@@ -38,7 +38,7 @@ class WpRepository
     public static function getPublications(int $categoryId): array
     {
         global $wpdb;
-
+dump($categoryId);
         $category = $wpdb->get_results(
             $wpdb->prepare(
                 "SELECT * FROM publication.category WHERE publication.category.id = %d",
@@ -50,7 +50,7 @@ class WpRepository
         if (empty($category)) {
             return [];
         }
-
+dump($category);
         $wpCategoryId = $category[0]->wpCategoryId ?? null;
         if (!$wpCategoryId) {
             return [];
