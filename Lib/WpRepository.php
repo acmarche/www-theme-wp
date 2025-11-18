@@ -35,12 +35,12 @@ class WpRepository
         return null;
     }
 
-    public static function getOrdonnancesPolice(): array
+    public static function getPublications(int $categoryId): array
     {
         global $wpdb;
 
         $results = $wpdb->get_results(
-            "SELECT * FROM publication.publication ORDER BY createdAt DESC",
+            "SELECT * FROM publication.publication WHERE publication.publication.category_id = $categoryId ORDER BY createdAt DESC",
             OBJECT
         );
 
@@ -53,7 +53,6 @@ class WpRepository
                 $ordonnance->ID = $ordonnance->id;
                 $ordonnance->excerpt = "";
                 $ordonnance->post_excerpt = "";
-                $ordonnance->url = $ordonnance->url;
                 $ordonnance->post_title = $ordonnance->title;
             },
             $results
@@ -438,9 +437,11 @@ class WpRepository
             $all = array_merge($all, $enquetes);
         }
 
-        if (get_current_blog_id() === Theme::ADMINISTRATION && $catId === Theme::ORDONNANCE_POLICE) {
-            $ordonnances = self::getOrdonnancesPolice();
-            $all = array_merge($all, $ordonnances);
+        if (get_current_blog_id() === Theme::ADMINISTRATION) {
+            $publications = self::getPublications($catId);
+            if (count($publications) > 0) {
+                $all = array_merge($all, $publications);
+            }
         }
 
         return SortUtil::sortPosts($all);
