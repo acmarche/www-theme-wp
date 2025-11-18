@@ -39,8 +39,28 @@ class WpRepository
     {
         global $wpdb;
 
+        $category = $wpdb->get_results(
+            $wpdb->prepare(
+                "SELECT * FROM publication.category WHERE publication.category.id = %d",
+                $categoryId
+            ),
+            OBJECT
+        );
+
+        if (empty($category)) {
+            return [];
+        }
+
+        $wpCategoryId = $category[0]->wpCategoryId ?? null;
+        if (!$wpCategoryId) {
+            return [];
+        }
+
         $results = $wpdb->get_results(
-            "SELECT * FROM publication.publication WHERE publication.publication.category_id = $categoryId ORDER BY createdAt DESC",
+            $wpdb->prepare(
+                "SELECT * FROM publication.publication WHERE publication.publication.category_id = %d ORDER BY createdAt DESC",
+                $wpCategoryId
+            ),
             OBJECT
         );
 
@@ -48,15 +68,12 @@ class WpRepository
             return [];
         }
 
-        array_map(
-            function ($ordonnance) {
-                $ordonnance->ID = $ordonnance->id;
-                $ordonnance->excerpt = "";
-                $ordonnance->post_excerpt = "";
-                $ordonnance->post_title = $ordonnance->title;
-            },
-            $results
-        );
+        foreach ($results as $ordonnance) {
+            $ordonnance->ID = $ordonnance->id;
+            $ordonnance->excerpt = "";
+            $ordonnance->post_excerpt = "";
+            $ordonnance->post_title = $ordonnance->title;
+        }
 
         return $results;
     }
@@ -408,7 +425,7 @@ class WpRepository
         $all = array_merge($posts, $fiches);
 
         if (get_current_blog_id(
-            ) === Theme::ADMINISTRATION && ($catId == Theme::ENQUETE_DIRECTORY_URBA  || $catId == Theme::PUBLICATIOCOMMUNAL_CATEGORY)) {
+            ) === Theme::ADMINISTRATION && ($catId == Theme::ENQUETE_DIRECTORY_URBA || $catId == Theme::PUBLICATIOCOMMUNAL_CATEGORY)) {
 
             /*$permis = Urba::getEnquetesPubliques();
             $data   = [];
