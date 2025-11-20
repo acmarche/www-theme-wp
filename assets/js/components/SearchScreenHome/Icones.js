@@ -19,7 +19,7 @@ function HardCodedValues() {
                 <li className="col-3 d-flex justify-content-center">
                     <a href="/mobilite/infos-travaux/" className="icon_custom">
                         <i className=" d-block w-54px h-54px shadow-sm-2 mx-auto rounded-circle i-traffic-cone i-bg-white i-bg-hover-primary i-hover-white i-bg-color-transition bg-size-48"></i>
-                        <span className="d-inline-block text-white fs-short-3 ff-semibold lh-150 pt-6px">Travaux<br />Arrêtés de police</span>
+                        <span className="d-inline-block text-white fs-short-3 ff-semibold lh-150 pt-6px">Travaux</span>
                     </a>
                 </li>
                 <li className="col-3 d-flex justify-content-center">
