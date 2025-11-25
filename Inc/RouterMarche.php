@@ -28,7 +28,7 @@ class RouterMarche extends Router
         $this->addRouteEvent();
         //     $this->addRouteOffre();
         $this->addRouteEnquete();
-       //   $this->flushRoutes();
+          $this->flushRoutes();
     }
 
     public static function getUrlEventCategory($categorie): string
@@ -158,7 +158,7 @@ class RouterMarche extends Router
                 //https://regex101.com/r/guhLuX/1
                 //'^/administration/(?:([a-zA-Z0-9_-]+)/){1,2}([a-zA-Z0-9_-]+)/num/(\d+)/?$',
                 add_rewrite_rule(
-                    'administration/publications-taxes-arretes-de-police-primes/([a-zA-Z0-9_-]+)/'.self::PARAM_ENQUETE.'/([a-zA-Z0-9_-]+)/?$',
+                    'publications-taxes-arretes-de-police-primes/([a-zA-Z0-9_-]+)/'.self::PARAM_ENQUETE.'/([a-zA-Z0-9_-]+)/?$',
                     'index.php?category_name=$matches[1]&'.self::PARAM_ENQUETE.'=$matches[2]',
                     'top'
                 );
