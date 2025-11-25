@@ -28,7 +28,7 @@ class RouterMarche extends Router
         $this->addRouteEvent();
         //     $this->addRouteOffre();
         $this->addRouteEnquete();
-          $this->flushRoutes();
+       //   $this->flushRoutes();
     }
 
     public static function getUrlEventCategory($categorie): string
