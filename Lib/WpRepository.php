@@ -78,6 +78,24 @@ class WpRepository
         return $results;
     }
 
+    public static function getAllPublications(): array
+    {
+        global $wpdb;
+
+        $results = $wpdb->get_results(
+            "SELECT p.*, c.id as category_id, c.name as category_name, c.wpCategoryId
+             FROM publication.publication p
+             LEFT JOIN publication.category c ON p.category_id = c.id
+             ORDER BY p.createdAt DESC"
+        );
+
+        if (!$results) {
+            return [];
+        }
+
+        return $results;
+    }
+
     /**
      * @return Offre[]
      * @throws InvalidArgumentException
@@ -426,14 +444,6 @@ class WpRepository
 
         if (get_current_blog_id(
             ) === Theme::ADMINISTRATION && ($catId == Theme::ENQUETE_DIRECTORY_URBA || $catId == Theme::PUBLICATIOCOMMUNAL_CATEGORY)) {
-
-            /*$permis = Urba::getEnquetesPubliques();
-            $data   = [];
-            foreach ($permis as $permi) {
-                $post   = Urba::permisToPost($permi);
-                $data[] = $post;
-            }
-            $all = array_merge($all, $data);*/
 
             $enquetes = self::getEnquetesPubliques($catId);
             array_map(
