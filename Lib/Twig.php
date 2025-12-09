@@ -97,6 +97,23 @@ class Twig
 
     }
 
+    public static function renderErrorPage(\Exception $exception): void
+    {
+        try {
+            echo self::loadTwig()->render('errors/500.html.twig', [
+                'message' => $exception->getMessage(),
+                'title' => "La page n'a pas pu être chargée",
+                'file' => $exception->getFile(),
+                'line' => $exception->getLine(), 'tags' => [],
+                'color' => Theme::COLORS[1],
+                'blogName' => Theme::COLORS[1],
+                'relations' => [],
+            ]);
+        } catch (LoaderError|RuntimeError|SyntaxError $e) {
+            echo $e->getMessage();
+        }
+    }
+
     public static function rend500Page(string $error): void
     {
         $twig = self::LoadTwig();

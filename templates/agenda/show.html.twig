@@ -14,62 +14,12 @@
 
 {% block content %}
 
-    {% for description in event.descriptionsByLanguage('fr') %}
-        {% if description.urn == 'urn:fld:descmarket' %}
-            <p>{{ description.value|raw }}</p>
-        {% endif %}
-        {% if description.urn == 'urn:fld:desccirc' %}
-            {{ description.value|raw }}
-        {% endif %}
-    {% endfor %}
-
-    {% for tarif in event.tarifs %}
-        {{ tarif.value|raw }}<br/>
-    {% endfor %}
+    {{ event.description|raw }}
 
     <br/>
-    <h4 class="mb-2 mt-2"><strong>Date(s)</strong></h4>
+    {% include 'agenda/show/_dates.html.twig' %}
 
-    {% for dateEvent in event.datesEvent %}
-        <span class="font-montserrat-semi-bold text-cta-dark">
-                {% if dateEvent.isSameDate %}
-                    {{ dateEvent.dateBegin|format_date('full') }}
-                {% else %}
-                    De {{ dateEvent.dateBegin|format_date('full') }} au {{ dateEvent.dateEnd|format_date('full') }}
-                {% endif %}
-                {% if dateEvent.dateRange %}
-                    <br> {{ dateEvent.dateRange }}
-                {% endif %}
-            </span>
-            {% include 'agenda/show/_date_details.html.twig' %}
-    {% endfor %}
-
-    <h4 class="mb-2 mt-2"><strong>Contact</strong></h4>
-    {% if event.adresse_rue|length > 0 %}
-        {{ event.adresse_rue[0].value }}<br/>
-    {% endif %}
-    {{ event.adresse1.rue }} {{ event.adresse1.numero }}<br/>
-    {{ event.adresse1.cp }}  {{ event.adresse.localiteByLanguage }} <br/>
-
-    <h4 class="mb-2 mt-2"><strong>Renseignements</strong></h4>
-    {% if event.tels|length > 0 %}
-        <br/><strong>Téléphone:</strong>  <span>{{ event.tels|join }}</span><br/>
-    {% endif %}
-
-    {% if event.emails|length > 0 %}
-        <br/><strong>Courriel:</strong> <span> {{ event.emails|join }}</span><br/>
-    {% endif %}
-
-    {% if event.webs|length > 0 %}
-        {% for web in event.webs %}
-            <br/><strong>Site:</strong> <a href="{{ web.value }}">{{ web.value }}</a><br/>
-        {% endfor %}
-        <br/>
-    {% endif %}
-
-    {% if event.homepage is defined %}
-        <br/><strong>Site web:</strong>  <a href="{{ event.homepage }}">{{ event.homepage }}</a><br/>
-    {% endif %}
+    {% include 'agenda/show/_communication.html.twig' %}
 
     {# % include 'agenda/show/_specifications.html.twig' % #}
     {% include 'agenda/show/_images.html.twig' %}

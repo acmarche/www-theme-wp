@@ -2,13 +2,11 @@
 
 namespace AcMarche\Theme;
 
-use AcMarche\Common\Mailer;
 use AcMarche\Theme\Inc\RouterMarche;
 use AcMarche\Theme\Inc\Theme;
-use AcMarche\Theme\Lib\PostUtils;
+use AcMarche\Theme\Lib\Pivot\Repository\PivotRepository;
 use AcMarche\Theme\Lib\Twig;
 use AcMarche\Theme\Lib\WpRepository;
-use Psr\Cache\InvalidArgumentException;
 use Twig\Error\LoaderError;
 use Twig\Error\RuntimeError;
 use Twig\Error\SyntaxError;
@@ -37,28 +35,17 @@ if (!str_contains($codeCgt, "EVT")) {
     return;
 }
 
-$wpRepository = new WpRepository();
+$pivotRepository = new PivotRepository();
 try {
-    $offre = $wpRepository->getOffreByCgtAndParse($codeCgt);
-} catch (\Exception|InvalidArgumentException $exception) {
-    Mailer::sendError("error show event", $exception->getMessage());
-    echo $twig->render(
-        'errors/404.html.twig',
-        [
-            'title' => 'Évènement non trouvé',
-            'tags' => [],
-            'color' => Theme::getColorBlog(Theme::TOURISME),
-            'blogName' => Theme::getTitleBlog(Theme::TOURISME),
-            'relations' => [],
-            'hits' => [],
-        ]
-    );
-
+    $event = $pivotRepository->loadOneEvent($codeCgt, parse: true, purgeCache: WP_DEBUG);
+} catch (\JsonException $e) {
+    Twig::renderErrorPage($e);
     get_footer();
 
     return;
 }
-if ($offre == null) {
+
+if ($event == null) {
     echo $twig->render(
         'errors/404.html.twig',
         [
@@ -74,7 +61,7 @@ if ($offre == null) {
 
     return;
 }
-if (count($offre->datesEvent) === 0) {
+if (count($event->dates) === 0) {
     echo $twig->render(
         'errors/404.html.twig',
         [
@@ -92,51 +79,33 @@ if (count($offre->datesEvent) === 0) {
     return;
 }
 $image = null;
-$images = $offre->images;
+$images = $event->images;
 if (count($images) > 0) {
     $image = $images[0];
 }
 $tags = [];
 $urlCategoryAgenda = get_category_link(WpRepository::getCategoryAgenda());
 
-$postUtils = new PostUtils();
-$postUtils->tagsOffre($offre, 'fr', $urlCategoryAgenda);
-
-foreach ($offre->tags as $category) {
+foreach ($event->tags as $category) {
     $tags[] = [
         'name' => $category->labelByLanguage('fr'),
         'url' => $urlCategoryAgenda.'?filtre='.$category->urn,
     ];
 }
 
-$recommandations = $wpRepository->recommandationsByOffre($offre, WpRepository::getCategoryAgenda(), 'fr');
-$relations = [];
-/*
-RouterMarche::setRouteEvents($recommandations);
-
-foreach ($recommandations as $item) {
-    if ($offre->codeCgt == $item->codeCgt) {
-        continue;
-    }
-    $relations[] = [
-        'title' => $item->nom,
-        'url' => $item->url,
-        'image' => $item->firstImage(),
-        'categories' => $item->categories,
-    ];
-}*/
+$recommandations = [];
 
 try {
     echo $twig->render(
         'agenda/show.html.twig',
         [
-            'event' => $offre,
-            'title' => $offre->nom,
+            'event' => $event,
+            'title' => $event->nom,
             'image' => $image,
             'tags' => $tags,
             'images' => $images,
-            'latitude' => $offre->getAdresse()->latitude ?? null,
-            'longitude' => $offre->getAdresse()->longitude ?? null,
+            'latitude' => $event->latitude ?? null,
+            'longitude' => $event->longitude ?? null,
             'color' => Theme::getColorBlog(Theme::TOURISME),
             'blogName' => Theme::getTitleBlog(Theme::TOURISME),
             'relations' => $recommandations,

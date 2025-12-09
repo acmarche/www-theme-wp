@@ -2,7 +2,6 @@
 
 namespace AcMarche\Theme\Lib;
 
-use AcMarche\Common\Env;
 use AcMarche\Issep\Indice\IndiceUtils;
 use AcMarche\Issep\Repository\StationRemoteRepository;
 use AcMarche\Issep\Repository\StationRepository;
@@ -20,7 +19,6 @@ class Capteur
 
     public function getStations(): array
     {
-        Env::loadEnv();
         try {
             $stations = $this->stationRepository->getStations();
         } catch (\JsonException $e) {

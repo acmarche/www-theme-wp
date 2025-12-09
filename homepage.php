@@ -2,10 +2,9 @@
 
 namespace AcMarche\Theme;
 
-use AcMarche\Common\Mailer;
+use AcMarche\Theme\Lib\Pivot\Repository\PivotRepository;
 use AcMarche\Theme\Lib\Twig;
 use AcMarche\Theme\Lib\WpRepository;
-use Psr\Cache\InvalidArgumentException;
 use SortLink;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -14,15 +13,15 @@ use Symfony\Component\HttpFoundation\Request;
  */
 get_header();
 
-$events = [];
-$wpRepository = new WpRepository();
-
 $news = WpRepository::getAllNews(6);
+
+$pivotRepository = new PivotRepository();
 try {
-    $events = $wpRepository->getEvents(removeOlder: true);
-} catch (\Exception|InvalidArgumentException $exception) {
-    Mailer::sendError('error marche.be', "page ".$exception->getMessage());
+    $events = $pivotRepository->loadEvents();
+} catch (\Exception|\Throwable  $e) {
+   $events=[];
 }
+
 
 $pageAlert = WpRepository::getPageAlert();
 $contentAlert = null;

@@ -6,6 +6,7 @@ use AcMarche\Bottin\DependencyInjection\BottinContainer;
 use AcMarche\Bottin\Repository\BottinRepository;
 use AcMarche\Common\Mailer;
 use AcMarche\Theme\Lib\Carto;
+use AcMarche\Theme\Lib\Pivot\Repository\PivotRepository;
 use AcMarche\Theme\Lib\WpRepository;
 use AcSort;
 use WP_Error;
@@ -45,9 +46,15 @@ class ApiData
 
     public static function ca_events()
     {
-        $wp = new WpRepository();
+        $pivotRepository = new PivotRepository();
+        try {
+            $events = $pivotRepository->loadEvents();
+        } catch (\Exception|\Throwable  $e) {
+            $events = [];
+        }
 
-        return rest_ensure_response($wp->getEvents());
+
+        return rest_ensure_response($events);
     }
 
     /**

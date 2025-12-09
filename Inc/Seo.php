@@ -6,6 +6,8 @@ namespace AcMarche\Theme\Inc;
 use AcMarche\Bottin\Repository\BottinRepository;
 use AcMarche\Bottin\RouterBottin;
 use AcMarche\Common\Router;
+use AcMarche\Theme\Lib\Pivot\Entity\Event;
+use AcMarche\Theme\Lib\Pivot\Repository\PivotRepository;
 use AcMarche\Theme\Lib\WpRepository;
 
 /**
@@ -108,37 +110,31 @@ class Seo
     }
 
     private static function metaHadesEvent(string $codeCgt)
-    {  //todo
+    {
         self::$metas['title'] = self::baseTitle("Page d'accueil");
         self::$metas['description'] = get_bloginfo('description', 'display');
         self::$metas['keywords'] = 'Commune, Ville, Marche, Marche-en-Famenne, Famenne, Administration communal';
 
-        $wpRepository = new WpRepository();
+        $wpRepository = new PivotRepository();
         try {
-            $offre = $wpRepository->getOffreByCgtAndParse($codeCgt);
+            $offre = $wpRepository->loadOneEvent($codeCgt, parse: true);
         } catch (\Exception $exception) {
             $base = self::baseTitle('');
             self::$metas['title'] = "Error 500 ".$base;
 
             return;
         }
-        $language = 'fr';
-        if (null !== $offre) {
+
+        if ($offre instanceof Event) {
             $base = self::baseTitle('| Agenda des manifestations');
-            $label = $offre->typeOffre->labelByLanguage($language);
-            self::$metas['title'] = $offre->nameByLanguage($language).' '.$label.' '.$base;
-            $description = implode(
-                ',',
-                array_map(
-                    fn($description) => $description->value,
-                    $offre->descriptionsByLanguage($language)
-                )
-            );
-            if ($description) {
-                self::$metas['description'] = self::cleanString($description);
+
+            $label = $offre->typeOffre->getLabelByLanguage('fr');
+            self::$metas['title'] = $offre->nom.' '.$label.' '.$base;
+            if ($offre->description) {
+                self::$metas['description'] = self::cleanString($offre->description);
             }
             $keywords = array_map(
-                fn($tag) => $tag->labelByLanguage($language),
+                fn($tag) => $tag->name,
                 $offre->tags
             );
             self::$metas['keywords'] = implode(',', $keywords);

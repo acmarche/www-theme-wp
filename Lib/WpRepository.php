@@ -6,17 +6,10 @@ use AcMarche\Bottin\Bottin;
 use AcMarche\Bottin\Repository\BottinRepository;
 use AcMarche\Bottin\RouterBottin;
 use AcMarche\Common\SortUtil;
-use AcMarche\Pivot\DependencyInjection\PivotContainer;
-use AcMarche\Pivot\Entities\Offre\Offre;
-use AcMarche\Pivot\Spec\UrnList;
-use AcMarche\Pivot\Utils\CacheUtils;
-use AcMarche\Theme\Entity\CommonItem;
 use AcMarche\Theme\Inc\RouterMarche;
 use AcMarche\Theme\Inc\Theme;
 use AcSort;
 use BottinCategoryMetaBox;
-use Carbon\Carbon;
-use Psr\Cache\InvalidArgumentException;
 use WP_Post;
 use WP_Query;
 use WP_Term;
@@ -95,118 +88,6 @@ class WpRepository
 
         return $results;
     }
-
-    /**
-     * @return Offre[]
-     * @throws InvalidArgumentException
-     */
-    public function getEvents(bool $removeOlder = false): array
-    {
-        $cacheUtils = new CacheUtils();
-        $cache = $cacheUtils->instance();
-        $today = new \DateTime();
-
-        $cacheKey = 'events_pivot_'.$today->format('Y-m-d').$removeOlder;
-
-        $cacheKey = $cacheUtils->generateKey($cacheKey);
-
-        return $cache->get($cacheKey, function () use ($removeOlder, $today) {
-
-            $pivotRepository = PivotContainer::getPivotRepository(WP_DEBUG);
-            $filtres = $this->getChildrenEvents(true);
-            $events = $pivotRepository->fetchEvents(typeOffres: $filtres);
-            $data = [];
-            if (count($events) > 0) {
-                RouterMarche::setRouteEvents($events);
-            }
-            foreach ($events as $event) {
-                $event->locality = $event->getAdresse()->localite[0]->get('fr');
-                $event->shortCutDateEvent = [
-                    'year' => $event->firstDate()->format('Y'),
-                    'month' => $event->firstDate()->format('m'),
-                    'day' => $event->firstDate()->format('d'),
-                ];
-                if (count($event->images) == 0) {
-                    $event->images = ['https://www.visitmarche.be/wp-content/uploads/2021/02/bg_events.png'];
-                }
-                if ($removeOlder) {
-                    if (Carbon::parse($event->firstRealDate())->diffInMonths($today) < 1) {
-                        $data[] = $event;
-                    }
-                } else {
-                    $data[] = $event;
-                }
-            }
-
-            return $data;
-
-        });
-    }
-
-    private static function getChildrenEvents(bool $filterCount): array
-    {
-        $filtreRepository = PivotContainer::getTypeOffreRepository(WP_DEBUG);
-        $parents = $filtreRepository->findByUrn(UrnList::EVENT_CINEMA->value);
-
-        return $filtreRepository->findByParent($parents[0]->parent->id, $filterCount);
-    }
-
-    /**
-     * @throws \Psr\Cache\InvalidArgumentException
-     */
-    public function getOffreByCgtAndParse(string $codeCgt): ?Offre
-    {
-        $pivotRepository = PivotContainer::getPivotRepository(WP_DEBUG);
-
-        return $pivotRepository->fetchOffreByCgtAndParse($codeCgt);
-    }
-
-    /**
-     * @param Offre $offerRefer
-     * @param WP_Term $category
-     * @param string $language
-     * @return array|CommonItem[]
-     * @throws \Doctrine\ORM\NonUniqueResultException
-     * @throws \Psr\Cache\InvalidArgumentException
-     */
-    public function recommandationsByOffre(Offre $offerRefer, WP_Term $category, string $language): array
-    {
-        $cacheKey = 'recom-'.$offerRefer->codeCgt;
-
-        if ($recommandations = get_transient($cacheKey)) {
-            return $recommandations;
-        }
-
-        if (count($offerRefer->see_also)) {
-            $offres = $offerRefer->see_also;
-        } else {
-            $pivotRepository = PivotContainer::getPivotRepository();
-            $offres = $pivotRepository->fetchSameOffres($offerRefer, 10);
-        }
-        PostUtils::setLinkOnOffres($offres, $category->term_id, $language);
-        $recommandations = PostUtils::convertRecommandationsToArray($offres, $language);
-        $count = count($recommandations);
-        $data = [];
-
-        if ($count === 0) {
-            return $data;
-        }
-
-        if ($count > 3) {
-            $count = 3;
-        }
-
-        $keys = array_rand($recommandations, $count);
-
-        if (is_array($keys)) {
-            foreach ($keys as $key) {
-                $data[] = $recommandations[$key];
-            }
-        }
-
-        return $data;
-    }
-
 
     /**
      * @param int $max

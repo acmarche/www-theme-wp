@@ -21,7 +21,6 @@ class EventWpSubscriber
 
     function postUpdated($post_ID, WP_Post $post_after, WP_Post $post_before)
     {
-        Env::loadEnv();
         $cache = Cache::instance();
         $blodId = get_current_blog_id();
         $code = Cache::generateCodeArticle($blodId, $post_ID);
@@ -38,7 +37,6 @@ class EventWpSubscriber
     function postCreated(int $post_ID, WP_Post $post, bool $update)
     {
         if (!$update) {
-            Env::loadEnv();
             try {
                 $server = new MeiliServer($_ENV['MEILI_INDEX_NAME'], $_ENV['MEILI_MASTER_KEY']);
                 $server->indexPost($post, get_current_blog_id());
@@ -50,7 +48,6 @@ class EventWpSubscriber
 
     function postDeleted(int $post_ID, WP_Post $post)
     {
-        Env::loadEnv();
         $server = new MeiliServer($_ENV['MEILI_INDEX_NAME'], $_ENV['MEILI_MASTER_KEY']);
         try {
             $server->deletePost($post_ID, get_current_blog_id());

@@ -4,7 +4,6 @@
 namespace AcMarche\Theme\Lib;
 
 
-use AcMarche\Common\Env;
 use MailchimpMarketing\ApiClient;
 
 class MailChimp
@@ -13,7 +12,6 @@ class MailChimp
 
     public function __construct()
     {
-        Env::loadEnv();
         $this->apiClient = new ApiClient();
 
         $this->apiClient->setConfig(
