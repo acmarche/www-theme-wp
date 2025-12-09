@@ -97,23 +97,16 @@ class PivotRepository
         bool $purgeCache = false,
         int $level = ContentEnum::LVL4->value
     ): Event|string|null {
-        $cacheKey = Cache::generateKey('offer-'.$codeCgt.'-'.$level);
+        $cacheKey = Cache::generateKey(PivotRepository::$keyAll).'-'.$codeCgt;
         if ($purgeCache) {
             Cache::delete($cacheKey);
         }
         try {
-            $jsonContent = Cache::get($cacheKey, function () use ($codeCgt, $level) {
-                $pivotApi = new PivotApi();
-                $response = $pivotApi->loadEvent($codeCgt, $level);
-                $content = $response?->getContent();
-                if ($content === null) {
-                    throw new \Exception('No content returned from Pivot API');
-                }
+            $jsonContent = Cache::get($cacheKey, function () {
 
-                return $content;
             });
         } catch (\Exception $e) {
-            $jsonContent = null;
+            return null;
         }
 
         if (!$jsonContent) {
@@ -127,8 +120,6 @@ class PivotRepository
         $parser = new EventParser();
         $data = json_decode($jsonContent, associative: true, flags: JSON_THROW_ON_ERROR);
 
-        $event = $parser->parseEvent($data['offre'][0]);
-
-        return $event;
+        return $parser->parseEvent($data['offre'][0]);
     }
 }
