@@ -60,6 +60,11 @@ class AssetsLoad
             wp_get_theme()->get('Version'),
             true
         );
+        wp_enqueue_style(
+            'marchebe-awesome',
+            'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css',
+            [],
+        );
     }
 
     function marchebeHome()

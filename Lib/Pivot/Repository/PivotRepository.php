@@ -50,7 +50,7 @@ class PivotRepository
         bool $purgeCache = false,
         bool $skip = false
     ): array {
-        $cacheKey = Cache::generateKey('all-events-marche-be-'.$level.'-'.$skip.time());
+        $cacheKey = Cache::generateKey('all-events-marche-be-'.$level.'-'.$skip);
         if ($purgeCache) {
             Cache::delete($cacheKey);
         }

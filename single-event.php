@@ -4,6 +4,7 @@ namespace AcMarche\Theme;
 
 use AcMarche\Theme\Inc\RouterMarche;
 use AcMarche\Theme\Inc\Theme;
+use AcMarche\Theme\Lib\Pivot\Entity\Event;
 use AcMarche\Theme\Lib\Pivot\Repository\PivotRepository;
 use AcMarche\Theme\Lib\Twig;
 use AcMarche\Theme\Lib\WpRepository;
@@ -92,8 +93,14 @@ foreach ($event->tags as $category) {
         'url' => $urlCategoryAgenda.'?filtre='.$category->urn,
     ];
 }
+try {
+    $events = $pivotRepository->loadEvents(skip: true);
+} catch (\Exception|\Throwable  $e) {
+    $events = [];
+}
 
-$recommandations = [];
+$recommandations = array_slice($events, 0, 3);
+array_map(fn(Event $event) => $event->name = $event->nom, $recommandations);
 
 try {
     echo $twig->render(
