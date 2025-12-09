@@ -2,8 +2,6 @@
 
 namespace AcMarche\Theme\Entity;
 
-use AcMarche\Pivot\Entities\Tag;
-
 class CommonItem
 {
     public ?string $id = null;
@@ -12,7 +10,7 @@ class CommonItem
     public ?string $description = null;
     public ?string $image = null;
     /**
-     * @var array|Tag[]
+     * @var array
      */
     public array $tags = [];
 

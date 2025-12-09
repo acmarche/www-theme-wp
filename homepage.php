@@ -17,7 +17,7 @@ $news = WpRepository::getAllNews(6);
 
 $pivotRepository = new PivotRepository();
 try {
-    $events = $pivotRepository->loadEvents();
+    $events = $pivotRepository->loadEvents(skip:true);
 } catch (\Exception|\Throwable  $e) {
    $events=[];
 }

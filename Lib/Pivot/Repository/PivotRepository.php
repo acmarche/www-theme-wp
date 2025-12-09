@@ -17,6 +17,7 @@ class PivotRepository
     private PivotApi $pivotApi;
     //skip marche public, st loup
     private array $eventsToSkip = ['EVT-01-0AVJ-324P', 'EVT-A0-008E-101W'];
+    public static string $keyAll = 'all-events-marche-be';
 
     public function __construct()
     {
@@ -50,20 +51,17 @@ class PivotRepository
         bool $purgeCache = false,
         bool $skip = false
     ): array {
-        $cacheKey = Cache::generateKey('all-events-marche-be-'.$level.'-'.$skip);
+        $cacheKey = self::$keyAll;
         if ($purgeCache) {
             Cache::delete($cacheKey);
         }
-        $jsonContent = Cache::get($cacheKey, function () use ($level) {
-            $pivotApi = new PivotApi();
-            try {
-                $response = $pivotApi->query($level);
+        try {
+            $jsonContent = Cache::get($cacheKey, function () use ($level) {
 
-                return $response?->getContent();
-            } catch (\Exception $e) {
-                return null;
-            }
-        });
+            });
+        } catch (\Exception $e) {
+            $jsonContent = null;
+        }
 
         if (!$jsonContent) {
             return [];
@@ -103,16 +101,20 @@ class PivotRepository
         if ($purgeCache) {
             Cache::delete($cacheKey);
         }
-        $jsonContent = Cache::get($cacheKey, function () use ($codeCgt, $level) {
-            $pivotApi = new PivotApi();
-            try {
+        try {
+            $jsonContent = Cache::get($cacheKey, function () use ($codeCgt, $level) {
+                $pivotApi = new PivotApi();
                 $response = $pivotApi->loadEvent($codeCgt, $level);
+                $content = $response?->getContent();
+                if ($content === null) {
+                    throw new \Exception('No content returned from Pivot API');
+                }
 
-                return $response->getContent();
-            } catch (\Exception $e) {
-                return null;
-            }
-        });
+                return $content;
+            });
+        } catch (\Exception $e) {
+            $jsonContent = null;
+        }
 
         if (!$jsonContent) {
             return null;
