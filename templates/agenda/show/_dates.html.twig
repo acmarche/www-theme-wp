@@ -1,9 +1,9 @@
-<h3 class="font-montserrat-semi-bold text-cta-light text-md">
+<h3 class="h5 fw-semibold text-secondary mb-3">
     Quand ?
 </h3>
-<ul class="font-montserrat-semi-bold text-cta-dark flex flex-col gap-2 not-prose">
+<ul class="list-unstyled fw-semibold text-dark">
     {% for dateEvent in event.dates %}
-        <li class="flex flex-row gap-2">
+        <li class="d-flex flex-row gap-2 mb-2">
             {% if dateEvent.isSameDate() %}
                 {% if dateEvent.dateBegin %}
                     <span>{{ dateEvent.dateBegin.date|format_date('full') }}</span>
