@@ -55,13 +55,7 @@ class PivotRepository
         if ($purgeCache) {
             Cache::delete($cacheKey);
         }
-        try {
-            $jsonContent = Cache::get($cacheKey, function () use ($level) {
-
-            });
-        } catch (\Exception $e) {
-            $jsonContent = null;
-        }
+        $jsonContent = Cache::getIfExists($cacheKey);
 
         if (!$jsonContent) {
             return [];
@@ -101,13 +95,7 @@ class PivotRepository
         if ($purgeCache) {
             Cache::delete($cacheKey);
         }
-        try {
-            $jsonContent = Cache::get($cacheKey, function () {
-
-            });
-        } catch (\Exception $e) {
-            return null;
-        }
+        $jsonContent = Cache::getIfExists($cacheKey);
 
         if (!$jsonContent) {
             return null;
