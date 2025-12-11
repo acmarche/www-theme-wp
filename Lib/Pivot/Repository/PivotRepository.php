@@ -58,6 +58,12 @@ class PivotRepository
         $jsonContent = Cache::getIfExists($cacheKey);
 
         if (!$jsonContent) {
+            if (is_readable($filename = $_ENV['APP_CACHE_DIR'].'/../data/pivot.json')) {
+                $jsonContent = file_get_contents($filename);
+            }
+        }
+
+        if (!$jsonContent) {
             return [];
         }
 
