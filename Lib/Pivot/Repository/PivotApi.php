@@ -64,7 +64,9 @@ class PivotApi
     {
         $t = $this->client->request(
             'GET',
-            $this->base_uri.'/offer/'.$codeCgt.';content='.$level
+            $this->base_uri.'/offer/'.$codeCgt.';content='.$level,[
+                'timeout' => 10,
+            ]
         );
         if ($t->getStatusCode() === 200) {
             return $t;
