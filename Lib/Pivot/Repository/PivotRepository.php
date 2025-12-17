@@ -122,7 +122,7 @@ class PivotRepository
                 }
             }
         }
-        dump($jsonContent);
+
         if (!$jsonContent) {
             return null;
         }
@@ -133,7 +133,7 @@ class PivotRepository
 
         $data = json_decode($jsonContent, associative: true, flags: JSON_THROW_ON_ERROR);
 
-        dump($data);  if (!isset($data['codeCgt'])) {
+        if (!isset($data['codeCgt'])) {
             return null;
         }
 
