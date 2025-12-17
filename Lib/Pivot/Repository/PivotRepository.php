@@ -7,6 +7,7 @@ use AcMarche\Theme\Lib\Pivot\Entity\Event;
 use AcMarche\Theme\Lib\Pivot\Enums\ContentEnum;
 use AcMarche\Theme\Lib\Pivot\Helper\SortHelper;
 use AcMarche\Theme\Lib\Pivot\Parser\EventParser;
+use Psr\Cache\InvalidArgumentException;
 use Symfony\Contracts\HttpClient\Exception\ClientExceptionInterface;
 use Symfony\Contracts\HttpClient\Exception\RedirectionExceptionInterface;
 use Symfony\Contracts\HttpClient\Exception\ServerExceptionInterface;
@@ -99,14 +100,14 @@ class PivotRepository
         bool $purgeCache = false,
         int $level = ContentEnum::LVL4->value
     ): Event|string|null {
-        $cacheKey = Cache::generateKey(PivotRepository::$keyAll).'-'.$codeCgt.time();
+        $cacheKey = Cache::generateKey(PivotRepository::$keyAll).'-'.$codeCgt;
         if ($purgeCache) {
             Cache::delete($cacheKey);
         }
         $jsonContent = Cache::getIfExists($cacheKey);
 
         if (!$jsonContent) {
-            $filename = $_ENV['APP_CACHE_DIR'] . '/../data/pivot.json';
+            $filename = $_ENV['APP_CACHE_DIR'].'/../data/pivot.json';
 
             if (is_readable($filename)) {
                 $fileContent = file_get_contents($filename);
@@ -133,7 +134,18 @@ class PivotRepository
         $data = json_decode($jsonContent, associative: true, flags: JSON_THROW_ON_ERROR);
 
         try {
-            return $this->parser->parseEvent($data);
+            $event = $this->parser->parseEvent($data);
+            $cacheKey = Cache::generateKey(PivotRepository::$keyAll).'-'.$codeCgt;
+            try {
+                Cache::get($cacheKey, function () use ($jsonContent) {
+                    return $jsonContent;
+                });
+            } catch (\Exception $e) {
+                return null;
+            } catch (InvalidArgumentException $e) {
+            }
+
+            return $event;
         } catch (\Exception $exception) {
             return null;
         }
