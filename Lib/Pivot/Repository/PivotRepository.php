@@ -132,6 +132,9 @@ class PivotRepository
         }
 
         $data = json_decode($jsonContent, associative: true, flags: JSON_THROW_ON_ERROR);
+        if (!isset($data['codeCgt'])) {
+            return null;
+        }
 
         try {
             $event = $this->parser->parseEvent($data);
