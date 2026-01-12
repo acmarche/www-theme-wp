@@ -89,6 +89,20 @@ class WpRepository
         return $results;
     }
 
+    public static function deletePublication(int $publicationId): bool
+    {
+        global $wpdb;
+
+        $result = $wpdb->query(
+            $wpdb->prepare(
+                "DELETE FROM publication.publication WHERE id = %d",
+                $publicationId
+            )
+        );
+
+        return $result !== false;
+    }
+
     /**
      * @param int $max
      *
