@@ -65,7 +65,7 @@ class WpRepository
             $ordonnance->ID = $ordonnance->id;
             $ordonnance->excerpt = "";
             $ordonnance->post_excerpt = "";
-            $ordonnance->post_title = $ordonnance->title;
+            $ordonnance->post_title = $ordonnance->name;
         }
 
         return $results;
