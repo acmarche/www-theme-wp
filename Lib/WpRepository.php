@@ -61,11 +61,11 @@ class WpRepository
             return [];
         }
 
-        foreach ($results as $ordonnance) {
-            $ordonnance->ID = $ordonnance->id;
-            $ordonnance->excerpt = "";
-            $ordonnance->post_excerpt = "";
-            $ordonnance->post_title = $ordonnance->name;
+        foreach ($results as $publication) {
+            $publication->ID = $publication->id;
+            $publication->excerpt = "";
+            $publication->post_excerpt = "";
+            $publication->post_title = $publication->title;
         }
 
         return $results;
