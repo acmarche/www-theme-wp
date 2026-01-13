@@ -63,6 +63,7 @@ class WpRepository
 
         foreach ($results as $publication) {
             $publication->ID = $publication->id;
+            $publication->name = $publication->title;
             $publication->excerpt = "";
             $publication->post_excerpt = "";
             $publication->post_title = $publication->title;
