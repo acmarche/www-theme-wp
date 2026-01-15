@@ -22,7 +22,7 @@ if (!str_contains($codeCgt, "EVT")) {
     echo $twig->render(
         'errors/404.html.twig',
         [
-            'title' => 'Évènement non trouvé',
+            'title' => 'Évènement non trouvé (EVT)',
             'tags' => [],
             'color' => Theme::getColorBlog(Theme::TOURISME),
             'blogName' => Theme::getTitleBlog(Theme::TOURISME),
@@ -50,7 +50,7 @@ if ($event == null) {
     echo $twig->render(
         'errors/404.html.twig',
         [
-            'title' => 'Évènement non trouvé',
+            'title' => 'Évènement non trouvé 404',
             'tags' => [],
             'color' => Theme::getColorBlog(Theme::TOURISME),
             'blogName' => Theme::getTitleBlog(Theme::TOURISME),
