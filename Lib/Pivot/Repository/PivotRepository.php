@@ -141,7 +141,7 @@ class PivotRepository
                 return null;
             }
             else {
-                $data = $data['offre'];
+                $data = $data['offre'][0];
             }
         }
 
