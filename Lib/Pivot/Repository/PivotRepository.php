@@ -105,15 +105,15 @@ class PivotRepository
             Cache::delete($cacheKey);
         }
         $jsonContent = Cache::getIfExists($cacheKey);
-dump('jsonContent:',$jsonContent);
+
         if (!$jsonContent) {
             $filename = $_ENV['APP_CACHE_DIR'].'/../data/pivot.json';
 
             if (is_readable($filename)) {
-                dump($filename);
+
                 $fileContent = file_get_contents($filename);
                 $data = json_decode($fileContent, associative: true, flags: JSON_THROW_ON_ERROR);
-                dump($data);
+
                 if (isset($data['offre'])) {
                     foreach ($data['offre'] as $offre) {
                         if (isset($offre['codeCgt']) && $offre['codeCgt'] === $codeCgt) {
@@ -135,9 +135,14 @@ dump('jsonContent:',$jsonContent);
 
         $data = json_decode($jsonContent, associative: true, flags: JSON_THROW_ON_ERROR);
 
-dump('data:',$data);
+        dump('data:', $data);
         if (!isset($data['codeCgt'])) {
-            return null;
+            if (!isset($data['offre']['codeCgt'])) {
+                return null;
+            }
+            else {
+                $data = $data['offre'];
+            }
         }
 
         try {
