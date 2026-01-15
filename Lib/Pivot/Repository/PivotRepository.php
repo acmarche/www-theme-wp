@@ -137,13 +137,14 @@ class PivotRepository
 
         dump('data:', $data);
         if (!isset($data['codeCgt'])) {
-            if (!isset($data['offre']['codeCgt'])) {
+            if (!isset($data['offre'][0]['codeCgt'])) {
                 return null;
             }
             else {
                 $data = $data['offre'][0];
             }
         }
+        dump('data2:', $data);
 
         try {
             $event = $this->parser->parseEvent($data);
